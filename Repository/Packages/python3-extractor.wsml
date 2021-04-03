@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python3_extractor
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python3_extractor memberOf Package
+	package hasValue "python3-extractor"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "27"
+	maintainer hasValue "Original-Bertrand Marc <bmarc@debian.org>"
+	architecture hasValue "all"
+	version hasValue "1:0.6-8"
+	fileName hasValue "pool/universe/libe/libextractor-python/python3-extractor_0.6-8_all.deb"
+	size hasValue "6672"
+	md5sum hasValue "c091626dff1c9279d652717d8f4d06e2"
+	sha1 hasValue "dc445cad26baff9a75a56284de2c67dd54e111e9"
+	sha256 hasValue "f35368b1db627f5eac1e5539b65e4170b1b4f8b3ffb7a4007c2480a06a2c1214"
+	description hasValue "extracts meta-data from files of arbitrary type (Python bindings)"
+	descriptionMd5 hasValue "b51235972018a5f1f2c2df7b8f6046b3"
+	homepage hasValue "http://www.gnu.org/software/libextractor/"
+	depends hasValue "libextractor3 (>= 1:1.1), python3:any"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libextractor3"
+	comparison hasValue ">="
+	version hasValue "1:1.1"
+
+relationInstance depends(P0__python3_extractor,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__python3_extractor,1,DepAtom__1)
+

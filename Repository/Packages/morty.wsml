@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology morty
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__morty memberOf Package
+	package hasValue "morty"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "5534"
+	maintainer hasValue "Original-Debian Go Packaging Team <pkg-go-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.2.0-1"
+	fileName hasValue "pool/universe/m/morty/morty_0.2.0-1_amd64.deb"
+	size hasValue "1688700"
+	md5sum hasValue "9edd73f9dcd72c49ea533dfc76710a9a"
+	sha1 hasValue "5694fc981c370e400ff5aff26b3f0de9a7be285a"
+	sha256 hasValue "fbb2b1333aa88d7e37d7c03886f1a49aa54b7ed8f5d379cf24509e9c2818ed6a"
+	description hasValue "Privacy aware web content sanitizer proxy as a service"
+	descriptionMd5 hasValue "b73ad6ce55466f9d958bad385fda3dfa"
+	homepage hasValue "https://github.com/asciimoo/morty"
+	depends hasValue "libc6 (>= 2.4), adduser"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__morty,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "adduser"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__morty,1,DepAtom__1)
+

@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology yubikey_luks
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__yubikey_luks memberOf Package
+	package hasValue "yubikey-luks"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/admin"
+	installedSize hasValue "55"
+	maintainer hasValue "Original-Yubikey-LUKS Maintainers <yubikey-luks@tracker.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.5.1+29.g5df2b95-3"
+	fileName hasValue "pool/universe/y/yubikey-luks/yubikey-luks_0.5.1+29.g5df2b95-3_all.deb"
+	size hasValue "12372"
+	md5sum hasValue "12763ddae03b1e4828815303f1bf1870"
+	sha1 hasValue "17bf9e0636bfe764845d36d8e432fdbda3247efa"
+	sha256 hasValue "416846e2cca81aa640445c56d54bb836f2f39fd647dacbfceacb65fc8af94a63"
+	descriptionMd5 hasValue "d9a5e3ef4c28468a1d064c095ec6ffed"
+	homepage hasValue "https://github.com/cornelinux/yubikey-luks"
+	depends hasValue "cryptsetup-run, initramfs-tools, yubikey-personalization (>= 1.5)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "cryptsetup-run"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__yubikey_luks,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "initramfs-tools"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__yubikey_luks,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "yubikey-personalization"
+	comparison hasValue ">="
+	version hasValue "1.5"
+
+relationInstance depends(P0__yubikey_luks,2,DepAtom__2)
+

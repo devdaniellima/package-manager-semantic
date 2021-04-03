@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libldns_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libldns_dev memberOf Package
+	package hasValue "libldns-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "18025"
+	maintainer hasValue "Original-Debian DNS Team <team+dns@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.7.0-4.1ubuntu1"
+	fileName hasValue "pool/universe/l/ldns/libldns-dev_1.7.0-4.1ubuntu1_amd64.deb"
+	size hasValue "1148336"
+	md5sum hasValue "ff1d271d30d6a73c2a25c551f5df8a0d"
+	sha1 hasValue "b6e3307a731cdef0596e897a829d9da8c0a67117"
+	sha256 hasValue "6ccc432405605a71b9f4aea84a8126087b33969ede1315e14fd5e82ad1feef23"
+	descriptionMd5 hasValue "9c5cede131109e169368cf05ff7fe275"
+	homepage hasValue "https://www.nlnetlabs.nl/projects/ldns/about/"
+	depends hasValue "libldns2 (= 1.7.0-4.1ubuntu1), libssl-dev"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libldns2"
+	comparison hasValue "="
+	version hasValue "1.7.0-4.1ubuntu1"
+
+relationInstance depends(P0__libldns_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libssl-dev"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libldns_dev,1,DepAtom__1)
+

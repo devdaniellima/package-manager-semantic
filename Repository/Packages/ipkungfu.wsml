@@ -1,0 +1,73 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ipkungfu
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ipkungfu memberOf Package
+	package hasValue "ipkungfu"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "176"
+	maintainer hasValue "Original-Luis Uribe <acme@eviled.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.6.1-6.2"
+	fileName hasValue "pool/universe/i/ipkungfu/ipkungfu_0.6.1-6.2_amd64.deb"
+	size hasValue "42188"
+	md5sum hasValue "f4b0645a34d633090b25af872894f916"
+	sha1 hasValue "48c2d02b966395599eeba71f3cba7a33e2b6b94b"
+	sha256 hasValue "9dddbae5f5595746bd946bcad0c9a6a7fe1a3e6b6238bbaebf61c438cb96dcc5"
+	descriptionMd5 hasValue "d756549a1a43889ea0df5d79d5842c6d"
+	depends hasValue "iptables (>= 1.2.7), iproute2, kmod, libc6 (>= 2.3.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "iptables"
+	comparison hasValue ">="
+	version hasValue "1.2.7"
+
+relationInstance depends(P0__ipkungfu,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "iproute2"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ipkungfu,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "kmod"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ipkungfu,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.3.4"
+
+relationInstance depends(P0__ipkungfu,3,DepAtom__3)
+

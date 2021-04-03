@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology r_cran_epibasix
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__r_cran_epibasix memberOf Package
+	package hasValue "r-cran-epibasix"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/science"
+	installedSize hasValue "123"
+	maintainer hasValue "Original-Debian R Packages Maintainers <r-pkg-team@alioth-lists.debian.net>"
+	architecture hasValue "all"
+	version hasValue "1.5-1"
+	fileName hasValue "pool/universe/r/r-cran-epibasix/r-cran-epibasix_1.5-1_all.deb"
+	size hasValue "92492"
+	md5sum hasValue "b9f3dddd68cc4c56944fdded905c4f98"
+	sha1 hasValue "324e326caabfaa5a1d60df016be851cc42485939"
+	sha256 hasValue "d719da4b098038757f1c5f874b49b731c5166740ae907bb617cf928f458532c8"
+	descriptionMd5 hasValue "db7f05c5563722ad733edbecfd95746a"
+	homepage hasValue "https://cran.r-project.org/package=epibasix"
+	depends hasValue "r-base-core (>= 3.5.1-2), r-api-3.5"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "r-base-core"
+	comparison hasValue ">="
+	version hasValue "3.5.1-2"
+
+relationInstance depends(P0__r_cran_epibasix,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "r-api-3.5"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__r_cran_epibasix,1,DepAtom__1)
+

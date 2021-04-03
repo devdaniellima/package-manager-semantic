@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libdcontainers_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libdcontainers_dev memberOf Package
+	package hasValue "libdcontainers-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "190"
+	maintainer hasValue "Original-Debian D Language Group <team+d-team@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.8.0~alpha.16-1build3"
+	fileName hasValue "pool/universe/d/dcontainers/libdcontainers-dev_0.8.0~alpha.16-1build3_amd64.deb"
+	size hasValue "33796"
+	md5sum hasValue "6bfedbcb12efb07d8919380d43fb9ceb"
+	sha1 hasValue "cd7555d8bf87a0c8f567c755d91196aaed7f6bce"
+	sha256 hasValue "6eb6a2b083c84fd88a15d043e964ff984bbf403204335ae28da0ca1bc092b391"
+	descriptionMd5 hasValue "86d606161c94fe2ebc4377b1111340d2"
+	homepage hasValue "https://github.com/dlang-community/containers"
+	depends hasValue "libdcontainers0 (= 0.8.0~alpha.16-1build3), libstdx-allocator-dev (>= 3.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libdcontainers0"
+	comparison hasValue "="
+	version hasValue "0.8.0~alpha.16-1build3"
+
+relationInstance depends(P0__libdcontainers_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libstdx-allocator-dev"
+	comparison hasValue ">="
+	version hasValue "3.1"
+
+relationInstance depends(P0__libdcontainers_dev,1,DepAtom__1)
+

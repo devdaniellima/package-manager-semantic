@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology jtex_base
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__jtex_base memberOf Package
+	package hasValue "jtex-base"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/tex"
+	installedSize hasValue "3020"
+	maintainer hasValue "Original-TSUCHIYA Masatoshi <tsuchiya@namazu.org>"
+	architecture hasValue "all"
+	version hasValue "2.1-1.1"
+	conflicts hasValue "jtex-bin (<= 1.9.1)"
+	fileName hasValue "pool/universe/j/jtex-base/jtex-base_2.1-1.1_all.deb"
+	size hasValue "113356"
+	md5sum hasValue "a2ac94b97f043a5be61d6def4aef1185"
+	sha1 hasValue "fcd269483681aa04e7f03d6e936340791582145e"
+	sha256 hasValue "4118ee5b64cfb47d1ce884771f345674a4a121dcd1de5048fe1015e9042ce52a"
+	description hasValue "arquivos básicos da biblioteca NTT jTeX"
+	descriptionMd5 hasValue "f585cc35f3115ea4ad697445ac688d6a"
+	depends hasValue "texlive-binaries | texlive-base-bin"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "texlive-binaries"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__jtex_base,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "texlive-base-bin"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__jtex_base,0,DepAtom__1)
+

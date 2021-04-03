@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology mod_gearman_module
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__mod_gearman_module memberOf Package
+	package hasValue "mod-gearman-module"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/net"
+	installedSize hasValue "152"
+	maintainer hasValue "Original-Bernd Zeimetz <bzed@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.5.5-1build7"
+	fileName hasValue "pool/universe/m/mod-gearman/mod-gearman-module_1.5.5-1build7_amd64.deb"
+	size hasValue "44168"
+	md5sum hasValue "ac01027f98dc95950600d2dba5de6f3e"
+	sha1 hasValue "9ce1da3c55776948df03f0c63adc54ae6d3f2bd6"
+	sha256 hasValue "f2a246f6b7bdf62be5cfd80fa823d07b365edeee18678985ad1167a630e3a8bf"
+	descriptionMd5 hasValue "f3a35646701f90efde676725ced70e3b"
+	homepage hasValue "http://labs.consol.de/nagios/mod-gearman/"
+	depends hasValue "libc6 (>= 2.14), libgearman8 (>= 1.1.13)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__mod_gearman_module,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgearman8"
+	comparison hasValue ">="
+	version hasValue "1.1.13"
+
+relationInstance depends(P0__mod_gearman_module,1,DepAtom__1)
+

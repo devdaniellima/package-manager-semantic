@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology raxml
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__raxml memberOf Package
+	package hasValue "raxml"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/science"
+	installedSize hasValue "4139"
+	maintainer hasValue "Original-Debian Med Packaging Team <debian-med-packaging@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "8.2.12+dfsg-4"
+	fileName hasValue "pool/universe/r/raxml/raxml_8.2.12+dfsg-4_amd64.deb"
+	size hasValue "1427300"
+	md5sum hasValue "0cdf6a1fa5c34391347e3970ae6ee116"
+	sha1 hasValue "2da7b6fb4cf58397751b5115a6430bfd71a3a10c"
+	sha256 hasValue "d0716f4359f7bc4bf5ba29076c955b8cf29bcf5a6fa389893ad6b653617d667e"
+	descriptionMd5 hasValue "af25050e26e4eb856b4aa781a142389c"
+	homepage hasValue "http://www.exelixis-lab.org/"
+	depends hasValue "libc6 (>= 2.29)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__raxml,0,DepAtom__0)
+

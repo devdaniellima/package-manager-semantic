@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libzadc4
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libzadc4 memberOf Package
+	package hasValue "libzadc4"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "176"
+	maintainer hasValue "Original-Fernando Seiti Furusato <ferseiti@linux.vnet.ibm.com>"
+	architecture hasValue "amd64"
+	version hasValue "4.0.18-3"
+	fileName hasValue "pool/universe/g/genwqe-user/libzadc4_4.0.18-3_amd64.deb"
+	size hasValue "53744"
+	md5sum hasValue "dae1712df58560562383e0e933840655"
+	sha1 hasValue "53332a2bf1f4d8a761733590f3a0f283ad22342d"
+	sha256 hasValue "190de1d5fe226eeadac5bdeb7c20ed57b17a5ead6de6b4c75882a8e4bd71bf0b"
+	descriptionMd5 hasValue "4899caf4ba1ec5289dd3b0f59c13b577"
+	homepage hasValue "https://github.com/ibm-genwqe/genwqe-user/releases"
+	depends hasValue "libc6 (>= 2.15), zlib1g (>= 1:1.2.7)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__libzadc4,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "zlib1g"
+	comparison hasValue ">="
+	version hasValue "1:1.2.7"
+
+relationInstance depends(P0__libzadc4,1,DepAtom__1)
+

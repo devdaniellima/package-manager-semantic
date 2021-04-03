@@ -1,0 +1,84 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology clinfo
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__clinfo memberOf Package
+	package hasValue "clinfo"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "135"
+	maintainer hasValue "Original-Debian OpenCL Maintainers <pkg-opencl-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.2.18.04.06-1"
+	replaces hasValue "amd-clinfo, clinfo, fglrx-updates-core"
+	provides hasValue "clinfo"
+	conflicts hasValue "amd-clinfo, clinfo, fglrx-updates-core"
+	fileName hasValue "pool/universe/c/clinfo/clinfo_2.2.18.04.06-1_amd64.deb"
+	size hasValue "41416"
+	md5sum hasValue "cc013e7542e763c2c0c0332014a7771f"
+	sha1 hasValue "cbb9eae3fc936731ddd67533c28af62150151e47"
+	sha256 hasValue "e7558e0a49d5b8b448c2dc34f67834dd98285d8c6d5568199431da8373a201a2"
+	descriptionMd5 hasValue "61f518af669d193a0d2dd298ab456672"
+	homepage hasValue "https://github.com/Oblomov/clinfo"
+	depends hasValue "libc6 (>= 2.14), ocl-icd-libopencl1 | libopencl1, ocl-icd-libopencl1 (>= 1.0) | libopencl-1.1-1"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__clinfo,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "ocl-icd-libopencl1"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__clinfo,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libopencl1"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__clinfo,1,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "ocl-icd-libopencl1"
+	comparison hasValue ">="
+	version hasValue "1.0"
+
+relationInstance depends(P0__clinfo,2,DepAtom__3)
+
+instance DepAtom__4 memberOf DependencyAtom
+	package hasValue "libopencl-1.1-1"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__clinfo,2,DepAtom__4)
+

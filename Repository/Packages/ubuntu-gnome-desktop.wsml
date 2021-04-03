@@ -1,0 +1,59 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ubuntu_gnome_desktop
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ubuntu_gnome_desktop memberOf Package
+	package hasValue "ubuntu-gnome-desktop"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/metapackages"
+	installedSize hasValue "13"
+	maintainer hasValue "Ubuntu GNOME Developers <ubuntu-gnome@lists.ubuntu.com>"
+	architecture hasValue "amd64"
+	version hasValue "0.87"
+	fileName hasValue "pool/universe/u/ubuntu-gnome-meta/ubuntu-gnome-desktop_0.87_amd64.deb"
+	size hasValue "3100"
+	md5sum hasValue "e9616f2da52b1adf6e8af544ec2fc6ba"
+	sha1 hasValue "1b2d3c4e4b94ef1f407659fa419ae78d405f4398"
+	sha256 hasValue "a3273b7c21d3324fa38acdbd8cb0dfe0afcce4489f6a3c049cb2c6fb196cc394"
+	descriptionMd5 hasValue "59d0b504eddb4a1a382f39dcfed2543c"
+	depends hasValue "ubuntu-desktop, gnome-session"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "ubuntu-desktop"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ubuntu_gnome_desktop,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "gnome-session"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ubuntu_gnome_desktop,1,DepAtom__1)
+

@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology nut_snmp
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__nut_snmp memberOf Package
+	package hasValue "nut-snmp"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "admin"
+	installedSize hasValue "351"
+	maintainer hasValue "Original-Arnaud Quette <aquette@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.7.4-11ubuntu4"
+	fileName hasValue "pool/main/n/nut/nut-snmp_2.7.4-11ubuntu4_amd64.deb"
+	size hasValue "97228"
+	md5sum hasValue "7a6d82536606618263e2d5c7974d0cdc"
+	sha1 hasValue "eb8aaaf125ab83aaa0e016fc70f538823a287f1b"
+	sha256 hasValue "3953f4a2e278606415750b6e70cf580c83ac98f010a5ce9fdb902cf7afd0735f"
+	description hasValue "network UPS tools - SNMP driver"
+	descriptionMd5 hasValue "9982af957abdb380c9a8847a365d37a9"
+	homepage hasValue "https://networkupstools.org/"
+	depends hasValue "nut (>= 1.4.1-pre1), libc6 (>= 2.28), libsnmp35 (>= 5.8+dfsg)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "nut"
+	comparison hasValue ">="
+	version hasValue "1.4.1-pre1"
+
+relationInstance depends(P0__nut_snmp,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.28"
+
+relationInstance depends(P0__nut_snmp,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libsnmp35"
+	comparison hasValue ">="
+	version hasValue "5.8+dfsg"
+
+relationInstance depends(P0__nut_snmp,2,DepAtom__2)
+

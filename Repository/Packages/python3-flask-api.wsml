@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python3_flask_api
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python3_flask_api memberOf Package
+	package hasValue "python3-flask-api"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "100"
+	maintainer hasValue "Original-Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.1+dfsg-1"
+	fileName hasValue "pool/universe/f/flask-api/python3-flask-api_1.1+dfsg-1_all.deb"
+	size hasValue "16948"
+	md5sum hasValue "1f54534c852a24678e9d2a966b031900"
+	sha1 hasValue "9b2bfc4d142e744b3c2cb14c1ab46d862cf5e2d9"
+	sha256 hasValue "55a6a08aedcb6235a89b7083914aa9dbc6aa7d3264f6ae78439add7461c42b33"
+	descriptionMd5 hasValue "5a3cfbde6eb435f66f1826464092d2eb"
+	homepage hasValue "http://www.flaskapi.org"
+	depends hasValue "python-flask-api-common (= 1.1+dfsg-1), python3-flask (>= 0.12.3), python3:any"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python-flask-api-common"
+	comparison hasValue "="
+	version hasValue "1.1+dfsg-1"
+
+relationInstance depends(P0__python3_flask_api,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3-flask"
+	comparison hasValue ">="
+	version hasValue "0.12.3"
+
+relationInstance depends(P0__python3_flask_api,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__python3_flask_api,2,DepAtom__2)
+

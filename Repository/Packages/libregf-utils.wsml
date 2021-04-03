@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libregf_utils
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libregf_utils memberOf Package
+	package hasValue "libregf-utils"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/otherosfs"
+	installedSize hasValue "610"
+	maintainer hasValue "Original-Debian Security Tools <team+pkg-security@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "20190303-1.1"
+	fileName hasValue "pool/universe/libr/libregf/libregf-utils_20190303-1.1_amd64.deb"
+	size hasValue "249728"
+	md5sum hasValue "cc56eb676c75ac2cb3ab34794716003d"
+	sha1 hasValue "965448ea650d995fd95f91a300fba1871144ec07"
+	sha256 hasValue "9f503b45146cf8abf5b4b29788ffedf9fc1c4ab298ec821a4aaeb585c21548bf"
+	descriptionMd5 hasValue "e5cd02438ff4618b17d01ce02917fe46"
+	homepage hasValue "https://github.com/libyal/libregf"
+	depends hasValue "libc6 (>= 2.17), libfuse2 (>= 2.6), libregf1 (>= 20150704)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.17"
+
+relationInstance depends(P0__libregf_utils,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libfuse2"
+	comparison hasValue ">="
+	version hasValue "2.6"
+
+relationInstance depends(P0__libregf_utils,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libregf1"
+	comparison hasValue ">="
+	version hasValue "20150704"
+
+relationInstance depends(P0__libregf_utils,2,DepAtom__2)
+

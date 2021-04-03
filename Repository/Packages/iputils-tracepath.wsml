@@ -1,0 +1,59 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology iputils_tracepath
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__iputils_tracepath memberOf Package
+	package hasValue "iputils-tracepath"
+	packageSource hasValue Source__S1
+	priority hasValue "standard"
+	section hasValue "net"
+	installedSize hasValue "72"
+	maintainer hasValue "Original-Noah Meyerhans <noahm@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3:20190709-3"
+	fileName hasValue "pool/main/i/iputils/iputils-tracepath_20190709-3_amd64.deb"
+	size hasValue "20068"
+	md5sum hasValue "582c95fa28279aa687abc70b6e0c7a20"
+	sha1 hasValue "fbd4906192e34dbe99a657fbe6ec00021ef1f565"
+	sha256 hasValue "1f271ecfd154b3b0bba20737d992e781b7b87a5b78399c9ae0b3d4d9e159edc8"
+	descriptionMd5 hasValue "b539c83ecb7c1908774c67d5389dc448"
+	depends hasValue "libc6 (>= 2.17), libcap2 (>= 1:2.10)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.17"
+
+relationInstance depends(P0__iputils_tracepath,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libcap2"
+	comparison hasValue ">="
+	version hasValue "1:2.10"
+
+relationInstance depends(P0__iputils_tracepath,1,DepAtom__1)
+

@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology minica
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__minica memberOf Package
+	package hasValue "minica"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/devel"
+	installedSize hasValue "2678"
+	maintainer hasValue "Original-pkg-go <pkg-go-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0-1build1"
+	fileName hasValue "pool/universe/m/minica/minica_1.0-1build1_amd64.deb"
+	size hasValue "826812"
+	md5sum hasValue "f9d7a70a750170cbc1fb8951b81f6561"
+	sha1 hasValue "1547ac807be22bb75427879df0d7fdc2c82955e2"
+	sha256 hasValue "e7554b59eb08f4c77d1fc5f7f6ff606bbd2161aeec27642dd73541fda33d0867"
+	descriptionMd5 hasValue "43403a3d993625d80387f70e58081103"
+	homepage hasValue "https://github.com/paultag/minica"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__minica,0,DepAtom__0)
+

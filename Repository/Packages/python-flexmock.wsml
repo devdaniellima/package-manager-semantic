@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python_flexmock
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python_flexmock memberOf Package
+	package hasValue "python-flexmock"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "70"
+	maintainer hasValue "Original-Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.10.4-1build1"
+	fileName hasValue "pool/universe/p/python-flexmock/python-flexmock_0.10.4-1build1_all.deb"
+	size hasValue "15816"
+	md5sum hasValue "dacbf71ebc42a9367ffa150ba416b39f"
+	sha1 hasValue "cdcaad61127e80691ce0c4249760f5c2e4517d3f"
+	sha256 hasValue "1d16d05ad0c40b6f6d11317beb810f34c18527e62dc3ceb02c170f73ed4972c0"
+	descriptionMd5 hasValue "5b0ee4ca13f8449cffa3106e4558d295"
+	homepage hasValue "https://flexmock.readthedocs.org/"
+	depends hasValue "python2:any (<< 2.8), python2:any (>= 2.7~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue "<<"
+	version hasValue "2.8"
+
+relationInstance depends(P0__python_flexmock,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue ">="
+	version hasValue "2.7~"
+
+relationInstance depends(P0__python_flexmock,1,DepAtom__1)
+

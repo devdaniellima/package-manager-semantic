@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology tcpreplay
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__tcpreplay memberOf Package
+	package hasValue "tcpreplay"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "1866"
+	maintainer hasValue "Original-Christoph Biedl <debian.axhn@manchmal.in-ulm.de>"
+	architecture hasValue "amd64"
+	version hasValue "4.3.2-1build1"
+	fileName hasValue "pool/universe/t/tcpreplay/tcpreplay_4.3.2-1build1_amd64.deb"
+	size hasValue "293540"
+	md5sum hasValue "a7643560b84fb2711fa21ecfe86d4426"
+	sha1 hasValue "67117fb6276041e3f9a85a7f12fdbfb07e7c2ac8"
+	sha256 hasValue "8109c6e5d4836d4e72bf83e3b639f8594d565b85eceef66f64bdb0e2ebc56922"
+	descriptionMd5 hasValue "5873922df77735ca30c2fd3d61d5271a"
+	homepage hasValue "http://tcpreplay.appneta.com/"
+	depends hasValue "libc6 (>= 2.14), libpcap0.8 (>= 0.9.8)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__tcpreplay,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libpcap0.8"
+	comparison hasValue ">="
+	version hasValue "0.9.8"
+
+relationInstance depends(P0__tcpreplay,1,DepAtom__1)
+

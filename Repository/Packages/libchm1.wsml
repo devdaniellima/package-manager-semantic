@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libchm1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libchm1 memberOf Package
+	package hasValue "libchm1"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "62"
+	maintainer hasValue "Original-Kartik Mistry <kartik@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2:0.40a-5"
+	fileName hasValue "pool/universe/c/chmlib/libchm1_0.40a-5_amd64.deb"
+	size hasValue "24512"
+	md5sum hasValue "6262b965339ab7953c654f18a70c990a"
+	sha1 hasValue "d8300d631be3da28b5e9dd2869cfbec300fa397a"
+	sha256 hasValue "bb6c5a601338cbf1841913d74f94bb06820189bf4a59b8a0652ec88a2654775a"
+	descriptionMd5 hasValue "a57059b37e2f74dd6563b862533a1aa1"
+	homepage hasValue "https://github.com/jedwing/CHMLib"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libchm1,0,DepAtom__0)
+

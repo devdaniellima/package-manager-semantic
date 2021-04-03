@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology debiman
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__debiman memberOf Package
+	package hasValue "debiman"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "25822"
+	maintainer hasValue "Original-Debian Go Packaging Team <pkg-go-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.0~git20180905.9955035-1"
+	fileName hasValue "pool/universe/d/debiman/debiman_0.0~git20180905.9955035-1_amd64.deb"
+	size hasValue "5617740"
+	md5sum hasValue "ed28e71f2ac45cc36477ced4ade4fb81"
+	sha1 hasValue "5916bd541a4f7a4cecff51ea60b59089697e2ca0"
+	sha256 hasValue "e47c8999a94d4d21f29c526cfe70936d94f73fe0821acf612fe0effb52dcd999"
+	descriptionMd5 hasValue "72b2e3c817b4082d188629ce4de6ad20"
+	homepage hasValue "https://github.com/Debian/debiman"
+	depends hasValue "mandoc, libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "mandoc"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__debiman,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__debiman,1,DepAtom__1)
+

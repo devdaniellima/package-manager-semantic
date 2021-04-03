@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology sqlite3_pcre
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__sqlite3_pcre memberOf Package
+	package hasValue "sqlite3-pcre"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "22"
+	maintainer hasValue "Original-Gilles Filippini <pini@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0~git20070120091816+4229ecc-1"
+	fileName hasValue "pool/universe/s/sqlite3-pcre/sqlite3-pcre_0~git20070120091816+4229ecc-1_amd64.deb"
+	size hasValue "4654"
+	md5sum hasValue "9b0433bc056c66d15b1ec97fb02da25e"
+	sha1 hasValue "38b480ee7cc4dcd372bcfe73e47709a269d06a48"
+	sha256 hasValue "620a17957e9d5e82931e111c53ed8fb2b3281eaedb94b4228af30cb313217eb2"
+	descriptionMd5 hasValue "e9c47eb87a840fa2b10ecdd8770d3fc7"
+	homepage hasValue "http://git.altlinux.org/people/at/packages/?p=sqlite3-pcre.git"
+	depends hasValue "libc6 (>= 2.4), libpcre3"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__sqlite3_pcre,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libpcre3"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__sqlite3_pcre,1,DepAtom__1)
+

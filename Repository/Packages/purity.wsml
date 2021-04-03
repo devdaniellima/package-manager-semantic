@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology purity
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__purity memberOf Package
+	package hasValue "purity"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/games"
+	installedSize hasValue "83"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1-19"
+	fileName hasValue "pool/universe/p/purity/purity_1-19_amd64.deb"
+	size hasValue "25612"
+	md5sum hasValue "54dabc4ec0777e6a5b945fb1f399b44d"
+	sha1 hasValue "8bd69b6814eab6f5288dfcd8fd0e2545d2e42742"
+	sha256 hasValue "ce4e8261cd4c901a3bef729d1dd10259cf25b76b49dd2b9b9fd4d6a70e56ae1a"
+	description hasValue "automated purity testing software"
+	descriptionMd5 hasValue "c2ab5f2786e83d4fb907fdbe60b00245"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__purity,0,DepAtom__0)
+

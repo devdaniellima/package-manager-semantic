@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology tkblt_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__tkblt_dev memberOf Package
+	package hasValue "tkblt-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/interpreters"
+	installedSize hasValue "31"
+	maintainer hasValue "Original-Tcl/Tk Debian Packagers <pkg-tcltk-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.2.21-1build1"
+	fileName hasValue "pool/universe/t/tkblt/tkblt-dev_3.2.21-1build1_amd64.deb"
+	size hasValue "6268"
+	md5sum hasValue "16b184077ceaf28d5d49529009b0b286"
+	sha1 hasValue "77f98779edbc41735a36132969b2328f7a8b4273"
+	sha256 hasValue "417127b69179782baecdd3c7f13a28f3f5d6fa9e8ee76e8d001fce4a4d3c5095"
+	descriptionMd5 hasValue "8310adb519f88c6010fb5fcd357e2b5e"
+	homepage hasValue "https://github.com/SAOImageDS9/tkblt"
+	depends hasValue "tkblt (= 3.2.21-1build1), tk (>= 8.6.0-2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "tkblt"
+	comparison hasValue "="
+	version hasValue "3.2.21-1build1"
+
+relationInstance depends(P0__tkblt_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "tk"
+	comparison hasValue ">="
+	version hasValue "8.6.0-2"
+
+relationInstance depends(P0__tkblt_dev,1,DepAtom__1)
+

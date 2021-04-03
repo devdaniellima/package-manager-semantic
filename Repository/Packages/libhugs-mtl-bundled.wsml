@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libhugs_mtl_bundled
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libhugs_mtl_bundled memberOf Package
+	package hasValue "libhugs-mtl-bundled"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "67"
+	maintainer hasValue "Original-Isaac Jones <ijones@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "98.200609.21-5.4build2"
+	provides hasValue "libhugs-mtl"
+	conflicts hasValue "libhugs-mtl"
+	fileName hasValue "pool/universe/h/hugs98/libhugs-mtl-bundled_98.200609.21-5.4build2_amd64.deb"
+	size hasValue "10592"
+	md5sum hasValue "6765e037e5718bd2d6b3c93ddbfbd7da"
+	sha1 hasValue "6ee94fd2c3bd2e488d4424467b9f3fd743fefe96"
+	sha256 hasValue "84119778127a1ace7f804f11e93fec33dba4675ed4406e887c1023b90e9db9d9"
+	descriptionMd5 hasValue "2c70dc109336fe13b7f3d8589f702200"
+	depends hasValue "hugs (= 98.200609.21-5.4build2), libhugs-base"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "hugs"
+	comparison hasValue "="
+	version hasValue "98.200609.21-5.4build2"
+
+relationInstance depends(P0__libhugs_mtl_bundled,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libhugs-base"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libhugs_mtl_bundled,1,DepAtom__1)
+

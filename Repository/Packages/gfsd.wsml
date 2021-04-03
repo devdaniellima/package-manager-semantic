@@ -1,0 +1,74 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gfsd
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gfsd memberOf Package
+	package hasValue "gfsd"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/net"
+	installedSize hasValue "292"
+	maintainer hasValue "Original-Dmitry Smirnov <onlyjob@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.7.15+dfsg-1"
+	fileName hasValue "pool/universe/g/gfarm/gfsd_2.7.15+dfsg-1_amd64.deb"
+	size hasValue "93244"
+	md5sum hasValue "8981f711cefc1d70fe4dd35c8ca42158"
+	sha1 hasValue "07ac2f6f39895bdd527bf63d48452026720aac62"
+	sha256 hasValue "f27e832aa35e6ac418553ed69201942ffd8733d7332ed31dfd47b334e111b9fc"
+	descriptionMd5 hasValue "94f134ae149cc59a9344c11b5c99568e"
+	homepage hasValue "https://sourceforge.net/p/gfarm/wiki/Home/"
+	depends hasValue "libc6 (>= 2.16), libgfarm1 (>= 2.7.15), libssl1.1 (>= 1.1.0), adduser"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.16"
+
+relationInstance depends(P0__gfsd,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgfarm1"
+	comparison hasValue ">="
+	version hasValue "2.7.15"
+
+relationInstance depends(P0__gfsd,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libssl1.1"
+	comparison hasValue ">="
+	version hasValue "1.1.0"
+
+relationInstance depends(P0__gfsd,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "adduser"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__gfsd,3,DepAtom__3)
+

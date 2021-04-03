@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology qhull_bin
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__qhull_bin memberOf Package
+	package hasValue "qhull-bin"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/math"
+	installedSize hasValue "2204"
+	maintainer hasValue "Original-Debian Science Maintainers <debian-science-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2015.2-4"
+	fileName hasValue "pool/universe/q/qhull/qhull-bin_2015.2-4_amd64.deb"
+	size hasValue "336964"
+	md5sum hasValue "e59456639079f7493649dcb1e449cef9"
+	sha1 hasValue "366db3a81ad15dfa60fb36ff2106f4bb8a67ed0c"
+	sha256 hasValue "419688a7d862d5c6b5a33bcdf9be7f5f01b8221c320ef85614aac650af7c219d"
+	descriptionMd5 hasValue "72ea306632db62fd6763de5b2a1f2067"
+	homepage hasValue "https://www.qhull.org"
+	depends hasValue "libqhull7 (= 2015.2-4), libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libqhull7"
+	comparison hasValue "="
+	version hasValue "2015.2-4"
+
+relationInstance depends(P0__qhull_bin,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__qhull_bin,1,DepAtom__1)
+

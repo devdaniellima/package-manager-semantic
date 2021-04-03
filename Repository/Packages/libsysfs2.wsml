@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libsysfs2
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libsysfs2 memberOf Package
+	package hasValue "libsysfs2"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libs"
+	installedSize hasValue "67"
+	maintainer hasValue "Original-Guillem Jover <guillem@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.1.0+repack-6"
+	fileName hasValue "pool/main/s/sysfsutils/libsysfs2_2.1.0+repack-6_amd64.deb"
+	size hasValue "18812"
+	md5sum hasValue "d6cb77b68ea4ed9fa893771a8e34b537"
+	sha1 hasValue "ade3f8b0ee21bf8940357ec69fe4c66b34ba3393"
+	sha256 hasValue "bcb8c9793ca61888f0c1c44ecc43f62a7216b46a903181bf76ad8d182a2d9647"
+	descriptionMd5 hasValue "fab3814f504697e0478bb3a1d059f62d"
+	homepage hasValue "http://linux-diag.sourceforge.net/Sysfsutils.html"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libsysfs2,0,DepAtom__0)
+

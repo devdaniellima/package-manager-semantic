@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology debci_collector
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__debci_collector memberOf Package
+	package hasValue "debci-collector"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "96"
+	maintainer hasValue "Original-Debian CI team <team+ci@tracker.debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.8"
+	replaces hasValue "debci (<< 2.6~)"
+	fileName hasValue "pool/universe/d/debci/debci-collector_2.8_all.deb"
+	size hasValue "16760"
+	md5sum hasValue "b6d62e90c723fa59a6012befa76a7873"
+	sha1 hasValue "d483b85d281b01d252c3cd04e298fa2f554a7f74"
+	sha256 hasValue "e71b48cd5c7313aa8af2dc86b26acd273c2a78f0f489ed6daf0e0b3dccbaeede"
+	descriptionMd5 hasValue "8c3977a7b69680497852f25220104f1f"
+	homepage hasValue "http://ci.debian.net/"
+	depends hasValue "debci (= 2.8)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "debci"
+	comparison hasValue "="
+	version hasValue "2.8"
+
+relationInstance depends(P0__debci_collector,0,DepAtom__0)
+

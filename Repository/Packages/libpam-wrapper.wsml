@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libpam_wrapper
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libpam_wrapper memberOf Package
+	package hasValue "libpam-wrapper"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "128"
+	maintainer hasValue "Original-Debian SSSD Team <pkg-sssd-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.7-4build1"
+	fileName hasValue "pool/universe/p/pam-wrapper/libpam-wrapper_1.0.7-4build1_amd64.deb"
+	size hasValue "24820"
+	md5sum hasValue "c5c45c6922e695301eca41947570d54b"
+	sha1 hasValue "3c4a65f38a4c3e53dc6ae2e1c23c2a6105931706"
+	sha256 hasValue "e5388bf060714f8dd0cdd3a9477751e60e142f2b4715fc884ffa744f068e09f8"
+	descriptionMd5 hasValue "77a0eb9127f8beb460a141761f12316f"
+	homepage hasValue "https://cwrap.org/pam_wrapper.html"
+	depends hasValue "libc6 (>= 2.4), libpam0g (>= 0.99.7.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libpam_wrapper,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libpam0g"
+	comparison hasValue ">="
+	version hasValue "0.99.7.1"
+
+relationInstance depends(P0__libpam_wrapper,1,DepAtom__1)
+

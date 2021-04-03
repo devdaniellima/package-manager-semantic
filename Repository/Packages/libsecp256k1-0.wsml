@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libsecp256k1_0
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libsecp256k1_0 memberOf Package
+	package hasValue "libsecp256k1-0"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "168"
+	maintainer hasValue "Original-Debian Cryptocoin Team <team+cryptocoin@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.1~20170810-2"
+	fileName hasValue "pool/universe/libs/libsecp256k1/libsecp256k1-0_0.1~20170810-2_amd64.deb"
+	size hasValue "104212"
+	md5sum hasValue "6c87d22e61207e06fac440010e6c637f"
+	sha1 hasValue "0ee26f1fc2d605be91a7be9c71796aca458ff47e"
+	sha256 hasValue "c2631d106a50ee6084d558c3eb0b85f8bd6da6f0d2e8cd461dee25f2ce4a003f"
+	descriptionMd5 hasValue "74c932227c9f717fb83d72eb42c4fa03"
+	homepage hasValue "https://github.com/bitcoin/secp256k1"
+	depends hasValue "libc6 (>= 2.14), libgmp10"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libsecp256k1_0,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgmp10"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libsecp256k1_0,1,DepAtom__1)
+

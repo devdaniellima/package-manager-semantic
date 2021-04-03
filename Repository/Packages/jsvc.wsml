@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology jsvc
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__jsvc memberOf Package
+	package hasValue "jsvc"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "69"
+	maintainer hasValue "Original-Debian Java Maintainers <pkg-java-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.15-8"
+	fileName hasValue "pool/universe/c/commons-daemon/jsvc_1.0.15-8_amd64.deb"
+	size hasValue "23040"
+	md5sum hasValue "8c4dc20b3d509cbd5f3197e5bd7a4a27"
+	sha1 hasValue "3915eda0ac5ae7eb5a71b73edf5310befcc18e41"
+	sha256 hasValue "fbcd41462fe7fa4bd506320988507187ca85f439f5f17dbfb2136381c507e639"
+	description hasValue "envoltório para lançar aplicações Java como daemons"
+	descriptionMd5 hasValue "198d12a0e3c99ced868d469d5734bf64"
+	homepage hasValue "http://commons.apache.org/daemon/"
+	depends hasValue "libcommons-daemon-java, libc6 (>= 2.15)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libcommons-daemon-java"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__jsvc,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__jsvc,1,DepAtom__1)
+

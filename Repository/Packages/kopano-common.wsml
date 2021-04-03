@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology kopano_common
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__kopano_common memberOf Package
+	package hasValue "kopano-common"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/mail"
+	installedSize hasValue "86"
+	maintainer hasValue "Original-Giraffe Maintainers <pkg-giraffe-maintainers@alioth-lists.debian.net>"
+	architecture hasValue "all"
+	version hasValue "8.7.0-7ubuntu1"
+	fileName hasValue "pool/universe/k/kopanocore/kopano-common_8.7.0-7ubuntu1_all.deb"
+	size hasValue "20120"
+	md5sum hasValue "7181edfc9d8f3b61c11ed9fbf4937453"
+	sha1 hasValue "34355e5d33085e803c852bf7d948dabb8f58058a"
+	sha256 hasValue "22a17f3b66443d38176b192cabc3aeb2c38b835a0d079f638562a350f6583e92"
+	descriptionMd5 hasValue "d77fcfa9fd1bfa095067504c128a2d6b"
+	homepage hasValue "https://download.kopano.io/community/"
+	depends hasValue "adduser, lsb-base (>= 3.0-6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "adduser"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__kopano_common,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "lsb-base"
+	comparison hasValue ">="
+	version hasValue "3.0-6"
+
+relationInstance depends(P0__kopano_common,1,DepAtom__1)
+

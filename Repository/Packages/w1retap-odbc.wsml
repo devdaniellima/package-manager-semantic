@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology w1retap_odbc
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__w1retap_odbc memberOf Package
+	package hasValue "w1retap-odbc"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/electronics"
+	installedSize hasValue "33"
+	maintainer hasValue "Original-Thomas Stewart <thomas@stewarts.org.uk>"
+	architecture hasValue "amd64"
+	version hasValue "1.4.4-3ubuntu2"
+	fileName hasValue "pool/universe/w/w1retap/w1retap-odbc_1.4.4-3ubuntu2_amd64.deb"
+	size hasValue "7392"
+	md5sum hasValue "864372968aefbbb3c5dc24b3f79afbe7"
+	sha1 hasValue "6accdf5122c010f558f2e3ab666e8326e83b3774"
+	sha256 hasValue "2040e4ff2bc8de0329c92583a25f5e76b7583fc67e6773b68141b7ede75c90b9"
+	descriptionMd5 hasValue "6c97d8e12c8b4daefe18b759a1026132"
+	homepage hasValue "http://www.zen35309.zen.co.uk/wx/tech.html"
+	depends hasValue "libc6 (>= 2.4), libodbc1 (>= 2.3.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__w1retap_odbc,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libodbc1"
+	comparison hasValue ">="
+	version hasValue "2.3.1"
+
+relationInstance depends(P0__w1retap_odbc,1,DepAtom__1)
+

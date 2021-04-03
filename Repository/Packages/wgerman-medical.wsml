@@ -1,0 +1,69 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology wgerman_medical
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__wgerman_medical memberOf Package
+	package hasValue "wgerman-medical"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/text"
+	installedSize hasValue "278"
+	maintainer hasValue "Original-Debian Med Packaging Team <debian-med-packaging@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "20160103-3"
+	provides hasValue "wordlist"
+	fileName hasValue "pool/universe/m/medicalterms/wgerman-medical_20160103-3_all.deb"
+	size hasValue "54280"
+	md5sum hasValue "c99e7be4e4a17fd6eaa12fefc8a31dbf"
+	sha1 hasValue "45b4ce74687a2072f098695938836b2f2eabfad2"
+	sha256 hasValue "6c617a3cdff9cd030eb4880e46c368fdf5bf8377ea569d0f43f21f1c9fd4bd59"
+	description hasValue "dicionário médico alemão de palavras para /usr/share/dict"
+	descriptionMd5 hasValue "6b74726ca12e91644d399642848f5349"
+	homepage hasValue "https://github.com/toddy15/medicalterms"
+	depends hasValue "debconf (>= 0.5) | debconf-2.0, dictionaries-common"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "debconf"
+	comparison hasValue ">="
+	version hasValue "0.5"
+
+relationInstance depends(P0__wgerman_medical,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "debconf-2.0"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__wgerman_medical,0,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "dictionaries-common"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__wgerman_medical,1,DepAtom__2)
+

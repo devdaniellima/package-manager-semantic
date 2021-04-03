@@ -1,0 +1,59 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology med_pharmacy
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__med_pharmacy memberOf Package
+	package hasValue "med-pharmacy"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/misc"
+	installedSize hasValue "38"
+	maintainer hasValue "Original-Debian Med Packaging Team <debian-med-packaging@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "3.5.1"
+	fileName hasValue "pool/universe/d/debian-med/med-pharmacy_3.5.1_all.deb"
+	size hasValue "3312"
+	md5sum hasValue "e4e18543b7f214c79e8b7205067ac629"
+	sha1 hasValue "d93a4153116d4e660d048e454352c51af39ed64c"
+	sha256 hasValue "c2c2d9485009c740422f54ef613a46bc0324cdd0f739c13169eb4cefa5ea98a9"
+	descriptionMd5 hasValue "a6a251a43e16bad5eb9cee0b86a6c125"
+	depends hasValue "med-config (= 3.5.1), med-tasks (= 3.5.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "med-config"
+	comparison hasValue "="
+	version hasValue "3.5.1"
+
+relationInstance depends(P0__med_pharmacy,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "med-tasks"
+	comparison hasValue "="
+	version hasValue "3.5.1"
+
+relationInstance depends(P0__med_pharmacy,1,DepAtom__1)
+

@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libixp_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libixp_dev memberOf Package
+	package hasValue "libixp-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "290"
+	maintainer hasValue "Original-Andrew Shadura <andrewsh@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.6~20121202+hg148-2build1"
+	replaces hasValue "libixp (<< 0.6~)"
+	provides hasValue "libixp"
+	fileName hasValue "pool/universe/libi/libixp/libixp-dev_0.6~20121202+hg148-2build1_amd64.deb"
+	size hasValue "66432"
+	md5sum hasValue "ff05cc9a2882387d3057353766111d73"
+	sha1 hasValue "5d3074e1268d3f19fa5e56c5948be19830d46fb7"
+	sha256 hasValue "3d3690f8eebcec8290908fbc20b98101be191d8d828540cec6d4622a1f0a07e6"
+	descriptionMd5 hasValue "2b7758645503dbb1ac3aaf0a3ae0307f"
+	homepage hasValue "http://libixp.googlecode.com/"
+	depends hasValue "libc6 (>= 2.14), libixp0 (= 0.6~20121202+hg148-2build1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libixp_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libixp0"
+	comparison hasValue "="
+	version hasValue "0.6~20121202+hg148-2build1"
+
+relationInstance depends(P0__libixp_dev,1,DepAtom__1)
+

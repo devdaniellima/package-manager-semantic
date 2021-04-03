@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology linux_user_chroot
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__linux_user_chroot memberOf Package
+	package hasValue "linux-user-chroot"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "32"
+	maintainer hasValue "Original-Laszlo Boszormenyi (GCS) <gcs@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2013.1-2build1"
+	fileName hasValue "pool/universe/l/linux-user-chroot/linux-user-chroot_2013.1-2build1_amd64.deb"
+	size hasValue "9612"
+	md5sum hasValue "f9e96a0f0b72e4fb29b4e21ff8169bae"
+	sha1 hasValue "b49ca2941e8db2b55e84b4c3a3d6f4880bbde30b"
+	sha256 hasValue "abbc4240fcc209a6cc2cd4f8d04bbf43a0f1fe1ee4bfa889bb19382c5a984b16"
+	descriptionMd5 hasValue "8bf58b7c09ce24cc02a43805fd4480d1"
+	homepage hasValue "https://git.gnome.org/browse/linux-user-chroot/"
+	depends hasValue "libc6 (>= 2.8)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.8"
+
+relationInstance depends(P0__linux_user_chroot,0,DepAtom__0)
+

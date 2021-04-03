@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology r_cran_gtools
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__r_cran_gtools memberOf Package
+	package hasValue "r-cran-gtools"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/math"
+	installedSize hasValue "361"
+	maintainer hasValue "Original-Dirk Eddelbuettel <edd@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.8.1-1"
+	replaces hasValue "r-cran-gregmisc (<= 2.0.7-1)"
+	fileName hasValue "pool/universe/g/gtools/r-cran-gtools_3.8.1-1_amd64.deb"
+	size hasValue "310120"
+	md5sum hasValue "5463ff29f538e7b070a09ac8863ba9e2"
+	sha1 hasValue "de5d403852ec1dd27d4fefd522c778370cc695a3"
+	sha256 hasValue "e39d73387e41fc6b2dc07c589ae782aff9839cd7677e97994641a22ec1fea85b"
+	descriptionMd5 hasValue "6184d280151862bb45756802beb62e59"
+	homepage hasValue "https://cran.r-project.org/package=gtools"
+	depends hasValue "libc6 (>= 2.4), r-base-core (>= 3.5.0-5), r-api-3.5"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__r_cran_gtools,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "r-base-core"
+	comparison hasValue ">="
+	version hasValue "3.5.0-5"
+
+relationInstance depends(P0__r_cran_gtools,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "r-api-3.5"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__r_cran_gtools,2,DepAtom__2)
+

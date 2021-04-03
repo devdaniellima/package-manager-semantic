@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology chaosread
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__chaosread memberOf Package
+	package hasValue "chaosread"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "29"
+	maintainer hasValue "Original-Keith Packard <keithp@keithp.com>"
+	architecture hasValue "amd64"
+	version hasValue "1.1-2"
+	fileName hasValue "pool/universe/c/chaosread/chaosread_1.1-2_amd64.deb"
+	size hasValue "7008"
+	md5sum hasValue "42a9b8c0cd89fc36538f7d02161aa577"
+	sha1 hasValue "17c9ff5308808c744c0c11702a0c41545c2b4e1f"
+	sha256 hasValue "02b59989ce8de577918be7d1ec8e5fe16ff830acc7187f80b2ba6347b825e4fb"
+	descriptionMd5 hasValue "650c4623a74ba49b8ca560222f08fe0b"
+	homepage hasValue "http://chaoskey.org"
+	depends hasValue "libc6 (>= 2.3.4), libusb-1.0-0 (>= 2:1.0.16)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.3.4"
+
+relationInstance depends(P0__chaosread,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libusb-1.0-0"
+	comparison hasValue ">="
+	version hasValue "2:1.0.16"
+
+relationInstance depends(P0__chaosread,1,DepAtom__1)
+

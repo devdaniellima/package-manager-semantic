@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology portreserve
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__portreserve memberOf Package
+	package hasValue "portreserve"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "48"
+	maintainer hasValue "Original-Javier Fernandez-Sanguino Pen~a <jfs@computer.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.0.4-1build1"
+	fileName hasValue "pool/universe/p/portreserve/portreserve_0.0.4-1build1_amd64.deb"
+	size hasValue "14840"
+	md5sum hasValue "5aa97a38795f44b310e4f357c67cde09"
+	sha1 hasValue "47f8f57db7fea9dff0b04f5b9f3aeca1dac1ee05"
+	sha256 hasValue "6a625bc1c204b435a50a9dcc3756749a98208152b276834c329159cb3b6ff418"
+	descriptionMd5 hasValue "3a1871bdb27c4e899a379c0e5fc6bc58"
+	homepage hasValue "http://cyberelk.net/tim/portreserve/"
+	depends hasValue "libc6 (>= 2.15)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__portreserve,0,DepAtom__0)
+

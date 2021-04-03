@@ -1,0 +1,75 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology itagalog
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__itagalog memberOf Package
+	package hasValue "itagalog"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/text"
+	installedSize hasValue "82"
+	maintainer hasValue "Original-Agustin Martin Domingo <agmartin@debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.3.1-6"
+	provides hasValue "ispell-dictionary"
+	fileName hasValue "pool/universe/i/ispell-tl/itagalog_0.3.1-6_all.deb"
+	size hasValue "60708"
+	md5sum hasValue "1e25a47a3565f8acc004665dfd54c719"
+	sha1 hasValue "452b26885c85a77289407afeac003e39d54e3e5b"
+	sha256 hasValue "07d16703d542f8b6dbf753ce1a7da27d35473bb38f02d8a6c176927eac856c8e"
+	descriptionMd5 hasValue "c981c9599ee583f8283c5fd3db948b76"
+	homepage hasValue "http://code.google.com/p/tagalog-wordlist/"
+	depends hasValue "debconf (>= 0.5) | debconf-2.0, dictionaries-common (>= 1.23~), ispell"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "debconf"
+	comparison hasValue ">="
+	version hasValue "0.5"
+
+relationInstance depends(P0__itagalog,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "debconf-2.0"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__itagalog,0,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "dictionaries-common"
+	comparison hasValue ">="
+	version hasValue "1.23~"
+
+relationInstance depends(P0__itagalog,1,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "ispell"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__itagalog,2,DepAtom__3)
+

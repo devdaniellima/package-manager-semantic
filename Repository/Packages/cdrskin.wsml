@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology cdrskin
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__cdrskin memberOf Package
+	package hasValue "cdrskin"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/otherosfs"
+	installedSize hasValue "245"
+	maintainer hasValue "Original-Debian Libburnia packagers <pkg-libburnia-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.5.2-1"
+	fileName hasValue "pool/universe/libb/libburn/cdrskin_1.5.2-1_amd64.deb"
+	size hasValue "99660"
+	md5sum hasValue "fef1b7207ee485eb642ddd2980e154a5"
+	sha1 hasValue "9a5c7d9e5e39b6e01912b468b8fd559c6dd78e23"
+	sha256 hasValue "aab8f2090222e0e04b5044bf34985ccd818a8edb3c17e200757cd475aed2b357"
+	description hasValue "ferramenta em linha de comando para gravação de CD/DVD/BD"
+	descriptionMd5 hasValue "7fc8b88d1a5145b8ff953a033d1211cc"
+	homepage hasValue "http://libburnia-project.org"
+	depends hasValue "libburn4 (>= 1.5.2), libc6 (>= 2.15)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libburn4"
+	comparison hasValue ">="
+	version hasValue "1.5.2"
+
+relationInstance depends(P0__cdrskin,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__cdrskin,1,DepAtom__1)
+

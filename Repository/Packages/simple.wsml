@@ -1,0 +1,74 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology simple
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__simple memberOf Package
+	package hasValue "simple"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/haskell"
+	installedSize hasValue "7929"
+	maintainer hasValue "Original-Debian Haskell Group <pkg-haskell-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.11.3-1build2"
+	fileName hasValue "pool/universe/h/haskell-simple/simple_0.11.3-1build2_amd64.deb"
+	size hasValue "1156492"
+	md5sum hasValue "0291bab1ed25752bfa61d8b2b8b4bf8a"
+	sha1 hasValue "dd204ea929f083ee801b06f5102b347cfe49e10f"
+	sha256 hasValue "f9a822e08bc67a68897716008b72ea3693f090fd0576d8fd5c404c881f65237f"
+	descriptionMd5 hasValue "08844b513d8d0c0272bcfb01b99d4c41"
+	homepage hasValue "http://simple.cx"
+	depends hasValue "libatomic1 (>= 4.8), libc6 (>= 2.29), libffi7 (>= 3.3~20180313), libgmp10"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libatomic1"
+	comparison hasValue ">="
+	version hasValue "4.8"
+
+relationInstance depends(P0__simple,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__simple,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libffi7"
+	comparison hasValue ">="
+	version hasValue "3.3~20180313"
+
+relationInstance depends(P0__simple,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "libgmp10"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__simple,3,DepAtom__3)
+

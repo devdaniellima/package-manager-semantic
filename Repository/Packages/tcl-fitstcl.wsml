@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology tcl_fitstcl
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__tcl_fitstcl memberOf Package
+	package hasValue "tcl-fitstcl"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/science"
+	installedSize hasValue "273"
+	maintainer hasValue "Original-Debian Astronomy Maintainers <debian-astro-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.4-4build1"
+	fileName hasValue "pool/universe/t/tcl-fitstcl/tcl-fitstcl_2.4-4build1_amd64.deb"
+	size hasValue "96028"
+	md5sum hasValue "b10c6f2b2dcc5171f34ab80e844ab47a"
+	sha1 hasValue "796b1489d73292ff1783a8de18df8b8c960d719d"
+	sha256 hasValue "80af709754e00333bf4a1cd16ea07b0c18cdc5bf5645a7dfdbb4782aa295fe49"
+	descriptionMd5 hasValue "008b0115db190247679b595728b29de9"
+	homepage hasValue "https://heasarc.gsfc.nasa.gov/docs/software/lheasoft/ftools/fv/fitsTcl_home.html"
+	depends hasValue "libc6 (>= 2.7), libcfitsio8 (>= 3.470~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__tcl_fitstcl,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libcfitsio8"
+	comparison hasValue ">="
+	version hasValue "3.470~"
+
+relationInstance depends(P0__tcl_fitstcl,1,DepAtom__1)
+

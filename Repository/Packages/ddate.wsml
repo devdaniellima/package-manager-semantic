@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ddate
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ddate memberOf Package
+	package hasValue "ddate"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "34"
+	maintainer hasValue "Original-Sebastian Schmidt <yath@yath.de>"
+	architecture hasValue "amd64"
+	version hasValue "0.2.2-1build1"
+	fileName hasValue "pool/universe/d/ddate/ddate_0.2.2-1build1_amd64.deb"
+	size hasValue "10832"
+	md5sum hasValue "6a349a9ec8fbc29e286ccf0509138b07"
+	sha1 hasValue "29ad27a7e0ed94d424cd9794c956881b4710d521"
+	sha256 hasValue "5910dad65b83287a2d559fafcfd5869f2a6dc47f7055b759f9e6c2e1169d867a"
+	descriptionMd5 hasValue "1d40921f66aeb0a50a761c063d6dad86"
+	homepage hasValue "https://github.com/bo0ts/ddate"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__ddate,0,DepAtom__0)
+

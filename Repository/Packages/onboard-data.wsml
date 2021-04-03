@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology onboard_data
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__onboard_data memberOf Package
+	package hasValue "onboard-data"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/gnome"
+	installedSize hasValue "20351"
+	maintainer hasValue "Original-MATE Packaging Team <pkg-mate-team@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.4.1-2ubuntu7"
+	replaces hasValue "onboard-prediction-data (<< 0.99.0~alpha1~tr1531)"
+	fileName hasValue "pool/universe/o/onboard/onboard-data_1.4.1-2ubuntu7_all.deb"
+	size hasValue "3803292"
+	md5sum hasValue "4710997987d4028f46b9866d42145eec"
+	sha1 hasValue "77252b8dbfa62a85b94f6f32fca2e196de9ebcfd"
+	sha256 hasValue "001d2c3fef408fefc3ae22582372224b58c2ccfd60d38ea03e95a68ee5458ad1"
+	descriptionMd5 hasValue "72141681144dc4aa8a33d010e1c05b1f"
+	homepage hasValue "https://launchpad.net/onboard"
+	depends hasValue "onboard (<< 1.4.1-2ubuntu7.1), onboard (>= 1.4.1-2ubuntu7)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "onboard"
+	comparison hasValue "<<"
+	version hasValue "1.4.1-2ubuntu7.1"
+
+relationInstance depends(P0__onboard_data,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "onboard"
+	comparison hasValue ">="
+	version hasValue "1.4.1-2ubuntu7"
+
+relationInstance depends(P0__onboard_data,1,DepAtom__1)
+

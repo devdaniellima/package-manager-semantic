@@ -1,0 +1,59 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology lphdisk
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__lphdisk memberOf Package
+	package hasValue "lphdisk"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/admin"
+	installedSize hasValue "44"
+	maintainer hasValue "Original-Roberto Lumbreras <rover@debian.org>"
+	architecture hasValue "i386"
+	version hasValue "0.9.1.ds1-3"
+	fileName hasValue "pool/universe/l/lphdisk/lphdisk_0.9.1.ds1-3_i386.deb"
+	size hasValue "19788"
+	md5sum hasValue "251d8a3712697ef57ff3c5871c778211"
+	sha1 hasValue "d53f8aa8b036c80585d8ef31118e6479463c4930"
+	sha256 hasValue "263c40004af3611db20fcb7323c0e63da02bf9a9944c2c6cd2972abc53f0271b"
+	descriptionMd5 hasValue "8d4bb9e100ea04278cce25429d7412fd"
+	depends hasValue "libc6 (>= 2.7), libx86-1 (>= 0.99-1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__lphdisk,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libx86-1"
+	comparison hasValue ">="
+	version hasValue "0.99-1"
+
+relationInstance depends(P0__lphdisk,1,DepAtom__1)
+

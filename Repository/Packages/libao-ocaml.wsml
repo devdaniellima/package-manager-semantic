@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libao_ocaml
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libao_ocaml memberOf Package
+	package hasValue "libao-ocaml"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "36"
+	maintainer hasValue "Original-Debian OCaml Maintainers <debian-ocaml-maint@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.2.0-2build3"
+	provides hasValue "libao-ocaml-1u9f2"
+	fileName hasValue "pool/universe/o/ocaml-ao/libao-ocaml_0.2.0-2build3_amd64.deb"
+	size hasValue "7776"
+	md5sum hasValue "4fd43452a3716f2260b2001adcd723e6"
+	sha1 hasValue "1f14fc08a9efb4678814b550ee156727fa42b86d"
+	sha256 hasValue "452297e2a9ff692b69c7f613e0c8a6348890103ea7083c5243a6e3320d44a955"
+	description hasValue "OCaml bindings for libao -- runtime files"
+	descriptionMd5 hasValue "c8cce4a59b93ba53b4f2e911890a007f"
+	depends hasValue "ocaml-base-nox-4.08.1, libao4 (>= 1.1.0), libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "ocaml-base-nox-4.08.1"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libao_ocaml,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libao4"
+	comparison hasValue ">="
+	version hasValue "1.1.0"
+
+relationInstance depends(P0__libao_ocaml,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libao_ocaml,2,DepAtom__2)
+

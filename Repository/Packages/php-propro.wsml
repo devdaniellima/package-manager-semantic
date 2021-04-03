@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology php_propro
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__php_propro memberOf Package
+	package hasValue "php-propro"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/php"
+	installedSize hasValue "74"
+	maintainer hasValue "Original-Debian PHP PECL Maintainers <team+php-pecl@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.1.0+1.0.2-3build1"
+	replaces hasValue "php-propro-dev (<< 2.0.0-0.1~)"
+	provides hasValue "php7.4-propro"
+	fileName hasValue "pool/universe/p/php-propro/php-propro_2.1.0+1.0.2-3build1_amd64.deb"
+	size hasValue "14824"
+	md5sum hasValue "40bb480a41cd28ed3c4ae3b087d64e0f"
+	sha1 hasValue "fed5de1b2241eb507233f19b3a253542f5b940ab"
+	sha256 hasValue "93023bf662dc96d95b432f3868b6927e78270931c989503fb44abd1d4c376a90"
+	descriptionMd5 hasValue "7210cf3319fb666eea80be0f04f81281"
+	homepage hasValue "http://pecl.php.net/package/propro"
+	depends hasValue "phpapi-20190902, libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "phpapi-20190902"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__php_propro,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__php_propro,1,DepAtom__1)
+

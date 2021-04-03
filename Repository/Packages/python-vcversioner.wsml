@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python_vcversioner
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python_vcversioner memberOf Package
+	package hasValue "python-vcversioner"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "46"
+	maintainer hasValue "Original-Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.16.0.0-2ubuntu1"
+	fileName hasValue "pool/universe/v/vcversioner/python-vcversioner_2.16.0.0-2ubuntu1_all.deb"
+	size hasValue "13672"
+	md5sum hasValue "e72013e91d05673a29a4882c7d5e0942"
+	sha1 hasValue "e87f4fd0f23123e44fa0c9f8c6c57808ce722bad"
+	sha256 hasValue "b475418266da1419d3bacbc3f06c1059eaff118d8ce7cd8397d5324b8dc7ff37"
+	descriptionMd5 hasValue "99f501805d94035b527f1ace265e8d05"
+	homepage hasValue "https://github.com/habnabit/vcversioner"
+	depends hasValue "python2:any (<< 2.8), python2:any (>= 2.7~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue "<<"
+	version hasValue "2.8"
+
+relationInstance depends(P0__python_vcversioner,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue ">="
+	version hasValue "2.7~"
+
+relationInstance depends(P0__python_vcversioner,1,DepAtom__1)
+

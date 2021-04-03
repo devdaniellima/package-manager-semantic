@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology boolector
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__boolector memberOf Package
+	package hasValue "boolector"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/science"
+	installedSize hasValue "782"
+	maintainer hasValue "Original-Michael Tautschnig <mt@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.5.118.6b56be4.121013-1build1"
+	fileName hasValue "pool/universe/b/boolector/boolector_1.5.118.6b56be4.121013-1build1_amd64.deb"
+	size hasValue "302448"
+	md5sum hasValue "33d5142383e6200d361d1204299e71cd"
+	sha1 hasValue "b3374343ffe4772ac7e37fcc72e07dfd9ed07712"
+	sha256 hasValue "53930ff2bebc8a1e88b69783c13bd3369da4c7cb297e4e032344e25e2038d21e"
+	description hasValue "resolvedor SMT para vetores e matrizes de bits"
+	descriptionMd5 hasValue "3ffdf2573adbbaeee22ada3c1789353d"
+	homepage hasValue "http://fmv.jku.at/boolector/"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__boolector,0,DepAtom__0)
+

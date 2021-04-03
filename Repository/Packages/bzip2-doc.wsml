@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology bzip2_doc
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__bzip2_doc memberOf Package
+	package hasValue "bzip2-doc"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "doc"
+	installedSize hasValue "605"
+	maintainer hasValue "Original-Anibal Monsalve Salazar <anibal@debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.0.8-2"
+	replaces hasValue "bzip2 (<< 1.0.4-0ubuntu2)"
+	fileName hasValue "pool/main/b/bzip2/bzip2-doc_1.0.8-2_all.deb"
+	size hasValue "500536"
+	md5sum hasValue "ca7c1a1049ecb02fbf4415c6c51a3370"
+	sha1 hasValue "99e90caee0908427ea954b30aeef44e7648c1e55"
+	sha256 hasValue "e0b89837c5ec42488f00dd299b2005ca5cfcd0daf085f8c8e3a0cc131b1d5dab"
+	description hasValue "Compactador de arquivos (block-sorting) de alta qualidade  - documentação"
+	descriptionMd5 hasValue "2cfb09927b68e01a771bb52d416c05ba"
+	homepage hasValue "https://sourceware.org/bzip2/"
+	depends hasValue "dpkg (>= 1.15.4) | install-info"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "dpkg"
+	comparison hasValue ">="
+	version hasValue "1.15.4"
+
+relationInstance depends(P0__bzip2_doc,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "install-info"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__bzip2_doc,0,DepAtom__1)
+

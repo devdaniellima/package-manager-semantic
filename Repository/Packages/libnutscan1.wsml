@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libnutscan1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libnutscan1 memberOf Package
+	package hasValue "libnutscan1"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libs"
+	installedSize hasValue "179"
+	maintainer hasValue "Original-Arnaud Quette <aquette@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.7.4-11ubuntu4"
+	fileName hasValue "pool/main/n/nut/libnutscan1_2.7.4-11ubuntu4_amd64.deb"
+	size hasValue "72792"
+	md5sum hasValue "a8e096c07f6647a6c43b382a8aba8aaa"
+	sha1 hasValue "9e67ab07d0e6c5a2433bf763a42d2037998ced85"
+	sha256 hasValue "79efd41ce4ed21e33b57a84bd0ad7f926a95c91199e5e36c77935cfc6e3beb97"
+	description hasValue "network UPS tools - scanner library"
+	descriptionMd5 hasValue "2d452b7897541993f49fae3cc65f3f48"
+	homepage hasValue "https://networkupstools.org/"
+	depends hasValue "libc6 (>= 2.15), libltdl7 (>= 2.4.6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__libnutscan1,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libltdl7"
+	comparison hasValue ">="
+	version hasValue "2.4.6"
+
+relationInstance depends(P0__libnutscan1,1,DepAtom__1)
+

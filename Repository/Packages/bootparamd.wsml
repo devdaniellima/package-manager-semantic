@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology bootparamd
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__bootparamd memberOf Package
+	package hasValue "bootparamd"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "53"
+	maintainer hasValue "Original-Alberto Gonzalez Iniesta <agi@inittab.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.17-10"
+	fileName hasValue "pool/universe/n/netkit-bootparamd/bootparamd_0.17-10_amd64.deb"
+	size hasValue "13304"
+	md5sum hasValue "8b0eb46551fb9709c99f34c08e08a4c4"
+	sha1 hasValue "e9ca11ea171ff3fb626a76eba852d76dce07c1b1"
+	sha256 hasValue "96db3163435c5f5e57abd0f259adcb442004bc1f6b8e33cecf49ef0a5a1f6202"
+	description hasValue "servidor de parâmetros de inicialização"
+	descriptionMd5 hasValue "f8a48e5e1f4c8735656e73735d69964d"
+	depends hasValue "portmap, libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "portmap"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__bootparamd,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__bootparamd,1,DepAtom__1)
+

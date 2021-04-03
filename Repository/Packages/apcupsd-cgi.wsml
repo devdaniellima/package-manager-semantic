@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology apcupsd_cgi
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__apcupsd_cgi memberOf Package
+	package hasValue "apcupsd-cgi"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/web"
+	installedSize hasValue "234"
+	maintainer hasValue "Original-Thorsten Alteholz <debian@alteholz.de>"
+	architecture hasValue "amd64"
+	version hasValue "3.14.14-3build1"
+	fileName hasValue "pool/universe/a/apcupsd/apcupsd-cgi_3.14.14-3build1_amd64.deb"
+	size hasValue "29424"
+	md5sum hasValue "bdbd98e80bb73857ca8e71df0abd8474"
+	sha1 hasValue "6fe5472c2d3d574c9cb1ca640978f7d4a21a127e"
+	sha256 hasValue "5e1613133e3982a80ad2680cfa2c3f7f722529bcd9ecd60806aed484db67d596"
+	description hasValue "APC UPS Power Management (web interface)"
+	descriptionMd5 hasValue "0288cffcc7dcb455848bf077dd6b3995"
+	homepage hasValue "http://www.apcupsd.org/"
+	depends hasValue "apcupsd (= 3.14.14-3build1), libc6 (>= 2.15), libgd3 (>= 2.1.0~alpha~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "apcupsd"
+	comparison hasValue "="
+	version hasValue "3.14.14-3build1"
+
+relationInstance depends(P0__apcupsd_cgi,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__apcupsd_cgi,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libgd3"
+	comparison hasValue ">="
+	version hasValue "2.1.0~alpha~"
+
+relationInstance depends(P0__apcupsd_cgi,2,DepAtom__2)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ripgrep
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ripgrep memberOf Package
+	package hasValue "ripgrep"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "4396"
+	maintainer hasValue "Original-Debian Rust Maintainers <pkg-rust-maintainers@alioth-lists.debian.net>"
+	architecture hasValue "amd64"
+	version hasValue "11.0.2-1build1"
+	fileName hasValue "pool/universe/r/rust-ripgrep/ripgrep_11.0.2-1build1_amd64.deb"
+	size hasValue "1228008"
+	md5sum hasValue "c4f2c081847f8003626a89cbe2ddb79c"
+	sha1 hasValue "464d46914c7395038ad9480353a97c12d473ac73"
+	sha256 hasValue "dbec7a76b148134b4172e6e8397e6005b505f31e1e4028f83d8f8d5eaa9ec2d6"
+	descriptionMd5 hasValue "036cda5b7b984beae7aa99e9d0ade58f"
+	homepage hasValue "https://github.com/BurntSushi/ripgrep"
+	depends hasValue "libc6 (>= 2.18), libgcc-s1 (>= 4.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.18"
+
+relationInstance depends(P0__ripgrep,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgcc-s1"
+	comparison hasValue ">="
+	version hasValue "4.2"
+
+relationInstance depends(P0__ripgrep,1,DepAtom__1)
+

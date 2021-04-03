@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology radvdump
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__radvdump memberOf Package
+	package hasValue "radvdump"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "51"
+	maintainer hasValue "Original-Geert Stappers <stappers@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:2.17-2"
+	conflicts hasValue "radvd (<= 1:2.16-1)"
+	fileName hasValue "pool/universe/r/radvd/radvdump_2.17-2_amd64.deb"
+	size hasValue "13576"
+	md5sum hasValue "064d0d8b560702e65696086b97c8494a"
+	sha1 hasValue "51f6b77f45ea132e24679334f49bc756200dd690"
+	sha256 hasValue "90387b230a27ad817940471f1f2e085f96424a9715edff0866b07e0e87f58dec"
+	descriptionMd5 hasValue "a36cad1a71f64df5cf2c3ec8ee86aed6"
+	homepage hasValue "http://www.litech.org/radvd/"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__radvdump,0,DepAtom__0)
+

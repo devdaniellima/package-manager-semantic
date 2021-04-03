@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libopenusb0
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libopenusb0 memberOf Package
+	package hasValue "libopenusb0"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/libs"
+	installedSize hasValue "129"
+	maintainer hasValue "Original-Simon Richter <sjr@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.1.11-2"
+	fileName hasValue "pool/universe/libo/libopenusb/libopenusb0_1.1.11-2_amd64.deb"
+	size hasValue "47492"
+	md5sum hasValue "9a393700f1a31dc74a0d1c63121227d8"
+	sha1 hasValue "621602479eb896ab5ac654a0e9042a5a9c744cf6"
+	sha256 hasValue "4d62b4c3418cdc9dca6a1c4b8ec8340fa1050bde36a38294d05684ed11c6f7d5"
+	description hasValue "alternative userspace USB programming library"
+	descriptionMd5 hasValue "07060a27327f92be52c0ea34b1c55876"
+	homepage hasValue "http://openusb.wiki.sourceforge.net/"
+	depends hasValue "libc6 (>= 2.15), libudev1 (>= 183)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__libopenusb0,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libudev1"
+	comparison hasValue ">="
+	version hasValue "183"
+
+relationInstance depends(P0__libopenusb0,1,DepAtom__1)
+

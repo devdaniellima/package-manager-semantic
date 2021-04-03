@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology wmail
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__wmail memberOf Package
+	package hasValue "wmail"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/x11"
+	installedSize hasValue "103"
+	maintainer hasValue "Original-Debian Window Maker Team <pkg-wmaker-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.3-1"
+	fileName hasValue "pool/universe/w/wmail/wmail_2.3-1_amd64.deb"
+	size hasValue "25052"
+	md5sum hasValue "13b3eb572d716f50dc2fd37b9a84f58f"
+	sha1 hasValue "f17b5bc4b3493ee866d8660aaca9de1a5948659e"
+	sha256 hasValue "faa40322675cf2b95502c704b364a70966888ed3faccbbc4cbc1252ceb1802df"
+	description hasValue "miniaplicação do Window Maker que fica verificando sua caixa de mensagens"
+	descriptionMd5 hasValue "8b7da8ad2440a3afd0e66c12060f744d"
+	homepage hasValue "https://www.dockapps.net/wmail"
+	depends hasValue "libc6 (>= 2.4), libdockapp3 (>= 0.6.2), libx11-6"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__wmail,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libdockapp3"
+	comparison hasValue ">="
+	version hasValue "0.6.2"
+
+relationInstance depends(P0__wmail,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libx11-6"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__wmail,2,DepAtom__2)
+

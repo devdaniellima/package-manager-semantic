@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology iucode_tool
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__iucode_tool memberOf Package
+	package hasValue "iucode-tool"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "utils"
+	installedSize hasValue "98"
+	maintainer hasValue "Original-Henrique de Moraes Holschuh <hmh@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.3.1-1"
+	fileName hasValue "pool/main/i/iucode-tool/iucode-tool_2.3.1-1_amd64.deb"
+	size hasValue "45600"
+	md5sum hasValue "cdab09d4c81ddab334b8f7fd6f1945a1"
+	sha1 hasValue "fb74760dcea9915a70c4582413e4f06d69297df4"
+	sha256 hasValue "31066ceac0a040b114fc3cd03b012a483d6f5572699c71fda4140f8a6c3bb821"
+	descriptionMd5 hasValue "85b8e9a4d04e1dafc3c5baa7e46a23a4"
+	homepage hasValue "https://gitlab.com/iucode-tool"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__iucode_tool,0,DepAtom__0)
+

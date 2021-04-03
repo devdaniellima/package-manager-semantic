@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libotcl1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libotcl1 memberOf Package
+	package hasValue "libotcl1"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "78"
+	maintainer hasValue "Original-Debian Network Simulators Team <team+netsim@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.14+dfsg-4"
+	fileName hasValue "pool/universe/o/otcl/libotcl1_1.14+dfsg-4_amd64.deb"
+	size hasValue "22132"
+	md5sum hasValue "15d0a29f2313242fcccaa4b7701feb65"
+	sha1 hasValue "68ad60c22f4ac21b4aa83c80f966099592b70757"
+	sha256 hasValue "5c37ed352a26d1a474208c47c5007a791b4f33d12878578189ef49cd5d6a0f0e"
+	descriptionMd5 hasValue "c3dd0d2212218425fcc3f9171bca36e4"
+	homepage hasValue "http://otcl-tclcl.sourceforge.net/otcl/"
+	depends hasValue "libc6 (>= 2.4), libtcl8.6 (>= 8.6.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libotcl1,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libtcl8.6"
+	comparison hasValue ">="
+	version hasValue "8.6.0"
+
+relationInstance depends(P0__libotcl1,1,DepAtom__1)
+

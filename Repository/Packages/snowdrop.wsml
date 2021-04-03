@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology snowdrop
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__snowdrop memberOf Package
+	package hasValue "snowdrop"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "183"
+	maintainer hasValue "Original-Simon Kainz <simon@familiekainz.at>"
+	architecture hasValue "amd64"
+	version hasValue "0.02b-12.1build1"
+	fileName hasValue "pool/universe/s/snowdrop/snowdrop_0.02b-12.1build1_amd64.deb"
+	size hasValue "50960"
+	md5sum hasValue "163741718f564b11ab706b673e3e639a"
+	sha1 hasValue "b1e2bb56f3b21abf9770b13b50ca5f278891d7e2"
+	sha256 hasValue "2af38c90d6d24bc76411b092f1ec3fc1ae82e3c55e37a5cdcebad2d94a9cb73b"
+	descriptionMd5 hasValue "85e492439757fa3bebfb1c3f18fac7ea"
+	homepage hasValue "http://lcamtuf.coredump.cx/"
+	depends hasValue "libc6 (>= 2.7), libgnutls-openssl27 (>= 3.0-0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__snowdrop,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgnutls-openssl27"
+	comparison hasValue ">="
+	version hasValue "3.0-0"
+
+relationInstance depends(P0__snowdrop,1,DepAtom__1)
+

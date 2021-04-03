@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology puppet_module_puppet_archive
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__puppet_module_puppet_archive memberOf Package
+	package hasValue "puppet-module-puppet-archive"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "331"
+	maintainer hasValue "Original-Puppet Package Maintainers <pkg-puppet-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "4.1.0-1"
+	fileName hasValue "pool/universe/p/puppet-module-puppet-archive/puppet-module-puppet-archive_4.1.0-1_all.deb"
+	size hasValue "147444"
+	md5sum hasValue "c60a90680cd35817e8b88eecec7fa08e"
+	sha1 hasValue "709b9c644096fd780fd5a4bc97692d5195a9574b"
+	sha256 hasValue "9a7aeaf9a8370c695b446ba029239ac67c696e2764da5f718a4b9df097c80be6"
+	descriptionMd5 hasValue "71cd7fcde1c21263e2549aa7e8090be0"
+	homepage hasValue "https://forge.puppetlabs.com/puppet/archive"
+	depends hasValue "puppet (>= 4) | puppet-common (>= 3), puppet-module-puppetlabs-stdlib"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "puppet"
+	comparison hasValue ">="
+	version hasValue "4"
+
+relationInstance depends(P0__puppet_module_puppet_archive,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "puppet-common"
+	comparison hasValue ">="
+	version hasValue "3"
+
+relationInstance depends(P0__puppet_module_puppet_archive,0,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "puppet-module-puppetlabs-stdlib"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__puppet_module_puppet_archive,1,DepAtom__2)
+

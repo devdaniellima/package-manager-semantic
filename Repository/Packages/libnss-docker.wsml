@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libnss_docker
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libnss_docker memberOf Package
+	package hasValue "libnss-docker"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/admin"
+	installedSize hasValue "37"
+	maintainer hasValue "Original-Piotr Roszatycki <dexter@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.02-1"
+	fileName hasValue "pool/universe/libn/libnss-docker/libnss-docker_0.02-1_amd64.deb"
+	size hasValue "8410"
+	md5sum hasValue "a1ae04da7e75992b673b21e87197190b"
+	sha1 hasValue "c7bc7b087a64b0e4c82412a062736b6fd67e2030"
+	sha256 hasValue "b22eb43c5ea625fd44b64b7ff1d706b48d5e2da673074466549c7c753e38c1db"
+	descriptionMd5 hasValue "bacbf9721e027c8c0aed0e92689357ba"
+	homepage hasValue "https://github.com/dex4er/nss-docker"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libnss_docker,0,DepAtom__0)
+

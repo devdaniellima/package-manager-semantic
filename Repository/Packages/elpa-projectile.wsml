@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology elpa_projectile
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__elpa_projectile memberOf Package
+	package hasValue "elpa-projectile"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/lisp"
+	installedSize hasValue "238"
+	maintainer hasValue "Original-Debian Emacsen team <debian-emacsen@lists.debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.0.0-2"
+	fileName hasValue "pool/universe/p/projectile/elpa-projectile_2.0.0-2_all.deb"
+	size hasValue "48636"
+	md5sum hasValue "76c0609a514d3577a6651177816a060e"
+	sha1 hasValue "016025d8497181f679da4a09d87927efa3ba88b3"
+	sha256 hasValue "c59d563bc4c2309c23e247831b311b9411502536b79bd845c7cfa0cbe636f9ff"
+	descriptionMd5 hasValue "555711b9648e1514a80e471e5e989622"
+	homepage hasValue "https://www.projectile.mx/"
+	depends hasValue "elpa-pkg-info (>= 0.4), emacsen-common"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "elpa-pkg-info"
+	comparison hasValue ">="
+	version hasValue "0.4"
+
+relationInstance depends(P0__elpa_projectile,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "emacsen-common"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__elpa_projectile,1,DepAtom__1)
+

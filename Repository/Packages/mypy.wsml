@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology mypy
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__mypy memberOf Package
+	package hasValue "mypy"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "58"
+	maintainer hasValue "Original-Debian Med Packaging Team <debian-med-packaging@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.761-1build1"
+	replaces hasValue "python3-mypy (= 0.740-1)"
+	fileName hasValue "pool/universe/m/mypy/mypy_0.761-1build1_all.deb"
+	size hasValue "24828"
+	md5sum hasValue "3459e79505cb6e0a90df88a9b9d11283"
+	sha1 hasValue "7971f371301debb4fc35e5ed60dad69053b023b4"
+	sha256 hasValue "59d29008466b7b6d38f6dcd63d2347bc392cb3fce7b4a6501c80dfa181c021f0"
+	descriptionMd5 hasValue "d3e201c7c5775a9d8fc37033fa52a4bb"
+	homepage hasValue "http://www.mypy-lang.org/"
+	depends hasValue "python3:any, python3-mypy (>= 0.761-1build1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__mypy,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3-mypy"
+	comparison hasValue ">="
+	version hasValue "0.761-1build1"
+
+relationInstance depends(P0__mypy,1,DepAtom__1)
+

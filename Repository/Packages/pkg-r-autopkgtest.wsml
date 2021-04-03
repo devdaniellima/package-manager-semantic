@@ -1,0 +1,59 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology pkg_r_autopkgtest
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__pkg_r_autopkgtest memberOf Package
+	package hasValue "pkg-r-autopkgtest"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/science"
+	installedSize hasValue "16"
+	maintainer hasValue "Original-Debian R Packages Maintainers <r-pkg-team@alioth-lists.debian.net>"
+	architecture hasValue "all"
+	version hasValue "20200104"
+	fileName hasValue "pool/universe/d/dh-r/pkg-r-autopkgtest_20200104_all.deb"
+	size hasValue "4280"
+	md5sum hasValue "d9597cfb03738e6ce295e171de4edddf"
+	sha1 hasValue "a13115e7d6e2cc624f92c2b0f0525359d9f24477"
+	sha256 hasValue "c5dfb2dc75f9060a9635b5f58c8483242c6e287b62636fb5b0faf8152d26c137"
+	descriptionMd5 hasValue "9c44fe7b62dd777967c5090bcecc1ad7"
+	depends hasValue "dctrl-tools, r-cran-testthat"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "dctrl-tools"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__pkg_r_autopkgtest,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "r-cran-testthat"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__pkg_r_autopkgtest,1,DepAtom__1)
+

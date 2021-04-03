@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libsnappy_jni
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libsnappy_jni memberOf Package
+	package hasValue "libsnappy-jni"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/java"
+	installedSize hasValue "31"
+	maintainer hasValue "Original-Debian Java Maintainers <pkg-java-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.1.7.3-1build1"
+	fileName hasValue "pool/universe/s/snappy-java/libsnappy-jni_1.1.7.3-1build1_amd64.deb"
+	size hasValue "6760"
+	md5sum hasValue "0400ff245f46c912a8c2312e0555b5e3"
+	sha1 hasValue "105a82cb8005137d99c54d13ec74eab333e2b5ad"
+	sha256 hasValue "6fb159b32658e10b46617ab21ee2cc5d14e5608bb67ca2208f57d7b73fcf6c25"
+	descriptionMd5 hasValue "a38c39dd16269dd14949120671dab408"
+	homepage hasValue "https://github.com/xerial/snappy-java"
+	depends hasValue "libc6 (>= 2.14), libsnappy1v5 (>= 1.1.8)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libsnappy_jni,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libsnappy1v5"
+	comparison hasValue ">="
+	version hasValue "1.1.8"
+
+relationInstance depends(P0__libsnappy_jni,1,DepAtom__1)
+

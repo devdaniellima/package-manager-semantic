@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gnat_8_sjlj
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gnat_8_sjlj memberOf Package
+	package hasValue "gnat-8-sjlj"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "20198"
+	maintainer hasValue "Original-Debian GCC Maintainers <debian-gcc@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "8.4.0-3ubuntu2"
+	fileName hasValue "pool/universe/g/gcc-8/gnat-8-sjlj_8.4.0-3ubuntu2_amd64.deb"
+	size hasValue "2230852"
+	md5sum hasValue "d4be72d30779f98d174073bc7419f6f5"
+	sha1 hasValue "eb58638462761bd14f0c96a260b9c97b9a6734c8"
+	sha256 hasValue "72e4c080691099074f4fd4350e16205c83b2ccc113a9b3c5fad42401dd78caad"
+	descriptionMd5 hasValue "38183a5764143bf77935e8455d8574ce"
+	homepage hasValue "http://gcc.gnu.org/"
+	depends hasValue "gcc-8-base (= 8.4.0-3ubuntu2), gnat-8 (= 8.4.0-3ubuntu2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "gcc-8-base"
+	comparison hasValue "="
+	version hasValue "8.4.0-3ubuntu2"
+
+relationInstance depends(P0__gnat_8_sjlj,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "gnat-8"
+	comparison hasValue "="
+	version hasValue "8.4.0-3ubuntu2"
+
+relationInstance depends(P0__gnat_8_sjlj,1,DepAtom__1)
+

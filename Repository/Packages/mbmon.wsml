@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology mbmon
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__mbmon memberOf Package
+	package hasValue "mbmon"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "136"
+	maintainer hasValue "Original-Lucas de Castro Borges <lucascastroborges@gmail.com>"
+	architecture hasValue "amd64"
+	version hasValue "2.05-9"
+	fileName hasValue "pool/universe/x/xmbmon/mbmon_2.05-9_amd64.deb"
+	size hasValue "69170"
+	md5sum hasValue "64e51892268e2d0752174283358e97e2"
+	sha1 hasValue "f409fd3f93e966991169481072bc45bff5a0d4c3"
+	sha256 hasValue "9d3521aaf58acfa1f10498366325b6730db2dbe9f84075708b16e1d2ecc1819e"
+	description hasValue "Hardware monitoring without kernel dependencies (text client)"
+	descriptionMd5 hasValue "ebe1c0968691216eacbbdebb50367025"
+	homepage hasValue "http://www.nt.phys.kyushu-u.ac.jp/shimizu/download/download.html"
+	depends hasValue "libc6 (>= 2.7)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__mbmon,0,DepAtom__0)
+

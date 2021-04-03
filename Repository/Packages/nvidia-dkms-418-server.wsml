@@ -1,0 +1,78 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology nvidia_dkms_418_server
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__nvidia_dkms_418_server memberOf Package
+	package hasValue "nvidia-dkms-418-server"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "multiverse/libs"
+	installedSize hasValue "147"
+	maintainer hasValue "Ubuntu Core Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	architecture hasValue "amd64"
+	version hasValue "418.181.07-0ubuntu0.20.04.1"
+	replaces hasValue "nvidia-384 (<< 390.25), nvidia-dkms-kernel, nvidia-kernel-source-418-server (<< 390.25-0ubuntu2~)"
+	provides hasValue "nvidia-dkms-kernel"
+	conflicts hasValue "nvidia-dkms-kernel"
+	fileName hasValue "pool/multiverse/n/nvidia-graphics-drivers-418-server/nvidia-dkms-418-server_418.181.07-0ubuntu0.20.04.1_amd64.deb"
+	size hasValue "30476"
+	md5sum hasValue "174b2da768e95ad3c9de41b161634cb0"
+	sha1 hasValue "fa7e32df31434481369640e64fea229749c6fdd5"
+	sha256 hasValue "222e4c0b8e7557e7cfbb4ea49a1352deb38d7c98171f7b1f486cf9a7a4d93689"
+	sha512 hasValue "3152e08d652f821ebac731bb5d2479ae2e4ef1118d38726b38b540c2979e77e64370d99173ad123e298fa916d438ab91cfbf766776424b936f0eb7f97b772782"
+	descriptionMd5 hasValue "ec8c193060b5458922cc0bda62df7796"
+	homepage hasValue "http://www.nvidia.com"
+	depends hasValue "dkms, nvidia-kernel-source-418-server, nvidia-kernel-common-418-server (<= 418.181.07-1), nvidia-kernel-common-418-server (>= 418.181.07)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "dkms"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__nvidia_dkms_418_server,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "nvidia-kernel-source-418-server"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__nvidia_dkms_418_server,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "nvidia-kernel-common-418-server"
+	comparison hasValue "<="
+	version hasValue "418.181.07-1"
+
+relationInstance depends(P0__nvidia_dkms_418_server,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "nvidia-kernel-common-418-server"
+	comparison hasValue ">="
+	version hasValue "418.181.07"
+
+relationInstance depends(P0__nvidia_dkms_418_server,3,DepAtom__3)
+

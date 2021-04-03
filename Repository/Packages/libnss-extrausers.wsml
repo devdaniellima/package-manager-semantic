@@ -1,0 +1,52 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libnss_extrausers
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libnss_extrausers memberOf Package
+	package hasValue "libnss-extrausers"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "admin"
+	installedSize hasValue "56"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.6-4"
+	fileName hasValue "pool/main/libn/libnss-extrausers/libnss-extrausers_0.6-4_amd64.deb"
+	size hasValue "15700"
+	md5sum hasValue "9094f82780cac3077fa4f601c2aeed2b"
+	sha1 hasValue "422a251f6c9b88ec23767397978a15fd9fa18b5a"
+	sha256 hasValue "48835ea09951c0b7727701327b7e7b924b9ebd76bd2ba4d7d5770c6101dc8864"
+	descriptionMd5 hasValue "ddb09d6e0234d21eb8b08b919f49ef5b"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libnss_extrausers,0,DepAtom__0)
+

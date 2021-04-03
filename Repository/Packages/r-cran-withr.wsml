@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology r_cran_withr
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__r_cran_withr memberOf Package
+	package hasValue "r-cran-withr"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/gnu-r"
+	installedSize hasValue "277"
+	maintainer hasValue "Original-Debian R Packages Maintainers <r-pkg-team@alioth-lists.debian.net>"
+	architecture hasValue "all"
+	version hasValue "2.1.2-3"
+	fileName hasValue "pool/universe/r/r-cran-withr/r-cran-withr_2.1.2-3_all.deb"
+	size hasValue "152668"
+	md5sum hasValue "dfab0623ee9249435f01dcc9b4054722"
+	sha1 hasValue "307f7895b84121ce9bb02eff3a8256529a46065e"
+	sha256 hasValue "5455e8905884a601a66f4e0b56559fe47e0ee61a37046bbcea4a6a8a11713dcf"
+	descriptionMd5 hasValue "44d39964091636f0b9574c9bb1add683"
+	homepage hasValue "https://cran.r-project.org/package=withr"
+	depends hasValue "r-base-core (>= 3.5.0-5), r-api-3.5"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "r-base-core"
+	comparison hasValue ">="
+	version hasValue "3.5.0-5"
+
+relationInstance depends(P0__r_cran_withr,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "r-api-3.5"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__r_cran_withr,1,DepAtom__1)
+

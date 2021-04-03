@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology balboa
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__balboa memberOf Package
+	package hasValue "balboa"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "13178"
+	maintainer hasValue "Original-Sascha Steinbiss <satta@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.0.0+ds-3"
+	fileName hasValue "pool/universe/b/balboa/balboa_2.0.0+ds-3_amd64.deb"
+	size hasValue "3458232"
+	md5sum hasValue "5b98b4551440f710d708ca7d60011d0f"
+	sha1 hasValue "93ad7e2c3e12b9abd9caa584ab352f8c56fa9f59"
+	sha256 hasValue "8270c6b227842e2678c2889733140d99b8c8ed17007a6d48ee4ceacbd35ee495"
+	descriptionMd5 hasValue "1fdfd1cebad3e95bd9f187adb3ad65e8"
+	homepage hasValue "https://github.com/DCSO/balboa"
+	depends hasValue "libc6 (>= 2.4), adduser"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__balboa,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "adduser"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__balboa,1,DepAtom__1)
+

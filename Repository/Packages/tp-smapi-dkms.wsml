@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology tp_smapi_dkms
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__tp_smapi_dkms memberOf Package
+	package hasValue "tp-smapi-dkms"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/kernel"
+	installedSize hasValue "121"
+	maintainer hasValue "Original-Evgeni Golov <evgeni@debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.43-1"
+	fileName hasValue "pool/universe/t/tp-smapi/tp-smapi-dkms_0.43-1_all.deb"
+	size hasValue "32776"
+	md5sum hasValue "b8e9c12c68eabd63b274f1e52bed5ce7"
+	sha1 hasValue "9d6df566dc08824b9e98c1883be622c22d706223"
+	sha256 hasValue "27d436072005665e22f34ba3d62a42f98185f2fe9ff73b144feaf3da2d275a51"
+	descriptionMd5 hasValue "133901af24ac2f7f85a04a1d2ebd202c"
+	homepage hasValue "https://github.com/evgeni/tp_smapi/"
+	depends hasValue "dkms (>= 2.1.0.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "dkms"
+	comparison hasValue ">="
+	version hasValue "2.1.0.0"
+
+relationInstance depends(P0__tp_smapi_dkms,0,DepAtom__0)
+

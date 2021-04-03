@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology mecab_utils
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__mecab_utils memberOf Package
+	package hasValue "mecab-utils"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "misc"
+	installedSize hasValue "91"
+	maintainer hasValue "Original-Natural Language Processing (Japanese) <team+pkg-nlp-ja@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.996-10build1"
+	fileName hasValue "pool/main/m/mecab/mecab-utils_0.996-10build1_amd64.deb"
+	size hasValue "4912"
+	md5sum hasValue "d2e195db63d49d3e69301baf26961f38"
+	sha1 hasValue "ce813d50428299734cd8f4ecc1cb121ad480e490"
+	sha256 hasValue "5194eb5412e485ba08e9b9e12e19d681dcc230a9b29a76a5f63902eea8f9d566"
+	descriptionMd5 hasValue "b3477ba41ed2882195928af3796a1490"
+	homepage hasValue "https://taku910.github.io/mecab/"
+	depends hasValue "libc6 (>= 2.2.5), libmecab2 (>= 0.996)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.2.5"
+
+relationInstance depends(P0__mecab_utils,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libmecab2"
+	comparison hasValue ">="
+	version hasValue "0.996"
+
+relationInstance depends(P0__mecab_utils,1,DepAtom__1)
+

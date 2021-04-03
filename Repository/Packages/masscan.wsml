@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology masscan
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__masscan memberOf Package
+	package hasValue "masscan"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "392"
+	maintainer hasValue "Original-Debian Security Tools <team+pkg-security@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2:1.0.5+ds1-3"
+	fileName hasValue "pool/universe/m/masscan/masscan_1.0.5+ds1-3_amd64.deb"
+	size hasValue "180792"
+	md5sum hasValue "62539bdcfef33384911f13c877a0e21d"
+	sha1 hasValue "79dee1667bfdc4d440c1778349bbb5472403a0c5"
+	sha256 hasValue "5659b046b0bae061f52bbff75e416a831c2a7b29f01c1fa84d2563ea985c0c14"
+	descriptionMd5 hasValue "19ed2292003b28d6de8b06930d245438"
+	homepage hasValue "https://github.com/robertdavidgraham/masscan"
+	depends hasValue "libc6 (>= 2.15)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__masscan,0,DepAtom__0)
+

@@ -1,0 +1,74 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libgovirt_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libgovirt_dev memberOf Package
+	package hasValue "libgovirt-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "150"
+	maintainer hasValue "Original-Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.3.4-3.1"
+	fileName hasValue "pool/universe/libg/libgovirt/libgovirt-dev_0.3.4-3.1_amd64.deb"
+	size hasValue "14140"
+	md5sum hasValue "ba638073ccba43c41111a5380d64dc3b"
+	sha1 hasValue "97ad06a6a94945efe0b5b0a589deab7e4e845003"
+	sha256 hasValue "aeb09bceecb079b14991768bd9cae308f5a4f289cf931a32b18a57a92e1d7da4"
+	description hasValue "GObject-based library to access oVirt REST API (dev files)"
+	descriptionMd5 hasValue "73b4ea3152f8edc1fe413c0ec92de227"
+	depends hasValue "gir1.2-govirt-1.0 (= 0.3.4-3.1), libglib2.0-dev (>= 2.26.0), libgovirt2 (= 0.3.4-3.1), librest-dev (>= 0.7.92)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "gir1.2-govirt-1.0"
+	comparison hasValue "="
+	version hasValue "0.3.4-3.1"
+
+relationInstance depends(P0__libgovirt_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libglib2.0-dev"
+	comparison hasValue ">="
+	version hasValue "2.26.0"
+
+relationInstance depends(P0__libgovirt_dev,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libgovirt2"
+	comparison hasValue "="
+	version hasValue "0.3.4-3.1"
+
+relationInstance depends(P0__libgovirt_dev,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "librest-dev"
+	comparison hasValue ">="
+	version hasValue "0.7.92"
+
+relationInstance depends(P0__libgovirt_dev,3,DepAtom__3)
+

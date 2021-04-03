@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology lxqt_theme_debian
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__lxqt_theme_debian memberOf Package
+	package hasValue "lxqt-theme-debian"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/x11"
+	installedSize hasValue "96"
+	maintainer hasValue "Original-LXQt Packaging Team <pkg-lxqt-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.14.0.3"
+	provides hasValue "lxqt-theme"
+	fileName hasValue "pool/universe/l/lxqt-branding-debian/lxqt-theme-debian_0.14.0.3_all.deb"
+	size hasValue "19088"
+	md5sum hasValue "134067f804d2059095cdb5ffaafc44e8"
+	sha1 hasValue "50947b68acf6a8ce175f8df850d7be78b8391f6a"
+	sha256 hasValue "1aafed238b3556e7c0059177bb02fba529d18f778a858eaa2e834e56a2169e2d"
+	descriptionMd5 hasValue "d55f355561e769df01a4480101e7a351"
+	homepage hasValue "https://salsa.debian.org/lxqt-team/lxqt-branding-debian"
+	depends hasValue "desktop-base, lxqt-system-theme"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "desktop-base"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__lxqt_theme_debian,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "lxqt-system-theme"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__lxqt_theme_debian,1,DepAtom__1)
+

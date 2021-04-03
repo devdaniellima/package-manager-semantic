@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libbcmail_java
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libbcmail_java memberOf Package
+	package hasValue "libbcmail-java"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "166"
+	maintainer hasValue "Original-Debian Java Maintainers <pkg-java-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.61-1"
+	fileName hasValue "pool/universe/b/bouncycastle/libbcmail-java_1.61-1_all.deb"
+	size hasValue "89156"
+	md5sum hasValue "cd08e69c212f97be24b907feb0a05589"
+	sha1 hasValue "c9765167daccf297657bd445d89c20b58f0e58fb"
+	sha256 hasValue "930229cebe83ab4f4286d4244e460c9e36f7b068d0502343866df3624b8541e0"
+	descriptionMd5 hasValue "db592e3b068dd6edf84ea7ee4fe7269b"
+	homepage hasValue "http://www.bouncycastle.org"
+	depends hasValue "libbcpkix-java (>= 1.61-1), libbcprov-java (>= 1.61-1), libmail-java"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libbcpkix-java"
+	comparison hasValue ">="
+	version hasValue "1.61-1"
+
+relationInstance depends(P0__libbcmail_java,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libbcprov-java"
+	comparison hasValue ">="
+	version hasValue "1.61-1"
+
+relationInstance depends(P0__libbcmail_java,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libmail-java"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libbcmail_java,2,DepAtom__2)
+

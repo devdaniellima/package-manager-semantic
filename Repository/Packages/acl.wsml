@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology acl
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__acl memberOf Package
+	package hasValue "acl"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "utils"
+	installedSize hasValue "192"
+	maintainer hasValue "Original-Guillem Jover <guillem@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.2.53-6"
+	fileName hasValue "pool/main/a/acl/acl_2.2.53-6_amd64.deb"
+	size hasValue "37756"
+	md5sum hasValue "dbc617acd6562e90c76f705fd33ebfc4"
+	sha1 hasValue "c3ef213da0d4affb4870ff3bf1737937d0d34f39"
+	sha256 hasValue "53ce1d07ef8f5feb7e8c806bffb85c140a7a53a2e4407be33debeff179b5500a"
+	descriptionMd5 hasValue "b83fc53f6059dbeb88f11752e70968e7"
+	homepage hasValue "https://savannah.nongnu.org/projects/acl/"
+	depends hasValue "libacl1 (= 2.2.53-6), libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libacl1"
+	comparison hasValue "="
+	version hasValue "2.2.53-6"
+
+relationInstance depends(P0__acl,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__acl,1,DepAtom__1)
+

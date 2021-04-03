@@ -1,0 +1,69 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libsnack_alsa
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libsnack_alsa memberOf Package
+	package hasValue "libsnack-alsa"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "690"
+	maintainer hasValue "Original-Sergei Golovan <sgolovan@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.2.10.20090623-dfsg-10"
+	replaces hasValue "libsnack-oss, libsnack2, libsnack2-alsa"
+	conflicts hasValue "libsnack-oss"
+	fileName hasValue "pool/universe/s/snack/libsnack-alsa_2.2.10.20090623-dfsg-10_amd64.deb"
+	size hasValue "174516"
+	md5sum hasValue "93cfbd4b85543abd4518dc3b2baa7618"
+	sha1 hasValue "6fd1d8c3b63a8133e224365554e6b6a09d203c70"
+	sha256 hasValue "31487706743f1c199077a602ddf892f7a6e745bea0d4f2b7b3d7d254090d3acf"
+	descriptionMd5 hasValue "0398b7537d9c7034ea56029c7bfab576"
+	homepage hasValue "http://pdqi.com/w/pw/pdqi/Wize/Snack"
+	depends hasValue "libasound2 (>= 1.0.16), libc6 (>= 2.14), libx11-6"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libasound2"
+	comparison hasValue ">="
+	version hasValue "1.0.16"
+
+relationInstance depends(P0__libsnack_alsa,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libsnack_alsa,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libx11-6"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libsnack_alsa,2,DepAtom__2)
+

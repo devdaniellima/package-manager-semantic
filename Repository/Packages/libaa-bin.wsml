@@ -1,0 +1,64 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libaa_bin
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libaa_bin memberOf Package
+	package hasValue "libaa-bin"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/text"
+	installedSize hasValue "81"
+	maintainer hasValue "Original-Jonathan Carter <jcc@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.4p5-46"
+	replaces hasValue "aalib-bin"
+	provides hasValue "aalib-bin"
+	conflicts hasValue "aalib-bin"
+	fileName hasValue "pool/universe/a/aalib/libaa-bin_1.4p5-46_amd64.deb"
+	size hasValue "9188"
+	md5sum hasValue "450098995972c6d7d648ee85195812b6"
+	sha1 hasValue "1fd9e94392b8df38830eb13a6c7354c494e0047d"
+	sha256 hasValue "e559804b23c559c7e082cfdd518d26b60559bf1bcefc64587a056ff5a201c881"
+	description hasValue "Programas exemplos usando a aalib."
+	descriptionMd5 hasValue "aceb0e45b1024860e2efa4f03f15d19a"
+	homepage hasValue "http://aa-project.sourceforge.net/aalib/"
+	depends hasValue "libaa1 (= 1.4p5-46), libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libaa1"
+	comparison hasValue "="
+	version hasValue "1.4p5-46"
+
+relationInstance depends(P0__libaa_bin,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libaa_bin,1,DepAtom__1)
+

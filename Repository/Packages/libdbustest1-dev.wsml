@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libdbustest1_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libdbustest1_dev memberOf Package
+	package hasValue "libdbustest1-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "40"
+	maintainer hasValue "Ubuntu Desktop Team <ubuntu-desktop@lists.ubuntu.com>"
+	architecture hasValue "amd64"
+	version hasValue "15.04.0+19.04.20190115-0ubuntu1"
+	fileName hasValue "pool/universe/d/dbus-test-runner/libdbustest1-dev_15.04.0+19.04.20190115-0ubuntu1_amd64.deb"
+	size hasValue "4452"
+	md5sum hasValue "a98ac54d27ff2235fbb9dbf3dd12def1"
+	sha1 hasValue "ec4563fad9fcffbbd83eaeafe79d742b0efc209f"
+	sha256 hasValue "f401043f9cb83f46fd7f8b5fc1d1b2c1c2c44c838dcd9e06ecf3edd87381354b"
+	descriptionMd5 hasValue "c23166453f6694d3b290d878db7e207e"
+	homepage hasValue "https://launchpad.net/dbus-test-runner"
+	depends hasValue "libglib2.0-dev (>= 2.34.0), libdbustest1 (= 15.04.0+19.04.20190115-0ubuntu1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libglib2.0-dev"
+	comparison hasValue ">="
+	version hasValue "2.34.0"
+
+relationInstance depends(P0__libdbustest1_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libdbustest1"
+	comparison hasValue "="
+	version hasValue "15.04.0+19.04.20190115-0ubuntu1"
+
+relationInstance depends(P0__libdbustest1_dev,1,DepAtom__1)
+

@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology markdown
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__markdown memberOf Package
+	package hasValue "markdown"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/web"
+	installedSize hasValue "57"
+	maintainer hasValue "Original-Matt Kraai <kraai@debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.0.1-10"
+	fileName hasValue "pool/universe/m/markdown/markdown_1.0.1-10_all.deb"
+	size hasValue "17464"
+	md5sum hasValue "f4681d4d94042755f98143244d62d17b"
+	sha1 hasValue "23bb71cd3a5f481813ca918034cac2aef4b1c5a9"
+	sha256 hasValue "52a185039462aa6491ce61e5a7c20eeb3c08117acce92a3f82415289ce669606"
+	descriptionMd5 hasValue "91cb49067bbada95ec2e46f260953f3a"
+	homepage hasValue "http://daringfireball.net/projects/markdown/"
+	depends hasValue "perl (>= 5.6.0-0.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "perl"
+	comparison hasValue ">="
+	version hasValue "5.6.0-0.1"
+
+relationInstance depends(P0__markdown,0,DepAtom__0)
+

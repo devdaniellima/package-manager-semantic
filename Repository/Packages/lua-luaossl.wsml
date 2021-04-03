@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology lua_luaossl
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__lua_luaossl memberOf Package
+	package hasValue "lua-luaossl"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/interpreters"
+	installedSize hasValue "591"
+	maintainer hasValue "Original-Ondřej Surý <ondrej@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "20161214-1build2"
+	replaces hasValue "lua-openssl (<< 20161208-2~)"
+	provides hasValue "lua5.1-luaossl, lua5.2-luaossl, lua5.3-luaossl"
+	fileName hasValue "pool/universe/l/lua-luaossl/lua-luaossl_20161214-1build2_amd64.deb"
+	size hasValue "71848"
+	md5sum hasValue "46bcccd01e2136a6b29f0d0e2f7dc16e"
+	sha1 hasValue "b2cffd9999b5a086721aac996e0de0b1d42fb7f7"
+	sha256 hasValue "2a20bc8c12554dad36c4df08fd4f0af80ebf939a4366e0f0398623974da9b7a0"
+	descriptionMd5 hasValue "204ac4dfc0575bc9c61c4bc4268bb8b2"
+	homepage hasValue "http://25thandclement.com/~william/projects/luaossl.html"
+	depends hasValue "libc6 (>= 2.14), libssl1.1 (>= 1.1.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__lua_luaossl,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libssl1.1"
+	comparison hasValue ">="
+	version hasValue "1.1.1"
+
+relationInstance depends(P0__lua_luaossl,1,DepAtom__1)
+

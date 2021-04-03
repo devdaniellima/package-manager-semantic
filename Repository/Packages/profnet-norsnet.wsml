@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology profnet_norsnet
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__profnet_norsnet memberOf Package
+	package hasValue "profnet-norsnet"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/science"
+	installedSize hasValue "123"
+	maintainer hasValue "Original-Debian Med Packaging Team <debian-med-packaging@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.22-6build1"
+	fileName hasValue "pool/universe/p/profnet/profnet-norsnet_1.0.22-6build1_amd64.deb"
+	size hasValue "42656"
+	md5sum hasValue "06dcaf4babd5577452d33f8823b4c6ed"
+	sha1 hasValue "1d6039c36180db60320c36efd0042ff11dd1fa02"
+	sha256 hasValue "9ae82d5dae4a185c5161b3c6ef6bf9e7287230e8f0566f5fe956e010d85cfbe3"
+	descriptionMd5 hasValue "7318b2f301dd7fdcc76dcf2ec90de5b0"
+	homepage hasValue "http://www.predictprotein.org/"
+	depends hasValue "libc6 (>= 2.27), libgfortran5 (>= 8)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.27"
+
+relationInstance depends(P0__profnet_norsnet,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgfortran5"
+	comparison hasValue ">="
+	version hasValue "8"
+
+relationInstance depends(P0__profnet_norsnet,1,DepAtom__1)
+

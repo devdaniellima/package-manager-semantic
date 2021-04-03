@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libarchive_tools
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libarchive_tools memberOf Package
+	package hasValue "libarchive-tools"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "202"
+	maintainer hasValue "Original-Peter Pentchev <roam@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.4.0-2ubuntu1"
+	replaces hasValue "bsdcpio (<< 3.2.1-2~), bsdtar (<< 3.2.1-2~)"
+	fileName hasValue "pool/universe/liba/libarchive/libarchive-tools_3.4.0-2ubuntu1_amd64.deb"
+	size hasValue "56824"
+	md5sum hasValue "a38cc5d3d7ec53f1450ed33f36f1c0e3"
+	sha1 hasValue "84023619f6c51e408a0c2f5f67db84180b4f47a6"
+	sha256 hasValue "a7d3a2916b2c52a54e4ddead3c24f166d66ac7fd39cceb483b0301a00f43d097"
+	descriptionMd5 hasValue "04bbebb441868f4c976e664833572c46"
+	homepage hasValue "https://www.libarchive.org/"
+	depends hasValue "libarchive13 (= 3.4.0-2ubuntu1), libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libarchive13"
+	comparison hasValue "="
+	version hasValue "3.4.0-2ubuntu1"
+
+relationInstance depends(P0__libarchive_tools,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libarchive_tools,1,DepAtom__1)
+

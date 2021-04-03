@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libchewing3
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libchewing3 memberOf Package
+	package hasValue "libchewing3"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libs"
+	installedSize hasValue "179"
+	maintainer hasValue "Original-Debian Input Method Team <debian-input-method@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.5.1-4"
+	provides hasValue "libchewing"
+	fileName hasValue "pool/main/libc/libchewing/libchewing3_0.5.1-4_amd64.deb"
+	size hasValue "51428"
+	md5sum hasValue "b10ca0adf37e9f53078856bc88de40fb"
+	sha1 hasValue "aeb9b88444c3e2b72e0331eaf1c2ea9fe80d6566"
+	sha256 hasValue "f75d1ce1a40c403d9d9acb17ec133d3b576d2b7691938c33fb16bb8488095612"
+	descriptionMd5 hasValue "183658a3741630fdcf77aacc92f9d147"
+	homepage hasValue "http://chewing.im"
+	depends hasValue "libchewing3-data (>= 0.4.0), libc6 (>= 2.14), libsqlite3-0 (>= 3.5.9)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libchewing3-data"
+	comparison hasValue ">="
+	version hasValue "0.4.0"
+
+relationInstance depends(P0__libchewing3,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libchewing3,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libsqlite3-0"
+	comparison hasValue ">="
+	version hasValue "3.5.9"
+
+relationInstance depends(P0__libchewing3,2,DepAtom__2)
+

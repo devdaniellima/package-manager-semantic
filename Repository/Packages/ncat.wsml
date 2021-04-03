@@ -1,0 +1,75 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ncat
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ncat memberOf Package
+	package hasValue "ncat"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "282"
+	maintainer hasValue "Original-Debian Security Tools <team+pkg-security@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "7.80+dfsg1-2build1"
+	replaces hasValue "nmap (<< 7.70+dfsg1-2~)"
+	fileName hasValue "pool/universe/n/nmap/ncat_7.80+dfsg1-2build1_amd64.deb"
+	size hasValue "107192"
+	md5sum hasValue "d9db87ce14081fe29e9d5b67483443f2"
+	sha1 hasValue "4407b7063e8933418c0985ccae69b50e70c196eb"
+	sha256 hasValue "c8f39563fd601a6e7d9ec4386ce4843a3bda9e620dca0f3f6f5aee948c30263c"
+	descriptionMd5 hasValue "c813db1c4353f6959ccedbe324259549"
+	homepage hasValue "https://nmap.org/"
+	depends hasValue "libc6 (>= 2.15), liblua5.3-0, libpcap0.8 (>= 1.5.1), libssl1.1 (>= 1.1.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__ncat,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "liblua5.3-0"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ncat,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libpcap0.8"
+	comparison hasValue ">="
+	version hasValue "1.5.1"
+
+relationInstance depends(P0__ncat,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "libssl1.1"
+	comparison hasValue ">="
+	version hasValue "1.1.0"
+
+relationInstance depends(P0__ncat,3,DepAtom__3)
+

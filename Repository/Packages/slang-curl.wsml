@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology slang_curl
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__slang_curl memberOf Package
+	package hasValue "slang-curl"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/interpreters"
+	installedSize hasValue "107"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.2.1-6"
+	fileName hasValue "pool/universe/s/slcurl/slang-curl_0.2.1-6_amd64.deb"
+	size hasValue "28300"
+	md5sum hasValue "a9a5a39c92b3baa14550998690a41101"
+	sha1 hasValue "9ce7430829f1c3f076c954dab8a51c4d894088ca"
+	sha256 hasValue "8945a42b5957e01a7737c4ee70d824f65d7e388cb73c6f4614983f1355fed44a"
+	descriptionMd5 hasValue "909a91ebb15151f8a0ac257c180e23fd"
+	homepage hasValue "http://jedsoft.org/slang/modules/curl.html"
+	depends hasValue "libc6 (>= 2.14), libcurl3-gnutls (>= 7.16.2), libslang2 (>= 2.2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__slang_curl,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libcurl3-gnutls"
+	comparison hasValue ">="
+	version hasValue "7.16.2"
+
+relationInstance depends(P0__slang_curl,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libslang2"
+	comparison hasValue ">="
+	version hasValue "2.2.4"
+
+relationInstance depends(P0__slang_curl,2,DepAtom__2)
+

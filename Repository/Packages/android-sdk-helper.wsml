@@ -1,0 +1,59 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology android_sdk_helper
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__android_sdk_helper memberOf Package
+	package hasValue "android-sdk-helper"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/java"
+	installedSize hasValue "28"
+	maintainer hasValue "Original-Android Tools Maintainers <android-tools-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.1"
+	fileName hasValue "pool/universe/a/android-sdk-helper/android-sdk-helper_0.1_all.deb"
+	size hasValue "5276"
+	md5sum hasValue "bfc9a2df93b515a1ad07ff2cd2811207"
+	sha1 hasValue "3c7ae1fe6da586d277566394724e2e7c65bf3df0"
+	sha256 hasValue "700c4ec3d235a5ee5e60082f2ff0c02127b9245d460241285e2dc527eb54a1f1"
+	descriptionMd5 hasValue "221d78f0d4a62a11f0090a68db3eb898"
+	depends hasValue "gradle (>= 3.2.1), libgradle-android-plugin-java (>= 2.2.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "gradle"
+	comparison hasValue ">="
+	version hasValue "3.2.1"
+
+relationInstance depends(P0__android_sdk_helper,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgradle-android-plugin-java"
+	comparison hasValue ">="
+	version hasValue "2.2.2"
+
+relationInstance depends(P0__android_sdk_helper,1,DepAtom__1)
+

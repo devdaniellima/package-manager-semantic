@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology postgresql_12_numeral
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__postgresql_12_numeral memberOf Package
+	package hasValue "postgresql-12-numeral"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/database"
+	installedSize hasValue "264"
+	maintainer hasValue "Original-Christoph Berg <myon@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0-3"
+	fileName hasValue "pool/universe/p/postgresql-numeral/postgresql-12-numeral_1.0-3_amd64.deb"
+	size hasValue "77440"
+	md5sum hasValue "eb2840f066f0b92b618d9ffb41e8ae33"
+	sha1 hasValue "db06aa424364fb61a61653a1ff02bb0f70739704"
+	sha256 hasValue "2aee330205bd9d7dc51a3aaab4640ae02f47bcd9879d3ede77449f1e1a3addfa"
+	descriptionMd5 hasValue "01cfc68be209e7d75ce23537b6cdf688"
+	homepage hasValue "https://github.com/ChristophBerg/postgresql-numeral"
+	depends hasValue "libc6 (>= 2.14), postgresql-12"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__postgresql_12_numeral,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "postgresql-12"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__postgresql_12_numeral,1,DepAtom__1)
+

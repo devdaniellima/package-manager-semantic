@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology loadlin
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__loadlin memberOf Package
+	package hasValue "loadlin"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "91"
+	maintainer hasValue "Original-Samuel Thibault <sthibault@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.6f-7"
+	fileName hasValue "pool/universe/l/loadlin/loadlin_1.6f-7_amd64.deb"
+	size hasValue "44276"
+	md5sum hasValue "1056bbb538655ef330586428d012bef5"
+	sha1 hasValue "66d6d145c3e084846a75c42cf1f884f3de361d62"
+	sha256 hasValue "e194ba547b34e6b953d299ebd720a3ff84444a0e567ac635a9979a34e4bdce0b"
+	description hasValue "loader (running under DOS) for LINUX kernel images"
+	descriptionMd5 hasValue "8658f2e73dfd4c4ff8b1a39e08879435"
+	homepage hasValue "http://youpibouh.thefreecat.org/loadlin/"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__loadlin,0,DepAtom__0)
+

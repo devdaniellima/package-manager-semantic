@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology node_lockfile
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__node_lockfile memberOf Package
+	package hasValue "node-lockfile"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/web"
+	installedSize hasValue "26"
+	maintainer hasValue "Original-Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.0.4-3"
+	fileName hasValue "pool/universe/n/node-lockfile/node-lockfile_1.0.4-3_all.deb"
+	size hasValue "7252"
+	md5sum hasValue "b5fb0585b935ff1901dc90220f1f637a"
+	sha1 hasValue "cc1383eee49d55d616254cfa46135ff1181697eb"
+	sha256 hasValue "f5f87a2a5b56aa7c0ef3c4bf782f6e00dafbd6cd9a71f70e794bb3d742269280"
+	descriptionMd5 hasValue "df98accda2d39a30ebac215520ea8cc5"
+	homepage hasValue "https://github.com/isaacs/lockfile"
+	depends hasValue "nodejs, node-signal-exit (>= 3.0.2~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "nodejs"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__node_lockfile,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "node-signal-exit"
+	comparison hasValue ">="
+	version hasValue "3.0.2~"
+
+relationInstance depends(P0__node_lockfile,1,DepAtom__1)
+

@@ -1,0 +1,56 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology brickos
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__brickos memberOf Package
+	package hasValue "brickos"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/devel"
+	installedSize hasValue "545"
+	maintainer hasValue "Original-Michael Tautschnig <mt@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.9.0.dfsg-12.2"
+	replaces hasValue "legos"
+	conflicts hasValue "legos"
+	fileName hasValue "pool/universe/b/brickos/brickos_0.9.0.dfsg-12.2_amd64.deb"
+	size hasValue "110364"
+	md5sum hasValue "39703993da4b2c68c21695720b92854d"
+	sha1 hasValue "634712f12333ad32529f30808749178febd5ccae"
+	sha256 hasValue "74869af4c82aa74647c39c78c2a82afb6ce1c7501d6d94df38ba1335403a85c9"
+	description hasValue "SO alternativo para \"LEGO(r) Mindstorms RCX\". Suporta desen. em C/C++"
+	descriptionMd5 hasValue "10cd698b2ec20e7c7087952e4647bc32"
+	homepage hasValue "http://brickos.sourceforge.net"
+	depends hasValue "libc6 (>= 2.15)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__brickos,0,DepAtom__0)
+

@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libkgantt_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libkgantt_dev memberOf Package
+	package hasValue "libkgantt-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "134"
+	maintainer hasValue "Original-Debian KDE Extras Team <pkg-kde-extras@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.6.3-1"
+	fileName hasValue "pool/universe/k/kdiagram/libkgantt-dev_2.6.3-1_amd64.deb"
+	size hasValue "15584"
+	md5sum hasValue "663296f934de2796ee0fbb4081120d34"
+	sha1 hasValue "eae09c7f32b0da27083c4530c788db5a11aef404"
+	sha256 hasValue "707c6a446d511e98499e15d2a5f7892bedf438ee71c20f19b987317ba6588025"
+	description hasValue "library for creating Gantt diagrams (development files)"
+	descriptionMd5 hasValue "6f1182399691d8f41c32d779deb27dfc"
+	homepage hasValue "https://cgit.kde.org/kdiagram.git"
+	depends hasValue "libkgantt2 (= 2.6.3-1), qtbase5-dev (>= 5.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libkgantt2"
+	comparison hasValue "="
+	version hasValue "2.6.3-1"
+
+relationInstance depends(P0__libkgantt_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "qtbase5-dev"
+	comparison hasValue ">="
+	version hasValue "5.2"
+
+relationInstance depends(P0__libkgantt_dev,1,DepAtom__1)
+

@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology liblink_grammar_java
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__liblink_grammar_java memberOf Package
+	package hasValue "liblink-grammar-java"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/java"
+	installedSize hasValue "82"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "5.7.0-3"
+	replaces hasValue "liblink-grammar4-java (<< 5.3.7)"
+	fileName hasValue "pool/universe/l/link-grammar/liblink-grammar-java_5.7.0-3_amd64.deb"
+	size hasValue "35820"
+	md5sum hasValue "1779f36bfe12c9443819a5fbc87e4354"
+	sha1 hasValue "2338b5b721fbc1fb0e03554e033b345644cc9274"
+	sha256 hasValue "683448a582d3137be9171b02abdffddd6b92dc35699189138a04d62e57b4eaf8"
+	description hasValue "Carnegie Mellon University's link grammar parser (JNI library)"
+	descriptionMd5 hasValue "475a227d03017085f3efa2946401d4e7"
+	homepage hasValue "https://www.abisource.com/projects/link-grammar/"
+	depends hasValue "liblink-grammar5 (>= 5.7.0), libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "liblink-grammar5"
+	comparison hasValue ">="
+	version hasValue "5.7.0"
+
+relationInstance depends(P0__liblink_grammar_java,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__liblink_grammar_java,1,DepAtom__1)
+

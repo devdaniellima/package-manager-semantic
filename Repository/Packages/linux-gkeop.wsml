@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology linux_gkeop
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__linux_gkeop memberOf Package
+	package hasValue "linux-gkeop"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "kernel"
+	installedSize hasValue "9"
+	maintainer hasValue "Ubuntu Kernel Team <kernel-team@lists.ubuntu.com>"
+	architecture hasValue "amd64"
+	version hasValue "5.4.0.1011.14"
+	provides hasValue "kernel-testing--linux-gkeop--full--gkeop, kernel-testing--linux-gkeop--full--preferred"
+	fileName hasValue "pool/main/l/linux-meta-gkeop/linux-gkeop_5.4.0.1011.14_amd64.deb"
+	size hasValue "1908"
+	md5sum hasValue "d56fc6b846b195efde8e7895ebe4c004"
+	sha1 hasValue "5f8be413cf36bca3a9178252c23289f5c723f4f7"
+	sha256 hasValue "dd3ee32af4fc88bfcca64f51e2deddbe58d616d4cbdba16a4c8e5a347d2c581e"
+	sha512 hasValue "e60251634d08ddaf8b1ac317686cd01d31d9dded282d6b53b00973b9814a0189cc362a28d63b67fcb7aa12e9bac8cb99e663ad7f8759c839fb5ba9a3cab5741d"
+	descriptionMd5 hasValue "5b56b3aac181f9b30507943712bee649"
+	depends hasValue "linux-image-gkeop (= 5.4.0.1011.14), linux-headers-gkeop (= 5.4.0.1011.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "linux-image-gkeop"
+	comparison hasValue "="
+	version hasValue "5.4.0.1011.14"
+
+relationInstance depends(P0__linux_gkeop,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "linux-headers-gkeop"
+	comparison hasValue "="
+	version hasValue "5.4.0.1011.14"
+
+relationInstance depends(P0__linux_gkeop,1,DepAtom__1)
+

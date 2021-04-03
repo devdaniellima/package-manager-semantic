@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology xxhash
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__xxhash memberOf Package
+	package hasValue "xxhash"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "80"
+	maintainer hasValue "Original-Norbert Preining <norbert@preining.info>"
+	architecture hasValue "amd64"
+	version hasValue "0.7.3-1"
+	fileName hasValue "pool/universe/x/xxhash/xxhash_0.7.3-1_amd64.deb"
+	size hasValue "25528"
+	md5sum hasValue "926602ed89493def561076913c134b05"
+	sha1 hasValue "11ca13951468b6249063188a9817f65a28ff3670"
+	sha256 hasValue "d1fc381d8d88a7687c65a3171ac6b587fbaaf1f41baa00fc1193ecdf6252be68"
+	descriptionMd5 hasValue "0d30896624c051c6e3456c859245ce3b"
+	homepage hasValue "https://cyan4973.github.io/xxHash"
+	depends hasValue "libxxhash0 (>= 0.7.3-1), libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libxxhash0"
+	comparison hasValue ">="
+	version hasValue "0.7.3-1"
+
+relationInstance depends(P0__xxhash,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__xxhash,1,DepAtom__1)
+

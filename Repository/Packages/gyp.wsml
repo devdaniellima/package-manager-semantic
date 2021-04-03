@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gyp
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gyp memberOf Package
+	package hasValue "gyp"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "1174"
+	maintainer hasValue "Original-Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.1+20180428git4d467626-3ubuntu1"
+	fileName hasValue "pool/universe/g/gyp/gyp_0.1+20180428git4d467626-3ubuntu1_all.deb"
+	size hasValue "237028"
+	md5sum hasValue "2633912b473630f9d314ee384b657b0f"
+	sha1 hasValue "e90e368bc565aca62fee1164d5d46f312423ce25"
+	sha256 hasValue "ae340b63ac922531b18290768ee8a448747066dc6b52c5d0ec0446b59fab2bc0"
+	descriptionMd5 hasValue "3cb0119977e28cd08f4b2dc95f53cfe4"
+	homepage hasValue "https://chromium.googlesource.com/external/gyp/"
+	depends hasValue "python2:any (<< 2.8), python2:any (>= 2.7~), python-pkg-resources"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue "<<"
+	version hasValue "2.8"
+
+relationInstance depends(P0__gyp,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue ">="
+	version hasValue "2.7~"
+
+relationInstance depends(P0__gyp,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "python-pkg-resources"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__gyp,2,DepAtom__2)
+

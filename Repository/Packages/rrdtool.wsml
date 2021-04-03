@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology rrdtool
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__rrdtool memberOf Package
+	package hasValue "rrdtool"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "utils"
+	installedSize hasValue "1152"
+	maintainer hasValue "Original-Debian RRDtool Team <pkg-rrdtool-maint@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.7.2-3build2"
+	fileName hasValue "pool/main/r/rrdtool/rrdtool_1.7.2-3build2_amd64.deb"
+	size hasValue "376076"
+	md5sum hasValue "236b849ecb5bd77e7e80f8471adeeff5"
+	sha1 hasValue "e28838578b729ca4207e43ca0b62d812b4f931f2"
+	sha256 hasValue "3170261d4b1e48dc9cc2438cade8d5183e69d065d48208efb5d3c328b84bb027"
+	description hasValue "Sistema para exibir e armazenar dados em série histórica (programas)"
+	descriptionMd5 hasValue "2f208d113d46aef6f7eebb6f8537a07e"
+	homepage hasValue "https://oss.oetiker.ch/rrdtool/"
+	depends hasValue "libc6 (>= 2.29), libglib2.0-0 (>= 2.28.0), librrd8 (>= 1.7.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__rrdtool,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libglib2.0-0"
+	comparison hasValue ">="
+	version hasValue "2.28.0"
+
+relationInstance depends(P0__rrdtool,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "librrd8"
+	comparison hasValue ">="
+	version hasValue "1.7.0"
+
+relationInstance depends(P0__rrdtool,2,DepAtom__2)
+

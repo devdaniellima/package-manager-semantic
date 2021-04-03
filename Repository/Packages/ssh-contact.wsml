@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ssh_contact
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ssh_contact memberOf Package
+	package hasValue "ssh-contact"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/net"
+	installedSize hasValue "10"
+	maintainer hasValue "Original-Debian Telepathy maintainers <pkg-telepathy-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.7-1build1"
+	fileName hasValue "pool/universe/s/ssh-contact/ssh-contact_0.7-1build1_all.deb"
+	size hasValue "1976"
+	md5sum hasValue "56feefb5efcd3b02fd51f592967661cd"
+	sha1 hasValue "c6382c3891fe4366ab12bb02caac01706da5e74d"
+	sha256 hasValue "1debb5c8d6ec9b4d1bfa7a5d0ae2c3d1bb1d0ea16395e479c35392dd504764ab"
+	descriptionMd5 hasValue "8401197a5caf087ece3430e8bbda57aa"
+	homepage hasValue "http://telepathy.freedesktop.org/wiki/SSH-Contact"
+	depends hasValue "ssh-contact-client, ssh-contact-service"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "ssh-contact-client"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ssh_contact,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "ssh-contact-service"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ssh_contact,1,DepAtom__1)
+

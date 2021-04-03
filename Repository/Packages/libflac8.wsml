@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libflac8
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libflac8 memberOf Package
+	package hasValue "libflac8"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libs"
+	installedSize hasValue "289"
+	maintainer hasValue "Original-Debian Multimedia Maintainers <debian-multimedia@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.3.3-1build1"
+	fileName hasValue "pool/main/f/flac/libflac8_1.3.3-1build1_amd64.deb"
+	size hasValue "103228"
+	md5sum hasValue "84545e32f0b07a1d97ef3b0a041d1b41"
+	sha1 hasValue "d0f3416e67402a59ad5a58caeed966bb3cf001f1"
+	sha256 hasValue "219a7f10b9dcd5b1799a977ef221a5a7d2fab6d1015fe0ed6cc3b0402df3072d"
+	description hasValue "Codec de Áudio Livre sem Perdas - Biblioteca C de tempo de execução"
+	descriptionMd5 hasValue "f4e8094378ea7f3b5f74adc1e78593b6"
+	homepage hasValue "http://xiph.org/flac/"
+	depends hasValue "libc6 (>= 2.29), libogg0 (>= 1.0rc3)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__libflac8,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libogg0"
+	comparison hasValue ">="
+	version hasValue "1.0rc3"
+
+relationInstance depends(P0__libflac8,1,DepAtom__1)
+

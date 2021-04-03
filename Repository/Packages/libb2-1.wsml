@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libb2_1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libb2_1 memberOf Package
+	package hasValue "libb2-1"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "136"
+	maintainer hasValue "Original-Robert Ransom <rransom.8774@gmail.com>"
+	architecture hasValue "amd64"
+	version hasValue "0.98.1-1.1"
+	fileName hasValue "pool/universe/libb/libb2/libb2-1_0.98.1-1.1_amd64.deb"
+	size hasValue "40600"
+	md5sum hasValue "6eab0e57750787ea62e22c710f556292"
+	sha1 hasValue "3a685e457b74057ed1996602de363122261f5af2"
+	sha256 hasValue "37d47e40d489a059c837e888aeb5f2698c6c17dae2ed1543ce7b5634465af574"
+	descriptionMd5 hasValue "09e82d84aa2c2c5ff47a2e662ecc6c6c"
+	homepage hasValue "https://blake2.net/"
+	depends hasValue "libc6 (>= 2.25), libgomp1 (>= 4.9)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.25"
+
+relationInstance depends(P0__libb2_1,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgomp1"
+	comparison hasValue ">="
+	version hasValue "4.9"
+
+relationInstance depends(P0__libb2_1,1,DepAtom__1)
+

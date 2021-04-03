@@ -1,0 +1,56 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology wireshark
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__wireshark memberOf Package
+	package hasValue "wireshark"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "58"
+	maintainer hasValue "Balint Reczey <rbalint@ubuntu.com>"
+	architecture hasValue "amd64"
+	version hasValue "3.2.3-1"
+	replaces hasValue "ethereal (<< 1.0.0-3)"
+	conflicts hasValue "ethereal (<< 1.0.0-3)"
+	fileName hasValue "pool/universe/w/wireshark/wireshark_3.2.3-1_amd64.deb"
+	size hasValue "5088"
+	md5sum hasValue "82d09300021dc0eeb38bde3f74c681d9"
+	sha1 hasValue "ae4baffd640ca1c3216fadcbb992d6d4336c396e"
+	sha256 hasValue "3c7cb5d42995f1c8a2e379b14fccd41d885d04959fab93691b60a19c8fd2201a"
+	description hasValue "network traffic analyzer - meta-package"
+	descriptionMd5 hasValue "e2e26f45272009095cc47933b48129a6"
+	homepage hasValue "https://www.wireshark.org/"
+	depends hasValue "wireshark-qt (= 3.2.3-1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "wireshark-qt"
+	comparison hasValue "="
+	version hasValue "3.2.3-1"
+
+relationInstance depends(P0__wireshark,0,DepAtom__0)
+

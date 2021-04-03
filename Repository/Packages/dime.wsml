@@ -1,0 +1,73 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology dime
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__dime memberOf Package
+	package hasValue "dime"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/graphics"
+	installedSize hasValue "56"
+	maintainer hasValue "Original-A. Maitland Bottoms <bottoms@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.20111205-2.1build1"
+	fileName hasValue "pool/universe/d/dime/dime_0.20111205-2.1build1_amd64.deb"
+	size hasValue "12812"
+	md5sum hasValue "18c457cf74cded33d503c84db39ba518"
+	sha1 hasValue "e72abbb00b2c7c7545463fba9f01346352b43623"
+	sha256 hasValue "cbc55c0a62b320bd104cc0c9d33d112285a3102a944c6f01ef01e844c4e21219"
+	descriptionMd5 hasValue "082cf1b6d73af2fe63eb9744c9e04b34"
+	depends hasValue "libc6 (>= 2.4), libdime1, libgcc-s1 (>= 3.0), libstdc++6 (>= 4.1.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__dime,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libdime1"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__dime,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libgcc-s1"
+	comparison hasValue ">="
+	version hasValue "3.0"
+
+relationInstance depends(P0__dime,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "4.1.1"
+
+relationInstance depends(P0__dime,3,DepAtom__3)
+

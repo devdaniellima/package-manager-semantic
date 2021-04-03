@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology smitools
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__smitools memberOf Package
+	package hasValue "smitools"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "600"
+	maintainer hasValue "Original-Vincent Bernat <bernat@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.4.8+dfsg2-16"
+	replaces hasValue "libsmi2ldbl (<= 0.4.8+dfsg2-4)"
+	conflicts hasValue "libsmi2ldbl (<= 0.4.8+dfsg2-4)"
+	fileName hasValue "pool/universe/libs/libsmi/smitools_0.4.8+dfsg2-16_amd64.deb"
+	size hasValue "191352"
+	md5sum hasValue "3b6a46643cdffde53293f493535c8f34"
+	sha1 hasValue "2973afdf294e06b3532562a4b1b9e35a7efbd035"
+	sha256 hasValue "506f9d0f841569bc5e0bca877482afb9c245b4e84d635239b7d1dc4ab333b18a"
+	descriptionMd5 hasValue "5614c44e511affa0271218f6e95cba3e"
+	homepage hasValue "http://www.ibr.cs.tu-bs.de/projects/libsmi/"
+	depends hasValue "libc6 (>= 2.4), libsmi2ldbl (>= 0.4.7)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__smitools,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libsmi2ldbl"
+	comparison hasValue ">="
+	version hasValue "0.4.7"
+
+relationInstance depends(P0__smitools,1,DepAtom__1)
+

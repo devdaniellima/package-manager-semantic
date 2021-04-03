@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology wordpress_civicrm
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__wordpress_civicrm memberOf Package
+	package hasValue "wordpress-civicrm"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/web"
+	installedSize hasValue "5376"
+	maintainer hasValue "Original-Dmitry Smirnov <onlyjob@debian.org>"
+	architecture hasValue "all"
+	version hasValue "5.21.2+dfsg-1"
+	fileName hasValue "pool/universe/c/civicrm/wordpress-civicrm_5.21.2+dfsg-1_all.deb"
+	size hasValue "780484"
+	md5sum hasValue "3b46e6cf0c94b03634aa9dd6f2445895"
+	sha1 hasValue "f9a7a67c051738b614f935efe2c46463dddda497"
+	sha256 hasValue "98d2d73f0eb0061ebf4e55dc28105ec7828aae7de16677488e35ab591b92f93f"
+	descriptionMd5 hasValue "da1baef8ba605f4b103be54e2ebdf71a"
+	homepage hasValue "https://civicrm.org"
+	depends hasValue "wordpress, civicrm-common (= 5.21.2+dfsg-1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "wordpress"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__wordpress_civicrm,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "civicrm-common"
+	comparison hasValue "="
+	version hasValue "5.21.2+dfsg-1"
+
+relationInstance depends(P0__wordpress_civicrm,1,DepAtom__1)
+

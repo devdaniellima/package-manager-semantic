@@ -1,0 +1,66 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology mailfront
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__mailfront memberOf Package
+	package hasValue "mailfront"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/mail"
+	installedSize hasValue "588"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.12-1"
+	fileName hasValue "pool/universe/m/mailfront/mailfront_2.12-1_amd64.deb"
+	size hasValue "85552"
+	md5sum hasValue "f871b76d8194e3745c0ff3d0557f7264"
+	sha1 hasValue "e9a45b2d5519f827b8267eb172d42d24f209543b"
+	sha256 hasValue "203ff964bba8779d433447bdb850f36dcc475bf500f5e975a91272265832b2fd"
+	descriptionMd5 hasValue "df32c5e85614568b7e938b41fb60bfb4"
+	depends hasValue "libbg2 (>= 2.03), libc6 (>= 2.14), libcvm1"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libbg2"
+	comparison hasValue ">="
+	version hasValue "2.03"
+
+relationInstance depends(P0__mailfront,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__mailfront,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libcvm1"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__mailfront,2,DepAtom__2)
+

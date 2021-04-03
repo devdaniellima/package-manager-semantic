@@ -1,0 +1,70 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology systemd_cron
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__systemd_cron memberOf Package
+	package hasValue "systemd-cron"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "135"
+	maintainer hasValue "Original-Debian Systemd Maintainers <pkg-systemd-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.5.14-2"
+	replaces hasValue "anacron, cron"
+	provides hasValue "anacron, cron-daemon"
+	conflicts hasValue "anacron, cron-daemon"
+	fileName hasValue "pool/universe/s/systemd-cron/systemd-cron_1.5.14-2_amd64.deb"
+	size hasValue "30304"
+	md5sum hasValue "6136e28cf8164802d6e046adac92c502"
+	sha1 hasValue "8f94fe09966b65c5300c351938211b0489981321"
+	sha256 hasValue "f2a08c52c7ec1f9979baae08c54e5e32fd2ce84f61c4043060c543c07c6f3ce5"
+	descriptionMd5 hasValue "9166fe2131f8908f5e74ff0ca4fbe742"
+	homepage hasValue "https://github.com/systemd-cron/systemd-cron"
+	depends hasValue "systemd-sysv (>= 229), python3:any, libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "systemd-sysv"
+	comparison hasValue ">="
+	version hasValue "229"
+
+relationInstance depends(P0__systemd_cron,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__systemd_cron,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__systemd_cron,2,DepAtom__2)
+

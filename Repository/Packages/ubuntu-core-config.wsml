@@ -1,0 +1,52 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ubuntu_core_config
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ubuntu_core_config memberOf Package
+	package hasValue "ubuntu-core-config"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "utils"
+	installedSize hasValue "61"
+	maintainer hasValue "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	architecture hasValue "all"
+	version hasValue "0.6.40"
+	fileName hasValue "pool/main/u/ubuntu-core-config/ubuntu-core-config_0.6.40_all.deb"
+	size hasValue "6418"
+	md5sum hasValue "dcb21f5ccb54642c9a3d6d4b81c3b623"
+	sha1 hasValue "c15856de3787b94ece80bff7acceea89d693a5a2"
+	sha256 hasValue "a4313c0d343b6e34ab11baa6c0f940d73a21bbd0946e907ed867100fa4447f23"
+	descriptionMd5 hasValue "c65887f9b829d17109c2594615c7bd7c"
+	depends hasValue "libpam-runtime (>= 1.0.1-6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libpam-runtime"
+	comparison hasValue ">="
+	version hasValue "1.0.1-6"
+
+relationInstance depends(P0__ubuntu_core_config,0,DepAtom__0)
+

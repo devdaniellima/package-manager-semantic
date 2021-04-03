@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology fusiondirectory_plugin_ssh
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__fusiondirectory_plugin_ssh memberOf Package
+	package hasValue "fusiondirectory-plugin-ssh"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/web"
+	installedSize hasValue "256"
+	maintainer hasValue "Original-FusionDirectory Packagers <team+fusiondirectory@tracker.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.3-2"
+	conflicts hasValue "gosa-plugin-ssh"
+	fileName hasValue "pool/universe/f/fusiondirectory/fusiondirectory-plugin-ssh_1.3-2_all.deb"
+	size hasValue "27708"
+	md5sum hasValue "21f4a48d9b2917128f7823b78f5fc7e6"
+	sha1 hasValue "2152eb93346514c8e2d7bd31fb35624c5cfdac33"
+	sha256 hasValue "4a8905678fd0b186f83178f5388964bdef4c65b6eeae9905175c95e7d6d0cbbd"
+	descriptionMd5 hasValue "49ebe7ba5a4001be97b08240d6a68252"
+	homepage hasValue "https://www.fusiondirectory.org/"
+	depends hasValue "fusiondirectory (= 1.3-2), fusiondirectory-plugin-posix (= 1.3-2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "fusiondirectory"
+	comparison hasValue "="
+	version hasValue "1.3-2"
+
+relationInstance depends(P0__fusiondirectory_plugin_ssh,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "fusiondirectory-plugin-posix"
+	comparison hasValue "="
+	version hasValue "1.3-2"
+
+relationInstance depends(P0__fusiondirectory_plugin_ssh,1,DepAtom__1)
+

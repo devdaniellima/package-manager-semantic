@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libhkl5
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libhkl5 memberOf Package
+	package hasValue "libhkl5"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "446"
+	maintainer hasValue "Original-Debian Science Maintainers <debian-science-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "5.0.0.2569-1build1"
+	fileName hasValue "pool/universe/h/hkl/libhkl5_5.0.0.2569-1build1_amd64.deb"
+	size hasValue "88104"
+	md5sum hasValue "edeb2a490eb2713fa294edc1a4b30420"
+	sha1 hasValue "dfcfae83466a545424fbce4d27d6eff1cb1e2f80"
+	sha256 hasValue "3392062b9d132f87773a33426d47693a9a4960655051d5f02eed48b58b5cf432"
+	descriptionMd5 hasValue "4484aae662bf3580c01ca9a8a9e15855"
+	homepage hasValue "https://www.synchrotron-soleil.fr/portal/page/portal/Instrumentation/EnvironnementInstrumental/hkl"
+	depends hasValue "libc6 (>= 2.14), libglib2.0-0 (>= 2.16.0), libgsl23 (>= 2.5)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libhkl5,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libglib2.0-0"
+	comparison hasValue ">="
+	version hasValue "2.16.0"
+
+relationInstance depends(P0__libhkl5,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libgsl23"
+	comparison hasValue ">="
+	version hasValue "2.5"
+
+relationInstance depends(P0__libhkl5,2,DepAtom__2)
+

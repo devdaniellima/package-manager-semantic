@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology x86dis
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__x86dis memberOf Package
+	package hasValue "x86dis"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "38"
+	maintainer hasValue "Original-Kees Cook <kees@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.23-6build1"
+	fileName hasValue "pool/universe/libd/libdisasm/x86dis_0.23-6build1_amd64.deb"
+	size hasValue "11408"
+	md5sum hasValue "e7129f70318aecc1b21325312d383a61"
+	sha1 hasValue "3da3f8e87363eec35c59875a0c27e320f5833130"
+	sha256 hasValue "f6b83b6a11bb1c92fdccceb22a06bcd52d1444b6992b96ff5cd3c6783652855e"
+	descriptionMd5 hasValue "1ec2434d6edee1690a9d32119aaf20e8"
+	homepage hasValue "http://bastard.sourceforge.net/libdisasm.html"
+	depends hasValue "libc6 (>= 2.7), libdisasm0 (>= 0.23)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__x86dis,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libdisasm0"
+	comparison hasValue ">="
+	version hasValue "0.23"
+
+relationInstance depends(P0__x86dis,1,DepAtom__1)
+

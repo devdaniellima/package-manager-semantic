@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology tcl_vtk7
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__tcl_vtk7 memberOf Package
+	package hasValue "tcl-vtk7"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/interpreters"
+	installedSize hasValue "701"
+	maintainer hasValue "Original-Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "7.1.1+dfsg2-2ubuntu1"
+	fileName hasValue "pool/universe/v/vtk7/tcl-vtk7_7.1.1+dfsg2-2ubuntu1_amd64.deb"
+	size hasValue "150744"
+	md5sum hasValue "e06a060af8924be4bd5add56f17952e1"
+	sha1 hasValue "76f8b200bef318088caad5e70420653d8ce4c3b4"
+	sha256 hasValue "23896d17d04c3ff415037b2f2e86a0903e3387fad72936fab52e6551bf7d8160"
+	descriptionMd5 hasValue "feaf3edc7863a9dfd20119d5cd6ff3db"
+	homepage hasValue "http://www.vtk.org/"
+	depends hasValue "libvtk7.1p (= 7.1.1+dfsg2-2ubuntu1), libvtk7.1p-qt (= 7.1.1+dfsg2-2ubuntu1), libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libvtk7.1p"
+	comparison hasValue "="
+	version hasValue "7.1.1+dfsg2-2ubuntu1"
+
+relationInstance depends(P0__tcl_vtk7,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libvtk7.1p-qt"
+	comparison hasValue "="
+	version hasValue "7.1.1+dfsg2-2ubuntu1"
+
+relationInstance depends(P0__tcl_vtk7,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__tcl_vtk7,2,DepAtom__2)
+

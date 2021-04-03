@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology remind
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__remind memberOf Package
+	package hasValue "remind"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "515"
+	maintainer hasValue "Original-Ana Beatriz Guerrero Lopez <ana@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "03.03.00-1"
+	fileName hasValue "pool/universe/r/remind/remind_03.03.00-1_amd64.deb"
+	size hasValue "243444"
+	md5sum hasValue "c645df6f615e973d034131a062f9a530"
+	sha1 hasValue "994b6e3f04e6dc639714dad1da2a39fde31016bd"
+	sha256 hasValue "8ada13a11bfb31e177183cf94d292fb57d22c7d6539fba8363ecc6ee08648256"
+	description hasValue "programa sofisticado de alarme e calendário"
+	descriptionMd5 hasValue "5b163d21d42fbc03e201fdb61071c10d"
+	homepage hasValue "https://dianne.skoll.ca/projects/remind/"
+	depends hasValue "libc6 (>= 2.29)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__remind,0,DepAtom__0)
+

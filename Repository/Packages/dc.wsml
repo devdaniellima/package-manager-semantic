@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology dc
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__dc memberOf Package
+	package hasValue "dc"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "math"
+	installedSize hasValue "136"
+	maintainer hasValue "Original-Ryan Kavanagh <rak@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.07.1-2build1"
+	fileName hasValue "pool/main/b/bc/dc_1.07.1-2build1_amd64.deb"
+	size hasValue "48736"
+	md5sum hasValue "15bb77cba6983b74b495bf0c6a4b060c"
+	sha1 hasValue "2c7f9a49b8597179226bbd54eed628d45856bed4"
+	sha256 hasValue "c552f5f8ad721f765bfe374dc89a865bb20f62dccc5f15d9505b06457e92bc97"
+	description hasValue "calculadora de precisão arbitrária polonesa-reversa dc GNU"
+	descriptionMd5 hasValue "df0fb5699f014e0d2bb4210971dadffa"
+	homepage hasValue "http://ftp.gnu.org/gnu/bc/"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__dc,0,DepAtom__0)
+

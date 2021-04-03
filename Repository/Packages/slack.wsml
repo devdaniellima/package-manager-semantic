@@ -1,0 +1,59 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology slack
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__slack memberOf Package
+	package hasValue "slack"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "117"
+	maintainer hasValue "Original-Andrew Pollock <apollock@debian.org>"
+	architecture hasValue "all"
+	version hasValue "1:0.15.2-9"
+	fileName hasValue "pool/universe/s/slack/slack_0.15.2-9_all.deb"
+	size hasValue "31430"
+	md5sum hasValue "89eade5969a366699c3152d80437a8cc"
+	sha1 hasValue "ae80c1d05fdef76e7f157e2ada352dd2f2fb022e"
+	sha256 hasValue "dbdf40c849a6e642c0227eeb3e5010c338d40b0cc31464fc5703b89651bd3443"
+	descriptionMd5 hasValue "b9e6ba56c6e0feee160733514fb8a752"
+	depends hasValue "perl, rsync"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "perl"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__slack,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "rsync"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__slack,1,DepAtom__1)
+

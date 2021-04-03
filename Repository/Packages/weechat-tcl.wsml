@@ -1,0 +1,74 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology weechat_tcl
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__weechat_tcl memberOf Package
+	package hasValue "weechat-tcl"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "322"
+	maintainer hasValue "Original-Emmanuel Bouthenot <kolter@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.8-1"
+	fileName hasValue "pool/universe/w/weechat/weechat-tcl_2.8-1_amd64.deb"
+	size hasValue "58872"
+	md5sum hasValue "5cfc5bdfc1e4606af46a2e68995c8534"
+	sha1 hasValue "9b849eea3a63923c00315db3ca3ab670621f020c"
+	sha256 hasValue "e9e72167e1faa0b685741e8a38c83c0082382190a67e2f16880527cb320199f9"
+	descriptionMd5 hasValue "a30748125b67e77b9df22989ac53389c"
+	homepage hasValue "https://weechat.org/"
+	depends hasValue "libc6 (>= 2.14), libtcl8.6 (>= 8.6.0), weechat-curses (= 2.8-1) | weechat-headless (= 2.8-1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__weechat_tcl,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libtcl8.6"
+	comparison hasValue ">="
+	version hasValue "8.6.0"
+
+relationInstance depends(P0__weechat_tcl,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "weechat-curses"
+	comparison hasValue "="
+	version hasValue "2.8-1"
+
+relationInstance depends(P0__weechat_tcl,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "weechat-headless"
+	comparison hasValue "="
+	version hasValue "2.8-1"
+
+relationInstance depends(P0__weechat_tcl,2,DepAtom__3)
+

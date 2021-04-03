@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gosa_plugin_pureftpd
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gosa_plugin_pureftpd memberOf Package
+	package hasValue "gosa-plugin-pureftpd"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/web"
+	installedSize hasValue "200"
+	maintainer hasValue "Original-Debian Edu Packaging Team <debian-edu-pkg-team@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.7.4+reloaded3-11"
+	fileName hasValue "pool/universe/g/gosa/gosa-plugin-pureftpd_2.7.4+reloaded3-11_all.deb"
+	size hasValue "21788"
+	md5sum hasValue "b93dc66860e22b0b091399fefa05360c"
+	sha1 hasValue "fbe9f375d962bf1e3d97a10e46d0daf2560360a1"
+	sha256 hasValue "79d5d39a36b5ae3b5a90c8d8ab1106b2b4f7314e72fddd814554629f47e225c1"
+	descriptionMd5 hasValue "e63151ffdd6e2ec8ba9dec6022dc5e88"
+	homepage hasValue "https://github.com/gosa-project"
+	depends hasValue "gosa (= 2.7.4+reloaded3-11), gosa-plugin-connectivity (= 2.7.4+reloaded3-11)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "gosa"
+	comparison hasValue "="
+	version hasValue "2.7.4+reloaded3-11"
+
+relationInstance depends(P0__gosa_plugin_pureftpd,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "gosa-plugin-connectivity"
+	comparison hasValue "="
+	version hasValue "2.7.4+reloaded3-11"
+
+relationInstance depends(P0__gosa_plugin_pureftpd,1,DepAtom__1)
+

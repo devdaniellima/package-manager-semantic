@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology node_spdx_expression_parse
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__node_spdx_expression_parse memberOf Package
+	package hasValue "node-spdx-expression-parse"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/web"
+	installedSize hasValue "24"
+	maintainer hasValue "Original-Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "3.0.0-1"
+	fileName hasValue "pool/universe/n/node-spdx-expression-parse/node-spdx-expression-parse_3.0.0-1_all.deb"
+	size hasValue "6608"
+	md5sum hasValue "b269dfc989a61ea77a1b6df725cf5e85"
+	sha1 hasValue "315a8c8820750d1952f24f79723101729c83d37a"
+	sha256 hasValue "2b59374bac714d8c6fd2950bf01793d3bb9051783715c83c330a087caa070ee7"
+	descriptionMd5 hasValue "db37d126b68defc69334d7d13ce9537f"
+	homepage hasValue "https://github.com/kemitchell/spdx-expression-parse.js"
+	depends hasValue "node-spdx-exceptions (>= 2.0.1), node-spdx-license-ids (>= 3.0.0), nodejs"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "node-spdx-exceptions"
+	comparison hasValue ">="
+	version hasValue "2.0.1"
+
+relationInstance depends(P0__node_spdx_expression_parse,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "node-spdx-license-ids"
+	comparison hasValue ">="
+	version hasValue "3.0.0"
+
+relationInstance depends(P0__node_spdx_expression_parse,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "nodejs"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__node_spdx_expression_parse,2,DepAtom__2)
+

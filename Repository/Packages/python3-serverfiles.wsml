@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python3_serverfiles
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python3_serverfiles memberOf Package
+	package hasValue "python3-serverfiles"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "37"
+	maintainer hasValue "Original-Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.3.0-1"
+	fileName hasValue "pool/universe/p/python-serverfiles/python3-serverfiles_0.3.0-1_all.deb"
+	size hasValue "7952"
+	md5sum hasValue "7e7f3f2d8980f4f2a2474441eeadcc86"
+	sha1 hasValue "d850a6fd0de1491c7ad2e5259cfc59ae15ce0842"
+	sha256 hasValue "7cc5cd77ba5408b80b37d9e229b6efe32edd7c1271f4023fc86714e90ca77ba9"
+	descriptionMd5 hasValue "4a4e4ec630fe0860d8f284fcf6905383"
+	homepage hasValue "https://github.com/biolab/serverfiles"
+	depends hasValue "python3-requests (>= 2.11.1), python3:any"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3-requests"
+	comparison hasValue ">="
+	version hasValue "2.11.1"
+
+relationInstance depends(P0__python3_serverfiles,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__python3_serverfiles,1,DepAtom__1)
+

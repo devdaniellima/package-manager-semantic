@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology dselect
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__dselect memberOf Package
+	package hasValue "dselect"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "admin"
+	installedSize hasValue "1744"
+	maintainer hasValue "Original-Dpkg Developers <debian-dpkg@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.19.7ubuntu3"
+	fileName hasValue "pool/main/d/dpkg/dselect_1.19.7ubuntu3_amd64.deb"
+	size hasValue "160192"
+	md5sum hasValue "0e0daebdce8da87b7430841138334374"
+	sha1 hasValue "06dcfca840baa7513b8a9183dd87dd8a335be20c"
+	sha256 hasValue "910b00978ee204d28ae1185121748117fa874b0b68be6f2d918152cac20248f1"
+	descriptionMd5 hasValue "269b383010cda7ddc3f6381398082aec"
+	homepage hasValue "https://wiki.debian.org/Teams/Dpkg"
+	depends hasValue "libc6 (>= 2.14), libncursesw6 (>= 6.1+20180210), libtinfo6 (>= 6.1+20180210)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__dselect,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libncursesw6"
+	comparison hasValue ">="
+	version hasValue "6.1+20180210"
+
+relationInstance depends(P0__dselect,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libtinfo6"
+	comparison hasValue ">="
+	version hasValue "6.1+20180210"
+
+relationInstance depends(P0__dselect,2,DepAtom__2)
+

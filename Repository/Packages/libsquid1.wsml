@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libsquid1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libsquid1 memberOf Package
+	package hasValue "libsquid1"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "185"
+	maintainer hasValue "Original-Debian-Med Packaging Team <debian-med-packaging@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.9g+cvs20050121-11"
+	fileName hasValue "pool/universe/b/biosquid/libsquid1_1.9g+cvs20050121-11_amd64.deb"
+	size hasValue "76076"
+	md5sum hasValue "fd1eff51fc4493141ef617db374b862e"
+	sha1 hasValue "decaf326dc54dfef19b048d471819bdd035c4a9b"
+	sha256 hasValue "faa78b07f4a345a43a718e09176840270bdf309dfaac21b810ce4ed86dbc58a6"
+	description hasValue "biosquid dynamic library for biological sequence analysis"
+	descriptionMd5 hasValue "66a3dd70ec9a27463baf10379d5ffc97"
+	homepage hasValue "http://eddylab.org/software.html"
+	depends hasValue "libc6 (>= 2.14), libpvm3"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libsquid1,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libpvm3"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libsquid1,1,DepAtom__1)
+

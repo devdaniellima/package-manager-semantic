@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python_xe
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python_xe memberOf Package
+	package hasValue "python-xe"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/python"
+	installedSize hasValue "93"
+	maintainer hasValue "Original-Matteo Cypriani <mcy@lm7.fr>"
+	architecture hasValue "all"
+	version hasValue "0.7.4-2ubuntu1"
+	fileName hasValue "pool/universe/x/xmlelements/python-xe_0.7.4-2ubuntu1_all.deb"
+	size hasValue "20684"
+	md5sum hasValue "abb93fcdf20c79a9766531d38c814b21"
+	sha1 hasValue "9ad9c4cec74753c56c98f39efcd7692116858af8"
+	sha256 hasValue "2499441f88e35712f3010ec65a75fa63132d996fff8b1904308e594f4f6e0459"
+	descriptionMd5 hasValue "af450aadd0b4745e738244c0409da00f"
+	homepage hasValue "http://home.avvanta.com/~steveha/xe.html"
+	depends hasValue "python2:any (<< 2.8), python2:any (>= 2.7~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue "<<"
+	version hasValue "2.8"
+
+relationInstance depends(P0__python_xe,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue ">="
+	version hasValue "2.7~"
+
+relationInstance depends(P0__python_xe,1,DepAtom__1)
+

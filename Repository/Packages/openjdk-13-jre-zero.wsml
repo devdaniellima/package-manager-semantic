@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology openjdk_13_jre_zero
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__openjdk_13_jre_zero memberOf Package
+	package hasValue "openjdk-13-jre-zero"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/java"
+	installedSize hasValue "6208"
+	maintainer hasValue "OpenJDK Team <openjdk@lists.launchpad.net>"
+	architecture hasValue "amd64"
+	version hasValue "13.0.4+8-1~20.04"
+	fileName hasValue "pool/universe/o/openjdk-13/openjdk-13-jre-zero_13.0.4+8-1~20.04_amd64.deb"
+	size hasValue "1926376"
+	md5sum hasValue "3c3f01733e52506ebbca9c103aaad493"
+	sha1 hasValue "13f211690dbd23c8fb3c79800407b97e80b20a2f"
+	sha256 hasValue "a115f53c8a905fa119d089ee2df6030a5ad4b49a308159d4a4543e1593e0fab7"
+	sha512 hasValue "be34907daf6ae3dccc7a7d6f6ad5924257eaad902ab996c3d558e68e33d765639deda1a7a2c67463a4523d93eef2eb42427ba6f19d7fdd0e12aaf851b09868f9"
+	descriptionMd5 hasValue "c714861c802c9808def07d5329c6ed78"
+	homepage hasValue "http://openjdk.java.net/"
+	depends hasValue "openjdk-13-jre-headless (= 13.0.4+8-1~20.04), libc6 (>= 2.29), libstdc++6 (>= 4.1.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "openjdk-13-jre-headless"
+	comparison hasValue "="
+	version hasValue "13.0.4+8-1~20.04"
+
+relationInstance depends(P0__openjdk_13_jre_zero,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__openjdk_13_jre_zero,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "4.1.1"
+
+relationInstance depends(P0__openjdk_13_jre_zero,2,DepAtom__2)
+

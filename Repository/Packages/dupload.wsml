@@ -1,0 +1,59 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology dupload
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__dupload memberOf Package
+	package hasValue "dupload"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "devel"
+	installedSize hasValue "92"
+	maintainer hasValue "Original-Dpkg Developers <debian-dpkg@lists.debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.9.5"
+	fileName hasValue "pool/main/d/dupload/dupload_2.9.5_all.deb"
+	size hasValue "29040"
+	md5sum hasValue "9eb421b4f2021c101d965658976cbd18"
+	sha1 hasValue "b9ccf474ae9fa07578019b6f74c0829d82777447"
+	sha256 hasValue "0b3da77586cd9d571325af3d3c3f5a1566f7999de62a1d318df3de03b2e8a7df"
+	descriptionMd5 hasValue "d0f592a1f9f069d61a7cebd39c0b1792"
+	depends hasValue "perl:any, libdpkg-perl"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "perl:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__dupload,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libdpkg-perl"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__dupload,1,DepAtom__1)
+

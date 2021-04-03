@@ -1,0 +1,59 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology intel2gas
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__intel2gas memberOf Package
+	package hasValue "intel2gas"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "178"
+	maintainer hasValue "Original-Alexander Zangerl <az@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.3.3-17build1"
+	fileName hasValue "pool/universe/i/intel2gas/intel2gas_1.3.3-17build1_amd64.deb"
+	size hasValue "26208"
+	md5sum hasValue "25405ee1b16529398df8823310ee18be"
+	sha1 hasValue "c9a001ad29857414271354b35a8084fc0b592c2c"
+	sha256 hasValue "951f9a8055edff6cd8ca993f8b351c850ec244e09c8a8e73a6955c22b9f76385"
+	descriptionMd5 hasValue "dc3bd9bfbaaec2758474e55511125adc"
+	depends hasValue "libc6 (>= 2.27), libstdc++6 (>= 5)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.27"
+
+relationInstance depends(P0__intel2gas,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "5"
+
+relationInstance depends(P0__intel2gas,1,DepAtom__1)
+

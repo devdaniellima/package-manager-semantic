@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libhud2
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libhud2 memberOf Package
+	package hasValue "libhud2"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "115"
+	maintainer hasValue "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	architecture hasValue "amd64"
+	version hasValue "14.10+17.10.20170619-0ubuntu3.1"
+	fileName hasValue "pool/universe/h/hud/libhud2_14.10+17.10.20170619-0ubuntu3.1_amd64.deb"
+	size hasValue "26276"
+	md5sum hasValue "b3e0174dc0d8132bf15a78b388e5f1f5"
+	sha1 hasValue "c5bf8fe6880b6c84df74b4645d5d66f7bb1290aa"
+	sha256 hasValue "ab50515bd3f824b39a04a7e71a3af28216d06f5a691b9ccdb3921a9b5c2e0eeb"
+	description hasValue "library for exporting items to the Unity HUD"
+	descriptionMd5 hasValue "a7907b4514fa5355f84bc89a20c27aa4"
+	homepage hasValue "http://launchpad.net/hud"
+	depends hasValue "libc6 (>= 2.4), libglib2.0-0 (>= 2.37.3)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libhud2,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libglib2.0-0"
+	comparison hasValue ">="
+	version hasValue "2.37.3"
+
+relationInstance depends(P0__libhud2,1,DepAtom__1)
+

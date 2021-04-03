@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology userinfo
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__userinfo memberOf Package
+	package hasValue "userinfo"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "81"
+	maintainer hasValue "Original-Paulo Roberto Alves de Oliveira (aka kretcheu) <kretcheu@gmail.com>"
+	architecture hasValue "amd64"
+	version hasValue "2.5-4"
+	fileName hasValue "pool/universe/u/userinfo/userinfo_2.5-4_amd64.deb"
+	size hasValue "23984"
+	md5sum hasValue "5df6505ab18b961737031742a57d4db2"
+	sha1 hasValue "11643a608ac2b5885695e9401328c5a1a9ae8a5c"
+	sha256 hasValue "cb28471d785e5a193ffdd39da499da693814b067e6e5a287588b1623ae033456"
+	descriptionMd5 hasValue "ce66c28deb23057905823e2a15cfc08a"
+	homepage hasValue "http://bjk.sourceforge.net/userinfo/"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__userinfo,0,DepAtom__0)
+

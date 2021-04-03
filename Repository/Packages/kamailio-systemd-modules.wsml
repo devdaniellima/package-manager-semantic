@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology kamailio_systemd_modules
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__kamailio_systemd_modules memberOf Package
+	package hasValue "kamailio-systemd-modules"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "193"
+	maintainer hasValue "Original-Debian VoIP Team <pkg-voip-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "5.3.2-1build3"
+	fileName hasValue "pool/universe/k/kamailio/kamailio-systemd-modules_5.3.2-1build3_amd64.deb"
+	size hasValue "14512"
+	md5sum hasValue "372bd5cff488afa3839ea225d80a3c3a"
+	sha1 hasValue "66df575da3186231fee8116ab8d4ec9d319f57ee"
+	sha256 hasValue "7c9150af7ef212994a0d0fe12e1dcc8d3d3d75cac950c073eade6bc308a6d4e3"
+	descriptionMd5 hasValue "b03a3ec6dcec09ef8291bc5e46f57fcf"
+	homepage hasValue "http://www.kamailio.org/"
+	depends hasValue "kamailio (= 5.3.2-1build3), libc6 (>= 2.4), libsystemd0"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "kamailio"
+	comparison hasValue "="
+	version hasValue "5.3.2-1build3"
+
+relationInstance depends(P0__kamailio_systemd_modules,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__kamailio_systemd_modules,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libsystemd0"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__kamailio_systemd_modules,2,DepAtom__2)
+

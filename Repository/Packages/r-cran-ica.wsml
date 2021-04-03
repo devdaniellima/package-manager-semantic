@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology r_cran_ica
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__r_cran_ica memberOf Package
+	package hasValue "r-cran-ica"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/gnu-r"
+	installedSize hasValue "103"
+	maintainer hasValue "Original-Debian R Packages Maintainers <r-pkg-team@alioth-lists.debian.net>"
+	architecture hasValue "all"
+	version hasValue "1.0-2-2"
+	fileName hasValue "pool/universe/r/r-cran-ica/r-cran-ica_1.0-2-2_all.deb"
+	size hasValue "75488"
+	md5sum hasValue "68eb648a89a84a9787ca72455bfe9973"
+	sha1 hasValue "dc0c3609d502fde76e1608d5282e5579706ff22e"
+	sha256 hasValue "5f8499d1649180fb6fdc478daffc87afad86df532231bd1b1d23e8663aa38e72"
+	descriptionMd5 hasValue "86e1b0331ac697ef4d5266138812eb97"
+	homepage hasValue "https://cran.r-project.org/package=ica"
+	depends hasValue "r-base-core (>= 3.6.2.20200221-1), r-api-3.5"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "r-base-core"
+	comparison hasValue ">="
+	version hasValue "3.6.2.20200221-1"
+
+relationInstance depends(P0__r_cran_ica,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "r-api-3.5"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__r_cran_ica,1,DepAtom__1)
+

@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology librust_curlPlusstatic_curl_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__librust_curlPlusstatic_curl_dev memberOf Package
+	package hasValue "librust-curl+static-curl-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/rust"
+	installedSize hasValue "6"
+	maintainer hasValue "Original-Debian Rust Maintainers <pkg-rust-maintainers@alioth-lists.debian.net>"
+	architecture hasValue "amd64"
+	version hasValue "0.4.25-1"
+	provides hasValue "librust-curl-0+static-curl-dev (= 0.4.25-1), librust-curl-0.4+static-curl-dev (= 0.4.25-1), librust-curl-0.4.25+static-curl-dev (= 0.4.25-1)"
+	fileName hasValue "pool/universe/r/rust-curl/librust-curl+static-curl-dev_0.4.25-1_amd64.deb"
+	size hasValue "1112"
+	md5sum hasValue "87c67bba856bd858137fdcbe5091171e"
+	sha1 hasValue "594e8dbcd431e208926d53d6f2c7da0249a71cd6"
+	sha256 hasValue "a94e270f03d7377769fbf0eb4392710e334e29011a25fcdd537b6362285d5720"
+	descriptionMd5 hasValue "24e900f1dfacfb670c314cad15e697f4"
+	homepage hasValue "https://github.com/alexcrichton/curl-rust"
+	depends hasValue "librust-curl-dev (= 0.4.25-1), librust-curl-sys-0.4+static-curl-dev (>= 0.4.21-~~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "librust-curl-dev"
+	comparison hasValue "="
+	version hasValue "0.4.25-1"
+
+relationInstance depends(P0__librust_curlPlusstatic_curl_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "librust-curl-sys-0.4+static-curl-dev"
+	comparison hasValue ">="
+	version hasValue "0.4.21-~~"
+
+relationInstance depends(P0__librust_curlPlusstatic_curl_dev,1,DepAtom__1)
+

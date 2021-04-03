@@ -1,0 +1,75 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology erlang_yapp
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__erlang_yapp memberOf Package
+	package hasValue "erlang-yapp"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/httpd"
+	installedSize hasValue "92"
+	maintainer hasValue "Original-Debian Erlang Packagers <pkg-erlang-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.0.7+dfsg-1"
+	replaces hasValue "yaws-yapp (<< 1.99)"
+	fileName hasValue "pool/universe/y/yaws/erlang-yapp_2.0.7+dfsg-1_amd64.deb"
+	size hasValue "35564"
+	md5sum hasValue "7bb587649b478c7bf49fdebe78bae085"
+	sha1 hasValue "a16391d1fd4abe7c2b199c93cd03de1f83674daa"
+	sha256 hasValue "2ddd12c283eaf63723dad7420a9cd42575d279e36518e80a7c90aee685f4715a"
+	descriptionMd5 hasValue "0317ed11120545bd2da99b5404aea656"
+	homepage hasValue "http://yaws.hyber.org/"
+	depends hasValue "erlang-base (>= 1:22.2.7+dfsg) | erlang-base-hipe (>= 1:22.2.7+dfsg), erlang-mnesia (>= 1:22.2.7+dfsg), erlang-yaws (= 2.0.7+dfsg-1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "erlang-base"
+	comparison hasValue ">="
+	version hasValue "1:22.2.7+dfsg"
+
+relationInstance depends(P0__erlang_yapp,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "erlang-base-hipe"
+	comparison hasValue ">="
+	version hasValue "1:22.2.7+dfsg"
+
+relationInstance depends(P0__erlang_yapp,0,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "erlang-mnesia"
+	comparison hasValue ">="
+	version hasValue "1:22.2.7+dfsg"
+
+relationInstance depends(P0__erlang_yapp,1,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "erlang-yaws"
+	comparison hasValue "="
+	version hasValue "2.0.7+dfsg-1"
+
+relationInstance depends(P0__erlang_yapp,2,DepAtom__3)
+

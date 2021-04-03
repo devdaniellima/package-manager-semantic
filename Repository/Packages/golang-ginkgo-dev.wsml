@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology golang_ginkgo_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__golang_ginkgo_dev memberOf Package
+	package hasValue "golang-ginkgo-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/devel"
+	installedSize hasValue "6796"
+	maintainer hasValue "Original-Debian Go Packaging Team <pkg-go-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.2.0+git20161006.acfa16a-1"
+	fileName hasValue "pool/universe/g/golang-ginkgo/golang-ginkgo-dev_1.2.0+git20161006.acfa16a-1_amd64.deb"
+	size hasValue "1825186"
+	md5sum hasValue "3f6d85a4fcd7b8732f35f57adcbdb3ee"
+	sha1 hasValue "76f6eb15b348964a3a85638c1cec669d6477f968"
+	sha256 hasValue "a75f2960438947e10f2c23dc897285686f7a742ea21f030ba94b302d1211fd9b"
+	descriptionMd5 hasValue "946f901aa5a106ee3776df7ac04d0bed"
+	homepage hasValue "https://github.com/onsi/ginkgo"
+	depends hasValue "libc6 (>= 2.4), golang-gomega-dev"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__golang_ginkgo_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "golang-gomega-dev"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__golang_ginkgo_dev,1,DepAtom__1)
+

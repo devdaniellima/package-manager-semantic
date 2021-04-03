@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology dqcache
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__dqcache memberOf Package
+	package hasValue "dqcache"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "226"
+	maintainer hasValue "Original-Jan Mojžíš <jan.mojzis@gmail.com>"
+	architecture hasValue "amd64"
+	version hasValue "20181021-1"
+	replaces hasValue "dqcache-run (<< 20181021-1~)"
+	fileName hasValue "pool/universe/d/dq/dqcache_20181021-1_amd64.deb"
+	size hasValue "71808"
+	md5sum hasValue "f151d03158873508092167779117fa95"
+	sha1 hasValue "e4842e1f48d2823f2f215897f0abf909c34eccbc"
+	sha256 hasValue "e95a90debc721d85b0b2e0b59c9da59928dfa2b4caf34ba4f2b372904f46520e"
+	descriptionMd5 hasValue "c1afa7dace16fe17324cbfc06ea838cc"
+	homepage hasValue "https://mojzis.com/software/dq/"
+	depends hasValue "libc6 (>= 2.16), adduser"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.16"
+
+relationInstance depends(P0__dqcache,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "adduser"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__dqcache,1,DepAtom__1)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology runawk
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__runawk memberOf Package
+	package hasValue "runawk"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "212"
+	maintainer hasValue "Original-Andrew Shadura <andrewsh@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.6.0-2"
+	fileName hasValue "pool/universe/r/runawk/runawk_1.6.0-2_amd64.deb"
+	size hasValue "64558"
+	md5sum hasValue "622353386f621c9f16c58852bb0880ed"
+	sha1 hasValue "6a898ca4117a97d0b0602320db571475dc9628c3"
+	sha256 hasValue "b4ac00ee6af142d94fc3ec138dc2cfea6224d98d65fa5b6c5b37c375ad98e7a4"
+	descriptionMd5 hasValue "648f8303a32bb1c4a78e95d4790c6847"
+	homepage hasValue "http://github.com/cheusov/runawk"
+	depends hasValue "libbsd0 (>= 0.0), libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libbsd0"
+	comparison hasValue ">="
+	version hasValue "0.0"
+
+relationInstance depends(P0__runawk,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__runawk,1,DepAtom__1)
+

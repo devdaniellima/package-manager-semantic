@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology r_cran_prettyr
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__r_cran_prettyr memberOf Package
+	package hasValue "r-cran-prettyr"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/gnu-r"
+	installedSize hasValue "188"
+	maintainer hasValue "Original-Debian R Packages Maintainers <r-pkg-team@alioth-lists.debian.net>"
+	architecture hasValue "all"
+	version hasValue "2.2-3-1"
+	fileName hasValue "pool/universe/r/r-cran-prettyr/r-cran-prettyr_2.2-3-1_all.deb"
+	size hasValue "155560"
+	md5sum hasValue "1db24ccd8fa39c10fabdb21810b073ca"
+	sha1 hasValue "5c8ce164f12c2c67e950a29edb522732aa75bedd"
+	sha256 hasValue "3a28261148fa07c8b8c908ab6bd8ea17532d807699cec187f88af0bf7e393897"
+	descriptionMd5 hasValue "7c68a37b796ef5a42073498feec03bda"
+	homepage hasValue "https://cran.r-project.org/package=prettyR"
+	depends hasValue "r-base-core (>= 3.6.1-2), r-api-3.5"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "r-base-core"
+	comparison hasValue ">="
+	version hasValue "3.6.1-2"
+
+relationInstance depends(P0__r_cran_prettyr,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "r-api-3.5"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__r_cran_prettyr,1,DepAtom__1)
+

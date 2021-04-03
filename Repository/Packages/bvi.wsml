@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology bvi
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__bvi memberOf Package
+	package hasValue "bvi"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/editors"
+	installedSize hasValue "284"
+	maintainer hasValue "Original-Sam Hocevar <sho@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.4.0-1build3"
+	fileName hasValue "pool/universe/b/bvi/bvi_1.4.0-1build3_amd64.deb"
+	size hasValue "57024"
+	md5sum hasValue "08c27076aafa881f21f00801bc92da09"
+	sha1 hasValue "45bae43ef4dced575c0069321c144d8fded7fd82"
+	sha256 hasValue "dacd6825fac9e99ff5daf679c157a23e5c3e0acc2bd837f6e4793f9591b3e8fe"
+	description hasValue "Editor de arquivo binário"
+	descriptionMd5 hasValue "82e028998d9812c24a56e1a511b425cd"
+	depends hasValue "libc6 (>= 2.14), libncurses6 (>= 6), libtinfo6 (>= 6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__bvi,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libncurses6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__bvi,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libtinfo6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__bvi,2,DepAtom__2)
+

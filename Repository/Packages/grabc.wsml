@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology grabc
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__grabc memberOf Package
+	package hasValue "grabc"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/x11"
+	installedSize hasValue "26"
+	maintainer hasValue "Original-Ryan Niebur <ryanryan52@gmail.com>"
+	architecture hasValue "amd64"
+	version hasValue "1.1-2build1"
+	fileName hasValue "pool/universe/g/grabc/grabc_1.1-2build1_amd64.deb"
+	size hasValue "6224"
+	md5sum hasValue "2a9202f427c47bb4425370e34ec16a31"
+	sha1 hasValue "5653f77db79fb5f522d44d4687ef1688c77dea6c"
+	sha256 hasValue "326c08e5e69a33fc25e5d0441ae082a08fd673dfb8e9dd4bff5e792562bc1ecb"
+	description hasValue "programa simples para determinar a string de cores em hexa ao clicar em um pixel"
+	descriptionMd5 hasValue "24ba57c1fca546f8f8410efdf7a8f845"
+	homepage hasValue "http://muquit.com/muquit/software/grabc/grabc.html"
+	depends hasValue "libc6 (>= 2.4), libx11-6"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__grabc,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libx11-6"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__grabc,1,DepAtom__1)
+

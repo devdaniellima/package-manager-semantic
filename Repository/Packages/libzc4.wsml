@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libzc4
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libzc4 memberOf Package
+	package hasValue "libzc4"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "132"
+	maintainer hasValue "Original-Marc Ferland <marc.ferland@gmail.com>"
+	architecture hasValue "amd64"
+	version hasValue "0.4.1-1"
+	fileName hasValue "pool/universe/libz/libzc/libzc4_0.4.1-1_amd64.deb"
+	size hasValue "43120"
+	md5sum hasValue "6a7251bc1ee24ce799fe1832313e0ff2"
+	sha1 hasValue "23392a44292118b9c83835209527a734de3056c2"
+	sha256 hasValue "3a86281129f525a1460dfe27abeb8d0f3d715ce25361295be6159fbefafef8bf"
+	descriptionMd5 hasValue "2fb120267a145a448a5ea096a332211b"
+	homepage hasValue "https://github.com/mferland/libzc"
+	depends hasValue "libc6 (>= 2.15), zlib1g (>= 1:1.1.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__libzc4,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "zlib1g"
+	comparison hasValue ">="
+	version hasValue "1:1.1.4"
+
+relationInstance depends(P0__libzc4,1,DepAtom__1)
+

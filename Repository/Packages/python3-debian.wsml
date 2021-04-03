@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python3_debian
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python3_debian memberOf Package
+	package hasValue "python3-debian"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "python"
+	installedSize hasValue "318"
+	maintainer hasValue "Original-Debian python-debian Maintainers <pkg-python-debian-maint@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.1.36ubuntu1"
+	fileName hasValue "pool/main/p/python-debian/python3-debian_0.1.36ubuntu1_all.deb"
+	size hasValue "64980"
+	md5sum hasValue "8c108b4cdfc1d170303468f0dccf1eb7"
+	sha1 hasValue "f3d70e8bb258591950a2240da8000632dbfcfe12"
+	sha256 hasValue "9e8707d0bf8ac8bebac0798633bc4eff91d689de5d114718a918b43e0e0a8041"
+	descriptionMd5 hasValue "25a477be653c8618e0ea19bdaf3d27c2"
+	homepage hasValue "https://salsa.debian.org/python-debian-team/python-debian"
+	depends hasValue "python3-chardet, python3-six (>> 1.4~), python3:any"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3-chardet"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__python3_debian,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3-six"
+	comparison hasValue ">>"
+	version hasValue "1.4~"
+
+relationInstance depends(P0__python3_debian,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__python3_debian,2,DepAtom__2)
+

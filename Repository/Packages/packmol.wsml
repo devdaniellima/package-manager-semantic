@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology packmol
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__packmol memberOf Package
+	package hasValue "packmol"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/science"
+	installedSize hasValue "423"
+	maintainer hasValue "Original-Debichem Team <debichem-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "20.010-1build1"
+	fileName hasValue "pool/universe/p/packmol/packmol_20.010-1build1_amd64.deb"
+	size hasValue "108992"
+	md5sum hasValue "cd709219fde524053c25752055ed032c"
+	sha1 hasValue "563984355761f991d7d22c0046675162de7664ad"
+	sha256 hasValue "84939670b64d02470702abb2b9697c4704b005623cb6da06e04d341ad6c50c60"
+	descriptionMd5 hasValue "287daca65cb06ebd34c8faf7098f3a51"
+	homepage hasValue "http://m3g.iqm.unicamp.br/packmol/"
+	depends hasValue "libc6 (>= 2.29), libgfortran5 (>= 8)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__packmol,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgfortran5"
+	comparison hasValue ">="
+	version hasValue "8"
+
+relationInstance depends(P0__packmol,1,DepAtom__1)
+

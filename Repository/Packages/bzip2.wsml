@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology bzip2
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__bzip2 memberOf Package
+	package hasValue "bzip2"
+	packageSource hasValue Source__S1
+	priority hasValue "important"
+	section hasValue "utils"
+	installedSize hasValue "195"
+	maintainer hasValue "Original-Anibal Monsalve Salazar <anibal@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.8-2"
+	replaces hasValue "libbz2 (<< 0.9.5d-3)"
+	fileName hasValue "pool/main/b/bzip2/bzip2_1.0.8-2_amd64.deb"
+	size hasValue "34064"
+	md5sum hasValue "63ab63d6739fddaa232e534e996d98ed"
+	sha1 hasValue "16dde6d0b0c0d96b2cfe40017058350af4cd459e"
+	sha256 hasValue "9201778f5a3bd4ff685d41cd677660129e57c544b7526f20ff8c48318c63dbe8"
+	description hasValue "compressor de arquivos ordenador de blocos de alta qualidade - utilitários"
+	descriptionMd5 hasValue "1e71313ce794d3de1e3bc63ac58885b5"
+	homepage hasValue "https://sourceware.org/bzip2/"
+	depends hasValue "libbz2-1.0 (= 1.0.8-2), libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libbz2-1.0"
+	comparison hasValue "="
+	version hasValue "1.0.8-2"
+
+relationInstance depends(P0__bzip2,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__bzip2,1,DepAtom__1)
+

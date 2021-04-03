@@ -1,0 +1,74 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python3_libgpiod
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python3_libgpiod memberOf Package
+	package hasValue "python3-libgpiod"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "89"
+	maintainer hasValue "Original-SZ Lin (林上智) <szlin@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.4.1-4"
+	fileName hasValue "pool/universe/libg/libgpiod/python3-libgpiod_1.4.1-4_amd64.deb"
+	size hasValue "18620"
+	md5sum hasValue "5c9543c14bff0f1cda9f84092466fa12"
+	sha1 hasValue "3138f4ddea0fb36254a4575cb1a92eb96810d70f"
+	sha256 hasValue "f161d2d27d096ff4c9b5d5df4203117105c7ad20c77aacfcc19b3b006b3fc7db"
+	descriptionMd5 hasValue "e69873ca634f7a6bf7510464d06fc01b"
+	homepage hasValue "https://git.kernel.org/pub/scm/libs/libgpiod/libgpiod.git"
+	depends hasValue "libc6 (>= 2.4), libgpiod2 (= 1.4.1-4), python3 (<< 3.9), python3 (>= 3.8~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__python3_libgpiod,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgpiod2"
+	comparison hasValue "="
+	version hasValue "1.4.1-4"
+
+relationInstance depends(P0__python3_libgpiod,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "python3"
+	comparison hasValue "<<"
+	version hasValue "3.9"
+
+relationInstance depends(P0__python3_libgpiod,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "python3"
+	comparison hasValue ">="
+	version hasValue "3.8~"
+
+relationInstance depends(P0__python3_libgpiod,3,DepAtom__3)
+

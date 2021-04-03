@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology rsh_client
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__rsh_client memberOf Package
+	package hasValue "rsh-client"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/net"
+	installedSize hasValue "103"
+	maintainer hasValue "Original-Alberto Gonzalez Iniesta <agi@inittab.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.17-21"
+	replaces hasValue "netstd"
+	conflicts hasValue "suidmanager (<< 0.50)"
+	fileName hasValue "pool/universe/n/netkit-rsh/rsh-client_0.17-21_amd64.deb"
+	size hasValue "28864"
+	md5sum hasValue "f03bed81f92838e9d323513e69acd0d6"
+	sha1 hasValue "388d9c1d40f867733761662c89123d1f1784eacf"
+	sha256 hasValue "d69b21e972a9c01a04a45b48bf22452bc9176817c0dc63a00bac45ba86428854"
+	descriptionMd5 hasValue "0e567d8dad97373a23bdade592b87a3b"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__rsh_client,0,DepAtom__0)
+

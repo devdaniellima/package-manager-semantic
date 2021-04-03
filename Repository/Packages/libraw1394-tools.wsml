@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libraw1394_tools
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libraw1394_tools memberOf Package
+	package hasValue "libraw1394-tools"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "utils"
+	installedSize hasValue "74"
+	maintainer hasValue "Original-Guus Sliepen <guus@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.1.2-1"
+	replaces hasValue "libraw1394-dev (<= 2.0.7-1ubuntu1)"
+	fileName hasValue "pool/main/libr/libraw1394/libraw1394-tools_2.1.2-1_amd64.deb"
+	size hasValue "16202"
+	md5sum hasValue "c108ec48922273667f8f791a51984ae6"
+	sha1 hasValue "1dacd8039f72a1b246e93bd0df1f1df8b24d0126"
+	sha256 hasValue "c427aa254bd924f42f276f497e20e778fd0d0436d766ad3a6c02a7925d4d77e6"
+	description hasValue "Biblioteca de acesso direto a barramento IEEE1394(FireWire)."
+	descriptionMd5 hasValue "37acd10ddc8cc0179de11218ed797e1e"
+	homepage hasValue "https://ieee1394.wiki.kernel.org/"
+	depends hasValue "libraw1394-11 (= 2.1.2-1), libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libraw1394-11"
+	comparison hasValue "="
+	version hasValue "2.1.2-1"
+
+relationInstance depends(P0__libraw1394_tools,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libraw1394_tools,1,DepAtom__1)
+

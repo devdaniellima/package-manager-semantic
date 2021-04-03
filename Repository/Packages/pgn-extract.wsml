@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology pgn_extract
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__pgn_extract memberOf Package
+	package hasValue "pgn-extract"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/games"
+	installedSize hasValue "560"
+	maintainer hasValue "Original-Vincent Legout <vlegout@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "19.04-1"
+	fileName hasValue "pool/universe/p/pgn-extract/pgn-extract_19.04-1_amd64.deb"
+	size hasValue "140396"
+	md5sum hasValue "7346e0351c1f6e4b39416bffa68a79a5"
+	sha1 hasValue "b1c9e16f3dede7bdd38a30e7d22dcd09a70c9073"
+	sha256 hasValue "3b633975cc68f6c6715797c597a8eb6b4f2fc9f4769b1f7505d82c279fb860e0"
+	description hasValue "extrator de PGN (Portable Game Notation)"
+	descriptionMd5 hasValue "e1696e26fceb8278b1d3731b631441dd"
+	homepage hasValue "http://www.cs.kent.ac.uk/people/staff/djb/pgn-extract/"
+	depends hasValue "libc6 (>= 2.7)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__pgn_extract,0,DepAtom__0)
+

@@ -1,0 +1,59 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ipfm
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ipfm memberOf Package
+	package hasValue "ipfm"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "78"
+	maintainer hasValue "Original-Sam Hocevar (Debian packages) <sam+deb@zoy.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.11.5-4.2"
+	fileName hasValue "pool/universe/i/ipfm/ipfm_0.11.5-4.2_amd64.deb"
+	size hasValue "26384"
+	md5sum hasValue "9c2991c005501432f1f05cae08099b0d"
+	sha1 hasValue "197b7171c46810ee0f22db54a536d230f8b192d9"
+	sha256 hasValue "8f53094d9f0ce0df1d7b571fe789a3c2d49ce4740836a6f415ab1fd3e42b1736"
+	descriptionMd5 hasValue "996d993b0f438f8324ece1dce0d4bc18"
+	depends hasValue "libc6 (>= 2.14), libpcap0.8 (>= 0.9.8)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__ipfm,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libpcap0.8"
+	comparison hasValue ">="
+	version hasValue "0.9.8"
+
+relationInstance depends(P0__ipfm,1,DepAtom__1)
+

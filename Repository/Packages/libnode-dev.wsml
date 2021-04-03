@@ -1,0 +1,70 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libnode_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libnode_dev memberOf Package
+	package hasValue "libnode-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "1537"
+	maintainer hasValue "Original-Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "10.19.0~dfsg-3ubuntu1"
+	replaces hasValue "libnode64-dev, libv8-dev, nodejs-dev (<< 10.0.0~dfsg1-3)"
+	provides hasValue "libv8-dev"
+	conflicts hasValue "libv8-dev (<= 3.14.5.8-11)"
+	fileName hasValue "pool/universe/n/nodejs/libnode-dev_10.19.0~dfsg-3ubuntu1_amd64.deb"
+	size hasValue "370312"
+	md5sum hasValue "2be4626239986b3e4b4026f9fd9f43c7"
+	sha1 hasValue "dbb05c7643418cc3fe7f455bd9e3b4f12a749725"
+	sha256 hasValue "6c555c484747cddd1eae46e93cc34d920c399e00bcf14106b775952bb31ce17c"
+	descriptionMd5 hasValue "4218e18f84de02eed93701205dfddb33"
+	homepage hasValue "http://nodejs.org/"
+	depends hasValue "libssl-dev (>= 1.1.1~), libuv1-dev (>= 1.28.0~), libnode64 (= 10.19.0~dfsg-3ubuntu1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libssl-dev"
+	comparison hasValue ">="
+	version hasValue "1.1.1~"
+
+relationInstance depends(P0__libnode_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libuv1-dev"
+	comparison hasValue ">="
+	version hasValue "1.28.0~"
+
+relationInstance depends(P0__libnode_dev,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libnode64"
+	comparison hasValue "="
+	version hasValue "10.19.0~dfsg-3ubuntu1"
+
+relationInstance depends(P0__libnode_dev,2,DepAtom__2)
+

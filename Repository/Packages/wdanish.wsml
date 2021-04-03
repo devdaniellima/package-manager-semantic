@@ -1,0 +1,69 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology wdanish
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__wdanish memberOf Package
+	package hasValue "wdanish"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "text"
+	installedSize hasValue "3890"
+	maintainer hasValue "Original-Jonas Smedegaard <dr@jones.dk>"
+	architecture hasValue "all"
+	version hasValue "1.6.36-11"
+	provides hasValue "wordlist"
+	fileName hasValue "pool/main/d/dsdo/wdanish_1.6.36-11_all.deb"
+	size hasValue "645924"
+	md5sum hasValue "dcd7ea10083772b41677634f9e1eb3c1"
+	sha1 hasValue "385366398deffd11c059f931c85179ded97e5339"
+	sha256 hasValue "feb9b4e14cb6fb556074c107070ca764fa84eadcd2851e6e8c320c7ebe8b2d68"
+	description hasValue "o Dicionário Dinamarquês Abrangente (DSDO) - lista de palavras"
+	descriptionMd5 hasValue "c3a0418e174e5a26862735e32b59b543"
+	homepage hasValue "http://da.speling.org/"
+	depends hasValue "debconf (>= 0.5) | debconf-2.0, dictionaries-common"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "debconf"
+	comparison hasValue ">="
+	version hasValue "0.5"
+
+relationInstance depends(P0__wdanish,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "debconf-2.0"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__wdanish,0,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "dictionaries-common"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__wdanish,1,DepAtom__2)
+

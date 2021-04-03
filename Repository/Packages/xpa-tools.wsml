@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology xpa_tools
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__xpa_tools memberOf Package
+	package hasValue "xpa-tools"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/science"
+	installedSize hasValue "791"
+	maintainer hasValue "Original-Debian Astro Team <debian-astro-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.1.19-1"
+	fileName hasValue "pool/universe/x/xpa/xpa-tools_2.1.19-1_amd64.deb"
+	size hasValue "115788"
+	md5sum hasValue "4e586d4fe2879906403c1d936c2f4252"
+	sha1 hasValue "29604c6f0a536461dd7aac9534aca7a37aeb0be2"
+	sha256 hasValue "7228f547ffbdedc9f1f0da9f018e025e67da5491b667dcc0270dd9d6b5f7326e"
+	descriptionMd5 hasValue "e5ee53c35802d2ee48d5f8ae1a880db2"
+	homepage hasValue "https://hea-www.harvard.edu/RD/xpa/"
+	depends hasValue "libxpa1 (= 2.1.19-1), libc6 (>= 2.15)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libxpa1"
+	comparison hasValue "="
+	version hasValue "2.1.19-1"
+
+relationInstance depends(P0__xpa_tools,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__xpa_tools,1,DepAtom__1)
+

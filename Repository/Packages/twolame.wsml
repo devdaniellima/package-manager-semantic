@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology twolame
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__twolame memberOf Package
+	package hasValue "twolame"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/sound"
+	installedSize hasValue "62"
+	maintainer hasValue "Original-Debian Multimedia Maintainers <debian-multimedia@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.4.0-2"
+	fileName hasValue "pool/universe/t/twolame/twolame_0.4.0-2_amd64.deb"
+	size hasValue "20380"
+	md5sum hasValue "3ccd948868b2b4f68ded17c2ce05a13c"
+	sha1 hasValue "c69b66295563232d38fe7843c153c6d170c50c1c"
+	sha256 hasValue "60ecba5f890b6d6439431cb80db7b5d71ab524cc1da167b7c34a63408c72dac3"
+	descriptionMd5 hasValue "31f25f2a86804d7eb479e0d6c9ed5608"
+	homepage hasValue "http://www.twolame.org"
+	depends hasValue "libc6 (>= 2.4), libsndfile1 (>= 1.0.20), libtwolame0 (>= 0.4.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__twolame,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libsndfile1"
+	comparison hasValue ">="
+	version hasValue "1.0.20"
+
+relationInstance depends(P0__twolame,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libtwolame0"
+	comparison hasValue ">="
+	version hasValue "0.4.0"
+
+relationInstance depends(P0__twolame,2,DepAtom__2)
+

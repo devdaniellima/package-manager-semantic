@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology miri_sdr
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__miri_sdr memberOf Package
+	package hasValue "miri-sdr"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/libs"
+	installedSize hasValue "39"
+	maintainer hasValue "Original-A. Maitland Bottoms <bottoms@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.0.4.59ba37-5"
+	fileName hasValue "pool/universe/libm/libmirisdr/miri-sdr_0.0.4.59ba37-5_amd64.deb"
+	size hasValue "12094"
+	md5sum hasValue "1446de7bec927d069c13a624bbd6732f"
+	sha1 hasValue "f4a21c06d0bca49e623c570a3366fc7c0c0b80f7"
+	sha256 hasValue "eaabff1cf66a2626ca8e19f3866f424e4893ca91de17b054afcf122691746bd1"
+	descriptionMd5 hasValue "627b8f95b9cb934d43a352920834e050"
+	homepage hasValue "http://sdr.osmocom.org/trac/"
+	depends hasValue "libmirisdr0 (= 0.0.4.59ba37-5), libc6 (>= 2.4), libusb-1.0-0 (>= 2:1.0.8)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libmirisdr0"
+	comparison hasValue "="
+	version hasValue "0.0.4.59ba37-5"
+
+relationInstance depends(P0__miri_sdr,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__miri_sdr,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libusb-1.0-0"
+	comparison hasValue ">="
+	version hasValue "2:1.0.8"
+
+relationInstance depends(P0__miri_sdr,2,DepAtom__2)
+

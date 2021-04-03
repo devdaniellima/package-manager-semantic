@@ -1,0 +1,59 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology glaurung
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__glaurung memberOf Package
+	package hasValue "glaurung"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/games"
+	installedSize hasValue "325"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.2-3"
+	fileName hasValue "pool/universe/g/glaurung/glaurung_2.2-3_amd64.deb"
+	size hasValue "119996"
+	md5sum hasValue "961b3d31fb330a0f607f693689d0fca4"
+	sha1 hasValue "53baeee1da2439346856a98679b1c1762302c7ef"
+	sha256 hasValue "42f2d47e503d4d3d16336019b821b47d4de72afa0b2188736f6c3a392f2ba2e7"
+	descriptionMd5 hasValue "fd630cb5e0b404b71e22995e4b216518"
+	depends hasValue "libc6 (>= 2.29), libstdc++6 (>= 5.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__glaurung,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "5.2"
+
+relationInstance depends(P0__glaurung,1,DepAtom__1)
+

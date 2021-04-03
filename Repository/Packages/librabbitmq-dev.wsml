@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology librabbitmq_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__librabbitmq_dev memberOf Package
+	package hasValue "librabbitmq-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libdevel"
+	installedSize hasValue "339"
+	maintainer hasValue "Original-Michael Fladischer <fladi@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.10.0-1"
+	fileName hasValue "pool/main/libr/librabbitmq/librabbitmq-dev_0.10.0-1_amd64.deb"
+	size hasValue "60976"
+	md5sum hasValue "d7d8554202571e5106f160cf7b7e04de"
+	sha1 hasValue "ba7963ea65e200561eb8df3d57c46193812736e6"
+	sha256 hasValue "cf2e7d787982cfa10ffdcad35cfe8e2ce12165db07f8b6aede19a4d1f8a16aca"
+	descriptionMd5 hasValue "328f6d1c1ad91f4390a538abfb93a5cf"
+	homepage hasValue "https://github.com/alanxz/rabbitmq-c"
+	depends hasValue "librabbitmq4 (= 0.10.0-1), libssl-dev"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "librabbitmq4"
+	comparison hasValue "="
+	version hasValue "0.10.0-1"
+
+relationInstance depends(P0__librabbitmq_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libssl-dev"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__librabbitmq_dev,1,DepAtom__1)
+

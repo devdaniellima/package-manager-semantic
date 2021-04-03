@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology cppo
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__cppo memberOf Package
+	package hasValue "cppo"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/ocaml"
+	installedSize hasValue "1618"
+	maintainer hasValue "Original-Debian OCaml Maintainers <debian-ocaml-maint@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.6.6-1build1"
+	fileName hasValue "pool/universe/c/cppo/cppo_1.6.6-1build1_amd64.deb"
+	size hasValue "400672"
+	md5sum hasValue "9fcad947f3702d033f35bb39fac95c00"
+	sha1 hasValue "01db9b75c9ac7148344f48bfa82f1c50a8d60ac9"
+	sha256 hasValue "bd5f9e8f6f4c5c02fa585cf4e6988352743fa7c3baf843954c542a4f9c13664c"
+	descriptionMd5 hasValue "02e1a3f7b305b6b97292967ea9d582e0"
+	homepage hasValue "https://github.com/mjambon/cppo"
+	depends hasValue "ocaml-base-nox-4.08.1, libc6 (>= 2.29)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "ocaml-base-nox-4.08.1"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__cppo,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__cppo,1,DepAtom__1)
+

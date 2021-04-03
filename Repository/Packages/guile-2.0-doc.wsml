@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology guile_2Dot0_doc
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__guile_2Dot0_doc memberOf Package
+	package hasValue "guile-2.0-doc"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/doc"
+	installedSize hasValue "864"
+	maintainer hasValue "Original-Rob Browning <rlb@defaultvalue.org>"
+	architecture hasValue "all"
+	version hasValue "2.0.13+1-5.4"
+	fileName hasValue "pool/universe/g/guile-2.0/guile-2.0-doc_2.0.13+1-5.4_all.deb"
+	size hasValue "863848"
+	md5sum hasValue "e6145c9fd5749b43255a3c4bbc6bdca3"
+	sha1 hasValue "806d2a8705a13dcbbe2d99b701981b06fd9619c0"
+	sha256 hasValue "25a41eeb90d2b1c5c2e3645e434c9f8500eda5063411eb70dc64785517c57621"
+	description hasValue "Documentation for Guile 2.0"
+	descriptionMd5 hasValue "0a004c9e5b876d950b35f4408ccf6e80"
+	homepage hasValue "http://www.gnu.org/software/guile/"
+	depends hasValue "dpkg (>= 1.15.4) | install-info"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "dpkg"
+	comparison hasValue ">="
+	version hasValue "1.15.4"
+
+relationInstance depends(P0__guile_2Dot0_doc,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "install-info"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__guile_2Dot0_doc,0,DepAtom__1)
+

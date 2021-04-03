@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology stepic
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__stepic memberOf Package
+	package hasValue "stepic"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/graphics"
+	installedSize hasValue "38"
+	maintainer hasValue "Original-Scott Kitterman <scott@kitterman.com>"
+	architecture hasValue "all"
+	version hasValue "0.4.1-1"
+	replaces hasValue "python-stepic (<< 0.3-6~)"
+	fileName hasValue "pool/universe/s/stepic/stepic_0.4.1-1_all.deb"
+	size hasValue "8876"
+	md5sum hasValue "39835d1ab6cc8468091089dc39133b63"
+	sha1 hasValue "444f9fbf282b8ca4c2da05c9457e7069db7e273a"
+	sha256 hasValue "7a534eddb07c0987e48c59017f3ac63fb09f00383ed89f412389af3787137799"
+	descriptionMd5 hasValue "29eef5075d19711f3cc13104a0f9688d"
+	homepage hasValue "https://code.launchpad.net/stepic"
+	depends hasValue "python3:any (>= 3.3.2-2~), python3-pil"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ">="
+	version hasValue "3.3.2-2~"
+
+relationInstance depends(P0__stepic,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3-pil"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__stepic,1,DepAtom__1)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology xcwd
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__xcwd memberOf Package
+	package hasValue "xcwd"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/x11"
+	installedSize hasValue "31"
+	maintainer hasValue "Original-Benjamin Barenblat <bbaren@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0~2.gbpe2c777c-1"
+	fileName hasValue "pool/universe/x/xcwd/xcwd_0~2.gbpe2c777c-1_amd64.deb"
+	size hasValue "8656"
+	md5sum hasValue "ddb9a5f0f9e487a378f99efa3ba6723d"
+	sha1 hasValue "a018599bbffbb863ac55a338c4cc0bffec4528b4"
+	sha256 hasValue "f2ecd1040ada657a490c47481b126187fa1a8fde80996f9b699208939e52e57f"
+	descriptionMd5 hasValue "4cadb60cbe312b309a10096d2d3cd75e"
+	homepage hasValue "https://github.com/schischi/xcwd"
+	depends hasValue "libc6 (>= 2.27), libx11-6"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.27"
+
+relationInstance depends(P0__xcwd,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libx11-6"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__xcwd,1,DepAtom__1)
+

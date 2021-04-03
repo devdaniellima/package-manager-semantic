@@ -1,0 +1,75 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology dash
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__dash memberOf Package
+	package hasValue "dash"
+	packageSource hasValue Source__S1
+	priority hasValue "required"
+	section hasValue "shells"
+	installedSize hasValue "212"
+	maintainer hasValue "Original-Andrej Shadura <andrewsh@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.5.10.2-6"
+	fileName hasValue "pool/main/d/dash/dash_0.5.10.2-6_amd64.deb"
+	size hasValue "86336"
+	md5sum hasValue "8b22f294e3c973f57393f4d8eec04951"
+	sha1 hasValue "ae38915dd59c1589b4dda6219e179bb498d4aee5"
+	sha256 hasValue "12607b28478fb815952f47c53394b57405244e675ff3220a982a0b8c7d826b0c"
+	description hasValue "shell compatível com POSIX"
+	descriptionMd5 hasValue "8d4d9c32c6b2b70328f7f774a0cc1248"
+	homepage hasValue "http://gondor.apana.org.au/~herbert/dash/"
+	depends hasValue "debianutils (>= 2.15), dpkg (>= 1.19.1), debconf (>= 0.5) | debconf-2.0"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "debianutils"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__dash,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "dpkg"
+	comparison hasValue ">="
+	version hasValue "1.19.1"
+
+relationInstance depends(P0__dash,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "debconf"
+	comparison hasValue ">="
+	version hasValue "0.5"
+
+relationInstance depends(P0__dash,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "debconf-2.0"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__dash,2,DepAtom__3)
+

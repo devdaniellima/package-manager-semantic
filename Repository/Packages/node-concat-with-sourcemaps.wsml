@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology node_concat_with_sourcemaps
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__node_concat_with_sourcemaps memberOf Package
+	package hasValue "node-concat-with-sourcemaps"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/web"
+	installedSize hasValue "20"
+	maintainer hasValue "Original-Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.0.7-1"
+	fileName hasValue "pool/universe/n/node-concat-with-sourcemaps/node-concat-with-sourcemaps_1.0.7-1_all.deb"
+	size hasValue "4692"
+	md5sum hasValue "0ff32eebb84beaaea4e4888bc3fbb6f0"
+	sha1 hasValue "6cb1a54f1d1f059da950fa05644e3e02f3142e00"
+	sha256 hasValue "73884a398f69853f1f10e5d04fdf6a29df4789365a65027cb23f79e28f1e9a4b"
+	descriptionMd5 hasValue "0a811b9cc201444081dc98ecd699b808"
+	homepage hasValue "https://github.com/floridoo/concat-with-sourcemaps"
+	depends hasValue "node-source-map (>= 0.6.1), nodejs"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "node-source-map"
+	comparison hasValue ">="
+	version hasValue "0.6.1"
+
+relationInstance depends(P0__node_concat_with_sourcemaps,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "nodejs"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__node_concat_with_sourcemaps,1,DepAtom__1)
+

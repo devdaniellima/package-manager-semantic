@@ -1,0 +1,75 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ddclient
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ddclient memberOf Package
+	package hasValue "ddclient"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/net"
+	installedSize hasValue "319"
+	maintainer hasValue "Original-Torsten Landschoff <torsten@debian.org>"
+	architecture hasValue "all"
+	version hasValue "3.8.3-1.1ubuntu1"
+	provides hasValue "dyndns-client"
+	fileName hasValue "pool/universe/d/ddclient/ddclient_3.8.3-1.1ubuntu1_all.deb"
+	size hasValue "74578"
+	md5sum hasValue "4316700d738bf8f998879ceb6bfe4dfa"
+	sha1 hasValue "f0f03508dd71ce77733a5e48796aaf888ca79a83"
+	sha256 hasValue "7f121445fa00ca0882b622c2a6376380cffe8b8b8b9108eb0a689c0d7167e3fe"
+	descriptionMd5 hasValue "c061b70ebef6e12030d0e94015405c7a"
+	homepage hasValue "http://ddclient.sf.net"
+	depends hasValue "perl, debconf (>= 0.5) | debconf-2.0, lsb-base (>= 3.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "perl"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ddclient,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "debconf"
+	comparison hasValue ">="
+	version hasValue "0.5"
+
+relationInstance depends(P0__ddclient,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "debconf-2.0"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ddclient,1,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "lsb-base"
+	comparison hasValue ">="
+	version hasValue "3.1"
+
+relationInstance depends(P0__ddclient,2,DepAtom__3)
+

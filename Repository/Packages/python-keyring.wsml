@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python_keyring
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python_keyring memberOf Package
+	package hasValue "python-keyring"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "155"
+	maintainer hasValue "Original-Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "18.0.1-2ubuntu1"
+	fileName hasValue "pool/universe/p/python-keyring/python-keyring_18.0.1-2ubuntu1_all.deb"
+	size hasValue "32896"
+	md5sum hasValue "cfe32e977640f346c2628780af955e0a"
+	sha1 hasValue "2877b9d8d111e5d0f6ec4274f26fe73d73f56bfd"
+	sha256 hasValue "2aa0fb134495c992325e2989a96125220fb59b611827cf5f33e4bacfefe1bf16"
+	descriptionMd5 hasValue "678ac479d27bfb1ec07f4d0f4dc1051e"
+	homepage hasValue "https://github.com/jaraco/keyring"
+	depends hasValue "python-entrypoints, python2:any (<< 2.8), python2:any (>= 2.7~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python-entrypoints"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__python_keyring,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue "<<"
+	version hasValue "2.8"
+
+relationInstance depends(P0__python_keyring,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue ">="
+	version hasValue "2.7~"
+
+relationInstance depends(P0__python_keyring,2,DepAtom__2)
+

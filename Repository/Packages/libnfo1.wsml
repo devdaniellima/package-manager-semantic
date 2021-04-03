@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libnfo1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libnfo1 memberOf Package
+	package hasValue "libnfo1"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/libs"
+	installedSize hasValue "42"
+	maintainer hasValue "Original-Davide Cavalca <davide@geexbox.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.1-1.1build1"
+	fileName hasValue "pool/universe/libn/libnfo/libnfo1_1.0.1-1.1build1_amd64.deb"
+	size hasValue "11052"
+	md5sum hasValue "430c360b102ff3b47b8b8f3715d69033"
+	sha1 hasValue "d0cdd7c2ed57bb6d4b1dc55402728a83d90afa66"
+	sha256 hasValue "1a784cd39bd2a75ffb76f1809edd1df58d7aba3a97b2553274be88223e5eddff"
+	descriptionMd5 hasValue "ab94cf5be840f761eef6ef12aad5c3c4"
+	homepage hasValue "http://libnfo.geexbox.org/"
+	depends hasValue "libc6 (>= 2.4), libxml2 (>= 2.7.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libnfo1,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libxml2"
+	comparison hasValue ">="
+	version hasValue "2.7.4"
+
+relationInstance depends(P0__libnfo1,1,DepAtom__1)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python3_requests_futures
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python3_requests_futures memberOf Package
+	package hasValue "python3-requests-futures"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "43"
+	maintainer hasValue "Original-Sebastian Ramacher <sramacher@debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.0.0-2"
+	fileName hasValue "pool/universe/p/python-requests-futures/python3-requests-futures_1.0.0-2_all.deb"
+	size hasValue "10704"
+	md5sum hasValue "0d9b7a694e81a2dce75ffe067c046ac7"
+	sha1 hasValue "86923f1771f6aa20e77b6d39af171e5156651da3"
+	sha256 hasValue "8759e2cee69c1a2d9625dda18fdf534e5ae4e81bf5b90a80fa7da15b91d52bcd"
+	descriptionMd5 hasValue "264acfe2b4fb9e7e65eb69fdd00de607"
+	homepage hasValue "https://pypi.python.org/pypi/requests-futures"
+	depends hasValue "python3-requests (>= 1.2), python3:any"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3-requests"
+	comparison hasValue ">="
+	version hasValue "1.2"
+
+relationInstance depends(P0__python3_requests_futures,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__python3_requests_futures,1,DepAtom__1)
+

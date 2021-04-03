@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology openms
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__openms memberOf Package
+	package hasValue "openms"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/science"
+	installedSize hasValue "80"
+	maintainer hasValue "Original-The Debichem Group <debichem-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.4.0-real-1ubuntu4"
+	fileName hasValue "pool/universe/o/openms/openms_2.4.0-real-1ubuntu4_all.deb"
+	size hasValue "6880"
+	md5sum hasValue "e6668627dc367ac82d61c1d9075e0bd1"
+	sha1 hasValue "ce382c29a5953076ae5c3dfad68f8c5c3126a4ba"
+	sha256 hasValue "a689e499b216b9a9ad2a596d3215ea0bcb8a064a70a2f967a35109ef02d19d9d"
+	descriptionMd5 hasValue "1680992c26afae25b0ca399cdfebd8ee"
+	homepage hasValue "http://www.openms.de"
+	depends hasValue "libopenms2.4.0 (>= 2.4.0-real-1ubuntu4), topp (>= 2.4.0-real-1ubuntu4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libopenms2.4.0"
+	comparison hasValue ">="
+	version hasValue "2.4.0-real-1ubuntu4"
+
+relationInstance depends(P0__openms,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "topp"
+	comparison hasValue ">="
+	version hasValue "2.4.0-real-1ubuntu4"
+
+relationInstance depends(P0__openms,1,DepAtom__1)
+

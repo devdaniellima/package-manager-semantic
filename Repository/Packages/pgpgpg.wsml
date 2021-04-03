@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology pgpgpg
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__pgpgpg memberOf Package
+	package hasValue "pgpgpg"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "47"
+	maintainer hasValue "Original-Paweł Więcek <coven@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.13-9.1build1"
+	replaces hasValue "pgp"
+	provides hasValue "pgp"
+	conflicts hasValue "pgp"
+	fileName hasValue "pool/universe/p/pgpgpg/pgpgpg_0.13-9.1build1_amd64.deb"
+	size hasValue "14904"
+	md5sum hasValue "225dc227c60fec6393ff9721fb1a93b6"
+	sha1 hasValue "139af0f46f6caf54b9fad13c2b84c58c0e3d1d5d"
+	sha256 hasValue "3fde8ce0930f6b3d84ad11c343e6a11aa06e4ec83f38800730d18fb9d9b5a734"
+	descriptionMd5 hasValue "dc210e097fc480a3fce595396db4f958"
+	depends hasValue "libc6 (>= 2.14), gnupg"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__pgpgpg,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "gnupg"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__pgpgpg,1,DepAtom__1)
+

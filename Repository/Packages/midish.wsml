@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology midish
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__midish memberOf Package
+	package hasValue "midish"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/sound"
+	installedSize hasValue "393"
+	maintainer hasValue "Original-Alexandre Ratchov <alex@caoua.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.4-1.1build2"
+	fileName hasValue "pool/universe/m/midish/midish_1.0.4-1.1build2_amd64.deb"
+	size hasValue "111168"
+	md5sum hasValue "2dad5c450c5f6ac9d1f87e05ece3b062"
+	sha1 hasValue "13e9e0b78a372225999843942e8d60d1f94c67f9"
+	sha256 hasValue "86bf91019948e762173c8f4f5e313411856b9c0e9eb4afff24cb6edeff13ac33"
+	description hasValue "seqüenciador/filtro MIDI estilo shell"
+	descriptionMd5 hasValue "8290fb16e238e99faeb7db4a246ae1b4"
+	homepage hasValue "http://caoua.org/midish/"
+	depends hasValue "libasound2 (>= 1.0.16), libc6 (>= 2.14), libreadline8 (>= 6.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libasound2"
+	comparison hasValue ">="
+	version hasValue "1.0.16"
+
+relationInstance depends(P0__midish,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__midish,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libreadline8"
+	comparison hasValue ">="
+	version hasValue "6.0"
+
+relationInstance depends(P0__midish,2,DepAtom__2)
+

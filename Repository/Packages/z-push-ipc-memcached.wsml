@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology z_push_ipc_memcached
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__z_push_ipc_memcached memberOf Package
+	package hasValue "z-push-ipc-memcached"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/web"
+	installedSize hasValue "77"
+	maintainer hasValue "Original-Giraffe Maintainers <pkg-giraffe-maintainers@alioth-lists.debian.net>"
+	architecture hasValue "all"
+	version hasValue "2.5.1-1"
+	fileName hasValue "pool/universe/z/z-push/z-push-ipc-memcached_2.5.1-1_all.deb"
+	size hasValue "17140"
+	md5sum hasValue "dd0e541a00b09a78a06a4bdc9cc147af"
+	sha1 hasValue "bbd894e2e2704b8c8f505bb550016271bf857c21"
+	sha256 hasValue "61f9ccad06a6d2bf476ab8cfa9455be4159f76bbee40f4f58752bbd2c27a6d9d"
+	descriptionMd5 hasValue "cbacee9199a7d3467fd47888797906e8"
+	homepage hasValue "http://z-push.org/download/"
+	depends hasValue "php-memcached, z-push-common (= 2.5.1-1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "php-memcached"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__z_push_ipc_memcached,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "z-push-common"
+	comparison hasValue "="
+	version hasValue "2.5.1-1"
+
+relationInstance depends(P0__z_push_ipc_memcached,1,DepAtom__1)
+

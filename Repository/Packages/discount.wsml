@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology discount
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__discount memberOf Package
+	package hasValue "discount"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/text"
+	installedSize hasValue "123"
+	maintainer hasValue "Original-Alessandro Ghedini <ghedo@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.2.6-1"
+	conflicts hasValue "libtext-markdown-perl, markdown"
+	fileName hasValue "pool/universe/d/discount/discount_2.2.6-1_amd64.deb"
+	size hasValue "24552"
+	md5sum hasValue "e8dd54f7f251ca75e5d05e16aa0cf730"
+	sha1 hasValue "f7db5adbdd745e20b56620a007bcd710991cc6e3"
+	sha256 hasValue "8dbd694660d23822ac5b129ea7661907a67d5f3aa0a91ef1f3ce30ab15ba51c4"
+	descriptionMd5 hasValue "113ff05c2bb8424745ac26a1294cbf0d"
+	homepage hasValue "http://www.pell.portland.or.us/~orc/Code/discount/"
+	depends hasValue "libc6 (>= 2.4), libmarkdown2 (= 2.2.6-1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__discount,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libmarkdown2"
+	comparison hasValue "="
+	version hasValue "2.2.6-1"
+
+relationInstance depends(P0__discount,1,DepAtom__1)
+

@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology osspd_alsa
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__osspd_alsa memberOf Package
+	package hasValue "osspd-alsa"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/sound"
+	installedSize hasValue "46"
+	maintainer hasValue "Original-Ralf Jung <post@ralfj.de>"
+	architecture hasValue "amd64"
+	version hasValue "1.3.2-11"
+	replaces hasValue "osspd (<< 1.3.2-4)"
+	provides hasValue "osspd-backend"
+	fileName hasValue "pool/universe/o/osspd/osspd-alsa_1.3.2-11_amd64.deb"
+	size hasValue "12564"
+	md5sum hasValue "2c5deeb7cb04741309564a9ef0b26ded"
+	sha1 hasValue "18543c24ffbd2072352761177405f1b376b61666"
+	sha256 hasValue "7db3eac5558e167ff0cdc08858349595936ef71c85732ccb53ce786bbadc37a0"
+	descriptionMd5 hasValue "b7a1f3818df02903703285718e5eb492"
+	homepage hasValue "https://sourceforge.net/projects/osspd/"
+	depends hasValue "libasound2 (>= 1.0.16), libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libasound2"
+	comparison hasValue ">="
+	version hasValue "1.0.16"
+
+relationInstance depends(P0__osspd_alsa,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__osspd_alsa,1,DepAtom__1)
+

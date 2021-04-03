@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology cmospwd
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__cmospwd memberOf Package
+	package hasValue "cmospwd"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "57"
+	maintainer hasValue "Original-Luke Faraone <luke@faraone.cc>"
+	architecture hasValue "amd64"
+	version hasValue "5.0+dfsg-2build1"
+	fileName hasValue "pool/universe/c/cmospwd/cmospwd_5.0+dfsg-2build1_amd64.deb"
+	size hasValue "21056"
+	md5sum hasValue "bdaead11c0603d1bc259c26280832b05"
+	sha1 hasValue "bd3216638625663e503a98e84b7269e37dae767d"
+	sha256 hasValue "b2d901b4b44e86237d504f3e5c38b75f8d819d55b3d186d449468d4c79479198"
+	description hasValue "descriptografa senhas de BIOS a partir da CMOS"
+	descriptionMd5 hasValue "15fd197e22194ff29a906ee8ec37fee9"
+	homepage hasValue "http://www.cgsecurity.org/wiki/CmosPwd"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__cmospwd,0,DepAtom__0)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology goval_dictionary
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__goval_dictionary memberOf Package
+	package hasValue "goval-dictionary"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "8778"
+	maintainer hasValue "Original-Debian Go Packaging Team <pkg-go-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.1.1-1"
+	fileName hasValue "pool/universe/g/goval-dictionary/goval-dictionary_0.1.1-1_amd64.deb"
+	size hasValue "2451524"
+	md5sum hasValue "120f0853ffdf794f34cd56619acc155a"
+	sha1 hasValue "870ec018138884d73dcff206f7045d3aae4cab5f"
+	sha256 hasValue "ac254662bede093b2850030d46a9e834bb7c52786d6a789a5a01857057f002f8"
+	descriptionMd5 hasValue "775f59165329a232ae0669f0d101e66a"
+	homepage hasValue "https://github.com/kotakanbe/goval-dictionary"
+	depends hasValue "libc6 (>= 2.4), libsqlite3-0 (>= 3.7.15)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__goval_dictionary,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libsqlite3-0"
+	comparison hasValue ">="
+	version hasValue "3.7.15"
+
+relationInstance depends(P0__goval_dictionary,1,DepAtom__1)
+

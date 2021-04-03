@@ -1,0 +1,63 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology lz4
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__lz4 memberOf Package
+	package hasValue "lz4"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "utils"
+	installedSize hasValue "222"
+	maintainer hasValue "Original-Nobuhiro Iwamatsu <iwamatsu@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.9.2-2"
+	replaces hasValue "liblz4-tool (<< 1.8.0-1)"
+	provides hasValue "liblz4-tool"
+	conflicts hasValue "liblz4-tool (<< 1.8.0-1)"
+	fileName hasValue "pool/main/l/lz4/lz4_1.9.2-2_amd64.deb"
+	size hasValue "82656"
+	md5sum hasValue "5f7ca0c54bcb79750662e243406a74be"
+	sha1 hasValue "61228f46300e3b7914b5560b57907febf468a0b9"
+	sha256 hasValue "84587796be6a75075aa4e09152d1cfd37c1b8d88150c3204e1f2c861fae72cc1"
+	descriptionMd5 hasValue "559a59fa22d506a3fde0f4eef6db1a8d"
+	homepage hasValue "https://github.com/Cyan4973/lz4"
+	depends hasValue "libc6 (>= 2.17), liblz4-1 (= 1.9.2-2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.17"
+
+relationInstance depends(P0__lz4,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "liblz4-1"
+	comparison hasValue "="
+	version hasValue "1.9.2-2"
+
+relationInstance depends(P0__lz4,1,DepAtom__1)
+

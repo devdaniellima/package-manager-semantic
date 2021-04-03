@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libduo3
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libduo3 memberOf Package
+	package hasValue "libduo3"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/libs"
+	installedSize hasValue "108"
+	maintainer hasValue "Original-Kees Cook <kees@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.11.3-1"
+	fileName hasValue "pool/universe/d/duo-unix/libduo3_1.11.3-1_amd64.deb"
+	size hasValue "37192"
+	md5sum hasValue "18409bf936f007d2cfcca8644aa8851e"
+	sha1 hasValue "97004e561994f5c5f0ff9ebe6f727ef817b5036a"
+	sha256 hasValue "bd8cbb3c0ebfd0be0e5077f4cebff6982eab1d3fcd1c6649a976bf29415ce735"
+	descriptionMd5 hasValue "87191bfc39dda4e35950c86a9c35f22c"
+	homepage hasValue "https://github.com/duosecurity/duo_unix"
+	depends hasValue "libc6 (>= 2.25), libssl1.1 (>= 1.1.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.25"
+
+relationInstance depends(P0__libduo3,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libssl1.1"
+	comparison hasValue ">="
+	version hasValue "1.1.0"
+
+relationInstance depends(P0__libduo3,1,DepAtom__1)
+

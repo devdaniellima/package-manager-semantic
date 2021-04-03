@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libpfs2
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libpfs2 memberOf Package
+	package hasValue "libpfs2"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "100"
+	maintainer hasValue "Original-Debian PhotoTools Maintainers <pkg-phototools-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.1.0-5build3"
+	fileName hasValue "pool/universe/p/pfstools/libpfs2_2.1.0-5build3_amd64.deb"
+	size hasValue "28244"
+	md5sum hasValue "3cc3802572b21c64bf65f3b8f5b54e31"
+	sha1 hasValue "2c1c9bc73571744481ee5e8d4d13d0871400a98f"
+	sha256 hasValue "b3ac2ddd76156a24f77be022485f7f6fa4bac7720f74e75f7af53db7c28cb83e"
+	description hasValue "C++ library to read and write pfs files"
+	descriptionMd5 hasValue "3f4fb3b66eeb1617b63ec44b7ac6de83"
+	homepage hasValue "http://pfstools.sourceforge.net/"
+	depends hasValue "libc6 (>= 2.29), libgcc-s1 (>= 3.0), libstdc++6 (>= 5.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__libpfs2,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgcc-s1"
+	comparison hasValue ">="
+	version hasValue "3.0"
+
+relationInstance depends(P0__libpfs2,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "5.2"
+
+relationInstance depends(P0__libpfs2,2,DepAtom__2)
+

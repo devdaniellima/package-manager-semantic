@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology mailcheck
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__mailcheck memberOf Package
+	package hasValue "mailcheck"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/mail"
+	installedSize hasValue "51"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.91.2-3"
+	fileName hasValue "pool/universe/m/mailcheck/mailcheck_1.91.2-3_amd64.deb"
+	size hasValue "15240"
+	md5sum hasValue "e1860cbb5d409a51d2763d8dd142eb77"
+	sha1 hasValue "3714bbf990be0fa906934f7f75fbb06e6067a61f"
+	sha256 hasValue "cea4012ea95fe63df1a3c196814eabe28720db8a4c2d347f3300d1c8d000a995"
+	descriptionMd5 hasValue "5ea21258efc5207555e7fb21205ca053"
+	homepage hasValue "http://mailcheck.sourceforge.net"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__mailcheck,0,DepAtom__0)
+

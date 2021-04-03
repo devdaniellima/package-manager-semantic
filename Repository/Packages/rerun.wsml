@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology rerun
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__rerun memberOf Package
+	package hasValue "rerun"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/ruby"
+	installedSize hasValue "66"
+	maintainer hasValue "Original-Debian Ruby Extras Maintainers <pkg-ruby-extras-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.13.0-1"
+	fileName hasValue "pool/universe/r/rerun/rerun_0.13.0-1_all.deb"
+	size hasValue "24292"
+	md5sum hasValue "acd7aaad7c657f2d3050295b4431131b"
+	sha1 hasValue "527bf0c8035334bee0e10a8e41799b80cfacd91e"
+	sha256 hasValue "417ee800ce9b04fa8dada3ccd1b94af676cdd6957efa484285fccd98fe8a9e27"
+	descriptionMd5 hasValue "3b279f3ada5335bf798145acd11e26f9"
+	homepage hasValue "http://github.com/alexch/rerun/"
+	depends hasValue "ruby | ruby-interpreter, ruby-listen (>= 3.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "ruby"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__rerun,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "ruby-interpreter"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__rerun,0,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "ruby-listen"
+	comparison hasValue ">="
+	version hasValue "3.0"
+
+relationInstance depends(P0__rerun,1,DepAtom__2)
+

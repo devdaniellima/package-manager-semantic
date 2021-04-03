@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libpcl1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libpcl1 memberOf Package
+	package hasValue "libpcl1"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "28"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.12-1"
+	fileName hasValue "pool/universe/libp/libpcl1/libpcl1_1.12-1_amd64.deb"
+	size hasValue "5876"
+	md5sum hasValue "7dbd4b62236a3d446643ba89e4b717ff"
+	sha1 hasValue "bfe3e56a0e7e3fcffd01e5e0db4b7cc1f32daac6"
+	sha256 hasValue "56dcbea8cf2d50fb8ad300c5185e1a94d62437f0b7abd64cfef900b95c222692"
+	descriptionMd5 hasValue "b19d0716b24de9aaeb66a87bdd99ab20"
+	homepage hasValue "http://www.xmailserver.org/libpcl.html"
+	depends hasValue "libc6 (>= 2.3.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.3.4"
+
+relationInstance depends(P0__libpcl1,0,DepAtom__0)
+

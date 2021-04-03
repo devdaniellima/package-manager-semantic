@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libcdio_paranoia2
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libcdio_paranoia2 memberOf Package
+	package hasValue "libcdio-paranoia2"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libs"
+	installedSize hasValue "55"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "10.2+2.0.0-1"
+	fileName hasValue "pool/main/libc/libcdio-paranoia/libcdio-paranoia2_10.2+2.0.0-1_amd64.deb"
+	size hasValue "16236"
+	md5sum hasValue "e39320ff0157608ee5c29af1810cebec"
+	sha1 hasValue "9ab6730c8b9d2b5ecbe403967689aafacd2a2546"
+	sha256 hasValue "faa3122a859ca7dff9b62d763b6afebdd7390658b89c471e9afbc265fb033905"
+	description hasValue "biblioteca para ler CDs de áudio digital com correção de erros"
+	descriptionMd5 hasValue "cc3435321a161f5f503f93431943251b"
+	homepage hasValue "https://www.gnu.org/software/libcdio/"
+	depends hasValue "libc6 (>= 2.14), libcdio-cdda2 (>= 10.2+2.0.0), libcdio18 (>= 2.0.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libcdio_paranoia2,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libcdio-cdda2"
+	comparison hasValue ">="
+	version hasValue "10.2+2.0.0"
+
+relationInstance depends(P0__libcdio_paranoia2,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libcdio18"
+	comparison hasValue ">="
+	version hasValue "2.0.0"
+
+relationInstance depends(P0__libcdio_paranoia2,2,DepAtom__2)
+

@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology node_stable
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__node_stable memberOf Package
+	package hasValue "node-stable"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/javascript"
+	installedSize hasValue "21"
+	maintainer hasValue "Original-Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.1.8-2"
+	fileName hasValue "pool/universe/n/node-stable/node-stable_0.1.8-2_all.deb"
+	size hasValue "5332"
+	md5sum hasValue "47c4f96e6a469fbfa5ca6803abf8dcdf"
+	sha1 hasValue "068a0195c1cadc3d529c6cdfc328b910dc19c264"
+	sha256 hasValue "feeaae3aad89f2856897211db10321109a4855cdf0f417b26d83daef47c9741a"
+	descriptionMd5 hasValue "b1b7775585bedd6f7791185fc3b42a10"
+	homepage hasValue "https://github.com/Two-Screen/stable"
+	depends hasValue "nodejs (>= 6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "nodejs"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__node_stable,0,DepAtom__0)
+

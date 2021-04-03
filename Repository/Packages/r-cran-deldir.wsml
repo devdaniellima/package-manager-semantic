@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology r_cran_deldir
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__r_cran_deldir memberOf Package
+	package hasValue "r-cran-deldir"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/gnu-r"
+	installedSize hasValue "417"
+	maintainer hasValue "Original-Debian R Packages Maintainers <r-pkg-team@alioth-lists.debian.net>"
+	architecture hasValue "amd64"
+	version hasValue "0.1-25-1"
+	fileName hasValue "pool/universe/r/r-cran-deldir/r-cran-deldir_0.1-25-1_amd64.deb"
+	size hasValue "221348"
+	md5sum hasValue "7f3000771cc2ee0f4536db2a1dad6819"
+	sha1 hasValue "dbce517f10f574d724dde11efda2063b21f7c5d3"
+	sha256 hasValue "ddb76e54c9b61f5d90f7f2c0af7b38fe0af751e6015e6c20434f505d22313efc"
+	descriptionMd5 hasValue "f2d3d857735a5484ea3165abef563757"
+	homepage hasValue "https://cran.r-project.org/package=deldir"
+	depends hasValue "r-base-core (>= 3.6.2-2), r-api-3.5, libc6 (>= 2.29)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "r-base-core"
+	comparison hasValue ">="
+	version hasValue "3.6.2-2"
+
+relationInstance depends(P0__r_cran_deldir,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "r-api-3.5"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__r_cran_deldir,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__r_cran_deldir,2,DepAtom__2)
+

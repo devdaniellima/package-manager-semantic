@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libcleri0
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libcleri0 memberOf Package
+	package hasValue "libcleri0"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "98"
+	maintainer hasValue "Original-SiriDB Maintainers <libcleri@packages.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.11.0-1"
+	fileName hasValue "pool/universe/libc/libcleri/libcleri0_0.11.0-1_amd64.deb"
+	size hasValue "21608"
+	md5sum hasValue "0cceec5151c58b558d8b7d805b01b68b"
+	sha1 hasValue "26a80725777c91179868897e0472ef94a65f2cfe"
+	sha256 hasValue "850515d74d2950b4bd0f5c5ebad04785dc16acec23b1ceac2cb8ee4957c958c4"
+	descriptionMd5 hasValue "ef180c003113788dd6f39ec0cf8d62de"
+	homepage hasValue "http://siridb.net/"
+	depends hasValue "libc6 (>= 2.14), libpcre2-8-0 (>= 10.32)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libcleri0,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libpcre2-8-0"
+	comparison hasValue ">="
+	version hasValue "10.32"
+
+relationInstance depends(P0__libcleri0,1,DepAtom__1)
+

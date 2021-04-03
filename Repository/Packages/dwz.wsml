@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology dwz
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__dwz memberOf Package
+	package hasValue "dwz"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "devel"
+	installedSize hasValue "483"
+	maintainer hasValue "Original-Debian GCC Maintainers <debian-gcc@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.13-5"
+	fileName hasValue "pool/main/d/dwz/dwz_0.13-5_amd64.deb"
+	size hasValue "150976"
+	md5sum hasValue "84c2ccca866c8a7b156e2e02d397c4a6"
+	sha1 hasValue "501edafd0c4d68b606a7474fdff20f3909f087da"
+	sha256 hasValue "6283b8630dfd9a85dfe766726634e471200123ba349bbc3cf96e293196edc491"
+	descriptionMd5 hasValue "b5447a660ee9ed08d9c1cc3453445479"
+	homepage hasValue "https://www.sourceware.org/dwz/"
+	depends hasValue "libc6 (>= 2.14), libelf1 (>= 0.131)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__dwz,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libelf1"
+	comparison hasValue ">="
+	version hasValue "0.131"
+
+relationInstance depends(P0__dwz,1,DepAtom__1)
+

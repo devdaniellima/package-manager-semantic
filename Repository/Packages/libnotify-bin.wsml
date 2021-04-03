@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libnotify_bin
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libnotify_bin memberOf Package
+	package hasValue "libnotify-bin"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "utils"
+	installedSize hasValue "38"
+	maintainer hasValue "Original-Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.7.9-1ubuntu2"
+	fileName hasValue "pool/main/libn/libnotify/libnotify-bin_0.7.9-1ubuntu2_amd64.deb"
+	size hasValue "7188"
+	md5sum hasValue "d9e901fa072aa6ff5b20d597ac69d02d"
+	sha1 hasValue "93b004c4c6492328f73ca4b7734b7c7c7483bbfc"
+	sha256 hasValue "5d6efae678f735ed79212728a3ff29f1b03e6ff5bef5971fbda1da11711b33d4"
+	description hasValue "sends desktop notifications to a notification daemon (Utilities)"
+	descriptionMd5 hasValue "78f71daa6123cb4aefd91bc017bb5d0c"
+	depends hasValue "libc6 (>= 2.3.4), libglib2.0-0 (>= 2.26), libnotify4 (>= 0.7.3)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.3.4"
+
+relationInstance depends(P0__libnotify_bin,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libglib2.0-0"
+	comparison hasValue ">="
+	version hasValue "2.26"
+
+relationInstance depends(P0__libnotify_bin,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libnotify4"
+	comparison hasValue ">="
+	version hasValue "0.7.3"
+
+relationInstance depends(P0__libnotify_bin,2,DepAtom__2)
+

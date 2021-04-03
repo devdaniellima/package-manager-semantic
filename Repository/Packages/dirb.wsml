@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology dirb
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__dirb memberOf Package
+	package hasValue "dirb"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "1456"
+	maintainer hasValue "Original-Debian Security Tools <team+pkg-security@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.22+dfsg-3"
+	fileName hasValue "pool/universe/d/dirb/dirb_2.22+dfsg-3_amd64.deb"
+	size hasValue "204532"
+	md5sum hasValue "98e42d61772f76ceff265a46863435bf"
+	sha1 hasValue "e8d462ea45373d79069ae837fa7701493a3e24c6"
+	sha256 hasValue "39487b6559a20131c60d64cb1c76873f42d373b9e430d7fc02693c67297182a7"
+	descriptionMd5 hasValue "71fab897ebe43a4c1ceb6065358e1f36"
+	homepage hasValue "http://dirb.sourceforge.net/"
+	depends hasValue "libc6 (>= 2.8), libcurl4 (>= 7.16.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.8"
+
+relationInstance depends(P0__dirb,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libcurl4"
+	comparison hasValue ">="
+	version hasValue "7.16.2"
+
+relationInstance depends(P0__dirb,1,DepAtom__1)
+

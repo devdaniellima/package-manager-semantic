@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology sl
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__sl memberOf Package
+	package hasValue "sl"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/games"
+	installedSize hasValue "59"
+	maintainer hasValue "Original-Markus Frosch <lazyfrosch@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "5.02-1"
+	fileName hasValue "pool/universe/s/sl/sl_5.02-1_amd64.deb"
+	size hasValue "12708"
+	md5sum hasValue "a9d3404fd92fb694a069f669cf729e02"
+	sha1 hasValue "9d51f44449d64521ca8c903e4d70bd983798eb39"
+	sha256 hasValue "aeda5a0e5f2ed185078e7819b9a6176eb6b09190d4b58dc46e049d9f01fa0ea9"
+	description hasValue "corrige-o se você digitar 'sl' por engano"
+	descriptionMd5 hasValue "64964faf22f36fbd8983fb5015010c0b"
+	homepage hasValue "https://github.com/mtoyoda/sl"
+	depends hasValue "libc6 (>= 2.2.5), libncurses6 (>= 6), libtinfo6 (>= 6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.2.5"
+
+relationInstance depends(P0__sl,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libncurses6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__sl,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libtinfo6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__sl,2,DepAtom__2)
+

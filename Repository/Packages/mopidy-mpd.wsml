@@ -1,0 +1,74 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology mopidy_mpd
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__mopidy_mpd memberOf Package
+	package hasValue "mopidy-mpd"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/sound"
+	installedSize hasValue "180"
+	maintainer hasValue "Original-Stein Magnus Jodal <jodal@debian.org>"
+	architecture hasValue "all"
+	version hasValue "3.0.0-2"
+	fileName hasValue "pool/universe/m/mopidy-mpd/mopidy-mpd_3.0.0-2_all.deb"
+	size hasValue "37468"
+	md5sum hasValue "bce982867a1d3cc57ccaa055739cfe64"
+	sha1 hasValue "343b01e8fee0bb65dd690a556163146a8a576eee"
+	sha256 hasValue "51f121e4f3772e32cf37e963f07d3764d01e2220b49906c66dc6631a5a18f430"
+	descriptionMd5 hasValue "cc59e4c9fedbb0f6abbfd0777bd86c64"
+	homepage hasValue "https://mopidy.com/"
+	depends hasValue "mopidy (>= 3.0.0), python3-pkg-resources, python3-pykka, python3:any"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "mopidy"
+	comparison hasValue ">="
+	version hasValue "3.0.0"
+
+relationInstance depends(P0__mopidy_mpd,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3-pkg-resources"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__mopidy_mpd,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "python3-pykka"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__mopidy_mpd,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__mopidy_mpd,3,DepAtom__3)
+

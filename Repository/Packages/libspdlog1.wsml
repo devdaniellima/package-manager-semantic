@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libspdlog1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libspdlog1 memberOf Package
+	package hasValue "libspdlog1"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "819"
+	maintainer hasValue "Original-Debian Med Packaging Team <debian-med-packaging@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:1.5.0-1"
+	fileName hasValue "pool/universe/s/spdlog/libspdlog1_1.5.0-1_amd64.deb"
+	size hasValue "161700"
+	md5sum hasValue "a987ded3b636922ba78400bca449c1ad"
+	sha1 hasValue "0f5db6822cca815a7fddc5da8e85e3f44b1385bb"
+	sha256 hasValue "e6dd3c62a2d34e362fa5cd2e0fbf97c97cd48390ec4092af270c8368dc5da479"
+	descriptionMd5 hasValue "b2d503aa303f67bc884a02e53e082428"
+	homepage hasValue "https://github.com/gabime/spdlog"
+	depends hasValue "libc6 (>= 2.14), libgcc-s1 (>= 3.0), libstdc++6 (>= 9)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libspdlog1,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgcc-s1"
+	comparison hasValue ">="
+	version hasValue "3.0"
+
+relationInstance depends(P0__libspdlog1,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "9"
+
+relationInstance depends(P0__libspdlog1,2,DepAtom__2)
+

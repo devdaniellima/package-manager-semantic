@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology vdr_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__vdr_dev memberOf Package
+	package hasValue "vdr-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/misc"
+	installedSize hasValue "870"
+	maintainer hasValue "Original-Debian VDR Team <pkg-vdr-dvb-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.4.1-4ubuntu1"
+	fileName hasValue "pool/universe/v/vdr/vdr-dev_2.4.1-4ubuntu1_amd64.deb"
+	size hasValue "220100"
+	md5sum hasValue "9b621fb46ff5a3d6a56fa2bea7f49ebf"
+	sha1 hasValue "32fdf412088516c2f1b3d0905a9ca51cd48c1560"
+	sha256 hasValue "ad60234230aaa109f60c07f28706400dd54fe981061931b388c3b8373138715d"
+	descriptionMd5 hasValue "e58a79ca67ec833e2c0dea0bded84e82"
+	homepage hasValue "http://www.tvdr.de/"
+	depends hasValue "debhelper, linux-libc-dev (>= 3.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "debhelper"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__vdr_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "linux-libc-dev"
+	comparison hasValue ">="
+	version hasValue "3.0"
+
+relationInstance depends(P0__vdr_dev,1,DepAtom__1)
+

@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology binutils_z80
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__binutils_z80 memberOf Package
+	package hasValue "binutils-z80"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/devel"
+	installedSize hasValue "10638"
+	maintainer hasValue "Original-Alberto Garcia <berto@igalia.com>"
+	architecture hasValue "amd64"
+	version hasValue "2.30-11ubuntu1+4build1"
+	fileName hasValue "pool/universe/b/binutils-z80/binutils-z80_2.30-11ubuntu1+4build1_amd64.deb"
+	size hasValue "1178996"
+	md5sum hasValue "549a51d0c6f30a990b14b36c3610c1ba"
+	sha1 hasValue "e5ede8887a330879f19a88d05bead08bd3bffa98"
+	sha256 hasValue "95e58ea7944229f98088c533af28ad2488a83b903d2073b57d36b3dc56f01423"
+	description hasValue "GNU binary utilities for the z80-unknown-coff target"
+	descriptionMd5 hasValue "8a9b975001f020173239e354af3d6a19"
+	homepage hasValue "https://www.gnu.org/software/binutils/"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__binutils_z80,0,DepAtom__0)
+

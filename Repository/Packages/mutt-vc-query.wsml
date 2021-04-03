@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology mutt_vc_query
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__mutt_vc_query memberOf Package
+	package hasValue "mutt-vc-query"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/mail"
+	installedSize hasValue "28"
+	maintainer hasValue "Original-Rafael Laboissiere <rafael@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "004-1"
+	fileName hasValue "pool/universe/m/mutt-vc-query/mutt-vc-query_004-1_amd64.deb"
+	size hasValue "8640"
+	md5sum hasValue "a3aa5f37877e99680b5ed13c22e698a4"
+	sha1 hasValue "f9dd0b3fe6b9e37136a29e27d26a6ba4b087fd16"
+	sha256 hasValue "ddcebdc33829a8f42abb858ba3568d419e951c77a476e4bed73c069a2b6457a8"
+	descriptionMd5 hasValue "bad6f655b9ab26aebe55ccbd03e2fd61"
+	homepage hasValue "https://github.com/libvc/mutt_vc_query"
+	depends hasValue "libc6 (>= 2.4), libvc0 (>= 003.dfsg.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__mutt_vc_query,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libvc0"
+	comparison hasValue ">="
+	version hasValue "003.dfsg.1"
+
+relationInstance depends(P0__mutt_vc_query,1,DepAtom__1)
+

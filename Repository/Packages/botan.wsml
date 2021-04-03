@@ -1,0 +1,75 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology botan
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__botan memberOf Package
+	package hasValue "botan"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "728"
+	maintainer hasValue "Original-Laszlo Boszormenyi (GCS) <gcs@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.12.1-2build1"
+	fileName hasValue "pool/universe/b/botan/botan_2.12.1-2build1_amd64.deb"
+	size hasValue "213944"
+	md5sum hasValue "458c8058b80bed3fea29704481a09183"
+	sha1 hasValue "3f1254e60ea508183749bc6503b1674869628ef4"
+	sha256 hasValue "10d6fa46e686caf0627ba23a446f9327e9cdfaf3d92b2b8498a865a3e001688c"
+	description hasValue "multiplatform crypto library (2.x version)"
+	descriptionMd5 hasValue "6de918ceaa3e7e490370b3b25cbac026"
+	homepage hasValue "https://botan.randombit.net/"
+	depends hasValue "libbotan-2-12, libc6 (>= 2.15), libgcc-s1 (>= 3.0), libstdc++6 (>= 9)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libbotan-2-12"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__botan,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__botan,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libgcc-s1"
+	comparison hasValue ">="
+	version hasValue "3.0"
+
+relationInstance depends(P0__botan,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "9"
+
+relationInstance depends(P0__botan,3,DepAtom__3)
+

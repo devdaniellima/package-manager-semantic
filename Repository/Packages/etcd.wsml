@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology etcd
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__etcd memberOf Package
+	package hasValue "etcd"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/devel"
+	installedSize hasValue "16"
+	maintainer hasValue "Original-Debian Go Packaging Team <team+pkg-go@tracker.debian.org>"
+	architecture hasValue "all"
+	version hasValue "3.2.26+dfsg-6"
+	fileName hasValue "pool/universe/e/etcd/etcd_3.2.26+dfsg-6_all.deb"
+	size hasValue "2520"
+	md5sum hasValue "34fece998f35d1c7eda4acadf0cf7e8c"
+	sha1 hasValue "1c60c42dd98e67d5ff96de8f1a17f9bdd37ac146"
+	sha256 hasValue "c9687aad8779a9064b4043041b14ee5d8c3f6f0c97ac9cbb8cc93b9c861db354"
+	descriptionMd5 hasValue "6dbc0ea9774e15122c9e2d090649b4ac"
+	homepage hasValue "https://github.com/coreos/etcd"
+	depends hasValue "etcd-client, etcd-server"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "etcd-client"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__etcd,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "etcd-server"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__etcd,1,DepAtom__1)
+

@@ -1,0 +1,59 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libllvm_ocaml_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libllvm_ocaml_dev memberOf Package
+	package hasValue "libllvm-ocaml-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/ocaml"
+	installedSize hasValue "19"
+	maintainer hasValue "Original-LLVM Packaging Team <pkg-llvm-team@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:10.0-50~exp1"
+	fileName hasValue "pool/universe/l/llvm-defaults/libllvm-ocaml-dev_10.0-50~exp1_amd64.deb"
+	size hasValue "1676"
+	md5sum hasValue "6872544f225dad0bbb59d8a1772b6a88"
+	sha1 hasValue "88341ef3062bd90d2826bc18ab71901c06a79e3a"
+	sha256 hasValue "beebbc5c70e8d26a3b69259f88d12d8e81b06a404acddfa04c5296f362773312"
+	descriptionMd5 hasValue "60d4eca46d2fd47b2e7e99b12a12793a"
+	depends hasValue "llvm-runtime (= 1:10.0-50~exp1), libllvm-10-ocaml-dev (>= 10~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "llvm-runtime"
+	comparison hasValue "="
+	version hasValue "1:10.0-50~exp1"
+
+relationInstance depends(P0__libllvm_ocaml_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libllvm-10-ocaml-dev"
+	comparison hasValue ">="
+	version hasValue "10~"
+
+relationInstance depends(P0__libllvm_ocaml_dev,1,DepAtom__1)
+

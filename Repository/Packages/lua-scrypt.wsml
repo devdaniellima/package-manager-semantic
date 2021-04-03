@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology lua_scrypt
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__lua_scrypt memberOf Package
+	package hasValue "lua-scrypt"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/interpreters"
+	installedSize hasValue "43"
+	maintainer hasValue "Original-Daniel Silverstone <dsilvers@digital-scurf.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.1-3"
+	provides hasValue "lua5.1-scrypt, lua5.2-scrypt"
+	fileName hasValue "pool/universe/l/lua-scrypt/lua-scrypt_1.1-3_amd64.deb"
+	size hasValue "6876"
+	md5sum hasValue "e3e3a131ec7f9d1e8785940ab8099678"
+	sha1 hasValue "1db9707d4f3c5745a7046088a67581716d57460a"
+	sha256 hasValue "f359be8c116aa5d2d78e3d174858c98aa5dde462a92efc501186a0836139db28"
+	descriptionMd5 hasValue "7bf0fb3f2f2f169c5fa28a7ce5bffeff"
+	homepage hasValue "https://git.gitano.org.uk/lua-scrypt.git/"
+	depends hasValue "libc6 (>= 2.4), libscrypt0 (>= 1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__lua_scrypt,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libscrypt0"
+	comparison hasValue ">="
+	version hasValue "1"
+
+relationInstance depends(P0__lua_scrypt,1,DepAtom__1)
+

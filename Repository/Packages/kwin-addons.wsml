@@ -1,0 +1,76 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology kwin_addons
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__kwin_addons memberOf Package
+	package hasValue "kwin-addons"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/kde"
+	installedSize hasValue "230"
+	maintainer hasValue "Original-Debian/Kubuntu Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "4:5.18.4.1-0ubuntu2"
+	replaces hasValue "kwin-data (<< 4:5.1.0.1+git20141031.1444)"
+	fileName hasValue "pool/universe/k/kdeplasma-addons/kwin-addons_5.18.4.1-0ubuntu2_amd64.deb"
+	size hasValue "21556"
+	md5sum hasValue "7d595856543a0dd398b0dfd6dba5f132"
+	sha1 hasValue "1c9f25d2e4d47e23a39fa71a249cdfe1541c6ea9"
+	sha256 hasValue "e87ec05a78902b23048b7c082b1f9120d280eae3c14be4afe9936c2008381773"
+	description hasValue "additional desktop and window switchers for KWin"
+	descriptionMd5 hasValue "77130048996c2b746f6d989a7ac02671"
+	homepage hasValue "https://projects.kde.org/projects/kde/workspace/kdeplasma-addons"
+	depends hasValue "kdeplasma-addons-data (= 4:5.18.4.1-0ubuntu2), kwin-x11 (>= 4:5.18.0) | kwin, plasma-framework (>= 5.54.0~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "kdeplasma-addons-data"
+	comparison hasValue "="
+	version hasValue "4:5.18.4.1-0ubuntu2"
+
+relationInstance depends(P0__kwin_addons,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "kwin-x11"
+	comparison hasValue ">="
+	version hasValue "4:5.18.0"
+
+relationInstance depends(P0__kwin_addons,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "kwin"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__kwin_addons,1,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "plasma-framework"
+	comparison hasValue ">="
+	version hasValue "5.54.0~"
+
+relationInstance depends(P0__kwin_addons,2,DepAtom__3)
+

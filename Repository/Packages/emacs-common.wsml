@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology emacs_common
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__emacs_common memberOf Package
+	package hasValue "emacs-common"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/editors"
+	installedSize hasValue "66816"
+	maintainer hasValue "Original-Rob Browning <rlb@defaultvalue.org>"
+	architecture hasValue "all"
+	version hasValue "1:26.3+1-1ubuntu2"
+	conflicts hasValue "cedet, eieio, emacs-el (<< 1:26.3+1-1ubuntu2), gnus-bonus-el, speedbar"
+	fileName hasValue "pool/universe/e/emacs/emacs-common_26.3+1-1ubuntu2_all.deb"
+	size hasValue "13307940"
+	md5sum hasValue "bc90d4e7145db78043e90cc9c5cbbee3"
+	sha1 hasValue "f3621b3bbeae7acc02922261f2c09bd671efceb1"
+	sha256 hasValue "01e76a7368c7055acc83a2f48a2f86c09a46e530f27545baa0aa48e12547029e"
+	description hasValue "infraestrutura independente de arquitetura e compartilhada do editor GNU Emacs"
+	descriptionMd5 hasValue "6cd713b399cc25b7a950c1c84e3becfa"
+	homepage hasValue "https://www.gnu.org/software/emacs/"
+	depends hasValue "emacsen-common (>= 3.0.0), install-info"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "emacsen-common"
+	comparison hasValue ">="
+	version hasValue "3.0.0"
+
+relationInstance depends(P0__emacs_common,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "install-info"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__emacs_common,1,DepAtom__1)
+

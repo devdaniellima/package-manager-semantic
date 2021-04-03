@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology go_dep
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__go_dep memberOf Package
+	package hasValue "go-dep"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "11101"
+	maintainer hasValue "Original-Debian Go Packaging Team <team+pkg-go@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.5.4-3"
+	fileName hasValue "pool/universe/g/go-dep/go-dep_0.5.4-3_amd64.deb"
+	size hasValue "3412160"
+	md5sum hasValue "71322bc46509a113aefa0a788ed6c3a8"
+	sha1 hasValue "39ce4afc690d9878e5d6108023790a2b323eaf49"
+	sha256 hasValue "edc48a1cd7f00955dcf72dd2e3f30f04754f9c667f7aa93bb51665b03169effd"
+	descriptionMd5 hasValue "5de1279cade326fe657b84d09165875c"
+	homepage hasValue "https://github.com/golang/dep"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__go_dep,0,DepAtom__0)
+

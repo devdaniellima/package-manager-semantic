@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology daemontools
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__daemontools memberOf Package
+	package hasValue "daemontools"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "381"
+	maintainer hasValue "Original-Gerrit Pape <pape@smarden.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:0.76-7"
+	replaces hasValue "daemontools-doc"
+	fileName hasValue "pool/universe/d/daemontools/daemontools_0.76-7_amd64.deb"
+	size hasValue "58116"
+	md5sum hasValue "4658419ccb1f27c1b53a3b03924c42e1"
+	sha1 hasValue "fa7cf3be89835959190035648714855bea29f8dd"
+	sha256 hasValue "568369650faab3cfdeefbc6471ef0ca0c4a0018c4b2e784e5e24327a4cfae320"
+	description hasValue "collection of tools for managing UNIX services"
+	descriptionMd5 hasValue "e3a2597df223fd85ad4e36dea5a8a777"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__daemontools,0,DepAtom__0)
+

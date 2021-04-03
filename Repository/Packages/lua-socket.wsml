@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology lua_socket
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__lua_socket memberOf Package
+	package hasValue "lua-socket"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/interpreters"
+	installedSize hasValue "587"
+	maintainer hasValue "Original-Enrico Tassi <gareuselesinge@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.0~rc1+git+ac3201d-4"
+	provides hasValue "lua5.1-socket, lua5.2-socket, lua5.3-socket"
+	fileName hasValue "pool/universe/l/luasocket/lua-socket_3.0~rc1+git+ac3201d-4_amd64.deb"
+	size hasValue "70500"
+	md5sum hasValue "65d4fae0c06b96c235f1f5022604acbe"
+	sha1 hasValue "75928397c9e33d2ff2d94afa577d625eae505916"
+	sha256 hasValue "ddaf542706624b05a7f49e2e3d420553741a39583b2ff9f2cff53452610cb476"
+	descriptionMd5 hasValue "16d98ec2922d284e0842f9c8bd770d31"
+	homepage hasValue "http://w3.impa.br/~diego/software/luasocket/"
+	depends hasValue "libc6 (>= 2.15)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__lua_socket,0,DepAtom__0)
+

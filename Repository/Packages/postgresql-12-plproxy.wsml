@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology postgresql_12_plproxy
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__postgresql_12_plproxy memberOf Package
+	package hasValue "postgresql-12-plproxy"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/database"
+	installedSize hasValue "325"
+	maintainer hasValue "Original-Debian PostgreSQL Maintainers <team+postgresql@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.9-2"
+	fileName hasValue "pool/universe/p/postgresql-plproxy/postgresql-12-plproxy_2.9-2_amd64.deb"
+	size hasValue "142196"
+	md5sum hasValue "5f7d385ebfc4be8c48cf47223c12d9f5"
+	sha1 hasValue "7327ff215550794f69ab5e5f5d69325ab829c539"
+	sha256 hasValue "eeebd6331b194eea5df1e2e322181a64a3666b5749286fc5eff85eeaef8e01db"
+	descriptionMd5 hasValue "c9a98e5cf486c5245574e6806f449479"
+	homepage hasValue "http://pgfoundry.org/projects/plproxy/"
+	depends hasValue "postgresql-12, libc6 (>= 2.14), libpq5"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "postgresql-12"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__postgresql_12_plproxy,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__postgresql_12_plproxy,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libpq5"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__postgresql_12_plproxy,2,DepAtom__2)
+

@@ -1,0 +1,66 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology vsdump
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__vsdump memberOf Package
+	package hasValue "vsdump"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/utils"
+	installedSize hasValue "96"
+	maintainer hasValue "Original-Juan Angulo Moreno <juan@apuntale.com>"
+	architecture hasValue "amd64"
+	version hasValue "0.0.45-1build1"
+	fileName hasValue "pool/universe/v/vsdump/vsdump_0.0.45-1build1_amd64.deb"
+	size hasValue "29120"
+	md5sum hasValue "bf63af70d9a97b8cfc1f60a9c08776d6"
+	sha1 hasValue "52088b08fafc2a58b9773072eef35aef7171ad52"
+	sha256 hasValue "8108d587b1294b7f054e9b82ee0a0fa8f23c5616752e5c3774aaf1f58ce3049d"
+	descriptionMd5 hasValue "70785505d7e31e445abb6ea805bf8b8a"
+	depends hasValue "libc6 (>= 2.14), libglib2.0-0 (>= 2.12.0), libgsf-1-114 (>= 1.14.8)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__vsdump,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libglib2.0-0"
+	comparison hasValue ">="
+	version hasValue "2.12.0"
+
+relationInstance depends(P0__vsdump,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libgsf-1-114"
+	comparison hasValue ">="
+	version hasValue "1.14.8"
+
+relationInstance depends(P0__vsdump,2,DepAtom__2)
+

@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology cronutils
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__cronutils memberOf Package
+	package hasValue "cronutils"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/admin"
+	installedSize hasValue "59"
+	maintainer hasValue "Original-Jamie Wilkinson <jaq@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.9-1"
+	fileName hasValue "pool/universe/c/cronutils/cronutils_1.9-1_amd64.deb"
+	size hasValue "13906"
+	md5sum hasValue "2820d3f73d1127ec4e36563c24fc3913"
+	sha1 hasValue "3de8c9813e8f6f7d41e41ab99805e99fb669ba34"
+	sha256 hasValue "1b5aea1fab9b280da536117b5c2a78cfb63b1bdedb7746ef4af1d01dc2270108"
+	descriptionMd5 hasValue "7380357037cd95e6e4d7f43ce71485ee"
+	homepage hasValue "http://code.google.com/p/cronutils"
+	depends hasValue "libc6 (>= 2.8)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.8"
+
+relationInstance depends(P0__cronutils,0,DepAtom__0)
+

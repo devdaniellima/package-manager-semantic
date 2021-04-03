@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology pd_windowing
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__pd_windowing memberOf Package
+	package hasValue "pd-windowing"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/sound"
+	installedSize hasValue "120"
+	maintainer hasValue "Original-Debian Multimedia Maintainers <debian-multimedia@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.1-4"
+	fileName hasValue "pool/universe/p/pd-windowing/pd-windowing_0.1-4_amd64.deb"
+	size hasValue "14664"
+	md5sum hasValue "56ffdb207481a74126936d7aba491e8a"
+	sha1 hasValue "d379c0c36e00a9e0255f2424d267dd744b328d6e"
+	sha256 hasValue "d56a4de4a8d3dd1909ddc85c33afa81bd5b7ca3861491f7d1e16b824c2f3a831"
+	descriptionMd5 hasValue "543f58fb0dcdc10be774efe30eaf19bb"
+	homepage hasValue "https://puredata.info/downloads/windowing"
+	depends hasValue "libc6 (>= 2.2.5), puredata | pd"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.2.5"
+
+relationInstance depends(P0__pd_windowing,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "puredata"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__pd_windowing,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "pd"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__pd_windowing,1,DepAtom__2)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology tcl_funtools
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__tcl_funtools memberOf Package
+	package hasValue "tcl-funtools"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/libs"
+	installedSize hasValue "49"
+	maintainer hasValue "Original-Debian Astro Team <debian-astro-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.4.7-4"
+	fileName hasValue "pool/universe/f/funtools/tcl-funtools_1.4.7-4_amd64.deb"
+	size hasValue "7404"
+	md5sum hasValue "904a95c8a6e92e8776ad1acbd1baef61"
+	sha1 hasValue "cd22de2afc8a71b3509b14b4ac31ec3d265024e9"
+	sha256 hasValue "fcd875a9927645788e34c368d0db20cf26c4740518def4b487ea78113b89a9ad"
+	descriptionMd5 hasValue "3f8e16b346e8562cb8473012ea50235d"
+	homepage hasValue "https://github.com/ericmandel/funtools"
+	depends hasValue "libfuntools1 (= 1.4.7-4), libc6 (>= 2.7)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libfuntools1"
+	comparison hasValue "="
+	version hasValue "1.4.7-4"
+
+relationInstance depends(P0__tcl_funtools,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__tcl_funtools,1,DepAtom__1)
+

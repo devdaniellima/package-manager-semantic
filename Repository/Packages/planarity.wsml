@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology planarity
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__planarity memberOf Package
+	package hasValue "planarity"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/games"
+	installedSize hasValue "35"
+	maintainer hasValue "Original-Debian Science Maintainers <debian-science-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.0.0.5-3"
+	fileName hasValue "pool/universe/e/edge-addition-planarity-suite/planarity_3.0.0.5-3_amd64.deb"
+	size hasValue "10012"
+	md5sum hasValue "6d19a1fabbe0805aceab37d697edb8e4"
+	sha1 hasValue "839863bd0ff1de034a6455f728aaf11d562c71b4"
+	sha256 hasValue "e777956ee2840322d664ae3d5ec12cbf2326ef05c2de6fd9ba30836bdcf14c87"
+	descriptionMd5 hasValue "ed4c5721a6cafc609dde77a549375b94"
+	homepage hasValue "https://github.com/graph-algorithms/edge-addition-planarity-suite"
+	depends hasValue "libplanarity0 (= 3.0.0.5-3), libc6 (>= 2.7)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libplanarity0"
+	comparison hasValue "="
+	version hasValue "3.0.0.5-3"
+
+relationInstance depends(P0__planarity,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__planarity,1,DepAtom__1)
+

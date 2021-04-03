@@ -1,0 +1,59 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology rarpd
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__rarpd memberOf Package
+	package hasValue "rarpd"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/net"
+	installedSize hasValue "48"
+	maintainer hasValue "Original-Mats Erik Andersson <mats.andersson@gisladisker.se>"
+	architecture hasValue "amd64"
+	version hasValue "0.981107-9build1"
+	fileName hasValue "pool/universe/r/rarpd/rarpd_0.981107-9build1_amd64.deb"
+	size hasValue "14784"
+	md5sum hasValue "47ceb2e08580086b432e10457ee28842"
+	sha1 hasValue "17dcdcf8e2de0f0cd842a7a0eedc69457e7e77bf"
+	sha256 hasValue "7f7b24489f7bb7872aeae78ae36c169da5c3178fe4bcbfbac4a76d2841e367db"
+	descriptionMd5 hasValue "286e1db581c5106e58cc77589f3bd8c3"
+	depends hasValue "libc6 (>= 2.16), lsb-base (>= 3.0-6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.16"
+
+relationInstance depends(P0__rarpd,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "lsb-base"
+	comparison hasValue ">="
+	version hasValue "3.0-6"
+
+relationInstance depends(P0__rarpd,1,DepAtom__1)
+

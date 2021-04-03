@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology apertium_fr_es
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__apertium_fr_es memberOf Package
+	package hasValue "apertium-fr-es"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/misc"
+	installedSize hasValue "7307"
+	maintainer hasValue "Original-Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.9.2~r61322-4"
+	provides hasValue "apertium-es-fr"
+	conflicts hasValue "apertium-es-fr"
+	fileName hasValue "pool/universe/a/apertium-fr-es/apertium-fr-es_0.9.2~r61322-4_all.deb"
+	size hasValue "1626632"
+	md5sum hasValue "1f9b9aa6afba68578be77a5ad749480c"
+	sha1 hasValue "a66ce4713ca3536bddd4ac5251c304c531974700"
+	sha256 hasValue "bf050d6bd3024dd4ff5432b15818d48d6b091926e0eb74bf2199af533097ea42"
+	descriptionMd5 hasValue "49d1c0941e98d6e0981d83326150cbbc"
+	homepage hasValue "https://apertium.org/"
+	depends hasValue "apertium (>= 3.6), apertium-lex-tools"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "apertium"
+	comparison hasValue ">="
+	version hasValue "3.6"
+
+relationInstance depends(P0__apertium_fr_es,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "apertium-lex-tools"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__apertium_fr_es,1,DepAtom__1)
+

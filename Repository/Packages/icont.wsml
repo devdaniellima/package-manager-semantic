@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology icont
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__icont memberOf Package
+	package hasValue "icont"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "147"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "9.4.3-7ubuntu1"
+	fileName hasValue "pool/universe/i/icon/icont_9.4.3-7ubuntu1_amd64.deb"
+	size hasValue "49324"
+	md5sum hasValue "340e6f99607c894c8a1694c60bad6c0b"
+	sha1 hasValue "3bfbaccd744c0d698d16b56ee68873c6646c1721"
+	sha256 hasValue "a291510c6f8f427e587286227ce0b2b5f3ed3c228e155754a448b2d6384a691b"
+	description hasValue "Interpretador para Icon, uma linguagem de programação de alto nível"
+	descriptionMd5 hasValue "32a55e9c6e8ddde3e843ee6c82b54ab5"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__icont,0,DepAtom__0)
+

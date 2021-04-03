@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libregfi1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libregfi1 memberOf Package
+	package hasValue "libregfi1"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "87"
+	maintainer hasValue "Original-Debian Security Tools <team+pkg-security@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.1+svn287-8"
+	fileName hasValue "pool/universe/r/reglookup/libregfi1_1.0.1+svn287-8_amd64.deb"
+	size hasValue "29804"
+	md5sum hasValue "c5221849b5bcf409828bf9755cdad2cd"
+	sha1 hasValue "63125991d56589ede8ee2454e229dddf8be1be33"
+	sha256 hasValue "8b570ef0bae354dd6b67ea0ac8562aa97f936d61a78759d7851b3fd7f84a4300"
+	description hasValue "utility to analysis for Windows NT-based registry (shared library)"
+	descriptionMd5 hasValue "166686126ff450d9d34a781f46c10fba"
+	homepage hasValue "http://projects.sentinelchicken.org/reglookup/"
+	depends hasValue "libc6 (>= 2.14), libtalloc2 (>= 2.0.4~git20101213)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libregfi1,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libtalloc2"
+	comparison hasValue ">="
+	version hasValue "2.0.4~git20101213"
+
+relationInstance depends(P0__libregfi1,1,DepAtom__1)
+

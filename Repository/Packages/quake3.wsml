@@ -1,0 +1,81 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology quake3
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__quake3 memberOf Package
+	package hasValue "quake3"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "multiverse/games"
+	installedSize hasValue "205"
+	maintainer hasValue "Original-Debian Games Team <pkg-games-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "64"
+	fileName hasValue "pool/multiverse/g/game-data-packager/quake3_64_all.deb"
+	size hasValue "93324"
+	md5sum hasValue "f981158d6f57a245f1a498f75607d68c"
+	sha1 hasValue "f95a9bb8fe75089899dda04841b5491a9c7d7c28"
+	sha256 hasValue "d20411dac301214e4d68de6aba3bfd1a832cbad3fb5ddd4163fe3391c864c211"
+	descriptionMd5 hasValue "95de72c22be84cf9e01669d0c2eaf9d3"
+	homepage hasValue "https://wiki.debian.org/Games/GameDataPackager"
+	depends hasValue "game-data-packager-runtime (>= 64), ioquake3, quake3-data | quake3-demo-data (>= 40) | game-data-packager (>= 23)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "game-data-packager-runtime"
+	comparison hasValue ">="
+	version hasValue "64"
+
+relationInstance depends(P0__quake3,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "ioquake3"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__quake3,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "quake3-data"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__quake3,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "quake3-demo-data"
+	comparison hasValue ">="
+	version hasValue "40"
+
+relationInstance depends(P0__quake3,2,DepAtom__3)
+
+instance DepAtom__4 memberOf DependencyAtom
+	package hasValue "game-data-packager"
+	comparison hasValue ">="
+	version hasValue "23"
+
+relationInstance depends(P0__quake3,2,DepAtom__4)
+

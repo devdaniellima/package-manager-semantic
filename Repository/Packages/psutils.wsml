@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology psutils
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__psutils memberOf Package
+	package hasValue "psutils"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/text"
+	installedSize hasValue "219"
+	maintainer hasValue "Original-Ian Jackson <ijackson@chiark.greenend.org.uk>"
+	architecture hasValue "amd64"
+	version hasValue "1.17.dfsg-4"
+	fileName hasValue "pool/universe/p/psutils/psutils_1.17.dfsg-4_amd64.deb"
+	size hasValue "56248"
+	md5sum hasValue "12a3be5420d1bdc118228d122d77830f"
+	sha1 hasValue "bb26c4412b7a238ac4e084a79560b858213d413e"
+	sha256 hasValue "11689c8499a8619ff16030b91fff16d376455e1fcafaa30f560e8c1ce2c14df8"
+	description hasValue "utilitários de manipulação para documentos PostScript"
+	descriptionMd5 hasValue "d3e83aa8e0c39f8e84452a2efc781c5b"
+	homepage hasValue "https://github.com/rrthomas/psutils"
+	depends hasValue "libc6 (>= 2.7), libpaper1"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__psutils,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libpaper1"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__psutils,1,DepAtom__1)
+

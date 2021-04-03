@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology duktape
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__duktape memberOf Package
+	package hasValue "duktape"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/interpreters"
+	installedSize hasValue "296"
+	maintainer hasValue "Original-Debian IoT Maintainers <debian-iot-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.5.0-1"
+	fileName hasValue "pool/universe/d/duktape/duktape_2.5.0-1_amd64.deb"
+	size hasValue "132852"
+	md5sum hasValue "3b1bdf312d7955cbdf98573269355133"
+	sha1 hasValue "0555816920ff5ae927a600aa5eb869d7d8d560b7"
+	sha256 hasValue "1c6bdcaad543d06755575edb19860be06f01a595f09c5ec283f07dab7364e516"
+	descriptionMd5 hasValue "92a374760d722cfc6b8b5bae97f4d710"
+	homepage hasValue "http://duktape.org"
+	depends hasValue "libc6 (>= 2.29)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__duktape,0,DepAtom__0)
+

@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology pppconfig
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__pppconfig memberOf Package
+	package hasValue "pppconfig"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "admin"
+	installedSize hasValue "248"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.3.24"
+	replaces hasValue "manpages-fr (<< 2.39.1-5)"
+	conflicts hasValue "nscd (<< 2.3.2.ds1-14)"
+	fileName hasValue "pool/main/p/pppconfig/pppconfig_2.3.24_all.deb"
+	size hasValue "34572"
+	md5sum hasValue "13e70a73f10b9b352e4caef6a6d17a9f"
+	sha1 hasValue "ce85e24f11e3b2e8d66fa94587f35d310c002089"
+	sha256 hasValue "0aa336e84c0ee6c98747067d151b232f38342e0106bd870c960c831a778f53c1"
+	descriptionMd5 hasValue "5102905d41dde2de48ce3721c1a3a0e6"
+	depends hasValue "ppp (>= 2.3.7), whiptail | dialog"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "ppp"
+	comparison hasValue ">="
+	version hasValue "2.3.7"
+
+relationInstance depends(P0__pppconfig,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "whiptail"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__pppconfig,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "dialog"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__pppconfig,1,DepAtom__2)
+

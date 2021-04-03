@@ -1,0 +1,69 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology minizip
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__minizip memberOf Package
+	package hasValue "minizip"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "42"
+	maintainer hasValue "Original-Michael Gilbert <mgilbert@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.1-8build1"
+	replaces hasValue "zlib-bin"
+	conflicts hasValue "zlib-bin"
+	fileName hasValue "pool/universe/m/minizip/minizip_1.1-8build1_amd64.deb"
+	size hasValue "11872"
+	md5sum hasValue "cb0a16ab935e622f725286e0a33899be"
+	sha1 hasValue "40f7231790cd8c450a211e788dbec36c3dffebbe"
+	sha256 hasValue "4bad2abc451252835bccd9dddadb71541cc8ec2ec37a92d16fe4f89044446181"
+	descriptionMd5 hasValue "a47222226ed7a7812e087b45e36092bc"
+	homepage hasValue "http://www.winimage.com/zLibDll/minizip.html"
+	depends hasValue "libc6 (>= 2.14), libminizip1 (>= 1.1), zlib1g (>= 1:1.1.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__minizip,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libminizip1"
+	comparison hasValue ">="
+	version hasValue "1.1"
+
+relationInstance depends(P0__minizip,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "zlib1g"
+	comparison hasValue ">="
+	version hasValue "1:1.1.4"
+
+relationInstance depends(P0__minizip,2,DepAtom__2)
+

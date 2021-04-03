@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology dumpet
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__dumpet memberOf Package
+	package hasValue "dumpet"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/otherosfs"
+	installedSize hasValue "42"
+	maintainer hasValue "Colin Watson <cjwatson@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.1-11"
+	fileName hasValue "pool/universe/d/dumpet/dumpet_2.1-11_amd64.deb"
+	size hasValue "11236"
+	md5sum hasValue "efdab5e0cedabdd096bdef861e5943bd"
+	sha1 hasValue "fa998183676d45ca26d517c5c673e8a3e7113cc4"
+	sha256 hasValue "8efc8f878f0f8309503a43d86e541919afa30f99ac17e5ff48c08dda3eb1ffaa"
+	descriptionMd5 hasValue "bbd6e39b435b8f52daf310e68daf4283"
+	homepage hasValue "https://github.com/rhboot/dumpet"
+	depends hasValue "libc6 (>= 2.8), libpopt0 (>= 1.14), libxml2 (>= 2.7.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.8"
+
+relationInstance depends(P0__dumpet,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libpopt0"
+	comparison hasValue ">="
+	version hasValue "1.14"
+
+relationInstance depends(P0__dumpet,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libxml2"
+	comparison hasValue ">="
+	version hasValue "2.7.4"
+
+relationInstance depends(P0__dumpet,2,DepAtom__2)
+

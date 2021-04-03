@@ -1,0 +1,74 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology weechat_lua
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__weechat_lua memberOf Package
+	package hasValue "weechat-lua"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "290"
+	maintainer hasValue "Original-Emmanuel Bouthenot <kolter@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.8-1"
+	fileName hasValue "pool/universe/w/weechat/weechat-lua_2.8-1_amd64.deb"
+	size hasValue "51440"
+	md5sum hasValue "ae20f5961f7f267b0a5f2836ebf63af4"
+	sha1 hasValue "a5293b947bb35e001e21a6a7b2fb4d3960812b04"
+	sha256 hasValue "11dfbe9c056592b15b657e3b5ed1cf3c0f84c89845251904a0474496a88050d9"
+	descriptionMd5 hasValue "0ff684d25debcaeb1057b4fac395f784"
+	homepage hasValue "https://weechat.org/"
+	depends hasValue "libc6 (>= 2.14), liblua5.3-0, weechat-curses (= 2.8-1) | weechat-headless (= 2.8-1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__weechat_lua,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "liblua5.3-0"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__weechat_lua,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "weechat-curses"
+	comparison hasValue "="
+	version hasValue "2.8-1"
+
+relationInstance depends(P0__weechat_lua,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "weechat-headless"
+	comparison hasValue "="
+	version hasValue "2.8-1"
+
+relationInstance depends(P0__weechat_lua,2,DepAtom__3)
+

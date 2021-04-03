@@ -1,0 +1,63 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology odbcinst
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__odbcinst memberOf Package
+	package hasValue "odbcinst"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libs"
+	installedSize hasValue "55"
+	maintainer hasValue "Original-Steve Langasek <vorlon@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.3.6-0.1build1"
+	replaces hasValue "odbcinst1, odbcinst1debian1 (<< 2.2.11-20), unixodbc (<< 2.1.1-2)"
+	conflicts hasValue "odbcinst1"
+	fileName hasValue "pool/main/u/unixodbc/odbcinst_2.3.6-0.1build1_amd64.deb"
+	size hasValue "14816"
+	md5sum hasValue "b7e5fc44f8d5d98994243174a28d1748"
+	sha1 hasValue "d8b5b040edde59dd9b90bfd85a0fefffeefd23e3"
+	sha256 hasValue "dfe563491c67e9cf37367102dbbb60a62c55c7db47d083f958bc3c1ab8a7f5ce"
+	description hasValue "programa auxiliar para acessar arquivos ini odbc"
+	descriptionMd5 hasValue "52c7bed86e46afa647611a2fad99b3ee"
+	homepage hasValue "http://www.unixodbc.org/"
+	depends hasValue "libc6 (>= 2.4), odbcinst1debian2 (>= 2.3.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__odbcinst,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "odbcinst1debian2"
+	comparison hasValue ">="
+	version hasValue "2.3.1"
+
+relationInstance depends(P0__odbcinst,1,DepAtom__1)
+

@@ -1,0 +1,63 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libnss_pgsql2
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libnss_pgsql2 memberOf Package
+	package hasValue "libnss-pgsql2"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/admin"
+	installedSize hasValue "108"
+	maintainer hasValue "Original-Jan Dittberner <jandd@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.4.0debian-8"
+	replaces hasValue "libnss-pgsql1"
+	provides hasValue "libnss-pgsql1"
+	conflicts hasValue "libnss-pgsql1"
+	fileName hasValue "pool/universe/libn/libnss-pgsql/libnss-pgsql2_1.4.0debian-8_amd64.deb"
+	size hasValue "24688"
+	md5sum hasValue "b73efae31795f508ecaab56c1af7c5d8"
+	sha1 hasValue "cc13bc943b35888ea084aabafaaa0580f06ebfa3"
+	sha256 hasValue "deaddd3ebf95452f6e707a7c35acc9e0f29aec8cd844c1b986461c88dd6a4648"
+	descriptionMd5 hasValue "2be1d717de98e4794c5ffabd2a116752"
+	homepage hasValue "http://pgfoundry.org/projects/sysauth/"
+	depends hasValue "libc6 (>= 2.14), libpq5"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libnss_pgsql2,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libpq5"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libnss_pgsql2,1,DepAtom__1)
+

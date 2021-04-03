@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology node_stream_combiner2
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__node_stream_combiner2 memberOf Package
+	package hasValue "node-stream-combiner2"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/web"
+	installedSize hasValue "17"
+	maintainer hasValue "Original-Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.1.1-2"
+	fileName hasValue "pool/universe/n/node-stream-combiner2/node-stream-combiner2_1.1.1-2_all.deb"
+	size hasValue "3768"
+	md5sum hasValue "9672f92c8487e58eb81d660e3a2f8771"
+	sha1 hasValue "cd3f7a9809439cdb1753de0d858d496ac6369b2f"
+	sha256 hasValue "cfaa6f402cda6affc208e77191016f1eb2d417fac802bec0f0834090698fb2d0"
+	descriptionMd5 hasValue "86b44316bf02260b69f8e48cedabb01d"
+	homepage hasValue "https://github.com/substack/stream-combiner2"
+	depends hasValue "nodejs (>= 6), node-duplexer2 (>= 0.1.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "nodejs"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__node_stream_combiner2,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "node-duplexer2"
+	comparison hasValue ">="
+	version hasValue "0.1.0"
+
+relationInstance depends(P0__node_stream_combiner2,1,DepAtom__1)
+

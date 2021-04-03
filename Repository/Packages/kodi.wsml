@@ -1,0 +1,69 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology kodi
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__kodi memberOf Package
+	package hasValue "kodi"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/video"
+	installedSize hasValue "138"
+	maintainer hasValue "Original-Debian Multimedia Maintainers <debian-multimedia@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2:18.6+dfsg1-2ubuntu1"
+	replaces hasValue "xbmc (<< 2:13.2+dfsg1-5~)"
+	provides hasValue "kodi-api-audiodecoder (= 2.0.0), kodi-api-audioencoder (= 2.0.0), kodi-api-audioengine (= 1.0.1), kodi-api-filesystem (= 1.0.2), kodi-api-game (= 1.1.0), kodi-api-general (= 1.0.3), kodi-api-gui (= 5.12.0), kodi-api-imagedecoder (= 2.0.0), kodi-api-inputstream (= 2.0.8), kodi-api-main (= 1.0.14), kodi-api-network (= 1.0.0), kodi-api-peripheral (= 1.3.7), kodi-api-pvr (= 5.10.3), kodi-api-screensaver (= 2.0.0), kodi-api-vfs (= 2.0.0), kodi-api-videocodec (= 1.0.1), kodi-api-visualization (= 2.0.1)"
+	fileName hasValue "pool/universe/k/kodi/kodi_18.6+dfsg1-2ubuntu1_amd64.deb"
+	size hasValue "25088"
+	md5sum hasValue "2ccdf22d0ab039dd15aa49e9f903795d"
+	sha1 hasValue "797f7924eb41576b97e63d5233eab1f394944221"
+	sha256 hasValue "8bbca3089f7aed331b8166fc97ee390c701d34086f769e4fad887fec20da3518"
+	descriptionMd5 hasValue "8cbb7a58aa8f70442021b6474bb4487a"
+	homepage hasValue "https://kodi.tv/"
+	depends hasValue "kodi-bin (>= 2:18.6+dfsg1-2ubuntu1), kodi-bin (<< 2:18.6+dfsg1-2ubuntu1.1~), kodi-data (>= 2:18.6+dfsg1-2ubuntu1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "kodi-bin"
+	comparison hasValue ">="
+	version hasValue "2:18.6+dfsg1-2ubuntu1"
+
+relationInstance depends(P0__kodi,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "kodi-bin"
+	comparison hasValue "<<"
+	version hasValue "2:18.6+dfsg1-2ubuntu1.1~"
+
+relationInstance depends(P0__kodi,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "kodi-data"
+	comparison hasValue ">="
+	version hasValue "2:18.6+dfsg1-2ubuntu1"
+
+relationInstance depends(P0__kodi,2,DepAtom__2)
+

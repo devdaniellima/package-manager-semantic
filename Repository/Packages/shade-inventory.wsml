@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology shade_inventory
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__shade_inventory memberOf Package
+	package hasValue "shade-inventory"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "17"
+	maintainer hasValue "Original-Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.31.0-0ubuntu1"
+	fileName hasValue "pool/universe/p/python-shade/shade-inventory_1.31.0-0ubuntu1_all.deb"
+	size hasValue "3328"
+	md5sum hasValue "57aff6c50961a7efb1e022b1c0d4da17"
+	sha1 hasValue "0b5275b689409792885a6ece4f9ec1037dfd58ed"
+	sha256 hasValue "24879203a77545bd895929840c82cd9de4e9f625de1b944c405cab8fbe7c6d8a"
+	descriptionMd5 hasValue "f45ff0370579e0155007f167e85cb9ac"
+	homepage hasValue "https://pypi.python.org/pypi/shade"
+	depends hasValue "python3-shade (= 1.31.0-0ubuntu1), python3:any"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3-shade"
+	comparison hasValue "="
+	version hasValue "1.31.0-0ubuntu1"
+
+relationInstance depends(P0__shade_inventory,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__shade_inventory,1,DepAtom__1)
+

@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology cdde
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__cdde memberOf Package
+	package hasValue "cdde"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/utils"
+	installedSize hasValue "42"
+	maintainer hasValue "Original-Stanislav Maslovski <stanislav.maslovski@gmail.com>"
+	architecture hasValue "amd64"
+	version hasValue "0.3.1-1build1"
+	fileName hasValue "pool/universe/c/cdde/cdde_0.3.1-1build1_amd64.deb"
+	size hasValue "12692"
+	md5sum hasValue "8a21818cdc8366dd3263ebe29bdf2b17"
+	sha1 hasValue "c8c2c36e860953f472146a228c15d4124593fcd1"
+	sha256 hasValue "9ac6998bd9071ad5605b094368764da11884e4bebc08e9d9a1a71748dd71b891"
+	description hasValue "utilitário CD Detect & Execute"
+	descriptionMd5 hasValue "72a9d0bc4a3b8d2c7015b48ff53da747"
+	homepage hasValue "http://cdde.sourceforge.net/"
+	depends hasValue "libc6 (>= 2.14), libxml2 (>= 2.7.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__cdde,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libxml2"
+	comparison hasValue ">="
+	version hasValue "2.7.4"
+
+relationInstance depends(P0__cdde,1,DepAtom__1)
+

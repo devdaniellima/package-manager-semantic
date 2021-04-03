@@ -1,0 +1,59 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology unity_settings_daemon_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__unity_settings_daemon_dev memberOf Package
+	package hasValue "unity-settings-daemon-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/gnome"
+	installedSize hasValue "143"
+	maintainer hasValue "Ubuntu Desktop Team <ubuntu-desktop@lists.ubuntu.com>"
+	architecture hasValue "amd64"
+	version hasValue "15.04.1+20.04.20200325-0ubuntu1"
+	fileName hasValue "pool/universe/u/unity-settings-daemon/unity-settings-daemon-dev_15.04.1+20.04.20200325-0ubuntu1_amd64.deb"
+	size hasValue "42416"
+	md5sum hasValue "cab4a98bdbc7e07a7e48e05ca6ae1664"
+	sha1 hasValue "c53aefbcfd4f85ac699b696048edcb49d7a367a4"
+	sha256 hasValue "b92ac9be007733c1d21f27ea7c46c3e7b753ed99f562a4bdf8dac848bba27722"
+	descriptionMd5 hasValue "49b4ff9931ee8b6c680c024f7fcce33b"
+	depends hasValue "libdbus-glib-1-dev (>= 0.74), libglib2.0-dev (>= 2.35.3)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libdbus-glib-1-dev"
+	comparison hasValue ">="
+	version hasValue "0.74"
+
+relationInstance depends(P0__unity_settings_daemon_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libglib2.0-dev"
+	comparison hasValue ">="
+	version hasValue "2.35.3"
+
+relationInstance depends(P0__unity_settings_daemon_dev,1,DepAtom__1)
+

@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libairspy0
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libairspy0 memberOf Package
+	package hasValue "libairspy0"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/libs"
+	installedSize hasValue "59"
+	maintainer hasValue "Original-A. Maitland Bottoms <bottoms@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.9-3"
+	fileName hasValue "pool/universe/a/airspy-host/libairspy0_1.0.9-3_amd64.deb"
+	size hasValue "17488"
+	md5sum hasValue "67aaa15dd9efd0d6033a878ab60f709d"
+	sha1 hasValue "5662b6fc6a436730d9e92d5d9d41433dc8d6839b"
+	sha256 hasValue "31b0bf2b641ca269ea18f7d0d84209a61520b6e20664e633a72db3516517b558"
+	description hasValue "Tiny and efficient software defined radio receiver - library"
+	descriptionMd5 hasValue "a5f4eb4607ecf1df83db7ed5f4f089a6"
+	homepage hasValue "http://airspy.com"
+	depends hasValue "libc6 (>= 2.14), libusb-1.0-0 (>= 2:1.0.9)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libairspy0,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libusb-1.0-0"
+	comparison hasValue ">="
+	version hasValue "2:1.0.9"
+
+relationInstance depends(P0__libairspy0,1,DepAtom__1)
+

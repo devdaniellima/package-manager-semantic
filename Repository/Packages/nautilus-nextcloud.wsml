@@ -1,0 +1,81 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology nautilus_nextcloud
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__nautilus_nextcloud memberOf Package
+	package hasValue "nautilus-nextcloud"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/gnome"
+	installedSize hasValue "43"
+	maintainer hasValue "Original-ownCloud for Debian maintainers <pkg-owncloud-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.6.2-1build1"
+	fileName hasValue "pool/universe/n/nextcloud-desktop/nautilus-nextcloud_2.6.2-1build1_all.deb"
+	size hasValue "10496"
+	md5sum hasValue "96371212dea330833e9347a2a1b0d028"
+	sha1 hasValue "20bd5890963cc3d6a143e86dfcd0fb11d15ae6f9"
+	sha256 hasValue "f34bede1fd6ba06f2dea4ced0c2e718be0fe829b2af61f2f484d04259b0a5acb"
+	descriptionMd5 hasValue "236cc3a7b86311ec59adbd8d9416944f"
+	homepage hasValue "https://nextcloud.com/install/#install-clients"
+	depends hasValue "nautilus, nextcloud-desktop (<< 2.6.2-1build1.1~), nextcloud-desktop (>= 2.6.2-1build1), nextcloud-desktop-common, python3-nautilus"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "nautilus"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__nautilus_nextcloud,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "nextcloud-desktop"
+	comparison hasValue "<<"
+	version hasValue "2.6.2-1build1.1~"
+
+relationInstance depends(P0__nautilus_nextcloud,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "nextcloud-desktop"
+	comparison hasValue ">="
+	version hasValue "2.6.2-1build1"
+
+relationInstance depends(P0__nautilus_nextcloud,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "nextcloud-desktop-common"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__nautilus_nextcloud,3,DepAtom__3)
+
+instance DepAtom__4 memberOf DependencyAtom
+	package hasValue "python3-nautilus"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__nautilus_nextcloud,4,DepAtom__4)
+

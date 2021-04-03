@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gdbmtool
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gdbmtool memberOf Package
+	package hasValue "gdbmtool"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "486"
+	maintainer hasValue "Original-Dmitry Bogatov <KAction@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.18.1-5"
+	fileName hasValue "pool/universe/g/gdbm/gdbmtool_1.18.1-5_amd64.deb"
+	size hasValue "97000"
+	md5sum hasValue "e739855c482dad3376f81daff35e249e"
+	sha1 hasValue "5a6baf174156d80cf530f001973c7a0844da11b9"
+	sha256 hasValue "73cc1e75727d75575043c34c84eec810dca62aff310300aefd88d75c0e1aa197"
+	description hasValue "GNU dbm database routines (command line tools)"
+	descriptionMd5 hasValue "edf59b3b5639d37ee5d1370be915d3da"
+	homepage hasValue "https://gnu.org/software/gdbm"
+	depends hasValue "libc6 (>= 2.14), libgdbm6 (>= 1.16), libreadline8 (>= 6.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__gdbmtool,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgdbm6"
+	comparison hasValue ">="
+	version hasValue "1.16"
+
+relationInstance depends(P0__gdbmtool,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libreadline8"
+	comparison hasValue ">="
+	version hasValue "6.0"
+
+relationInstance depends(P0__gdbmtool,2,DepAtom__2)
+

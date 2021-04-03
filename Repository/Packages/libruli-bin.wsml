@@ -1,0 +1,66 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libruli_bin
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libruli_bin memberOf Package
+	package hasValue "libruli-bin"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "113"
+	maintainer hasValue "Original-Everton da Silva Marques <evertonsm@yahoo.com.br>"
+	architecture hasValue "amd64"
+	version hasValue "0.33-1.1build1"
+	fileName hasValue "pool/universe/r/ruli/libruli-bin_0.33-1.1build1_amd64.deb"
+	size hasValue "15240"
+	md5sum hasValue "055f05c39534e2d6f9bc285cefc5fe45"
+	sha1 hasValue "132d639556e0e445f8e0085a1eb3be581e1a62d1"
+	sha256 hasValue "6055ee39a9e951cef4a18d0aaf088776a8e94a231c7a7f2d7975ce8593040f48"
+	descriptionMd5 hasValue "9423532753b04f60706f01e8edc576db"
+	depends hasValue "libc6 (>= 2.14), liboop4 (>= 1.0), libruli4 (= 0.33-1.1build1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libruli_bin,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "liboop4"
+	comparison hasValue ">="
+	version hasValue "1.0"
+
+relationInstance depends(P0__libruli_bin,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libruli4"
+	comparison hasValue "="
+	version hasValue "0.33-1.1build1"
+
+relationInstance depends(P0__libruli_bin,2,DepAtom__2)
+

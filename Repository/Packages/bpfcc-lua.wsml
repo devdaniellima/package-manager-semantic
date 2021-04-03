@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology bpfcc_lua
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__bpfcc_lua memberOf Package
+	package hasValue "bpfcc-lua"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/misc"
+	installedSize hasValue "655"
+	maintainer hasValue "Original-Ritesh Raj Sarraf <rrs@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.12.0-2"
+	fileName hasValue "pool/universe/b/bpfcc/bpfcc-lua_0.12.0-2_amd64.deb"
+	size hasValue "282608"
+	md5sum hasValue "6e7be6d2879cf086f94b073a7ac3fc05"
+	sha1 hasValue "d5b5dbda0d6dbe871721eb7726f4233a40ea6918"
+	sha256 hasValue "881f8ff9cd0013e09dbc563d7c93441652823f1126f28ad2f89c484e031bf6b5"
+	descriptionMd5 hasValue "4d4f55a88fe5e8a4b353c8eff39f11aa"
+	homepage hasValue "https://github.com/iovisor/bcc"
+	depends hasValue "libbpfcc (>= 0.12.0-2), libc6 (>= 2.29), libgcc-s1 (>= 3.3)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libbpfcc"
+	comparison hasValue ">="
+	version hasValue "0.12.0-2"
+
+relationInstance depends(P0__bpfcc_lua,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__bpfcc_lua,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libgcc-s1"
+	comparison hasValue ">="
+	version hasValue "3.3"
+
+relationInstance depends(P0__bpfcc_lua,2,DepAtom__2)
+

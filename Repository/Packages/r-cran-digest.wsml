@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology r_cran_digest
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__r_cran_digest memberOf Package
+	package hasValue "r-cran-digest"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/gnu-r"
+	installedSize hasValue "376"
+	maintainer hasValue "Original-Dirk Eddelbuettel <edd@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.6.25-1"
+	fileName hasValue "pool/universe/r/r-cran-digest/r-cran-digest_0.6.25-1_amd64.deb"
+	size hasValue "169600"
+	md5sum hasValue "8b68c325be2b413ebf9e8916e438813b"
+	sha1 hasValue "07f6a3603e5a4ae2dcfbf1c1d55f1fd242b61e47"
+	sha256 hasValue "47ee83ac74fcc9048e0c95dcb837e5935dd8ff64b7c93c1d2622dcc3d3090054"
+	descriptionMd5 hasValue "2b9a1497a5560b4f8ea8dc766ce0985a"
+	homepage hasValue "https://cran.r-project.org/package=digest"
+	depends hasValue "libc6 (>= 2.14), r-base-core (>= 3.6.2.20200221-1), r-api-3.5"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__r_cran_digest,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "r-base-core"
+	comparison hasValue ">="
+	version hasValue "3.6.2.20200221-1"
+
+relationInstance depends(P0__r_cran_digest,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "r-api-3.5"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__r_cran_digest,2,DepAtom__2)
+

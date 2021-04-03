@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology postgresql_12_orafce
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__postgresql_12_orafce memberOf Package
+	package hasValue "postgresql-12-orafce"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/database"
+	installedSize hasValue "841"
+	maintainer hasValue "Original-Debian PostgreSQL Maintainers <team+postgresql@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.9.0-1"
+	fileName hasValue "pool/universe/o/orafce/postgresql-12-orafce_3.9.0-1_amd64.deb"
+	size hasValue "297956"
+	md5sum hasValue "b24ed2e6e3a27061ec73a4a8fe2586b3"
+	sha1 hasValue "f6117ad8c35b73216305059b0b83d8df12ef0322"
+	sha256 hasValue "b0857d15306722008aa1153e65e98bf4b4a57fc3c95f40a72a6a7f5c6fff0587"
+	descriptionMd5 hasValue "debd97e6705982078a44740539f02121"
+	homepage hasValue "https://github.com/orafce/orafce"
+	depends hasValue "postgresql-12, libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "postgresql-12"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__postgresql_12_orafce,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__postgresql_12_orafce,1,DepAtom__1)
+

@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libpam_blue
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libpam_blue memberOf Package
+	package hasValue "libpam-blue"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/admin"
+	installedSize hasValue "104"
+	maintainer hasValue "Original-Ulises Vitulli <uvitulli@fi.uba.ar>"
+	architecture hasValue "amd64"
+	version hasValue "0.9.0-3"
+	fileName hasValue "pool/universe/libp/libpam-blue/libpam-blue_0.9.0-3_amd64.deb"
+	size hasValue "17578"
+	md5sum hasValue "17eb3283820b93b20a3681bc3f4a6150"
+	sha1 hasValue "9d369efebac5e3428368e95af629ad460801d413"
+	sha256 hasValue "74a93f1a4bb8e0b5d7361e6c86c7dc74d16588b63878104d466f63772cd6237c"
+	descriptionMd5 hasValue "8cd0d8b31799ceec9823dbc2d4b2b06c"
+	homepage hasValue "http://pam.0xdef.net/"
+	depends hasValue "libbluetooth3 (>= 4.40), libc6 (>= 2.4), bluez"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libbluetooth3"
+	comparison hasValue ">="
+	version hasValue "4.40"
+
+relationInstance depends(P0__libpam_blue,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libpam_blue,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "bluez"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libpam_blue,2,DepAtom__2)
+

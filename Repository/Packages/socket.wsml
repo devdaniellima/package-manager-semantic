@@ -1,0 +1,52 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology socket
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__socket memberOf Package
+	package hasValue "socket"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "38"
+	maintainer hasValue "Original-LENART Janos <ocsi@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.1-10build1"
+	fileName hasValue "pool/universe/s/socket/socket_1.1-10build1_amd64.deb"
+	size hasValue "15172"
+	md5sum hasValue "939a59a78debb1e3ccf2b82834d482b2"
+	sha1 hasValue "a5416ed821ce117c2bc3f81b63eb9e5f4ad589e9"
+	sha256 hasValue "b222a7d91259de192787ddaf0ba6fa8822275da7d2a75c50886f28606a1f8f49"
+	descriptionMd5 hasValue "286dc3011950982c9923a6a69c875ca9"
+	depends hasValue "libc6 (>= 2.15)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__socket,0,DepAtom__0)
+

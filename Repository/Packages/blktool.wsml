@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology blktool
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__blktool memberOf Package
+	package hasValue "blktool"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "61"
+	maintainer hasValue "Original-Azat Khuzhin <a3at.mail@gmail.com>"
+	architecture hasValue "amd64"
+	version hasValue "4-7.1"
+	fileName hasValue "pool/universe/b/blktool/blktool_4-7.1_amd64.deb"
+	size hasValue "16684"
+	md5sum hasValue "fa7f7c4d18a6b68cb98145f4ac2d627e"
+	sha1 hasValue "15b42aaf8e1f9a8d1e34ae3cf4ce82194a0f48e4"
+	sha256 hasValue "28d5dc1bc610b9522f2200666ef958c93ce459572f42f6ea783c01c71547f14d"
+	description hasValue "ajuste parâmetros de dispositivos de bloco de baixo nível"
+	descriptionMd5 hasValue "4273dc2560ebbf80ab997014ca975394"
+	homepage hasValue "http://sourceforge.net/projects/gkernel/files/blktool/"
+	depends hasValue "libc6 (>= 2.4), libglib2.0-0 (>= 2.12.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__blktool,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libglib2.0-0"
+	comparison hasValue ">="
+	version hasValue "2.12.0"
+
+relationInstance depends(P0__blktool,1,DepAtom__1)
+

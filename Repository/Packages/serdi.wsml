@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology serdi
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__serdi memberOf Package
+	package hasValue "serdi"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/text"
+	installedSize hasValue "43"
+	maintainer hasValue "Original-Debian Multimedia Maintainers <debian-multimedia@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.30.2-1"
+	fileName hasValue "pool/universe/s/serd/serdi_0.30.2-1_amd64.deb"
+	size hasValue "8404"
+	md5sum hasValue "6838c67a5eb7730be2a282e15f8d1ec8"
+	sha1 hasValue "b93c695dc9940aec875be8cdcf1c82a7576a2cb5"
+	sha256 hasValue "736a2ac44c97f3fa4d365f3a2c95a9116bd39631648c9c15e5dc987391457fa7"
+	descriptionMd5 hasValue "7422b25fbd724db63b98451c8a76d0e8"
+	homepage hasValue "https://drobilla.net/software/serd/"
+	depends hasValue "libc6 (>= 2.4), libserd-0-0 (>= 0.22.0~dfsg0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__serdi,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libserd-0-0"
+	comparison hasValue ">="
+	version hasValue "0.22.0~dfsg0"
+
+relationInstance depends(P0__serdi,1,DepAtom__1)
+

@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology dhcpcd5
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__dhcpcd5 memberOf Package
+	package hasValue "dhcpcd5"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "395"
+	maintainer hasValue "Original-Scott Leggett <scott@sl.id.au>"
+	architecture hasValue "amd64"
+	version hasValue "7.1.0-2build1"
+	replaces hasValue "dhcpcd (<< 3.2.3-6), dhcpcd-sv"
+	provides hasValue "dhcp-client"
+	fileName hasValue "pool/universe/d/dhcpcd5/dhcpcd5_7.1.0-2build1_amd64.deb"
+	size hasValue "162640"
+	md5sum hasValue "b446c9875a0ebba411edd36cd03fe820"
+	sha1 hasValue "856a59abbe583337d3a1e3975898a1240d5c1da3"
+	sha256 hasValue "1e6c20ee5e57c98af80fcf8ad52c0acc12a9f09591fda79c6c1f6def0100239e"
+	descriptionMd5 hasValue "22786f802d0dde4624bfd0a6161f1b74"
+	homepage hasValue "https://roy.marples.name/projects/dhcpcd"
+	depends hasValue "lsb-base (>= 3.0-6), libc6 (>= 2.28)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "lsb-base"
+	comparison hasValue ">="
+	version hasValue "3.0-6"
+
+relationInstance depends(P0__dhcpcd5,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.28"
+
+relationInstance depends(P0__dhcpcd5,1,DepAtom__1)
+

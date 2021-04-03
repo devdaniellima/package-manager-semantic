@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology node_timed_out
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__node_timed_out memberOf Package
+	package hasValue "node-timed-out"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/javascript"
+	installedSize hasValue "15"
+	maintainer hasValue "Original-Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "4.0.1-5"
+	fileName hasValue "pool/universe/n/node-timed-out/node-timed-out_4.0.1-5_all.deb"
+	size hasValue "4228"
+	md5sum hasValue "0a7c7578c15ef7ee45aaed4185df1a09"
+	sha1 hasValue "f594dd89a955beef2ed9ad8ca4acd75827c030b2"
+	sha256 hasValue "a783ca4471997fe336a443c00907be32d81143bd00dd2b3bf5acb2f9d8b61fc4"
+	descriptionMd5 hasValue "3bdfcd61b40823a6b5df5a04a09bff28"
+	homepage hasValue "https://github.com/floatdrop/timed-out"
+	depends hasValue "nodejs (>= 6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "nodejs"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__node_timed_out,0,DepAtom__0)
+

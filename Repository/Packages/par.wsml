@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology par
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__par memberOf Package
+	package hasValue "par"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/text"
+	installedSize hasValue "83"
+	maintainer hasValue "Original-Andreas Metzler <ametzler@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.52-5"
+	fileName hasValue "pool/universe/p/par/par_1.52-5_amd64.deb"
+	size hasValue "44128"
+	md5sum hasValue "4175cfb24130ca34cf8253dc806cc2ef"
+	sha1 hasValue "5c3bcc78bd82a73d7e8c7084e4ac58c09dbbec93"
+	sha256 hasValue "27eac848196319b1c7af0dee822c69cd9b6cb1e087a4ba4e1982656ac9e6bc80"
+	descriptionMd5 hasValue "71660063a9c5d8d7c0aae26ef5f56aeb"
+	homepage hasValue "http://www.nicemice.net/par/"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__par,0,DepAtom__0)
+

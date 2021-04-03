@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology wiringpi
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__wiringpi memberOf Package
+	package hasValue "wiringpi"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "57"
+	maintainer hasValue "Original-Dave Jones <dave.jones@canonical.com>"
+	architecture hasValue "amd64"
+	version hasValue "2.50-0ubuntu1"
+	fileName hasValue "pool/universe/w/wiringpi/wiringpi_2.50-0ubuntu1_amd64.deb"
+	size hasValue "18144"
+	md5sum hasValue "1f6f2edf0cea207df0cf98a14769d82a"
+	sha1 hasValue "06a84b6e22951dab9d176c87ff20423d0856e2fa"
+	sha256 hasValue "c73d02a22395c0c8189350b74b331c6ad142e2c430c5666153f749ce9d44a1f0"
+	descriptionMd5 hasValue "0fb54ff99d43c54a72b5f4d525d57fd0"
+	homepage hasValue "https://wiringpi.com/"
+	depends hasValue "libc6 (>= 2.4), libwiringpi2"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__wiringpi,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libwiringpi2"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__wiringpi,1,DepAtom__1)
+

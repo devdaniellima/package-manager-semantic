@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology proftpd_mod_pgsql
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__proftpd_mod_pgsql memberOf Package
+	package hasValue "proftpd-mod-pgsql"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "525"
+	maintainer hasValue "Original-ProFTPD Maintainance Team <pkg-proftpd-maintainers@alioth-lists.debian.net>"
+	architecture hasValue "amd64"
+	version hasValue "1.3.6c-2"
+	fileName hasValue "pool/universe/p/proftpd-dfsg/proftpd-mod-pgsql_1.3.6c-2_amd64.deb"
+	size hasValue "13656"
+	md5sum hasValue "e605b08c49d590b39f736a3dc46dc6df"
+	sha1 hasValue "2a6db8b8bd4859129466ebd6befed78630eaec86"
+	sha256 hasValue "18e63d35c481aa37ec8a74473f80233dcfa1077b779d372f54d9e65c89cca2d6"
+	description hasValue "Versatile, virtual-hosting FTP daemon - PostgreSQL module"
+	descriptionMd5 hasValue "47f3bc2584d2984eabc93893f6f938ff"
+	homepage hasValue "http://www.proftpd.org/"
+	depends hasValue "proftpd-basic (= 1.3.6c-2), libc6 (>= 2.4), libpq5 (>= 8.4~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "proftpd-basic"
+	comparison hasValue "="
+	version hasValue "1.3.6c-2"
+
+relationInstance depends(P0__proftpd_mod_pgsql,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__proftpd_mod_pgsql,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libpq5"
+	comparison hasValue ">="
+	version hasValue "8.4~"
+
+relationInstance depends(P0__proftpd_mod_pgsql,2,DepAtom__2)
+

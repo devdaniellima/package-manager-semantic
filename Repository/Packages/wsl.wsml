@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology wsl
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__wsl memberOf Package
+	package hasValue "wsl"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "120"
+	maintainer hasValue "Original-Daniel Jared Dominguez <Jared_Dominguez@Dell.com>"
+	architecture hasValue "all"
+	version hasValue "0.2.1-1"
+	fileName hasValue "pool/universe/w/wsl/wsl_0.2.1-1_all.deb"
+	size hasValue "20094"
+	md5sum hasValue "0e973c58305dcebf885d535838a3ea08"
+	sha1 hasValue "7eaf075d210dce023853a145ef1290ad590d5666"
+	sha256 hasValue "4ad4c75125161cf2bd56ac9a15976fc6798659f3415eb26957a9bcb0ff15d458"
+	descriptionMd5 hasValue "9b0a82cf07de44ae3fa1380f1b14f273"
+	homepage hasValue "http://linux.dell.com/files/wsl/"
+	depends hasValue "wget (>= 1.13) | curl, libxml2-utils"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "wget"
+	comparison hasValue ">="
+	version hasValue "1.13"
+
+relationInstance depends(P0__wsl,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "curl"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__wsl,0,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libxml2-utils"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__wsl,1,DepAtom__2)
+

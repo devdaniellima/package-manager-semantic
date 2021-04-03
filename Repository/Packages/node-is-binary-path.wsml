@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology node_is_binary_path
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__node_is_binary_path memberOf Package
+	package hasValue "node-is-binary-path"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/web"
+	installedSize hasValue "15"
+	maintainer hasValue "Original-Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.1.0-1"
+	fileName hasValue "pool/universe/n/node-is-binary-path/node-is-binary-path_2.1.0-1_all.deb"
+	size hasValue "3472"
+	md5sum hasValue "e3e2826454c03c3734fb33566cb6b399"
+	sha1 hasValue "5b529116b30aa30272114160b6d2d1c7527cc01f"
+	sha256 hasValue "258f684fd7d2a34f94e8fd487e73699419f2a203841213c5f50e5ac08a2589b0"
+	descriptionMd5 hasValue "b56688ff8bbae6fe13b8f37b083fb8a6"
+	homepage hasValue "https://github.com/sindresorhus/is-binary-path#readme"
+	depends hasValue "nodejs, node-binary-extensions (>= 2.0.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "nodejs"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__node_is_binary_path,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "node-binary-extensions"
+	comparison hasValue ">="
+	version hasValue "2.0.0"
+
+relationInstance depends(P0__node_is_binary_path,1,DepAtom__1)
+

@@ -1,0 +1,66 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology dejagnu
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__dejagnu memberOf Package
+	package hasValue "dejagnu"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "1983"
+	maintainer hasValue "Original-Héctor Orón Martínez <zumbi@debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.6.2-1"
+	fileName hasValue "pool/universe/d/dejagnu/dejagnu_1.6.2-1_all.deb"
+	size hasValue "719684"
+	md5sum hasValue "f05cbb5835cda1c99dd415a6cf8cb4ae"
+	sha1 hasValue "3c319333dd7a9717fc6cbd06638f1ab91bbd1081"
+	sha256 hasValue "72b1d576b914141263f6261beb09bfadcf9aa08022f04fdc26fbfd0cee4a95c8"
+	descriptionMd5 hasValue "641b5a9db687ec0ef1d5efaa06180677"
+	depends hasValue "expect, dpkg (>= 1.15.4) | install-info"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "expect"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__dejagnu,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "dpkg"
+	comparison hasValue ">="
+	version hasValue "1.15.4"
+
+relationInstance depends(P0__dejagnu,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "install-info"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__dejagnu,1,DepAtom__2)
+

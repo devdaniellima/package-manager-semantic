@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libminini1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libminini1 memberOf Package
+	package hasValue "libminini1"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "42"
+	maintainer hasValue "Original-Yangfl <mmyangfl@gmail.com>"
+	architecture hasValue "amd64"
+	version hasValue "1.2.a+ds-4build1"
+	fileName hasValue "pool/universe/libm/libminini/libminini1_1.2.a+ds-4build1_amd64.deb"
+	size hasValue "11316"
+	md5sum hasValue "44d9563db92c8065ea735ac004a79b2b"
+	sha1 hasValue "0c6521c844bc1bae25d2fd8c96ec4636cf45b6c7"
+	sha256 hasValue "c464359b9a3c1b3f7c1f9b014f0a746f928e05b3591d3298a72dc36df242cfb6"
+	descriptionMd5 hasValue "75fa2922cfe4ce463001c2b3c424e4e8"
+	homepage hasValue "https://www.compuphase.com/minini.htm"
+	depends hasValue "libc6 (>= 2.14), libstdc++6 (>= 5.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libminini1,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "5.2"
+
+relationInstance depends(P0__libminini1,1,DepAtom__1)
+

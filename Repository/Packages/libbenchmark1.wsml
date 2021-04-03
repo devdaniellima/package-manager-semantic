@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libbenchmark1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libbenchmark1 memberOf Package
+	package hasValue "libbenchmark1"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "319"
+	maintainer hasValue "Original-Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.5.0-4build1"
+	fileName hasValue "pool/universe/b/benchmark/libbenchmark1_1.5.0-4build1_amd64.deb"
+	size hasValue "110844"
+	md5sum hasValue "2fb72b443c3ce3906001e7ca41417412"
+	sha1 hasValue "f5f7f66e7392249b7f65fe53f8c74562a71fbe41"
+	sha256 hasValue "4c308805ed3465ea2664b6be61abf8ccc75b4fcc9808ff65e47b0b19eae3359f"
+	description hasValue "Microbenchmark support library, shared library"
+	descriptionMd5 hasValue "ff992efc40623f1296489b28e55ca328"
+	homepage hasValue "https://github.com/google/benchmark"
+	depends hasValue "libc6 (>= 2.29), libgcc-s1 (>= 3.4), libstdc++6 (>= 9)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__libbenchmark1,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgcc-s1"
+	comparison hasValue ">="
+	version hasValue "3.4"
+
+relationInstance depends(P0__libbenchmark1,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "9"
+
+relationInstance depends(P0__libbenchmark1,2,DepAtom__2)
+

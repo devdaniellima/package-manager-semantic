@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology paxctl
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__paxctl memberOf Package
+	package hasValue "paxctl"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/admin"
+	installedSize hasValue "30"
+	maintainer hasValue "Original-Laszlo Boszormenyi (GCS) <gcs@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.9-1build1"
+	fileName hasValue "pool/universe/p/paxctl/paxctl_0.9-1build1_amd64.deb"
+	size hasValue "10848"
+	md5sum hasValue "b62f67a55b9e13d5b1cbbf750523af94"
+	sha1 hasValue "df7f1f9e322d687d05251bb1efc15d0233765776"
+	sha256 hasValue "2ef3477ba3cf60670463a2cb0cf2855e554055ce3c9692ce4c60ff9258f0528d"
+	descriptionMd5 hasValue "a0b4bcaf736a0206a04eb6db8534022b"
+	homepage hasValue "http://pax.grsecurity.net/"
+	depends hasValue "libc6 (>= 2.7)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__paxctl,0,DepAtom__0)
+

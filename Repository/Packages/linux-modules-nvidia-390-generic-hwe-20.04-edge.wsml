@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology linux_modules_nvidia_390_generic_hwe_20Dot04_edge
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__linux_modules_nvidia_390_generic_hwe_20Dot04_edge memberOf Package
+	package hasValue "linux-modules-nvidia-390-generic-hwe-20.04-edge"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "restricted/kernel"
+	installedSize hasValue "23"
+	maintainer hasValue "Canonical Kernel Team <kernel-team@lists.ubuntu.com>"
+	architecture hasValue "amd64"
+	version hasValue "5.8.0-45.51~20.04.1+1"
+	provides hasValue "nvidia-dkms-390 (= 390.141-0ubuntu0.20.10.1), nvidia-prebuilt-kernel"
+	fileName hasValue "pool/restricted/l/linux-restricted-modules-hwe-5.8/linux-modules-nvidia-390-generic-hwe-20.04-edge_5.8.0-45.51~20.04.1+1_amd64.deb"
+	size hasValue "5516"
+	md5sum hasValue "0bcbebce2b4be809152f5f9c7c4c55d6"
+	sha1 hasValue "2b4fbe58403ec86c613d272c28fbf394f252d7cb"
+	sha256 hasValue "985e7bd3a3ee786adaa9b6556e2594b58fdc3a14dd05a973cc06086a7cfe64f8"
+	sha512 hasValue "8d88cea32e83be466203f05f51c306f96940213126b6637b3bf4653b23c1a00b037e75f750f19210f5165422e0f318f6c0c9ba2c7a7d5ad39cc577044408fc84"
+	descriptionMd5 hasValue "cd054144ad453ff8b71aff8611c60187"
+	depends hasValue "linux-modules-nvidia-390-5.8.0-45-generic (= 5.8.0-45.51~20.04.1+1), nvidia-kernel-common-390 (<= 390.141-1), nvidia-kernel-common-390 (>= 390.141)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "linux-modules-nvidia-390-5.8.0-45-generic"
+	comparison hasValue "="
+	version hasValue "5.8.0-45.51~20.04.1+1"
+
+relationInstance depends(P0__linux_modules_nvidia_390_generic_hwe_20Dot04_edge,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "nvidia-kernel-common-390"
+	comparison hasValue "<="
+	version hasValue "390.141-1"
+
+relationInstance depends(P0__linux_modules_nvidia_390_generic_hwe_20Dot04_edge,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "nvidia-kernel-common-390"
+	comparison hasValue ">="
+	version hasValue "390.141"
+
+relationInstance depends(P0__linux_modules_nvidia_390_generic_hwe_20Dot04_edge,2,DepAtom__2)
+

@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology mp3val
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__mp3val memberOf Package
+	package hasValue "mp3val"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/sound"
+	installedSize hasValue "65"
+	maintainer hasValue "Original-Sandro Tosi <morph@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.1.8-4build1"
+	fileName hasValue "pool/universe/m/mp3val/mp3val_0.1.8-4build1_amd64.deb"
+	size hasValue "19644"
+	md5sum hasValue "33d8b563af7f4ebf5d744894bd04b478"
+	sha1 hasValue "7e1a8be1306d1d3aab8abc5c13ecd1bc3e15340b"
+	sha256 hasValue "077f2a6c4e93279f8773d5c54e627cf404fb6678b74ab853bec427ccede1605d"
+	descriptionMd5 hasValue "44147cb1e5d49f679631cf3ca3895cfd"
+	homepage hasValue "http://mp3val.sourceforge.net/"
+	depends hasValue "libc6 (>= 2.7), libgcc-s1 (>= 3.0), libstdc++6 (>= 4.2.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__mp3val,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgcc-s1"
+	comparison hasValue ">="
+	version hasValue "3.0"
+
+relationInstance depends(P0__mp3val,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "4.2.1"
+
+relationInstance depends(P0__mp3val,2,DepAtom__2)
+

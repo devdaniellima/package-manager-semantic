@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology os_prober
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__os_prober memberOf Package
+	package hasValue "os-prober"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "utils"
+	installedSize hasValue "111"
+	maintainer hasValue "Original-Debian Install System Team <debian-boot@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.74ubuntu2"
+	fileName hasValue "pool/main/o/os-prober/os-prober_1.74ubuntu2_amd64.deb"
+	size hasValue "20076"
+	md5sum hasValue "2bd3b07e7a716b469c5f64284fe0b16f"
+	sha1 hasValue "10bf43ece4abba69a40d44336740ba87d9a9ee01"
+	sha256 hasValue "765415171edbeb7266f186a95f9fbeb91a6c49cf1ab386281b6be48a7c637d4f"
+	description hasValue "utilitário para detectar outros Sistemas Operacionais num conjunto de discos"
+	descriptionMd5 hasValue "fdd4c0b3d1ed11dca7af85ad71167f5a"
+	depends hasValue "libc6 (>= 2.4), grub-common, dmsetup"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__os_prober,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "grub-common"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__os_prober,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "dmsetup"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__os_prober,2,DepAtom__2)
+

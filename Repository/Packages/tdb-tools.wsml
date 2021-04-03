@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology tdb_tools
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__tdb_tools memberOf Package
+	package hasValue "tdb-tools"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "utils"
+	installedSize hasValue "114"
+	maintainer hasValue "Original-Debian Samba Maintainers <pkg-samba-maint@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.4.2-3build1"
+	fileName hasValue "pool/main/t/tdb/tdb-tools_1.4.2-3build1_amd64.deb"
+	size hasValue "24896"
+	md5sum hasValue "f645314ae8824b0e38c3ae0ceddd5dec"
+	sha1 hasValue "397869587b52aacf4ff6236dbede8710814834c4"
+	sha256 hasValue "dc16911ba9bcc5471d2c52a49a6d4ae7864b83d518844e7c7c11fe85c73fad75"
+	description hasValue "Trivial Database - bundled binaries"
+	descriptionMd5 hasValue "4c671417a2674117648ec2fcd5245c12"
+	homepage hasValue "https://tdb.samba.org/"
+	depends hasValue "libc6 (>= 2.7), libtdb1 (>= 1.2.11)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__tdb_tools,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libtdb1"
+	comparison hasValue ">="
+	version hasValue "1.2.11"
+
+relationInstance depends(P0__tdb_tools,1,DepAtom__1)
+

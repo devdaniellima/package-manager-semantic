@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology cldump
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__cldump memberOf Package
+	package hasValue "cldump"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/misc"
+	installedSize hasValue "55"
+	maintainer hasValue "Original-Julien BLACHE <jblache@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.11~dfsg-1build1"
+	fileName hasValue "pool/universe/c/cldump/cldump_0.11~dfsg-1build1_amd64.deb"
+	size hasValue "19904"
+	md5sum hasValue "e22ae02fce435af4b5eb02262a3c258c"
+	sha1 hasValue "ecfe3e006138437aeab58ed2f664c8269b5a83be"
+	sha256 hasValue "93acd09074248320de91e6c4e1b0fedfe49d96746757da2767df358fbf47bb52"
+	description hasValue "extrator de arquivos de bancos de dados Clarion"
+	descriptionMd5 hasValue "845bedeaa45e56a729a79c91dfc56651"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__cldump,0,DepAtom__0)
+

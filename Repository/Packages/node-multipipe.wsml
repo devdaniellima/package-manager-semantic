@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology node_multipipe
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__node_multipipe memberOf Package
+	package hasValue "node-multipipe"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/web"
+	installedSize hasValue "21"
+	maintainer hasValue "Original-Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.0.2-1"
+	fileName hasValue "pool/universe/n/node-multipipe/node-multipipe_1.0.2-1_all.deb"
+	size hasValue "4104"
+	md5sum hasValue "c4f830c234191257d48949623b732885"
+	sha1 hasValue "01dcae8da84b796959ceb94ec7821dfa4c3a6f15"
+	sha256 hasValue "407c5ec5b992c8957c6ec90d67c730c81f1030a63a792bb0c45eab87eb8cf01e"
+	descriptionMd5 hasValue "6b15016434318f8c7dbf924687ef6888"
+	homepage hasValue "https://github.com/juliangruber/multipipe#readme"
+	depends hasValue "nodejs, node-duplexer2 (>= 0.1.2), node-object-assign (>= 4.1.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "nodejs"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__node_multipipe,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "node-duplexer2"
+	comparison hasValue ">="
+	version hasValue "0.1.2"
+
+relationInstance depends(P0__node_multipipe,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "node-object-assign"
+	comparison hasValue ">="
+	version hasValue "4.1.0"
+
+relationInstance depends(P0__node_multipipe,2,DepAtom__2)
+

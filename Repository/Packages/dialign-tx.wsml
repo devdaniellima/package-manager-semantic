@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology dialign_tx
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__dialign_tx memberOf Package
+	package hasValue "dialign-tx"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/science"
+	installedSize hasValue "191"
+	maintainer hasValue "Original-Debian Med Packaging Team <debian-med-packaging@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.2-12"
+	fileName hasValue "pool/universe/d/dialign-t/dialign-tx_1.0.2-12_amd64.deb"
+	size hasValue "76376"
+	md5sum hasValue "5548afe6030bc7e44f3ec6e3ad495e4d"
+	sha1 hasValue "dddcfa5b182bc8349eba9f0a57b59f49c5d72be5"
+	sha256 hasValue "2713c6087405d5178f73f6c01ee50a7e4079d4888ad30a51612e80e03b77f924"
+	description hasValue "alinhador de seqüências múltiplas baseado em segmentos"
+	descriptionMd5 hasValue "e9901419309c237beb8746a4cbe9d039"
+	homepage hasValue "http://dialign-tx.gobics.de/"
+	depends hasValue "libc6 (>= 2.14), dialign-tx-data (= 1.0.2-12)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__dialign_tx,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "dialign-tx-data"
+	comparison hasValue "="
+	version hasValue "1.0.2-12"
+
+relationInstance depends(P0__dialign_tx,1,DepAtom__1)
+

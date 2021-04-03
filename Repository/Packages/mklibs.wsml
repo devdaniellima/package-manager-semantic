@@ -1,0 +1,73 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology mklibs
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__mklibs memberOf Package
+	package hasValue "mklibs"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "42"
+	maintainer hasValue "Original-Debian Install System Team <debian-boot@lists.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.1.44ubuntu3"
+	fileName hasValue "pool/universe/m/mklibs/mklibs_0.1.44ubuntu3_all.deb"
+	size hasValue "9180"
+	md5sum hasValue "8c80176133bad149a59c94bb867ad7c1"
+	sha1 hasValue "54ae72db19588ffde1e4b6391930f7b17980a4a9"
+	sha256 hasValue "3d4471eeeb15acc4b8e0872cc2a13a57e9221a78b9dc646123d82ff3660c9653"
+	descriptionMd5 hasValue "566a24327f5b3aff340afc352308942e"
+	depends hasValue "binutils, gcc, dpkg-dev, mklibs-copy (>= 0.1.44ubuntu3)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "binutils"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__mklibs,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "gcc"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__mklibs,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "dpkg-dev"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__mklibs,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "mklibs-copy"
+	comparison hasValue ">="
+	version hasValue "0.1.44ubuntu3"
+
+relationInstance depends(P0__mklibs,3,DepAtom__3)
+

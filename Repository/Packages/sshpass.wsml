@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology sshpass
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__sshpass memberOf Package
+	package hasValue "sshpass"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/utils"
+	installedSize hasValue "30"
+	maintainer hasValue "Original-Shachar Shemesh <shachar@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.06-1"
+	fileName hasValue "pool/universe/s/sshpass/sshpass_1.06-1_amd64.deb"
+	size hasValue "10458"
+	md5sum hasValue "78731168dd4cc75b876053e8051a1189"
+	sha1 hasValue "511794edaa34ea5542d3297163c8efba80133e69"
+	sha256 hasValue "b31772d638e8debf2c7422bb6e2531da14964e378e31d9c46cba372bc4bd2e0a"
+	descriptionMd5 hasValue "be212cb773a2c46e35ad51471f2c8d57"
+	homepage hasValue "http://sourceforge.net/projects/sshpass"
+	depends hasValue "libc6 (>= 2.15)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__sshpass,0,DepAtom__0)
+

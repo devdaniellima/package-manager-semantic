@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology plasma_wallpapers_addons
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__plasma_wallpapers_addons memberOf Package
+	package hasValue "plasma-wallpapers-addons"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/kde"
+	installedSize hasValue "134"
+	maintainer hasValue "Original-Debian/Kubuntu Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "4:5.18.4.1-0ubuntu2"
+	fileName hasValue "pool/universe/k/kdeplasma-addons/plasma-wallpapers-addons_5.18.4.1-0ubuntu2_amd64.deb"
+	size hasValue "24636"
+	md5sum hasValue "34bd2300861b0613895fcfe36cc2743f"
+	sha1 hasValue "3c188200f134fc1e257e1b45e9bd31185575c364"
+	sha256 hasValue "f3b94247e251c3177c5c3ae9973e2086fbead21367184950659d8a760f4608e4"
+	descriptionMd5 hasValue "a38500d25db4a179a98f77927698b821"
+	homepage hasValue "https://projects.kde.org/projects/kde/workspace/kdeplasma-addons"
+	depends hasValue "kdeplasma-addons-data (= 4:5.18.4.1-0ubuntu2), plasma-framework (>= 5.54.0~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "kdeplasma-addons-data"
+	comparison hasValue "="
+	version hasValue "4:5.18.4.1-0ubuntu2"
+
+relationInstance depends(P0__plasma_wallpapers_addons,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "plasma-framework"
+	comparison hasValue ">="
+	version hasValue "5.54.0~"
+
+relationInstance depends(P0__plasma_wallpapers_addons,1,DepAtom__1)
+

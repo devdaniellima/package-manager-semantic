@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libensmallen_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libensmallen_dev memberOf Package
+	package hasValue "libensmallen-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "1358"
+	maintainer hasValue "Original-Debian Science Maintainers <debian-science-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.11.3-1"
+	fileName hasValue "pool/universe/e/ensmallen/libensmallen-dev_2.11.3-1_amd64.deb"
+	size hasValue "169712"
+	md5sum hasValue "ebcec9e8f11cfd339cea8263c4357e51"
+	sha1 hasValue "316f0e8da1bb4c1dd73f411bd0c6f1942206dc21"
+	sha256 hasValue "afc0abbb6b11597bf13305b8af855d2cf16d79d5baf1fee0abac79686749142b"
+	descriptionMd5 hasValue "53786bc3db68afada07edf24cfdd11fb"
+	homepage hasValue "https://www.ensmallen.org/"
+	depends hasValue "libarmadillo-dev (>= 1:6.5), liblapack-dev"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libarmadillo-dev"
+	comparison hasValue ">="
+	version hasValue "1:6.5"
+
+relationInstance depends(P0__libensmallen_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "liblapack-dev"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libensmallen_dev,1,DepAtom__1)
+

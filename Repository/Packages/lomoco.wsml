@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology lomoco
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__lomoco memberOf Package
+	package hasValue "lomoco"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "67"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.0-4build1"
+	fileName hasValue "pool/universe/l/lomoco/lomoco_1.0.0-4build1_amd64.deb"
+	size hasValue "16716"
+	md5sum hasValue "786c15ceabbcbfa60c6883fd1ac89c23"
+	sha1 hasValue "4cc4fc4b3718b7a6cbcd8acb98ccf0fe202a52bb"
+	sha256 hasValue "20f84a34d17e6323d04a53be29bc3829cd7918c271eb882acd7114f1af212767"
+	description hasValue "Controle de Mouse Logitech para mouses USB"
+	descriptionMd5 hasValue "4e64cebbe05f073fc2844e0ef4cbfeb1"
+	homepage hasValue "http://www.lomoco.org/"
+	depends hasValue "libc6 (>= 2.7), libusb-0.1-4 (>= 2:0.1.12)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__lomoco,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libusb-0.1-4"
+	comparison hasValue ">="
+	version hasValue "2:0.1.12"
+
+relationInstance depends(P0__lomoco,1,DepAtom__1)
+

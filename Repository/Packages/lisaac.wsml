@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology lisaac
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__lisaac memberOf Package
+	package hasValue "lisaac"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "1953"
+	maintainer hasValue "Original-Picca Frédéric-Emmanuel <picca@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:0.39~rc1-3build1"
+	fileName hasValue "pool/universe/l/lisaac/lisaac_0.39~rc1-3build1_amd64.deb"
+	size hasValue "470880"
+	md5sum hasValue "ead01079d78082a0685ed319f4ffb633"
+	sha1 hasValue "2ea4657f403d3bcc788de17f7685d9645d3a87aa"
+	sha256 hasValue "241c321c8e0824bb8bbbfdca2fad3c028e4f6020f4643cc16c323381bbab5dc5"
+	descriptionMd5 hasValue "f84fce0ac8da944a6d5059d2490f4957"
+	homepage hasValue "http://lisaac.org/"
+	depends hasValue "libc6 (>= 2.4), lisaac-common"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__lisaac,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "lisaac-common"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__lisaac,1,DepAtom__1)
+

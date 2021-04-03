@@ -1,0 +1,59 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology lupin_casper
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__lupin_casper memberOf Package
+	package hasValue "lupin-casper"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "misc"
+	installedSize hasValue "31"
+	maintainer hasValue "Original-Agostino Russo <agostino.russo@gmail.com>"
+	architecture hasValue "all"
+	version hasValue "0.57build1"
+	fileName hasValue "pool/main/l/lupin/lupin-casper_0.57build1_all.deb"
+	size hasValue "5854"
+	md5sum hasValue "3166ff8341e2698c3685db221f58d21c"
+	sha1 hasValue "95b76397af3f342fa919db525c96c1d35e6978b6"
+	sha256 hasValue "84e852e0492216f033e0a9b889ce7d1bc7e79f8bcee48e8be5c9ac0994644493"
+	descriptionMd5 hasValue "788e4fe72890ead4f26e1e29cce0021d"
+	depends hasValue "initramfs-tools (>= 0.40ubuntu11), casper (>= 0.98)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "initramfs-tools"
+	comparison hasValue ">="
+	version hasValue "0.40ubuntu11"
+
+relationInstance depends(P0__lupin_casper,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "casper"
+	comparison hasValue ">="
+	version hasValue "0.98"
+
+relationInstance depends(P0__lupin_casper,1,DepAtom__1)
+

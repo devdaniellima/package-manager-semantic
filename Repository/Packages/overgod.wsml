@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology overgod
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__overgod memberOf Package
+	package hasValue "overgod"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/games"
+	installedSize hasValue "461"
+	maintainer hasValue "Original-Debian Games Team <pkg-games-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0-6"
+	fileName hasValue "pool/universe/o/overgod/overgod_1.0-6_amd64.deb"
+	size hasValue "165532"
+	md5sum hasValue "d12fc66c69c87a4598a2bc18a215586d"
+	sha1 hasValue "51ed1ce2af7a8e1aa7080ca1bccaf112d026ab99"
+	sha256 hasValue "dd995dfef77f14787a0c6221e4e155db7e9f58bc609add09aa6acbe951e6bced"
+	description hasValue "jogo de fliperama de rolagem bidirecional"
+	descriptionMd5 hasValue "f8d593fdaf572de02dfc08dd2535881a"
+	homepage hasValue "https://sourceforge.net/projects/overgod/"
+	depends hasValue "overgod-data (>= 1.0-6), liballegro4.4 (>= 2:4.4.3.1), libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "overgod-data"
+	comparison hasValue ">="
+	version hasValue "1.0-6"
+
+relationInstance depends(P0__overgod,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "liballegro4.4"
+	comparison hasValue ">="
+	version hasValue "2:4.4.3.1"
+
+relationInstance depends(P0__overgod,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__overgod,2,DepAtom__2)
+

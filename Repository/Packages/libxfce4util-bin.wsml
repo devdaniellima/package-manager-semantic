@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libxfce4util_bin
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libxfce4util_bin memberOf Package
+	package hasValue "libxfce4util-bin"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/xfce"
+	installedSize hasValue "34"
+	maintainer hasValue "Original-Debian Xfce Maintainers <debian-xfce@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "4.14.0-1"
+	replaces hasValue "libxfce4util4 (<< 4.6.1-2)"
+	fileName hasValue "pool/universe/libx/libxfce4util/libxfce4util-bin_4.14.0-1_amd64.deb"
+	size hasValue "5688"
+	md5sum hasValue "9ab7509bb04bf957a5b4563586ca5db0"
+	sha1 hasValue "426fd5cf12e820da2761baf10accfdfa08f4f506"
+	sha256 hasValue "05ee69e69b58cc5186b771000415d1dec1083c546e3b6285ba5b53be1b7ee71e"
+	description hasValue "ferramentas para o libxfce4util"
+	descriptionMd5 hasValue "5f496a257e598e4e92335a2f12cb9152"
+	homepage hasValue "https://www.xfce.org/"
+	depends hasValue "libc6 (>= 2.3.4), libxfce4util7 (>= 4.9.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.3.4"
+
+relationInstance depends(P0__libxfce4util_bin,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libxfce4util7"
+	comparison hasValue ">="
+	version hasValue "4.9.0"
+
+relationInstance depends(P0__libxfce4util_bin,1,DepAtom__1)
+

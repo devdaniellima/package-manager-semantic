@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology overlayroot
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__overlayroot memberOf Package
+	package hasValue "overlayroot"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "admin"
+	installedSize hasValue "65"
+	maintainer hasValue "Scott Moser <smoser@ubuntu.com>"
+	architecture hasValue "all"
+	version hasValue "0.45ubuntu1"
+	fileName hasValue "pool/main/c/cloud-initramfs-tools/overlayroot_0.45ubuntu1_all.deb"
+	size hasValue "15400"
+	md5sum hasValue "82137682df93fe6f3616c9048293cc20"
+	sha1 hasValue "e42b94a8a5b394367b7a578cc6d076f038521eee"
+	sha256 hasValue "b9bcb3a11f686d49bf7b5b71e14a1be78d1df0656e00620a63987f824aa37621"
+	descriptionMd5 hasValue "994a1e190cc10da9cb6f340384617d3c"
+	homepage hasValue "http://launchpad.net/cloud-initramfs-tools"
+	depends hasValue "cryptsetup, cryptsetup-bin, initramfs-tools"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "cryptsetup"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__overlayroot,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "cryptsetup-bin"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__overlayroot,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "initramfs-tools"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__overlayroot,2,DepAtom__2)
+

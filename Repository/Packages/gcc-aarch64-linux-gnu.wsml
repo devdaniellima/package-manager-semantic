@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gcc_aarch64_linux_gnu
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gcc_aarch64_linux_gnu memberOf Package
+	package hasValue "gcc-aarch64-linux-gnu"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "devel"
+	installedSize hasValue "25"
+	maintainer hasValue "Original-Debian GCC Maintainers <debian-gcc@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "4:9.3.0-1ubuntu2"
+	fileName hasValue "pool/main/g/gcc-defaults/gcc-aarch64-linux-gnu_9.3.0-1ubuntu2_amd64.deb"
+	size hasValue "1420"
+	md5sum hasValue "73d8756bb50f915099c9d4abbf50ea6e"
+	sha1 hasValue "bd4bf15585b764d788383dc1220e93222382bf8a"
+	sha256 hasValue "aab6daa6ffcce913e148a0c07719dc918cb1bdc1e27fbb05fb3d3b85c518a0de"
+	description hasValue "GNU C compiler for the arm64 architecture"
+	descriptionMd5 hasValue "69df476a1d2ab9184e2d806ac537e77d"
+	depends hasValue "cpp-aarch64-linux-gnu (= 4:9.3.0-1ubuntu2), gcc-9-aarch64-linux-gnu (>= 9.3.0-3~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "cpp-aarch64-linux-gnu"
+	comparison hasValue "="
+	version hasValue "4:9.3.0-1ubuntu2"
+
+relationInstance depends(P0__gcc_aarch64_linux_gnu,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "gcc-9-aarch64-linux-gnu"
+	comparison hasValue ">="
+	version hasValue "9.3.0-3~"
+
+relationInstance depends(P0__gcc_aarch64_linux_gnu,1,DepAtom__1)
+

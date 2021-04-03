@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology cloudkitty_processor
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__cloudkitty_processor memberOf Package
+	package hasValue "cloudkitty-processor"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "27"
+	maintainer hasValue "Original-Debian OpenStack <team+openstack@tracker.debian.org>"
+	architecture hasValue "all"
+	version hasValue "11.0.1-2"
+	fileName hasValue "pool/universe/c/cloudkitty/cloudkitty-processor_11.0.1-2_all.deb"
+	size hasValue "4952"
+	md5sum hasValue "eb21f0848341cff4bec9c25a75f7ea34"
+	sha1 hasValue "711ec4f76393f9cc74b1ee5b7d9a20eec834ae7b"
+	sha256 hasValue "9f31a2fa0814212dbe8cd8cfcb8d28f652ca02c97bfd404d8d9598e2e5030a75"
+	descriptionMd5 hasValue "0f129dd6518c0449a6f05639534f4ceb"
+	homepage hasValue "https://github.com/openstack/cloudkitty"
+	depends hasValue "adduser, cloudkitty-common (= 11.0.1-2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "adduser"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__cloudkitty_processor,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "cloudkitty-common"
+	comparison hasValue "="
+	version hasValue "11.0.1-2"
+
+relationInstance depends(P0__cloudkitty_processor,1,DepAtom__1)
+

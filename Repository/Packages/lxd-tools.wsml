@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology lxd_tools
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__lxd_tools memberOf Package
+	package hasValue "lxd-tools"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "62"
+	maintainer hasValue "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	architecture hasValue "all"
+	version hasValue "1:0.9"
+	fileName hasValue "pool/universe/l/lxd/lxd-tools_0.9_all.deb"
+	size hasValue "1624"
+	md5sum hasValue "19a52fb1ff083e65cbf8ff5aa65e8c8f"
+	sha1 hasValue "6a46f22131e567710ce7b87522ec0b5f46478b90"
+	sha256 hasValue "9e5fe6adbb7389c2fa760b3bfb82cc62d94515c92fe5975ae63811e7ac3aec22"
+	description hasValue "Transitional package - lxc-tools -> LXD snap"
+	descriptionMd5 hasValue "285f0e7677295fa7f0179a06011e33e9"
+	homepage hasValue "https://linuxcontainers.org/"
+	depends hasValue "lxd (>= 1:0.9)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "lxd"
+	comparison hasValue ">="
+	version hasValue "1:0.9"
+
+relationInstance depends(P0__lxd_tools,0,DepAtom__0)
+

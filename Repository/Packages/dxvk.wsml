@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology dxvk
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__dxvk memberOf Package
+	package hasValue "dxvk"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "34"
+	maintainer hasValue "Original-Alexandre Viau <aviau@debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.5.4+ds1-2"
+	fileName hasValue "pool/universe/d/dxvk/dxvk_1.5.4+ds1-2_all.deb"
+	size hasValue "8272"
+	md5sum hasValue "681f4ba5186327e6f5ab03cd25e9fc07"
+	sha1 hasValue "865e365cfe2a5b053e0a3f6b068a47a9b61e2e63"
+	sha256 hasValue "3905d7ff312067e92b6ebac6f19ffcd1e9e2fe4165ff5bd0b4483c74e01c8fa9"
+	descriptionMd5 hasValue "641cec5e8f161c516cc053e07a818d42"
+	homepage hasValue "https://github.com/doitsujin/dxvk"
+	depends hasValue "dxvk-wine64-development (>= 1.5.4+ds1-2) | dxvk-wine32-development (>= 1.5.4+ds1-2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "dxvk-wine64-development"
+	comparison hasValue ">="
+	version hasValue "1.5.4+ds1-2"
+
+relationInstance depends(P0__dxvk,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "dxvk-wine32-development"
+	comparison hasValue ">="
+	version hasValue "1.5.4+ds1-2"
+
+relationInstance depends(P0__dxvk,0,DepAtom__1)
+

@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology mdp
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__mdp memberOf Package
+	package hasValue "mdp"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/misc"
+	installedSize hasValue "67"
+	maintainer hasValue "Original-Lev Lamberov <dogsleg@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.15-1"
+	fileName hasValue "pool/universe/m/mdp-src/mdp_1.0.15-1_amd64.deb"
+	size hasValue "22664"
+	md5sum hasValue "fe5b820d146655add6cb398d2451fb91"
+	sha1 hasValue "daf5f3af54485527b7689f4f386e43b0e900f1fa"
+	sha256 hasValue "dba1320fb45d6ffd72bed6611ead8cee9539ca5155219dc8edd530f82e92f1d9"
+	descriptionMd5 hasValue "d83b8e5d0cceb12266844d45e963e700"
+	homepage hasValue "https://github.com/visit1985/mdp"
+	depends hasValue "libc6 (>= 2.4), libncursesw6 (>= 6), libtinfo6 (>= 6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__mdp,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libncursesw6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__mdp,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libtinfo6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__mdp,2,DepAtom__2)
+

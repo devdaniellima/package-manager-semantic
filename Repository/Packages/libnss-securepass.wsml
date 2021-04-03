@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libnss_securepass
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libnss_securepass memberOf Package
+	package hasValue "libnss-securepass"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/admin"
+	installedSize hasValue "69"
+	maintainer hasValue "Original-Debian SecurePass <pkg-securepass-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.5-1"
+	fileName hasValue "pool/universe/libn/libnss-securepass/libnss-securepass_0.5-1_amd64.deb"
+	size hasValue "21476"
+	md5sum hasValue "89719474497d338d47357dc536dca122"
+	sha1 hasValue "d50dd0ccc363bd4564115eca94dd3aeb2ad91948"
+	sha256 hasValue "0a6f8acb78b944b23ff55a754b72859bc1cf73a1ead30335bbc4ffbfa7593d90"
+	descriptionMd5 hasValue "7519af5e2839ba55c8c9687496231afb"
+	homepage hasValue "https://github.com/garlsecurity/nss_securepass"
+	depends hasValue "libc6 (>= 2.14), libcurl3-gnutls (>= 7.16.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libnss_securepass,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libcurl3-gnutls"
+	comparison hasValue ">="
+	version hasValue "7.16.2"
+
+relationInstance depends(P0__libnss_securepass,1,DepAtom__1)
+

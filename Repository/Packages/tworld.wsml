@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology tworld
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__tworld memberOf Package
+	package hasValue "tworld"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/games"
+	installedSize hasValue "273"
+	maintainer hasValue "Original-Debian Games Team <pkg-games-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.3.2-3"
+	fileName hasValue "pool/universe/t/tworld/tworld_1.3.2-3_amd64.deb"
+	size hasValue "118002"
+	md5sum hasValue "f245f1dc7a5d3b7fbb546e8ad4f50b73"
+	sha1 hasValue "6abd2a8596809f0a02833938ddf42a341e9cb074"
+	sha256 hasValue "d3aa20227d92096f637ad2195c59253dee5910f4b3c3d7fd35e79ebe198c1777"
+	description hasValue "emulação do motor do jogo Chip's Challenge"
+	descriptionMd5 hasValue "c2f70485c53db04379c7816cfd365a78"
+	homepage hasValue "http://www.muppetlabs.com/~breadbox/software/tworld/"
+	depends hasValue "libc6 (>= 2.14), libsdl1.2debian (>= 1.2.11), tworld-data (= 1.3.2-3)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__tworld,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libsdl1.2debian"
+	comparison hasValue ">="
+	version hasValue "1.2.11"
+
+relationInstance depends(P0__tworld,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "tworld-data"
+	comparison hasValue "="
+	version hasValue "1.3.2-3"
+
+relationInstance depends(P0__tworld,2,DepAtom__2)
+

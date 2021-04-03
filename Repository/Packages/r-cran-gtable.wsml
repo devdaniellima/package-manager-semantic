@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology r_cran_gtable
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__r_cran_gtable memberOf Package
+	package hasValue "r-cran-gtable"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/gnu-r"
+	installedSize hasValue "228"
+	maintainer hasValue "Original-Debian R Packages Maintainers <r-pkg-team@alioth-lists.debian.net>"
+	architecture hasValue "all"
+	version hasValue "0.3.0+dfsg-1"
+	fileName hasValue "pool/universe/r/r-cran-gtable/r-cran-gtable_0.3.0+dfsg-1_all.deb"
+	size hasValue "138176"
+	md5sum hasValue "cd8df90b1a154bee3b7e15e998c48e87"
+	sha1 hasValue "f75bf0dd3901a0fc51aa995184cf1e3e8603724b"
+	sha256 hasValue "4e24cbebd3524aa85e317621541d7c4d2a7c27f661bfc2ad38b7062ce00e7206"
+	descriptionMd5 hasValue "ab4df13a56699608f5435faf54ee271b"
+	homepage hasValue "https://cran.r-project.org/package=gtable"
+	depends hasValue "r-base-core (>= 3.6.1-2), r-api-3.5"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "r-base-core"
+	comparison hasValue ">="
+	version hasValue "3.6.1-2"
+
+relationInstance depends(P0__r_cran_gtable,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "r-api-3.5"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__r_cran_gtable,1,DepAtom__1)
+

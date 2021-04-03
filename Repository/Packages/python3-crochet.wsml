@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python3_crochet
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python3_crochet memberOf Package
+	package hasValue "python3-crochet"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "python"
+	installedSize hasValue "113"
+	maintainer hasValue "Original-MAAS Maintainers <maas-devel@lists.launchpad.net>"
+	architecture hasValue "all"
+	version hasValue "1.4.0-0ubuntu4"
+	fileName hasValue "pool/main/c/crochet/python3-crochet_1.4.0-0ubuntu4_all.deb"
+	size hasValue "21392"
+	md5sum hasValue "35de9e2fe6d6b81a6578e34d2f6770dd"
+	sha1 hasValue "63615c983efc01aeeedd6fbad5eaa6fb57699094"
+	sha256 hasValue "184bab4db520791f9aab95bf1a9642ec9893d502dbe0698db508673941400499"
+	descriptionMd5 hasValue "9cebee13a520eb91b40bc566cdc3e723"
+	homepage hasValue "https://pypi.python.org/pypi/crochet"
+	depends hasValue "python3-twisted, python3:any (>= 3.3~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3-twisted"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__python3_crochet,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ">="
+	version hasValue "3.3~"
+
+relationInstance depends(P0__python3_crochet,1,DepAtom__1)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology spyder
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__spyder memberOf Package
+	package hasValue "spyder"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/devel"
+	installedSize hasValue "133"
+	maintainer hasValue "Original-Debian Science Maintainers <debian-science-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "3.3.6+dfsg1-4build1"
+	fileName hasValue "pool/universe/s/spyder/spyder_3.3.6+dfsg1-4build1_all.deb"
+	size hasValue "35880"
+	md5sum hasValue "2e30730ebd73510d9425bed9e6cb7223"
+	sha1 hasValue "acf693728bbc9e6d8de934b452b9bd5438047ab6"
+	sha256 hasValue "276e76aebdcf5c349e577e91f213ec78d3941ffa0b9bf2752caf922d3200cc42"
+	descriptionMd5 hasValue "a666c81089abbf748b59dc5637d9b47e"
+	homepage hasValue "https://github.com/spyder-ide/spyder"
+	depends hasValue "python3-spyder (= 3.3.6+dfsg1-4build1), python3.8:any"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3-spyder"
+	comparison hasValue "="
+	version hasValue "3.3.6+dfsg1-4build1"
+
+relationInstance depends(P0__spyder,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3.8:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__spyder,1,DepAtom__1)
+

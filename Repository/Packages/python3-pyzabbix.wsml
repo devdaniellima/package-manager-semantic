@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python3_pyzabbix
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python3_pyzabbix memberOf Package
+	package hasValue "python3-pyzabbix"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "25"
+	maintainer hasValue "Original-Debian OpenStack <openstack-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.7.4-1"
+	fileName hasValue "pool/universe/p/pyzabbix/python3-pyzabbix_0.7.4-1_all.deb"
+	size hasValue "5136"
+	md5sum hasValue "7ff338931b24b04febabd4fa59ff061a"
+	sha1 hasValue "0821e535d5ffd06d72292dac0ffdfd4e44ca9c49"
+	sha256 hasValue "e375407c6dfc933e1cd76bfce90c938617d75b5c15a60b8632b963215b22e9cb"
+	descriptionMd5 hasValue "c6cf4d992b376053d2aa7fbc2fe4727e"
+	homepage hasValue "https://github.com/lukecyca/pyzabbix.git"
+	depends hasValue "python3-requests, python3:any (>= 3.3.2-2~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3-requests"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__python3_pyzabbix,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ">="
+	version hasValue "3.3.2-2~"
+
+relationInstance depends(P0__python3_pyzabbix,1,DepAtom__1)
+

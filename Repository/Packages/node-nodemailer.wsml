@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology node_nodemailer
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__node_nodemailer memberOf Package
+	package hasValue "node-nodemailer"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/javascript"
+	installedSize hasValue "552"
+	maintainer hasValue "Original-Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "6.4.5-1"
+	fileName hasValue "pool/universe/n/node-nodemailer/node-nodemailer_6.4.5-1_all.deb"
+	size hasValue "109684"
+	md5sum hasValue "e36bfcc966f57ad808daa2cabc6dadf8"
+	sha1 hasValue "afc1128f2990dd6b4aebf07c81fb831faf7cf314"
+	sha256 hasValue "92213dc5849dc929c3777dbfbb0dcc9b4b47ce7cd99996ff9c4bb7ff90383b2d"
+	descriptionMd5 hasValue "2d3bb055a52f498e97077b6897ae301e"
+	homepage hasValue "https://nodemailer.com/"
+	depends hasValue "nodejs (>= 6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "nodejs"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__node_nodemailer,0,DepAtom__0)
+

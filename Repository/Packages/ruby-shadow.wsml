@@ -1,0 +1,74 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ruby_shadow
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ruby_shadow memberOf Package
+	package hasValue "ruby-shadow"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/ruby"
+	installedSize hasValue "41"
+	maintainer hasValue "Original-Debian Ruby Extras Maintainers <pkg-ruby-extras-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.5.0-1build2"
+	fileName hasValue "pool/universe/r/ruby-shadow/ruby-shadow_2.5.0-1build2_amd64.deb"
+	size hasValue "10044"
+	md5sum hasValue "4d729c8e9817ac3fdcdf864d3a67ef52"
+	sha1 hasValue "d39f1b58fb32b2864e67f60040b2e4719bffea7f"
+	sha256 hasValue "6ac459b008cee2f94d66958a7a6e6ca6a4f46359d4c9a2f8a27c4de3aaccb721"
+	descriptionMd5 hasValue "19211e2801f26505fbd939dd6cf0c11f"
+	homepage hasValue "https://github.com/apalmblad/ruby-shadow"
+	depends hasValue "libc6 (>= 2.4), libruby2.7 (>= 2.7.0-4), ruby (>= 1:2.7~0), ruby (<< 1:2.8~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__ruby_shadow,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libruby2.7"
+	comparison hasValue ">="
+	version hasValue "2.7.0-4"
+
+relationInstance depends(P0__ruby_shadow,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "ruby"
+	comparison hasValue ">="
+	version hasValue "1:2.7~0"
+
+relationInstance depends(P0__ruby_shadow,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "ruby"
+	comparison hasValue "<<"
+	version hasValue "1:2.8~"
+
+relationInstance depends(P0__ruby_shadow,3,DepAtom__3)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology postgresql_12_mimeo
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__postgresql_12_mimeo memberOf Package
+	package hasValue "postgresql-12-mimeo"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/database"
+	installedSize hasValue "4467"
+	maintainer hasValue "Original-Debian PostgreSQL Maintainers <team+postgresql@tracker.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.5.1-7"
+	fileName hasValue "pool/universe/m/mimeo/postgresql-12-mimeo_1.5.1-7_all.deb"
+	size hasValue "109892"
+	md5sum hasValue "7a991ca2555813c1c0d17a364671b9e8"
+	sha1 hasValue "10a0619403f4a1ee82e8c3fb882fe9d1cd148b38"
+	sha256 hasValue "1f57fc05b4ac7d6fd0e9ad9893a044187f18434575071874ca4f601a57b34f44"
+	descriptionMd5 hasValue "aba3ab4c79244f645a265e7d1ebd1108"
+	homepage hasValue "https://github.com/omniti-labs/mimeo"
+	depends hasValue "postgresql-12, postgresql-contrib-12"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "postgresql-12"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__postgresql_12_mimeo,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "postgresql-contrib-12"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__postgresql_12_mimeo,1,DepAtom__1)
+

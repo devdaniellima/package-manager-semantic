@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libselinux1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libselinux1 memberOf Package
+	package hasValue "libselinux1"
+	packageSource hasValue Source__S1
+	priority hasValue "required"
+	section hasValue "libs"
+	installedSize hasValue "202"
+	maintainer hasValue "Original-Debian SELinux maintainers <selinux-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.0-1build2"
+	fileName hasValue "pool/main/libs/libselinux/libselinux1_3.0-1build2_amd64.deb"
+	size hasValue "68784"
+	md5sum hasValue "beeb0409d9ef7c4af3c92ad6fbdae459"
+	sha1 hasValue "f612fc532644a6989c65eaa509650d04ae3e212f"
+	sha256 hasValue "1b8674b6f9e62fbae768d9ffbd686955d08db889ee4107d15ae02d1ec033cc7b"
+	description hasValue "bibliotecas compartilhadas de execução SELinux"
+	descriptionMd5 hasValue "90f6e1cb06c527bc3fc11ec6f969c59c"
+	homepage hasValue "http://userspace.selinuxproject.org/"
+	depends hasValue "libc6 (>= 2.30), libpcre2-8-0 (>= 10.22)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.30"
+
+relationInstance depends(P0__libselinux1,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libpcre2-8-0"
+	comparison hasValue ">="
+	version hasValue "10.22"
+
+relationInstance depends(P0__libselinux1,1,DepAtom__1)
+

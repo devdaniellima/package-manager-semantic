@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libspeechd2
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libspeechd2 memberOf Package
+	package hasValue "libspeechd2"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "libs"
+	installedSize hasValue "69"
+	maintainer hasValue "Original-Debian TTS Team <tts-project@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.9.1-4"
+	fileName hasValue "pool/main/s/speech-dispatcher/libspeechd2_0.9.1-4_amd64.deb"
+	size hasValue "17656"
+	md5sum hasValue "49f48a7fd3249564a19d33f0eb7d7d9f"
+	sha1 hasValue "ce9e4dad8850dad9c7c98a962403ff437ec19c63"
+	sha256 hasValue "3673124f7ad2db68c2942a527d63503fd266949d82b2124af986d29401b54e21"
+	description hasValue "Speech Dispatcher: Shared libraries"
+	descriptionMd5 hasValue "86fcde9fb71606efb4e51038d49469ac"
+	homepage hasValue "http://devel.freebsoft.org/speechd"
+	depends hasValue "libc6 (>= 2.4), libglib2.0-0 (>= 2.36)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libspeechd2,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libglib2.0-0"
+	comparison hasValue ">="
+	version hasValue "2.36"
+
+relationInstance depends(P0__libspeechd2,1,DepAtom__1)
+

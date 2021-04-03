@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libfko3
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libfko3 memberOf Package
+	package hasValue "libfko3"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/libs"
+	installedSize hasValue "128"
+	maintainer hasValue "Original-Francois Marier <francois@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.6.10-8"
+	replaces hasValue "libfko2"
+	fileName hasValue "pool/universe/f/fwknop/libfko3_2.6.10-8_amd64.deb"
+	size hasValue "43156"
+	md5sum hasValue "1d3488a479a275194545ab78bec59618"
+	sha1 hasValue "2d0d9a5965498d07f8ffd55b8ff28f9e7866e406"
+	sha256 hasValue "3c540e4ac5a6f841cf12c88f54ba99b066a109b999022f4b604d906352c8e74c"
+	descriptionMd5 hasValue "d7677983ff3ab8b9d2cf206fa9f0dadc"
+	homepage hasValue "https://www.cipherdyne.com/fwknop/"
+	depends hasValue "libc6 (>= 2.14), libgpgme11 (>= 1.2.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libfko3,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgpgme11"
+	comparison hasValue ">="
+	version hasValue "1.2.0"
+
+relationInstance depends(P0__libfko3,1,DepAtom__1)
+

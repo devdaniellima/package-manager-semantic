@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology resolvconf_admin
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__resolvconf_admin memberOf Package
+	package hasValue "resolvconf-admin"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "30"
+	maintainer hasValue "Original-Daniel Kahn Gillmor <dkg@fifthhorseman.net>"
+	architecture hasValue "amd64"
+	version hasValue "0.3-1"
+	fileName hasValue "pool/universe/r/resolvconf-admin/resolvconf-admin_0.3-1_amd64.deb"
+	size hasValue "9456"
+	md5sum hasValue "21bbd9a370f23f859e37606c1525b812"
+	sha1 hasValue "51aa5789741dbcf1f89bf8b84db93b01452718c5"
+	sha256 hasValue "8d47a871c7da01558fae56259f5d3ac3259bd8d705777a59c9c40cb78d2c8f8d"
+	descriptionMd5 hasValue "a5d0f081f19804b85cf11966c74b3d78"
+	homepage hasValue "https://github.com/dkg/resolvconf-admin"
+	depends hasValue "adduser, libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "adduser"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__resolvconf_admin,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__resolvconf_admin,1,DepAtom__1)
+

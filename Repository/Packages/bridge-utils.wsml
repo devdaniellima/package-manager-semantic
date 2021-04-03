@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology bridge_utils
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__bridge_utils memberOf Package
+	package hasValue "bridge-utils"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "net"
+	installedSize hasValue "109"
+	maintainer hasValue "Original-Santiago Garcia Mantinan <manty@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.6-2ubuntu1"
+	conflicts hasValue "ifupdown (<< 0.8.17)"
+	fileName hasValue "pool/main/b/bridge-utils/bridge-utils_1.6-2ubuntu1_amd64.deb"
+	size hasValue "30520"
+	md5sum hasValue "ada6f2da3500c0e424f0f2d31cd9a82b"
+	sha1 hasValue "b2f138f195119508c96e0578a7a72559070cddc7"
+	sha256 hasValue "35009c5e2553688135d7fdab0b7301838fdc01cac808708d0709cee0c3d2ba01"
+	description hasValue "utilitários para configuração de \"bridge\" Ethernet no Linux"
+	descriptionMd5 hasValue "bc06a038a6315377cf0871ca4de79aac"
+	depends hasValue "libc6 (>= 2.7)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__bridge_utils,0,DepAtom__0)
+

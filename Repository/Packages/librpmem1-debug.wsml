@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology librpmem1_debug
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__librpmem1_debug memberOf Package
+	package hasValue "librpmem1-debug"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "266"
+	maintainer hasValue "Original-Adam Borowski <kilobyte@angband.pl>"
+	architecture hasValue "amd64"
+	version hasValue "1.8-1ubuntu1"
+	fileName hasValue "pool/universe/p/pmdk/librpmem1-debug_1.8-1ubuntu1_amd64.deb"
+	size hasValue "79604"
+	md5sum hasValue "b4e8afcca127e8863b0e123b99b034d4"
+	sha1 hasValue "2cd3601c88776ea5d022e3c02519348f2637fb92"
+	sha256 hasValue "6599396e1d535ea8a8f50881cef66dc13c5fd1a6cb0c0b05fae183ff7e4530be"
+	descriptionMd5 hasValue "ee11cc76386ec3302470d7d9ca97fcbe"
+	homepage hasValue "https://pmem.io/pmdk/"
+	depends hasValue "libpmem1-debug (= 1.8-1ubuntu1), libc6 (>= 2.17), libfabric1 (>= 1.5.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libpmem1-debug"
+	comparison hasValue "="
+	version hasValue "1.8-1ubuntu1"
+
+relationInstance depends(P0__librpmem1_debug,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.17"
+
+relationInstance depends(P0__librpmem1_debug,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libfabric1"
+	comparison hasValue ">="
+	version hasValue "1.5.0"
+
+relationInstance depends(P0__librpmem1_debug,2,DepAtom__2)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libjunixsocket_java
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libjunixsocket_java memberOf Package
+	package hasValue "libjunixsocket-java"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/java"
+	installedSize hasValue "99"
+	maintainer hasValue "Original-Debian Java Maintainers <pkg-java-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.0.4-1"
+	fileName hasValue "pool/universe/j/junixsocket/libjunixsocket-java_2.0.4-1_all.deb"
+	size hasValue "32004"
+	md5sum hasValue "e2b575f46b8dbece1cfa1f1cf92adca4"
+	sha1 hasValue "24f3e751728814dd34b7fea57af4bbd0f823d99d"
+	sha256 hasValue "63c5e2aae78b98ac2e13650e0ed08988a720ad38cb2ccea50559a620a57da564"
+	descriptionMd5 hasValue "fc9c8f11c9ee76cfa689cedd9f38e19d"
+	homepage hasValue "https://github.com/kohlschutter/junixsocket"
+	depends hasValue "liblog4j1.2-java (>= 1.2.17), libjunixsocket-jni"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "liblog4j1.2-java"
+	comparison hasValue ">="
+	version hasValue "1.2.17"
+
+relationInstance depends(P0__libjunixsocket_java,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libjunixsocket-jni"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libjunixsocket_java,1,DepAtom__1)
+

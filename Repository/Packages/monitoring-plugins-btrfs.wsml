@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology monitoring_plugins_btrfs
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__monitoring_plugins_btrfs memberOf Package
+	package hasValue "monitoring-plugins-btrfs"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "20"
+	maintainer hasValue "Original-Hans van Kranenburg <hans@knorrie.org>"
+	architecture hasValue "all"
+	version hasValue "11-2"
+	fileName hasValue "pool/universe/p/python-btrfs/monitoring-plugins-btrfs_11-2_all.deb"
+	size hasValue "4284"
+	md5sum hasValue "acc264bf36e303673f3cf175281134ff"
+	sha1 hasValue "ef3b7f0aa0a741b9d5fe74c6ebb0e4929dc07fa3"
+	sha256 hasValue "544c4d014294681b92c25ba45f9baa1b7d4df3ab953033add82f241e4e3524d0"
+	descriptionMd5 hasValue "609105561748bb3b2d35cd51f57229f6"
+	homepage hasValue "https://github.com/knorrie/python-btrfs/"
+	depends hasValue "python3, python3-btrfs (= 11-2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__monitoring_plugins_btrfs,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3-btrfs"
+	comparison hasValue "="
+	version hasValue "11-2"
+
+relationInstance depends(P0__monitoring_plugins_btrfs,1,DepAtom__1)
+

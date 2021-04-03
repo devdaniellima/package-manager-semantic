@@ -1,0 +1,59 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libtag_extras_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libtag_extras_dev memberOf Package
+	package hasValue "libtag-extras-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "56"
+	maintainer hasValue "Original-Modestas Vainius <modax@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.1-3.1build1"
+	fileName hasValue "pool/universe/t/taglib-extras/libtag-extras-dev_1.0.1-3.1build1_amd64.deb"
+	size hasValue "7580"
+	md5sum hasValue "2c9e5c614ff97c88a37e10786c855dcb"
+	sha1 hasValue "7c1b2fa0aa6fbe59b498eebcdc34467cd904c358"
+	sha256 hasValue "3f2faef121ce244b106bf67b441315c61eb35eebc3c14f00ebabdb29b9eb76d4"
+	descriptionMd5 hasValue "1c64042d580b8a4e9d240dd720b5ac93"
+	depends hasValue "libtag-extras1 (= 1.0.1-3.1build1), libtag1-dev (>= 1.9.1-2.2~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libtag-extras1"
+	comparison hasValue "="
+	version hasValue "1.0.1-3.1build1"
+
+relationInstance depends(P0__libtag_extras_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libtag1-dev"
+	comparison hasValue ">="
+	version hasValue "1.9.1-2.2~"
+
+relationInstance depends(P0__libtag_extras_dev,1,DepAtom__1)
+

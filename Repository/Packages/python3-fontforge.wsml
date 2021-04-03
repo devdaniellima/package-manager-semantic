@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python3_fontforge
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python3_fontforge memberOf Package
+	package hasValue "python3-fontforge"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "102"
+	maintainer hasValue "Original-Debian Fonts Task Force <debian-fonts@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:20190801~dfsg-4"
+	replaces hasValue "python-fontforge"
+	fileName hasValue "pool/universe/f/fontforge/python3-fontforge_20190801~dfsg-4_amd64.deb"
+	size hasValue "11508"
+	md5sum hasValue "edf2b80fb894ddb84ab9d8b65f041b1a"
+	sha1 hasValue "9ad707d372d794c58e604b2ec6f749f7e05d0af8"
+	sha256 hasValue "8ab7f030e9caf1744c633f4bae57c96de6bec7a6a2d90a330fdf33f448d576b8"
+	descriptionMd5 hasValue "0d9c2a8d0179b0821fdbcbe2d7cba478"
+	homepage hasValue "https://fontforge.github.io/en-US/"
+	depends hasValue "libfontforge3 (= 1:20190801~dfsg-4), python3 (<< 3.9), python3 (>= 3.8~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libfontforge3"
+	comparison hasValue "="
+	version hasValue "1:20190801~dfsg-4"
+
+relationInstance depends(P0__python3_fontforge,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3"
+	comparison hasValue "<<"
+	version hasValue "3.9"
+
+relationInstance depends(P0__python3_fontforge,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "python3"
+	comparison hasValue ">="
+	version hasValue "3.8~"
+
+relationInstance depends(P0__python3_fontforge,2,DepAtom__2)
+

@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology myspell_fr
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__myspell_fr memberOf Package
+	package hasValue "myspell-fr"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/text"
+	installedSize hasValue "802"
+	maintainer hasValue "Original-Ryan Kavanagh <rak@debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.4-27"
+	provides hasValue "hunspell-dictionary, hunspell-dictionary-fr, myspell-dictionary, myspell-dictionary-fr"
+	conflicts hasValue "myspell-fr-fr, myspell-fr-gut, openoffice.org-spellcheck-fr-fr"
+	fileName hasValue "pool/universe/i/ifrench/myspell-fr_1.4-27_all.deb"
+	size hasValue "169616"
+	md5sum hasValue "0b7112f8d930cfa2f2ca5a4f6d187ea6"
+	sha1 hasValue "b51788910d85c164c4c8c6fe908d9be11596e61b"
+	sha256 hasValue "452d74f295fb898ac0ea0891bf535a257f4e49ebcdcd3f1bf6205cf77de04e2d"
+	descriptionMd5 hasValue "7cb564eba97a01ee3d020b73f7f476d6"
+	depends hasValue "dictionaries-common (>= 1.10)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "dictionaries-common"
+	comparison hasValue ">="
+	version hasValue "1.10"
+
+relationInstance depends(P0__myspell_fr,0,DepAtom__0)
+

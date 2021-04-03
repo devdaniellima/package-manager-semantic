@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology nicstat
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__nicstat memberOf Package
+	package hasValue "nicstat"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "net"
+	installedSize hasValue "49"
+	maintainer hasValue "James Troup <james.troup@canonical.com>"
+	architecture hasValue "amd64"
+	version hasValue "1.95-1build1"
+	fileName hasValue "pool/main/n/nicstat/nicstat_1.95-1build1_amd64.deb"
+	size hasValue "17350"
+	md5sum hasValue "010f9da6e31e7625e13f870372753032"
+	sha1 hasValue "0805578f331d666681ecb2756928dbc483c35354"
+	sha256 hasValue "7f33821f362478be98ac80c716c76dd8b51112a5b9c42b6f4bdec4b8e118a2af"
+	descriptionMd5 hasValue "2875227646d3c9458f7593d64f0fa743"
+	homepage hasValue "https://blogs.oracle.com/timc/entry/nicstat_the_solaris_and_linux"
+	depends hasValue "libc6 (>= 2.7)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__nicstat,0,DepAtom__0)
+

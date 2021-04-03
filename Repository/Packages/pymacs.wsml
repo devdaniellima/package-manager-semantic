@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology pymacs
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__pymacs memberOf Package
+	package hasValue "pymacs"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "365"
+	maintainer hasValue "Original-Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.25-2ubuntu3"
+	fileName hasValue "pool/universe/p/pymacs/pymacs_0.25-2ubuntu3_all.deb"
+	size hasValue "93576"
+	md5sum hasValue "8b4b1b90a81ab22a4c21c6a1a0d5344f"
+	sha1 hasValue "2289c04e31b8707f1baca999d8efd87a40acabbc"
+	sha256 hasValue "3bcbddaae913965a4c64e6e63cd1de84001366b2952c6962da0d3fc5bfede5aa"
+	descriptionMd5 hasValue "42472e394a15f99a3b39e255786113db"
+	homepage hasValue "http://pymacs.progiciels-bpi.ca/"
+	depends hasValue "python2:any (<< 2.8), python2:any (>= 2.7~), emacsen-common (>= 2.0.8)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue "<<"
+	version hasValue "2.8"
+
+relationInstance depends(P0__pymacs,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue ">="
+	version hasValue "2.7~"
+
+relationInstance depends(P0__pymacs,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "emacsen-common"
+	comparison hasValue ">="
+	version hasValue "2.0.8"
+
+relationInstance depends(P0__pymacs,2,DepAtom__2)
+

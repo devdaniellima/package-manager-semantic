@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libnxml0
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libnxml0 memberOf Package
+	package hasValue "libnxml0"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "69"
+	maintainer hasValue "Original-Joseph Herlant <aerostitch@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.18.3-8"
+	provides hasValue "libnxml-abi-0.18.3"
+	fileName hasValue "pool/universe/libn/libnxml/libnxml0_0.18.3-8_amd64.deb"
+	size hasValue "22096"
+	md5sum hasValue "cfff3c3e18706e6515599db6e5578a7d"
+	sha1 hasValue "89549db29b98143bec29d94dc7d9f7b1e13a75c4"
+	sha256 hasValue "cd82b93a71257f756b4699f07f942632df7ce85e019110b7ea059da55c6c5e86"
+	description hasValue "C library for parsing, writing and creating xml 1.0/1.1 files or streams"
+	descriptionMd5 hasValue "98a4e996c4c183c28a668167e60ef135"
+	homepage hasValue "https://github.com/bakulf/libnxml"
+	depends hasValue "libc6 (>= 2.14), libcurl3-gnutls (>= 7.16.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libnxml0,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libcurl3-gnutls"
+	comparison hasValue ">="
+	version hasValue "7.16.2"
+
+relationInstance depends(P0__libnxml0,1,DepAtom__1)
+

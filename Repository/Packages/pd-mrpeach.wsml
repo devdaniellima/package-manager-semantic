@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology pd_mrpeach
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__pd_mrpeach memberOf Package
+	package hasValue "pd-mrpeach"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/sound"
+	installedSize hasValue "449"
+	maintainer hasValue "Original-Debian Multimedia Maintainers <debian-multimedia@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.1~svn17651-1"
+	fileName hasValue "pool/universe/p/pd-mrpeach/pd-mrpeach_0.1~svn17651-1_amd64.deb"
+	size hasValue "79080"
+	md5sum hasValue "2a074ef8f56ccf397f29acc8b349f5cb"
+	sha1 hasValue "f6ac84a41445e2fde8b15d015d35d3453669dfc5"
+	sha256 hasValue "d4da54e42bf4b1f87c6e28793dad03a393180ecd14aed619aa1f3e25873deeb0"
+	descriptionMd5 hasValue "18deabc6c80bed634cd668d1570d8872"
+	homepage hasValue "https://download.puredata.info/mrpeach"
+	depends hasValue "libc6 (>= 2.4), puredata | pd"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__pd_mrpeach,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "puredata"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__pd_mrpeach,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "pd"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__pd_mrpeach,1,DepAtom__2)
+

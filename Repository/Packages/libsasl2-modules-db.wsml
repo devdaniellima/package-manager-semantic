@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libsasl2_modules_db
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libsasl2_modules_db memberOf Package
+	package hasValue "libsasl2-modules-db"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libs"
+	installedSize hasValue "66"
+	maintainer hasValue "Original-Debian Cyrus Team <team+cyrus@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.1.27+dfsg-2"
+	fileName hasValue "pool/main/c/cyrus-sasl2/libsasl2-modules-db_2.1.27+dfsg-2_amd64.deb"
+	size hasValue "14932"
+	md5sum hasValue "0d8fd2a9a0f99f591367346056c2a343"
+	sha1 hasValue "aa39798cf937d398adf890ce069596b1feb1122b"
+	sha256 hasValue "5ad91f3581c8d286c0855455554de51d38e20ad0340dded73ea9616e726373bd"
+	description hasValue "Cyrus SASL - pluggable authentication modules (DB)"
+	descriptionMd5 hasValue "c4f2723280fa2cd92e5cd59c13f3ab2b"
+	homepage hasValue "https://www.cyrusimap.org/sasl/"
+	depends hasValue "libc6 (>= 2.14), libdb5.3"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libsasl2_modules_db,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libdb5.3"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libsasl2_modules_db,1,DepAtom__1)
+

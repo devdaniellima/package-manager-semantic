@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gob2
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gob2 memberOf Package
+	package hasValue "gob2"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/devel"
+	installedSize hasValue "233"
+	maintainer hasValue "Original-Stephen Kitt <skitt@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.0.20-2"
+	fileName hasValue "pool/universe/g/gob2/gob2_2.0.20-2_amd64.deb"
+	size hasValue "96068"
+	md5sum hasValue "eb74dbcfb0a4a5f434c3af516f598f31"
+	sha1 hasValue "16a4e0148327e3dd5b1b80c39a732eca04bb992f"
+	sha256 hasValue "f3f14511eda818aa2fdecd8f2630216d757951e69f5b3a34e9d8510432454d08"
+	descriptionMd5 hasValue "0f5d229d9f79efbdbf11a584051163fb"
+	homepage hasValue "http://www.jirka.org/gob.html"
+	depends hasValue "libc6 (>= 2.14), libglib2.0-0 (>= 2.16.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__gob2,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libglib2.0-0"
+	comparison hasValue ">="
+	version hasValue "2.16.0"
+
+relationInstance depends(P0__gob2,1,DepAtom__1)
+

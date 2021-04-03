@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology navit_gui_internal
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__navit_gui_internal memberOf Package
+	package hasValue "navit-gui-internal"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/misc"
+	installedSize hasValue "210"
+	maintainer hasValue "Original-Gilles Filippini <pini@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.5.4+dfsg.1-2"
+	fileName hasValue "pool/universe/n/navit/navit-gui-internal_0.5.4+dfsg.1-2_amd64.deb"
+	size hasValue "68288"
+	md5sum hasValue "690e09d5ff2497e04f6e1e9de66ed022"
+	sha1 hasValue "651e89e9e6c10fb83565f75cb7386c51871e3e15"
+	sha256 hasValue "ee798813bf3c5887c995e1578965c84829fc4df66de83e3b4a9d7fb469dc2fc3"
+	descriptionMd5 hasValue "c66cdd6a9343846105342185cdf44171"
+	homepage hasValue "http://www.navit-project.org"
+	depends hasValue "navit-graphics-gtk-drawing-area (= 0.5.4+dfsg.1-2), libc6 (>= 2.7)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "navit-graphics-gtk-drawing-area"
+	comparison hasValue "="
+	version hasValue "0.5.4+dfsg.1-2"
+
+relationInstance depends(P0__navit_gui_internal,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__navit_gui_internal,1,DepAtom__1)
+

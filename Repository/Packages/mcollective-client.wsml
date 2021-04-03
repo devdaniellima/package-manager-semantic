@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology mcollective_client
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__mcollective_client memberOf Package
+	package hasValue "mcollective-client"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/utils"
+	installedSize hasValue "43"
+	maintainer hasValue "Original-Puppet Package Maintainers <pkg-puppet-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.12.1+dfsg-1"
+	fileName hasValue "pool/universe/m/mcollective/mcollective-client_2.12.1+dfsg-1_all.deb"
+	size hasValue "4316"
+	md5sum hasValue "6346bd21f256fd8fd0af2e3a7fbb0923"
+	sha1 hasValue "e8025b854a2e4fa192b0dd9b2e1b82fe2c1188f0"
+	sha256 hasValue "cd4670216f4891c37695f06a4a4d26ee195a17fd884d784dc191bc0ad6ef8b03"
+	descriptionMd5 hasValue "b075891f73708c3cc896d079b73e6da4"
+	homepage hasValue "http://projects.puppetlabs.com/projects/mcollective"
+	depends hasValue "mcollective-common (>= 2.12.1+dfsg-1), ruby | ruby-interpreter"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "mcollective-common"
+	comparison hasValue ">="
+	version hasValue "2.12.1+dfsg-1"
+
+relationInstance depends(P0__mcollective_client,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "ruby"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__mcollective_client,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "ruby-interpreter"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__mcollective_client,1,DepAtom__2)
+

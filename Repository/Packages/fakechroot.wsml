@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology fakechroot
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__fakechroot memberOf Package
+	package hasValue "fakechroot"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "85"
+	maintainer hasValue "Original-Piotr Roszatycki <dexter@debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.19-3.2"
+	fileName hasValue "pool/universe/f/fakechroot/fakechroot_2.19-3.2_all.deb"
+	size hasValue "23008"
+	md5sum hasValue "03780984dc7a9975ab2735e1b9616856"
+	sha1 hasValue "3f1e09fb26cf7da69b66fb7e3c5e03edc5784fcc"
+	sha256 hasValue "e6d71c4eb33562a526e169eed85ddda7d887cecf13afbdb68e2d6ffacca587d1"
+	descriptionMd5 hasValue "0c165550cf5523a24566df225595c60f"
+	homepage hasValue "https://github.com/dex4er/fakechroot"
+	depends hasValue "libfakechroot (>= 2.19-3.2), libfakechroot (<< 2.19-3.2.1~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libfakechroot"
+	comparison hasValue ">="
+	version hasValue "2.19-3.2"
+
+relationInstance depends(P0__fakechroot,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libfakechroot"
+	comparison hasValue "<<"
+	version hasValue "2.19-3.2.1~"
+
+relationInstance depends(P0__fakechroot,1,DepAtom__1)
+

@@ -1,0 +1,73 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ibod
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ibod memberOf Package
+	package hasValue "ibod"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/net"
+	installedSize hasValue "49"
+	maintainer hasValue "Original-Paul Martin <pm@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.5.0-6build1"
+	fileName hasValue "pool/universe/i/ibod/ibod_1.5.0-6build1_amd64.deb"
+	size hasValue "13616"
+	md5sum hasValue "175851abe687bae14eb8ebe0b2aa815b"
+	sha1 hasValue "c53bd8d588fc626e8ef6ac4cb5ee4ddef6a0783f"
+	sha256 hasValue "3e27d1f6d1296f14c017148f928f0fc471078ad0b74d930bdfed677c53c001cd"
+	descriptionMd5 hasValue "a20f36cec3e06191e0a5195c37c20863"
+	depends hasValue "libc6 (>= 2.15), libwrap0 (>= 7.6-4~), ipppd | isdnutils"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__ibod,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libwrap0"
+	comparison hasValue ">="
+	version hasValue "7.6-4~"
+
+relationInstance depends(P0__ibod,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "ipppd"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ibod,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "isdnutils"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ibod,2,DepAtom__3)
+

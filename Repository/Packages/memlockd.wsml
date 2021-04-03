@@ -1,0 +1,59 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology memlockd
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__memlockd memberOf Package
+	package hasValue "memlockd"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "56"
+	maintainer hasValue "Original-Russell Coker <russell@coker.com.au>"
+	architecture hasValue "amd64"
+	version hasValue "1.2build1"
+	fileName hasValue "pool/universe/m/memlockd/memlockd_1.2build1_amd64.deb"
+	size hasValue "13136"
+	md5sum hasValue "882a8f251b5abda4fb8a21fa5d5c2452"
+	sha1 hasValue "f63ba32f117c5e85b4bfa8a92b7e9aaf9152bb82"
+	sha256 hasValue "02617199749c052823e2feb2a774f21748776fa89a6056eb84ccc815ff90f92e"
+	descriptionMd5 hasValue "bf4c223ba5cd1bf18b71091e8cb5dc57"
+	depends hasValue "libc6 (>= 2.14), adduser"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__memlockd,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "adduser"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__memlockd,1,DepAtom__1)
+

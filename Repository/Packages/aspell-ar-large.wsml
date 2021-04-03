@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology aspell_ar_large
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__aspell_ar_large memberOf Package
+	package hasValue "aspell-ar-large"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/text"
+	installedSize hasValue "2251"
+	maintainer hasValue "Original-Lior Kaplan <kaplan@debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.2-0-5"
+	provides hasValue "aspell-dictionary"
+	fileName hasValue "pool/universe/a/aspell-ar-large/aspell-ar-large_1.2-0-5_all.deb"
+	size hasValue "2185700"
+	md5sum hasValue "19d4a2dfad20696ffa7b02e7e22ea706"
+	sha1 hasValue "56aa1a0d539f7ea55bcbe45e302d66a5c7c0f92f"
+	sha256 hasValue "8f24ca811ddd79ad07462efdb4d7456416f1c01b021467f38aa335f2e3ab112a"
+	description hasValue "grande dicionário árabe para o aspell"
+	descriptionMd5 hasValue "ee8e97096037339acc08e89c04436387"
+	homepage hasValue "http://ftp.gnu.org/gnu/aspell/dict/ar/"
+	depends hasValue "aspell (>= 0.60.4), dictionaries-common (>= 0.9.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "aspell"
+	comparison hasValue ">="
+	version hasValue "0.60.4"
+
+relationInstance depends(P0__aspell_ar_large,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "dictionaries-common"
+	comparison hasValue ">="
+	version hasValue "0.9.1"
+
+relationInstance depends(P0__aspell_ar_large,1,DepAtom__1)
+

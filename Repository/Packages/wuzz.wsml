@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology wuzz
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__wuzz memberOf Package
+	package hasValue "wuzz"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/devel"
+	installedSize hasValue "7770"
+	maintainer hasValue "Original-Debian Go Packaging Team <pkg-go-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.4.0-1"
+	fileName hasValue "pool/universe/w/wuzz/wuzz_0.4.0-1_amd64.deb"
+	size hasValue "2402068"
+	md5sum hasValue "c9927ad51d0d0610eef1f6135443a00d"
+	sha1 hasValue "411b5c32e92a87911fda1fcd1a5d98f4cfbea5de"
+	sha256 hasValue "1145f642f813cd8d1c856432fd6f34e7aa8c2be52d27849f49bd3630177c1f85"
+	descriptionMd5 hasValue "ee6377bf61a4621be116397ebc549d23"
+	homepage hasValue "https://github.com/asciimoo/wuzz"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__wuzz,0,DepAtom__0)
+

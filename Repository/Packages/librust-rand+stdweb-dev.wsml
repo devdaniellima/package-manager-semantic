@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology librust_randPlusstdweb_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__librust_randPlusstdweb_dev memberOf Package
+	package hasValue "librust-rand+stdweb-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/rust"
+	installedSize hasValue "6"
+	maintainer hasValue "Original-Debian Rust Maintainers <pkg-rust-maintainers@alioth-lists.debian.net>"
+	architecture hasValue "amd64"
+	version hasValue "0.7.2-1"
+	provides hasValue "librust-rand-0+stdweb-dev (= 0.7.2-1), librust-rand-0.7+stdweb-dev (= 0.7.2-1), librust-rand-0.7.2+stdweb-dev (= 0.7.2-1)"
+	fileName hasValue "pool/universe/r/rust-rand/librust-rand+stdweb-dev_0.7.2-1_amd64.deb"
+	size hasValue "1100"
+	md5sum hasValue "0af8fa1e6c518ddfad4d1ebfd82f4409"
+	sha1 hasValue "7863cae83749d64534168b2562ce834094539daf"
+	sha256 hasValue "e2d90927992f133616adcd70997ef80630abea6e1d2843fd963ac942d3afcecc"
+	descriptionMd5 hasValue "58019b61ecf39d842ae30a61b9dadbfd"
+	homepage hasValue "https://crates.io/crates/rand"
+	depends hasValue "librust-rand-dev (= 0.7.2-1), librust-getrandom-0.1+stdweb-dev (>= 0.1.1-~~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "librust-rand-dev"
+	comparison hasValue "="
+	version hasValue "0.7.2-1"
+
+relationInstance depends(P0__librust_randPlusstdweb_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "librust-getrandom-0.1+stdweb-dev"
+	comparison hasValue ">="
+	version hasValue "0.1.1-~~"
+
+relationInstance depends(P0__librust_randPlusstdweb_dev,1,DepAtom__1)
+

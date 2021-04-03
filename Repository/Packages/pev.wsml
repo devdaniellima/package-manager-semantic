@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology pev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__pev memberOf Package
+	package hasValue "pev"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/utils"
+	installedSize hasValue "1321"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.80-4build1"
+	fileName hasValue "pool/universe/p/pev/pev_0.80-4build1_amd64.deb"
+	size hasValue "155868"
+	md5sum hasValue "adf246684ed625f5bff925c7ffe18e64"
+	sha1 hasValue "d1c9fcbeb0e6f631def38f14d1dccf3eb58ec03f"
+	sha256 hasValue "f44f5f36b708408b5eb9beb49cfe11aac8d79089c225718273d9653d7578ccd4"
+	descriptionMd5 hasValue "51f1e3fb853b68b5c385aea2394e77e7"
+	homepage hasValue "http://pev.sourceforge.net"
+	depends hasValue "libc6 (>= 2.14), libssl1.1 (>= 1.1.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__pev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libssl1.1"
+	comparison hasValue ">="
+	version hasValue "1.1.0"
+
+relationInstance depends(P0__pev,1,DepAtom__1)
+

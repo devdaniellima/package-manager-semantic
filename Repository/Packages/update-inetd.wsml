@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology update_inetd
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__update_inetd memberOf Package
+	package hasValue "update-inetd"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "admin"
+	installedSize hasValue "82"
+	maintainer hasValue "Original-Guillem Jover <guillem@debian.org>"
+	architecture hasValue "all"
+	version hasValue "4.50"
+	fileName hasValue "pool/main/u/update-inetd/update-inetd_4.50_all.deb"
+	size hasValue "24788"
+	md5sum hasValue "5c35cd1415f852ec9ec82d073f80818a"
+	sha1 hasValue "a7587500ee8cbb26138a2fac14580f39b7bf049c"
+	sha256 hasValue "6753591bcf0707b0af10dafe5bb464ac75da41dc39ad878954fb7b67cf28885e"
+	description hasValue "atualizador do arquivo de configuração inetd"
+	descriptionMd5 hasValue "9a09f5c7959d1200217cfebee811fa42"
+	depends hasValue "debconf (>= 0.5) | debconf-2.0, perl"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "debconf"
+	comparison hasValue ">="
+	version hasValue "0.5"
+
+relationInstance depends(P0__update_inetd,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "debconf-2.0"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__update_inetd,0,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "perl"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__update_inetd,1,DepAtom__2)
+

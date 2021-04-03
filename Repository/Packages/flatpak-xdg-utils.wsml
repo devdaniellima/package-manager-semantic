@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology flatpak_xdg_utils
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__flatpak_xdg_utils memberOf Package
+	package hasValue "flatpak-xdg-utils"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "70"
+	maintainer hasValue "Original-Utopia Maintenance Team <pkg-utopia-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.1-2"
+	fileName hasValue "pool/universe/f/flatpak-xdg-utils/flatpak-xdg-utils_1.0.1-2_amd64.deb"
+	size hasValue "13188"
+	md5sum hasValue "534c850b2b50efb8f096667b610719dc"
+	sha1 hasValue "ac35d551acd5e34a5f4418a35ded72467e234dc5"
+	sha256 hasValue "3875de396b118c397f0e06deeba67c6f1664fc8a0c92439b31a7cae268bf4b2a"
+	descriptionMd5 hasValue "f267f49a85c386a7c0188895e8b44f29"
+	homepage hasValue "https://github.com/flatpak/flatpak-xdg-utils"
+	depends hasValue "libc6 (>= 2.4), libglib2.0-0 (>= 2.30.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__flatpak_xdg_utils,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libglib2.0-0"
+	comparison hasValue ">="
+	version hasValue "2.30.0"
+
+relationInstance depends(P0__flatpak_xdg_utils,1,DepAtom__1)
+

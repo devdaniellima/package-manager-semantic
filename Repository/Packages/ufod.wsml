@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ufod
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ufod memberOf Package
+	package hasValue "ufod"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/libs"
+	installedSize hasValue "35"
+	maintainer hasValue "Original-Debian Science Maintainers <debian-science-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.15.1-3build1"
+	fileName hasValue "pool/universe/u/ufo-core/ufod_0.15.1-3build1_amd64.deb"
+	size hasValue "5904"
+	md5sum hasValue "d4155349176dc7645af861213eb533d3"
+	sha1 hasValue "48942b6c37abb61d46dbe609a44440c6277c32b9"
+	sha256 hasValue "2ca70e1bfb6256b41fd5230dca03e94c505d2b32fb7dde189ca023f307f9c195"
+	descriptionMd5 hasValue "407dfe17d585455a5c99c3df9b870dbb"
+	homepage hasValue "http://ufo.kit.edu/"
+	depends hasValue "libc6 (>= 2.4), libglib2.0-0 (>= 2.12.0), libufo0"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__ufod,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libglib2.0-0"
+	comparison hasValue ">="
+	version hasValue "2.12.0"
+
+relationInstance depends(P0__ufod,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libufo0"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ufod,2,DepAtom__2)
+

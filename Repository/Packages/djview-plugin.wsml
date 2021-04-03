@@ -1,0 +1,69 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology djview_plugin
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__djview_plugin memberOf Package
+	package hasValue "djview-plugin"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/web"
+	installedSize hasValue "75"
+	maintainer hasValue "Original-Barak A. Pearlmutter <bap@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "4.11-2build1"
+	provides hasValue "djvulibre-plugin"
+	conflicts hasValue "djvulibre-bin (<< 3.5.19), djvulibre-plugin (<= 3.5.23-4)"
+	fileName hasValue "pool/universe/d/djview4/djview-plugin_4.11-2build1_amd64.deb"
+	size hasValue "23368"
+	md5sum hasValue "fcf6bb5f8ed921a1ac18df72b2583db8"
+	sha1 hasValue "be779b5664b715898686922ee9e8ef0719f305a9"
+	sha256 hasValue "40e6e0dab14a7930735d7c99543f5685b1683877b045aeecd08a4a52a1cca38b"
+	descriptionMd5 hasValue "ce7cb4988d1f07a9481dc68f865a16c1"
+	homepage hasValue "http://djvu.sourceforge.net/"
+	depends hasValue "libc6 (>= 2.15), djview4 | djview3"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__djview_plugin,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "djview4"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__djview_plugin,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "djview3"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__djview_plugin,1,DepAtom__2)
+

@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ruby_gyoku
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ruby_gyoku memberOf Package
+	package hasValue "ruby-gyoku"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/ruby"
+	installedSize hasValue "35"
+	maintainer hasValue "Original-Debian Ruby Extras Maintainers <pkg-ruby-extras-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.3.1-1"
+	fileName hasValue "pool/universe/r/ruby-gyoku/ruby-gyoku_1.3.1-1_all.deb"
+	size hasValue "7990"
+	md5sum hasValue "31212560f419b05072023aa4112c8f1c"
+	sha1 hasValue "31b3ff37bcd0f2f9b4c2601d9c1b986e61c33f3f"
+	sha256 hasValue "ff29cdb12734bcee78a3445fdb08b086e0414a5a4c5a3ebff279e3bb86a61727"
+	descriptionMd5 hasValue "d8e56b468a53ba3ec8b8119bd9e70f61"
+	homepage hasValue "https://github.com/savonrb/gyoku"
+	depends hasValue "ruby | ruby-interpreter, ruby-builder (>= 2.1.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "ruby"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ruby_gyoku,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "ruby-interpreter"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ruby_gyoku,0,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "ruby-builder"
+	comparison hasValue ">="
+	version hasValue "2.1.2"
+
+relationInstance depends(P0__ruby_gyoku,1,DepAtom__2)
+

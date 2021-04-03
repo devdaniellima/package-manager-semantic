@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology php_msgpack
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__php_msgpack memberOf Package
+	package hasValue "php-msgpack"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/php"
+	installedSize hasValue "110"
+	maintainer hasValue "Original-Debian PHP PECL Maintainers <team+php-pecl@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.1.0beta1-0ubuntu2"
+	provides hasValue "php7.4-msgpack"
+	fileName hasValue "pool/universe/p/php-msgpack/php-msgpack_2.1.0beta1-0ubuntu2_amd64.deb"
+	size hasValue "30112"
+	md5sum hasValue "72faf71675e130317ae151d5a81dc1a4"
+	sha1 hasValue "64640328b946180d73ddd8f9345e19a267989910"
+	sha256 hasValue "271ac60c0aee2d0417077b2b179c53e61885d5718777c3b4b8082ad7590f1d6c"
+	descriptionMd5 hasValue "16b5d9a1e0edd6877260e0935e49be18"
+	homepage hasValue "http://pecl.php.net/package/msgpack"
+	depends hasValue "phpapi-20190902, libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "phpapi-20190902"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__php_msgpack,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__php_msgpack,1,DepAtom__1)
+

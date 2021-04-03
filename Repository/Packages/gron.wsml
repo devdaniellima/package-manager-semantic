@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gron
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gron memberOf Package
+	package hasValue "gron"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "4399"
+	maintainer hasValue "Original-Debian Go Packaging Team <team+pkg-go@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.6.0-1"
+	fileName hasValue "pool/universe/g/gron/gron_0.6.0-1_amd64.deb"
+	size hasValue "1338636"
+	md5sum hasValue "b44a3a5372aa1ea10bb0273c8e906ef0"
+	sha1 hasValue "db005bfe58d1fc384ddcafb66a3acf64a74fe8ce"
+	sha256 hasValue "ca74787bb0640eb9327eb7ca7fe96a7c9530050cb29af6f1f804acfa601bd42a"
+	descriptionMd5 hasValue "09d21f7c176f95d58f58caaf783743f0"
+	homepage hasValue "https://github.com/tomnomnom/gron"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__gron,0,DepAtom__0)
+

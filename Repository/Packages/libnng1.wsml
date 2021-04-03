@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libnng1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libnng1 memberOf Package
+	package hasValue "libnng1"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "410"
+	maintainer hasValue "Original-Laszlo Boszormenyi (GCS) <gcs@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.2.6-1"
+	fileName hasValue "pool/universe/n/nng/libnng1_1.2.6-1_amd64.deb"
+	size hasValue "127880"
+	md5sum hasValue "454e24731d1a20063f05d6e3e8b9b68d"
+	sha1 hasValue "83e1932f523f485cd9b4ca4a5d0ae4666ed69054"
+	sha256 hasValue "4bfeb6675b3e61770bfbf01802592e722108fb977e6beb38a9237abb41d2982f"
+	description hasValue "Lightweight Messaging Library - shared library"
+	descriptionMd5 hasValue "f2e865e7a6e1d42209aa49e7e0aecb36"
+	homepage hasValue "https://nng.nanomsg.org/"
+	depends hasValue "libc6 (>= 2.25)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.25"
+
+relationInstance depends(P0__libnng1,0,DepAtom__0)
+

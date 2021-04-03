@@ -1,0 +1,74 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology pd_smlib
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__pd_smlib memberOf Package
+	package hasValue "pd-smlib"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/sound"
+	installedSize hasValue "570"
+	maintainer hasValue "Original-Debian Multimedia Maintainers <debian-multimedia@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.12.2-2"
+	fileName hasValue "pool/universe/p/pd-smlib/pd-smlib_0.12.2-2_amd64.deb"
+	size hasValue "92132"
+	md5sum hasValue "67263e3541822a12c8cd7afb576e0421"
+	sha1 hasValue "79be2194912f7aeb752e07dd6ad77393ef3fa13e"
+	sha256 hasValue "2934207d8b519ec4a6aa228c5f107f20fef76f43ff6ac27669115125c894f4d9"
+	descriptionMd5 hasValue "2b8edc3d1bef35b4508810f878bb1d9f"
+	homepage hasValue "https://puredata.info"
+	depends hasValue "libc6 (>= 2.2.5), puredata-core | pd, pd-libdir"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.2.5"
+
+relationInstance depends(P0__pd_smlib,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "puredata-core"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__pd_smlib,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "pd"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__pd_smlib,1,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "pd-libdir"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__pd_smlib,2,DepAtom__3)
+

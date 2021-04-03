@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology polylib_utils
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__polylib_utils memberOf Package
+	package hasValue "polylib-utils"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/math"
+	installedSize hasValue "55"
+	maintainer hasValue "Original-Debian Science Maintainers <debian-science-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "5.22.5-4+dfsg"
+	fileName hasValue "pool/universe/p/polylib/polylib-utils_5.22.5-4+dfsg_amd64.deb"
+	size hasValue "7972"
+	md5sum hasValue "bc212310c57a429a9a28efa9318167a3"
+	sha1 hasValue "954da67f53a0b98e4b8f650be20aeb0884c7668d"
+	sha256 hasValue "c02bab16f59f519d0defc098d77fd0d5301e3746bfc363cf3fdedda2cc51131e"
+	descriptionMd5 hasValue "e79b4b57a574189d3708394cc1ecfdd2"
+	homepage hasValue "http://icps.u-strasbg.fr/polylib/polylib_src"
+	depends hasValue "libc6 (>= 2.7), libpolylib64-8 (= 5.22.5-4+dfsg)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__polylib_utils,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libpolylib64-8"
+	comparison hasValue "="
+	version hasValue "5.22.5-4+dfsg"
+
+relationInstance depends(P0__polylib_utils,1,DepAtom__1)
+

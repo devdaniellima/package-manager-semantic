@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python3_openssl
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python3_openssl memberOf Package
+	package hasValue "python3-openssl"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "python"
+	installedSize hasValue "233"
+	maintainer hasValue "Original-Sandro Tosi <morph@debian.org>"
+	architecture hasValue "all"
+	version hasValue "19.0.0-1build1"
+	fileName hasValue "pool/main/p/pyopenssl/python3-openssl_19.0.0-1build1_all.deb"
+	size hasValue "43268"
+	md5sum hasValue "600bf1bc3b78c2792e1dd3bdea7e1c13"
+	sha1 hasValue "5bc39383772a86fa6f9ba1c82858f4ded06f5610"
+	sha256 hasValue "a1450f98e1011194a313fc19c304360c59766fe74a5a803b9930fe3ed9b539eb"
+	descriptionMd5 hasValue "d42552511383aa2a691d5994e533fb0c"
+	homepage hasValue "https://pyopenssl.org/"
+	depends hasValue "python3-cryptography (>= 2.3), python3-six (>= 1.5.2), python3:any"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3-cryptography"
+	comparison hasValue ">="
+	version hasValue "2.3"
+
+relationInstance depends(P0__python3_openssl,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3-six"
+	comparison hasValue ">="
+	version hasValue "1.5.2"
+
+relationInstance depends(P0__python3_openssl,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__python3_openssl,2,DepAtom__2)
+

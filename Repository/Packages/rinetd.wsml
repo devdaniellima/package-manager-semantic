@@ -1,0 +1,52 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology rinetd
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__rinetd memberOf Package
+	package hasValue "rinetd"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "73"
+	maintainer hasValue "Original-Sam Hocevar <sho@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.62.1sam-1.1"
+	fileName hasValue "pool/universe/r/rinetd/rinetd_0.62.1sam-1.1_amd64.deb"
+	size hasValue "20364"
+	md5sum hasValue "5b84ac4cb8274bd3bc828040c57995e5"
+	sha1 hasValue "096b8933d656dd33c280a0f66cd3025a60d81037"
+	sha256 hasValue "249ca1a46ecba8bc574b2aba138a337ce2565bc05b7fc40bfac7dc60d19ac9f4"
+	descriptionMd5 hasValue "c779dc6fda8c28eb8fd8878f71d69c09"
+	depends hasValue "libc6 (>= 2.15)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__rinetd,0,DepAtom__0)
+

@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology lxc
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__lxc memberOf Package
+	package hasValue "lxc"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "74"
+	maintainer hasValue "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	architecture hasValue "all"
+	version hasValue "1:4.0.2-0ubuntu1"
+	fileName hasValue "pool/universe/l/lxc/lxc_4.0.2-0ubuntu1_all.deb"
+	size hasValue "2968"
+	md5sum hasValue "68a78f1a92f478de9d8c9fd8a896af3c"
+	sha1 hasValue "878ba128acfd7f8ec0ae295bbe6c7ec13f1928f2"
+	sha256 hasValue "b54abab8eb79d19c0b2b041fc8d69f161add90ea62098f6eb2a03ee0efeb7437"
+	description hasValue "Transitional package - lxc -> lxc-utils"
+	descriptionMd5 hasValue "8f5ab7156cfdafe3662f916116c20006"
+	homepage hasValue "https://linuxcontainers.org"
+	depends hasValue "lxc-utils (>= 1:4.0.2-0ubuntu1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "lxc-utils"
+	comparison hasValue ">="
+	version hasValue "1:4.0.2-0ubuntu1"
+
+relationInstance depends(P0__lxc,0,DepAtom__0)
+

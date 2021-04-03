@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology swh_lv2
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__swh_lv2 memberOf Package
+	package hasValue "swh-lv2"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/sound"
+	installedSize hasValue "1662"
+	maintainer hasValue "Original-Debian Multimedia Maintainers <pkg-multimedia-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.16+git20160519~repack0-3"
+	provides hasValue "lv2-plugin"
+	fileName hasValue "pool/universe/s/swh-lv2/swh-lv2_1.0.16+git20160519~repack0-3_amd64.deb"
+	size hasValue "217382"
+	md5sum hasValue "ccf63df6d8da3fa9b53231f8c09096c9"
+	sha1 hasValue "a5c60a90c1bbddcd7d43260ceaa33fbc986969e5"
+	sha256 hasValue "978886763c774891490ea81caf971586bcf9025906ffa8b4c4cc53fcba341265"
+	descriptionMd5 hasValue "3ac6942e8be6c111bd4d93e2daa94977"
+	homepage hasValue "http://github.com/swh/lv2"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__swh_lv2,0,DepAtom__0)
+

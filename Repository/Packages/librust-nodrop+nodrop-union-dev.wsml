@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology librust_nodropPlusnodrop_union_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__librust_nodropPlusnodrop_union_dev memberOf Package
+	package hasValue "librust-nodrop+nodrop-union-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/rust"
+	installedSize hasValue "6"
+	maintainer hasValue "Original-Debian Rust Maintainers <pkg-rust-maintainers@alioth-lists.debian.net>"
+	architecture hasValue "amd64"
+	version hasValue "0.1.13-1"
+	provides hasValue "librust-nodrop-0+nodrop-union-dev (= 0.1.13-1), librust-nodrop-0.1+nodrop-union-dev (= 0.1.13-1), librust-nodrop-0.1.13+nodrop-union-dev (= 0.1.13-1)"
+	fileName hasValue "pool/universe/r/rust-nodrop/librust-nodrop+nodrop-union-dev_0.1.13-1_amd64.deb"
+	size hasValue "1116"
+	md5sum hasValue "66cdf56c807006ed8024edc3aa753468"
+	sha1 hasValue "c100a63d7a2066c2dde8296afa57dc4c61626985"
+	sha256 hasValue "4b02be690f4d0cf758f74b156dba22c38c3f2ee44e66b5db491ff6fade7830aa"
+	descriptionMd5 hasValue "0015f2defee7591121c1f2c7cab01a60"
+	depends hasValue "librust-nodrop-dev (= 0.1.13-1), librust-nodrop-union-0.1+default-dev (>= 0.1.8-~~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "librust-nodrop-dev"
+	comparison hasValue "="
+	version hasValue "0.1.13-1"
+
+relationInstance depends(P0__librust_nodropPlusnodrop_union_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "librust-nodrop-union-0.1+default-dev"
+	comparison hasValue ">="
+	version hasValue "0.1.8-~~"
+
+relationInstance depends(P0__librust_nodropPlusnodrop_union_dev,1,DepAtom__1)
+

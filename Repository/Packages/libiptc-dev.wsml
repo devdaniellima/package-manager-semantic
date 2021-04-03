@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libiptc_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libiptc_dev memberOf Package
+	package hasValue "libiptc-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libdevel"
+	installedSize hasValue "45"
+	maintainer hasValue "Original-Debian Netfilter Packaging Team <pkg-netfilter-team@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.8.4-3ubuntu2"
+	fileName hasValue "pool/main/i/iptables/libiptc-dev_1.8.4-3ubuntu2_amd64.deb"
+	size hasValue "4480"
+	md5sum hasValue "154b106464b5c6bf6a615d99b2ac6dc6"
+	sha1 hasValue "071d3673fe530c6a5774602605318f0917cbda37"
+	sha256 hasValue "ef287d01b2f64cd24a07a3753824ed9c61531ff9cec574ae8aa78cf7d12e349a"
+	description hasValue "Common development files for libiptc"
+	descriptionMd5 hasValue "a8fa4d8268176ad7ff7aca8b5c2f5c53"
+	homepage hasValue "https://www.netfilter.org/"
+	depends hasValue "libip4tc-dev (= 1.8.4-3ubuntu2), libip6tc-dev (= 1.8.4-3ubuntu2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libip4tc-dev"
+	comparison hasValue "="
+	version hasValue "1.8.4-3ubuntu2"
+
+relationInstance depends(P0__libiptc_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libip6tc-dev"
+	comparison hasValue "="
+	version hasValue "1.8.4-3ubuntu2"
+
+relationInstance depends(P0__libiptc_dev,1,DepAtom__1)
+

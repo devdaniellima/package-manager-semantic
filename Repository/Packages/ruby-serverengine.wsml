@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ruby_serverengine
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ruby_serverengine memberOf Package
+	package hasValue "ruby-serverengine"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/ruby"
+	installedSize hasValue "117"
+	maintainer hasValue "Original-Debian Ruby Extras Maintainers <pkg-ruby-extras-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.2.0-1"
+	fileName hasValue "pool/universe/r/ruby-serverengine/ruby-serverengine_2.2.0-1_all.deb"
+	size hasValue "23224"
+	md5sum hasValue "c8612b0b62e32be51d5a1717b731c20a"
+	sha1 hasValue "8bfc7deeb41db77234c75a46abad2976d78f92e0"
+	sha256 hasValue "8bfab9613815857de7af2f9421e8b139a3a88a5c6e58920f8b74880df7ce360d"
+	descriptionMd5 hasValue "ab92366bdaccfb4e092f9df09eeb40e4"
+	homepage hasValue "https://github.com/treasure-data/serverengine"
+	depends hasValue "ruby (>= 2.1.0), ruby-sigdump (>= 0.2.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "ruby"
+	comparison hasValue ">="
+	version hasValue "2.1.0"
+
+relationInstance depends(P0__ruby_serverengine,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "ruby-sigdump"
+	comparison hasValue ">="
+	version hasValue "0.2.2"
+
+relationInstance depends(P0__ruby_serverengine,1,DepAtom__1)
+

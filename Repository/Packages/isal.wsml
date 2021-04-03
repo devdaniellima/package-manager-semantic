@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology isal
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__isal memberOf Package
+	package hasValue "isal"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "49"
+	maintainer hasValue "Original-Debian OpenStack <team+openstack@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.28.0-2"
+	fileName hasValue "pool/universe/libi/libisal/isal_2.28.0-2_amd64.deb"
+	size hasValue "10712"
+	md5sum hasValue "4a8532ec63f7e83aea55282db9b6096d"
+	sha1 hasValue "407064bf4c799c73da1a0dd46b670070de53da7b"
+	sha256 hasValue "a7dd5b2f135e31b4064308f8204a419b76766eea241e45d907c6eb90dc50e117"
+	descriptionMd5 hasValue "7f9035928ec89f5e08326038dda3a0d1"
+	homepage hasValue "https://github.com/01org/isa-l"
+	depends hasValue "libc6 (>= 2.14), libisal2 (>= 2.24.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__isal,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libisal2"
+	comparison hasValue ">="
+	version hasValue "2.24.0"
+
+relationInstance depends(P0__isal,1,DepAtom__1)
+

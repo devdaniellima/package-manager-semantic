@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology drc
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__drc memberOf Package
+	package hasValue "drc"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/sound"
+	installedSize hasValue "610"
+	maintainer hasValue "Original-Debian Multimedia Maintainers <debian-multimedia@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.2.3~dfsg0-1build1"
+	fileName hasValue "pool/universe/d/drc/drc_3.2.3~dfsg0-1build1_amd64.deb"
+	size hasValue "143120"
+	md5sum hasValue "f0c53dfac4285cea36b82e42f0a56d32"
+	sha1 hasValue "84dbcfb6b76c7238cac7567eba22cdc324f86478"
+	sha256 hasValue "721823e909a6cdc6df1d5ddcc61b1e23af6f9830ca30f9604561cb98ab51d6fb"
+	descriptionMd5 hasValue "9900bb60949e0c9da785c1a5061ce277"
+	homepage hasValue "https://drc-fir.sourceforge.io/"
+	depends hasValue "libc6 (>= 2.29), libgcc-s1 (>= 4.0), libstdc++6 (>= 4.9)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__drc,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgcc-s1"
+	comparison hasValue ">="
+	version hasValue "4.0"
+
+relationInstance depends(P0__drc,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "4.9"
+
+relationInstance depends(P0__drc,2,DepAtom__2)
+

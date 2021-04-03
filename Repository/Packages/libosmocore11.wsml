@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libosmocore11
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libosmocore11 memberOf Package
+	package hasValue "libosmocore11"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "208"
+	maintainer hasValue "Original-Debian Mobcom Maintainers <Debian-mobcom-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.12.1-3ubuntu1"
+	fileName hasValue "pool/universe/libo/libosmocore/libosmocore11_0.12.1-3ubuntu1_amd64.deb"
+	size hasValue "66856"
+	md5sum hasValue "d1bba96e720705491a4d5a49641b7e6f"
+	sha1 hasValue "9d943e6217b5b692bd3a7f266c83e00635aebef0"
+	sha256 hasValue "c0a48a2d874147c669ff91f05dcd47b48e34ede8f15a6bbbe4a04f0654c7b0e5"
+	descriptionMd5 hasValue "52a1beaf4fb85449045fd9c6cd0df673"
+	homepage hasValue "http://bb.osmocom.org/trac/wiki/libosmocore"
+	depends hasValue "libc6 (>= 2.17), libtalloc2 (>= 2.0.4~git20101213)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.17"
+
+relationInstance depends(P0__libosmocore11,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libtalloc2"
+	comparison hasValue ">="
+	version hasValue "2.0.4~git20101213"
+
+relationInstance depends(P0__libosmocore11,1,DepAtom__1)
+

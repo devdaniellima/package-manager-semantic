@@ -1,0 +1,69 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology cwdaemon
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__cwdaemon memberOf Package
+	package hasValue "cwdaemon"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/hamradio"
+	installedSize hasValue "242"
+	maintainer hasValue "Original-Debian Hamradio Maintainers <debian-hams@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.10.2-2"
+	conflicts hasValue "winkeydaemon"
+	fileName hasValue "pool/universe/c/cwdaemon/cwdaemon_0.10.2-2_amd64.deb"
+	size hasValue "130858"
+	md5sum hasValue "1d42f0f1bb47972060390c2b1271f938"
+	sha1 hasValue "bf7638c843ab140834d0ed61a7dfb3596199ad19"
+	sha256 hasValue "8ab201487c424de6292ecb8618863f76422600340574a684bc6c71c07f88b924"
+	description hasValue "daemon morse para a porta serial ou paralela"
+	descriptionMd5 hasValue "83babfe35ac6c695008de32a16460ff8"
+	homepage hasValue "http://cwdaemon.sourceforge.net/"
+	depends hasValue "libc6 (>= 2.15), libcw6, lsb-base (>= 3.0-6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__cwdaemon,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libcw6"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__cwdaemon,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "lsb-base"
+	comparison hasValue ">="
+	version hasValue "3.0-6"
+
+relationInstance depends(P0__cwdaemon,2,DepAtom__2)
+

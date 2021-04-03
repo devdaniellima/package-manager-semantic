@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libfuse_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libfuse_dev memberOf Package
+	package hasValue "libfuse-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libdevel"
+	installedSize hasValue "582"
+	maintainer hasValue "Original-Laszlo Boszormenyi (GCS) <gcs@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.9.9-3"
+	fileName hasValue "pool/main/f/fuse/libfuse-dev_2.9.9-3_amd64.deb"
+	size hasValue "105248"
+	md5sum hasValue "46b429eb4522a8123971ea5ffbe6e11f"
+	sha1 hasValue "2d75f61e3ed891a40a20945a906326054b0fc439"
+	sha256 hasValue "036407feabbf18c5219f22b8997c765038122a465e0fd565d6a31d848fa9aad7"
+	description hasValue "Filesystem in Userspace (development)"
+	descriptionMd5 hasValue "da11b1a71c864509638e23fbce6723a3"
+	homepage hasValue "https://github.com/libfuse/libfuse/wiki"
+	depends hasValue "libfuse2 (= 2.9.9-3), libselinux-dev"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libfuse2"
+	comparison hasValue "="
+	version hasValue "2.9.9-3"
+
+relationInstance depends(P0__libfuse_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libselinux-dev"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libfuse_dev,1,DepAtom__1)
+

@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ccrypt
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ccrypt memberOf Package
+	package hasValue "ccrypt"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "170"
+	maintainer hasValue "Original-Debian Security Tools <team+pkg-security@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.11-1"
+	fileName hasValue "pool/universe/c/ccrypt/ccrypt_1.11-1_amd64.deb"
+	size hasValue "53564"
+	md5sum hasValue "f473623ecd196bd2ee3f99548159fd14"
+	sha1 hasValue "1350df320107cc78ae299a29800ed63023e201fa"
+	sha256 hasValue "90ba46426ce5d13da1d7f5c7f71430b32f47281c609b31f8eeace7820875ffae"
+	description hasValue "criptografia e descriptografia segura de arquivos e \"streams\""
+	descriptionMd5 hasValue "da31f4a0f5044cdae29a94198cd0810c"
+	homepage hasValue "http://ccrypt.sourceforge.net/"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__ccrypt,0,DepAtom__0)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology cs
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__cs memberOf Package
+	package hasValue "cs"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "15"
+	maintainer hasValue "Original-Vincent Bernat <bernat@debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.3.1-2"
+	fileName hasValue "pool/universe/p/python-cs/cs_2.3.1-2_all.deb"
+	size hasValue "3300"
+	md5sum hasValue "8c0747a9ca1152dc33d30524820e1cee"
+	sha1 hasValue "7ce97e9b3dfe4a7887ef8f281d4659d6e7fcf20a"
+	sha256 hasValue "e541672271a233ca0540449680434ce2dbc03834756f47b524d77061b3efc939"
+	descriptionMd5 hasValue "351769c515432dc3b738c7f75b81c6e4"
+	homepage hasValue "https://github.com/exoscale/cs"
+	depends hasValue "python3:any, python3-cs (= 2.3.1-2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__cs,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3-cs"
+	comparison hasValue "="
+	version hasValue "2.3.1-2"
+
+relationInstance depends(P0__cs,1,DepAtom__1)
+

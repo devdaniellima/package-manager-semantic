@@ -1,0 +1,63 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology faad
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__faad memberOf Package
+	package hasValue "faad"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/sound"
+	installedSize hasValue "75"
+	maintainer hasValue "Original-Debian Multimedia Maintainers <debian-multimedia@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.9.1-1"
+	replaces hasValue "faad2"
+	conflicts hasValue "faad2"
+	fileName hasValue "pool/universe/f/faad2/faad_2.9.1-1_amd64.deb"
+	size hasValue "22104"
+	md5sum hasValue "6e326d7adb47ba5baa85f2f5db9b9774"
+	sha1 hasValue "ec932728fb3bc1a57d47d0a2be6400d94eb18c71"
+	sha256 hasValue "3891841ee02e5c088aecf98ce2d95d2ae31064d15714fdb0d0a5eaf5201eb65a"
+	description hasValue "freeware Advanced Audio Decoder player"
+	descriptionMd5 hasValue "12b068dd9c125bf5c6384cfcb76f44c0"
+	homepage hasValue "https://github.com/knik0/faad2"
+	depends hasValue "libc6 (>= 2.14), libfaad2 (>= 2.8.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__faad,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libfaad2"
+	comparison hasValue ">="
+	version hasValue "2.8.2"
+
+relationInstance depends(P0__faad,1,DepAtom__1)
+

@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libqapt_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libqapt_dev memberOf Package
+	package hasValue "libqapt-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/kde"
+	installedSize hasValue "185"
+	maintainer hasValue "Original-Debian/Kubuntu KDE Extras Team <pkg-kde-extras@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.0.5-1ubuntu1"
+	fileName hasValue "pool/universe/libq/libqapt/libqapt-dev_3.0.5-1ubuntu1_amd64.deb"
+	size hasValue "28248"
+	md5sum hasValue "c73e3ac773205fb747445efabc6a2c97"
+	sha1 hasValue "1a5c0f8c9ef44a3941d901b10fe0d51866b4879f"
+	sha256 hasValue "3893c7fa69a2200e67e0ad3d5f2ca345075b059eaff116964d39fedb7046982d"
+	descriptionMd5 hasValue "ebfb8a382214854d21b85301af1fea89"
+	homepage hasValue "https://cgit.kde.org/libqapt.git/"
+	depends hasValue "libapt-pkg-dev, libqapt3 (= 3.0.5-1ubuntu1), qtbase5-dev (>= 5.2.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libapt-pkg-dev"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libqapt_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libqapt3"
+	comparison hasValue "="
+	version hasValue "3.0.5-1ubuntu1"
+
+relationInstance depends(P0__libqapt_dev,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "qtbase5-dev"
+	comparison hasValue ">="
+	version hasValue "5.2.0"
+
+relationInstance depends(P0__libqapt_dev,2,DepAtom__2)
+

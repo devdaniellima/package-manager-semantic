@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology pullimap
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__pullimap memberOf Package
+	package hasValue "pullimap"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/mail"
+	installedSize hasValue "36"
+	maintainer hasValue "Original-Guilhem Moulin <guilhem@debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.5-1"
+	fileName hasValue "pool/universe/i/interimap/pullimap_0.5-1_all.deb"
+	size hasValue "13196"
+	md5sum hasValue "21776ada4c596dc4534a57bf62e8cc61"
+	sha1 hasValue "8b3a3d02d612626602f5cd2ffecaae6f0103bcbe"
+	sha256 hasValue "5fe97d175956bb094b99d9e4373bfa0419273be70f698b61430763a694a46ce7"
+	descriptionMd5 hasValue "703dc9f4a14f01e47db6e80503c8b195"
+	homepage hasValue "https://guilhem.org/interimap"
+	depends hasValue "libinterimap (>= 0.5~), perl:any"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libinterimap"
+	comparison hasValue ">="
+	version hasValue "0.5~"
+
+relationInstance depends(P0__pullimap,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "perl:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__pullimap,1,DepAtom__1)
+

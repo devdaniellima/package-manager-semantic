@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gobjc
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gobjc memberOf Package
+	package hasValue "gobjc"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "6"
+	maintainer hasValue "Original-Debian GCC Maintainers <debian-gcc@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "4:9.3.0-1ubuntu2"
+	provides hasValue "objc-compiler"
+	fileName hasValue "pool/universe/g/gcc-defaults/gobjc_9.3.0-1ubuntu2_amd64.deb"
+	size hasValue "1044"
+	md5sum hasValue "79d7fdf45134b8185e467f8dd04ed947"
+	sha1 hasValue "b9fada3eddcf3702457095db60376d4ac4131a62"
+	sha256 hasValue "917e2844b34c70b86a51ba1a8e4d0b7dc4deddc381f1c801f2b9b7aebfaff980"
+	description hasValue "GNU Objective-C compiler"
+	descriptionMd5 hasValue "8eb5a7695a9f4935cb3126a66df29405"
+	depends hasValue "cpp (>= 4:9.3.0-1ubuntu2), gcc (>= 4:9.3.0-1ubuntu2), gobjc-9 (>= 9.3.0-3~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "cpp"
+	comparison hasValue ">="
+	version hasValue "4:9.3.0-1ubuntu2"
+
+relationInstance depends(P0__gobjc,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "gcc"
+	comparison hasValue ">="
+	version hasValue "4:9.3.0-1ubuntu2"
+
+relationInstance depends(P0__gobjc,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "gobjc-9"
+	comparison hasValue ">="
+	version hasValue "9.3.0-3~"
+
+relationInstance depends(P0__gobjc,2,DepAtom__2)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libqb_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libqb_dev memberOf Package
+	package hasValue "libqb-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "libdevel"
+	installedSize hasValue "208"
+	maintainer hasValue "Original-Debian HA Maintainers <debian-ha-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.5-1"
+	fileName hasValue "pool/main/libq/libqb/libqb-dev_1.0.5-1_amd64.deb"
+	size hasValue "65424"
+	md5sum hasValue "c813ef9c793e7479dcef69245091f277"
+	sha1 hasValue "c267b5c740cf491e48a0a484f72b2494ee83f45d"
+	sha256 hasValue "872b4b101d768b54820bba46d31de3dd8caed2bebdccb4623a07e6e57a0b19f8"
+	descriptionMd5 hasValue "898c3483eb6616abbbff6040fa6f3361"
+	homepage hasValue "https://github.com/clusterlabs/libqb/wiki"
+	depends hasValue "libqb0 (= 1.0.5-1), libc6 (>= 2.3.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libqb0"
+	comparison hasValue "="
+	version hasValue "1.0.5-1"
+
+relationInstance depends(P0__libqb_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.3.4"
+
+relationInstance depends(P0__libqb_dev,1,DepAtom__1)
+

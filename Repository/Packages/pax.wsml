@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology pax
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__pax memberOf Package
+	package hasValue "pax"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "utils"
+	installedSize hasValue "168"
+	maintainer hasValue "Original-Thorsten Glaser <tg@mirbsd.de>"
+	architecture hasValue "amd64"
+	version hasValue "1:20190825-1"
+	fileName hasValue "pool/main/p/pax/pax_20190825-1_amd64.deb"
+	size hasValue "81348"
+	md5sum hasValue "0181101558f560dfaacb9fe5523731c9"
+	sha1 hasValue "74c0e4a86024817bdedbdb7a7a6e2f5ac383b5d5"
+	sha256 hasValue "70c6cff56222e3d00d3c9152b36531caa943e68453563b7b0871b207b4dadd71"
+	descriptionMd5 hasValue "6a13dcd72d0208af12f4a865635b9dac"
+	homepage hasValue "http://www.mirbsd.org/pax.htm"
+	depends hasValue "libc6 (>= 2.26)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.26"
+
+relationInstance depends(P0__pax,0,DepAtom__0)
+

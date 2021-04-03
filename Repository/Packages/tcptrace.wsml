@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology tcptrace
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__tcptrace memberOf Package
+	package hasValue "tcptrace"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "407"
+	maintainer hasValue "Original-Noah Meyerhans <noahm@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "6.6.7-6"
+	fileName hasValue "pool/universe/t/tcptrace/tcptrace_6.6.7-6_amd64.deb"
+	size hasValue "152476"
+	md5sum hasValue "b6f27e5ab6e321544b9bd50efe33e2fc"
+	sha1 hasValue "bd775acadde64bb2ac7e850134c4591614328961"
+	sha256 hasValue "cc3cd1254a91092b80105d7fd9ab6dbf5d2516ca4e26b2c3c3ada7bd7eaa6df7"
+	description hasValue "ferramenta para analizar a saída do tcpdump"
+	descriptionMd5 hasValue "cce6f4c204e7bc23e3efd719c52b1eba"
+	homepage hasValue "http://www.tcptrace.org/"
+	depends hasValue "libc6 (>= 2.14), libpcap0.8 (>= 0.9.8)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__tcptrace,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libpcap0.8"
+	comparison hasValue ">="
+	version hasValue "0.9.8"
+
+relationInstance depends(P0__tcptrace,1,DepAtom__1)
+

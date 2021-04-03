@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology session_migration
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__session_migration memberOf Package
+	package hasValue "session-migration"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "misc"
+	installedSize hasValue "48"
+	maintainer hasValue "Didier Roche <didrocks@ubuntu.com>"
+	architecture hasValue "amd64"
+	version hasValue "0.3.5"
+	fileName hasValue "pool/main/s/session-migration/session-migration_0.3.5_amd64.deb"
+	size hasValue "8988"
+	md5sum hasValue "40b42959e9706b10c296f12594175a94"
+	sha1 hasValue "5b2bd6c6a24b5484b840c8e1791daaca936b7f71"
+	sha256 hasValue "817d0a4f62fcdf48e8b9a69349e9bea5438e5f202ad37b6584ae7cc0d7cf1356"
+	descriptionMd5 hasValue "ae53757d572032e794c86892ab4a5aba"
+	homepage hasValue "https://launchpad.net/session-migration"
+	depends hasValue "libc6 (>= 2.4), libglib2.0-0 (>= 2.51.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__session_migration,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libglib2.0-0"
+	comparison hasValue ">="
+	version hasValue "2.51.1"
+
+relationInstance depends(P0__session_migration,1,DepAtom__1)
+

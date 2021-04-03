@@ -1,0 +1,76 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libpam_cap
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libpam_cap memberOf Package
+	package hasValue "libpam-cap"
+	packageSource hasValue Source__S1
+	priority hasValue "important"
+	section hasValue "libs"
+	installedSize hasValue "48"
+	maintainer hasValue "Original-Christian Kastner <ckk@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:2.32-1"
+	replaces hasValue "libcap2-bin (<< 1:2.22-1.1)"
+	fileName hasValue "pool/main/libc/libcap2/libpam-cap_2.32-1_amd64.deb"
+	size hasValue "8352"
+	md5sum hasValue "db4739ffb060aa9ed908d980d2f470b7"
+	sha1 hasValue "d9d19ced3e377ae089d401ad5881a001530e959f"
+	sha256 hasValue "a7dcec99a0666a39084a0a99cf6cc55e592f17587b1522d33a1a658fb22da33c"
+	description hasValue "POSIX 1003.1e capabilities (PAM module)"
+	descriptionMd5 hasValue "c481c3648554442cc6a66d0b34d0d8f6"
+	homepage hasValue "https://sites.google.com/site/fullycapable/"
+	depends hasValue "libc6 (>= 2.4), libcap2 (>= 1:2.31), libpam0g (>= 0.99.7.1), libpam-runtime (>= 1.1.3-2~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libpam_cap,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libcap2"
+	comparison hasValue ">="
+	version hasValue "1:2.31"
+
+relationInstance depends(P0__libpam_cap,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libpam0g"
+	comparison hasValue ">="
+	version hasValue "0.99.7.1"
+
+relationInstance depends(P0__libpam_cap,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "libpam-runtime"
+	comparison hasValue ">="
+	version hasValue "1.1.3-2~"
+
+relationInstance depends(P0__libpam_cap,3,DepAtom__3)
+

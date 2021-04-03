@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology trash_cli
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__trash_cli memberOf Package
+	package hasValue "trash-cli"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/utils"
+	installedSize hasValue "108"
+	maintainer hasValue "Original-Stefano Karapetsas <stefano@karapetsas.com>"
+	architecture hasValue "all"
+	version hasValue "0.17.1.14-2ubuntu1"
+	fileName hasValue "pool/universe/t/trash-cli/trash-cli_0.17.1.14-2ubuntu1_all.deb"
+	size hasValue "24216"
+	md5sum hasValue "9126da3174114adb3585f29cd88572ff"
+	sha1 hasValue "6e22ff1bf874928f042cb62638c9de7cc997b432"
+	sha256 hasValue "777042d1e84e37c29f47725c9bc67b536d438954fd1a5a01646f47e4deab8653"
+	descriptionMd5 hasValue "1f885fc35096fe4e2f18369f9b37b925"
+	homepage hasValue "https://github.com/andreafrancia/trash-cli"
+	depends hasValue "python2:any (<< 2.8), python2:any (>= 2.7~), python-pkg-resources"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue "<<"
+	version hasValue "2.8"
+
+relationInstance depends(P0__trash_cli,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue ">="
+	version hasValue "2.7~"
+
+relationInstance depends(P0__trash_cli,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "python-pkg-resources"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__trash_cli,2,DepAtom__2)
+

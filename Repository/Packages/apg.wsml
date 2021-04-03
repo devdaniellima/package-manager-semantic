@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology apg
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__apg memberOf Package
+	package hasValue "apg"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "admin"
+	installedSize hasValue "134"
+	maintainer hasValue "Original-Marc Haber <mh+debian-packages@zugschlus.de>"
+	architecture hasValue "amd64"
+	version hasValue "2.2.3.dfsg.1-5"
+	fileName hasValue "pool/main/a/apg/apg_2.2.3.dfsg.1-5_amd64.deb"
+	size hasValue "50620"
+	md5sum hasValue "4e3652340aebe09388f9d158b486deb0"
+	sha1 hasValue "9b753f7c51a2dc50815a00d8d8c42002697e5211"
+	sha256 hasValue "c513fde3046a3c4044dde30c49730dd20e47b0b33ae5e3472e8e26946e1fcf65"
+	description hasValue "Automated Password Generator - versão independente"
+	descriptionMd5 hasValue "d919baea3108b57df48112b188dca442"
+	homepage hasValue "http://www.adel.nursat.kz/apg/"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__apg,0,DepAtom__0)
+

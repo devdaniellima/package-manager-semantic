@@ -1,0 +1,66 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology rio
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__rio memberOf Package
+	package hasValue "rio"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/sound"
+	installedSize hasValue "70"
+	maintainer hasValue "Original-Vince Mulhollon <vlm@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.07-12build1"
+	fileName hasValue "pool/universe/r/rio/rio_1.07-12build1_amd64.deb"
+	size hasValue "24220"
+	md5sum hasValue "7168a9f8db2ef3864f72576d7e481eb6"
+	sha1 hasValue "78675f41900013b3953e998966a43e0945eecf4d"
+	sha256 hasValue "eaeb93a60576dbd54ab824bd9b413fbc0539ef20dbb0cbb804e360e6ac058797"
+	descriptionMd5 hasValue "5b40d453420e166c011ea4fc5bfe4e23"
+	depends hasValue "libc6 (>= 2.14), libgcc-s1 (>= 3.0), libstdc++6 (>= 5)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__rio,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgcc-s1"
+	comparison hasValue ">="
+	version hasValue "3.0"
+
+relationInstance depends(P0__rio,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "5"
+
+relationInstance depends(P0__rio,2,DepAtom__2)
+

@@ -1,0 +1,74 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology tla
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__tla memberOf Package
+	package hasValue "tla"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "1004"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.3.5+dfsg1-2build1"
+	fileName hasValue "pool/universe/t/tla/tla_1.3.5+dfsg1-2build1_amd64.deb"
+	size hasValue "339272"
+	md5sum hasValue "8e6b307d6f783e9a5a8d2804b3861a59"
+	sha1 hasValue "19eb1733a0260eb1e63bd764ddc0bb8ca055805f"
+	sha256 hasValue "3bc0fd6ead49ef73686f602f0a6cb4baeb6a591264f84dc3a915b1b98deeb349"
+	descriptionMd5 hasValue "b1978a310e178291e9aa549e4eefcad2"
+	homepage hasValue "http://savannah.gnu.org/projects/gnu-arch/"
+	depends hasValue "libc6 (>= 2.15), libexpat1 (>= 2.0.1), gawk, patch"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__tla,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libexpat1"
+	comparison hasValue ">="
+	version hasValue "2.0.1"
+
+relationInstance depends(P0__tla,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "gawk"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__tla,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "patch"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__tla,3,DepAtom__3)
+

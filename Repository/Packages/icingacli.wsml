@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology icingacli
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__icingacli memberOf Package
+	package hasValue "icingacli"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/admin"
+	installedSize hasValue "54"
+	maintainer hasValue "Original-Debian Nagios Maintainer Group <pkg-nagios-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.7.3-1"
+	replaces hasValue "icingaweb2 (<< 2.3.4-2~)"
+	fileName hasValue "pool/universe/i/icingaweb2/icingacli_2.7.3-1_all.deb"
+	size hasValue "8728"
+	md5sum hasValue "cf1980cee6ddf2c31455c3158453206c"
+	sha1 hasValue "f2803f1f8554fae6be05acba3333640f50a9f908"
+	sha256 hasValue "6b75f7b312cb77d123f958775ea74808d422dcf1c38a4614609e1499616b0ae8"
+	descriptionMd5 hasValue "1a6656d7bea04a0cb347e50677ad69a3"
+	homepage hasValue "https://icinga.com"
+	depends hasValue "adduser, php-icinga (= 2.7.3-1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "adduser"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__icingacli,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "php-icinga"
+	comparison hasValue "="
+	version hasValue "2.7.3-1"
+
+relationInstance depends(P0__icingacli,1,DepAtom__1)
+

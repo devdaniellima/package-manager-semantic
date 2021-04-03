@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libelf1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libelf1 memberOf Package
+	package hasValue "libelf1"
+	packageSource hasValue Source__S1
+	priority hasValue "important"
+	section hasValue "libs"
+	installedSize hasValue "184"
+	maintainer hasValue "Original-Kurt Roeckx <kurt@roeckx.be>"
+	architecture hasValue "amd64"
+	version hasValue "0.176-1.1build1"
+	fileName hasValue "pool/main/e/elfutils/libelf1_0.176-1.1build1_amd64.deb"
+	size hasValue "44004"
+	md5sum hasValue "992f81fee53fb775a8ff7c9b16fe01e8"
+	sha1 hasValue "5b5adcbdf58a2eff208f68f6a8cf32b984e43cdb"
+	sha256 hasValue "78a8761227efc04a1e37527f2f33ba608c6fb5d6c911616346ada5d7b9b72ee3"
+	description hasValue "biblioteca para ler e escrever arquivos ELF"
+	descriptionMd5 hasValue "5188e87e91e6292255a5ccd72d2f25ed"
+	homepage hasValue "https://sourceware.org/elfutils/"
+	depends hasValue "libc6 (>= 2.16), zlib1g (>= 1:1.1.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.16"
+
+relationInstance depends(P0__libelf1,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "zlib1g"
+	comparison hasValue ">="
+	version hasValue "1:1.1.4"
+
+relationInstance depends(P0__libelf1,1,DepAtom__1)
+

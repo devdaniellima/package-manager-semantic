@@ -1,0 +1,70 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libtcl8Dot6
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libtcl8Dot6 memberOf Package
+	package hasValue "libtcl8.6"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libs"
+	installedSize hasValue "4028"
+	maintainer hasValue "Original-Debian Tcl/Tk Packagers <pkg-tcltk-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "8.6.10+dfsg-1"
+	replaces hasValue "tcl8.6 (<< 8.6.0-2)"
+	provides hasValue "libtcl"
+	conflicts hasValue "tcl74 (<= 7.4p3-2), tcl8.6 (<< 8.6.0-2)"
+	fileName hasValue "pool/main/t/tcl8.6/libtcl8.6_8.6.10+dfsg-1_amd64.deb"
+	size hasValue "902372"
+	md5sum hasValue "c5168e90643652253eb835efe0a58eb6"
+	sha1 hasValue "f98bac8bc2385f74b44c870a6e3329607a7c46c5"
+	sha256 hasValue "390780dbbccaad89676577ebe681e588ee170637a6f272e6f74fcb041f90785f"
+	descriptionMd5 hasValue "0900ad020fbf5b0aca4aa49a8044d863"
+	homepage hasValue "http://www.tcl.tk/"
+	depends hasValue "tzdata, libc6 (>= 2.29), zlib1g (>= 1:1.2.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "tzdata"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libtcl8Dot6,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__libtcl8Dot6,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "zlib1g"
+	comparison hasValue ">="
+	version hasValue "1:1.2.2"
+
+relationInstance depends(P0__libtcl8Dot6,2,DepAtom__2)
+

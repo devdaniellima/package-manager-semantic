@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology net_tools
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__net_tools memberOf Package
+	package hasValue "net-tools"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "net"
+	installedSize hasValue "844"
+	maintainer hasValue "Original-net-tools Team <team+net-tools@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.60+git20180626.aebd88e-1ubuntu1"
+	fileName hasValue "pool/main/n/net-tools/net-tools_1.60+git20180626.aebd88e-1ubuntu1_amd64.deb"
+	size hasValue "196392"
+	md5sum hasValue "9c0c2ef6e21c4366564f38b15023f329"
+	sha1 hasValue "f2c222b8afd37d8601335a3175976a1f4de43875"
+	sha256 hasValue "591808d272508bcafb28ab0b151e0d03a0c922a7f7f7e6469b41ec64c46b4a90"
+	description hasValue "conjunto de ferramentas para rede NET-3"
+	descriptionMd5 hasValue "08f345ee19e62d4fd85e960d3a061a33"
+	homepage hasValue "http://sourceforge.net/projects/net-tools/"
+	depends hasValue "libc6 (>= 2.14), libselinux1 (>= 1.32)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__net_tools,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libselinux1"
+	comparison hasValue ">="
+	version hasValue "1.32"
+
+relationInstance depends(P0__net_tools,1,DepAtom__1)
+

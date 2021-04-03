@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology fcml
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__fcml memberOf Package
+	package hasValue "fcml"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "83"
+	maintainer hasValue "Original-Stephen Kitt <skitt@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.2.0-2"
+	fileName hasValue "pool/universe/f/fcml/fcml_1.2.0-2_amd64.deb"
+	size hasValue "16788"
+	md5sum hasValue "619956a323b056586e1f882f81b7871d"
+	sha1 hasValue "751172298678206ba39ed05429996f9428ef8421"
+	sha256 hasValue "d417e6e76c1b7a439dd80661ee14162056abcbe5e96240729de5f03215a74b77"
+	descriptionMd5 hasValue "f0298e255e0cc89ef4a0e45a7b1615b5"
+	homepage hasValue "http://www.fcml-lib.com"
+	depends hasValue "libc6 (>= 2.4), libfcml0 (>= 1.0.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__fcml,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libfcml0"
+	comparison hasValue ">="
+	version hasValue "1.0.0"
+
+relationInstance depends(P0__fcml,1,DepAtom__1)
+

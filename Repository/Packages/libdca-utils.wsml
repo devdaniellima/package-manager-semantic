@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libdca_utils
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libdca_utils memberOf Package
+	package hasValue "libdca-utils"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/sound"
+	installedSize hasValue "67"
+	maintainer hasValue "Original-Debian Multimedia Maintainers <debian-multimedia@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.0.6-1"
+	fileName hasValue "pool/universe/libd/libdca/libdca-utils_0.0.6-1_amd64.deb"
+	size hasValue "17252"
+	md5sum hasValue "1750e883a1e7c14cd57113905133393c"
+	sha1 hasValue "01ea074916c6cc080a4ee400931b2e03ff35f1a3"
+	sha256 hasValue "0a69533217a05b16fd44d3f844d36cee4c0c208538130c8a06bef768c61d98ca"
+	description hasValue "decoding library for DTS Coherent Acoustics streams (utilities)"
+	descriptionMd5 hasValue "f53fd659c33381ef4506c158999fa4b0"
+	homepage hasValue "https://www.videolan.org/developers/libdca.html"
+	depends hasValue "libc6 (>= 2.14), libdca0 (>= 0.0.5)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libdca_utils,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libdca0"
+	comparison hasValue ">="
+	version hasValue "0.0.5"
+
+relationInstance depends(P0__libdca_utils,1,DepAtom__1)
+

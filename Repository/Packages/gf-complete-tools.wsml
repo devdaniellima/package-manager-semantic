@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gf_complete_tools
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gf_complete_tools memberOf Package
+	package hasValue "gf-complete-tools"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/libs"
+	installedSize hasValue "113"
+	maintainer hasValue "Original-Debian OpenStack <team+openstack@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.2+2017.04.10.git.ea75cdf-3"
+	fileName hasValue "pool/universe/g/gf-complete/gf-complete-tools_1.0.2+2017.04.10.git.ea75cdf-3_amd64.deb"
+	size hasValue "21980"
+	md5sum hasValue "066fa09009e246f1b0a7c7f41c1ea77f"
+	sha1 hasValue "b21da21a3b6ff71b09e55c3ca15d2e62265de0ae"
+	sha256 hasValue "544cb84f0f8684756de505742037bd689449f012133423a9b2ff2e35914403c1"
+	descriptionMd5 hasValue "0fa153ff05c3216fad947a2f993a4048"
+	homepage hasValue "http://jerasure.org/"
+	depends hasValue "libgf-complete1 (= 1.0.2+2017.04.10.git.ea75cdf-3), libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libgf-complete1"
+	comparison hasValue "="
+	version hasValue "1.0.2+2017.04.10.git.ea75cdf-3"
+
+relationInstance depends(P0__gf_complete_tools,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__gf_complete_tools,1,DepAtom__1)
+

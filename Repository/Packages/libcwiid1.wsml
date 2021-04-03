@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libcwiid1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libcwiid1 memberOf Package
+	package hasValue "libcwiid1"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/libs"
+	installedSize hasValue "74"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.6.00+svn201-5"
+	fileName hasValue "pool/universe/c/cwiid/libcwiid1_0.6.00+svn201-5_amd64.deb"
+	size hasValue "17536"
+	md5sum hasValue "4cefe5164e93a5a818618d07cb184548"
+	sha1 hasValue "3c728af33a8b52526d70f649b5f65b324bd1aa45"
+	sha256 hasValue "0371b7b522ec3f2883ae5da56815e2a0ed3578d4f1292690f244f94d04bfa215"
+	description hasValue "library to interface with the wiimote -- runtime files"
+	descriptionMd5 hasValue "c26f3525ed40f8afc7db84154445f15a"
+	homepage hasValue "http://abstrakraft.org/cwiid/"
+	depends hasValue "libbluetooth3 (>= 4.91), libc6 (>= 2.17)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libbluetooth3"
+	comparison hasValue ">="
+	version hasValue "4.91"
+
+relationInstance depends(P0__libcwiid1,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.17"
+
+relationInstance depends(P0__libcwiid1,1,DepAtom__1)
+

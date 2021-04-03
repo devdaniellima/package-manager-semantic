@@ -1,0 +1,59 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libjpeg_progs
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libjpeg_progs memberOf Package
+	package hasValue "libjpeg-progs"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/graphics"
+	installedSize hasValue "241"
+	maintainer hasValue "Original-Bill Allombert <ballombe@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:9d-1"
+	fileName hasValue "pool/universe/libj/libjpeg9/libjpeg-progs_9d-1_amd64.deb"
+	size hasValue "78260"
+	md5sum hasValue "c76681fcd2b9d43b1e04c1a58650331a"
+	sha1 hasValue "eb8dc2fc8569590ff779f0aaeba36c88cfe4f90f"
+	sha256 hasValue "2a4c38cb3444295d83efc21a37dbf348984efacba770708d9ed7b4782c353c8a"
+	descriptionMd5 hasValue "18811a14939d885ee3988abf604b36d8"
+	depends hasValue "libc6 (>= 2.7), libjpeg9 (>= 9a)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__libjpeg_progs,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libjpeg9"
+	comparison hasValue ">="
+	version hasValue "9a"
+
+relationInstance depends(P0__libjpeg_progs,1,DepAtom__1)
+

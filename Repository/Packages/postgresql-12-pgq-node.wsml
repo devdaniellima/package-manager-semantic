@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology postgresql_12_pgq_node
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__postgresql_12_pgq_node memberOf Package
+	package hasValue "postgresql-12-pgq-node"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/database"
+	installedSize hasValue "532"
+	maintainer hasValue "Original-Debian PostgreSQL Maintainers <team+postgresql@tracker.debian.org>"
+	architecture hasValue "all"
+	version hasValue "3.2.5-7"
+	replaces hasValue "postgresql-12-pgq3 (<= 3.2.6-5)"
+	fileName hasValue "pool/universe/p/pgq-node/postgresql-12-pgq-node_3.2.5-7_all.deb"
+	size hasValue "12340"
+	md5sum hasValue "f020a5615fe3457ae2d85a84ab5241fc"
+	sha1 hasValue "cfa139811e9feab48f74d3c5185677037707015e"
+	sha256 hasValue "35db96a942c92ea3e083142e13047c623e7b60bce431078ce9dc6341838b3f8f"
+	descriptionMd5 hasValue "016676aa7ddbe7e042516d187d16b3c8"
+	depends hasValue "postgresql-12, postgresql-12-pgq3"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "postgresql-12"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__postgresql_12_pgq_node,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "postgresql-12-pgq3"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__postgresql_12_pgq_node,1,DepAtom__1)
+

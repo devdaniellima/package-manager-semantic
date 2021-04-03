@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libvolk2Dot2
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libvolk2Dot2 memberOf Package
+	package hasValue "libvolk2.2"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "3016"
+	maintainer hasValue "Original-A. Maitland Bottoms <bottoms@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.2.1-1"
+	fileName hasValue "pool/universe/v/volk/libvolk2.2_2.2.1-1_amd64.deb"
+	size hasValue "289696"
+	md5sum hasValue "75a983663b6643cc3237a0f5aa55d36f"
+	sha1 hasValue "ef487a7776654ac908612e4b5f2954c6bd6f63ed"
+	sha256 hasValue "8efeb5aa0104a9443c519801338144669c0ee724aa441c9201e14681f08864f9"
+	descriptionMd5 hasValue "8de75ae0e0ce57bb68a46690dd8e3b62"
+	homepage hasValue "http://libvolk.org"
+	depends hasValue "libc6 (>= 2.27), liborc-0.4-0 (>= 1:0.4.25)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.27"
+
+relationInstance depends(P0__libvolk2Dot2,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "liborc-0.4-0"
+	comparison hasValue ">="
+	version hasValue "1:0.4.25"
+
+relationInstance depends(P0__libvolk2Dot2,1,DepAtom__1)
+

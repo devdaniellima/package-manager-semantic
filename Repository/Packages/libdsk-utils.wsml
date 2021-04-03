@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libdsk_utils
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libdsk_utils memberOf Package
+	package hasValue "libdsk-utils"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "229"
+	maintainer hasValue "Original-Dominik George <natureshadow@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.5.9+dfsg-1"
+	fileName hasValue "pool/universe/libd/libdsk/libdsk-utils_1.5.9+dfsg-1_amd64.deb"
+	size hasValue "51724"
+	md5sum hasValue "6c3fe56d1f439de3c81b025b690033f4"
+	sha1 hasValue "5e0c6311196e28161415d6346ead3e5cc196c34c"
+	sha256 hasValue "3f512a6797ba6c7f53320fde89582628c3b6a6bb9711afd11f7923c39c147732"
+	descriptionMd5 hasValue "d37bc1a6163f3bc9a6488940959d8124"
+	homepage hasValue "http://www.seasip.info/Unix/LibDsk/"
+	depends hasValue "libdsk4 (= 1.5.9+dfsg-1), libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libdsk4"
+	comparison hasValue "="
+	version hasValue "1.5.9+dfsg-1"
+
+relationInstance depends(P0__libdsk_utils,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libdsk_utils,1,DepAtom__1)
+

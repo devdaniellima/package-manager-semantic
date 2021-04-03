@@ -1,0 +1,55 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology finger
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__finger memberOf Package
+	package hasValue "finger"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "50"
+	maintainer hasValue "Original-Josue Ortega <josue@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.17-17"
+	replaces hasValue "netstd"
+	fileName hasValue "pool/universe/b/bsd-finger/finger_0.17-17_amd64.deb"
+	size hasValue "16940"
+	md5sum hasValue "ca7be670e87cf35e2235a27e526ac7ee"
+	sha1 hasValue "ce102164aa3e04877c1df89cdf9c84d28d89a7bb"
+	sha256 hasValue "36d57fdd2a64126fd025e3734216d51f504a2e7c85e154345a3ef1c61f50279b"
+	description hasValue "programa para busca de informação de usuário"
+	descriptionMd5 hasValue "fa4c81e598394f7d5057f3373fde86f6"
+	homepage hasValue "http://ftp.linux.org.uk/pub/linux/Networking/netkit/"
+	depends hasValue "libc6 (>= 2.8)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.8"
+
+relationInstance depends(P0__finger,0,DepAtom__0)
+

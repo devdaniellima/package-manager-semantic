@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology nmon
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__nmon memberOf Package
+	package hasValue "nmon"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "183"
+	maintainer hasValue "Original-Salvatore Bonaccorso <carnil@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "16m+debian-1"
+	fileName hasValue "pool/universe/n/nmon/nmon_16m+debian-1_amd64.deb"
+	size hasValue "68796"
+	md5sum hasValue "d12b07bce19442d528b47f493833fbfc"
+	sha1 hasValue "ca1262f59061ff3779be8b4727a2a99967d9c805"
+	sha256 hasValue "0bf8856c0b012c8479013d4db6fc1cee2eb9fb2056d7ed57a48313a6c77fcd81"
+	description hasValue "ferramenta de monitoração de performance para Linux"
+	descriptionMd5 hasValue "efcc2b048980a647f20e53943a1b622e"
+	homepage hasValue "http://nmon.sourceforge.net"
+	depends hasValue "libc6 (>= 2.14), libncurses6 (>= 6), libtinfo6 (>= 6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__nmon,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libncurses6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__nmon,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libtinfo6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__nmon,2,DepAtom__2)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology wl_clipboard
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__wl_clipboard memberOf Package
+	package hasValue "wl-clipboard"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/x11"
+	installedSize hasValue "134"
+	maintainer hasValue "Original-Felipe Sateler <fsateler@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.0.0-1"
+	fileName hasValue "pool/universe/w/wl-clipboard/wl-clipboard_2.0.0-1_amd64.deb"
+	size hasValue "24212"
+	md5sum hasValue "f877e49d964a58c648bb1b12f6661a54"
+	sha1 hasValue "d119019f88814ecb8f188dfe877e72eeadf94908"
+	sha256 hasValue "b8a5b17c38924dc084a95a715cd5834bb7d9b657f49c5ae46b04134b703fc569"
+	descriptionMd5 hasValue "5a090dac3b8c2437a82fd3b00297e025"
+	homepage hasValue "https://github.com/bugaevc/wl-clipboard"
+	depends hasValue "libc6 (>= 2.28), libwayland-client0 (>= 1.9.91)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.28"
+
+relationInstance depends(P0__wl_clipboard,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libwayland-client0"
+	comparison hasValue ">="
+	version hasValue "1.9.91"
+
+relationInstance depends(P0__wl_clipboard,1,DepAtom__1)
+

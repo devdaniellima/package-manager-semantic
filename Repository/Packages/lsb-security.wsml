@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology lsb_security
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__lsb_security memberOf Package
+	package hasValue "lsb-security"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/misc"
+	installedSize hasValue "32"
+	maintainer hasValue "Original-Debian sysvinit maintainers <debian-init-diversity@chiark.greenend.org.uk>"
+	architecture hasValue "amd64"
+	version hasValue "11.1.0ubuntu2"
+	provides hasValue "lsb-security-noarch"
+	fileName hasValue "pool/universe/l/lsb/lsb-security_11.1.0ubuntu2_amd64.deb"
+	size hasValue "4184"
+	md5sum hasValue "8d029d254c84c79878335f00852a13bd"
+	sha1 hasValue "32e75526b29e8e0ed2c92ec8b4c2c24d7db68080"
+	sha256 hasValue "2f9bb732ef90b64a7b1582b87c1c4d94c713f85544df880bc1abaa6dcf9a68fa"
+	descriptionMd5 hasValue "12f458e53a9e71efa63d2faf45fb26f4"
+	homepage hasValue "https://wiki.linuxfoundation.org/lsb/start"
+	depends hasValue "libnss3, libnspr4"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libnss3"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__lsb_security,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libnspr4"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__lsb_security,1,DepAtom__1)
+

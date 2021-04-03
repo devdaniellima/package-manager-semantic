@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology stgit
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__stgit memberOf Package
+	package hasValue "stgit"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "603"
+	maintainer hasValue "Original-Maximiliano Curia <maxy@debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.19-1"
+	fileName hasValue "pool/universe/s/stgit/stgit_0.19-1_all.deb"
+	size hasValue "105704"
+	md5sum hasValue "594a9f04689a2c3dc6922cfad546620c"
+	sha1 hasValue "2a55559c6dc77ded3ecf3e841714f67ff6b42464"
+	sha256 hasValue "ea8109971644dc6ab27160c333484a915c986697bed2e70ab91ec18da2109dba"
+	description hasValue "gerencie pilhas de patches num repositório git"
+	descriptionMd5 hasValue "d6e7c4f9aa71542e1a733da8f87ae3b7"
+	homepage hasValue "http://www.procode.org/stgit/"
+	depends hasValue "git, python3:any"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "git"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__stgit,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__stgit,1,DepAtom__1)
+

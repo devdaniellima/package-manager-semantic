@@ -1,0 +1,59 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libdebian_installer_extra4
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libdebian_installer_extra4 memberOf Package
+	package hasValue "libdebian-installer-extra4"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libs"
+	installedSize hasValue "42"
+	maintainer hasValue "Original-Debian Install System Team <debian-boot@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.110ubuntu3"
+	fileName hasValue "pool/main/libd/libdebian-installer/libdebian-installer-extra4_0.110ubuntu3_amd64.deb"
+	size hasValue "5220"
+	md5sum hasValue "b6266c13180cab847e1f5a245af0ee94"
+	sha1 hasValue "79bbcf36cd9e1c7ed1f271dde8d7e808d5392fe5"
+	sha256 hasValue "4d3ed43ec6f7f1d29ac2f27345104aa515c07ec28743e526da0fe741cea8af18"
+	descriptionMd5 hasValue "32e7f9f03c25886318648f08caae21cf"
+	depends hasValue "libc6 (>= 2.7), libdebian-installer4 (= 0.110ubuntu3)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__libdebian_installer_extra4,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libdebian-installer4"
+	comparison hasValue "="
+	version hasValue "0.110ubuntu3"
+
+relationInstance depends(P0__libdebian_installer_extra4,1,DepAtom__1)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology groonga_normalizer_mysql
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__groonga_normalizer_mysql memberOf Package
+	package hasValue "groonga-normalizer-mysql"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "982"
+	maintainer hasValue "Original-Groonga Project <packages@groonga.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.1.4-2"
+	fileName hasValue "pool/universe/g/groonga-normalizer-mysql/groonga-normalizer-mysql_1.1.4-2_amd64.deb"
+	size hasValue "32100"
+	md5sum hasValue "f1a3c5b96ca8de251015fb9da973fe66"
+	sha1 hasValue "df7fa135bc51f6eda66b94c1fecd4bf2b75b16a7"
+	sha256 hasValue "dd6052422717b1cd31442f3f8ddba4bb193da9be9f0f7202507cf80bb0edb652"
+	descriptionMd5 hasValue "6fe52582a9fbe598ae24ff35b1a56046"
+	homepage hasValue "https://github.com/groonga/groonga-normalizer-mysql"
+	depends hasValue "libc6 (>= 2.4), libgroonga0 (>= 9.1.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__groonga_normalizer_mysql,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgroonga0"
+	comparison hasValue ">="
+	version hasValue "9.1.2"
+
+relationInstance depends(P0__groonga_normalizer_mysql,1,DepAtom__1)
+

@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology hostname
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__hostname memberOf Package
+	package hasValue "hostname"
+	packageSource hasValue Source__S1
+	priority hasValue "required"
+	section hasValue "admin"
+	installedSize hasValue "54"
+	maintainer hasValue "Original-Michael Meskes <meskes@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.23"
+	replaces hasValue "nis (<< 3.17-30)"
+	fileName hasValue "pool/main/h/hostname/hostname_3.23_amd64.deb"
+	size hasValue "11372"
+	md5sum hasValue "2c82088c1b6218005533948e7c508d64"
+	sha1 hasValue "100af5f53cf76d887c438e786c02a5f27a5dd91f"
+	sha256 hasValue "bddd3ac9a78c0f816f24622ef9f0495902da8028de9fc4b24ec8b1a36196a762"
+	description hasValue "utilitário para atribuir/mostrar o nome da máquina ou o nome do domínio"
+	descriptionMd5 hasValue "a5a22acc3c69a7f40f07f1a8dfc93af1"
+	depends hasValue "Pre-libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "Pre-libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__hostname,0,DepAtom__0)
+

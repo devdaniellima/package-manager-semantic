@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology sphinxbase_utils
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__sphinxbase_utils memberOf Package
+	package hasValue "sphinxbase-utils"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/sound"
+	installedSize hasValue "188"
+	maintainer hasValue "Original-Debian Accessibility Team <pkg-a11y-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.8+5prealpha+1-8"
+	fileName hasValue "pool/universe/s/sphinxbase/sphinxbase-utils_0.8+5prealpha+1-8_amd64.deb"
+	size hasValue "40432"
+	md5sum hasValue "1ae1896dad30577cb13f69c42e05611d"
+	sha1 hasValue "7e828c536419744d53f9fcbd360656b7a83f3d19"
+	sha256 hasValue "cfceb475452e0bb3ae59245f7c1cd0413859aba89fb5b9438a9ca740741a4fae"
+	descriptionMd5 hasValue "16dcb7c7f1eb9424bf94b33e0d1b005d"
+	homepage hasValue "http://cmusphinx.sourceforge.net/"
+	depends hasValue "libc6 (>= 2.29), libsphinxbase3 (>= 0.8+5prealpha)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__sphinxbase_utils,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libsphinxbase3"
+	comparison hasValue ">="
+	version hasValue "0.8+5prealpha"
+
+relationInstance depends(P0__sphinxbase_utils,1,DepAtom__1)
+

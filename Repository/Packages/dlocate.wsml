@@ -1,0 +1,81 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology dlocate
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__dlocate memberOf Package
+	package hasValue "dlocate"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "69"
+	maintainer hasValue "Original-Craig Sanders <cas@taz.net.au>"
+	architecture hasValue "all"
+	version hasValue "1.07+nmu1"
+	fileName hasValue "pool/universe/d/dlocate/dlocate_1.07+nmu1_all.deb"
+	size hasValue "18776"
+	md5sum hasValue "395d71f714d898e589037f46b53a10c0"
+	sha1 hasValue "4396f2cbef277b0099eaa37932ce9cde5636a75b"
+	sha256 hasValue "d8b6fe3cf3f6609e042a8a792e72c667c5e246eab71b537416d0ac5e129aae78"
+	description hasValue "alternativa rápida ao dpkg -L e ao dpkg -S"
+	descriptionMd5 hasValue "c871b6b90f7a8ceb0f704fb90fe4db2a"
+	depends hasValue "dctrl-tools | grep-dctrl (>= 0.11), util-linux, dpkg (>= 1.8.0), perl:any"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "dctrl-tools"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__dlocate,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "grep-dctrl"
+	comparison hasValue ">="
+	version hasValue "0.11"
+
+relationInstance depends(P0__dlocate,0,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "util-linux"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__dlocate,1,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "dpkg"
+	comparison hasValue ">="
+	version hasValue "1.8.0"
+
+relationInstance depends(P0__dlocate,2,DepAtom__3)
+
+instance DepAtom__4 memberOf DependencyAtom
+	package hasValue "perl:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__dlocate,3,DepAtom__4)
+

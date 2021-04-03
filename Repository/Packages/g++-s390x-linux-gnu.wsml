@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gPlusPlus_s390x_linux_gnu
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gPlusPlus_s390x_linux_gnu memberOf Package
+	package hasValue "g++-s390x-linux-gnu"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "devel"
+	installedSize hasValue "11"
+	maintainer hasValue "Original-Debian GCC Maintainers <debian-gcc@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "4:9.3.0-1ubuntu2"
+	fileName hasValue "pool/main/g/gcc-defaults/g++-s390x-linux-gnu_9.3.0-1ubuntu2_amd64.deb"
+	size hasValue "1124"
+	md5sum hasValue "40f58c885e40c7137890727e19877d23"
+	sha1 hasValue "3d9473d1a541c5dc549fe34f690d1dcb9dbc8058"
+	sha256 hasValue "f2120a751e658135b973a124f28524c7294a2a92d23068729a001a7395ffc953"
+	description hasValue "GNU C++ compiler for the s390x architecture"
+	descriptionMd5 hasValue "611e82003e6b39e22236bec4046da2b9"
+	depends hasValue "cpp-s390x-linux-gnu (= 4:9.3.0-1ubuntu2), gcc-s390x-linux-gnu (= 4:9.3.0-1ubuntu2), g++-9-s390x-linux-gnu (>= 9.3.0-3~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "cpp-s390x-linux-gnu"
+	comparison hasValue "="
+	version hasValue "4:9.3.0-1ubuntu2"
+
+relationInstance depends(P0__gPlusPlus_s390x_linux_gnu,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "gcc-s390x-linux-gnu"
+	comparison hasValue "="
+	version hasValue "4:9.3.0-1ubuntu2"
+
+relationInstance depends(P0__gPlusPlus_s390x_linux_gnu,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "g++-9-s390x-linux-gnu"
+	comparison hasValue ">="
+	version hasValue "9.3.0-3~"
+
+relationInstance depends(P0__gPlusPlus_s390x_linux_gnu,2,DepAtom__2)
+

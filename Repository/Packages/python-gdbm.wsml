@@ -1,0 +1,74 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python_gdbm
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python_gdbm memberOf Package
+	package hasValue "python-gdbm"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "57"
+	maintainer hasValue "Original-Matthias Klose <doko@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.7.18-1"
+	provides hasValue "python2.7-gdbm"
+	fileName hasValue "pool/universe/p/python-stdlib-extensions/python-gdbm_2.7.18-1_amd64.deb"
+	size hasValue "11804"
+	md5sum hasValue "a03f8f8e3487f9a244d50a6345f99a5f"
+	sha1 hasValue "002286c5d338982da86c69cf2f322791ec4e452a"
+	sha256 hasValue "6b33a4debb93bd28b841fa63879e57b4d4a8771dfaa813089856c0eb7c2a1af3"
+	descriptionMd5 hasValue "d1645f84d0f5f9d6735f3b25de502972"
+	depends hasValue "python2 (>= 2.7), python2 (<< 2.8), libc6 (>= 2.4), libgdbm6 (>= 1.16)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python2"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__python_gdbm,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python2"
+	comparison hasValue "<<"
+	version hasValue "2.8"
+
+relationInstance depends(P0__python_gdbm,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__python_gdbm,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "libgdbm6"
+	comparison hasValue ">="
+	version hasValue "1.16"
+
+relationInstance depends(P0__python_gdbm,3,DepAtom__3)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology xubuntu_live_settings
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__xubuntu_live_settings memberOf Package
+	package hasValue "xubuntu-live-settings"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/x11"
+	installedSize hasValue "68"
+	maintainer hasValue "Xubuntu Developers <xubuntu-devel@lists.ubuntu.com>"
+	architecture hasValue "all"
+	version hasValue "20.04.4"
+	fileName hasValue "pool/universe/x/xubuntu-default-settings/xubuntu-live-settings_20.04.4_all.deb"
+	size hasValue "9784"
+	md5sum hasValue "795ca5a4f2bea45e72308bdad762523e"
+	sha1 hasValue "b2f06acb8c195818b9bd6895786aff7f506fbe33"
+	sha256 hasValue "b9996902420d085b6cdfcddf352d476772c05f27983e45f16494e2814cdebabf"
+	descriptionMd5 hasValue "c25018e5d00114675b8deacd5d4b58b1"
+	homepage hasValue "https://launchpad.net/xubuntu-default-settings"
+	depends hasValue "casper, xubuntu-default-settings"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "casper"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__xubuntu_live_settings,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "xubuntu-default-settings"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__xubuntu_live_settings,1,DepAtom__1)
+

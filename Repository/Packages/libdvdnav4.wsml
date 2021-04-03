@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libdvdnav4
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libdvdnav4 memberOf Package
+	package hasValue "libdvdnav4"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "121"
+	maintainer hasValue "Original-Debian Multimedia Maintainers <debian-multimedia@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "6.0.1-1build1"
+	fileName hasValue "pool/universe/libd/libdvdnav/libdvdnav4_6.0.1-1build1_amd64.deb"
+	size hasValue "38952"
+	md5sum hasValue "601e29e1b00a68fe540b3cf863243841"
+	sha1 hasValue "365b29986b40cc4ab7bac28037b36a03152238aa"
+	sha256 hasValue "8dbc816dd19cbfa9ff43330ccbafb8832bc0b4f99b0e327f7ce4b4f4c3792f23"
+	description hasValue "biblioteca de navegação de DVD"
+	descriptionMd5 hasValue "425e99cd0268a6168cd3663fd114674c"
+	homepage hasValue "https://www.videolan.org/developers/libdvdnav.html"
+	depends hasValue "libc6 (>= 2.4), libdvdread7 (>= 6.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libdvdnav4,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libdvdread7"
+	comparison hasValue ">="
+	version hasValue "6.0"
+
+relationInstance depends(P0__libdvdnav4,1,DepAtom__1)
+

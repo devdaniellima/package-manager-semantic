@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libdieharder3
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libdieharder3 memberOf Package
+	package hasValue "libdieharder3"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "463"
+	maintainer hasValue "Original-Dirk Eddelbuettel <edd@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.31.1.1-1build1"
+	fileName hasValue "pool/universe/d/dieharder/libdieharder3_3.31.1.1-1build1_amd64.deb"
+	size hasValue "121448"
+	md5sum hasValue "9b7f4cd8949bc2f2f04aab2fd201b51b"
+	sha1 hasValue "35447b1fadcbf2d779b381bef76caf0be5cb8f06"
+	sha256 hasValue "8c20831b8c20ee119d7a64c164d0e67876b03d4e81f924e00c80efb93337eaa9"
+	descriptionMd5 hasValue "80240baf718fcd133651c3e37d032680"
+	homepage hasValue "http://webhome.phy.duke.edu/~rgb/General/dieharder.php"
+	depends hasValue "libc6 (>= 2.29), libgsl23 (>= 2.5)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__libdieharder3,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgsl23"
+	comparison hasValue ">="
+	version hasValue "2.5"
+
+relationInstance depends(P0__libdieharder3,1,DepAtom__1)
+

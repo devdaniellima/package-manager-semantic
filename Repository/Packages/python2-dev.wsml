@@ -1,0 +1,69 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python2_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python2_dev memberOf Package
+	package hasValue "python2-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "15"
+	maintainer hasValue "Original-Matthias Klose <doko@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.7.17-2ubuntu4"
+	replaces hasValue "python-dev (<< 2.7.15-2)"
+	fileName hasValue "pool/universe/p/python-defaults/python2-dev_2.7.17-2ubuntu4_amd64.deb"
+	size hasValue "1268"
+	md5sum hasValue "3e0c20c9a9618e3191ab91f657641079"
+	sha1 hasValue "ae4d3271343d475f949624c9519695f18265124b"
+	sha256 hasValue "1903edbfa600f10e6d82dcc174a9a733515b48b92b88d268dbec8ec6153a6ed7"
+	description hasValue "header files and a static library for Python2"
+	descriptionMd5 hasValue "39e8987518a407d42638b3fc80fc84cd"
+	homepage hasValue "https://www.python.org/"
+	depends hasValue "python2 (= 2.7.17-2ubuntu4), libpython2-dev (= 2.7.17-2ubuntu4), python2.7-dev (>= 2.7.17~rc1-1~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python2"
+	comparison hasValue "="
+	version hasValue "2.7.17-2ubuntu4"
+
+relationInstance depends(P0__python2_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libpython2-dev"
+	comparison hasValue "="
+	version hasValue "2.7.17-2ubuntu4"
+
+relationInstance depends(P0__python2_dev,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "python2.7-dev"
+	comparison hasValue ">="
+	version hasValue "2.7.17~rc1-1~"
+
+relationInstance depends(P0__python2_dev,2,DepAtom__2)
+

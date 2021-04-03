@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology idn2
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__idn2 memberOf Package
+	package hasValue "idn2"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/devel"
+	installedSize hasValue "79"
+	maintainer hasValue "Original-Debian Libidn team <help-libidn@gnu.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.2.0-2"
+	fileName hasValue "pool/universe/libi/libidn2/idn2_2.2.0-2_amd64.deb"
+	size hasValue "21024"
+	md5sum hasValue "4c81dee8efbcf1e05cf3259fb4c97dba"
+	sha1 hasValue "b6da1505182456005d0398ad9754c3c2b796e9df"
+	sha256 hasValue "1fd2cd9b2149ae9fb56e42b30fb5a2da85f957201a5ea137ddc073e139c04420"
+	descriptionMd5 hasValue "2e8d88bb53c68f06d46ec1acfecc8143"
+	homepage hasValue "https://www.gnu.org/software/libidn/#libidn2"
+	depends hasValue "libc6 (>= 2.14), libidn2-0 (>= 2.0.0), libunistring2 (>= 0.9.7)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__idn2,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libidn2-0"
+	comparison hasValue ">="
+	version hasValue "2.0.0"
+
+relationInstance depends(P0__idn2,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libunistring2"
+	comparison hasValue ">="
+	version hasValue "0.9.7"
+
+relationInstance depends(P0__idn2,2,DepAtom__2)
+

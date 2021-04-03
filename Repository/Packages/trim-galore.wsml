@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology trim_galore
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__trim_galore memberOf Package
+	package hasValue "trim-galore"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/science"
+	installedSize hasValue "133"
+	maintainer hasValue "Original-Debian Med Packaging Team <debian-med-packaging@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.6.5-1"
+	fileName hasValue "pool/universe/t/trim-galore/trim-galore_0.6.5-1_all.deb"
+	size hasValue "27564"
+	md5sum hasValue "bbaf443c3f8bd2bfbec2a2d208c8b551"
+	sha1 hasValue "d342d51bd40d536debd7319df40ad3a6d6a2777b"
+	sha256 hasValue "8baf6a80961fbae8c05aed1c2cce3096642eae9e3267ef719cabae37f5aaff88"
+	descriptionMd5 hasValue "014a20fd57c45610fc72576da733e6ff"
+	homepage hasValue "https://www.bioinformatics.babraham.ac.uk/projects/trim_galore/"
+	depends hasValue "perl:any, cutadapt"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "perl:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__trim_galore,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "cutadapt"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__trim_galore,1,DepAtom__1)
+

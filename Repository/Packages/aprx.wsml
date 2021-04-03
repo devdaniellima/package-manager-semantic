@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology aprx
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__aprx memberOf Package
+	package hasValue "aprx"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/hamradio"
+	installedSize hasValue "1123"
+	maintainer hasValue "Original-Debian Hamradio Maintainers <debian-hams@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.9.0+dfsg-2"
+	fileName hasValue "pool/universe/a/aprx/aprx_2.9.0+dfsg-2_amd64.deb"
+	size hasValue "928028"
+	md5sum hasValue "71ae5a08a597ffeb133a5e50eb493b7b"
+	sha1 hasValue "0df658b4673b68d2cfd91c6248c6d1a19cc8d755"
+	sha256 hasValue "82d9f90c52aaa6ae8446456cfcb015b8e7a57a786a3e985d6fd1606fc5b73228"
+	descriptionMd5 hasValue "12a1ea91dc7b6749f92b7fb4c63bb24c"
+	homepage hasValue "http://thelifeofkenneth.com/aprx/"
+	depends hasValue "libc6 (>= 2.17), lsb-base"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.17"
+
+relationInstance depends(P0__aprx,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "lsb-base"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__aprx,1,DepAtom__1)
+

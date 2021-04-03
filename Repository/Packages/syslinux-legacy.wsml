@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology syslinux_legacy
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__syslinux_legacy memberOf Package
+	package hasValue "syslinux-legacy"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "utils"
+	installedSize hasValue "101"
+	maintainer hasValue "Original-Daniel Baumann <daniel@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2:3.63+dfsg-2ubuntu9"
+	fileName hasValue "pool/main/s/syslinux-legacy/syslinux-legacy_3.63+dfsg-2ubuntu9_amd64.deb"
+	size hasValue "45700"
+	md5sum hasValue "0e058423e4ff68f82ad22c881c3f1841"
+	sha1 hasValue "ea7bf7974ba1d8f6e623045a44ff2d1115ecb43f"
+	sha256 hasValue "d3955508ebd59b7770f000bb937f87a6c1d1fa2eafc321fd4a15ea7141189584"
+	descriptionMd5 hasValue "0eceaa824560da0ee38193c760edbaab"
+	homepage hasValue "http://syslinux.zytor.com/"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__syslinux_legacy,0,DepAtom__0)
+

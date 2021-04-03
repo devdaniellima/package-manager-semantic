@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology pff_tools
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__pff_tools memberOf Package
+	package hasValue "pff-tools"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "973"
+	maintainer hasValue "Original-Debian Security Tools <team+pkg-security@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "20180714-2"
+	fileName hasValue "pool/universe/libp/libpff/pff-tools_20180714-2_amd64.deb"
+	size hasValue "346300"
+	md5sum hasValue "76563047435e7414593cd1d400c4abd5"
+	sha1 hasValue "54c524aec1b391bbcc40debe4e1e66cc1e2bec7d"
+	sha256 hasValue "6435f0df092d5dc22910c017a977b0e8915a31e983804e1b0a28103d509028c6"
+	descriptionMd5 hasValue "5a818de45325f5e080916bc6055ed2e5"
+	homepage hasValue "https://github.com/libyal/libpff"
+	depends hasValue "libpff1 (= 20180714-2), libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libpff1"
+	comparison hasValue "="
+	version hasValue "20180714-2"
+
+relationInstance depends(P0__pff_tools,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__pff_tools,1,DepAtom__1)
+

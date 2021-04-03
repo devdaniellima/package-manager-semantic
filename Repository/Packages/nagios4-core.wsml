@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology nagios4_core
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__nagios4_core memberOf Package
+	package hasValue "nagios4-core"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "760"
+	maintainer hasValue "Original-Russell Stuart <russell-debian@stuart.id.au>"
+	architecture hasValue "amd64"
+	version hasValue "4.3.4-3"
+	replaces hasValue "nagios4"
+	fileName hasValue "pool/universe/n/nagios4/nagios4-core_4.3.4-3_amd64.deb"
+	size hasValue "245780"
+	md5sum hasValue "60cc8be32142bdfa14760946647c73ee"
+	sha1 hasValue "c79ec4ea8521f563f80915c80559f7f4ea4ee4b4"
+	sha256 hasValue "dc14c2876bd4e872c70af31d9cc45ad2f4e306ee95b820aad66082da5dcf00e7"
+	descriptionMd5 hasValue "ebdb18192e195fe62d5a416ba502b5c4"
+	homepage hasValue "http://www.nagios.org/"
+	depends hasValue "nagios4-common (= 4.3.4-3), libc6 (>= 2.15)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "nagios4-common"
+	comparison hasValue "="
+	version hasValue "4.3.4-3"
+
+relationInstance depends(P0__nagios4_core,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__nagios4_core,1,DepAtom__1)
+

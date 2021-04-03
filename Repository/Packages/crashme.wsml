@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology crashme
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__crashme memberOf Package
+	package hasValue "crashme"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "90"
+	maintainer hasValue "Original-Dariusz Dwornikowski <dariusz.dwornikowski@cs.put.poznan.pl>"
+	architecture hasValue "amd64"
+	version hasValue "2.8.5-1build1"
+	fileName hasValue "pool/universe/c/crashme/crashme_2.8.5-1build1_amd64.deb"
+	size hasValue "25796"
+	md5sum hasValue "e01a95a389e3a920a83c7e25c8a69ec8"
+	sha1 hasValue "d1caa23147b14d0b094cfc92f149115771dcc581"
+	sha256 hasValue "5cce4dc2063f829cca3b7ef2ab343ff5d89f373626239aeeba7e3f0143c37d6c"
+	descriptionMd5 hasValue "741ffe9c24d4a1be78e54e60fd6169aa"
+	homepage hasValue "http://people.delphiforums.com/gjc/crashme.html"
+	depends hasValue "libc6 (>= 2.11)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.11"
+
+relationInstance depends(P0__crashme,0,DepAtom__0)
+

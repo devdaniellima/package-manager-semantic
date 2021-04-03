@@ -1,0 +1,75 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gradle
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gradle memberOf Package
+	package hasValue "gradle"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/java"
+	installedSize hasValue "511"
+	maintainer hasValue "Original-Debian Java Maintainers <pkg-java-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "4.4.1-10"
+	replaces hasValue "libgradle-core-java (<< 1.12)"
+	fileName hasValue "pool/universe/g/gradle/gradle_4.4.1-10_all.deb"
+	size hasValue "390896"
+	md5sum hasValue "0cd41736d5c9175a440c10ca6395e0f1"
+	sha1 hasValue "8e4f686c0d8a67da61f27b201fd18504e1c498e8"
+	sha256 hasValue "add2b7e24214ce7f427a9b975318c7e433e6cd6e73f584557928543d0d9bab02"
+	descriptionMd5 hasValue "dc7c348ba78fae9c679e7d8a527a89ff"
+	homepage hasValue "https://gradle.org"
+	depends hasValue "default-jre-headless (>= 2:1.8) | java8-runtime-headless, libgradle-core-java (>= 4.4.1-10), libgradle-plugins-java (>= 4.4.1-10)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "default-jre-headless"
+	comparison hasValue ">="
+	version hasValue "2:1.8"
+
+relationInstance depends(P0__gradle,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "java8-runtime-headless"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__gradle,0,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libgradle-core-java"
+	comparison hasValue ">="
+	version hasValue "4.4.1-10"
+
+relationInstance depends(P0__gradle,1,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "libgradle-plugins-java"
+	comparison hasValue ">="
+	version hasValue "4.4.1-10"
+
+relationInstance depends(P0__gradle,2,DepAtom__3)
+

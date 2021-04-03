@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology dcap
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__dcap memberOf Package
+	package hasValue "dcap"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "47"
+	maintainer hasValue "Original-Mattias Ellert <mattias.ellert@physics.uu.se>"
+	architecture hasValue "amd64"
+	version hasValue "2.47.12-2build1"
+	fileName hasValue "pool/universe/d/dcap/dcap_2.47.12-2build1_amd64.deb"
+	size hasValue "11424"
+	md5sum hasValue "ede9e29de902539e97a84adf25a52da3"
+	sha1 hasValue "ac8c04981d7ac26817425edcd050fc4c9f95e6b3"
+	sha256 hasValue "da5872dab56ae5e7fde509866a893dc05bdac589811d3760a81e01ffa5cff2db"
+	descriptionMd5 hasValue "4ad1a3f0716f5eeb286d81e5ee3c44dd"
+	homepage hasValue "http://www.dcache.org/manuals/libdcap.shtml"
+	depends hasValue "libdcap1 (= 2.47.12-2build1), libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libdcap1"
+	comparison hasValue "="
+	version hasValue "2.47.12-2build1"
+
+relationInstance depends(P0__dcap,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__dcap,1,DepAtom__1)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libdee_qt5_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libdee_qt5_dev memberOf Package
+	package hasValue "libdee-qt5-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "20"
+	maintainer hasValue "Original-Olivier Tilloy <olivier.tilloy@canonical.com>"
+	architecture hasValue "amd64"
+	version hasValue "3.3+14.04.20140317-0ubuntu4"
+	fileName hasValue "pool/universe/d/dee-qt/libdee-qt5-dev_3.3+14.04.20140317-0ubuntu4_amd64.deb"
+	size hasValue "2856"
+	md5sum hasValue "67de1f4233007b2409b0fc96870e234d"
+	sha1 hasValue "28d6f0e761222c333ccdf3f21f18901b7da0af77"
+	sha256 hasValue "da793c3e62a63d426038d4bb679a8a3c0b700a755e493e3d192f5c875d23acb6"
+	descriptionMd5 hasValue "40eaf02e7d38ac76fa416e7abf5abf4e"
+	homepage hasValue "https://launchpad.net/dee-qt"
+	depends hasValue "libdee-qt5-3 (= 3.3+14.04.20140317-0ubuntu4), libdee-dev (>= 1.0.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libdee-qt5-3"
+	comparison hasValue "="
+	version hasValue "3.3+14.04.20140317-0ubuntu4"
+
+relationInstance depends(P0__libdee_qt5_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libdee-dev"
+	comparison hasValue ">="
+	version hasValue "1.0.0"
+
+relationInstance depends(P0__libdee_qt5_dev,1,DepAtom__1)
+

@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology authbind
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__authbind memberOf Package
+	package hasValue "authbind"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "utils"
+	installedSize hasValue "63"
+	maintainer hasValue "Original-Ian Jackson <ijackson@chiark.greenend.org.uk>"
+	architecture hasValue "amd64"
+	version hasValue "2.1.2"
+	fileName hasValue "pool/main/a/authbind/authbind_2.1.2_amd64.deb"
+	size hasValue "17854"
+	md5sum hasValue "92bea3abb987a9bf14f30ef5c00e7dd2"
+	sha1 hasValue "72c3a3cf9293b792b9d67b7f064c3c63996e2335"
+	sha256 hasValue "c80bec1bc6cbc2f8c23a2be3662acd48de74ec55db1f27413d6d167128213048"
+	description hasValue "Possibilita a programas não-root bind() em portas baixas."
+	descriptionMd5 hasValue "6ffd268fa04a5e344832e2275265da15"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__authbind,0,DepAtom__0)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology hdf4_tools
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__hdf4_tools memberOf Package
+	package hasValue "hdf4-tools"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/graphics"
+	installedSize hasValue "894"
+	maintainer hasValue "Original-Debian GIS Project <pkg-grass-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "4.2.14-1ubuntu1"
+	fileName hasValue "pool/universe/libh/libhdf4/hdf4-tools_4.2.14-1ubuntu1_amd64.deb"
+	size hasValue "238844"
+	md5sum hasValue "89056c44d75d62a3f2080b2ebba9b536"
+	sha1 hasValue "98eeedd68ed330a069ea44416281791f04db98ba"
+	sha256 hasValue "2bd50d6048ee0219241444543cdce84c3d0f0a28b8052da1fe68df9219b92cbc"
+	descriptionMd5 hasValue "1347813b8c48d14458a6c283785b6e8e"
+	homepage hasValue "http://www.hdfgroup.com/"
+	depends hasValue "libc6 (>= 2.14), libhdf4-0 (>= 4.2.12)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__hdf4_tools,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libhdf4-0"
+	comparison hasValue ">="
+	version hasValue "4.2.12"
+
+relationInstance depends(P0__hdf4_tools,1,DepAtom__1)
+

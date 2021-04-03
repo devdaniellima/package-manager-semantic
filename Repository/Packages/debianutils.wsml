@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology debianutils
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__debianutils memberOf Package
+	package hasValue "debianutils"
+	packageSource hasValue Source__S1
+	priority hasValue "required"
+	section hasValue "utils"
+	installedSize hasValue "230"
+	maintainer hasValue "Original-Clint Adams <clint@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "4.9.1"
+	fileName hasValue "pool/main/d/debianutils/debianutils_4.9.1_amd64.deb"
+	size hasValue "85776"
+	md5sum hasValue "73b37ea1c7ee928f30e07633d16979a9"
+	sha1 hasValue "af03c8d531e3d5ee27dc16bd80529a46df0c52a5"
+	sha256 hasValue "535571a8898bb69476b1d0ed6893b4700c312bff14fc7687b7f1fdfe18f55a1f"
+	description hasValue "utilitários diversos específicos para o Debian"
+	descriptionMd5 hasValue "ccafef5bb90a2453aecca96cbb772d23"
+	depends hasValue "Pre-libc6 (>= 2.15)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "Pre-libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__debianutils,0,DepAtom__0)
+

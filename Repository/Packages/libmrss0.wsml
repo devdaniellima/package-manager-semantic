@@ -1,0 +1,69 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libmrss0
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libmrss0 memberOf Package
+	package hasValue "libmrss0"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "75"
+	maintainer hasValue "Original-Joseph Herlant <aerostitch@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.19.2-7"
+	provides hasValue "libmrss-abi-0.19.2"
+	fileName hasValue "pool/universe/libm/libmrss/libmrss0_0.19.2-7_amd64.deb"
+	size hasValue "22652"
+	md5sum hasValue "1398c6e87d78fc23fd42e220161853c7"
+	sha1 hasValue "670372f0e476b8fda6246d741191627160fe56cc"
+	sha256 hasValue "250806c3ded9c86fedacdfc000da99c6885e3a003b93d532ccb75526f2acf093"
+	description hasValue "C library for parsing, writing and creating RSS files or streams"
+	descriptionMd5 hasValue "388c19f32b006fa0ccf750fb76a91a9a"
+	homepage hasValue "https://github.com/bakulf/libmrss"
+	depends hasValue "libc6 (>= 2.7), libcurl3-gnutls (>= 7.16.2), libnxml0 (>= 0.18.3)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__libmrss0,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libcurl3-gnutls"
+	comparison hasValue ">="
+	version hasValue "7.16.2"
+
+relationInstance depends(P0__libmrss0,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libnxml0"
+	comparison hasValue ">="
+	version hasValue "0.18.3"
+
+relationInstance depends(P0__libmrss0,2,DepAtom__2)
+

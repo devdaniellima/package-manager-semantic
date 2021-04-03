@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gcc_multilib_sparc64_linux_gnu
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gcc_multilib_sparc64_linux_gnu memberOf Package
+	package hasValue "gcc-multilib-sparc64-linux-gnu"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "6"
+	maintainer hasValue "Original-Debian GCC Maintainers <debian-gcc@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "4:9.3.0-1ubuntu2"
+	fileName hasValue "pool/universe/g/gcc-defaults-ports/gcc-multilib-sparc64-linux-gnu_9.3.0-1ubuntu2_amd64.deb"
+	size hasValue "1128"
+	md5sum hasValue "00e5165b09ff87f2cda50d3281c4fc85"
+	sha1 hasValue "d517209a695ace1aed09b842f4804ed34e3a9774"
+	sha256 hasValue "264aa631121f4bb5189657db287ad4f893859d6204fb727f02b925bc571492ec"
+	description hasValue "GNU C compiler for the sparc64 architecture"
+	descriptionMd5 hasValue "8a8521de32d5effc17c6a89a9ab1b005"
+	depends hasValue "cpp-sparc64-linux-gnu (= 4:9.3.0-1ubuntu2), gcc-sparc64-linux-gnu (= 4:9.3.0-1ubuntu2), gcc-9-multilib-sparc64-linux-gnu (>= 9.3.0-3~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "cpp-sparc64-linux-gnu"
+	comparison hasValue "="
+	version hasValue "4:9.3.0-1ubuntu2"
+
+relationInstance depends(P0__gcc_multilib_sparc64_linux_gnu,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "gcc-sparc64-linux-gnu"
+	comparison hasValue "="
+	version hasValue "4:9.3.0-1ubuntu2"
+
+relationInstance depends(P0__gcc_multilib_sparc64_linux_gnu,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "gcc-9-multilib-sparc64-linux-gnu"
+	comparison hasValue ">="
+	version hasValue "9.3.0-3~"
+
+relationInstance depends(P0__gcc_multilib_sparc64_linux_gnu,2,DepAtom__2)
+

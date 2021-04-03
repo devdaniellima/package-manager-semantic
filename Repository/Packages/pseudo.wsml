@@ -1,0 +1,69 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology pseudo
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__pseudo memberOf Package
+	package hasValue "pseudo"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "408"
+	maintainer hasValue "Original-Andrej Shadura <andrewsh@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.9.0+git20190515+996bead-2ubuntu1"
+	replaces hasValue "libpseudo (<< 1.9.0+git20190515+996bead-2~)"
+	provides hasValue "fakeroot"
+	fileName hasValue "pool/universe/p/pseudo/pseudo_1.9.0+git20190515+996bead-2ubuntu1_amd64.deb"
+	size hasValue "94928"
+	md5sum hasValue "5d18b5cf9083125796b6bdf9fcca80cb"
+	sha1 hasValue "e6c472cb15ec7d2f9379eecba1fdb17ac1271775"
+	sha256 hasValue "c0bfa1415b313233e61ce619a12f70b7a81266465c8372d32dbe2b5f8fe7b0ba"
+	descriptionMd5 hasValue "e8ca5be20058441e3c154ed0d7778bc0"
+	homepage hasValue "https://www.yoctoproject.org/software-item/pseudo/"
+	depends hasValue "libpseudo (>= 1.9.0+git20190515+996bead-2ubuntu1), libc6 (>= 2.15), libsqlite3-0 (>= 3.6.11)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libpseudo"
+	comparison hasValue ">="
+	version hasValue "1.9.0+git20190515+996bead-2ubuntu1"
+
+relationInstance depends(P0__pseudo,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__pseudo,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libsqlite3-0"
+	comparison hasValue ">="
+	version hasValue "3.6.11"
+
+relationInstance depends(P0__pseudo,2,DepAtom__2)
+

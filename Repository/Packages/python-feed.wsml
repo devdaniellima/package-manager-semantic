@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python_feed
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python_feed memberOf Package
+	package hasValue "python-feed"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/python"
+	installedSize hasValue "129"
+	maintainer hasValue "Original-Matteo Cypriani <mcy@lm7.fr>"
+	architecture hasValue "all"
+	version hasValue "0.7.4-2build1"
+	fileName hasValue "pool/universe/p/pyfeed/python-feed_0.7.4-2build1_all.deb"
+	size hasValue "21528"
+	md5sum hasValue "4261f47e4298e25ede630225a0fd3990"
+	sha1 hasValue "2c587d85f68348430556703725b7a05c374e533d"
+	sha256 hasValue "14f23ec1139609fcabfc3e5769cdecbb8f020e6ce4a0507150e3a1eb90c1c563"
+	descriptionMd5 hasValue "bfa049dd07d8363392a84b39b089425b"
+	homepage hasValue "http://home.blarg.net/~steveha/pyfeed.html"
+	depends hasValue "python2:any (<< 2.8), python2:any (>= 2.7~), python-xe"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue "<<"
+	version hasValue "2.8"
+
+relationInstance depends(P0__python_feed,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue ">="
+	version hasValue "2.7~"
+
+relationInstance depends(P0__python_feed,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "python-xe"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__python_feed,2,DepAtom__2)
+

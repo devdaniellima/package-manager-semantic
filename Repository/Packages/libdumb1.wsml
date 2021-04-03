@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libdumb1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libdumb1 memberOf Package
+	package hasValue "libdumb1"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "326"
+	maintainer hasValue "Original-Debian Games Team <pkg-games-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:0.9.3-6build1"
+	fileName hasValue "pool/universe/libd/libdumb/libdumb1_0.9.3-6build1_amd64.deb"
+	size hasValue "157168"
+	md5sum hasValue "a5eb99210b7b4e216f7fe478c4ef37e9"
+	sha1 hasValue "e72d672f8e27cbf10308a9c70aec800efca478ab"
+	sha256 hasValue "326ee796d61508ec1f39256fa4a312dddd8d8460a554fe65a000136f7b147e34"
+	descriptionMd5 hasValue "b6d9ac0791d349f41569323e614c9ab2"
+	homepage hasValue "http://dumb.sourceforge.net/"
+	depends hasValue "libc6 (>= 2.15)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__libdumb1,0,DepAtom__0)
+

@@ -1,0 +1,69 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology rax_nova_agent
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__rax_nova_agent memberOf Package
+	package hasValue "rax-nova-agent"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "python"
+	installedSize hasValue "32"
+	maintainer hasValue "Balint Reczey <rbalint@ubuntu.com>"
+	architecture hasValue "all"
+	version hasValue "2.1.18-0ubuntu1"
+	replaces hasValue "rax-openstack-guest-agents (<< 2)"
+	provides hasValue "openstack-guest-agents"
+	fileName hasValue "pool/main/r/rax-nova-agent/rax-nova-agent_2.1.18-0ubuntu1_all.deb"
+	size hasValue "3976"
+	md5sum hasValue "20a7d9363f46a8dbecf8d2d2dbe604ec"
+	sha1 hasValue "fe0be62e1af31a5861af012f53b1b7862671f753"
+	sha256 hasValue "4b2d809cd94663b193e6f3138bd6d65ebe95c6947075f1e02eb2b8ffaac0975c"
+	descriptionMd5 hasValue "96f1282ff28290ebfe01760133aab1ca"
+	homepage hasValue "https://github.com/Rackspace-DOT/nova-agent"
+	depends hasValue "python3:any, python3-novaagent, cloud-init"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__rax_nova_agent,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3-novaagent"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__rax_nova_agent,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "cloud-init"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__rax_nova_agent,2,DepAtom__2)
+

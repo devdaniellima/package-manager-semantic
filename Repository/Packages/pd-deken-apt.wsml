@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology pd_deken_apt
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__pd_deken_apt memberOf Package
+	package hasValue "pd-deken-apt"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/sound"
+	installedSize hasValue "20"
+	maintainer hasValue "Original-Debian Multimedia Maintainers <debian-multimedia@lists.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.6.0-1"
+	fileName hasValue "pool/universe/d/deken/pd-deken-apt_0.6.0-1_all.deb"
+	size hasValue "5460"
+	md5sum hasValue "e13545d034ee92b9f50a7c4fc7e38e12"
+	sha1 hasValue "2625db8ce5aad70cdbbfa2cc5e4392c6fda27e82"
+	sha256 hasValue "b1821ea32442b74218f779556d6d823ac5ee183c08bb7ec35f30601143d7f376"
+	descriptionMd5 hasValue "409781c90d6f5ef0a13c6caf8ccaa6cd"
+	homepage hasValue "https://github.com/pure-data/deken"
+	depends hasValue "puredata-gui (>= 0.47) | pd-deken"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "puredata-gui"
+	comparison hasValue ">="
+	version hasValue "0.47"
+
+relationInstance depends(P0__pd_deken_apt,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "pd-deken"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__pd_deken_apt,0,DepAtom__1)
+

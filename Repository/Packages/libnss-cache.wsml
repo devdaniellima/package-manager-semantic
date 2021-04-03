@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libnss_cache
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libnss_cache memberOf Package
+	package hasValue "libnss-cache"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "40"
+	maintainer hasValue "Original-Jamie Wilkinson <jaq@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.17-1"
+	fileName hasValue "pool/universe/libn/libnss-cache/libnss-cache_0.17-1_amd64.deb"
+	size hasValue "8464"
+	md5sum hasValue "6270ebe3fb3ce485f6c28c256f4389da"
+	sha1 hasValue "657c1389563453ac82942ee79d5dcc6aef7536fe"
+	sha256 hasValue "269c584738820a0ccb02431ec17536d8e86e1eaf0afbfcd29494cb78a83fa76e"
+	descriptionMd5 hasValue "6fb15bb8f527d499dc98b3fa39fb6e66"
+	homepage hasValue "https://github.com/google/libnss-cache"
+	depends hasValue "libc6 (>= 2.7)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__libnss_cache,0,DepAtom__0)
+

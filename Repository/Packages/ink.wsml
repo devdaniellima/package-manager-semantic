@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ink
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ink memberOf Package
+	package hasValue "ink"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "31"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.5.3-1"
+	fileName hasValue "pool/universe/i/ink/ink_0.5.3-1_amd64.deb"
+	size hasValue "8092"
+	md5sum hasValue "40999f367e074cd420632931b82e4f05"
+	sha1 hasValue "b664ee78331840aae4236dce68b37496d02a2c3e"
+	sha256 hasValue "29d54b008ef40c4ac29b026340a8b05bb568c099c57a1340a701a0487129612e"
+	description hasValue "ferramenta para verificar o nível de tinta de sua impressora local"
+	descriptionMd5 hasValue "0f3afbb9a7893c7aaa55688c30a26da3"
+	homepage hasValue "http://ink.sourceforge.net/"
+	depends hasValue "libc6 (>= 2.4), libinklevel5 (>= 0.9.3~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__ink,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libinklevel5"
+	comparison hasValue ">="
+	version hasValue "0.9.3~"
+
+relationInstance depends(P0__ink,1,DepAtom__1)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libdebconf_kde_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libdebconf_kde_dev memberOf Package
+	package hasValue "libdebconf-kde-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/kde"
+	installedSize hasValue "38"
+	maintainer hasValue "Original-Debian KDE Extras Team <pkg-kde-extras@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.3-3"
+	fileName hasValue "pool/universe/d/debconf-kde/libdebconf-kde-dev_1.0.3-3_amd64.deb"
+	size hasValue "7600"
+	md5sum hasValue "7c85d1f45f9e28e2452c273486dd007c"
+	sha1 hasValue "c7ecf6025d5cd76c36b0c3809da3a80385c5203c"
+	sha256 hasValue "9cd62bfdce65d686f3f255b75e8a92c27e1b77877732d7aae96631a5ccb8ffcb"
+	descriptionMd5 hasValue "fe6bdc3b07598081248c038c3584076b"
+	homepage hasValue "https://projects.kde.org/projects/extragear/sysadmin/libdebconf-kde"
+	depends hasValue "libdebconf-kde1 (= 1.0.3-3), qtbase5-dev (>= 5.2.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libdebconf-kde1"
+	comparison hasValue "="
+	version hasValue "1.0.3-3"
+
+relationInstance depends(P0__libdebconf_kde_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "qtbase5-dev"
+	comparison hasValue ">="
+	version hasValue "5.2.0"
+
+relationInstance depends(P0__libdebconf_kde_dev,1,DepAtom__1)
+

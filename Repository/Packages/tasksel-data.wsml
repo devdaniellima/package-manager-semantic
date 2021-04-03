@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology tasksel_data
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__tasksel_data memberOf Package
+	package hasValue "tasksel-data"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "admin"
+	installedSize hasValue "38"
+	maintainer hasValue "Original-Debian Install System Team <debian-boot@lists.debian.org>"
+	architecture hasValue "all"
+	version hasValue "3.34ubuntu16"
+	conflicts hasValue "tasksel (<< 2.67)"
+	fileName hasValue "pool/main/t/tasksel/tasksel-data_3.34ubuntu16_all.deb"
+	size hasValue "5340"
+	md5sum hasValue "e05a9d5133fc65166cd762aada9f7cce"
+	sha1 hasValue "b6bec06e29d327870e12bdc29f8a993e629ba762"
+	sha256 hasValue "857d4e2dd7d5ea475069609a925e6dc854773720aa24a9f6ae2ae3b195bc78ec"
+	description hasValue "tarefas oficiais usadas para instalação de sistemas Debian"
+	descriptionMd5 hasValue "9391bb2bf0911e77da080a251569d3cb"
+	depends hasValue "tasksel (= 3.34ubuntu16)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "tasksel"
+	comparison hasValue "="
+	version hasValue "3.34ubuntu16"
+
+relationInstance depends(P0__tasksel_data,0,DepAtom__0)
+

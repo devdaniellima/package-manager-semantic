@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology fswebcam
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__fswebcam memberOf Package
+	package hasValue "fswebcam"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/graphics"
+	installedSize hasValue "127"
+	maintainer hasValue "Original-Luca Niccoli <lultimouomo@gmail.com>"
+	architecture hasValue "amd64"
+	version hasValue "20140113-2"
+	fileName hasValue "pool/universe/f/fswebcam/fswebcam_20140113-2_amd64.deb"
+	size hasValue "47408"
+	md5sum hasValue "a77e13d95d35736f219be05951c38c08"
+	sha1 hasValue "1288cd23f393bd0f88d181c0e81f3fc036575c86"
+	sha256 hasValue "4a24df73a823d9e319d79a6a8ae8c0c8cc8bd45ebbc100bd7dba80d5d3aab664"
+	description hasValue "programa simples e flexível para webcam"
+	descriptionMd5 hasValue "cb9794b0e2544277ac13ad42bcc4e8d5"
+	homepage hasValue "http://www.firestorm.cx/fswebcam/"
+	depends hasValue "libc6 (>= 2.15), libgd3 (>= 2.1.0~alpha~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__fswebcam,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgd3"
+	comparison hasValue ">="
+	version hasValue "2.1.0~alpha~"
+
+relationInstance depends(P0__fswebcam,1,DepAtom__1)
+

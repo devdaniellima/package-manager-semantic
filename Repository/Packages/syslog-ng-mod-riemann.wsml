@@ -1,0 +1,75 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology syslog_ng_mod_riemann
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__syslog_ng_mod_riemann memberOf Package
+	package hasValue "syslog-ng-mod-riemann"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/admin"
+	installedSize hasValue "115"
+	maintainer hasValue "Original-syslog-ng maintainers <syslog-ng-maintainers@alioth-lists.debian.net>"
+	architecture hasValue "amd64"
+	version hasValue "3.25.1-3"
+	fileName hasValue "pool/universe/s/syslog-ng/syslog-ng-mod-riemann_3.25.1-3_amd64.deb"
+	size hasValue "20384"
+	md5sum hasValue "be2c865af948a4323e3a74c732eb4df9"
+	sha1 hasValue "4be1985fd6c3897584a227e24a00fd97004b9a1d"
+	sha256 hasValue "1bc5265973861d9d6c00a4781617a1d8a7a0b8590b571b965d07bc47ee4fbf7c"
+	description hasValue "Enhanced system logging daemon (Riemann destination)"
+	descriptionMd5 hasValue "d660ca26b43c6887b08eed42518964cc"
+	homepage hasValue "https://www.syslog-ng.com/"
+	depends hasValue "libc6 (>= 2.14), libriemann-client0 (>= 1.10.0), syslog-ng-core (>= 3.25.1-3), syslog-ng-core (<< 3.25.1-3.1~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__syslog_ng_mod_riemann,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libriemann-client0"
+	comparison hasValue ">="
+	version hasValue "1.10.0"
+
+relationInstance depends(P0__syslog_ng_mod_riemann,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "syslog-ng-core"
+	comparison hasValue ">="
+	version hasValue "3.25.1-3"
+
+relationInstance depends(P0__syslog_ng_mod_riemann,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "syslog-ng-core"
+	comparison hasValue "<<"
+	version hasValue "3.25.1-3.1~"
+
+relationInstance depends(P0__syslog_ng_mod_riemann,3,DepAtom__3)
+

@@ -1,0 +1,75 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libassuan_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libassuan_dev memberOf Package
+	package hasValue "libassuan-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libdevel"
+	installedSize hasValue "263"
+	maintainer hasValue "Original-Debian GnuPG-Maintainers <pkg-gnupg-maint@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.5.3-7ubuntu2"
+	fileName hasValue "pool/main/liba/libassuan/libassuan-dev_2.5.3-7ubuntu2_amd64.deb"
+	size hasValue "92836"
+	md5sum hasValue "bc3d02f73ced54d16478a8b82777490f"
+	sha1 hasValue "59bd89c196740b15681e4329d9157562a7a56800"
+	sha256 hasValue "33b892d4043ef24434d2687f578390ad5ec41b732d352e4649e775d61666416b"
+	description hasValue "IPC library for the GnuPG components -- header files"
+	descriptionMd5 hasValue "4171ba9f73dcbb4b6ba1a306179197c3"
+	homepage hasValue "https://www.gnupg.org/related_software/libassuan/index.html"
+	depends hasValue "dpkg (>= 1.15.4) | install-info, libassuan0 (= 2.5.3-7ubuntu2), libgpg-error-dev (>= 1.17)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "dpkg"
+	comparison hasValue ">="
+	version hasValue "1.15.4"
+
+relationInstance depends(P0__libassuan_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "install-info"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libassuan_dev,0,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libassuan0"
+	comparison hasValue "="
+	version hasValue "2.5.3-7ubuntu2"
+
+relationInstance depends(P0__libassuan_dev,1,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "libgpg-error-dev"
+	comparison hasValue ">="
+	version hasValue "1.17"
+
+relationInstance depends(P0__libassuan_dev,2,DepAtom__3)
+

@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology dbus_java_bin
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__dbus_java_bin memberOf Package
+	package hasValue "dbus-java-bin"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "105"
+	maintainer hasValue "Original-Debian Java Maintainers <pkg-java-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.8-9"
+	fileName hasValue "pool/universe/d/dbus-java/dbus-java-bin_2.8-9_all.deb"
+	size hasValue "65516"
+	md5sum hasValue "f7ba48b68ad48d5ee6d98ffc8cbb1bd0"
+	sha1 hasValue "1c56804a8ba1a40b9d1e3b88e9df1d21d6a9dcc7"
+	sha256 hasValue "dacc0008f05dbb96ab8c591601aaeadaa786dfffc2e25e68a56e4d55ce56c0ca"
+	description hasValue "simple interprocess messaging system (Java Binaries)"
+	descriptionMd5 hasValue "c27439e7d4d315aff584eb995533f07e"
+	homepage hasValue "https://www.freedesktop.org/wiki/Software/DBusBindings"
+	depends hasValue "default-jre-headless (>= 2:1.7) | java7-runtime-headless, libdbus-java (= 2.8-9)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "default-jre-headless"
+	comparison hasValue ">="
+	version hasValue "2:1.7"
+
+relationInstance depends(P0__dbus_java_bin,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "java7-runtime-headless"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__dbus_java_bin,0,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libdbus-java"
+	comparison hasValue "="
+	version hasValue "2.8-9"
+
+relationInstance depends(P0__dbus_java_bin,1,DepAtom__2)
+

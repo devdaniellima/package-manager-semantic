@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology hellfire
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__hellfire memberOf Package
+	package hasValue "hellfire"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "4494"
+	maintainer hasValue "Original-Internet Measurement Packaging Team <pkg-netmeasure-discuss@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.0~git20180708.bf3c390-1"
+	fileName hasValue "pool/universe/h/hellfire/hellfire_0.0~git20180708.bf3c390-1_amd64.deb"
+	size hasValue "1367152"
+	md5sum hasValue "ebbdcd9c31d3d9ccd9c93b979f894624"
+	sha1 hasValue "9240a6d71f8840cf23f2348dff39157b43c7302b"
+	sha256 hasValue "583f5a7ac00d163a6e60ab743f1969a7bdf77aae6c701821d825145bf95a7c15"
+	descriptionMd5 hasValue "fa8047046fc861bf9f81a152e89ec232"
+	homepage hasValue "https://pathspider.net/hellfire"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__hellfire,0,DepAtom__0)
+

@@ -1,0 +1,75 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology rsync
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__rsync memberOf Package
+	package hasValue "rsync"
+	packageSource hasValue Source__S1
+	priority hasValue "standard"
+	section hasValue "net"
+	installedSize hasValue "680"
+	maintainer hasValue "Original-Paul Slootman <paul@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.1.3-8"
+	fileName hasValue "pool/main/r/rsync/rsync_3.1.3-8_amd64.deb"
+	size hasValue "321828"
+	md5sum hasValue "4271dbc70b0e7022c96c32d5ef945fac"
+	sha1 hasValue "761e7dedc19bd42f078244d27b128a99ec7ad6a3"
+	sha256 hasValue "a51e91e2e17943772cc50ba80a894e9be7e8149c6af0bf7383d777c4ca26bce3"
+	description hasValue "ferramenta rápida e versátil para cópia de arquivos remotos e locais"
+	descriptionMd5 hasValue "3bf40f318d2abfed74fa472aaff46d5f"
+	homepage hasValue "https://rsync.samba.org/"
+	depends hasValue "lsb-base, libacl1 (>= 2.2.23), libc6 (>= 2.15), libpopt0 (>= 1.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "lsb-base"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__rsync,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libacl1"
+	comparison hasValue ">="
+	version hasValue "2.2.23"
+
+relationInstance depends(P0__rsync,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__rsync,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "libpopt0"
+	comparison hasValue ">="
+	version hasValue "1.14"
+
+relationInstance depends(P0__rsync,3,DepAtom__3)
+

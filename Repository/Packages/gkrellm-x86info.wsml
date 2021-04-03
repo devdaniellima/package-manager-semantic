@@ -1,0 +1,59 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gkrellm_x86info
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gkrellm_x86info memberOf Package
+	package hasValue "gkrellm-x86info"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/x11"
+	installedSize hasValue "64"
+	maintainer hasValue "Original-Martin Wuertele <maxx@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.0.2-9"
+	fileName hasValue "pool/universe/g/gkrellm-x86info/gkrellm-x86info_0.0.2-9_amd64.deb"
+	size hasValue "6382"
+	md5sum hasValue "680e7ead4208a6b3091aa9d3d1fb0b41"
+	sha1 hasValue "5d3c0eeadd240dfb2dedf2f2c366532731308341"
+	sha256 hasValue "3bc065232174d6aa6d0b12189b3b2be8e9201388ad073d761f2fca2a2c3b4e6b"
+	descriptionMd5 hasValue "fc827fd80e4590d2013b834c6578d6ba"
+	depends hasValue "libc6 (>= 2.3.4), gkrellm (>= 2.1.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.3.4"
+
+relationInstance depends(P0__gkrellm_x86info,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "gkrellm"
+	comparison hasValue ">="
+	version hasValue "2.1.4"
+
+relationInstance depends(P0__gkrellm_x86info,1,DepAtom__1)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology mxt_app
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__mxt_app memberOf Package
+	package hasValue "mxt-app"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "155"
+	maintainer hasValue "Original-Eric Dorland <eric@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.28-2"
+	fileName hasValue "pool/universe/m/mxt-app/mxt-app_1.28-2_amd64.deb"
+	size hasValue "62276"
+	md5sum hasValue "80e364be219cd90118a379015474a4e5"
+	sha1 hasValue "b36a21aabbde56d9002421098f1ef36807c4bac5"
+	sha256 hasValue "60d4b1c2279a13732b2c4fe72db8db8eb26643b90bdd63cfab18b40b4e7943bd"
+	descriptionMd5 hasValue "dfd8ce502b03251848be7ce3a613e892"
+	homepage hasValue "https://github.com/atmel-maxtouch/mxt-app"
+	depends hasValue "libc6 (>= 2.14), libusb-1.0-0 (>= 2:1.0.8)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__mxt_app,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libusb-1.0-0"
+	comparison hasValue ">="
+	version hasValue "2:1.0.8"
+
+relationInstance depends(P0__mxt_app,1,DepAtom__1)
+

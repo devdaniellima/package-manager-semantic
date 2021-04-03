@@ -1,0 +1,73 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gradle_debian_helper
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gradle_debian_helper memberOf Package
+	package hasValue "gradle-debian-helper"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/java"
+	installedSize hasValue "93"
+	maintainer hasValue "Original-Debian Java Maintainers <pkg-java-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.1"
+	fileName hasValue "pool/universe/g/gradle-debian-helper/gradle-debian-helper_2.1_all.deb"
+	size hasValue "24800"
+	md5sum hasValue "ce7f0ba7996eb4e1d32882f32d69732e"
+	sha1 hasValue "af176808fc38b9ae3dce39684e5cd61e928d9434"
+	sha256 hasValue "40509c6b221468f749a8b840d98fcebaa25ee2d21a1aaf8b6171630c0a48320a"
+	descriptionMd5 hasValue "ecdc14ab6558e348c752209d5b6475e2"
+	depends hasValue "default-jre-headless | java7-runtime-headless, gradle (>= 3.4.1-8~), maven-repo-helper"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "default-jre-headless"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__gradle_debian_helper,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "java7-runtime-headless"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__gradle_debian_helper,0,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "gradle"
+	comparison hasValue ">="
+	version hasValue "3.4.1-8~"
+
+relationInstance depends(P0__gradle_debian_helper,1,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "maven-repo-helper"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__gradle_debian_helper,2,DepAtom__3)
+

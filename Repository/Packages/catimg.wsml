@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology catimg
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__catimg memberOf Package
+	package hasValue "catimg"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "93"
+	maintainer hasValue "Original-Jonathan Carter <jcc@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.5.0-1"
+	fileName hasValue "pool/universe/c/catimg/catimg_2.5.0-1_amd64.deb"
+	size hasValue "39824"
+	md5sum hasValue "ea642043bf9429b56914455516778c76"
+	sha1 hasValue "a619799f1464fb24524cacaf86465eebd8a4c896"
+	sha256 hasValue "c0047fbcc4c07d7dc48bfd6e894d9acb95984cb491f1fb4c654dab44a0b8c885"
+	descriptionMd5 hasValue "34d427d8e9a3ab0482fef0a35135749a"
+	homepage hasValue "https://github.com/posva/catimg"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__catimg,0,DepAtom__0)
+

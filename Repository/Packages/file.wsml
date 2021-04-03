@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology file
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__file memberOf Package
+	package hasValue "file"
+	packageSource hasValue Source__S1
+	priority hasValue "important"
+	section hasValue "utils"
+	installedSize hasValue "86"
+	maintainer hasValue "Original-Christoph Biedl <debian.axhn@manchmal.in-ulm.de>"
+	architecture hasValue "amd64"
+	version hasValue "1:5.38-4"
+	fileName hasValue "pool/main/f/file/file_5.38-4_amd64.deb"
+	size hasValue "23332"
+	md5sum hasValue "641f17cb4fd7477f6ff618e34de5377b"
+	sha1 hasValue "78c0a98189385f3de33a2bb3de2597614c3668f4"
+	sha256 hasValue "01e192c5bf0dd2a2f9ef8065c3c32a79caf61887d5c2a329723f2d8bbbc8b5a8"
+	description hasValue "reconhece o tipo de dados em um arquivo utilizando números \"mágicos\""
+	descriptionMd5 hasValue "5d23749cc510bff3ff8aca8793a9803e"
+	homepage hasValue "https://www.darwinsys.com/file/"
+	depends hasValue "libc6 (>= 2.4), libmagic1 (= 1:5.38-4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__file,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libmagic1"
+	comparison hasValue "="
+	version hasValue "1:5.38-4"
+
+relationInstance depends(P0__file,1,DepAtom__1)
+

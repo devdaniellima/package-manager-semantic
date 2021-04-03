@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology allegro4_doc
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__allegro4_doc memberOf Package
+	package hasValue "allegro4-doc"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/doc"
+	installedSize hasValue "4105"
+	maintainer hasValue "Original-Debian Games Team <pkg-games-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "2:4.4.3.1-1"
+	replaces hasValue "liballegro-doc (<= 2:4.3)"
+	conflicts hasValue "liballegro-doc (<= 2:4.3)"
+	fileName hasValue "pool/universe/a/allegro4.4/allegro4-doc_4.4.3.1-1_all.deb"
+	size hasValue "1570000"
+	md5sum hasValue "050312062da027254cba0da8ed464f9a"
+	sha1 hasValue "938be16d4f12eedfea3e778eb422db964b77f67b"
+	sha256 hasValue "e00ded7a7ba40b18ba6144685de7b7110c63437d05e874e95d7cec9dfbd35b0b"
+	descriptionMd5 hasValue "9b7366b5ced0412260a68241fb797240"
+	homepage hasValue "http://www.liballeg.org"
+	depends hasValue "dpkg (>= 1.15.4) | install-info"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "dpkg"
+	comparison hasValue ">="
+	version hasValue "1.15.4"
+
+relationInstance depends(P0__allegro4_doc,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "install-info"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__allegro4_doc,0,DepAtom__1)
+

@@ -1,0 +1,73 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology smartlist
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__smartlist memberOf Package
+	package hasValue "smartlist"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/mail"
+	installedSize hasValue "376"
+	maintainer hasValue "Original-Santiago Vila <sanvila@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.15-25build1"
+	fileName hasValue "pool/universe/s/smartlist/smartlist_3.15-25build1_amd64.deb"
+	size hasValue "77696"
+	md5sum hasValue "d730947ebe88e040ebf9cc07455c9114"
+	sha1 hasValue "846a0fb0dd90615fef3221f60f1675b096ff3cbb"
+	sha256 hasValue "ab8c820f60f1d169f1fd4632951320b7b212d7f907b9375b021ec1332cc4e8ea"
+	descriptionMd5 hasValue "9f4e80bd587ffe82f499e94c472a296c"
+	depends hasValue "libc6 (>= 2.4), procmail, default-mta | mail-transport-agent"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__smartlist,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "procmail"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__smartlist,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "default-mta"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__smartlist,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "mail-transport-agent"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__smartlist,2,DepAtom__3)
+

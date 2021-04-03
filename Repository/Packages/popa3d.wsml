@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology popa3d
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__popa3d memberOf Package
+	package hasValue "popa3d"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/mail"
+	installedSize hasValue "82"
+	maintainer hasValue "Original-Krzysztof Krzyżaniak (eloy) <eloy@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.3-1build1"
+	provides hasValue "pop3-server"
+	conflicts hasValue "pop3-server"
+	fileName hasValue "pool/universe/p/popa3d/popa3d_1.0.3-1build1_amd64.deb"
+	size hasValue "29812"
+	md5sum hasValue "509a5da8e02de6c774370fd1d0c125a1"
+	sha1 hasValue "e23dde3fb77e548b06566d52337e87526523c87f"
+	sha256 hasValue "7bdd358566af034f3478b78536df9899c4a4cae1cf7e2d019f8b767c8bf47e73"
+	descriptionMd5 hasValue "61843b2fcfb89d8f6bcc09ed21531191"
+	homepage hasValue "http://www.openwall.com/popa3d/"
+	depends hasValue "libc6 (>= 2.14), libpam0g (>= 0.99.7.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__popa3d,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libpam0g"
+	comparison hasValue ">="
+	version hasValue "0.99.7.1"
+
+relationInstance depends(P0__popa3d,1,DepAtom__1)
+

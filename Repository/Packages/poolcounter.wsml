@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology poolcounter
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__poolcounter memberOf Package
+	package hasValue "poolcounter"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/web"
+	installedSize hasValue "52"
+	maintainer hasValue "Original-MediaWiki packaging team <mediawiki-debian@lists.wikimedia.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.1.3-1"
+	fileName hasValue "pool/universe/p/poolcounter/poolcounter_1.1.3-1_amd64.deb"
+	size hasValue "12948"
+	md5sum hasValue "934f3f3b1a0e9631d4299e774d733ee8"
+	sha1 hasValue "317aac8c4cec27c10b1ad705b5c99e3735cfcf45"
+	sha256 hasValue "d0e0611a228e64bc81e1a6280946cf53341370fccc0d5ca3a4a33cab6438c8e5"
+	descriptionMd5 hasValue "834798f46f95684e170041dfeffe6dcf"
+	homepage hasValue "https://www.mediawiki.org/wiki/PoolCounter"
+	depends hasValue "libc6 (>= 2.10), libevent-2.1-7 (>= 2.1.8-stable), adduser"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.10"
+
+relationInstance depends(P0__poolcounter,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libevent-2.1-7"
+	comparison hasValue ">="
+	version hasValue "2.1.8-stable"
+
+relationInstance depends(P0__poolcounter,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "adduser"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__poolcounter,2,DepAtom__2)
+

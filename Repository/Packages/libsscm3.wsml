@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libsscm3
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libsscm3 memberOf Package
+	package hasValue "libsscm3"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "208"
+	maintainer hasValue "Original-HIGUCHI Daisuke (VDR dai) <dai@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.9.0-3build1"
+	fileName hasValue "pool/universe/s/sigscheme/libsscm3_0.9.0-3build1_amd64.deb"
+	size hasValue "61580"
+	md5sum hasValue "ca3905b2fc54490fc7a484a61ae435c9"
+	sha1 hasValue "89b1787be48447dffcabd5801b2bbf73ab1de57a"
+	sha256 hasValue "b9fa3f9ff37ad0848a1fda727b5d347cd8468d3d9acad14c7c33d75824dafcb8"
+	descriptionMd5 hasValue "47320ce218b9676d74b3c303d3144eb9"
+	homepage hasValue "https://github.com/uim/sigscheme"
+	depends hasValue "sigscheme-runtime (= 0.9.0-3build1), libc6 (>= 2.14), libgcroots0 (>= 0.8.5)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "sigscheme-runtime"
+	comparison hasValue "="
+	version hasValue "0.9.0-3build1"
+
+relationInstance depends(P0__libsscm3,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libsscm3,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libgcroots0"
+	comparison hasValue ">="
+	version hasValue "0.8.5"
+
+relationInstance depends(P0__libsscm3,2,DepAtom__2)
+

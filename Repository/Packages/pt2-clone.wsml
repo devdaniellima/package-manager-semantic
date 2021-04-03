@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology pt2_clone
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__pt2_clone memberOf Package
+	package hasValue "pt2-clone"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/sound"
+	installedSize hasValue "320"
+	maintainer hasValue "Original-Debian Multimedia Maintainers <debian-multimedia@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.06-1"
+	replaces hasValue "protracker (<< 2.b37+really1.02-1)"
+	fileName hasValue "pool/universe/p/pt2-clone/pt2-clone_1.06-1_amd64.deb"
+	size hasValue "135116"
+	md5sum hasValue "c72728c8adaa26301cb5b92422e92205"
+	sha1 hasValue "6bb9cb1c0f8ed46fc77e6c4451311787c021a975"
+	sha256 hasValue "c7cac3ed3b4a9e424fd32329af89eb7124c64f0ddc64cc3e8817c817a8e36f3e"
+	descriptionMd5 hasValue "c5591b7f21c66207cdffdda846a8e020"
+	homepage hasValue "https://16-bits.org/pt.php"
+	depends hasValue "libc6 (>= 2.14), libsdl2-2.0-0 (>= 2.0.10)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__pt2_clone,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libsdl2-2.0-0"
+	comparison hasValue ">="
+	version hasValue "2.0.10"
+
+relationInstance depends(P0__pt2_clone,1,DepAtom__1)
+

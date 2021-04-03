@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology vamps
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__vamps memberOf Package
+	package hasValue "vamps"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/graphics"
+	installedSize hasValue "163"
+	maintainer hasValue "Original-William Vera <billy@billy.com.mx>"
+	architecture hasValue "amd64"
+	version hasValue "0.99.2-4build2"
+	fileName hasValue "pool/universe/v/vamps/vamps_0.99.2-4build2_amd64.deb"
+	size hasValue "46508"
+	md5sum hasValue "5715ba346b1a0a13dbc0ac71ad99c947"
+	sha1 hasValue "8c1a585f0a808931d3e9224b3c0b535a2aedc88a"
+	sha256 hasValue "60bd01396e118b361b9dcf0a73b565b6e96772c7819830e40565d5d8c4b5d144"
+	descriptionMd5 hasValue "a5744d18c2379104d12ee57b2ac57a89"
+	homepage hasValue "http://sourceforge.net/projects/vamps/"
+	depends hasValue "libc6 (>= 2.14), libdvdread7 (>= 4.1.3)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__vamps,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libdvdread7"
+	comparison hasValue ">="
+	version hasValue "4.1.3"
+
+relationInstance depends(P0__vamps,1,DepAtom__1)
+

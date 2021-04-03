@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology snaphu
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__snaphu memberOf Package
+	package hasValue "snaphu"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "multiverse/science"
+	installedSize hasValue "389"
+	maintainer hasValue "Original-Debian GIS Project <pkg-grass-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.0.3-1"
+	fileName hasValue "pool/multiverse/s/snaphu/snaphu_2.0.3-1_amd64.deb"
+	size hasValue "150028"
+	md5sum hasValue "008202b8ec38cb4a8768233ab56bedb6"
+	sha1 hasValue "a425a6ed31e2a06cfef7aefbd465522b3230ec1b"
+	sha256 hasValue "59eb6f5ee0afc2afdf259ac315fe8ea039a9cf4bc9f484ba348746e9eff5bea3"
+	descriptionMd5 hasValue "6ac13ac4c3384f0d55c3268461aa73d3"
+	homepage hasValue "https://web.stanford.edu/group/radar/softwareandlinks/sw/snaphu/"
+	depends hasValue "libc6 (>= 2.29)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__snaphu,0,DepAtom__0)
+

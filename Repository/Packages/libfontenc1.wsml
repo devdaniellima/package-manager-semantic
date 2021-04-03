@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libfontenc1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libfontenc1 memberOf Package
+	package hasValue "libfontenc1"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "x11"
+	installedSize hasValue "50"
+	maintainer hasValue "Original-Debian X Strike Force <debian-x@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:1.1.4-0ubuntu1"
+	fileName hasValue "pool/main/libf/libfontenc/libfontenc1_1.1.4-0ubuntu1_amd64.deb"
+	size hasValue "14040"
+	md5sum hasValue "3611e39bb5ae50ecad06eddbeb22f241"
+	sha1 hasValue "303f46771dcccdd7b6543f72c0e5524a4c5eba96"
+	sha256 hasValue "3b4fe9da5dc32299e1a120eecb308d0b0d843a4c41fa4779e2bbce63ab711c9a"
+	description hasValue "X11 font encoding library"
+	descriptionMd5 hasValue "7b4f6c27df2fd0d1bc06021e797d04f6"
+	depends hasValue "libc6 (>= 2.14), zlib1g (>= 1:1.1.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libfontenc1,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "zlib1g"
+	comparison hasValue ">="
+	version hasValue "1:1.1.4"
+
+relationInstance depends(P0__libfontenc1,1,DepAtom__1)
+

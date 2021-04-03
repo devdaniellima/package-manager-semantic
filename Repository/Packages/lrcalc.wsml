@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology lrcalc
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__lrcalc memberOf Package
+	package hasValue "lrcalc"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/math"
+	installedSize hasValue "40"
+	maintainer hasValue "Original-Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.2-2"
+	fileName hasValue "pool/universe/l/lrcalc/lrcalc_1.2-2_amd64.deb"
+	size hasValue "10602"
+	md5sum hasValue "e123d8b7d33b296579c64e72575a725d"
+	sha1 hasValue "ebea0f80ec1b7cfc5cd3a852a22802a56109821f"
+	sha256 hasValue "9edbce9a0c9c1e3c1b2682198a4c00f288f13814350239b794b76763413d4b37"
+	descriptionMd5 hasValue "5d413984e8a6c6bb2e76c1761de7afd0"
+	homepage hasValue "http://www.math.rutgers.edu/~asbuch/lrcalc/"
+	depends hasValue "libc6 (>= 2.4), liblrcalc1"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__lrcalc,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "liblrcalc1"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__lrcalc,1,DepAtom__1)
+

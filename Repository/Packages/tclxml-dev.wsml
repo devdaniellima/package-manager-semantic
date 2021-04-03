@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology tclxml_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__tclxml_dev memberOf Package
+	package hasValue "tclxml-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "46"
+	maintainer hasValue "Original-Tcl/Tk Debian Packagers <pkg-tcltk-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:3.2.7-5"
+	fileName hasValue "pool/universe/t/tclxml/tclxml-dev_3.2.7-5_amd64.deb"
+	size hasValue "8188"
+	md5sum hasValue "3a81f94822107359dbe206c20c5c20cc"
+	sha1 hasValue "dc75d0695bf0721df4b9941215b328774db301e5"
+	sha256 hasValue "6a1924f050190d51bd7c6d64f9f2d79396d0f8b32d10f43632c814db701a9af1"
+	descriptionMd5 hasValue "f15454803b44e96a842414283802316f"
+	homepage hasValue "https://github.com/wjoye/tclxml"
+	depends hasValue "tclxml (= 1:3.2.7-5), tcl (>= 8.6.0-2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "tclxml"
+	comparison hasValue "="
+	version hasValue "1:3.2.7-5"
+
+relationInstance depends(P0__tclxml_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "tcl"
+	comparison hasValue ">="
+	version hasValue "8.6.0-2"
+
+relationInstance depends(P0__tclxml_dev,1,DepAtom__1)
+

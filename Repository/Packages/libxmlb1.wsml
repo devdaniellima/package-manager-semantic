@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libxmlb1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libxmlb1 memberOf Package
+	package hasValue "libxmlb1"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libs"
+	installedSize hasValue "164"
+	maintainer hasValue "Original-Debian EFI team <debian-efi@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.1.15-2"
+	fileName hasValue "pool/main/libx/libxmlb/libxmlb1_0.1.15-2_amd64.deb"
+	size hasValue "50248"
+	md5sum hasValue "fd11cf3d07e06a2037667a02594a0eaf"
+	sha1 hasValue "5f1f42cf4f10c750438a37357e838fcc45b20804"
+	sha256 hasValue "7544388868abca90430f97360f3f3d0b33781c658b4613ef55841ebec667aade"
+	descriptionMd5 hasValue "a5834ea263db6cdd99112032df9dcef9"
+	homepage hasValue "https://github.com/hughsie/libxmlb"
+	depends hasValue "libc6 (>= 2.14), libglib2.0-0 (>= 2.53.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libxmlb1,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libglib2.0-0"
+	comparison hasValue ">="
+	version hasValue "2.53.2"
+
+relationInstance depends(P0__libxmlb1,1,DepAtom__1)
+

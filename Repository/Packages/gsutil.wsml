@@ -1,0 +1,66 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gsutil
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gsutil memberOf Package
+	package hasValue "gsutil"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/admin"
+	installedSize hasValue "116"
+	maintainer hasValue "Original-Julien Danjou <acid@debian.org>"
+	architecture hasValue "all"
+	version hasValue "3.1-1"
+	fileName hasValue "pool/universe/g/gsutil/gsutil_3.1-1_all.deb"
+	size hasValue "21612"
+	md5sum hasValue "a45181a58cc517f453f233516e07d031"
+	sha1 hasValue "e20a1f92e119f1a3cd3d4deb66fb7eab8c13dcb1"
+	sha256 hasValue "2367b6d33a911e7f1839e52e97be53ad681fcdf0dd14bab3453ec3cc5ccae39c"
+	descriptionMd5 hasValue "3891eafadc1ee2365efaf793d68085a2"
+	depends hasValue "perl, libhtml-form-perl | libwww-perl (<< 6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "perl"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__gsutil,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libhtml-form-perl"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__gsutil,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libwww-perl"
+	comparison hasValue "<<"
+	version hasValue "6"
+
+relationInstance depends(P0__gsutil,1,DepAtom__2)
+

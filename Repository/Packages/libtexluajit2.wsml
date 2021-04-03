@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libtexluajit2
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libtexluajit2 memberOf Package
+	package hasValue "libtexluajit2"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libs"
+	installedSize hasValue "563"
+	maintainer hasValue "Original-Debian TeX Maintainers <debian-tex-maint@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2019.20190605.51237-3build2"
+	fileName hasValue "pool/main/t/texlive-bin/libtexluajit2_2019.20190605.51237-3build2_amd64.deb"
+	size hasValue "234916"
+	md5sum hasValue "2ebb29db5e0c0d2c64baf5b3fa35c1e2"
+	sha1 hasValue "aba8675d6f483fbed94a381b4e3e7b6325b917f7"
+	sha256 hasValue "3ce297d866e8fdb9a68c8be77ecba12f6e49f8685fef4af21550ddecd3adf4d1"
+	descriptionMd5 hasValue "294f1e6dbbddbbd03dd67b78a5cc45b5"
+	homepage hasValue "https://www.tug.org/texlive/"
+	depends hasValue "libc6 (>= 2.29), libgcc-s1 (>= 3.3)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__libtexluajit2,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgcc-s1"
+	comparison hasValue ">="
+	version hasValue "3.3"
+
+relationInstance depends(P0__libtexluajit2,1,DepAtom__1)
+

@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology bc
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__bc memberOf Package
+	package hasValue "bc"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "math"
+	installedSize hasValue "226"
+	maintainer hasValue "Original-Ryan Kavanagh <rak@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.07.1-2build1"
+	fileName hasValue "pool/main/b/bc/bc_1.07.1-2build1_amd64.deb"
+	size hasValue "86272"
+	md5sum hasValue "628dfcff65f75e388bd73ed36d995156"
+	sha1 hasValue "0bc215bf15819e2a11cc87fdd808b2459a5c8b36"
+	sha256 hasValue "6c2717b8efeb517b2a29a3d899cdca495a7ecdbbb5d204a08d28920db51c5050"
+	description hasValue "linguagem de calculadora de precisão arbitrária bc do GNU"
+	descriptionMd5 hasValue "b8da7e3f115e4c703a180cdb05aec611"
+	homepage hasValue "http://ftp.gnu.org/gnu/bc/"
+	depends hasValue "libc6 (>= 2.14), libreadline8 (>= 6.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__bc,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libreadline8"
+	comparison hasValue ">="
+	version hasValue "6.0"
+
+relationInstance depends(P0__bc,1,DepAtom__1)
+

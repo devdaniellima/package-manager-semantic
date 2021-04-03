@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libembryo_bin
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libembryo_bin memberOf Package
+	package hasValue "libembryo-bin"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "257"
+	maintainer hasValue "Original-Debian Pkg-e Team <pkg-e-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.23.3-8"
+	fileName hasValue "pool/universe/e/efl/libembryo-bin_1.23.3-8_amd64.deb"
+	size hasValue "83732"
+	md5sum hasValue "362d8e28f4c7fc4e29a29e901e6c8679"
+	sha1 hasValue "6484a6d7e8b2d7f2f16c8d08485244eb8e9cdeb5"
+	sha256 hasValue "e251d4f40dbbad4e73450079a7129507a492491ecc0710377226ea292f0b5012"
+	descriptionMd5 hasValue "d23b47b04d7371600fc677ac2a18c2c3"
+	homepage hasValue "https://www.enlightenment.org"
+	depends hasValue "libc6 (>= 2.29), libeina1a (>= 1.23.3-0~eo)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__libembryo_bin,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libeina1a"
+	comparison hasValue ">="
+	version hasValue "1.23.3-0~eo"
+
+relationInstance depends(P0__libembryo_bin,1,DepAtom__1)
+

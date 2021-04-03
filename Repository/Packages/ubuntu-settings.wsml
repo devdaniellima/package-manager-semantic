@@ -1,0 +1,73 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ubuntu_settings
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ubuntu_settings memberOf Package
+	package hasValue "ubuntu-settings"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "x11"
+	installedSize hasValue "38"
+	maintainer hasValue "Ubuntu Desktop Team <ubuntu-desktop@lists.ubuntu.com>"
+	architecture hasValue "all"
+	version hasValue "20.04.5"
+	fileName hasValue "pool/main/u/ubuntu-settings/ubuntu-settings_20.04.5_all.deb"
+	size hasValue "5784"
+	md5sum hasValue "55d9c3a063966996f418b4d25cf658b2"
+	sha1 hasValue "06aed1f4f1a42c6fdd9b4317ecc6419f22cf2299"
+	sha256 hasValue "8cd14d88128e646c7d76ac4342650f94a546cdc297b2bd1b11b169eb5c586756"
+	descriptionMd5 hasValue "d323aeeccb784a54b1c845d23dcf7ea6"
+	depends hasValue "dconf-gsettings-backend | gsettings-backend, gnome-control-center-data, libglib2.0-bin (>= 2.53.4-3ubuntu1~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "dconf-gsettings-backend"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ubuntu_settings,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "gsettings-backend"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ubuntu_settings,0,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "gnome-control-center-data"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ubuntu_settings,1,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "libglib2.0-bin"
+	comparison hasValue ">="
+	version hasValue "2.53.4-3ubuntu1~"
+
+relationInstance depends(P0__ubuntu_settings,2,DepAtom__3)
+

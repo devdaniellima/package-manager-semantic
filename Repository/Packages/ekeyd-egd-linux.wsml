@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ekeyd_egd_linux
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ekeyd_egd_linux memberOf Package
+	package hasValue "ekeyd-egd-linux"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "48"
+	maintainer hasValue "Original-Simtec Electronics <support@simtec.co.uk>"
+	architecture hasValue "amd64"
+	version hasValue "1.1.5-6.2"
+	fileName hasValue "pool/universe/e/ekeyd/ekeyd-egd-linux_1.1.5-6.2_amd64.deb"
+	size hasValue "13808"
+	md5sum hasValue "35f49c177ae33e884cdbbfb6762349c5"
+	sha1 hasValue "35457ff01be42e358dd5a0a81de65f361826c7eb"
+	sha256 hasValue "c25e3411737e2f0a3999d9f7753f7b6885f34477e11f02f72a4f94df69c5d713"
+	description hasValue "transfere entropia de um EGD para o pool do núcleo Linux"
+	descriptionMd5 hasValue "a816f9f0582534189bb6da5ddeb49ee3"
+	depends hasValue "libc6 (>= 2.14), lsb-base"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__ekeyd_egd_linux,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "lsb-base"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ekeyd_egd_linux,1,DepAtom__1)
+

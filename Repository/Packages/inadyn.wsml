@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology inadyn
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__inadyn memberOf Package
+	package hasValue "inadyn"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "134"
+	maintainer hasValue "Original-Timur Birsh <taem@linukz.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.99.4-1build1"
+	provides hasValue "dyndns-client"
+	fileName hasValue "pool/universe/i/inadyn/inadyn_1.99.4-1build1_amd64.deb"
+	size hasValue "43952"
+	md5sum hasValue "3eb0f89bb5d1b869fc6f8a07c9697204"
+	sha1 hasValue "258c4b78bad634788589cfc850297ca7ca2c6d96"
+	sha256 hasValue "01b902d8b9a5c821007ecd29ab0f763b63bd20048af8c47f19c0bc713e5fd457"
+	descriptionMd5 hasValue "d77e38ebfb1fd2df791e377780b91ec0"
+	homepage hasValue "http://github.com/troglobit/inadyn"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__inadyn,0,DepAtom__0)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libhidapi_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libhidapi_dev memberOf Package
+	package hasValue "libhidapi-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "87"
+	maintainer hasValue "Original-Scott Talbert <swt@techie.net>"
+	architecture hasValue "amd64"
+	version hasValue "0.9.0+dfsg-1"
+	fileName hasValue "pool/universe/h/hidapi/libhidapi-dev_0.9.0+dfsg-1_amd64.deb"
+	size hasValue "22604"
+	md5sum hasValue "f2333f5c851b4b01080e32be6634ef02"
+	sha1 hasValue "2448c9077f9c15b912de85f1d01221170a2fe125"
+	sha256 hasValue "7ddc5e15424cd7d75f91e640814e4af3f315665916e9a73d1e426df81226e7f4"
+	descriptionMd5 hasValue "c4262db76c6846ae58f28364dc7a188c"
+	homepage hasValue "https://github.com/libusb/hidapi"
+	depends hasValue "libhidapi-libusb0 (= 0.9.0+dfsg-1), libhidapi-hidraw0 (= 0.9.0+dfsg-1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libhidapi-libusb0"
+	comparison hasValue "="
+	version hasValue "0.9.0+dfsg-1"
+
+relationInstance depends(P0__libhidapi_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libhidapi-hidraw0"
+	comparison hasValue "="
+	version hasValue "0.9.0+dfsg-1"
+
+relationInstance depends(P0__libhidapi_dev,1,DepAtom__1)
+

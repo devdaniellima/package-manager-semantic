@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology slurm
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__slurm memberOf Package
+	package hasValue "slurm"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "66"
+	maintainer hasValue "Original-Matthias Schmitz <matthias@sigxcpu.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.4.3-2build4"
+	fileName hasValue "pool/universe/s/slurm/slurm_0.4.3-2build4_amd64.deb"
+	size hasValue "19204"
+	md5sum hasValue "c9559b77dd166eda5d9529cf6229637d"
+	sha1 hasValue "5d6a51c07867bec14ea45d542ddb9b057ccbe5df"
+	sha256 hasValue "3ba5b832997453c05e7297f32f3d84a0e4813231168e0ba78a10e6237bed89a9"
+	descriptionMd5 hasValue "9de2dc2c21c49c21c4927427ac792369"
+	homepage hasValue "https://github.com/mattthias/slurm"
+	depends hasValue "libc6 (>= 2.7), libncurses6 (>= 6), libtinfo6 (>= 6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__slurm,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libncurses6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__slurm,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libtinfo6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__slurm,2,DepAtom__2)
+

@@ -1,0 +1,81 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology apt_file
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__apt_file memberOf Package
+	package hasValue "apt-file"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "90"
+	maintainer hasValue "Original-APT Development Team <deity@lists.debian.org>"
+	architecture hasValue "all"
+	version hasValue "3.2.2"
+	fileName hasValue "pool/universe/a/apt-file/apt-file_3.2.2_all.deb"
+	size hasValue "27648"
+	md5sum hasValue "f4c31af675dd936921ec05f179897620"
+	sha1 hasValue "c2fe8dc3341086114d2ad9f0ae31942e14aa0e32"
+	sha256 hasValue "b4b9db429a2bddd760ce7dd77cabf976e78c9fa3dbe8e87e848869e8ba81c537"
+	description hasValue "pesquisa por arquivos dentro de pacotes Debian (interface de linha de comando)"
+	descriptionMd5 hasValue "3f3f4d44b9836ed93b55a8c90dcc3665"
+	depends hasValue "perl:any, apt (>= 1.3~exp1~), libapt-pkg-perl, liblist-moreutils-perl, libregexp-assemble-perl"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "perl:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__apt_file,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "apt"
+	comparison hasValue ">="
+	version hasValue "1.3~exp1~"
+
+relationInstance depends(P0__apt_file,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libapt-pkg-perl"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__apt_file,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "liblist-moreutils-perl"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__apt_file,3,DepAtom__3)
+
+instance DepAtom__4 memberOf DependencyAtom
+	package hasValue "libregexp-assemble-perl"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__apt_file,4,DepAtom__4)
+

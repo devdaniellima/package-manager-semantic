@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology postgresql_12_pg_checksums
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__postgresql_12_pg_checksums memberOf Package
+	package hasValue "postgresql-12-pg-checksums"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/database"
+	installedSize hasValue "84"
+	maintainer hasValue "Original-Debian PostgreSQL Maintainers <team+postgresql@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0-3"
+	fileName hasValue "pool/universe/p/pg-checksums/postgresql-12-pg-checksums_1.0-3_amd64.deb"
+	size hasValue "33924"
+	md5sum hasValue "5c3b787f0ba3f15f0c51f3412ccd3db2"
+	sha1 hasValue "0b26c33c5e26f1ea1a1cc78daadd588e624c267e"
+	sha256 hasValue "cd41790bcd436d0b205756cf6b8074a2dd750bb851e82fa37b096c9da14d8fd9"
+	descriptionMd5 hasValue "6967ceb77968b6c73d7b14ce05839ada"
+	homepage hasValue "https://github.com/credativ/pg_checksums"
+	depends hasValue "libc6 (>= 2.17), postgresql-12"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.17"
+
+relationInstance depends(P0__postgresql_12_pg_checksums,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "postgresql-12"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__postgresql_12_pg_checksums,1,DepAtom__1)
+

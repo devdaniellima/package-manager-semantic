@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology lua_axtlsl
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__lua_axtlsl memberOf Package
+	package hasValue "lua-axtlsl"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/interpreters"
+	installedSize hasValue "208"
+	maintainer hasValue "Original-Yangfl <mmyangfl@gmail.com>"
+	architecture hasValue "amd64"
+	version hasValue "2.1.5+ds-1"
+	fileName hasValue "pool/universe/a/axtls/lua-axtlsl_2.1.5+ds-1_amd64.deb"
+	size hasValue "27696"
+	md5sum hasValue "0f53aac078876c80e08e6d00a4b41d89"
+	sha1 hasValue "64d4170303daf295b2a9004eb13db6ac87e692dd"
+	sha256 hasValue "9a0e6fae44571a55a3492357f2a2e1be6bb258ff788175a86711702110e4a924"
+	descriptionMd5 hasValue "5699bff9a1c248d4ffd7c138404dbb75"
+	homepage hasValue "http://axtls.sourceforge.net/"
+	depends hasValue "libaxtls1 (>= 2.1.5), libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libaxtls1"
+	comparison hasValue ">="
+	version hasValue "2.1.5"
+
+relationInstance depends(P0__lua_axtlsl,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__lua_axtlsl,1,DepAtom__1)
+

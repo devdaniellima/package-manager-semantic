@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology health_check
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__health_check memberOf Package
+	package hasValue "health-check"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "158"
+	maintainer hasValue "Colin King <colin.king@canonical.com>"
+	architecture hasValue "amd64"
+	version hasValue "0.03.06-1"
+	fileName hasValue "pool/universe/h/health-check/health-check_0.03.06-1_amd64.deb"
+	size hasValue "45716"
+	md5sum hasValue "983dc25dd5239343aa84318a8ded80a4"
+	sha1 hasValue "0f191a947187e715650f664b00df86075074f52c"
+	sha256 hasValue "2585ca4d0f2ee1bf21710c55298119a40de3f2dbb87d433b008839c12ab0a0c9"
+	descriptionMd5 hasValue "dd818751875dba2377f169ecb27865ba"
+	homepage hasValue "http://kernel.ubuntu.com/~cking/health-check"
+	depends hasValue "libbsd0 (>= 0.0), libc6 (>= 2.15), libjson-c4 (>= 0.13.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libbsd0"
+	comparison hasValue ">="
+	version hasValue "0.0"
+
+relationInstance depends(P0__health_check,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__health_check,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libjson-c4"
+	comparison hasValue ">="
+	version hasValue "0.13.1"
+
+relationInstance depends(P0__health_check,2,DepAtom__2)
+

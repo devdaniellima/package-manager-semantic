@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology r_cran_stabledist
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__r_cran_stabledist memberOf Package
+	package hasValue "r-cran-stabledist"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/gnu-r"
+	installedSize hasValue "117"
+	maintainer hasValue "Original-Dirk Eddelbuettel <edd@debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.7-1-2"
+	fileName hasValue "pool/universe/r/r-cran-stabledist/r-cran-stabledist_0.7-1-2_all.deb"
+	size hasValue "74632"
+	md5sum hasValue "4177ef357c3a49d4eb76127b2ddc2d21"
+	sha1 hasValue "31ee2149e0730c90fabbb7e36ca1fcc108fb86f8"
+	sha256 hasValue "d14b520f9d1335920c325b599b33d84f7e460ede51ea20d02555a331a0e893eb"
+	descriptionMd5 hasValue "d0cfec5a0638dcb78f08e6fce0f80acb"
+	homepage hasValue "https://cran.r-project.org/package=stabledist"
+	depends hasValue "r-base-core (>= 3.5.0-5), r-api-3.5"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "r-base-core"
+	comparison hasValue ">="
+	version hasValue "3.5.0-5"
+
+relationInstance depends(P0__r_cran_stabledist,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "r-api-3.5"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__r_cran_stabledist,1,DepAtom__1)
+

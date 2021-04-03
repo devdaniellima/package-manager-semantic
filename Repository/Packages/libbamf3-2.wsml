@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libbamf3_2
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libbamf3_2 memberOf Package
+	package hasValue "libbamf3-2"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "249"
+	maintainer hasValue "Didier Roche <didrocks@ubuntu.com>"
+	architecture hasValue "amd64"
+	version hasValue "0.5.3+18.04.20180207.2-0ubuntu2"
+	fileName hasValue "pool/universe/b/bamf/libbamf3-2_0.5.3+18.04.20180207.2-0ubuntu2_amd64.deb"
+	size hasValue "53196"
+	md5sum hasValue "3ba92834676ee8c6a4b53accfafdc32f"
+	sha1 hasValue "ec65e6a6597611a7b7d355921cafab113bbdeb0d"
+	sha256 hasValue "5e1ed7f97f567eb24990f3263622e6c24f791b6a13ecce66a1737da57be75779"
+	description hasValue "Window matching library - shared library"
+	descriptionMd5 hasValue "11d37ab9301d7178a8b4e967e68c0316"
+	homepage hasValue "https://launchpad.net/bamf"
+	depends hasValue "libc6 (>= 2.4), libglib2.0-0 (>= 2.37.3)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libbamf3_2,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libglib2.0-0"
+	comparison hasValue ">="
+	version hasValue "2.37.3"
+
+relationInstance depends(P0__libbamf3_2,1,DepAtom__1)
+

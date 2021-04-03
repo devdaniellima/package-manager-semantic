@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology jupyter_client
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__jupyter_client memberOf Package
+	package hasValue "jupyter-client"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "25"
+	maintainer hasValue "Original-Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "6.1.2-1"
+	fileName hasValue "pool/universe/j/jupyter-client/jupyter-client_6.1.2-1_all.deb"
+	size hasValue "5812"
+	md5sum hasValue "de79a3f5704e913403134198fcae588e"
+	sha1 hasValue "0bffc9563426e2260fefa00704662828b625f2af"
+	sha256 hasValue "a60cae57cd096c0a694e74439db122e17baf3c755c90b598138d35c9da5a1efc"
+	descriptionMd5 hasValue "50a323ff448352989b3b74ce1470431e"
+	homepage hasValue "https://github.com/jupyter/jupyter_client"
+	depends hasValue "python3-jupyter-client (= 6.1.2-1), python3:any, jupyter-core"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3-jupyter-client"
+	comparison hasValue "="
+	version hasValue "6.1.2-1"
+
+relationInstance depends(P0__jupyter_client,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__jupyter_client,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "jupyter-core"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__jupyter_client,2,DepAtom__2)
+

@@ -1,0 +1,74 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology pd_sigpack
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__pd_sigpack memberOf Package
+	package hasValue "pd-sigpack"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/sound"
+	installedSize hasValue "188"
+	maintainer hasValue "Original-Debian Multimedia Maintainers <debian-multimedia@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.0.4.2-3"
+	fileName hasValue "pool/universe/p/pd-sigpack/pd-sigpack_0.0.4.2-3_amd64.deb"
+	size hasValue "24696"
+	md5sum hasValue "834c94a8415d3ca46b4fc6098f94e623"
+	sha1 hasValue "051535290622dadbec78428b3e6579a1ee2ee38e"
+	sha256 hasValue "6fc583694a43ddfa1c0ac9fc4ca6bee9b457ef60f59b02a21988798481043abb"
+	descriptionMd5 hasValue "b46f88e329ab6ed1c4565ece17f004c8"
+	homepage hasValue "http://www.weiss-archiv.de/"
+	depends hasValue "libc6 (>= 2.4), puredata-core | pd, pd-libdir"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__pd_sigpack,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "puredata-core"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__pd_sigpack,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "pd"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__pd_sigpack,1,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "pd-libdir"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__pd_sigpack,2,DepAtom__3)
+

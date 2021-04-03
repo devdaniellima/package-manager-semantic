@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology node_d3_fetch
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__node_d3_fetch memberOf Package
+	package hasValue "node-d3-fetch"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/javascript"
+	installedSize hasValue "65"
+	maintainer hasValue "Original-Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.1.2+dfsg-2"
+	fileName hasValue "pool/universe/n/node-d3-fetch/node-d3-fetch_1.1.2+dfsg-2_all.deb"
+	size hasValue "15828"
+	md5sum hasValue "a33c910a2f7eb2dd9e7887674efd1c43"
+	sha1 hasValue "a190fc43f90f569ecfbb8bbf9078394c0616f26b"
+	sha256 hasValue "d9686fda27c13f4ae63a7182ad53d19ee6371036992aed163af858ab208ba5b6"
+	descriptionMd5 hasValue "9e95625514203c55b61cd84df0d6f2ee"
+	homepage hasValue "https://d3js.org/d3-fetch/"
+	depends hasValue "nodejs (>= 6), node-d3-dsv (>= 1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "nodejs"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__node_d3_fetch,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "node-d3-dsv"
+	comparison hasValue ">="
+	version hasValue "1"
+
+relationInstance depends(P0__node_d3_fetch,1,DepAtom__1)
+

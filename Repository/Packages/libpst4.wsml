@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libpst4
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libpst4 memberOf Package
+	package hasValue "libpst4"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "204"
+	maintainer hasValue "Original-Paul Wise <pabs@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.6.74-1build1"
+	fileName hasValue "pool/universe/libp/libpst/libpst4_0.6.74-1build1_amd64.deb"
+	size hasValue "62728"
+	md5sum hasValue "9628423e91d6d3c7215b0ad0f6edb604"
+	sha1 hasValue "a0502bba935297dea3c2c8530bd5339280059af7"
+	sha256 hasValue "d28fdd2097b2c5e53b7b6bba25ceff01a1e79c58d1f53b6fc73e1dbcc54eec1c"
+	descriptionMd5 hasValue "ed5aeac90075d862254b95743fc72727"
+	homepage hasValue "https://www.five-ten-sg.com/libpst/"
+	depends hasValue "libc6 (>= 2.14), zlib1g (>= 1:1.1.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libpst4,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "zlib1g"
+	comparison hasValue ">="
+	version hasValue "1:1.1.4"
+
+relationInstance depends(P0__libpst4,1,DepAtom__1)
+

@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology unoconv
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__unoconv memberOf Package
+	package hasValue "unoconv"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/text"
+	installedSize hasValue "325"
+	maintainer hasValue "Original-Vincent Bernat <bernat@debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.7-2"
+	conflicts hasValue "odt2txt (<= 0.3-1)"
+	fileName hasValue "pool/universe/u/unoconv/unoconv_0.7-2_all.deb"
+	size hasValue "46828"
+	md5sum hasValue "f778be4d0d552e09fb66dd5b9d2541e8"
+	sha1 hasValue "acbccefec1c24da31e054f84fc3afaa69c962ae6"
+	sha256 hasValue "5080a49b96f7d8ed219f3c87d273db7ffc075c0a6c35f2c75db42334377a506a"
+	description hasValue "conversor entre formatos de documentos do LibreOffice"
+	descriptionMd5 hasValue "a8f9b42f1b1a5a861d73f018c81d22ff"
+	homepage hasValue "http://dag.wieers.com/home-made/unoconv/"
+	depends hasValue "python3, python3-uno (>= 4.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__unoconv,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3-uno"
+	comparison hasValue ">="
+	version hasValue "4.0"
+
+relationInstance depends(P0__unoconv,1,DepAtom__1)
+

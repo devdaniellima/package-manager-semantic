@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology brother_cups_wrapper_common
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__brother_cups_wrapper_common memberOf Package
+	package hasValue "brother-cups-wrapper-common"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "multiverse/text"
+	installedSize hasValue "37"
+	maintainer hasValue "Original-Saïvann Carignan <oxmosys@gmail.com>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.0-10-0ubuntu7"
+	fileName hasValue "pool/multiverse/b/brother-cups-wrapper-common/brother-cups-wrapper-common_1.0.0-10-0ubuntu7_amd64.deb"
+	size hasValue "9148"
+	md5sum hasValue "a0eba0401fe80b7a4c1de777032d24f1"
+	sha1 hasValue "86210ad79510b353fbf8c67713a913d442e9afba"
+	sha256 hasValue "395c9db11fd6e5bfec62bbc13184ff2ea5db71d96997beffbb4b938de1cf8474"
+	descriptionMd5 hasValue "5df79c7ccc5b738172be4cee123f9e14"
+	homepage hasValue "http://solutions.brother.com/linux/en_us/"
+	depends hasValue "libc6 (>= 2.4), brother-lpr-drivers-common"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__brother_cups_wrapper_common,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "brother-lpr-drivers-common"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__brother_cups_wrapper_common,1,DepAtom__1)
+

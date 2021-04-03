@@ -1,0 +1,74 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology tgt_rbd
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__tgt_rbd memberOf Package
+	package hasValue "tgt-rbd"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "49"
+	maintainer hasValue "Original-Apollon Oikonomopoulos <apoikos@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:1.0.79-2ubuntu1"
+	fileName hasValue "pool/universe/t/tgt/tgt-rbd_1.0.79-2ubuntu1_amd64.deb"
+	size hasValue "8872"
+	md5sum hasValue "832d3b7a8fe221293382b84916b573a5"
+	sha1 hasValue "b3a8ed6cdc52c106b4bf1a8707631335dede2462"
+	sha256 hasValue "82c9288f4ce302b9f39bf5877d271f5a6cd5eb4dcb3edd085e70ae4ff553116f"
+	descriptionMd5 hasValue "cba9d5b15fa5ef15d13698228e477688"
+	homepage hasValue "http://stgt.sourceforge.net/"
+	depends hasValue "tgt (= 1:1.0.79-2ubuntu1), libc6 (>= 2.4), librados2 (>= 0.72.2), librbd1 (>= 0.72.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "tgt"
+	comparison hasValue "="
+	version hasValue "1:1.0.79-2ubuntu1"
+
+relationInstance depends(P0__tgt_rbd,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__tgt_rbd,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "librados2"
+	comparison hasValue ">="
+	version hasValue "0.72.2"
+
+relationInstance depends(P0__tgt_rbd,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "librbd1"
+	comparison hasValue ">="
+	version hasValue "0.72.2"
+
+relationInstance depends(P0__tgt_rbd,3,DepAtom__3)
+

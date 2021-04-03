@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology plymouth_theme_breeze
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__plymouth_theme_breeze memberOf Package
+	package hasValue "plymouth-theme-breeze"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/kde"
+	installedSize hasValue "244"
+	maintainer hasValue "Original-Debian/Kubuntu Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "5.18.4.1-0ubuntu1"
+	fileName hasValue "pool/universe/b/breeze-plymouth/plymouth-theme-breeze_5.18.4.1-0ubuntu1_amd64.deb"
+	size hasValue "71856"
+	md5sum hasValue "ce6e136a419143212b911d4d4b39a554"
+	sha1 hasValue "fa0a184251d05b2e7155edc2b225612370688d5c"
+	sha256 hasValue "b644c5e800734fbdda08ee1fe083cbe8572ab5a7374244d943d4086e5c66b900"
+	descriptionMd5 hasValue "8c7ffd9b19fbfa9da261d03f4120464c"
+	homepage hasValue "https://projects.kde.org/projects/kde/workspace/breeze-plymouth"
+	depends hasValue "libc6 (>= 2.29), libplymouth5 (>= 0.9.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__plymouth_theme_breeze,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libplymouth5"
+	comparison hasValue ">="
+	version hasValue "0.9.2"
+
+relationInstance depends(P0__plymouth_theme_breeze,1,DepAtom__1)
+

@@ -1,0 +1,59 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libwsbm1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libwsbm1 memberOf Package
+	package hasValue "libwsbm1"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/libs"
+	installedSize hasValue "71"
+	maintainer hasValue "Jani Monoses <jani@ubuntu.com>"
+	architecture hasValue "i386"
+	version hasValue "1.1.0+20091210-0ubuntu3"
+	fileName hasValue "pool/universe/libw/libwsbm/libwsbm1_1.1.0+20091210-0ubuntu3_i386.deb"
+	size hasValue "22928"
+	md5sum hasValue "3f1c1429491dc278e2c4f2a70981374a"
+	sha1 hasValue "8685c6548eaa016ef6cdeeeafe17814740334526"
+	sha256 hasValue "9875bdd1f9f8285078059d9641bc4ffd37bd62061e67b6dc57a6ea5a05b4136a"
+	descriptionMd5 hasValue "446122eaee904f7cf0acaf8faac0dd1a"
+	depends hasValue "libc6 (>= 2.4), libdrm2 (>= 2.3.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libwsbm1,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libdrm2"
+	comparison hasValue ">="
+	version hasValue "2.3.1"
+
+relationInstance depends(P0__libwsbm1,1,DepAtom__1)
+

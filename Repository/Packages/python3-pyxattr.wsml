@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python3_pyxattr
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python3_pyxattr memberOf Package
+	package hasValue "python3-pyxattr"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "python"
+	installedSize hasValue "59"
+	maintainer hasValue "Original-Iustin Pop <iustin@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.6.1-2"
+	provides hasValue "python3.8-pyxattr"
+	fileName hasValue "pool/main/p/python-pyxattr/python3-pyxattr_0.6.1-2_amd64.deb"
+	size hasValue "13108"
+	md5sum hasValue "5c65f02cce6c0d5aafdf85e2f7bb08a2"
+	sha1 hasValue "a448612f76fede26a6ec4ef21846ead8d0412232"
+	sha256 hasValue "a96f3b5302cc56c9b37c607f43fb3eca29ab4ca41882e517b488bf3cf40a98e9"
+	descriptionMd5 hasValue "e6451e8a73c0ffe5df884a9cc4b747a4"
+	homepage hasValue "https://pyxattr.k1024.org/"
+	depends hasValue "python3 (<< 3.9), python3 (>= 3.8~), libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3"
+	comparison hasValue "<<"
+	version hasValue "3.9"
+
+relationInstance depends(P0__python3_pyxattr,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3"
+	comparison hasValue ">="
+	version hasValue "3.8~"
+
+relationInstance depends(P0__python3_pyxattr,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__python3_pyxattr,2,DepAtom__2)
+

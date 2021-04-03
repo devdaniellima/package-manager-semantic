@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libvanessa_socket2
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libvanessa_socket2 memberOf Package
+	package hasValue "libvanessa-socket2"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "41"
+	maintainer hasValue "Original-Simon Horman <horms@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.0.13-1build1"
+	fileName hasValue "pool/universe/v/vanessa-socket/libvanessa-socket2_0.0.13-1build1_amd64.deb"
+	size hasValue "11812"
+	md5sum hasValue "1facc5cdf6180f7bb3b807f37dfbf82b"
+	sha1 hasValue "62d90009483d25ee38179fee8755b788ef4a70dc"
+	sha256 hasValue "653e09138993dd3c28625b62872b91497586df102b593354787106ef0c6d3e99"
+	descriptionMd5 hasValue "71cd9e818e58e713353a7efaab9987d4"
+	homepage hasValue "http://horms.net/projects/vanessa/"
+	depends hasValue "libc6 (>= 2.15), libvanessa-logger0 (>= 0.0.6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__libvanessa_socket2,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libvanessa-logger0"
+	comparison hasValue ">="
+	version hasValue "0.0.6"
+
+relationInstance depends(P0__libvanessa_socket2,1,DepAtom__1)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology lie
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__lie memberOf Package
+	package hasValue "lie"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/math"
+	installedSize hasValue "519"
+	maintainer hasValue "Original-Gürkan Myczko <gurkan@phys.ethz.ch>"
+	architecture hasValue "amd64"
+	version hasValue "2.2.2+dfsg-3build1"
+	fileName hasValue "pool/universe/l/lie/lie_2.2.2+dfsg-3build1_amd64.deb"
+	size hasValue "138420"
+	md5sum hasValue "7bb3aa54b07bb134dffa6dcd25771d1e"
+	sha1 hasValue "9512d2962199716c7caa2dca7a300dada9b41bd7"
+	sha256 hasValue "00d46a93b3c93c649cf6d3db31fc8f02e0606fc9e4b7cea1a402980238f774cc"
+	descriptionMd5 hasValue "21ee167fc3ecd5cc7f226c1cfedfaecc"
+	homepage hasValue "http://young.sp2mi.univ-poitiers.fr/~marc/LiE/"
+	depends hasValue "libc6 (>= 2.14), libreadline8 (>= 6.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__lie,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libreadline8"
+	comparison hasValue ">="
+	version hasValue "6.0"
+
+relationInstance depends(P0__lie,1,DepAtom__1)
+

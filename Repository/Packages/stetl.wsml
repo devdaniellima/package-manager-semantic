@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology stetl
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__stetl memberOf Package
+	package hasValue "stetl"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "18"
+	maintainer hasValue "Original-Debian GIS Project <pkg-grass-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.0+ds-2"
+	fileName hasValue "pool/universe/p/python-stetl/stetl_2.0+ds-2_all.deb"
+	size hasValue "4372"
+	md5sum hasValue "1b5ecf0985695d446bb4a280f55dc1ce"
+	sha1 hasValue "c2bba94a4673040d8cbada912e760c554380cfa0"
+	sha256 hasValue "c4f434ed58078f3cdcd95a245bd3f86dd54e5ca7e711d92af96c6872a0f98080"
+	descriptionMd5 hasValue "e5095f0d59189eccf76b1c253469f8a5"
+	homepage hasValue "http://stetl.org/"
+	depends hasValue "python3-stetl (>= 2.0+ds-2), python3:any"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3-stetl"
+	comparison hasValue ">="
+	version hasValue "2.0+ds-2"
+
+relationInstance depends(P0__stetl,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__stetl,1,DepAtom__1)
+

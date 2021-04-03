@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libpuzzle1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libpuzzle1 memberOf Package
+	package hasValue "libpuzzle1"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/libs"
+	installedSize hasValue "50"
+	maintainer hasValue "Original-Debian PhotoTools Maintainers <pkg-phototools-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.11-3"
+	fileName hasValue "pool/universe/libp/libpuzzle/libpuzzle1_0.11-3_amd64.deb"
+	size hasValue "15828"
+	md5sum hasValue "7f56c530b7f9cddbc8227add85e0b3d5"
+	sha1 hasValue "073caf9daab9268206d8ce1f2241d012170a19a0"
+	sha256 hasValue "c15b2565fd61e266a1e886813c6d8d26399b5375a8d06ad75d2d66894d512076"
+	descriptionMd5 hasValue "9f331cf6c5254793a9b82427a8f349fc"
+	homepage hasValue "https://github.com/jedisct1/libpuzzle"
+	depends hasValue "libc6 (>= 2.4), libgd3 (>= 2.1.0~alpha~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libpuzzle1,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgd3"
+	comparison hasValue ">="
+	version hasValue "2.1.0~alpha~"
+
+relationInstance depends(P0__libpuzzle1,1,DepAtom__1)
+

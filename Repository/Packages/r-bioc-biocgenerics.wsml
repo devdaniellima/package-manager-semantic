@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology r_bioc_biocgenerics
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__r_bioc_biocgenerics memberOf Package
+	package hasValue "r-bioc-biocgenerics"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/gnu-r"
+	installedSize hasValue "922"
+	maintainer hasValue "Original-Debian R Packages Maintainers <r-pkg-team@alioth-lists.debian.net>"
+	architecture hasValue "all"
+	version hasValue "0.32.0-1"
+	provides hasValue "r-api-bioc-3.10"
+	fileName hasValue "pool/universe/r/r-bioc-biocgenerics/r-bioc-biocgenerics_0.32.0-1_all.deb"
+	size hasValue "639064"
+	md5sum hasValue "73f3862f49bbad7839813a6925d4750e"
+	sha1 hasValue "8caba91d6ee3cff2c261fd19a189b1638aee9035"
+	sha256 hasValue "6bc990c7f7d63ff8442df514c25a3f25ce9d0729427c1260112750f3345e0314"
+	descriptionMd5 hasValue "4c3057ae19db1c45edff0d9de34e25fd"
+	homepage hasValue "https://bioconductor.org/packages/BiocGenerics/"
+	depends hasValue "r-base-core (>= 3.6.1-7), r-api-3.5"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "r-base-core"
+	comparison hasValue ">="
+	version hasValue "3.6.1-7"
+
+relationInstance depends(P0__r_bioc_biocgenerics,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "r-api-3.5"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__r_bioc_biocgenerics,1,DepAtom__1)
+

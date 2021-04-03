@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology paml
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__paml memberOf Package
+	package hasValue "paml"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/science"
+	installedSize hasValue "2917"
+	maintainer hasValue "Original-Debian Med Packaging Team <debian-med-packaging@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "4.9j+dfsg-1"
+	fileName hasValue "pool/universe/p/paml/paml_4.9j+dfsg-1_amd64.deb"
+	size hasValue "694444"
+	md5sum hasValue "73cf1cbe23b5b662aebfdd48b31bd9ca"
+	sha1 hasValue "72ab772a57997772a1187ba5e8ff2a3684aa51ec"
+	sha256 hasValue "423429328b6a7d0b6109182e9b2803838c93afac31d29d7a768b7a6a1a31431c"
+	descriptionMd5 hasValue "ea4a5e854840c2f3fb0be17d0120191b"
+	homepage hasValue "http://abacus.gene.ucl.ac.uk/software/paml.html"
+	depends hasValue "libc6 (>= 2.29)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__paml,0,DepAtom__0)
+

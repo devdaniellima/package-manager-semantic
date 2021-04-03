@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libnet1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libnet1 memberOf Package
+	package hasValue "libnet1"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libs"
+	installedSize hasValue "153"
+	maintainer hasValue "Original-Stefanos Harhalakis <v13@v13.gr>"
+	architecture hasValue "amd64"
+	version hasValue "1.1.6+dfsg-3.1build1"
+	fileName hasValue "pool/main/libn/libnet/libnet1_1.1.6+dfsg-3.1build1_amd64.deb"
+	size hasValue "43268"
+	md5sum hasValue "3c65c209c4fb4213dbfd4df9856365fd"
+	sha1 hasValue "86208305d9803fd14799489c6efeeeba1c02a869"
+	sha256 hasValue "69e7a79979106bab39d43485838bf78829b722c2906c7831eb6fe7593b78e99d"
+	description hasValue "library for the construction and handling of network packets"
+	descriptionMd5 hasValue "6962156fdb23e2f413d3bdde50843766"
+	homepage hasValue "http://libnet-dev.sourceforge.net/"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libnet1,0,DepAtom__0)
+

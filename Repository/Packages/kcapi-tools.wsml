@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology kcapi_tools
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__kcapi_tools memberOf Package
+	package hasValue "kcapi-tools"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "99"
+	maintainer hasValue "Original-Mathieu Malaterre <malat@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.1.5-1"
+	fileName hasValue "pool/universe/libk/libkcapi/kcapi-tools_1.1.5-1_amd64.deb"
+	size hasValue "25116"
+	md5sum hasValue "5704c817079360c9f30850bd1cea6d6b"
+	sha1 hasValue "edf5bb02c3929ccbc3b2f0d478e4b15123f1862a"
+	sha256 hasValue "dcbe54f810e6ef7555236f6229f061b241b8cf666404380b8ec910817c4ebc59"
+	descriptionMd5 hasValue "7eab4ce659860e810ca8109938df8d3f"
+	homepage hasValue "http://www.chronox.de/libkcapi.html"
+	depends hasValue "libc6 (>= 2.25), libkcapi1 (>= 1.0.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.25"
+
+relationInstance depends(P0__kcapi_tools,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libkcapi1"
+	comparison hasValue ">="
+	version hasValue "1.0.0"
+
+relationInstance depends(P0__kcapi_tools,1,DepAtom__1)
+

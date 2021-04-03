@@ -1,0 +1,59 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ncaptool
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ncaptool memberOf Package
+	package hasValue "ncaptool"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "75"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.9.2-4"
+	fileName hasValue "pool/universe/n/ncap/ncaptool_1.9.2-4_amd64.deb"
+	size hasValue "19428"
+	md5sum hasValue "ea93ea56b0c8182168593aab93c337c3"
+	sha1 hasValue "89fdbb2d902fd02127a63f45b5f60eaca17b3ec0"
+	sha256 hasValue "126e645d15a12b799144a3af4a9c891de19e06e2a5bfaf32f274625675368a01"
+	descriptionMd5 hasValue "4cba9a5efbf20073f6e624046a50354d"
+	depends hasValue "libc6 (>= 2.17), libncap44"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.17"
+
+relationInstance depends(P0__ncaptool,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libncap44"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ncaptool,1,DepAtom__1)
+

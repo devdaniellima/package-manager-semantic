@@ -1,0 +1,74 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology openvas
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__openvas memberOf Package
+	package hasValue "openvas"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/net"
+	installedSize hasValue "54"
+	maintainer hasValue "Original-Debian Security Tools <team+pkg-security@tracker.debian.org>"
+	architecture hasValue "all"
+	version hasValue "9.0.3"
+	fileName hasValue "pool/universe/o/openvas/openvas_9.0.3_all.deb"
+	size hasValue "11200"
+	md5sum hasValue "6d57e0ec4b471267e1dafd5c44c0c680"
+	sha1 hasValue "c1146a78b947cb969b851c1a8dfe255056139e3f"
+	sha256 hasValue "e5c5656f9c74d81c9933b220d5726a1bcf568be76f489a7b0c00223e7f21cf6a"
+	descriptionMd5 hasValue "913fe707b486671f7cc65e37ee266a1d"
+	homepage hasValue "http://www.openvas.org/"
+	depends hasValue "openvas-manager (>= 7.0.0), openvas-scanner (>= 5.1.0), greenbone-security-assistant (>= 7.0.0), openvas-cli (>= 1.4.5)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "openvas-manager"
+	comparison hasValue ">="
+	version hasValue "7.0.0"
+
+relationInstance depends(P0__openvas,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "openvas-scanner"
+	comparison hasValue ">="
+	version hasValue "5.1.0"
+
+relationInstance depends(P0__openvas,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "greenbone-security-assistant"
+	comparison hasValue ">="
+	version hasValue "7.0.0"
+
+relationInstance depends(P0__openvas,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "openvas-cli"
+	comparison hasValue ">="
+	version hasValue "1.4.5"
+
+relationInstance depends(P0__openvas,3,DepAtom__3)
+

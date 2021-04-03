@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology jose
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__jose memberOf Package
+	package hasValue "jose"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "125"
+	maintainer hasValue "Original-Christoph Biedl <debian.axhn@manchmal.in-ulm.de>"
+	architecture hasValue "amd64"
+	version hasValue "10-2build2"
+	fileName hasValue "pool/universe/j/jose/jose_10-2build2_amd64.deb"
+	size hasValue "41524"
+	md5sum hasValue "dc984a6fa04b2dd7d7cb48cb10975ee7"
+	sha1 hasValue "320c6fc2a823a166f541d5dbefce4745c41d03b1"
+	sha256 hasValue "f882062b4ec683d1b22152fa8381137e2a0e7c0d803dba0ad7388d549350af2a"
+	descriptionMd5 hasValue "99205c32d7a2e7ddb1fc3bcfc1e39037"
+	homepage hasValue "https://github.com/latchset/jose"
+	depends hasValue "libc6 (>= 2.7), libjansson4 (>= 2.7), libjose0 (>= 10)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__jose,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libjansson4"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__jose,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libjose0"
+	comparison hasValue ">="
+	version hasValue "10"
+
+relationInstance depends(P0__jose,2,DepAtom__2)
+

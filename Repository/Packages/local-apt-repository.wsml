@@ -1,0 +1,59 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology local_apt_repository
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__local_apt_repository memberOf Package
+	package hasValue "local-apt-repository"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/admin"
+	installedSize hasValue "33"
+	maintainer hasValue "Original-Joachim Breitner <nomeata@debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.6"
+	fileName hasValue "pool/universe/l/local-apt-repository/local-apt-repository_0.6_all.deb"
+	size hasValue "5888"
+	md5sum hasValue "c1ab00a6ebe763a1664d229c1d168279"
+	sha1 hasValue "fe367ed9402db8c6134b161425a3db5343305414"
+	sha256 hasValue "8fad48f4878b368c870eff980f1c6172cad5526ac52b047051bc0ac8baed0cca"
+	descriptionMd5 hasValue "9c20896096750586157bf872cae8374b"
+	depends hasValue "systemd, apt-utils"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "systemd"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__local_apt_repository,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "apt-utils"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__local_apt_repository,1,DepAtom__1)
+

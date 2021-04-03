@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology syncthing
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__syncthing memberOf Package
+	package hasValue "syncthing"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/devel"
+	installedSize hasValue "16989"
+	maintainer hasValue "Original-Debian Go Packaging Team <pkg-go-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.1.4~ds1-4ubuntu1"
+	fileName hasValue "pool/universe/s/syncthing/syncthing_1.1.4~ds1-4ubuntu1_amd64.deb"
+	size hasValue "6202100"
+	md5sum hasValue "3363ac48000abeb221615f4f352e194d"
+	sha1 hasValue "15dd08bcbad4da3ec06ad3df1d3d9ae24e5e4995"
+	sha256 hasValue "785e02b3dc5fad5af7543b3c24209df5ade42e75c3d1096ec2a3eed0dbed6a5a"
+	descriptionMd5 hasValue "1a4918fe5ed39dee33ebb3642be28ec0"
+	homepage hasValue "https://www.syncthing.net/"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__syncthing,0,DepAtom__0)
+

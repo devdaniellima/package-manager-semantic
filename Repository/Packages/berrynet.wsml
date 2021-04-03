@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology berrynet
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__berrynet memberOf Package
+	package hasValue "berrynet"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/misc"
+	installedSize hasValue "26"
+	maintainer hasValue "Original-Ying-Chun Liu (PaulLiu) <paulliu@debian.org>"
+	architecture hasValue "all"
+	version hasValue "3.9.0-1"
+	fileName hasValue "pool/universe/b/berrynet/berrynet_3.9.0-1_all.deb"
+	size hasValue "6856"
+	md5sum hasValue "ff0c3e616ffecf8ef19ef6436a9becb0"
+	sha1 hasValue "28d04661ed8f363e89913a4245df14545120d8bf"
+	sha256 hasValue "aa650e2abaa94dbd3bd7422cd8da843bdaf86f42b30af665205034c0d5173a33"
+	descriptionMd5 hasValue "35c4ff8b8b7e04099d6ec3e11c431bb2"
+	homepage hasValue "https://github.com/DT42/BerryNet"
+	depends hasValue "berrynet-dashboard (>= 3.9.0-1), python3-berrynet (>= 3.9.0-1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "berrynet-dashboard"
+	comparison hasValue ">="
+	version hasValue "3.9.0-1"
+
+relationInstance depends(P0__berrynet,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3-berrynet"
+	comparison hasValue ">="
+	version hasValue "3.9.0-1"
+
+relationInstance depends(P0__berrynet,1,DepAtom__1)
+

@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libsystemc
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libsystemc memberOf Package
+	package hasValue "libsystemc"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "2152"
+	maintainer hasValue "Original-أحمد المحمودي (Ahmed El-Mahmoudy) <aelmahmoudy@users.sourceforge.net>"
+	architecture hasValue "amd64"
+	version hasValue "2.3.3-4build1"
+	fileName hasValue "pool/universe/s/systemc/libsystemc_2.3.3-4build1_amd64.deb"
+	size hasValue "449300"
+	md5sum hasValue "f34252075b5585fbe3481709bca837c5"
+	sha1 hasValue "a63d2bc6fafe12410897bdfe656937cc54b4e1d3"
+	sha256 hasValue "731b9360650fa7ab0599d39650b5f72670e9fc592a8631ba68b7dfef80d8231b"
+	description hasValue "SystemC library"
+	descriptionMd5 hasValue "6ce85d52a129da2cc8933ab680139ed9"
+	homepage hasValue "https://www.accellera.org/downloads/standards/systemc/"
+	depends hasValue "libc6 (>= 2.29), libgcc-s1 (>= 3.0), libstdc++6 (>= 9)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__libsystemc,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgcc-s1"
+	comparison hasValue ">="
+	version hasValue "3.0"
+
+relationInstance depends(P0__libsystemc,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "9"
+
+relationInstance depends(P0__libsystemc,2,DepAtom__2)
+

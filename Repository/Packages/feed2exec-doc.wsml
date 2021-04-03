@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology feed2exec_doc
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__feed2exec_doc memberOf Package
+	package hasValue "feed2exec-doc"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/doc"
+	installedSize hasValue "836"
+	maintainer hasValue "Original-Antoine Beaupré <anarcat@debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.15.0"
+	fileName hasValue "pool/universe/f/feed2exec/feed2exec-doc_0.15.0_all.deb"
+	size hasValue "101384"
+	md5sum hasValue "bca1bd3f196e5f21bbc43757425a40c2"
+	sha1 hasValue "b02512377d0f48e578b2ad820a47bee0095a2ffc"
+	sha256 hasValue "5bcd31bf02c51f271346eebbbbaec4a3978acd5418670771431cff28ce21a57c"
+	descriptionMd5 hasValue "e5ebd6f39fb1e61ec32d7d4fb4739e70"
+	homepage hasValue "https://gitlab.com/anarcat/feed2exec"
+	depends hasValue "libjs-sphinxdoc (>= 1.0), sphinx-rtd-theme-common (>= 0.4.3+dfsg)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libjs-sphinxdoc"
+	comparison hasValue ">="
+	version hasValue "1.0"
+
+relationInstance depends(P0__feed2exec_doc,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "sphinx-rtd-theme-common"
+	comparison hasValue ">="
+	version hasValue "0.4.3+dfsg"
+
+relationInstance depends(P0__feed2exec_doc,1,DepAtom__1)
+

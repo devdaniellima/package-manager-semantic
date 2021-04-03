@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libattr1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libattr1 memberOf Package
+	package hasValue "libattr1"
+	packageSource hasValue Source__S1
+	priority hasValue "required"
+	section hasValue "libs"
+	installedSize hasValue "57"
+	maintainer hasValue "Original-Guillem Jover <guillem@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:2.4.48-5"
+	fileName hasValue "pool/main/a/attr/libattr1_2.4.48-5_amd64.deb"
+	size hasValue "12748"
+	md5sum hasValue "b784a77a6dc1707edbe4a507b9507397"
+	sha1 hasValue "8742103901898f46651820369a0778006c348473"
+	sha256 hasValue "d916bb73d9a160ccaa48d997c823af528cb6b4174c5234c744b40ae5aa85ce98"
+	description hasValue "extended attribute handling - shared library"
+	descriptionMd5 hasValue "d4aef101ff5430158eae72e808000f6c"
+	homepage hasValue "https://savannah.nongnu.org/projects/attr/"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libattr1,0,DepAtom__0)
+

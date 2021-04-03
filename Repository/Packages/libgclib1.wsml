@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libgclib1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libgclib1 memberOf Package
+	package hasValue "libgclib1"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "378"
+	maintainer hasValue "Original-Debian Med Packaging Team <debian-med-packaging@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.11.4-1"
+	fileName hasValue "pool/universe/libg/libgclib/libgclib1_0.11.4-1_amd64.deb"
+	size hasValue "142012"
+	md5sum hasValue "8ae27caf7c1c1aa80cc5bdb6d9431c00"
+	sha1 hasValue "764c39150ea19a40535700514d7e1af3d9ff4c5e"
+	sha256 hasValue "e406f18d6a578cf8b8bf24cac8d51530e776acedb26960ed5e23b21baf33786a"
+	descriptionMd5 hasValue "9c72ef489798045bcaeb2c7757b107f6"
+	homepage hasValue "https://github.com/gpertea/gclib"
+	depends hasValue "libc6 (>= 2.14), libgcc-s1 (>= 3.3.1), libstdc++6 (>= 5)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libgclib1,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgcc-s1"
+	comparison hasValue ">="
+	version hasValue "3.3.1"
+
+relationInstance depends(P0__libgclib1,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "5"
+
+relationInstance depends(P0__libgclib1,2,DepAtom__2)
+

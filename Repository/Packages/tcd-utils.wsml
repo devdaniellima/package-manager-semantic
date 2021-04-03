@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology tcd_utils
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__tcd_utils memberOf Package
+	package hasValue "tcd-utils"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/science"
+	installedSize hasValue "167"
+	maintainer hasValue "Original-Peter S Galbraith <psg@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "20061127-2build1"
+	conflicts hasValue "xtide (<< 2.9.3-1)"
+	fileName hasValue "pool/universe/t/tcd-utils/tcd-utils_20061127-2build1_amd64.deb"
+	size hasValue "49864"
+	md5sum hasValue "54f4526852272643b8f696dc1b568901"
+	sha1 hasValue "225f90be36069d629465022622636ecfe6b29d4d"
+	sha256 hasValue "97350e365005307d92f24e19c03b333b218f06e3bb62a26e377a9e37216d6fab"
+	descriptionMd5 hasValue "5a49814ec2a0c713b74fbaca62edbe91"
+	depends hasValue "libc6 (>= 2.14), libtcd0"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__tcd_utils,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libtcd0"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__tcd_utils,1,DepAtom__1)
+

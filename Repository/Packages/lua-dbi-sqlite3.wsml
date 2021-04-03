@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology lua_dbi_sqlite3
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__lua_dbi_sqlite3 memberOf Package
+	package hasValue "lua-dbi-sqlite3"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/interpreters"
+	installedSize hasValue "96"
+	maintainer hasValue "Original-Enrico Tassi <gareuselesinge@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.7.2-1ubuntu1"
+	provides hasValue "lua5.1-dbi-sqlite3, lua5.2-dbi-sqlite3, lua5.3-dbi-sqlite3"
+	fileName hasValue "pool/universe/l/lua-dbi/lua-dbi-sqlite3_0.7.2-1ubuntu1_amd64.deb"
+	size hasValue "11100"
+	md5sum hasValue "b50132c5742be451a4382a3fba6d6fd3"
+	sha1 hasValue "cf79c20a5cc18126be971dedd484917addafe4db"
+	sha256 hasValue "7e3662adefde5cf8c34e2144d94ce72ef6ac3305d7e1c6a0e143127e1fd498f0"
+	descriptionMd5 hasValue "f52d2bec3476081e5c35e00ccd3bce5d"
+	homepage hasValue "https://github.com/mwild1/luadbi"
+	depends hasValue "lua-dbi-common, libc6 (>= 2.4), libsqlite3-0 (>= 3.5.9)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "lua-dbi-common"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__lua_dbi_sqlite3,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__lua_dbi_sqlite3,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libsqlite3-0"
+	comparison hasValue ">="
+	version hasValue "3.5.9"
+
+relationInstance depends(P0__lua_dbi_sqlite3,2,DepAtom__2)
+

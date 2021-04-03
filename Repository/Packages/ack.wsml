@@ -1,0 +1,63 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ack
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ack memberOf Package
+	package hasValue "ack"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "228"
+	maintainer hasValue "Original-Debian Perl Group <pkg-perl-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "3.3.1-1"
+	replaces hasValue "ack-grep (<= 2.14-5~)"
+	provides hasValue "ack-grep"
+	fileName hasValue "pool/universe/a/ack/ack_3.3.1-1_all.deb"
+	size hasValue "67580"
+	md5sum hasValue "b63ffa781e3039d3ac41c4290196f875"
+	sha1 hasValue "74ea20f7406ef03be53d4d597842172ff0d06f07"
+	sha256 hasValue "c51131619782b61392334f7a9783ed02192f14ad04788487a85cb6974ce22b99"
+	description hasValue "um programa como o grep específico para grandes árvores de código fonte"
+	descriptionMd5 hasValue "e50a48f3af6e02593eb6155b28aaed6e"
+	homepage hasValue "https://beyondgrep.com/"
+	depends hasValue "libfile-next-perl (>= 1.18), perl:any"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libfile-next-perl"
+	comparison hasValue ">="
+	version hasValue "1.18"
+
+relationInstance depends(P0__ack,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "perl:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ack,1,DepAtom__1)
+

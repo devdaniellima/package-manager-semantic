@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology cups_backend_bjnp
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__cups_backend_bjnp memberOf Package
+	package hasValue "cups-backend-bjnp"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/text"
+	installedSize hasValue "77"
+	maintainer hasValue "Original-Debian Printing Team <debian-printing@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.0.3-1"
+	fileName hasValue "pool/universe/c/cups-bjnp/cups-backend-bjnp_2.0.3-1_amd64.deb"
+	size hasValue "26720"
+	md5sum hasValue "4846e3c71ba0637f1c4a2c3cc72a8801"
+	sha1 hasValue "f4d2072fa1fe92d3a2605dec3050e0ee35f08b30"
+	sha256 hasValue "09548aea7ddeb5ccf040cfa8f430784e99db22b28ab00c4f61952c5d26342677"
+	description hasValue "mecanismo de impressora para o protocolo Canon BJNP"
+	descriptionMd5 hasValue "e63d5ccd39878a1a89595ab68571b8dc"
+	homepage hasValue "http://cups-bjnp.sourceforge.net/"
+	depends hasValue "libc6 (>= 2.15), libcups2 (>= 1.4.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__cups_backend_bjnp,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libcups2"
+	comparison hasValue ">="
+	version hasValue "1.4.0"
+
+relationInstance depends(P0__cups_backend_bjnp,1,DepAtom__1)
+

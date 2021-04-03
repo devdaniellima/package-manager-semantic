@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology light
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__light memberOf Package
+	package hasValue "light"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/misc"
+	installedSize hasValue "58"
+	maintainer hasValue "Original-Samuel Henrique <samueloph@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.2.1-3"
+	fileName hasValue "pool/universe/l/light/light_1.2.1-3_amd64.deb"
+	size hasValue "18168"
+	md5sum hasValue "95f288899fc24aaed379571297f18e81"
+	sha1 hasValue "05893be9ee44476e9d6773b47f42f0344900d26f"
+	sha256 hasValue "3779d05e6fc7e0c3313ac664e4a120850df7c1e314f380efd96019915a3dd926"
+	descriptionMd5 hasValue "94cdbe5b9d4697c2c1b631c904fa86d1"
+	homepage hasValue "https://github.com/haikarainen/light"
+	depends hasValue "udev, libc6 (>= 2.7)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "udev"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__light,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__light,1,DepAtom__1)
+

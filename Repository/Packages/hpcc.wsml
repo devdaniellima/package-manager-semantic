@@ -1,0 +1,81 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology hpcc
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__hpcc memberOf Package
+	package hasValue "hpcc"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/science"
+	installedSize hasValue "1277"
+	maintainer hasValue "Original-Debian Science Maintainers <debian-science-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.5.0-2"
+	fileName hasValue "pool/universe/h/hpcc/hpcc_1.5.0-2_amd64.deb"
+	size hasValue "495876"
+	md5sum hasValue "31ec7c49db553528b85568be739a418a"
+	sha1 hasValue "43c2705fa5adbfcae736fea7ae55690862eb0813"
+	sha256 hasValue "4fb2cb645cc348d34f5497d44a37ba0f222786ad49b7ceb8d63662cead40b042"
+	descriptionMd5 hasValue "9ba9f4d0258b754f36a6b86c90697ea9"
+	homepage hasValue "http://icl.cs.utk.edu/hpcc/"
+	depends hasValue "libblas3 | libblas.so.3, libc6 (>= 2.29), libopenmpi3, mpi-default-bin"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libblas3"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__hpcc,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libblas.so.3"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__hpcc,0,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__hpcc,1,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "libopenmpi3"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__hpcc,2,DepAtom__3)
+
+instance DepAtom__4 memberOf DependencyAtom
+	package hasValue "mpi-default-bin"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__hpcc,3,DepAtom__4)
+

@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology hackrf
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__hackrf memberOf Package
+	package hasValue "hackrf"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/libs"
+	installedSize hasValue "131"
+	maintainer hasValue "Original-A. Maitland Bottoms <bottoms@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2018.01.1-2"
+	fileName hasValue "pool/universe/h/hackrf/hackrf_2018.01.1-2_amd64.deb"
+	size hasValue "34728"
+	md5sum hasValue "966d10aed5681dafb68afe7e0ecd4675"
+	sha1 hasValue "93dbd7609d67a836b650846f1c9bd4b5d1ddcdeb"
+	sha256 hasValue "99ae3235311b4bdc17d5ad599cc3aa9acc11937cdccef6ec141c4093e6c5af46"
+	descriptionMd5 hasValue "6066a2daf7b430e5e3fda64b30c83484"
+	homepage hasValue "http://greatscottgadgets.com/hackrf/"
+	depends hasValue "libhackrf0 (= 2018.01.1-2), libc6 (>= 2.27), libfftw3-single3 (>= 3.3.5)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libhackrf0"
+	comparison hasValue "="
+	version hasValue "2018.01.1-2"
+
+relationInstance depends(P0__hackrf,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.27"
+
+relationInstance depends(P0__hackrf,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libfftw3-single3"
+	comparison hasValue ">="
+	version hasValue "3.3.5"
+
+relationInstance depends(P0__hackrf,2,DepAtom__2)
+

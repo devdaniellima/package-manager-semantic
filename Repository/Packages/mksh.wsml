@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology mksh
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__mksh memberOf Package
+	package hasValue "mksh"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/shells"
+	installedSize hasValue "1446"
+	maintainer hasValue "Original-Thorsten Glaser <tg@mirbsd.de>"
+	architecture hasValue "amd64"
+	version hasValue "58-1"
+	fileName hasValue "pool/universe/m/mksh/mksh_58-1_amd64.deb"
+	size hasValue "532168"
+	md5sum hasValue "0d9c08bc01c3afa65cf5ccec22715fa0"
+	sha1 hasValue "113978a75109b69eca30c7f7558d095bdf11dabe"
+	sha256 hasValue "838e31d90a6d38becc2f29d9fad69b5ab065e7e462ef1cbe0c1ba4ba6b2eac61"
+	descriptionMd5 hasValue "4931f730b48566d2590b67efc22e6b63"
+	homepage hasValue "http://mirbsd.de/mksh"
+	depends hasValue "libc6 (>= 2.15)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__mksh,0,DepAtom__0)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology udns_utils
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__udns_utils memberOf Package
+	package hasValue "udns-utils"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "66"
+	maintainer hasValue "Original-Michael Tokarev <mjt@tls.msk.ru>"
+	architecture hasValue "amd64"
+	version hasValue "0.4-1build1"
+	conflicts hasValue "rblcheck"
+	fileName hasValue "pool/universe/u/udns/udns-utils_0.4-1build1_amd64.deb"
+	size hasValue "19616"
+	md5sum hasValue "c035a9a6b980dc7a0f12a4737a81a81d"
+	sha1 hasValue "65895db7d6a5cb76e7c92ce5ddcd3cadb302e131"
+	sha256 hasValue "bddfd72b06fcbf91262c7db180918569cb88f593baffd678a24718448fae64db"
+	descriptionMd5 hasValue "9912125881edd7422f3221331283a418"
+	depends hasValue "libc6 (>= 2.15), libudns0 (>= 0.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__udns_utils,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libudns0"
+	comparison hasValue ">="
+	version hasValue "0.4"
+
+relationInstance depends(P0__udns_utils,1,DepAtom__1)
+

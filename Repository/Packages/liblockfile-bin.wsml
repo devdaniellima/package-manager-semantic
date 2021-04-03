@@ -1,0 +1,55 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology liblockfile_bin
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__liblockfile_bin memberOf Package
+	package hasValue "liblockfile-bin"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "utils"
+	installedSize hasValue "46"
+	maintainer hasValue "Original-Miquel van Smoorenburg <miquels@cistron.nl>"
+	architecture hasValue "amd64"
+	version hasValue "1.16-1.1"
+	replaces hasValue "liblockfile1 (<< 1.09-1)"
+	fileName hasValue "pool/main/libl/liblockfile/liblockfile-bin_1.16-1.1_amd64.deb"
+	size hasValue "11680"
+	md5sum hasValue "9d3e17af91948a723bd9486a40590da1"
+	sha1 hasValue "81d9b620f555ae3220838cc4d1bbfece67b7b5e6"
+	sha256 hasValue "e4339274d66b00054d7e0e34355634634560cf95a877e49fc0cf9b6990194244"
+	description hasValue "binários de suporte para e utilitários cli baseados em liblockfile"
+	descriptionMd5 hasValue "5092b0e0777cd0836ff80770762ad2eb"
+	homepage hasValue "https://github.com/miquels/liblockfile"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__liblockfile_bin,0,DepAtom__0)
+

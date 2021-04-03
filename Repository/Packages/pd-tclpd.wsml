@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology pd_tclpd
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__pd_tclpd memberOf Package
+	package hasValue "pd-tclpd"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/sound"
+	installedSize hasValue "837"
+	maintainer hasValue "Original-Debian Multimedia Maintainers <debian-multimedia@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.3.0-3"
+	fileName hasValue "pool/universe/p/pd-tclpd/pd-tclpd_0.3.0-3_amd64.deb"
+	size hasValue "145568"
+	md5sum hasValue "40a6af89ee394f8516f18e64bb71b903"
+	sha1 hasValue "dec511fee6f8c04643b88a10fb621b9fdaa01b1e"
+	sha256 hasValue "f262a7ccf3aceb6f31db0755273a4680c6d4abcbb834f23f89efe08894ff1850"
+	descriptionMd5 hasValue "d6e160ca6e209bad35291063beddcb88"
+	homepage hasValue "https://download.puredata.info/tclpd"
+	depends hasValue "libc6 (>= 2.14), libtcl8.6 (>= 8.6.0), puredata-core (>= 0.48.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__pd_tclpd,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libtcl8.6"
+	comparison hasValue ">="
+	version hasValue "8.6.0"
+
+relationInstance depends(P0__pd_tclpd,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "puredata-core"
+	comparison hasValue ">="
+	version hasValue "0.48.1"
+
+relationInstance depends(P0__pd_tclpd,2,DepAtom__2)
+

@@ -1,0 +1,63 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology openrazer_driver_dkms
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__openrazer_driver_dkms memberOf Package
+	package hasValue "openrazer-driver-dkms"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/kernel"
+	installedSize hasValue "454"
+	maintainer hasValue "Original-Dylan Aïssi <daissi@debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.5.0+dfsg-1ubuntu2"
+	replaces hasValue "openrazer-kernel-modules-dkms"
+	provides hasValue "openrazer-kernel-modules-dkms"
+	conflicts hasValue "openrazer-kernel-modules-dkms"
+	fileName hasValue "pool/universe/o/openrazer/openrazer-driver-dkms_2.5.0+dfsg-1ubuntu2_all.deb"
+	size hasValue "44232"
+	md5sum hasValue "13d6347783516eaf072720b2f7b8c149"
+	sha1 hasValue "658988f13eae2179a827d741f74c3eb0cac37c4f"
+	sha256 hasValue "1798e8609a82883f16fa66907a021f44fa8e2d4d255f03fbe76471da3f7ff0ab"
+	descriptionMd5 hasValue "7d405851056343f52bb907a59691d54a"
+	homepage hasValue "https://openrazer.github.io/"
+	depends hasValue "dkms (>= 2.1.0.0), udev"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "dkms"
+	comparison hasValue ">="
+	version hasValue "2.1.0.0"
+
+relationInstance depends(P0__openrazer_driver_dkms,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "udev"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__openrazer_driver_dkms,1,DepAtom__1)
+

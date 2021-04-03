@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ganglia_monitor_python
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ganglia_monitor_python memberOf Package
+	package hasValue "ganglia-monitor-python"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "300"
+	maintainer hasValue "Original-Debian Monitoring Maintainers <pkg-monitoring-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "3.6.0-7ubuntu4"
+	fileName hasValue "pool/universe/g/ganglia/ganglia-monitor-python_3.6.0-7ubuntu4_all.deb"
+	size hasValue "40776"
+	md5sum hasValue "0014d63e1d553f9e839eae4d568b4a79"
+	sha1 hasValue "4042de757702e7fbdc75c84ef493fbd0daf56112"
+	sha256 hasValue "9f6f11dafe9ef2482f0800f93529ec5bac5e3cbcdca47e1f399860e611ecc4b1"
+	descriptionMd5 hasValue "402d0c4be48aee75899ac9782f6b5283"
+	homepage hasValue "http://ganglia.info/"
+	depends hasValue "python2, ganglia-monitor (>= 3.6.0-7ubuntu4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python2"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ganglia_monitor_python,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "ganglia-monitor"
+	comparison hasValue ">="
+	version hasValue "3.6.0-7ubuntu4"
+
+relationInstance depends(P0__ganglia_monitor_python,1,DepAtom__1)
+

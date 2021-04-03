@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology httrack
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__httrack memberOf Package
+	package hasValue "httrack"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/web"
+	installedSize hasValue "66"
+	maintainer hasValue "Original-Xavier Roche <roche@httrack.com>"
+	architecture hasValue "amd64"
+	version hasValue "3.49.2-1build1"
+	fileName hasValue "pool/universe/h/httrack/httrack_3.49.2-1build1_amd64.deb"
+	size hasValue "17780"
+	md5sum hasValue "ea38cded69b5a13ac102629be4cf5763"
+	sha1 hasValue "d07c237e030da4315f8e6dfcd0c67a4e7c1cd78a"
+	sha256 hasValue "f872d31448c8e1049267d0ef8db1aa83d46669ad883c32ec41d9082bb01afafb"
+	descriptionMd5 hasValue "b81551baf54e5a0e8679bd1840c13912"
+	homepage hasValue "http://www.httrack.com"
+	depends hasValue "libc6 (>= 2.14), libhttrack2 (>= 3.49.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__httrack,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libhttrack2"
+	comparison hasValue ">="
+	version hasValue "3.49.2"
+
+relationInstance depends(P0__httrack,1,DepAtom__1)
+

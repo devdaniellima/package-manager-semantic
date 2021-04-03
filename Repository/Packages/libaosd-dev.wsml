@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libaosd_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libaosd_dev memberOf Package
+	package hasValue "libaosd-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "23"
+	maintainer hasValue "Original-Eugene Paskevich <eugene@raptor.kiev.ua>"
+	architecture hasValue "amd64"
+	version hasValue "0.2.7-1.1ubuntu2"
+	fileName hasValue "pool/universe/liba/libaosd/libaosd-dev_0.2.7-1.1ubuntu2_amd64.deb"
+	size hasValue "3992"
+	md5sum hasValue "5ac45df0c59cd6e377949143e85c969f"
+	sha1 hasValue "1d7c42383d40423fde0f2dc5aeac4a531808bb19"
+	sha256 hasValue "16de8091f525df52ef18a6b2ca11386a9d5ed7c480c6944fd13291141fb292f7"
+	descriptionMd5 hasValue "c88decf3cb8538d4fef2fb1b1d09d999"
+	homepage hasValue "http://www.atheme.org/project/libaosd"
+	depends hasValue "libaosd2 (= 0.2.7-1.1ubuntu2), libaosd-text2 (= 0.2.7-1.1ubuntu2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libaosd2"
+	comparison hasValue "="
+	version hasValue "0.2.7-1.1ubuntu2"
+
+relationInstance depends(P0__libaosd_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libaosd-text2"
+	comparison hasValue "="
+	version hasValue "0.2.7-1.1ubuntu2"
+
+relationInstance depends(P0__libaosd_dev,1,DepAtom__1)
+

@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology mspdebug
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__mspdebug memberOf Package
+	package hasValue "mspdebug"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/electronics"
+	installedSize hasValue "402"
+	maintainer hasValue "Original-Luca Bruno <lucab@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.22-2build2"
+	fileName hasValue "pool/universe/m/mspdebug/mspdebug_0.22-2build2_amd64.deb"
+	size hasValue "123308"
+	md5sum hasValue "cc3118e620b3043857290610dcc3095a"
+	sha1 hasValue "7a3cb57c45c6ede1bc498ff034ae678989c9cf72"
+	sha256 hasValue "ce0ca97f6bb4e4e95c71f3f49f11ea46d125de93cc933ba6aa79f206cf884a17"
+	descriptionMd5 hasValue "41d7dafcbd0b3d2419f5b15784729e75"
+	homepage hasValue "http://mspdebug.sourceforge.net/"
+	depends hasValue "libc6 (>= 2.15), libreadline8 (>= 6.0), libusb-0.1-4 (>= 2:0.1.12)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__mspdebug,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libreadline8"
+	comparison hasValue ">="
+	version hasValue "6.0"
+
+relationInstance depends(P0__mspdebug,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libusb-0.1-4"
+	comparison hasValue ">="
+	version hasValue "2:0.1.12"
+
+relationInstance depends(P0__mspdebug,2,DepAtom__2)
+

@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gostsum
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gostsum memberOf Package
+	package hasValue "gostsum"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/utils"
+	installedSize hasValue "83"
+	maintainer hasValue "Original-Wartan Hachaturow <wart@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.1.0.3-1"
+	fileName hasValue "pool/universe/libe/libengine-gost-openssl1.1/gostsum_1.1.0.3-1_amd64.deb"
+	size hasValue "36536"
+	md5sum hasValue "af089bace43f038c98a877d94fee89ac"
+	sha1 hasValue "e3197419a9ed109b320da814ae08457023429dbd"
+	sha256 hasValue "db4947024a7a81fa1e1f64485dc906b0eb9ee8e43c65eb9e9d60d1bed6159c7e"
+	descriptionMd5 hasValue "926ca856d46a216a8ca0c7a4b45ea044"
+	homepage hasValue "https://github.com/gost-engine/engine"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__gostsum,0,DepAtom__0)
+

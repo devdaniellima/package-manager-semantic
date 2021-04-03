@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology fonts_lato
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__fonts_lato memberOf Package
+	package hasValue "fonts-lato"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "fonts"
+	installedSize hasValue "11749"
+	maintainer hasValue "Original-Debian Fonts Task Force <pkg-fonts-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.0-2"
+	fileName hasValue "pool/main/f/fonts-lato/fonts-lato_2.0-2_all.deb"
+	size hasValue "2697750"
+	md5sum hasValue "3162a6a22d00d190b543c460e3850556"
+	sha1 hasValue "2937842b901cf2ddacf60c7080c4ef0299625ddd"
+	sha256 hasValue "e9da9e55366c07b51e7ac8f735b24eb36ea317f9380d843ccbc7b3f8345a0ec3"
+	descriptionMd5 hasValue "b1c447ffc27e6c7ed51926b926806b1f"
+	homepage hasValue "http://www.latofonts.com"
+	depends hasValue "Pre-dpkg (>= 1.15.6~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "Pre-dpkg"
+	comparison hasValue ">="
+	version hasValue "1.15.6~"
+
+relationInstance depends(P0__fonts_lato,0,DepAtom__0)
+

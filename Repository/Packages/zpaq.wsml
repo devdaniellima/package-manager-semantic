@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology zpaq
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__zpaq memberOf Package
+	package hasValue "zpaq"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "399"
+	maintainer hasValue "Original-Stephen Kitt <skitt@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "7.15-1build1"
+	fileName hasValue "pool/universe/z/zpaq/zpaq_7.15-1build1_amd64.deb"
+	size hasValue "157148"
+	md5sum hasValue "cefaae42dacced350fab3a8923897c8e"
+	sha1 hasValue "aebb74b60283f5372f2a3624531179d3bf835468"
+	sha256 hasValue "020c24ef5310fbae0436fb6479c0d91d72632c405943bccc58b32026d87f0a9d"
+	descriptionMd5 hasValue "ccade89128e16be0f5fc0921301c091c"
+	homepage hasValue "http://mattmahoney.net/dc/zpaq.html"
+	depends hasValue "libc6 (>= 2.14), libgcc-s1 (>= 3.0), libstdc++6 (>= 5.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__zpaq,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgcc-s1"
+	comparison hasValue ">="
+	version hasValue "3.0"
+
+relationInstance depends(P0__zpaq,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "5.2"
+
+relationInstance depends(P0__zpaq,2,DepAtom__2)
+

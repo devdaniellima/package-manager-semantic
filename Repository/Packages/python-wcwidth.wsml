@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python_wcwidth
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python_wcwidth memberOf Package
+	package hasValue "python-wcwidth"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "78"
+	maintainer hasValue "Original-Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.1.8+dfsg1-3"
+	fileName hasValue "pool/universe/w/wcwidth/python-wcwidth_0.1.8+dfsg1-3_all.deb"
+	size hasValue "17272"
+	md5sum hasValue "9e44cd059de2984d830d25a0dd159f18"
+	sha1 hasValue "e710a7f073046ff58c1db53775d3a706d3abacb4"
+	sha256 hasValue "c4a1102be43685852bec29f1e193fc0391db8afe6e2bf885dafd1d37e26755a3"
+	descriptionMd5 hasValue "7dc77fdedc08d5f3681df263fe0be464"
+	homepage hasValue "https://pypi.python.org/pypi/wcwidth"
+	depends hasValue "python2:any (<< 2.8), python2:any (>= 2.7~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue "<<"
+	version hasValue "2.8"
+
+relationInstance depends(P0__python_wcwidth,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue ">="
+	version hasValue "2.7~"
+
+relationInstance depends(P0__python_wcwidth,1,DepAtom__1)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python_linecache2
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python_linecache2 memberOf Package
+	package hasValue "python-linecache2"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "65"
+	maintainer hasValue "Original-PKG OpenStack <openstack-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.0.0-4ubuntu1"
+	fileName hasValue "pool/universe/p/python-linecache2/python-linecache2_1.0.0-4ubuntu1_all.deb"
+	size hasValue "13020"
+	md5sum hasValue "fa301479142697baa5e022fbc5b99db7"
+	sha1 hasValue "d227f29da9b5511f8097a96e34eb0e4f6bd0f8a3"
+	sha256 hasValue "2f27f162da9684cdf80bdcea0868018e1c476641153ab29e718f0396b81cf09a"
+	descriptionMd5 hasValue "0560a473fa04b36e63f6008ce27aa070"
+	homepage hasValue "https://github.com/testing-cabal/linecache2"
+	depends hasValue "python2:any (<< 2.8), python2:any (>= 2.7~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue "<<"
+	version hasValue "2.8"
+
+relationInstance depends(P0__python_linecache2,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue ">="
+	version hasValue "2.7~"
+
+relationInstance depends(P0__python_linecache2,1,DepAtom__1)
+

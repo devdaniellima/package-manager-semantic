@@ -1,0 +1,69 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology racket
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__racket memberOf Package
+	package hasValue "racket"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/lisp"
+	installedSize hasValue "14191"
+	maintainer hasValue "Original-David Bremner <bremner@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "7.2+dfsg1-2ubuntu3"
+	replaces hasValue "plt-scheme (<< 5.0~)"
+	provides hasValue "plt-scheme"
+	fileName hasValue "pool/universe/r/racket/racket_7.2+dfsg1-2ubuntu3_amd64.deb"
+	size hasValue "1937152"
+	md5sum hasValue "4be0d5b3f8b96027333b93779cc1be04"
+	sha1 hasValue "92cca52d641c1f7c61ca25d0f6a8239427a08eda"
+	sha256 hasValue "f88d0b604becf59db68dc400e4ff5ba1e544e6ce635201d489e662ec827b21cd"
+	descriptionMd5 hasValue "eb37b392a59f619c0e5aba669c36e8e2"
+	homepage hasValue "https://www.racket-lang.org/"
+	depends hasValue "libc6 (>= 2.29), libffi7 (>= 3.3~20180313), racket-common (= 7.2+dfsg1-2ubuntu3)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__racket,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libffi7"
+	comparison hasValue ">="
+	version hasValue "3.3~20180313"
+
+relationInstance depends(P0__racket,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "racket-common"
+	comparison hasValue "="
+	version hasValue "7.2+dfsg1-2ubuntu3"
+
+relationInstance depends(P0__racket,2,DepAtom__2)
+

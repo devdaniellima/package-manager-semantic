@@ -1,0 +1,81 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology nemo_nextcloud
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__nemo_nextcloud memberOf Package
+	package hasValue "nemo-nextcloud"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "43"
+	maintainer hasValue "Original-ownCloud for Debian maintainers <pkg-owncloud-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.6.2-1build1"
+	fileName hasValue "pool/universe/n/nextcloud-desktop/nemo-nextcloud_2.6.2-1build1_all.deb"
+	size hasValue "10452"
+	md5sum hasValue "0cf2d2987e87ba39541ab747f4664220"
+	sha1 hasValue "dee5d06a9a269d59f4a9c43de9c74b93e28dbc25"
+	sha256 hasValue "4e9845fba27220af7967de6f3eb8c8041382d7ea533ec489e5d28bb5cfa04ef4"
+	descriptionMd5 hasValue "f69ec7c0f630d606911c2d8ea7e106c3"
+	homepage hasValue "https://nextcloud.com/install/#install-clients"
+	depends hasValue "nemo, nemo-python, nextcloud-desktop (<< 2.6.2-1build1.1~), nextcloud-desktop (>= 2.6.2-1build1), nextcloud-desktop-common"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "nemo"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__nemo_nextcloud,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "nemo-python"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__nemo_nextcloud,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "nextcloud-desktop"
+	comparison hasValue "<<"
+	version hasValue "2.6.2-1build1.1~"
+
+relationInstance depends(P0__nemo_nextcloud,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "nextcloud-desktop"
+	comparison hasValue ">="
+	version hasValue "2.6.2-1build1"
+
+relationInstance depends(P0__nemo_nextcloud,3,DepAtom__3)
+
+instance DepAtom__4 memberOf DependencyAtom
+	package hasValue "nextcloud-desktop-common"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__nemo_nextcloud,4,DepAtom__4)
+

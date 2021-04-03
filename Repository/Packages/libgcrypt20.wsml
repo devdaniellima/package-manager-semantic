@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libgcrypt20
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libgcrypt20 memberOf Package
+	package hasValue "libgcrypt20"
+	packageSource hasValue Source__S1
+	priority hasValue "required"
+	section hasValue "libs"
+	installedSize hasValue "1224"
+	maintainer hasValue "Original-Debian GnuTLS Maintainers <pkg-gnutls-maint@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.8.5-5ubuntu1"
+	fileName hasValue "pool/main/libg/libgcrypt20/libgcrypt20_1.8.5-5ubuntu1_amd64.deb"
+	size hasValue "419496"
+	md5sum hasValue "3a54e64e103505718f8257642625dd53"
+	sha1 hasValue "7ccf51fb920820e5799c51096448c9510406397c"
+	sha256 hasValue "72d2eb218de9e34a05f487b36be3c4618848cf60dac9243726f1e0243494bac2"
+	description hasValue "biblioteca criptográfica LGPL - biblioteca de tempo de execução"
+	descriptionMd5 hasValue "e8ab63c6be1944ea9efde5248663f053"
+	homepage hasValue "https://directory.fsf.org/project/libgcrypt/"
+	depends hasValue "libc6 (>= 2.15), libgpg-error0 (>= 1.25)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__libgcrypt20,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgpg-error0"
+	comparison hasValue ">="
+	version hasValue "1.25"
+
+relationInstance depends(P0__libgcrypt20,1,DepAtom__1)
+

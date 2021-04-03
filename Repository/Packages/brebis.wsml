@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology brebis
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__brebis memberOf Package
+	package hasValue "brebis"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "180"
+	maintainer hasValue "Original-Carl Chenet <chaica@debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.10-1ubuntu1"
+	fileName hasValue "pool/universe/b/brebis/brebis_0.10-1ubuntu1_all.deb"
+	size hasValue "21232"
+	md5sum hasValue "9762a9b2b8cfbfb1d86ce83b28c0a87f"
+	sha1 hasValue "79136fe591288b00b9c5329e58dc317177f9a6b8"
+	sha256 hasValue "eb4c16ac88eef4bbb5b2d20a72fc5e0d7a71a180b8cd613b21bd056552e73c7f"
+	descriptionMd5 hasValue "d4b53ea68a0cf9d4d6fa8caa7fc29ef4"
+	homepage hasValue "http://www.brebisproject.org/"
+	depends hasValue "python3:any (>= 3.4~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ">="
+	version hasValue "3.4~"
+
+relationInstance depends(P0__brebis,0,DepAtom__0)
+

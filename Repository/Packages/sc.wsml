@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology sc
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__sc memberOf Package
+	package hasValue "sc"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/math"
+	installedSize hasValue "446"
+	maintainer hasValue "Original-Adam Majer <adamm@zombino.com>"
+	architecture hasValue "amd64"
+	version hasValue "7.16-4ubuntu3"
+	fileName hasValue "pool/universe/s/sc/sc_7.16-4ubuntu3_amd64.deb"
+	size hasValue "174392"
+	md5sum hasValue "b9601ad68238a6e2971a863ea5da9915"
+	sha1 hasValue "b6dc541662233e27ea7eae99dca963d4a9f4a1aa"
+	sha256 hasValue "6545e5223b5117fc4b302560c50e7b7dea1e877dda6554f07d62e43b46d95afe"
+	description hasValue "Planilha de cálculo baseada em texto com atalhos estilo VI."
+	descriptionMd5 hasValue "0925a794779dba23662eeb41fb663c7e"
+	depends hasValue "libc6 (>= 2.14), libncurses6 (>= 6), libtinfo6 (>= 6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__sc,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libncurses6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__sc,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libtinfo6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__sc,2,DepAtom__2)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology uwsgi_plugin_apparmor
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__uwsgi_plugin_apparmor memberOf Package
+	package hasValue "uwsgi-plugin-apparmor"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "30"
+	maintainer hasValue "Original-Debian OpenStack <team+openstack@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.0.0+git.2014.09.15.7d6d7bd7eb-2"
+	fileName hasValue "pool/universe/u/uwsgi-apparmor/uwsgi-plugin-apparmor_0.0.0+git.2014.09.15.7d6d7bd7eb-2_amd64.deb"
+	size hasValue "5264"
+	md5sum hasValue "a99b16fd0a0df8cc1ba87de1ac0f6c1c"
+	sha1 hasValue "15275a4403645b8c45adba1d4871e71d264323c9"
+	sha256 hasValue "5499f96fc433d5f523298d050bda55f926d1c61b423c34b72e3208888bf8e71f"
+	descriptionMd5 hasValue "f7b78eafdf58659e8158c36b1e45edd9"
+	homepage hasValue "https://github.com/unbit/uwsgi-apparmor"
+	depends hasValue "libapparmor1 (>= 2.6~devel), libc6 (>= 2.2.5)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libapparmor1"
+	comparison hasValue ">="
+	version hasValue "2.6~devel"
+
+relationInstance depends(P0__uwsgi_plugin_apparmor,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.2.5"
+
+relationInstance depends(P0__uwsgi_plugin_apparmor,1,DepAtom__1)
+

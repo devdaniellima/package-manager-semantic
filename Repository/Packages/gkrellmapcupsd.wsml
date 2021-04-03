@@ -1,0 +1,59 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gkrellmapcupsd
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gkrellmapcupsd memberOf Package
+	package hasValue "gkrellmapcupsd"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/x11"
+	installedSize hasValue "31"
+	maintainer hasValue "Original-Greg Schenzel <inittab@netizenweb.com>"
+	architecture hasValue "amd64"
+	version hasValue "0.02ubuntu1"
+	fileName hasValue "pool/universe/g/gkrellmapcupsd/gkrellmapcupsd_0.02ubuntu1_amd64.deb"
+	size hasValue "6848"
+	md5sum hasValue "4545e0c0c44ab478407cae49fc4b15a5"
+	sha1 hasValue "418d7a54352d29a27281221aefd5add021b188de"
+	sha256 hasValue "1dfd9bd60433370fdf7cf0dda1c9c4f430f188fbaf23b7f6495e33510c35979e"
+	descriptionMd5 hasValue "603c04fa3fa42b8c1f5e386821cd82c1"
+	depends hasValue "libc6 (>= 2.7), gkrellm (>= 2.1.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__gkrellmapcupsd,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "gkrellm"
+	comparison hasValue ">="
+	version hasValue "2.1.4"
+
+relationInstance depends(P0__gkrellmapcupsd,1,DepAtom__1)
+

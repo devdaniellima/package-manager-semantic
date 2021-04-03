@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology whitedb
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__whitedb memberOf Package
+	package hasValue "whitedb"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/database"
+	installedSize hasValue "34"
+	maintainer hasValue "Original-Laszlo Boszormenyi (GCS) <gcs@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.7.3-4"
+	fileName hasValue "pool/universe/w/whitedb/whitedb_0.7.3-4_amd64.deb"
+	size hasValue "10624"
+	md5sum hasValue "ffc303029d635adf21f748e74aaf5691"
+	sha1 hasValue "d9a0ee9581687f6a2e24cca4b9adec84b6754c08"
+	sha256 hasValue "f4de2c3ba28f975d2a9d696b1227455e39e766107741838e46c96e0a1d9f96bd"
+	description hasValue "lightweight NoSQL database library"
+	descriptionMd5 hasValue "a3ea2cffc15739e01083bcebd3a2cf09"
+	homepage hasValue "http://whitedb.org/"
+	depends hasValue "libc6 (>= 2.7), libwgdb0 (= 0.7.3-4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__whitedb,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libwgdb0"
+	comparison hasValue "="
+	version hasValue "0.7.3-4"
+
+relationInstance depends(P0__whitedb,1,DepAtom__1)
+

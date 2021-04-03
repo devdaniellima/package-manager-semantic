@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libtspi1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libtspi1 memberOf Package
+	package hasValue "libtspi1"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "474"
+	maintainer hasValue "Original-Pierre Chifflier <pollux@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.3.14+fixed1-1build1"
+	fileName hasValue "pool/universe/t/trousers/libtspi1_0.3.14+fixed1-1build1_amd64.deb"
+	size hasValue "145336"
+	md5sum hasValue "28dd635f4f2097ad82818ce013dbdce6"
+	sha1 hasValue "3d9edd6decd0951c635d6cf58f6603eadf215dff"
+	sha256 hasValue "980c7a8a657d8ae4d1fcc2a8e11e12ad692274ee70f2052bde926e7c58405cbe"
+	descriptionMd5 hasValue "b46c696c49355b278d5160ca11e77907"
+	homepage hasValue "http://trousers.sourceforge.net/"
+	depends hasValue "libc6 (>= 2.14), libssl1.1 (>= 1.1.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libtspi1,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libssl1.1"
+	comparison hasValue ">="
+	version hasValue "1.1.0"
+
+relationInstance depends(P0__libtspi1,1,DepAtom__1)
+

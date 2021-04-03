@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology xml_core
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__xml_core memberOf Package
+	package hasValue "xml-core"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "text"
+	installedSize hasValue "118"
+	maintainer hasValue "Original-Debian XML-SGML group <debian-sgml@lists.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.18+nmu1"
+	fileName hasValue "pool/main/x/xml-core/xml-core_0.18+nmu1_all.deb"
+	size hasValue "21592"
+	md5sum hasValue "002ff381979994c4405c8c90f46f3876"
+	sha1 hasValue "a73519778e4fafbc6c28213b8d717d2fd8fe1ca6"
+	sha256 hasValue "ca2d6758bdd3d9bb789b9be48838930bd6be130d524fac4133d8e9e60a39f4e8"
+	description hasValue "infraestrutura XML e suporte a arquivos de catálogo XML"
+	descriptionMd5 hasValue "304140a15687273ea24563dfcde030d3"
+	depends hasValue "sed (>= 4.1.2-8), sgml-base (>= 1.28)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "sed"
+	comparison hasValue ">="
+	version hasValue "4.1.2-8"
+
+relationInstance depends(P0__xml_core,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "sgml-base"
+	comparison hasValue ">="
+	version hasValue "1.28"
+
+relationInstance depends(P0__xml_core,1,DepAtom__1)
+

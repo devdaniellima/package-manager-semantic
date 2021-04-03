@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology lib3ds_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__lib3ds_dev memberOf Package
+	package hasValue "lib3ds-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "126"
+	maintainer hasValue "Original-Debian Science Maintainers <debian-science-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.3.0-9"
+	conflicts hasValue "lib3ds-1.0-0"
+	fileName hasValue "pool/universe/lib3/lib3ds/lib3ds-dev_1.3.0-9_amd64.deb"
+	size hasValue "27272"
+	md5sum hasValue "cacd4ad96f0821d73ee364941cfb7620"
+	sha1 hasValue "a3948909d818377f77264cb46017e2a9c59e5748"
+	sha256 hasValue "b97e900ab8b01cbc6df9d9c335189efe541c990933c52e89200a0de8ca167a71"
+	descriptionMd5 hasValue "51afadd83f7ba8b9bb47b4051f98d1a3"
+	homepage hasValue "http://www.lib3ds.org/"
+	depends hasValue "lib3ds-1-3 (= 1.3.0-9), libc6 (>= 2.3.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "lib3ds-1-3"
+	comparison hasValue "="
+	version hasValue "1.3.0-9"
+
+relationInstance depends(P0__lib3ds_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.3.4"
+
+relationInstance depends(P0__lib3ds_dev,1,DepAtom__1)
+

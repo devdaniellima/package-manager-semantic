@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology fortunes_ubuntu_server
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__fortunes_ubuntu_server memberOf Package
+	package hasValue "fortunes-ubuntu-server"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/misc"
+	installedSize hasValue "105"
+	maintainer hasValue "Dave Walker (Daviey) <DaveWalker@ubuntu.com>"
+	architecture hasValue "all"
+	version hasValue "0.5"
+	provides hasValue "fortune-cookie-db"
+	fileName hasValue "pool/universe/f/fortunes-ubuntu-server/fortunes-ubuntu-server_0.5_all.deb"
+	size hasValue "9202"
+	md5sum hasValue "ae9f92adc595d532a69046eb620efd64"
+	sha1 hasValue "05f8275ff6ff5a260b372321d5403c7972732a5c"
+	sha256 hasValue "9d6eeca52e30ceb4cc5ccb61cb2bd9c792b0cb35a0f08e6bbc3b7347a025ead1"
+	descriptionMd5 hasValue "fae705f84cb83d270c1adffe1b64ec16"
+	homepage hasValue "https://wiki.ubuntu.com/server-tips"
+	depends hasValue "fortune-mod"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "fortune-mod"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__fortunes_ubuntu_server,0,DepAtom__0)
+

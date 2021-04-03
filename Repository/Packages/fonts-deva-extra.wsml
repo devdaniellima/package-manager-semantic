@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology fonts_deva_extra
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__fonts_deva_extra memberOf Package
+	package hasValue "fonts-deva-extra"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "fonts"
+	installedSize hasValue "3310"
+	maintainer hasValue "Original-Debian Fonts Task Force <debian-fonts@lists.debian.org>"
+	architecture hasValue "all"
+	version hasValue "3.0-5"
+	replaces hasValue "ttf-devanagari-fonts"
+	fileName hasValue "pool/main/f/fonts-deva-extra/fonts-deva-extra_3.0-5_all.deb"
+	size hasValue "576924"
+	md5sum hasValue "84125a3ddf74cb177def5209245d021d"
+	sha1 hasValue "50c5897417b2fb19059370b31ad4cbb05744ab51"
+	sha256 hasValue "1bac75f0f0331ef0d88ada0217bf92ee281de64fecbd2058ff121e7128d2d01d"
+	descriptionMd5 hasValue "4b61b4c81feb347478481b99e7d02740"
+	depends hasValue "Pre-dpkg (>= 1.15.6~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "Pre-dpkg"
+	comparison hasValue ">="
+	version hasValue "1.15.6~"
+
+relationInstance depends(P0__fonts_deva_extra,0,DepAtom__0)
+

@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libhamlib2_tcl
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libhamlib2_tcl memberOf Package
+	package hasValue "libhamlib2-tcl"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/interpreters"
+	installedSize hasValue "801"
+	maintainer hasValue "Original-Debian Hamradio Maintainers <debian-hams@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.3-10build1"
+	fileName hasValue "pool/universe/h/hamlib/libhamlib2-tcl_3.3-10build1_amd64.deb"
+	size hasValue "114552"
+	md5sum hasValue "3886ebb702515b56fae681ad1035cfc6"
+	sha1 hasValue "d497d3ab47d45be9de2648684663ae5798f4be60"
+	sha256 hasValue "661945434a983faa16663520729a74e4a81dad6f58956899d8f00828a967a5fe"
+	descriptionMd5 hasValue "595d92ac5ae4d3a0a280913cce6611b7"
+	homepage hasValue "https://sourceforge.net/projects/hamlib/"
+	depends hasValue "libc6 (>= 2.14), libhamlib2 (>= 3.3), libtcl8.6 (>= 8.6.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libhamlib2_tcl,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libhamlib2"
+	comparison hasValue ">="
+	version hasValue "3.3"
+
+relationInstance depends(P0__libhamlib2_tcl,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libtcl8.6"
+	comparison hasValue ">="
+	version hasValue "8.6.0"
+
+relationInstance depends(P0__libhamlib2_tcl,2,DepAtom__2)
+

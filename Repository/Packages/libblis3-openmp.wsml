@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libblis3_openmp
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libblis3_openmp memberOf Package
+	package hasValue "libblis3-openmp"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "29494"
+	maintainer hasValue "Original-Debian Science Maintainers <debian-science-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.6.1-2"
+	replaces hasValue "libblis2-openmp"
+	provides hasValue "libblas.so.3, libblis.so.2"
+	fileName hasValue "pool/universe/b/blis/libblis3-openmp_0.6.1-2_amd64.deb"
+	size hasValue "5620400"
+	md5sum hasValue "e3b4560bf1ea2a90fab10e36843553ba"
+	sha1 hasValue "ed701beb4b8984d8fca0fd56ad7303be24139512"
+	sha256 hasValue "960f9c2cbf13c074ce6e9e8fb52f60a29639c78a5b159f4e827c497278be76e9"
+	descriptionMd5 hasValue "6bec7e7404106d99b982d34cb6230cae"
+	homepage hasValue "https://github.com/flame/blis"
+	depends hasValue "libc6 (>= 2.29), libgomp1 (>= 4.9)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__libblis3_openmp,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgomp1"
+	comparison hasValue ">="
+	version hasValue "4.9"
+
+relationInstance depends(P0__libblis3_openmp,1,DepAtom__1)
+

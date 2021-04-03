@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology clamassassin
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__clamassassin memberOf Package
+	package hasValue "clamassassin"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "84"
+	maintainer hasValue "Original-Robert S. Edmonds <edmonds@debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.2.4-1"
+	fileName hasValue "pool/universe/c/clamassassin/clamassassin_1.2.4-1_all.deb"
+	size hasValue "14644"
+	md5sum hasValue "a36d55ae3b91db04ab030f5958cd4a97"
+	sha1 hasValue "7d9d05914bfecf7ed501a2854ec6f91c9e107038"
+	sha256 hasValue "40901a682c55c0552dac5b47e1e23026671429424431c645fdb8bf7e2bdba40a"
+	description hasValue "invólucro de filtro de vírus de e-mail para o ClamAV"
+	descriptionMd5 hasValue "b12e365364402b946b1ca5b4910b7896"
+	depends hasValue "clamav, procmail"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "clamav"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__clamassassin,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "procmail"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__clamassassin,1,DepAtom__1)
+

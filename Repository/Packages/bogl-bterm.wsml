@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology bogl_bterm
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__bogl_bterm memberOf Package
+	package hasValue "bogl-bterm"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "utils"
+	installedSize hasValue "76"
+	maintainer hasValue "Original-Samuel Thibault <sthibault@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.1.18-13ubuntu2"
+	fileName hasValue "pool/main/b/bogl/bogl-bterm_0.1.18-13ubuntu2_amd64.deb"
+	size hasValue "25680"
+	md5sum hasValue "1bc696e08945651c430f1b02d8a79126"
+	sha1 hasValue "c38ed366c6f72e0fe1d06e6b849fefdfa05f9195"
+	sha256 hasValue "9491c4a6dea0e0b11b9dcc84d2c5777575f403a1bd8a5af5193faf19e1f4ec72"
+	description hasValue "Biblioteca gráfica pessoal do Ben - terminal gráfico"
+	descriptionMd5 hasValue "fe97701510fdc5e5e434e93cc1a3672c"
+	depends hasValue "libc6 (>= 2.15), ncurses-term (>= 5.9-7)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__bogl_bterm,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "ncurses-term"
+	comparison hasValue ">="
+	version hasValue "5.9-7"
+
+relationInstance depends(P0__bogl_bterm,1,DepAtom__1)
+

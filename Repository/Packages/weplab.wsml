@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology weplab
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__weplab memberOf Package
+	package hasValue "weplab"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "82"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.1.5-4"
+	fileName hasValue "pool/universe/w/weplab/weplab_0.1.5-4_amd64.deb"
+	size hasValue "39540"
+	md5sum hasValue "a67c95497e099ea3e4da506e46448cf2"
+	sha1 hasValue "60ea11492ae35bf8e30fa4b75fa2e4aad721d1be"
+	sha256 hasValue "9232d22c90b7434ce1cc58a3ade81d37540b37c9957e0ce94fc52b2aa8e7b7bc"
+	descriptionMd5 hasValue "a9ae6b406e6fb94076b4e46727175f82"
+	homepage hasValue "http://weplab.sf.net"
+	depends hasValue "libc6 (>= 2.14), libpcap0.8 (>= 0.9.8)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__weplab,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libpcap0.8"
+	comparison hasValue ">="
+	version hasValue "0.9.8"
+
+relationInstance depends(P0__weplab,1,DepAtom__1)
+

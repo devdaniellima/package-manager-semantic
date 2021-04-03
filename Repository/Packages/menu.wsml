@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology menu
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__menu memberOf Package
+	package hasValue "menu"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "1478"
+	maintainer hasValue "Original-Bill Allombert <ballombe@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.1.47ubuntu4"
+	fileName hasValue "pool/universe/m/menu/menu_2.1.47ubuntu4_amd64.deb"
+	size hasValue "354004"
+	md5sum hasValue "9030d7e08db802843c4ba3747feaa322"
+	sha1 hasValue "3e4435c6c6f3ec2d0cbdb4ff25e3c338f1ddda4b"
+	sha256 hasValue "165051288a4109aa3b69718683b0ff66123d6361df5fd0997075102aba3a8d20"
+	description hasValue "gera menus de programas para todas as aplicações sensíveis a menu"
+	descriptionMd5 hasValue "0145fb4173b2e75d0c60cc61c6089403"
+	depends hasValue "libc6 (>= 2.14), libgcc-s1 (>= 3.0), libstdc++6 (>= 5.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__menu,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgcc-s1"
+	comparison hasValue ">="
+	version hasValue "3.0"
+
+relationInstance depends(P0__menu,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "5.2"
+
+relationInstance depends(P0__menu,2,DepAtom__2)
+

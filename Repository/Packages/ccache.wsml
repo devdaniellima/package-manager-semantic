@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ccache
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ccache memberOf Package
+	package hasValue "ccache"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "devel"
+	installedSize hasValue "360"
+	maintainer hasValue "Original-Joel Rosdahl <joel@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.7.7-1"
+	fileName hasValue "pool/main/c/ccache/ccache_3.7.7-1_amd64.deb"
+	size hasValue "120680"
+	md5sum hasValue "ac04be88a0cc5d3773ed282c227e31b7"
+	sha1 hasValue "809a070e83f839a8f8c61f0227576cb774a04594"
+	sha256 hasValue "109c95095a25888a9c33358a210b91c01ef6b1bb38aacf88bfb477d0fcef54bc"
+	description hasValue "cache de compilador para recompilação rápida de código C/C++"
+	descriptionMd5 hasValue "25eb84ff8138d0e37480a4434b1571e5"
+	homepage hasValue "https://ccache.dev"
+	depends hasValue "libc6 (>= 2.14), zlib1g (>= 1:1.1.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__ccache,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "zlib1g"
+	comparison hasValue ">="
+	version hasValue "1:1.1.4"
+
+relationInstance depends(P0__ccache,1,DepAtom__1)
+

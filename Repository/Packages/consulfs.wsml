@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology consulfs
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__consulfs memberOf Package
+	package hasValue "consulfs"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "4748"
+	maintainer hasValue "Original-Debian Go Packaging Team <pkg-go-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.2.1-1"
+	fileName hasValue "pool/universe/c/consulfs/consulfs_0.2.1-1_amd64.deb"
+	size hasValue "1412012"
+	md5sum hasValue "c7c665ebf110c6a966cf73623c086b08"
+	sha1 hasValue "35bb0f3d5918814790b7c6825ef75825a448a09d"
+	sha256 hasValue "7ae12a48feb5591e641f831ed7c88312c6382d6013cd4a5be2c1056a56805801"
+	descriptionMd5 hasValue "b482c4f34aad5561e5884c8309a2e5b2"
+	homepage hasValue "https://github.com/bwester/consulfs"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__consulfs,0,DepAtom__0)
+

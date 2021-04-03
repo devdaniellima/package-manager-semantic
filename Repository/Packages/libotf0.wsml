@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libotf0
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libotf0 memberOf Package
+	package hasValue "libotf0"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libs"
+	installedSize hasValue "114"
+	maintainer hasValue "Original-Harshula Jayasuriya <harshula@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.9.13-7"
+	fileName hasValue "pool/main/libo/libotf/libotf0_0.9.13-7_amd64.deb"
+	size hasValue "45188"
+	md5sum hasValue "bec8158c1996c7e6bc5c6a179c000acb"
+	sha1 hasValue "5930594700782af4ddd86132704fddee909b3217"
+	sha256 hasValue "7f614d4256f52b0884cdcc229688cbcdf4138dd0f6f9ba7fe2c48a7452c2bee6"
+	descriptionMd5 hasValue "272167b6ea5a45fb1e0214abe379f63e"
+	homepage hasValue "http://www.nongnu.org/m17n/"
+	depends hasValue "libc6 (>= 2.14), libfreetype6 (>= 2.2.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libotf0,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libfreetype6"
+	comparison hasValue ">="
+	version hasValue "2.2.1"
+
+relationInstance depends(P0__libotf0,1,DepAtom__1)
+

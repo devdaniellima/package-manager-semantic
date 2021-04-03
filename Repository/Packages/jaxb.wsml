@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology jaxb
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__jaxb memberOf Package
+	package hasValue "jaxb"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/java"
+	installedSize hasValue "67"
+	maintainer hasValue "Original-Debian Java Maintainers <pkg-java-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.3.0.1-9"
+	fileName hasValue "pool/universe/j/jaxb/jaxb_2.3.0.1-9_all.deb"
+	size hasValue "14248"
+	md5sum hasValue "5c1ff22b7ae7ffc25034542ebeb5dc25"
+	sha1 hasValue "a54a5aa10698dd459e259fb86738fbae2ea788ed"
+	sha256 hasValue "771d0a3ab5c6ecae827c262c3b04aee6c6934bd3a6bb266d3d624f24204f5981"
+	descriptionMd5 hasValue "2c7429e13d7be2d82c8254b77f747baf"
+	homepage hasValue "https://javaee.github.io/jaxb-v2/"
+	depends hasValue "default-jre-headless (>= 2:1.8) | java8-runtime-headless, libjaxb-java (>= 2.3.0.1-9)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "default-jre-headless"
+	comparison hasValue ">="
+	version hasValue "2:1.8"
+
+relationInstance depends(P0__jaxb,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "java8-runtime-headless"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__jaxb,0,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libjaxb-java"
+	comparison hasValue ">="
+	version hasValue "2.3.0.1-9"
+
+relationInstance depends(P0__jaxb,1,DepAtom__2)
+

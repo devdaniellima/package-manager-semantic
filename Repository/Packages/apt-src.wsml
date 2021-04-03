@@ -1,0 +1,74 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology apt_src
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__apt_src memberOf Package
+	package hasValue "apt-src"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "76"
+	maintainer hasValue "Original-Laszlo Boszormenyi (GCS) <gcs@debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.25.2"
+	fileName hasValue "pool/universe/a/apt-src/apt-src_0.25.2_all.deb"
+	size hasValue "31116"
+	md5sum hasValue "7decf858c1782385cbb1dc1aea3286e8"
+	sha1 hasValue "a243938dcb36152c704e2d90e33c755fabe27b3c"
+	sha256 hasValue "57e6f3589430941b89175b3cf2ecb2c0d44af0e8b43a9184320a374bd5d57f87"
+	description hasValue "gerencia pacotes fontes Debian"
+	descriptionMd5 hasValue "c1c2aad38a3b3f83fa8835588c7f14b5"
+	depends hasValue "libapt-pkg-perl (>= 0.1.6), dpkg-dev, apt, perl"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libapt-pkg-perl"
+	comparison hasValue ">="
+	version hasValue "0.1.6"
+
+relationInstance depends(P0__apt_src,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "dpkg-dev"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__apt_src,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "apt"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__apt_src,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "perl"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__apt_src,3,DepAtom__3)
+

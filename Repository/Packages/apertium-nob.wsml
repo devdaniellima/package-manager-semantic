@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology apertium_nob
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__apertium_nob memberOf Package
+	package hasValue "apertium-nob"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/science"
+	installedSize hasValue "37266"
+	maintainer hasValue "Original-Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.0.0-2"
+	fileName hasValue "pool/universe/a/apertium-nob/apertium-nob_1.0.0-2_all.deb"
+	size hasValue "12360444"
+	md5sum hasValue "3602affc53f6422471528bd57c1f68ad"
+	sha1 hasValue "f5e39cf5db190af773ac2273eef6cd24fc19f804"
+	sha256 hasValue "cfef6b576c03cda967e5c577b17dce896d47178097107fb7bd959cba61be60fb"
+	descriptionMd5 hasValue "5d28d4916c8f7aa599e3faae2fd7bec8"
+	homepage hasValue "https://apertium.org/"
+	depends hasValue "apertium (>= 3.4), cg3"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "apertium"
+	comparison hasValue ">="
+	version hasValue "3.4"
+
+relationInstance depends(P0__apertium_nob,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "cg3"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__apertium_nob,1,DepAtom__1)
+

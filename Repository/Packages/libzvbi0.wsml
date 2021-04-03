@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libzvbi0
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libzvbi0 memberOf Package
+	package hasValue "libzvbi0"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "692"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.2.35-17"
+	replaces hasValue "libzvbi-0.1 (<= 0.2.1-3)"
+	fileName hasValue "pool/universe/z/zvbi/libzvbi0_0.2.35-17_amd64.deb"
+	size hasValue "237288"
+	md5sum hasValue "b3ebc3ad47344f821a2c51c6a9341058"
+	sha1 hasValue "ccf7f45ea4cc348964e77db946c6d6fcf1d05ccb"
+	sha256 hasValue "930cc5256bba5994e7de12c306413564f3c7d917bc9201c4529bf0753216f70e"
+	descriptionMd5 hasValue "bc54254176638ca1d4b5841b6e94d703"
+	homepage hasValue "http://zapping.sf.net/ZVBI"
+	depends hasValue "libc6 (>= 2.29), libpng16-16 (>= 1.6.2-1), libzvbi-common (= 0.2.35-17)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__libzvbi0,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libpng16-16"
+	comparison hasValue ">="
+	version hasValue "1.6.2-1"
+
+relationInstance depends(P0__libzvbi0,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libzvbi-common"
+	comparison hasValue "="
+	version hasValue "0.2.35-17"
+
+relationInstance depends(P0__libzvbi0,2,DepAtom__2)
+

@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology prometheus_apache_exporter
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__prometheus_apache_exporter memberOf Package
+	package hasValue "prometheus-apache-exporter"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "9337"
+	maintainer hasValue "Original-Debian Go Packaging Team <pkg-go-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.7.0+ds-1"
+	fileName hasValue "pool/universe/p/prometheus-apache-exporter/prometheus-apache-exporter_0.7.0+ds-1_amd64.deb"
+	size hasValue "2771948"
+	md5sum hasValue "a2f0bf2442076d6cea79e5e9aae5e5bb"
+	sha1 hasValue "b67786dfb808ab0c26f826f8be2673ed2cd0d382"
+	sha256 hasValue "dcabf28bbb1017d472f34bc62e4cfc4e2583f7d30f9e3fd0482d9ad455f25675"
+	descriptionMd5 hasValue "e0f78b4de6d146ff7d1815bf040e9583"
+	homepage hasValue "https://github.com/neezgee/apache_exporter/"
+	depends hasValue "daemon | systemd-sysv, libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "daemon"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__prometheus_apache_exporter,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "systemd-sysv"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__prometheus_apache_exporter,0,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__prometheus_apache_exporter,1,DepAtom__2)
+

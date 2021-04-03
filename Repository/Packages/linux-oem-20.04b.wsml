@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology linux_oem_20Dot04b
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__linux_oem_20Dot04b memberOf Package
+	package hasValue "linux-oem-20.04b"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "kernel"
+	installedSize hasValue "9"
+	maintainer hasValue "Ubuntu Kernel Team <kernel-team@lists.ubuntu.com>"
+	architecture hasValue "amd64"
+	version hasValue "5.10.0.1017.18"
+	provides hasValue "kernel-testing--linux-oem-5.10--full--oem, kernel-testing--linux-oem-5.10--full--preferred"
+	fileName hasValue "pool/main/l/linux-meta-oem-5.10/linux-oem-20.04b_5.10.0.1017.18_amd64.deb"
+	size hasValue "1912"
+	md5sum hasValue "a1aa895ecccf186eaf41e519ce864b57"
+	sha1 hasValue "b42aee28a700f5a17247e4e82aa746a51f28d753"
+	sha256 hasValue "c901caf19b30369c747af7ffb84c54aaa3e2c6e5a293f9fd8cf5d24b48aee829"
+	sha512 hasValue "e7321fea2fd8a498618fbf495e3d26e8e7cd9f600ab064036c239cba72ea1eaa198712c92e17c8c1ca7bcf40481dbf14ceeed4472d5ea8ab43412f0984de9ba0"
+	descriptionMd5 hasValue "f5ceccf3e6ffde2bc0f9e5adc29d6f9e"
+	depends hasValue "linux-image-oem-20.04b (= 5.10.0.1017.18), linux-headers-oem-20.04b (= 5.10.0.1017.18)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "linux-image-oem-20.04b"
+	comparison hasValue "="
+	version hasValue "5.10.0.1017.18"
+
+relationInstance depends(P0__linux_oem_20Dot04b,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "linux-headers-oem-20.04b"
+	comparison hasValue "="
+	version hasValue "5.10.0.1017.18"
+
+relationInstance depends(P0__linux_oem_20Dot04b,1,DepAtom__1)
+

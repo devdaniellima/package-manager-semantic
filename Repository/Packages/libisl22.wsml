@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libisl22
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libisl22 memberOf Package
+	package hasValue "libisl22"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libs"
+	installedSize hasValue "1926"
+	maintainer hasValue "Original-Debian GCC Maintainers <debian-gcc@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.22.1-1"
+	replaces hasValue "libisl-dbg (<< 0.19)"
+	fileName hasValue "pool/main/i/isl/libisl22_0.22.1-1_amd64.deb"
+	size hasValue "591960"
+	md5sum hasValue "1a23835677b853421e306d5d5ee4a09a"
+	sha1 hasValue "c5ecabbc90afc3b2fc5d7a2bd607cfdb7390a6e8"
+	sha256 hasValue "67cadab06a50a29cde11c1c1d02847afbae6f0465686481c9106577777b88a44"
+	description hasValue "manipulating sets and relations of integer points bounded by linear constraints"
+	descriptionMd5 hasValue "b718cf54a9174f62d55d1d78f6212d22"
+	homepage hasValue "http://isl.gforge.inria.fr/"
+	depends hasValue "libc6 (>= 2.14), libgmp10"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libisl22,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgmp10"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libisl22,1,DepAtom__1)
+

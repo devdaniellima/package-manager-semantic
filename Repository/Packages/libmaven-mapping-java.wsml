@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libmaven_mapping_java
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libmaven_mapping_java memberOf Package
+	package hasValue "libmaven-mapping-java"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/java"
+	installedSize hasValue "31"
+	maintainer hasValue "Original-Debian Java Maintainers <pkg-java-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "3.0.0-1"
+	fileName hasValue "pool/universe/m/maven-mapping/libmaven-mapping-java_3.0.0-1_all.deb"
+	size hasValue "6324"
+	md5sum hasValue "a3e81e9f856362362ebea0fc9fa74ca1"
+	sha1 hasValue "b11d42f744e8236ac93f50d3e9a5f39679d13294"
+	sha256 hasValue "53a151489638bc5b15fdeb85b444a88c0d2174ea34ca7e749c94fde82184698c"
+	descriptionMd5 hasValue "e76b51574b37e2dc097e998e13772416"
+	homepage hasValue "http://maven.apache.org/shared/maven-mapping/"
+	depends hasValue "libmaven3-core-java (>= 3.5.0), libplexus-interpolation-java (>= 1.24)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libmaven3-core-java"
+	comparison hasValue ">="
+	version hasValue "3.5.0"
+
+relationInstance depends(P0__libmaven_mapping_java,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libplexus-interpolation-java"
+	comparison hasValue ">="
+	version hasValue "1.24"
+
+relationInstance depends(P0__libmaven_mapping_java,1,DepAtom__1)
+

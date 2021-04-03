@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology sipsak
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__sipsak memberOf Package
+	package hasValue "sipsak"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "139"
+	maintainer hasValue "Original-Debian VoIP Team <pkg-voip-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.9.7-1"
+	fileName hasValue "pool/universe/s/sipsak/sipsak_0.9.7-1_amd64.deb"
+	size hasValue "52872"
+	md5sum hasValue "e1541a53e9b5e6f76aa222dd61418636"
+	sha1 hasValue "fbdfd1bae84661c58a6160e1abc60bfb72841992"
+	sha256 hasValue "45644d2f1d1d3810b7e74bf758924b01fd3fad350eb87fe9f4268bc96c6b23e5"
+	descriptionMd5 hasValue "9d98a4211cf145421cd636a9a89cb0da"
+	homepage hasValue "https://github.com/nils-ohlmeier/sipsak"
+	depends hasValue "libc6 (>= 2.15), libgnutls30 (>= 3.6.6), libruli4"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__sipsak,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgnutls30"
+	comparison hasValue ">="
+	version hasValue "3.6.6"
+
+relationInstance depends(P0__sipsak,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libruli4"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__sipsak,2,DepAtom__2)
+

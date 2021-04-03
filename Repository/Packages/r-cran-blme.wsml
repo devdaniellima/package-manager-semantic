@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology r_cran_blme
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__r_cran_blme memberOf Package
+	package hasValue "r-cran-blme"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/gnu-r"
+	installedSize hasValue "362"
+	maintainer hasValue "Original-Debian R Packages Maintainers <r-pkg-team@alioth-lists.debian.net>"
+	architecture hasValue "all"
+	version hasValue "1.0-4-2"
+	fileName hasValue "pool/universe/r/r-cran-blme/r-cran-blme_1.0-4-2_all.deb"
+	size hasValue "274424"
+	md5sum hasValue "22bad8302d2cdec1fabba0d2de13c29f"
+	sha1 hasValue "bca0cf33cce03f0e16a3c88d45b1ed9dd59a956f"
+	sha256 hasValue "8ff3168274206dcb190374cfdcfea9128a896bf234e422b83220549655834a0b"
+	descriptionMd5 hasValue "ad836b21981636d4dd7c1a11916c8b2b"
+	homepage hasValue "https://cran.r-project.org/package=blme"
+	depends hasValue "r-base-core (>= 3.5.0-5), r-api-3.5, r-cran-lme4 (>= 1.0-6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "r-base-core"
+	comparison hasValue ">="
+	version hasValue "3.5.0-5"
+
+relationInstance depends(P0__r_cran_blme,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "r-api-3.5"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__r_cran_blme,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "r-cran-lme4"
+	comparison hasValue ">="
+	version hasValue "1.0-6"
+
+relationInstance depends(P0__r_cran_blme,2,DepAtom__2)
+

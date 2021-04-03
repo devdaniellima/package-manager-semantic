@@ -1,0 +1,74 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology git_build_recipe
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__git_build_recipe memberOf Package
+	package hasValue "git-build-recipe"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/vcs"
+	installedSize hasValue "200"
+	maintainer hasValue "Colin Watson <cjwatson@ubuntu.com>"
+	architecture hasValue "all"
+	version hasValue "0.3.6"
+	fileName hasValue "pool/universe/g/git-build-recipe/git-build-recipe_0.3.6_all.deb"
+	size hasValue "29628"
+	md5sum hasValue "6875502b528d2c7fca4a6308547a2ddc"
+	sha1 hasValue "d320725ac055d624241df79d392f9797eb0fd7ab"
+	sha256 hasValue "ba38209567c8b479c8d50ea9113af00f8b0f784702135867e4afcae173de497c"
+	descriptionMd5 hasValue "3cd2d262bb49a2f679b4055287869562"
+	homepage hasValue "https://launchpad.net/git-build-recipe"
+	depends hasValue "python3-dateutil, python3-debian, python3:any (>= 3.3~), git"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3-dateutil"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__git_build_recipe,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3-debian"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__git_build_recipe,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ">="
+	version hasValue "3.3~"
+
+relationInstance depends(P0__git_build_recipe,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "git"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__git_build_recipe,3,DepAtom__3)
+

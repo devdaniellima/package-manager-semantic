@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology bibutils
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__bibutils memberOf Package
+	package hasValue "bibutils"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/text"
+	installedSize hasValue "287"
+	maintainer hasValue "Original-Debian Science Maintainers <debian-science-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "6.2-1"
+	fileName hasValue "pool/universe/b/bibutils/bibutils_6.2-1_amd64.deb"
+	size hasValue "22128"
+	md5sum hasValue "199c9011d5120fed397b06fbd72930b6"
+	sha1 hasValue "83905d042ed168b70395ed543c3e3814727dff33"
+	sha256 hasValue "90abb47b9f4f4354de00ad86a31e71694ccf56da5ebab34b02cd13c7d81ec127"
+	description hasValue "converte entre vários formatos de dados bibliográficos"
+	descriptionMd5 hasValue "817b52b3cbf74a34535280d3d904defb"
+	homepage hasValue "http://www.scripps.edu/~cdputnam/software/bibutils/"
+	depends hasValue "libbibutils6 (>= 5.0), libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libbibutils6"
+	comparison hasValue ">="
+	version hasValue "5.0"
+
+relationInstance depends(P0__bibutils,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__bibutils,1,DepAtom__1)
+

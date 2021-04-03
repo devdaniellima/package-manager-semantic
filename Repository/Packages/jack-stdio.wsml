@@ -1,0 +1,74 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology jack_stdio
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__jack_stdio memberOf Package
+	package hasValue "jack-stdio"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/sound"
+	installedSize hasValue "54"
+	maintainer hasValue "Original-Debian Multimedia Maintainers <pkg-multimedia-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.4-1build2"
+	fileName hasValue "pool/universe/j/jack-stdio/jack-stdio_1.4-1build2_amd64.deb"
+	size hasValue "14988"
+	md5sum hasValue "c608aee3460da5e9c8589da3e80a04b6"
+	sha1 hasValue "fa49df2ee3b8514775a9e19562b22da7c12aa311"
+	sha256 hasValue "2a3510262e2725dcb164fcce9939350df1995d106cbb9c9cc70bf94905365bb3"
+	descriptionMd5 hasValue "d479933edd6a296c6eb6ea2287a6f98d"
+	homepage hasValue "http://rg42.org/oss/jackstdout/"
+	depends hasValue "libc6 (>= 2.4), libjack-jackd2-0 (>= 1.9.10+20150825) | libjack-0.125, jackd"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__jack_stdio,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libjack-jackd2-0"
+	comparison hasValue ">="
+	version hasValue "1.9.10+20150825"
+
+relationInstance depends(P0__jack_stdio,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libjack-0.125"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__jack_stdio,1,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "jackd"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__jack_stdio,2,DepAtom__3)
+

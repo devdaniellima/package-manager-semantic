@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology lua_sec
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__lua_sec memberOf Package
+	package hasValue "lua-sec"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/interpreters"
+	installedSize hasValue "251"
+	maintainer hasValue "Original-Enrico Tassi <gareuselesinge@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.9-3"
+	provides hasValue "lua5.1-sec, lua5.2-sec, lua5.3-sec"
+	fileName hasValue "pool/universe/l/lua-sec/lua-sec_0.9-3_amd64.deb"
+	size hasValue "32264"
+	md5sum hasValue "c796d2d81adf66d6bcd4c9a396ba91c0"
+	sha1 hasValue "cfe78bf339f0cb1a90359810af2d1637476c9ad2"
+	sha256 hasValue "908fe5d6753edbfa5fac194b3489e02df5d5d599e8c502939c64035bca0f9122"
+	descriptionMd5 hasValue "3648c2861866ca62351ebf260465c479"
+	homepage hasValue "https://github.com/brunoos/luasec"
+	depends hasValue "lua-socket, libc6 (>= 2.4), libssl1.1 (>= 1.1.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "lua-socket"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__lua_sec,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__lua_sec,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libssl1.1"
+	comparison hasValue ">="
+	version hasValue "1.1.1"
+
+relationInstance depends(P0__lua_sec,2,DepAtom__2)
+

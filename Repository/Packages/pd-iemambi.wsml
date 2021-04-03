@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology pd_iemambi
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__pd_iemambi memberOf Package
+	package hasValue "pd-iemambi"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/sound"
+	installedSize hasValue "158"
+	maintainer hasValue "Original-Debian Multimedia Maintainers <debian-multimedia@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.2-5"
+	fileName hasValue "pool/universe/p/pd-iemambi/pd-iemambi_0.2-5_amd64.deb"
+	size hasValue "44172"
+	md5sum hasValue "fb8f6e5feb7335f3bd3511c9d259a802"
+	sha1 hasValue "410bda0447a034872c73a00cc9d603d62b64c8cc"
+	sha256 hasValue "344fae122fcf09267f2c5f93ac9f9db2990f19303a9862dd0809bfb396163767"
+	descriptionMd5 hasValue "119ef3ed82b3a41c5db48d07cca3beb6"
+	homepage hasValue "https://git.iem.at/pd/iem_ambi"
+	depends hasValue "libc6 (>= 2.4), puredata | pd"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__pd_iemambi,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "puredata"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__pd_iemambi,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "pd"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__pd_iemambi,1,DepAtom__2)
+

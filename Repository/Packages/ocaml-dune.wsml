@@ -1,0 +1,55 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ocaml_dune
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ocaml_dune memberOf Package
+	package hasValue "ocaml-dune"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/ocaml"
+	installedSize hasValue "7744"
+	maintainer hasValue "Original-Debian OCaml Maintainers <debian-ocaml-maint@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.1.3-2"
+	replaces hasValue "dune (<< 1.6.2-3), jbuilder (<< 1.0~beta20-1), whitedune (<< 0.30.10-2.2)"
+	provides hasValue "jbuilder"
+	fileName hasValue "pool/universe/o/ocaml-dune/ocaml-dune_2.1.3-2_amd64.deb"
+	size hasValue "1820204"
+	md5sum hasValue "0fbbfd2b8c1b3d6e367da70f3fa8db8f"
+	sha1 hasValue "18c0ce306cac65039b83ee398a482075e3984907"
+	sha256 hasValue "e4b1553d50fdb3fface8cd5804b8c5a48c8e87a70a76d8eba8962448b834b3c4"
+	descriptionMd5 hasValue "64e99a37284441f470dcebd25a8f5953"
+	homepage hasValue "https://github.com/ocaml/dune"
+	depends hasValue "libc6 (>= 2.29)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__ocaml_dune,0,DepAtom__0)
+

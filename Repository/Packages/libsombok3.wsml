@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libsombok3
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libsombok3 memberOf Package
+	package hasValue "libsombok3"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "115"
+	maintainer hasValue "Original-Emmanuel Bouthenot <kolter@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.4.0-2"
+	fileName hasValue "pool/universe/s/sombok/libsombok3_2.4.0-2_amd64.deb"
+	size hasValue "26860"
+	md5sum hasValue "df54ea620aace0942faf46a082a8f7b9"
+	sha1 hasValue "d56db8922894eea5305155aca3f7e366f5a6a1ab"
+	sha256 hasValue "43bc8c33980308a5078649611cb0d74223e30274f15f42eae65c53b160547523"
+	descriptionMd5 hasValue "d47198dbbd36aed7c8bd57135d739f6f"
+	homepage hasValue "https://github.com/hatukanezumi/sombok"
+	depends hasValue "libthai0 (>= 0.1.12), libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libthai0"
+	comparison hasValue ">="
+	version hasValue "0.1.12"
+
+relationInstance depends(P0__libsombok3,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libsombok3,1,DepAtom__1)
+

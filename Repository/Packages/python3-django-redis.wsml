@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python3_django_redis
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python3_django_redis memberOf Package
+	package hasValue "python3-django-redis"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "85"
+	maintainer hasValue "Original-Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "4.11.0-1"
+	fileName hasValue "pool/universe/d/django-redis/python3-django-redis_4.11.0-1_all.deb"
+	size hasValue "13892"
+	md5sum hasValue "5930dc3761f9144f93eb06f6d8cb479b"
+	sha1 hasValue "b85faa024ad0b5b2d8d0a7a68098237d032b0a5d"
+	sha256 hasValue "65c7c867f558e88b8a25017e44da4757e3ea8a4245a9df537f3baa3f474b74dc"
+	description hasValue "Redis cache backend for Django (Python 3)"
+	descriptionMd5 hasValue "4dcabc98787b1ceba626af953ff53730"
+	homepage hasValue "https://github.com/niwinz/django-redis"
+	depends hasValue "python3-django (>= 2:2.2), python3-redis, python3:any"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3-django"
+	comparison hasValue ">="
+	version hasValue "2:2.2"
+
+relationInstance depends(P0__python3_django_redis,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3-redis"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__python3_django_redis,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__python3_django_redis,2,DepAtom__2)
+

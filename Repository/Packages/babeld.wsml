@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology babeld
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__babeld memberOf Package
+	package hasValue "babeld"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/net"
+	installedSize hasValue "160"
+	maintainer hasValue "Original-Stéphane Glondu <glondu@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.9.1-1"
+	fileName hasValue "pool/universe/b/babeld/babeld_1.9.1-1_amd64.deb"
+	size hasValue "67412"
+	md5sum hasValue "6c9757149eb00f7d3ca64f9bb678786f"
+	sha1 hasValue "e83b30ab371511afd8c5b16683ff03da9d9cb783"
+	sha256 hasValue "9100c5d83a61e9eb52049bc16ab671ad2d84358078681f27e914567426503440"
+	descriptionMd5 hasValue "c08401daeb1213eeb6a042ed2075fd1e"
+	homepage hasValue "http://www.pps.univ-paris-diderot.fr/~jch/software/babel/"
+	depends hasValue "lsb-base, libc6 (>= 2.17)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "lsb-base"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__babeld,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.17"
+
+relationInstance depends(P0__babeld,1,DepAtom__1)
+

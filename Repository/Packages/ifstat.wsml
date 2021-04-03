@@ -1,0 +1,59 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ifstat
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ifstat memberOf Package
+	package hasValue "ifstat"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "61"
+	maintainer hasValue "Original-Goswin von Brederlow <goswin-v-b@web.de>"
+	architecture hasValue "amd64"
+	version hasValue "1.1-8.1build2"
+	fileName hasValue "pool/universe/i/ifstat/ifstat_1.1-8.1build2_amd64.deb"
+	size hasValue "21360"
+	md5sum hasValue "b99be8b5dd47af906bd181b597e30e6b"
+	sha1 hasValue "fb0a869e86ed5548aed63dab2adef6ce4d11f0c4"
+	sha256 hasValue "587c4701793462d01db0395ea1b6abfe22e2f7ab6085c1af9b79af8d62b34875"
+	descriptionMd5 hasValue "51547744ce9c254f943908f6e2bf6b44"
+	depends hasValue "libc6 (>= 2.14), libsnmp35 (>= 5.8+dfsg)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__ifstat,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libsnmp35"
+	comparison hasValue ">="
+	version hasValue "5.8+dfsg"
+
+relationInstance depends(P0__ifstat,1,DepAtom__1)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology r_cran_combinat
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__r_cran_combinat memberOf Package
+	package hasValue "r-cran-combinat"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/math"
+	installedSize hasValue "73"
+	maintainer hasValue "Original-Debian R Packages Maintainers <r-pkg-team@alioth-lists.debian.net>"
+	architecture hasValue "all"
+	version hasValue "0.0-8-6"
+	fileName hasValue "pool/universe/r/r-cran-combinat/r-cran-combinat_0.0-8-6_all.deb"
+	size hasValue "42544"
+	md5sum hasValue "f3887f8a9a65df7785b39c538ccf321a"
+	sha1 hasValue "9bc60dfe81d414ccb7800925b18d5caf82e46b7c"
+	sha256 hasValue "2899cee2354b8abbfc3c4c159c333afd8e6352f286ec2dfb2f640bb4cffe233e"
+	descriptionMd5 hasValue "366c067840a107758e2dcb87d634b0b9"
+	homepage hasValue "https://cran.r-project.org/package=combinat"
+	depends hasValue "r-base-core (>= 3.5.0-3), r-api-3.5"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "r-base-core"
+	comparison hasValue ">="
+	version hasValue "3.5.0-3"
+
+relationInstance depends(P0__r_cran_combinat,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "r-api-3.5"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__r_cran_combinat,1,DepAtom__1)
+

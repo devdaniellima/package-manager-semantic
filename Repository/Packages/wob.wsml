@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology wob
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__wob memberOf Package
+	package hasValue "wob"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/x11"
+	installedSize hasValue "46"
+	maintainer hasValue "Original-Sway and related packages team <team+swaywm@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.6-1"
+	fileName hasValue "pool/universe/w/wob/wob_0.6-1_amd64.deb"
+	size hasValue "11540"
+	md5sum hasValue "ca4451532fdccfdcdc4b9870bd87d42e"
+	sha1 hasValue "ec1e4cd7d7be84a269b402d890a34207a9a96837"
+	sha256 hasValue "3afb41d0e0ad386e35e47c02febb29bded31102c7b02a132fea08a2d759dc23b"
+	descriptionMd5 hasValue "9ce05f1f6eb51f9ff1b1dccf85bef8ed"
+	homepage hasValue "https://github.com/francma/wob"
+	depends hasValue "libc6 (>= 2.14), libwayland-client0 (>= 1.9.91)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__wob,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libwayland-client0"
+	comparison hasValue ">="
+	version hasValue "1.9.91"
+
+relationInstance depends(P0__wob,1,DepAtom__1)
+

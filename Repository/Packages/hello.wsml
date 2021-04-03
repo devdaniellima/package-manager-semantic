@@ -1,0 +1,56 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology hello
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__hello memberOf Package
+	package hasValue "hello"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "devel"
+	installedSize hasValue "112"
+	maintainer hasValue "Original-Santiago Vila <sanvila@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.10-2ubuntu2"
+	replaces hasValue "hello-debhelper (<< 2.9), hello-traditional"
+	conflicts hasValue "hello-traditional"
+	fileName hasValue "pool/main/h/hello/hello_2.10-2ubuntu2_amd64.deb"
+	size hasValue "28188"
+	md5sum hasValue "4e424a5735d32b8f73decf8305346823"
+	sha1 hasValue "7e5a09be14dac2deb8bb702c3a9941bd5872ce6a"
+	sha256 hasValue "e10ce32f437d103483031975871dd44f6cfdaf4f4227704c8a52162c66160aae"
+	description hasValue "example package based on GNU hello"
+	descriptionMd5 hasValue "c4a4aec43084cfb4a44c959b27e3a6d6"
+	homepage hasValue "http://www.gnu.org/software/hello/"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__hello,0,DepAtom__0)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libdisorder_tools
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libdisorder_tools memberOf Package
+	package hasValue "libdisorder-tools"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/misc"
+	installedSize hasValue "22"
+	maintainer hasValue "Original-Debian Med Packaging Team <debian-med-packaging@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.0.2+git20130809.8062ee1-1"
+	fileName hasValue "pool/universe/libd/libdisorder/libdisorder-tools_0.0.2+git20130809.8062ee1-1_amd64.deb"
+	size hasValue "4824"
+	md5sum hasValue "440a8c6160ec27e76e05befe150d0ec5"
+	sha1 hasValue "8111df474cc243a76f0817bdc245a9e28d35f740"
+	sha256 hasValue "d52b284f9575130515f875623d7d5f26b85df7677c615df6f2af5e62c09ffdfd"
+	descriptionMd5 hasValue "6c04beae5a70175758eac129ea491291"
+	homepage hasValue "https://github.com/locasto/libdisorder"
+	depends hasValue "libc6 (>= 2.4), libdisorder0 (>= 0.0.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libdisorder_tools,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libdisorder0"
+	comparison hasValue ">="
+	version hasValue "0.0.2"
+
+relationInstance depends(P0__libdisorder_tools,1,DepAtom__1)
+

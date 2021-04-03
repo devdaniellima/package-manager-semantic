@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology r_cran_vipor
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__r_cran_vipor memberOf Package
+	package hasValue "r-cran-vipor"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/gnu-r"
+	installedSize hasValue "4514"
+	maintainer hasValue "Original-Debian R Packages Maintainers <r-pkg-team@alioth-lists.debian.net>"
+	architecture hasValue "all"
+	version hasValue "0.4.5-1"
+	fileName hasValue "pool/universe/r/r-cran-vipor/r-cran-vipor_0.4.5-1_all.deb"
+	size hasValue "4344968"
+	md5sum hasValue "88628d876200c42fbeec3876b23d59ff"
+	sha1 hasValue "9620411a1d0f511ad544ba4816aca7fefd266721"
+	sha256 hasValue "9086b1ef0afccbca85afee75150f5e2c6f2cd93a3393e0b040f2b6d72b6fd40e"
+	descriptionMd5 hasValue "519b64242c360960c47944a0824769d6"
+	homepage hasValue "https://cran.r-project.org/package=vipor"
+	depends hasValue "r-base-core (>= 3.6.1-2), r-api-3.5"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "r-base-core"
+	comparison hasValue ">="
+	version hasValue "3.6.1-2"
+
+relationInstance depends(P0__r_cran_vipor,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "r-api-3.5"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__r_cran_vipor,1,DepAtom__1)
+

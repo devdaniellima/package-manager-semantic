@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libxpresent1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libxpresent1 memberOf Package
+	package hasValue "libxpresent1"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "30"
+	maintainer hasValue "Original-Debian X Strike Force <debian-x@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.0-2build1"
+	fileName hasValue "pool/universe/libx/libxpresent/libxpresent1_1.0.0-2build1_amd64.deb"
+	size hasValue "6932"
+	md5sum hasValue "c67701536fb641197b636ffb0802d6c9"
+	sha1 hasValue "3ec629d734dd8c7fece4efa9b16ceee4b7939f56"
+	sha256 hasValue "4e866d1ed3a35018acaa7aaac3eb7adba04c14207717d998e2de1d9576778393"
+	description hasValue "X11 Present extension library"
+	descriptionMd5 hasValue "46ae76aa36e540627ca63d6bf6ada430"
+	homepage hasValue "http://cgit.freedesktop.org/xorg/lib/libXpresent/"
+	depends hasValue "libc6 (>= 2.4), libx11-6 (>= 2:1.4.99.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libxpresent1,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libx11-6"
+	comparison hasValue ">="
+	version hasValue "2:1.4.99.1"
+
+relationInstance depends(P0__libxpresent1,1,DepAtom__1)
+

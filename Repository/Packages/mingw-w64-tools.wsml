@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology mingw_w64_tools
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__mingw_w64_tools memberOf Package
+	package hasValue "mingw-w64-tools"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/devel"
+	installedSize hasValue "1189"
+	maintainer hasValue "Original-Stephen Kitt <skitt@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "7.0.0-2"
+	provides hasValue "pkg-config-mingw-w64-i686, pkg-config-mingw-w64-x86-64"
+	fileName hasValue "pool/universe/m/mingw-w64/mingw-w64-tools_7.0.0-2_amd64.deb"
+	size hasValue "246332"
+	md5sum hasValue "fc3c5a4a8370fa15f680fdf39cc3709e"
+	sha1 hasValue "ca1986f0c8ca583964fdcf5a720959b17ebd70c8"
+	sha256 hasValue "bfae0d191ca979cfce3567bdcee8851ef60a74d1cb3a634d8d492e122f6da82a"
+	descriptionMd5 hasValue "e51ae65009b54dc317e276561f73ef47"
+	homepage hasValue "http://mingw-w64.sf.net"
+	depends hasValue "libc6 (>= 2.14), pkg-config"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__mingw_w64_tools,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "pkg-config"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__mingw_w64_tools,1,DepAtom__1)
+

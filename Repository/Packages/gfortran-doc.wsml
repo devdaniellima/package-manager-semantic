@@ -1,0 +1,52 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gfortran_doc
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gfortran_doc memberOf Package
+	package hasValue "gfortran-doc"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "doc"
+	installedSize hasValue "32"
+	maintainer hasValue "Original-Debian GCC Maintainers <debian-gcc@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "4:9.3.0-1ubuntu2"
+	fileName hasValue "pool/main/g/gcc-defaults/gfortran-doc_9.3.0-1ubuntu2_amd64.deb"
+	size hasValue "3360"
+	md5sum hasValue "c5747e44626717fae3e00ec305c47488"
+	sha1 hasValue "6429f80fec4ad3b2a414e7f76d8c10f61ac1d2f2"
+	sha256 hasValue "999344be3248fb85eac7191d662596e8584dd5dd11c223d39426be3bbce5c2ab"
+	descriptionMd5 hasValue "6855bbffb1ede02166da131963e7fd83"
+	depends hasValue "gfortran-9-doc (>= 9.3.0-3~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "gfortran-9-doc"
+	comparison hasValue ">="
+	version hasValue "9.3.0-3~"
+
+relationInstance depends(P0__gfortran_doc,0,DepAtom__0)
+

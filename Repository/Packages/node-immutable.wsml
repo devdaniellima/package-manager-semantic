@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology node_immutable
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__node_immutable memberOf Package
+	package hasValue "node-immutable"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/javascript"
+	installedSize hasValue "307"
+	maintainer hasValue "Original-Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "3.8.2+dfsg-3"
+	fileName hasValue "pool/universe/n/node-immutable/node-immutable_3.8.2+dfsg-3_all.deb"
+	size hasValue "59576"
+	md5sum hasValue "8e6358bae7850eb053c0f951196f818d"
+	sha1 hasValue "5f0462c517b0e79851b839c2910859048405c3f4"
+	sha256 hasValue "9df76fc061b04326718e39b695b2924772720a8332d2849571f4a7c5ead152e9"
+	descriptionMd5 hasValue "85e769205685dfd66ec188bcc31f091d"
+	homepage hasValue "https://facebook.github.com/immutable-js"
+	depends hasValue "nodejs (>= 6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "nodejs"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__node_immutable,0,DepAtom__0)
+

@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology lua_system
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__lua_system memberOf Package
+	package hasValue "lua-system"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/interpreters"
+	installedSize hasValue "64"
+	maintainer hasValue "Original-Jason Pleau <jason@jpleau.ca>"
+	architecture hasValue "amd64"
+	version hasValue "0.2.1-1"
+	provides hasValue "lua5.1-system, lua5.2-system, lua5.3-system"
+	fileName hasValue "pool/universe/l/lua-system/lua-system_0.2.1-1_amd64.deb"
+	size hasValue "6144"
+	md5sum hasValue "23fcf175ad016b14806d4f0dbffe0080"
+	sha1 hasValue "d97bdaa3a41f8b478ea2e4c4334f6dbfc91994d7"
+	sha256 hasValue "a706e733de066a700c65ae133897a838a140ae9f366df8b4c16076a3b7251c3c"
+	descriptionMd5 hasValue "76f0729a54e545fa1d170bf857e11cd3"
+	homepage hasValue "https://github.com/o-lim/luasystem/"
+	depends hasValue "libc6 (>= 2.17)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.17"
+
+relationInstance depends(P0__lua_system,0,DepAtom__0)
+

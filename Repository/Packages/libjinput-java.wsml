@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libjinput_java
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libjinput_java memberOf Package
+	package hasValue "libjinput-java"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/java"
+	installedSize hasValue "125"
+	maintainer hasValue "Original-Debian Java Maintainers <pkg-java-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "20100502+dfsg-10"
+	fileName hasValue "pool/universe/j/jinput/libjinput-java_20100502+dfsg-10_all.deb"
+	size hasValue "101776"
+	md5sum hasValue "6b6050db1ad34a4b08b807c18f23929a"
+	sha1 hasValue "fa786c987b1345c0cf6f8aeea101c97eaf9ed185"
+	sha256 hasValue "462a24c5032c0d0db7935ca67734e28c69be22a5f6594769dbe6a745e10e349b"
+	descriptionMd5 hasValue "9a66e4b6e2aab3061305eaeb295719f8"
+	homepage hasValue "https://java.net/projects/jinput"
+	depends hasValue "libjinput-jni (>= 20100502+dfsg-10), libjutils-java"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libjinput-jni"
+	comparison hasValue ">="
+	version hasValue "20100502+dfsg-10"
+
+relationInstance depends(P0__libjinput_java,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libjutils-java"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libjinput_java,1,DepAtom__1)
+

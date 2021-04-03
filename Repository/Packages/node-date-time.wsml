@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology node_date_time
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__node_date_time memberOf Package
+	package hasValue "node-date-time"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/javascript"
+	installedSize hasValue "16"
+	maintainer hasValue "Original-Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.1.0-1"
+	fileName hasValue "pool/universe/n/node-date-time/node-date-time_2.1.0-1_all.deb"
+	size hasValue "3392"
+	md5sum hasValue "85ed9406076f652f325a0c3d640880b6"
+	sha1 hasValue "d1111ae0a83bf2d385b962df9fc818f7ca2b6982"
+	sha256 hasValue "8af82141a1783204cb8040c81117a9aeef5f17ed717ad144b75fba948fadd52f"
+	descriptionMd5 hasValue "73b844c4e1acf76436df5bb63e2e1e3d"
+	homepage hasValue "https://github.com/sindresorhus/date-time#readme"
+	depends hasValue "nodejs, node-time-zone (>= 1.0.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "nodejs"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__node_date_time,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "node-time-zone"
+	comparison hasValue ">="
+	version hasValue "1.0.0"
+
+relationInstance depends(P0__node_date_time,1,DepAtom__1)
+

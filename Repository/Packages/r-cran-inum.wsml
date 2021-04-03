@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology r_cran_inum
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__r_cran_inum memberOf Package
+	package hasValue "r-cran-inum"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/gnu-r"
+	installedSize hasValue "77"
+	maintainer hasValue "Original-Debian R Packages Maintainers <r-pkg-team@alioth-lists.debian.net>"
+	architecture hasValue "all"
+	version hasValue "1.0-1-1"
+	fileName hasValue "pool/universe/r/r-cran-inum/r-cran-inum_1.0-1-1_all.deb"
+	size hasValue "42144"
+	md5sum hasValue "1c23f8f278a8592c6101c937f6390d06"
+	sha1 hasValue "b17df2834d001c413c4812ed94adc11ed6a4e6bd"
+	sha256 hasValue "3c91c86845a6e0e01da387dc893f755bac423e6990965af27c7b2d5ee550bb93"
+	descriptionMd5 hasValue "cc56a76bb293fe3930750e0b00426666"
+	homepage hasValue "https://cran.r-project.org/package=inum"
+	depends hasValue "r-base-core (>= 3.6.1-2), r-api-3.5, r-cran-libcoin (>= 1.0-0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "r-base-core"
+	comparison hasValue ">="
+	version hasValue "3.6.1-2"
+
+relationInstance depends(P0__r_cran_inum,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "r-api-3.5"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__r_cran_inum,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "r-cran-libcoin"
+	comparison hasValue ">="
+	version hasValue "1.0-0"
+
+relationInstance depends(P0__r_cran_inum,2,DepAtom__2)
+

@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology tv_fonts
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__tv_fonts memberOf Package
+	package hasValue "tv-fonts"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/x11"
+	installedSize hasValue "292"
+	maintainer hasValue "Original-Roberto Lumbreras <rover@debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.1-9"
+	replaces hasValue "xawtv (<< 3.78)"
+	fileName hasValue "pool/universe/t/tv-fonts/tv-fonts_1.1-9_all.deb"
+	size hasValue "225004"
+	md5sum hasValue "bcf62df25092b413c202386aef9a77db"
+	sha1 hasValue "de82842678176e4fc6ec8467edca9cf21a81034d"
+	sha256 hasValue "b722b81bb89ee6d82d525c7ab72515b3b9210142cfcbfb95ee04860da479fcf1"
+	descriptionMd5 hasValue "b8884307edad5d7e32d4dbcb4f5c3cbe"
+	depends hasValue "xfonts-utils (>= 1:7.5+2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "xfonts-utils"
+	comparison hasValue ">="
+	version hasValue "1:7.5+2"
+
+relationInstance depends(P0__tv_fonts,0,DepAtom__0)
+

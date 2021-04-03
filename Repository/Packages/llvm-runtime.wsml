@@ -1,0 +1,52 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology llvm_runtime
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__llvm_runtime memberOf Package
+	package hasValue "llvm-runtime"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "19"
+	maintainer hasValue "Original-LLVM Packaging Team <pkg-llvm-team@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:10.0-50~exp1"
+	fileName hasValue "pool/universe/l/llvm-defaults/llvm-runtime_10.0-50~exp1_amd64.deb"
+	size hasValue "2916"
+	md5sum hasValue "facf75086e81ada8256f4b88af1be630"
+	sha1 hasValue "dcef7caa699c69546f9ea0f314880b598ce7bb0e"
+	sha256 hasValue "6a64def6afc8f639f10f3667e71ff0bf370a37b0108082666934e65b981f357d"
+	descriptionMd5 hasValue "32f47f27b29cdb85b9de3aecb3953a42"
+	depends hasValue "llvm-10-runtime (>= 10~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "llvm-10-runtime"
+	comparison hasValue ">="
+	version hasValue "10~"
+
+relationInstance depends(P0__llvm_runtime,0,DepAtom__0)
+

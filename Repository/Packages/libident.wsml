@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libident
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libident memberOf Package
+	package hasValue "libident"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "48"
+	maintainer hasValue "Original-Paul Slootman <paul@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.22-3.1"
+	fileName hasValue "pool/universe/libi/libident/libident_0.22-3.1_amd64.deb"
+	size hasValue "12564"
+	md5sum hasValue "f49918f856fe78a15e055ab14614323f"
+	sha1 hasValue "ab938e1d4cd04b1ff9c9dc530a8d467478da5125"
+	sha256 hasValue "19e4263604b68df6e63ee99226f5b20dd75c2f30e51ef0cac0af5ff55677c282"
+	description hasValue "Biblioteca de cliente RFC1413 simples - tempo de execução"
+	descriptionMd5 hasValue "199960463ab87d482f67cffe21dd348d"
+	depends hasValue "libc6 (>= 2.15)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__libident,0,DepAtom__0)
+

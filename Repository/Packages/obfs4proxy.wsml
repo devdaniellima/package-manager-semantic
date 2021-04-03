@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology obfs4proxy
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__obfs4proxy memberOf Package
+	package hasValue "obfs4proxy"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/net"
+	installedSize hasValue "6245"
+	maintainer hasValue "Original-Debian Privacy Tools Maintainers <pkg-privacy-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.0.8-1"
+	fileName hasValue "pool/universe/o/obfs4proxy/obfs4proxy_0.0.8-1_amd64.deb"
+	size hasValue "1923000"
+	md5sum hasValue "6a7207913a5b27bec5c02e4843884b0b"
+	sha1 hasValue "11a008014440407d1e85fa248b0495163a0d4c5f"
+	sha256 hasValue "e949b785bf25335efc3fd6ce110c4ea5c032ed6cf02276ac64f4bdd213919281"
+	descriptionMd5 hasValue "fa2d91d7e21407c55f950a3b9437add6"
+	homepage hasValue "https://gitlab.com/yawning/obfs4"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__obfs4proxy,0,DepAtom__0)
+

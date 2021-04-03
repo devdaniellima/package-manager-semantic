@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology texlive_lang_french
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__texlive_lang_french memberOf Package
+	package hasValue "texlive-lang-french"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/tex"
+	installedSize hasValue "72381"
+	maintainer hasValue "Original-Debian TeX Maintainers <debian-tex-maint@lists.debian.org>"
+	architecture hasValue "all"
+	version hasValue "2019.20200218-1"
+	fileName hasValue "pool/universe/t/texlive-lang/texlive-lang-french_2019.20200218-1_all.deb"
+	size hasValue "59151472"
+	md5sum hasValue "2abb78b929954173d9c4c6c93166e385"
+	sha1 hasValue "59c35764d3488045646d60e9afcb0dedec8a7447"
+	sha256 hasValue "bac4a5e990d3064abb326e2062863817f848c190a3ee223b5be06464824cc204"
+	descriptionMd5 hasValue "4a9b39f2cb8ac82ee179038c5a33a219"
+	homepage hasValue "http://www.tug.org/texlive/"
+	depends hasValue "tex-common (>= 6.13), texlive-base (>= 2019.20200218)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "tex-common"
+	comparison hasValue ">="
+	version hasValue "6.13"
+
+relationInstance depends(P0__texlive_lang_french,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "texlive-base"
+	comparison hasValue ">="
+	version hasValue "2019.20200218"
+
+relationInstance depends(P0__texlive_lang_french,1,DepAtom__1)
+

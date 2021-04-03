@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology capstone_tool
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__capstone_tool memberOf Package
+	package hasValue "capstone-tool"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "45"
+	maintainer hasValue "Original-Debian Security Tools <team+pkg-security@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "4.0.1+really+3.0.5-1build1"
+	fileName hasValue "pool/universe/c/capstone/capstone-tool_4.0.1+really+3.0.5-1build1_amd64.deb"
+	size hasValue "11296"
+	md5sum hasValue "a7ed36d8d0cdcc4ce5794880fb0061f2"
+	sha1 hasValue "e3957004e7ae97d3919cda5f4fd6e91ce9a6c160"
+	sha256 hasValue "3d744c6fa1543e77ce819c3e02e9431c3e81834929ca8f127b611bbf531ef0f5"
+	descriptionMd5 hasValue "038e731047f2ca697e90f3e301ec43a6"
+	homepage hasValue "http://www.capstone-engine.org/"
+	depends hasValue "libc6 (>= 2.4), libcapstone3 (>= 3.0.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__capstone_tool,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libcapstone3"
+	comparison hasValue ">="
+	version hasValue "3.0.0"
+
+relationInstance depends(P0__capstone_tool,1,DepAtom__1)
+

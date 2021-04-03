@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology nftables
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__nftables memberOf Package
+	package hasValue "nftables"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/net"
+	installedSize hasValue "143"
+	maintainer hasValue "Original-Debian Netfilter Packaging Team <pkg-netfilter-team@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.9.3-2"
+	fileName hasValue "pool/universe/n/nftables/nftables_0.9.3-2_amd64.deb"
+	size hasValue "51244"
+	md5sum hasValue "03c0591bb4ee14c3a259c2716544cb70"
+	sha1 hasValue "f60c84bb1607bc7f526b8b30ee4bb5da22dd6c87"
+	sha256 hasValue "c8205a7559a47eece33fb5708a769fcfbd4dbf998eaee11346efbac1f5c5e4c3"
+	descriptionMd5 hasValue "24bc0867cd246ced705663120fd62b92"
+	homepage hasValue "https://www.netfilter.org/"
+	depends hasValue "libnftables1 (= 0.9.3-2), libc6 (>= 2.4), libreadline8 (>= 6.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libnftables1"
+	comparison hasValue "="
+	version hasValue "0.9.3-2"
+
+relationInstance depends(P0__nftables,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__nftables,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libreadline8"
+	comparison hasValue ">="
+	version hasValue "6.0"
+
+relationInstance depends(P0__nftables,2,DepAtom__2)
+

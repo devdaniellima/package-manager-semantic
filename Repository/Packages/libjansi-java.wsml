@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libjansi_java
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libjansi_java memberOf Package
+	package hasValue "libjansi-java"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/java"
+	installedSize hasValue "93"
+	maintainer hasValue "Original-Debian Java Maintainers <pkg-java-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.18-1"
+	fileName hasValue "pool/universe/j/jansi/libjansi-java_1.18-1_all.deb"
+	size hasValue "56752"
+	md5sum hasValue "d39b9eacb20522dcea2d151086eecba3"
+	sha1 hasValue "45507e870a4993bd4c1f5f809f8e61ba72993686"
+	sha256 hasValue "ffa31df4c0fd73276aecbd85887854d8215284a7bad185e423ceb5fb67b9bde4"
+	descriptionMd5 hasValue "0f0c7356271fcd9e79d75de11ef9dc79"
+	homepage hasValue "https://fusesource.github.io/jansi/"
+	depends hasValue "libhawtjni-runtime-java (>= 1.16), libjansi-native-java (>= 1.8)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libhawtjni-runtime-java"
+	comparison hasValue ">="
+	version hasValue "1.16"
+
+relationInstance depends(P0__libjansi_java,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libjansi-native-java"
+	comparison hasValue ">="
+	version hasValue "1.8"
+
+relationInstance depends(P0__libjansi_java,1,DepAtom__1)
+

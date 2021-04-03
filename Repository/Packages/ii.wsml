@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ii
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ii memberOf Package
+	package hasValue "ii"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "47"
+	maintainer hasValue "Original-itd <itd@firemail.cc>"
+	architecture hasValue "amd64"
+	version hasValue "1.8-2"
+	fileName hasValue "pool/universe/i/ii/ii_1.8-2_amd64.deb"
+	size hasValue "15296"
+	md5sum hasValue "90b0457712fddaac3c0a5bc5fcb0cb8c"
+	sha1 hasValue "88ae04a3f94b6bf963f96b67bb65a41a3a51907c"
+	sha256 hasValue "edd38a8e227e543b813482a3b679fc823c7ca6567a74a053588dbd38813b8522"
+	description hasValue "cliente IRC baseado em sistema de arquivos e FIFO minimalista"
+	descriptionMd5 hasValue "8160adbdb85507f5fa6134d1cee4761f"
+	homepage hasValue "https://tools.suckless.org/ii/"
+	depends hasValue "libbsd0 (>= 0.0), libc6 (>= 2.15)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libbsd0"
+	comparison hasValue ">="
+	version hasValue "0.0"
+
+relationInstance depends(P0__ii,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__ii,1,DepAtom__1)
+

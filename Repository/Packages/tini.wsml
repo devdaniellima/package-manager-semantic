@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology tini
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__tini memberOf Package
+	package hasValue "tini"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "820"
+	maintainer hasValue "Original-ChangZhuo Chen (陳昌倬) <czchen@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.18.0-1"
+	fileName hasValue "pool/universe/t/tini/tini_0.18.0-1_amd64.deb"
+	size hasValue "282764"
+	md5sum hasValue "7b46d4384b01e344734f43cbad123616"
+	sha1 hasValue "ed4b06cb7f948998af74b911ff6849baf4d781e6"
+	sha256 hasValue "8360308e621c56fb1b5df6de899f8b25a28ff6f6b4d95d3d0b98d55803f037e1"
+	descriptionMd5 hasValue "357ed699f389f83b2e63df42023fdadd"
+	homepage hasValue "https://github.com/krallin/tini"
+	depends hasValue "libc6 (>= 2.3.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.3.4"
+
+relationInstance depends(P0__tini,0,DepAtom__0)
+

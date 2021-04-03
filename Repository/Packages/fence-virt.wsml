@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology fence_virt
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__fence_virt memberOf Package
+	package hasValue "fence-virt"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "87"
+	maintainer hasValue "Original-Debian HA Maintainers <debian-ha-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.0-1"
+	fileName hasValue "pool/universe/f/fence-virt/fence-virt_1.0.0-1_amd64.deb"
+	size hasValue "30932"
+	md5sum hasValue "a1c0203b380639fc55d1330b63569b44"
+	sha1 hasValue "783729bcb0d71c9ff0ea0fc1930c1503a8ca0731"
+	sha256 hasValue "42b92e9d4370af84b999aa9bd1a0a2fd6bfd6bcf5a56b7e46a80e753e16388f0"
+	descriptionMd5 hasValue "aa357d3399519230f653cd8a02075a08"
+	homepage hasValue "https://github.com/ClusterLabs/fence-virt/"
+	depends hasValue "libc6 (>= 2.15), libnss3 (>= 2:3.13.4-2~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__fence_virt,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libnss3"
+	comparison hasValue ">="
+	version hasValue "2:3.13.4-2~"
+
+relationInstance depends(P0__fence_virt,1,DepAtom__1)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libzip_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libzip_dev memberOf Package
+	package hasValue "libzip-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "292"
+	maintainer hasValue "Original-Stefan Schörghofer <amd1212@4md.gr>"
+	architecture hasValue "amd64"
+	version hasValue "1.5.1-0ubuntu1"
+	fileName hasValue "pool/universe/libz/libzip/libzip-dev_1.5.1-0ubuntu1_amd64.deb"
+	size hasValue "152304"
+	md5sum hasValue "247ad78be4269f0262f164898f197a76"
+	sha1 hasValue "2c754e1f714e0f2d14dff131e40bdbace98a3ce4"
+	sha256 hasValue "70f5743f7b7c342205f4789eb5dcff50e7cdeb2e765ffc0fd9378f6ad9cabeb6"
+	descriptionMd5 hasValue "e4cfaaaa641934e570f957640c60c8a6"
+	homepage hasValue "http://www.nih.at/libzip/"
+	depends hasValue "libzip5 (= 1.5.1-0ubuntu1), zlib1g-dev"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libzip5"
+	comparison hasValue "="
+	version hasValue "1.5.1-0ubuntu1"
+
+relationInstance depends(P0__libzip_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "zlib1g-dev"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libzip_dev,1,DepAtom__1)
+

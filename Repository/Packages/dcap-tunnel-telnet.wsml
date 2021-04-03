@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology dcap_tunnel_telnet
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__dcap_tunnel_telnet memberOf Package
+	package hasValue "dcap-tunnel-telnet"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "33"
+	maintainer hasValue "Original-Mattias Ellert <mattias.ellert@physics.uu.se>"
+	architecture hasValue "amd64"
+	version hasValue "2.47.12-2build1"
+	fileName hasValue "pool/universe/d/dcap/dcap-tunnel-telnet_2.47.12-2build1_amd64.deb"
+	size hasValue "6156"
+	md5sum hasValue "e6428841d2bf5d185e69d8865ef7d0d1"
+	sha1 hasValue "dc66556706ca9652fa9b96df25a24402acc675a9"
+	sha256 hasValue "8cc2c935689c664616560ba6a0a86eb12c21d980f8e4ad5b26e48746b416c1ab"
+	descriptionMd5 hasValue "af6b3d95c44ba764f101852e98b402fb"
+	homepage hasValue "http://www.dcache.org/manuals/libdcap.shtml"
+	depends hasValue "libdcap1 (= 2.47.12-2build1), libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libdcap1"
+	comparison hasValue "="
+	version hasValue "2.47.12-2build1"
+
+relationInstance depends(P0__dcap_tunnel_telnet,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__dcap_tunnel_telnet,1,DepAtom__1)
+

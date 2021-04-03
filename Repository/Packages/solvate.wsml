@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology solvate
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__solvate memberOf Package
+	package hasValue "solvate"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "multiverse/science"
+	installedSize hasValue "97"
+	maintainer hasValue "Original-Debian Med Packaging Team <debian-med-packaging@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0-2"
+	fileName hasValue "pool/multiverse/s/solvate/solvate_1.0-2_amd64.deb"
+	size hasValue "39192"
+	md5sum hasValue "d4cd24bd579ac8752cfb2ab857f5f0c1"
+	sha1 hasValue "23cb71f4f786d850fc0365dd50a4c1f5e19f83f7"
+	sha256 hasValue "e96c49da6dc9368be7cf2e367d41e949f403a22bede1861cb23fd35351ff9ef1"
+	descriptionMd5 hasValue "d89da2f783a2b591a4f8dc40e94817b7"
+	homepage hasValue "http://www.mpibpc.mpg.de/grubmueller/solvate"
+	depends hasValue "libc6 (>= 2.7)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__solvate,0,DepAtom__0)
+

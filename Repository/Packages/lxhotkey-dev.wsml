@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology lxhotkey_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__lxhotkey_dev memberOf Package
+	package hasValue "lxhotkey-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/x11"
+	installedSize hasValue "24"
+	maintainer hasValue "Original-Debian LXDE Maintainers <pkg-lxde-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.1.0-1build2"
+	fileName hasValue "pool/universe/l/lxhotkey/lxhotkey-dev_0.1.0-1build2_amd64.deb"
+	size hasValue "4636"
+	md5sum hasValue "8ff3a42ae6dbad6e352dcd402984ef3d"
+	sha1 hasValue "3a1b93c128389168aa647007752ca3d93573e222"
+	sha256 hasValue "3ce6fa10dd404e92b90278219b6e70168d2d03568226f26306dabc0b7466f31b"
+	descriptionMd5 hasValue "2f7feb033d0621125e3c0ac8b1b8851b"
+	homepage hasValue "http://www.lxde.org/"
+	depends hasValue "lxhotkey-core (= 0.1.0-1build2), libfm-dev (>= 1.2.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "lxhotkey-core"
+	comparison hasValue "="
+	version hasValue "0.1.0-1build2"
+
+relationInstance depends(P0__lxhotkey_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libfm-dev"
+	comparison hasValue ">="
+	version hasValue "1.2.0"
+
+relationInstance depends(P0__lxhotkey_dev,1,DepAtom__1)
+

@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology cmake_doc
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__cmake_doc memberOf Package
+	package hasValue "cmake-doc"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "doc"
+	installedSize hasValue "21382"
+	maintainer hasValue "Original-Debian CMake Team <pkg-cmake-team@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "3.16.3-1ubuntu1"
+	fileName hasValue "pool/main/c/cmake/cmake-doc_3.16.3-1ubuntu1_all.deb"
+	size hasValue "1408692"
+	md5sum hasValue "91fd1e8a66457454b77c052ac62323a5"
+	sha1 hasValue "3a6ea7b89b18677d90d6d2704e1557ac10beab3c"
+	sha256 hasValue "fc5ba6d11caaacb0018ed49ef97dda10fd44f4a012925cfb055afac82fd52bce"
+	description hasValue "documentação estendida em vários formatos para o CMake"
+	descriptionMd5 hasValue "c77e6a2a8065e9574225a496b383a0cd"
+	homepage hasValue "https://cmake.org/"
+	depends hasValue "cmake-data (= 3.16.3-1ubuntu1), libjs-sphinxdoc (>= 1.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "cmake-data"
+	comparison hasValue "="
+	version hasValue "3.16.3-1ubuntu1"
+
+relationInstance depends(P0__cmake_doc,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libjs-sphinxdoc"
+	comparison hasValue ">="
+	version hasValue "1.0"
+
+relationInstance depends(P0__cmake_doc,1,DepAtom__1)
+

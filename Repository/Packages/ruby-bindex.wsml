@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ruby_bindex
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ruby_bindex memberOf Package
+	package hasValue "ruby-bindex"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/ruby"
+	installedSize hasValue "53"
+	maintainer hasValue "Original-Debian Ruby Extras Maintainers <pkg-ruby-extras-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.5.0-1build1"
+	fileName hasValue "pool/universe/r/ruby-bindex/ruby-bindex_0.5.0-1build1_amd64.deb"
+	size hasValue "13184"
+	md5sum hasValue "28b811eef931d8c5a4199ff82bc66046"
+	sha1 hasValue "113ba51c347dc03d8137ac89b8786a08c787712e"
+	sha256 hasValue "a83834867fcb35d777027b9c2ab8c3070a38c0bb6d41c32a6aac323fa833c62a"
+	descriptionMd5 hasValue "5faefc00f9318719d9725c676d999c26"
+	homepage hasValue "https://github.com/gsamokovarov/bindex"
+	depends hasValue "ruby (>= 1:2.7~0), libruby2.7 (>= 2.7.0~preview1), ruby (<< 1:2.8~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "ruby"
+	comparison hasValue ">="
+	version hasValue "1:2.7~0"
+
+relationInstance depends(P0__ruby_bindex,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libruby2.7"
+	comparison hasValue ">="
+	version hasValue "2.7.0~preview1"
+
+relationInstance depends(P0__ruby_bindex,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "ruby"
+	comparison hasValue "<<"
+	version hasValue "1:2.8~"
+
+relationInstance depends(P0__ruby_bindex,2,DepAtom__2)
+

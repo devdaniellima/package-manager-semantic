@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology rc
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__rc memberOf Package
+	package hasValue "rc"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/shells"
+	installedSize hasValue "161"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.7.4+97.gceb59bb-2"
+	fileName hasValue "pool/universe/r/rc/rc_1.7.4+97.gceb59bb-2_amd64.deb"
+	size hasValue "76136"
+	md5sum hasValue "cc490c2b1a420bb7f3a867ce199d3888"
+	sha1 hasValue "ad7eae765f8ddb31f2f5ca3ce3a3c97f9278b8e1"
+	sha256 hasValue "91a4881d8127f4a815e29e7bf91f0d6dab357664a9e8f9f38ae5379457464f41"
+	descriptionMd5 hasValue "11e8e01b2d641cc0020533e173650123"
+	homepage hasValue "https://github.com/rakitzis/rc"
+	depends hasValue "libc6 (>= 2.14), libreadline8 (>= 6.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__rc,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libreadline8"
+	comparison hasValue ">="
+	version hasValue "6.0"
+
+relationInstance depends(P0__rc,1,DepAtom__1)
+

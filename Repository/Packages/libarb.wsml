@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libarb
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libarb memberOf Package
+	package hasValue "libarb"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "multiverse/science"
+	installedSize hasValue "1957"
+	maintainer hasValue "Original-Debian Med Packaging Team <debian-med-packaging@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "6.0.6-4build1"
+	fileName hasValue "pool/multiverse/a/arb/libarb_6.0.6-4build1_amd64.deb"
+	size hasValue "572772"
+	md5sum hasValue "48a045211760ada7ebe7df4a47116b4f"
+	sha1 hasValue "42e7015fa9c48a45bf028c6a46b6adb242eebb46"
+	sha256 hasValue "043a1da1197b49b5f2af14e156d205411f84ed54a4a4d029acb30dfb8e4e9e13"
+	descriptionMd5 hasValue "5b71ce4c770d68533f4dd445ea4a1702"
+	homepage hasValue "http://www.arb-home.de/"
+	depends hasValue "libc6 (>= 2.29), libgcc-s1 (>= 3.0), libstdc++6 (>= 5.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__libarb,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgcc-s1"
+	comparison hasValue ">="
+	version hasValue "3.0"
+
+relationInstance depends(P0__libarb,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "5.2"
+
+relationInstance depends(P0__libarb,2,DepAtom__2)
+

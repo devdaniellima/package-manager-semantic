@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology wesnoth
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__wesnoth memberOf Package
+	package hasValue "wesnoth"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/games"
+	installedSize hasValue "6"
+	maintainer hasValue "Original-Debian Games Team <pkg-games-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1:1.14.9-1ubuntu5"
+	fileName hasValue "pool/universe/w/wesnoth-1.14/wesnoth_1.14.9-1ubuntu5_all.deb"
+	size hasValue "1280"
+	md5sum hasValue "f13428eeea2c02e2044942b89a25765a"
+	sha1 hasValue "fcdb879bda9176e3106bd5c0ad797d6655f3db8f"
+	sha256 hasValue "a6e457c7340f08ac4f234427ee7d933b5e67e176c113a0be4f26382671d3ad1d"
+	description hasValue "jogo de estratégia em turnos de fantasia - suíte completa (matepacote)"
+	descriptionMd5 hasValue "2a71a7a2a2874f7f0bf25835fd6bebf3"
+	homepage hasValue "http://wesnoth.org/"
+	depends hasValue "wesnoth-1.14 (>= 1:1.14.9-1ubuntu5), wesnoth-1.14-data (= 1:1.14.9-1ubuntu5)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "wesnoth-1.14"
+	comparison hasValue ">="
+	version hasValue "1:1.14.9-1ubuntu5"
+
+relationInstance depends(P0__wesnoth,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "wesnoth-1.14-data"
+	comparison hasValue "="
+	version hasValue "1:1.14.9-1ubuntu5"
+
+relationInstance depends(P0__wesnoth,1,DepAtom__1)
+

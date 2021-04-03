@@ -1,0 +1,75 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology pkgconf
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__pkgconf memberOf Package
+	package hasValue "pkgconf"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "125"
+	maintainer hasValue "Original-Andrej Shadura <andrewsh@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.6.3-5"
+	provides hasValue "pkg-config (= 0.29-1)"
+	fileName hasValue "pool/universe/p/pkgconf/pkgconf_1.6.3-5_amd64.deb"
+	size hasValue "33420"
+	md5sum hasValue "e4089016147818a58a3e794169809635"
+	sha1 hasValue "2784f94cea24e59a9add92b0fa689c561321efc1"
+	sha256 hasValue "061f640c800a29f210c246fb8046d5c798d6e929f0d7f71a523944e9675abd17"
+	descriptionMd5 hasValue "bb6e939dcc5e28020ca3111bf3fb0434"
+	homepage hasValue "https://git.sr.ht/~kaniini/pkgconf"
+	depends hasValue "libdpkg-perl, perl:any, libc6 (>= 2.4), libpkgconf3 (>= 1.6.3)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libdpkg-perl"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__pkgconf,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "perl:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__pkgconf,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__pkgconf,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "libpkgconf3"
+	comparison hasValue ">="
+	version hasValue "1.6.3"
+
+relationInstance depends(P0__pkgconf,3,DepAtom__3)
+

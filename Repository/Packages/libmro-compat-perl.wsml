@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libmro_compat_perl
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libmro_compat_perl memberOf Package
+	package hasValue "libmro-compat-perl"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/perl"
+	installedSize hasValue "29"
+	maintainer hasValue "Original-Debian Perl Group <pkg-perl-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.13-1"
+	fileName hasValue "pool/universe/libm/libmro-compat-perl/libmro-compat-perl_0.13-1_all.deb"
+	size hasValue "11220"
+	md5sum hasValue "1ced9df6ba77d0772c2dc226c5572b21"
+	sha1 hasValue "1eabf1c115b88988466c35b460b195ee08023fcb"
+	sha256 hasValue "0c641b6d271f5f9b1da372c7a9ca4aed4d58de838aaa135f35fc0a056e822d0c"
+	description hasValue "mro::* interface de compatibilidade para Perls < 5.9.5"
+	descriptionMd5 hasValue "195130cee4f6bea2731a762f3f96eadc"
+	homepage hasValue "https://metacpan.org/release/MRO-Compat"
+	depends hasValue "perl, libclass-c3-perl (>= 0.24)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "perl"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libmro_compat_perl,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libclass-c3-perl"
+	comparison hasValue ">="
+	version hasValue "0.24"
+
+relationInstance depends(P0__libmro_compat_perl,1,DepAtom__1)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology scanmem
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__scanmem memberOf Package
+	package hasValue "scanmem"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/utils"
+	installedSize hasValue "161"
+	maintainer hasValue "Original-Sebastian Parschauer <s.parschauer@gmx.de>"
+	architecture hasValue "amd64"
+	version hasValue "0.17-3"
+	fileName hasValue "pool/universe/s/scanmem/scanmem_0.17-3_amd64.deb"
+	size hasValue "56220"
+	md5sum hasValue "522ff59a4025d0505a717803ab367286"
+	sha1 hasValue "89bd447bdd62da5de2ea9007ea673a2c803d4584"
+	sha256 hasValue "a1e4b5e3f3b329565b0d524710cfb1f0efedee372e8948e2f33d9f1834aefd1e"
+	descriptionMd5 hasValue "cc39b1c3dd5cdb66cab062f70cb7a219"
+	homepage hasValue "https://github.com/scanmem/scanmem"
+	depends hasValue "libc6 (>= 2.14), libreadline8 (>= 6.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__scanmem,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libreadline8"
+	comparison hasValue ">="
+	version hasValue "6.0"
+
+relationInstance depends(P0__scanmem,1,DepAtom__1)
+

@@ -1,0 +1,74 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology pronsole
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__pronsole memberOf Package
+	package hasValue "pronsole"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/misc"
+	installedSize hasValue "30"
+	maintainer hasValue "Original-Debian 3D-Printer Packaging Team <3dprinter-general@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.0.0~rc5-1ubuntu2"
+	fileName hasValue "pool/universe/p/printrun/pronsole_2.0.0~rc5-1ubuntu2_all.deb"
+	size hasValue "5212"
+	md5sum hasValue "09010b96f985dfc3e6d6715521479815"
+	sha1 hasValue "afff21d366a87fa4e0aecc7072da3112c91f3ea9"
+	sha256 hasValue "309f91b9404498b0c394bda6aae41548a0093478c6a474a697a2db43d24b59e1"
+	descriptionMd5 hasValue "c17ba2c4f94965754f156dc3b3bb0a56"
+	homepage hasValue "http://www.pronterface.com"
+	depends hasValue "printcore (>= 2.0.0~rc5-1ubuntu2), printrun-common (= 2.0.0~rc5-1ubuntu2), python3-appdirs, python3:any"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "printcore"
+	comparison hasValue ">="
+	version hasValue "2.0.0~rc5-1ubuntu2"
+
+relationInstance depends(P0__pronsole,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "printrun-common"
+	comparison hasValue "="
+	version hasValue "2.0.0~rc5-1ubuntu2"
+
+relationInstance depends(P0__pronsole,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "python3-appdirs"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__pronsole,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__pronsole,3,DepAtom__3)
+

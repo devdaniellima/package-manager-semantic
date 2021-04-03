@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology r_cran_lattice
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__r_cran_lattice memberOf Package
+	package hasValue "r-cran-lattice"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/math"
+	installedSize hasValue "1314"
+	maintainer hasValue "Original-Dirk Eddelbuettel <edd@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.20-40-1"
+	replaces hasValue "r-recommended (<< 1.9.0)"
+	fileName hasValue "pool/universe/l/lattice/r-cran-lattice_0.20-40-1_amd64.deb"
+	size hasValue "1125024"
+	md5sum hasValue "594fb859f86c0b5cae21657381e65a33"
+	sha1 hasValue "377d1e22fd0e5bd26baee52fa0edebbb98b1af63"
+	sha256 hasValue "6e81cf448cd312cc24f1337d4ac30be6690d771cf0d60d3621f8ec710a10184d"
+	descriptionMd5 hasValue "de2690898df5fbedc7b2696214220c65"
+	homepage hasValue "https://cran.r-project.org/package=lattice"
+	depends hasValue "libc6 (>= 2.4), r-base-core (>= 3.6.2-2build1), r-api-3.5"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__r_cran_lattice,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "r-base-core"
+	comparison hasValue ">="
+	version hasValue "3.6.2-2build1"
+
+relationInstance depends(P0__r_cran_lattice,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "r-api-3.5"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__r_cran_lattice,2,DepAtom__2)
+

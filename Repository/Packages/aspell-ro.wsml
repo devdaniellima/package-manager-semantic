@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology aspell_ro
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__aspell_ro memberOf Package
+	package hasValue "aspell-ro"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/text"
+	installedSize hasValue "772"
+	maintainer hasValue "Original-Lior Kaplan <kaplan@debian.org>"
+	architecture hasValue "all"
+	version hasValue "3.3.9-1"
+	provides hasValue "aspell-dictionary"
+	fileName hasValue "pool/universe/a/aspell-ro/aspell-ro_3.3.9-1_all.deb"
+	size hasValue "731324"
+	md5sum hasValue "2b3730cf1e255cefe1759a8be6cade38"
+	sha1 hasValue "aade1686a9a11e838db1fe662e99e657d6d0732e"
+	sha256 hasValue "cc1fce94e66126e8dbf0771bb1d72689cb06be860f9c6a100e9d542443d7b79e"
+	description hasValue "Romanian dictionary for GNU aspell"
+	descriptionMd5 hasValue "3b6f998031c24d278b62dd459f16f390"
+	homepage hasValue "http://rospell.sourceforge.net"
+	depends hasValue "aspell (>= 0.60.3-3), dictionaries-common (>= 0.50.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "aspell"
+	comparison hasValue ">="
+	version hasValue "0.60.3-3"
+
+relationInstance depends(P0__aspell_ro,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "dictionaries-common"
+	comparison hasValue ">="
+	version hasValue "0.50.0"
+
+relationInstance depends(P0__aspell_ro,1,DepAtom__1)
+

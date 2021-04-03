@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python_dnspython
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python_dnspython memberOf Package
+	package hasValue "python-dnspython"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "618"
+	maintainer hasValue "Original-Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.16.0-1build1"
+	fileName hasValue "pool/universe/d/dnspython/python-dnspython_1.16.0-1build1_all.deb"
+	size hasValue "89072"
+	md5sum hasValue "c3ae0db9ac0848b22476e53460002fc8"
+	sha1 hasValue "8d453103682091fa6e390b3ed78fbc911d6f1c7c"
+	sha256 hasValue "e4e79b54e2503d23ee8b43a441768fe408c77d64274e4ef36f3df35b713bbb4a"
+	description hasValue "Ferramentas DNS para Python"
+	descriptionMd5 hasValue "5c7ff37ec0055b47241c383f2c0e3c03"
+	homepage hasValue "http://www.dnspython.org"
+	depends hasValue "python2:any (<< 2.8), python2:any (>= 2.7~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue "<<"
+	version hasValue "2.8"
+
+relationInstance depends(P0__python_dnspython,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue ">="
+	version hasValue "2.7~"
+
+relationInstance depends(P0__python_dnspython,1,DepAtom__1)
+

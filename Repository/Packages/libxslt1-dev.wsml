@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libxslt1_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libxslt1_dev memberOf Package
+	package hasValue "libxslt1-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libdevel"
+	installedSize hasValue "2010"
+	maintainer hasValue "Original-Debian XML/SGML Group <debian-xml-sgml-pkgs@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.1.34-4"
+	provides hasValue "libxslt-dev"
+	fileName hasValue "pool/main/libx/libxslt/libxslt1-dev_1.1.34-4_amd64.deb"
+	size hasValue "219208"
+	md5sum hasValue "a967998067ae31f3b4bb7611bd600065"
+	sha1 hasValue "de5692af28e966af0717cf79478d511c73bd8016"
+	sha256 hasValue "1608e73634f5a7cc44ca526b4272363c5518be13244b0962bcec9f316f48d262"
+	description hasValue "XSLT 1.0 processing library - development kit"
+	descriptionMd5 hasValue "f51e27fa123abbb4132b189b0ee706c8"
+	homepage hasValue "http://xmlsoft.org/xslt/"
+	depends hasValue "libxml2-dev (>= 2.6.26), libxslt1.1 (= 1.1.34-4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libxml2-dev"
+	comparison hasValue ">="
+	version hasValue "2.6.26"
+
+relationInstance depends(P0__libxslt1_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libxslt1.1"
+	comparison hasValue "="
+	version hasValue "1.1.34-4"
+
+relationInstance depends(P0__libxslt1_dev,1,DepAtom__1)
+

@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology simpleproxy
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__simpleproxy memberOf Package
+	package hasValue "simpleproxy"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "53"
+	maintainer hasValue "Original-Andrew Pollock <apollock@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.5-1build1"
+	fileName hasValue "pool/universe/s/simpleproxy/simpleproxy_3.5-1build1_amd64.deb"
+	size hasValue "17208"
+	md5sum hasValue "f9f0d08e540deaae04de8514e8e6a3e3"
+	sha1 hasValue "34506b5bc0e27b16d0f76c8ced6489da5b7d4ff9"
+	sha256 hasValue "e07b1f9df90942eed707a0105fcef73272860c77ec71bafb039fbe166e26c827"
+	descriptionMd5 hasValue "df90d17ba3792463ed98517f2afe2512"
+	homepage hasValue "https://github.com/vzaliva/simpleproxy"
+	depends hasValue "libc6 (>= 2.15)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__simpleproxy,0,DepAtom__0)
+

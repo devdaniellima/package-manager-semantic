@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology dmsetup
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__dmsetup memberOf Package
+	package hasValue "dmsetup"
+	packageSource hasValue Source__S1
+	priority hasValue "important"
+	section hasValue "admin"
+	installedSize hasValue "270"
+	maintainer hasValue "Original-Debian LVM Team <team+lvm@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2:1.02.167-1ubuntu1"
+	fileName hasValue "pool/main/l/lvm2/dmsetup_1.02.167-1ubuntu1_amd64.deb"
+	size hasValue "75576"
+	md5sum hasValue "f45d799d6bb38e17d90c96c1e8eddc4e"
+	sha1 hasValue "721688c2497cc71aaf76b02b70f05294c50ea4a4"
+	sha256 hasValue "107aec366e0ae17ffda6aa1b696e4abb8806ab308dddf4b8224974e9d2f4ae86"
+	description hasValue "biblioteca em espaço de usuário do mapeador de dispositivos do kernel Linux"
+	descriptionMd5 hasValue "53b782cbc29445e9c389c933898e1153"
+	homepage hasValue "http://sources.redhat.com/lvm2/"
+	depends hasValue "libc6 (>= 2.14), libdevmapper1.02.1 (>= 2:1.02.138)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__dmsetup,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libdevmapper1.02.1"
+	comparison hasValue ">="
+	version hasValue "2:1.02.138"
+
+relationInstance depends(P0__dmsetup,1,DepAtom__1)
+

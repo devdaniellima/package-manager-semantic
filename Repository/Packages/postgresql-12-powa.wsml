@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology postgresql_12_powa
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__postgresql_12_powa memberOf Package
+	package hasValue "postgresql-12-powa"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/database"
+	installedSize hasValue "575"
+	maintainer hasValue "Original-Debian PostgreSQL Maintainers <team+postgresql@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.2.0-2"
+	fileName hasValue "pool/universe/p/powa-archivist/postgresql-12-powa_3.2.0-2_amd64.deb"
+	size hasValue "38340"
+	md5sum hasValue "790b836957434650ec75608fec3430eb"
+	sha1 hasValue "d068d22d78db8bc4f8007cb0455343090ed30eaa"
+	sha256 hasValue "7ddf3092bd7bcc35ebcdb36a715506bc84fc34c5856776a1337c46ef9fb263d5"
+	descriptionMd5 hasValue "5a27df0f7db3f712ad8f08f740746e39"
+	homepage hasValue "https://powa.readthedocs.io/"
+	depends hasValue "libc6 (>= 2.17), postgresql-12"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.17"
+
+relationInstance depends(P0__postgresql_12_powa,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "postgresql-12"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__postgresql_12_powa,1,DepAtom__1)
+

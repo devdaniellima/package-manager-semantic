@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology vbetool
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__vbetool memberOf Package
+	package hasValue "vbetool"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "33"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.1-4"
+	fileName hasValue "pool/universe/v/vbetool/vbetool_1.1-4_amd64.deb"
+	size hasValue "11504"
+	md5sum hasValue "890f127bb77ad1ddc5be87870ec75989"
+	sha1 hasValue "22639afa776ceb9abffaf5b57c514e3bab95ec60"
+	sha256 hasValue "5606e9c08da498bd2f9b8e21aff0a02c71ed38ec5e19515850f8c6b9915e4412"
+	description hasValue "executa código de vídeo da BIOS em modo real para alterar o estado do hardware"
+	descriptionMd5 hasValue "25fb7adf077cdb98dd6d1022be48eba4"
+	homepage hasValue "http://www.codon.org.uk/~mjg59/vbetool/"
+	depends hasValue "libc6 (>= 2.14), libpci3 (>= 1:3.3.1-1), libx86-1 (>= 0.99-1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__vbetool,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libpci3"
+	comparison hasValue ">="
+	version hasValue "1:3.3.1-1"
+
+relationInstance depends(P0__vbetool,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libx86-1"
+	comparison hasValue ">="
+	version hasValue "0.99-1"
+
+relationInstance depends(P0__vbetool,2,DepAtom__2)
+

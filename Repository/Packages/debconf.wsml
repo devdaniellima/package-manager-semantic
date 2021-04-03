@@ -1,0 +1,56 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology debconf
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__debconf memberOf Package
+	package hasValue "debconf"
+	packageSource hasValue Source__S1
+	priority hasValue "required"
+	section hasValue "admin"
+	installedSize hasValue "520"
+	maintainer hasValue "Original-Debconf Developers <debconf-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.5.73"
+	replaces hasValue "debconf-tiny"
+	provides hasValue "debconf-2.0"
+	conflicts hasValue "apt (<< 0.3.12.1), cdebconf (<< 0.96), debconf-tiny, debconf-utils (<< 1.3.22), dialog (<< 0.9b-20020814-1), menu (<= 2.1.3-1), whiptail (<< 0.51.4-11), whiptail-utf8 (<= 0.50.17-13)"
+	fileName hasValue "pool/main/d/debconf/debconf_1.5.73_all.deb"
+	size hasValue "121524"
+	md5sum hasValue "7679138bdfa4b38eaf8489a18010e81f"
+	sha1 hasValue "353bae74cf43beea36b4d1f97f1d9d845235effe"
+	sha256 hasValue "7d639ffea1be8e8f5859ca94a0a09b1e4664d10af421c748b4163b08db515990"
+	description hasValue "Sistema de Gerencimento de Configuração Debian"
+	descriptionMd5 hasValue "85b82bf406dfc9a635114f44ab7fb66d"
+	depends hasValue "Pre-perl-base (>= 5.20.1-3~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "Pre-perl-base"
+	comparison hasValue ">="
+	version hasValue "5.20.1-3~"
+
+relationInstance depends(P0__debconf,0,DepAtom__0)
+

@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology crashmail
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__crashmail memberOf Package
+	package hasValue "crashmail"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/mail"
+	installedSize hasValue "495"
+	maintainer hasValue "Original-Robert James Clay <jame@rocasa.us>"
+	architecture hasValue "amd64"
+	version hasValue "1.7-1"
+	fileName hasValue "pool/universe/c/crashmail/crashmail_1.7-1_amd64.deb"
+	size hasValue "147860"
+	md5sum hasValue "e6a9b627bc00e5e57a9c9312296bfd85"
+	sha1 hasValue "7740305d71413cd34affa241e8191c4e9a4836f0"
+	sha256 hasValue "95a2f2ee53eb7bbe19e71ada02d22bf2a3f6ec796e94260b7b08e1e8e45b9671"
+	description hasValue "lançador Fidonet com suporte a JAM e *.MSG"
+	descriptionMd5 hasValue "3d0f22a35e48cb220699cea005f4e04d"
+	homepage hasValue "http://ftnapps.sourceforge.net/crashmail.html"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__crashmail,0,DepAtom__0)
+

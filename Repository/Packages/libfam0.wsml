@@ -1,0 +1,70 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libfam0
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libfam0 memberOf Package
+	package hasValue "libfam0"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "65"
+	maintainer hasValue "Original-Chuan-kai Lin <cklin@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.7.0-17.3build2"
+	replaces hasValue "libfam0c102 (<< 2.7.0-17.3build2)"
+	provides hasValue "libfam0c102"
+	fileName hasValue "pool/universe/f/fam/libfam0_2.7.0-17.3build2_amd64.deb"
+	size hasValue "17352"
+	md5sum hasValue "d9aea3b7a9fb4f7a39ddea81acbee9fc"
+	sha1 hasValue "ae5d11ed00057872811a0c334316183249311957"
+	sha256 hasValue "721d0cef85b640caf4e35df3848a84c451b1c1cb4604f00305001aa52540904c"
+	description hasValue "biblioteca cliente para controlar o \"daemon\" FAM"
+	descriptionMd5 hasValue "b45771051edb5328016ac2409d495e6e"
+	homepage hasValue "http://oss.sgi.com/projects/fam/"
+	depends hasValue "libc6 (>= 2.15), libgcc-s1 (>= 3.0), libstdc++6 (>= 5)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__libfam0,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgcc-s1"
+	comparison hasValue ">="
+	version hasValue "3.0"
+
+relationInstance depends(P0__libfam0,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "5"
+
+relationInstance depends(P0__libfam0,2,DepAtom__2)
+

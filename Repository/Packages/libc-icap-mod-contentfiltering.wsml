@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libc_icap_mod_contentfiltering
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libc_icap_mod_contentfiltering memberOf Package
+	package hasValue "libc-icap-mod-contentfiltering"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/net"
+	installedSize hasValue "87"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:0.5.4-1"
+	provides hasValue "libc-icap-module"
+	fileName hasValue "pool/universe/c/c-icap-modules/libc-icap-mod-contentfiltering_0.5.4-1_amd64.deb"
+	size hasValue "24344"
+	md5sum hasValue "abc94939461c1d62bbcc68d437918492"
+	sha1 hasValue "35672579db7031ef63d1b88bb3f1c048f5acb906"
+	sha256 hasValue "f9eb971ef2f838e8c0d180c5ae4136c0e9cce6c6d2ac9a8c17cb7bad612eafdf"
+	descriptionMd5 hasValue "99f03b262675e3273abfba9801638ab5"
+	homepage hasValue "http://c-icap.sourceforge.net/"
+	depends hasValue "c-icap (>= 1:0.2.5~), libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "c-icap"
+	comparison hasValue ">="
+	version hasValue "1:0.2.5~"
+
+relationInstance depends(P0__libc_icap_mod_contentfiltering,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libc_icap_mod_contentfiltering,1,DepAtom__1)
+

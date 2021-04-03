@@ -1,0 +1,74 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology luajit
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__luajit memberOf Package
+	package hasValue "luajit"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/interpreters"
+	installedSize hasValue "518"
+	maintainer hasValue "Original-Enrico Tassi <gareuselesinge@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.1.0~beta3+dfsg-5.1build1"
+	fileName hasValue "pool/universe/l/luajit/luajit_2.1.0~beta3+dfsg-5.1build1_amd64.deb"
+	size hasValue "230548"
+	md5sum hasValue "5f0c189cdcb72e1ac5386f0da67a6af3"
+	sha1 hasValue "9297ad4c5d8a67b42985aeb3e862708e0a477e5c"
+	sha256 hasValue "80b973e1b641d6342f5ca50430bbc21e50b899568600a128bb7dccfd4aa05457"
+	descriptionMd5 hasValue "ea2ed48b1a4e9f9a88708b90989b759f"
+	homepage hasValue "http://luajit.org"
+	depends hasValue "libluajit-5.1-2 (= 2.1.0~beta3+dfsg-5.1build1), libluajit-5.1-common (= 2.1.0~beta3+dfsg-5.1build1), libc6 (>= 2.29), libgcc-s1 (>= 3.3)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libluajit-5.1-2"
+	comparison hasValue "="
+	version hasValue "2.1.0~beta3+dfsg-5.1build1"
+
+relationInstance depends(P0__luajit,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libluajit-5.1-common"
+	comparison hasValue "="
+	version hasValue "2.1.0~beta3+dfsg-5.1build1"
+
+relationInstance depends(P0__luajit,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__luajit,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "libgcc-s1"
+	comparison hasValue ">="
+	version hasValue "3.3"
+
+relationInstance depends(P0__luajit,3,DepAtom__3)
+

@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology quake4
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__quake4 memberOf Package
+	package hasValue "quake4"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "multiverse/games"
+	installedSize hasValue "196"
+	maintainer hasValue "Original-Debian Games Team <pkg-games-devel@lists.alioth.debian.org>"
+	architecture hasValue "i386"
+	version hasValue "64"
+	fileName hasValue "pool/multiverse/g/game-data-packager/quake4_64_i386.deb"
+	size hasValue "61780"
+	md5sum hasValue "e180bdbc61660bdff8c332fab75933aa"
+	sha1 hasValue "a97414f09f63be372c22f979e3d90ac0c21b41fd"
+	sha256 hasValue "ddf6b125f77cd12a57d3d1f0b91410471a8ef981023ac11913dbc776fa270bc9"
+	descriptionMd5 hasValue "295c3a73cf8fea1b5238b2363b96ecaa"
+	homepage hasValue "https://wiki.debian.org/Games/GameDataPackager"
+	depends hasValue "game-data-packager-runtime (>= 64), quake4-bin | game-data-packager (>= 43)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "game-data-packager-runtime"
+	comparison hasValue ">="
+	version hasValue "64"
+
+relationInstance depends(P0__quake4,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "quake4-bin"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__quake4,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "game-data-packager"
+	comparison hasValue ">="
+	version hasValue "43"
+
+relationInstance depends(P0__quake4,1,DepAtom__2)
+

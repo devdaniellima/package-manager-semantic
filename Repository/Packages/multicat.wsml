@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology multicat
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__multicat memberOf Package
+	package hasValue "multicat"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/video"
+	installedSize hasValue "236"
+	maintainer hasValue "Original-Debian Multimedia Maintainers <debian-multimedia@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.3-1"
+	fileName hasValue "pool/universe/m/multicat/multicat_2.3-1_amd64.deb"
+	size hasValue "49292"
+	md5sum hasValue "a494335276a355dc02d025d7baa81bb3"
+	sha1 hasValue "cfd60f3e9e374574174ac2b9b2e83c4fd4bcb5e1"
+	sha256 hasValue "f42fc85a9c9d5789b779aa85d7f5f46c60de43eff04803daf5c21098a3a16532"
+	descriptionMd5 hasValue "c25700974c1c8bc042198518298d8e26"
+	homepage hasValue "http://www.videolan.org/projects/multicat.html"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__multicat,0,DepAtom__0)
+

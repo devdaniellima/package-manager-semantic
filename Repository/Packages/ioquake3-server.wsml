@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ioquake3_server
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ioquake3_server memberOf Package
+	package hasValue "ioquake3-server"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/games"
+	installedSize hasValue "1864"
+	maintainer hasValue "Original-Debian Games Team <pkg-games-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.36+u20191029.dc0c3e7~dfsg-1"
+	fileName hasValue "pool/universe/i/ioquake3/ioquake3-server_1.36+u20191029.dc0c3e7~dfsg-1_amd64.deb"
+	size hasValue "606352"
+	md5sum hasValue "8e7eb1a3212b3c18469a5e1cac91fca4"
+	sha1 hasValue "5b319aae53096198e3888b28f2fc5d3e5034ad7b"
+	sha256 hasValue "41cb38976aa032da7c5d1b8a37eecdbac5c6b22328730f40a2a5b4877561247b"
+	descriptionMd5 hasValue "3cde23092cd526e85270f3a4a7eb29bd"
+	homepage hasValue "https://ioquake3.org/"
+	depends hasValue "libc6 (>= 2.15), zlib1g (>= 1:1.1.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__ioquake3_server,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "zlib1g"
+	comparison hasValue ">="
+	version hasValue "1:1.1.4"
+
+relationInstance depends(P0__ioquake3_server,1,DepAtom__1)
+

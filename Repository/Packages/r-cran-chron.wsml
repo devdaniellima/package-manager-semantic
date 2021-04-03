@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology r_cran_chron
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__r_cran_chron memberOf Package
+	package hasValue "r-cran-chron"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/math"
+	installedSize hasValue "245"
+	maintainer hasValue "Original-Dirk Eddelbuettel <edd@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.3-55-1"
+	fileName hasValue "pool/universe/c/chron/r-cran-chron_2.3-55-1_amd64.deb"
+	size hasValue "189300"
+	md5sum hasValue "d8daf5732bc72807ab72b3936f2bc5d2"
+	sha1 hasValue "2b1c8d882235b9d9b9238626589f3b47c7f71fb3"
+	sha256 hasValue "9c19f927fcdfb2d9c46c5e0ed0ba58b451979e26b68fcee6a01d9684e5c3adb4"
+	descriptionMd5 hasValue "161be4daab7463d5a577dbe083bbb08c"
+	homepage hasValue "https://cran.r-project.org/package=chron"
+	depends hasValue "libc6 (>= 2.4), r-base-core (>= 3.6.2-2), r-api-3.5"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__r_cran_chron,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "r-base-core"
+	comparison hasValue ">="
+	version hasValue "3.6.2-2"
+
+relationInstance depends(P0__r_cran_chron,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "r-api-3.5"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__r_cran_chron,2,DepAtom__2)
+

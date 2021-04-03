@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology freedm
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__freedm memberOf Package
+	package hasValue "freedm"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/games"
+	installedSize hasValue "22801"
+	maintainer hasValue "Original-Debian Games Team <pkg-games-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.12.1-1"
+	provides hasValue "doom-wad"
+	fileName hasValue "pool/universe/f/freedoom/freedm_0.12.1-1_all.deb"
+	size hasValue "7332968"
+	md5sum hasValue "ec41b72b9a75d582a31425ffdf4ee98e"
+	sha1 hasValue "098f53f2fc0ec94956503b8ca3cdce5a2926acb8"
+	sha256 hasValue "b08a4f89c458c931af617da9af7023a1b02609996714724d405dae11060c48d3"
+	descriptionMd5 hasValue "1f746c2fbbba005b000c3d97e86aa301"
+	homepage hasValue "http://freedoom.github.io/"
+	depends hasValue "prboom-plus | doom-engine"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "prboom-plus"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__freedm,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "doom-engine"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__freedm,0,DepAtom__1)
+

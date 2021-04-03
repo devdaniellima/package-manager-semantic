@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gambas3_gb_term
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gambas3_gb_term memberOf Package
+	package hasValue "gambas3-gb-term"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "100"
+	maintainer hasValue "Original-Debian Gambas Team <team+debian-gambas@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.14.3-2ubuntu3.1"
+	fileName hasValue "pool/universe/g/gambas3/gambas3-gb-term_3.14.3-2ubuntu3.1_amd64.deb"
+	size hasValue "18540"
+	md5sum hasValue "2d619f2068eb0e46b0e4651dcbbdf840"
+	sha1 hasValue "e32917bc4171423f246e509fbc085236b262bb4d"
+	sha256 hasValue "f9d8b472c330ee449d046007bf142f7a92cfe126709d1dd8cf24ad8c4d701cb0"
+	descriptionMd5 hasValue "51cfc2cc1e1ba49a4ee142b5590ab860"
+	homepage hasValue "http://gambas.sourceforge.net"
+	depends hasValue "gambas3-runtime (>= 3.14.3-2ubuntu3.1), libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "gambas3-runtime"
+	comparison hasValue ">="
+	version hasValue "3.14.3-2ubuntu3.1"
+
+relationInstance depends(P0__gambas3_gb_term,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__gambas3_gb_term,1,DepAtom__1)
+

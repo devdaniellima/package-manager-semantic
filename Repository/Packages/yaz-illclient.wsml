@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology yaz_illclient
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__yaz_illclient memberOf Package
+	package hasValue "yaz-illclient"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/utils"
+	installedSize hasValue "48"
+	maintainer hasValue "Original-Vincent Danjean <vdanjean@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "5.28.0-1build2"
+	fileName hasValue "pool/universe/y/yaz/yaz-illclient_5.28.0-1build2_amd64.deb"
+	size hasValue "10252"
+	md5sum hasValue "215954e7d1f0f4220506ddff0829be13"
+	sha1 hasValue "be7669913219c0ee9a8cc012851ab5897e0a8af2"
+	sha256 hasValue "b0dd2aff6c6548a414014017aeb440e65bb351a81ad17d8b60ebb5e7ce596373"
+	descriptionMd5 hasValue "e9786621737ba8d25f77c3cff37947e3"
+	homepage hasValue "https://www.indexdata.com/resources/software/yaz/"
+	depends hasValue "libc6 (>= 2.14), libyaz5 (>= 5.27.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__yaz_illclient,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libyaz5"
+	comparison hasValue ">="
+	version hasValue "5.27.1"
+
+relationInstance depends(P0__yaz_illclient,1,DepAtom__1)
+

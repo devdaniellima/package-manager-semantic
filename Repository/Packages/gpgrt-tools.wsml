@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gpgrt_tools
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gpgrt_tools memberOf Package
+	package hasValue "gpgrt-tools"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "105"
+	maintainer hasValue "Original-Debian GnuPG Maintainers <pkg-gnupg-maint@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.37-1"
+	fileName hasValue "pool/universe/libg/libgpg-error/gpgrt-tools_1.37-1_amd64.deb"
+	size hasValue "23092"
+	md5sum hasValue "65e07c55c58dc151aaf954a750760734"
+	sha1 hasValue "b100dd5b03609eee83bf9f6e1b1bee474c9b2e07"
+	sha256 hasValue "31b405b457cdd85383767cf166963f41ff3f231486ee573137706d7b60db559f"
+	descriptionMd5 hasValue "b8de17dc3264cf31937947e699507cdc"
+	homepage hasValue "https://www.gnupg.org/related_software/libgpg-error/"
+	depends hasValue "libc6 (>= 2.14), libgpg-error0 (>= 1.29)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__gpgrt_tools,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgpg-error0"
+	comparison hasValue ">="
+	version hasValue "1.29"
+
+relationInstance depends(P0__gpgrt_tools,1,DepAtom__1)
+

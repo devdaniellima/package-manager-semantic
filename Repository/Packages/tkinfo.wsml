@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology tkinfo
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__tkinfo memberOf Package
+	package hasValue "tkinfo"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/doc"
+	installedSize hasValue "222"
+	maintainer hasValue "Original-Peter Blackman <peter@pblackman.plus.com>"
+	architecture hasValue "all"
+	version hasValue "2.11-2"
+	provides hasValue "info-browser"
+	fileName hasValue "pool/universe/t/tkinfo/tkinfo_2.11-2_all.deb"
+	size hasValue "55028"
+	md5sum hasValue "9e1727e151cb6e66d3750f82f4221a46"
+	sha1 hasValue "22d47c37343104e12fe9dd592ff5bdb8e6394ede"
+	sha256 hasValue "28fe483aac3a37a7701a1dd965ae363a8ad70412b56dca9154deb7c8c140b9ed"
+	description hasValue "navegador info Tcl/Tk"
+	descriptionMd5 hasValue "127b4561e795fa49e9942ed339447819"
+	homepage hasValue "http://math-www.uni-paderborn.de/~axel/tkinfo/"
+	depends hasValue "tk (>= 8.5), install-info"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "tk"
+	comparison hasValue ">="
+	version hasValue "8.5"
+
+relationInstance depends(P0__tkinfo,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "install-info"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__tkinfo,1,DepAtom__1)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gcc_mipsisa64r6el_linux_gnuabi64
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gcc_mipsisa64r6el_linux_gnuabi64 memberOf Package
+	package hasValue "gcc-mipsisa64r6el-linux-gnuabi64"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "25"
+	maintainer hasValue "Original-Debian GCC Maintainers <debian-gcc@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "4:9.2.1-4.1"
+	fileName hasValue "pool/universe/g/gcc-defaults-mipsen/gcc-mipsisa64r6el-linux-gnuabi64_9.2.1-4.1_amd64.deb"
+	size hasValue "1440"
+	md5sum hasValue "e73a037c34263a8837a7618c40121460"
+	sha1 hasValue "424ec8c609b6f034c2b4f33f172a4094abe8eee1"
+	sha256 hasValue "f2140b9c26c53a3d00a3cf70d88f18ffefaf9fef1a7e175b6868960ebad460f7"
+	description hasValue "GNU C compiler for the mips64r6el architecture"
+	descriptionMd5 hasValue "9da9bb886c4c5d5dae08f21c44aba879"
+	depends hasValue "cpp-mipsisa64r6el-linux-gnuabi64 (= 4:9.2.1-4.1), gcc-9-mipsisa64r6el-linux-gnuabi64 (>= 9.2.1-1~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "cpp-mipsisa64r6el-linux-gnuabi64"
+	comparison hasValue "="
+	version hasValue "4:9.2.1-4.1"
+
+relationInstance depends(P0__gcc_mipsisa64r6el_linux_gnuabi64,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "gcc-9-mipsisa64r6el-linux-gnuabi64"
+	comparison hasValue ">="
+	version hasValue "9.2.1-1~"
+
+relationInstance depends(P0__gcc_mipsisa64r6el_linux_gnuabi64,1,DepAtom__1)
+

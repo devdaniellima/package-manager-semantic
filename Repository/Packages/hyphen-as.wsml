@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology hyphen_as
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__hyphen_as memberOf Package
+	package hasValue "hyphen-as"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "text"
+	installedSize hasValue "21"
+	maintainer hasValue "Original-Debian-IN Team <debian-in-workers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.9.0-1"
+	fileName hasValue "pool/main/h/hyphen-indic/hyphen-as_0.9.0-1_all.deb"
+	size hasValue "3806"
+	md5sum hasValue "dfcb9984fa3728fd99da34faf3c3356b"
+	sha1 hasValue "4ef28eaeb1d0ccf5bcaf7f7e52f55a67619c833e"
+	sha256 hasValue "45137c5a1c239ea8ed48386dbea97b001d7f837c4828607a1e70ef6817081150"
+	descriptionMd5 hasValue "eee319260d934ee0dbe299e7a1d7c015"
+	homepage hasValue "http://wiki.smc.org.in/Hyphenation"
+	depends hasValue "dictionaries-common (>= 0.10)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "dictionaries-common"
+	comparison hasValue ">="
+	version hasValue "0.10"
+
+relationInstance depends(P0__hyphen_as,0,DepAtom__0)
+

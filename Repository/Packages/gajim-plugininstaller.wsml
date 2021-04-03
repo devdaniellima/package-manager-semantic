@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gajim_plugininstaller
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gajim_plugininstaller memberOf Package
+	package hasValue "gajim-plugininstaller"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "62"
+	maintainer hasValue "Original-Debian XMPP Maintainers <pkg-xmpp-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.1.4-1"
+	fileName hasValue "pool/universe/g/gajim-plugininstaller/gajim-plugininstaller_1.1.4-1_all.deb"
+	size hasValue "11616"
+	md5sum hasValue "7b20d20d42391b99fc2417db3b5f9caf"
+	sha1 hasValue "ae1123101a10e9c17a4b5115ed220cd3fcda118c"
+	sha256 hasValue "453b9134e7b018dcc1f259ffda9ca857f94f4d640269074e37407985cb84dcfd"
+	descriptionMd5 hasValue "b2b2cddca4f1e9ae62230f717c461787"
+	homepage hasValue "https://dev.gajim.org/gajim/gajim-plugins/wikis/PluginInstallerPlugin"
+	depends hasValue "gajim (>= 1.1.0~beta2~), python3-pkg-resources"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "gajim"
+	comparison hasValue ">="
+	version hasValue "1.1.0~beta2~"
+
+relationInstance depends(P0__gajim_plugininstaller,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3-pkg-resources"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__gajim_plugininstaller,1,DepAtom__1)
+

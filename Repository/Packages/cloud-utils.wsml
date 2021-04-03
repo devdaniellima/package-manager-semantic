@@ -1,0 +1,59 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology cloud_utils
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__cloud_utils memberOf Package
+	package hasValue "cloud-utils"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "admin"
+	installedSize hasValue "16"
+	maintainer hasValue "Scott Moser <smoser@ubuntu.com>"
+	architecture hasValue "all"
+	version hasValue "0.31-7-gd99b2d76-0ubuntu1"
+	fileName hasValue "pool/main/c/cloud-utils/cloud-utils_0.31-7-gd99b2d76-0ubuntu1_all.deb"
+	size hasValue "1604"
+	md5sum hasValue "c51a709c49cc7c6b6f03d27f55c92387"
+	sha1 hasValue "8df7846f5b5d651c3567c4d6884b940dab6d0cd0"
+	sha256 hasValue "bf93a1fe2119c32a8580a69f86d120739050947a03b33c91236e88b4a11c4190"
+	descriptionMd5 hasValue "1e4961d514cf3ca76a2bdf19b3eb3abc"
+	depends hasValue "cloud-guest-utils, cloud-image-utils"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "cloud-guest-utils"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__cloud_utils,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "cloud-image-utils"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__cloud_utils,1,DepAtom__1)
+

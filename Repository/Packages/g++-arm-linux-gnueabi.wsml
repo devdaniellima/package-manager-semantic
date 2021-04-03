@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gPlusPlus_arm_linux_gnueabi
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gPlusPlus_arm_linux_gnueabi memberOf Package
+	package hasValue "g++-arm-linux-gnueabi"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "11"
+	maintainer hasValue "Original-Debian GCC Maintainers <debian-gcc@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "4:9.3.0-1ubuntu2"
+	fileName hasValue "pool/universe/g/gcc-defaults/g++-arm-linux-gnueabi_9.3.0-1ubuntu2_amd64.deb"
+	size hasValue "1128"
+	md5sum hasValue "cfedc446f90386bb86853eee55442b8d"
+	sha1 hasValue "2fc3e57474fa45362db69b78aa0f75cc55f73441"
+	sha256 hasValue "c3c5b96f8fcd8243ab1c0cadb61fc8513b2262f0f21891b07c2286d01a2d80a9"
+	description hasValue "GNU C++ compiler for the armel architecture"
+	descriptionMd5 hasValue "05df4fea4d3956fb12eda5f6640a9368"
+	depends hasValue "cpp-arm-linux-gnueabi (= 4:9.3.0-1ubuntu2), gcc-arm-linux-gnueabi (= 4:9.3.0-1ubuntu2), g++-9-arm-linux-gnueabi (>= 9.3.0-3~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "cpp-arm-linux-gnueabi"
+	comparison hasValue "="
+	version hasValue "4:9.3.0-1ubuntu2"
+
+relationInstance depends(P0__gPlusPlus_arm_linux_gnueabi,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "gcc-arm-linux-gnueabi"
+	comparison hasValue "="
+	version hasValue "4:9.3.0-1ubuntu2"
+
+relationInstance depends(P0__gPlusPlus_arm_linux_gnueabi,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "g++-9-arm-linux-gnueabi"
+	comparison hasValue ">="
+	version hasValue "9.3.0-3~"
+
+relationInstance depends(P0__gPlusPlus_arm_linux_gnueabi,2,DepAtom__2)
+

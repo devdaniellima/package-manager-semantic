@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology khal_doc
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__khal_doc memberOf Package
+	package hasValue "khal-doc"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/doc"
+	installedSize hasValue "519"
+	maintainer hasValue "Original-Python Applications Packaging Team <python-apps-team@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1:0.9.10-1.1"
+	fileName hasValue "pool/universe/k/khal/khal-doc_0.9.10-1.1_all.deb"
+	size hasValue "67280"
+	md5sum hasValue "dfe9017b242f9503e531172b0a0d3bf2"
+	sha1 hasValue "76b87fea4296a83f6b7b3965d716aec4fb206cd7"
+	sha256 hasValue "f592fc138a14f209314139d33d0ebc5d0363dd365a52861c119b4402f0fb9f0e"
+	descriptionMd5 hasValue "a3cdf8c08ba11bde8db25fb9d337f796"
+	homepage hasValue "https://github.com/pimutils/khal"
+	depends hasValue "python3-doc, libjs-sphinxdoc (>= 1.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3-doc"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__khal_doc,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libjs-sphinxdoc"
+	comparison hasValue ">="
+	version hasValue "1.0"
+
+relationInstance depends(P0__khal_doc,1,DepAtom__1)
+

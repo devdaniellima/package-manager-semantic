@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology bytes_circle
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__bytes_circle memberOf Package
+	package hasValue "bytes-circle"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/math"
+	installedSize hasValue "34"
+	maintainer hasValue "Original-Roberto S. Galende <roberto.s.galende@gmail.com>"
+	architecture hasValue "amd64"
+	version hasValue "2.6-1"
+	fileName hasValue "pool/universe/b/bytes-circle/bytes-circle_2.6-1_amd64.deb"
+	size hasValue "10272"
+	md5sum hasValue "b994e5daba23d5067bb80a3faa94066c"
+	sha1 hasValue "59f21fe4e9fdd6f5eb314901df90c15c4f36de54"
+	sha256 hasValue "557d2c1489464fe7b2f28604bdabcd02a0a03a41d684ecbbf475d7c6e7788471"
+	descriptionMd5 hasValue "0990683f71a933309ee009285d20f636"
+	homepage hasValue "https://circulosmeos.wordpress.com/2015/10/10/statistics-circle-for-analysing-byte-entropy-in-files/"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__bytes_circle,0,DepAtom__0)
+

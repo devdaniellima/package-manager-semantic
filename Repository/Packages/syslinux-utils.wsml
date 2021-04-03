@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology syslinux_utils
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__syslinux_utils memberOf Package
+	package hasValue "syslinux-utils"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "244"
+	maintainer hasValue "Original-Debian CD Group <debian-cd@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3:6.04~git20190206.bf6db5b4+dfsg1-2"
+	fileName hasValue "pool/universe/s/syslinux/syslinux-utils_6.04~git20190206.bf6db5b4+dfsg1-2_amd64.deb"
+	size hasValue "48844"
+	md5sum hasValue "9bca452b5c81bd4359c1e4c9dbd58f78"
+	sha1 hasValue "c077b2dc074e1fd6df4bd38025bad1fcf28c7805"
+	sha256 hasValue "efd9a383a42c6d34f07e400cee67bc70df9e365632b25d10f57ccd81ab6fa3f4"
+	description hasValue "collection of bootloaders (utilities)"
+	descriptionMd5 hasValue "c0539e9d0c7965a4c803fe26df75b3a5"
+	homepage hasValue "http://www.syslinux.org/"
+	depends hasValue "libc6 (>= 2.7), libuuid1 (>= 2.16)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__syslinux_utils,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libuuid1"
+	comparison hasValue ">="
+	version hasValue "2.16"
+
+relationInstance depends(P0__syslinux_utils,1,DepAtom__1)
+

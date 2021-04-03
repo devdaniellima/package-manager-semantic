@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology solfege_oss
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__solfege_oss memberOf Package
+	package hasValue "solfege-oss"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/gnome"
+	installedSize hasValue "68"
+	maintainer hasValue "Original-Francois Mazen <francois@mzf.fr>"
+	architecture hasValue "amd64"
+	version hasValue "3.23.4-7"
+	fileName hasValue "pool/universe/s/solfege/solfege-oss_3.23.4-7_amd64.deb"
+	size hasValue "17804"
+	md5sum hasValue "1f3142454a2248c07e48c81f18fc01ef"
+	sha1 hasValue "2946337af06198a5b0450b9fbdd167fee302b57a"
+	sha256 hasValue "6ef0fec8f62c0df2d459db328c51925d2c816501cb180def5546e4644ad24803"
+	descriptionMd5 hasValue "6580725ec34e23f615168251b2e10c38"
+	homepage hasValue "https://www.gnu.org/software/solfege/"
+	depends hasValue "solfege, libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "solfege"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__solfege_oss,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__solfege_oss,1,DepAtom__1)
+

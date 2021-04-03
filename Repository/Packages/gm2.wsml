@@ -1,0 +1,66 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gm2
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gm2 memberOf Package
+	package hasValue "gm2"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "13"
+	maintainer hasValue "Original-Debian GCC Maintainers <debian-gcc@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "4:10.0-1ubuntu2"
+	fileName hasValue "pool/universe/g/gcc-defaults/gm2_10.0-1ubuntu2_amd64.deb"
+	size hasValue "1092"
+	md5sum hasValue "aaf2772260115be41e75f1a73e7b59e5"
+	sha1 hasValue "f29f390aa489f39334248e5589c21f8d149f93d6"
+	sha256 hasValue "8a3677dde06c138e04c2719cb765ed28cdbe53eeb5da6020dc090409f6cc91dd"
+	descriptionMd5 hasValue "94f753ea379d66bad841234959bfd853"
+	depends hasValue "cpp (>= 4:9.3.0-1ubuntu2), gcc (>= 4:9.3.0-1ubuntu2), gm2-10 (>= 10-20200307-0ubuntu1~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "cpp"
+	comparison hasValue ">="
+	version hasValue "4:9.3.0-1ubuntu2"
+
+relationInstance depends(P0__gm2,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "gcc"
+	comparison hasValue ">="
+	version hasValue "4:9.3.0-1ubuntu2"
+
+relationInstance depends(P0__gm2,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "gm2-10"
+	comparison hasValue ">="
+	version hasValue "10-20200307-0ubuntu1~"
+
+relationInstance depends(P0__gm2,2,DepAtom__2)
+

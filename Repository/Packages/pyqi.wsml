@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology pyqi
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__pyqi memberOf Package
+	package hasValue "pyqi"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "422"
+	maintainer hasValue "Original-Debian Med Packaging Team <debian-med-packaging@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.3.2+dfsg-5"
+	fileName hasValue "pool/universe/p/pyqi/pyqi_0.3.2+dfsg-5_all.deb"
+	size hasValue "66144"
+	md5sum hasValue "d408d6505c3f00d27e16befab73c4f09"
+	sha1 hasValue "677510a313026940d4b4455ef26f4181245d472d"
+	sha256 hasValue "7b84921f6e8aa4e4e378ff1a1db5a93cc20fdb077b729704cc6bf117eb760232"
+	descriptionMd5 hasValue "b772316125cae580a41ce7befb71298d"
+	homepage hasValue "https://pypi.python.org/pypi/pyqi/"
+	depends hasValue "libjs-sphinxdoc (>= 1.8.5), python3:any"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libjs-sphinxdoc"
+	comparison hasValue ">="
+	version hasValue "1.8.5"
+
+relationInstance depends(P0__pyqi,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__pyqi,1,DepAtom__1)
+

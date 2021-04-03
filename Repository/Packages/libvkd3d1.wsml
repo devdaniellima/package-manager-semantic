@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libvkd3d1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libvkd3d1 memberOf Package
+	package hasValue "libvkd3d1"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "425"
+	maintainer hasValue "Original-Debian Wine Party <debian-wine@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.1-4"
+	fileName hasValue "pool/universe/v/vkd3d/libvkd3d1_1.1-4_amd64.deb"
+	size hasValue "124592"
+	md5sum hasValue "4eefdc969c98a1d522f06c3cc702b4ec"
+	sha1 hasValue "68957f24b1546dfa0cf15f787e7fc15e0e657d6a"
+	sha256 hasValue "87cd1cfe1022d83aca7fefce3f196df7c12f1ed1d4e0d6ed87dec875e180b89e"
+	descriptionMd5 hasValue "876f2b9538ea93e5f351dd359ff7c1cf"
+	homepage hasValue "http://www.winehq.org"
+	depends hasValue "libvulkan1 (>= 1.1.70), libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libvulkan1"
+	comparison hasValue ">="
+	version hasValue "1.1.70"
+
+relationInstance depends(P0__libvkd3d1,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libvkd3d1,1,DepAtom__1)
+

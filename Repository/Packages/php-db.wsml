@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology php_db
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__php_db memberOf Package
+	package hasValue "php-db"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/web"
+	installedSize hasValue "563"
+	maintainer hasValue "Original-Debian PHP PEAR Maintainers <pkg-php-pear@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.9.3-1build1"
+	fileName hasValue "pool/universe/p/php-db/php-db_1.9.3-1build1_all.deb"
+	size hasValue "71408"
+	md5sum hasValue "1c21d87112988c3d87e85c87484c86a7"
+	sha1 hasValue "db7a1634f85e39196bb1088b51c8ee118e26534c"
+	sha256 hasValue "d80b349ce6125e4ec45b376cc20ce72100628cd320971e5af25128e75276c7f7"
+	description hasValue "Database Abstraction Layer"
+	descriptionMd5 hasValue "760c4089d6ab5cabfc173e223442a016"
+	homepage hasValue "https://pear.php.net/package/DB"
+	depends hasValue "php-common, php-pear (>= 1.10.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "php-common"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__php_db,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "php-pear"
+	comparison hasValue ">="
+	version hasValue "1.10.0"
+
+relationInstance depends(P0__php_db,1,DepAtom__1)
+

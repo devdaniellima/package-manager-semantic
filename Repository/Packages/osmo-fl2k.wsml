@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology osmo_fl2k
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__osmo_fl2k memberOf Package
+	package hasValue "osmo-fl2k"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "66"
+	maintainer hasValue "Original-Debian Mobcom Maintainers <Debian-mobcom-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.1.0+20180423git9e79bde-2"
+	fileName hasValue "pool/universe/o/osmo-fl2k/osmo-fl2k_0.1.0+20180423git9e79bde-2_amd64.deb"
+	size hasValue "17192"
+	md5sum hasValue "37ff0dc4add922e09fa75a5045678882"
+	sha1 hasValue "7bf3b54092ad78707229034ed5bdddcdd5f46a0d"
+	sha256 hasValue "5499aeaa5e523b113c1c452fc007ba836d373ccaebefa58c135cca752a8ba340"
+	descriptionMd5 hasValue "c5f0aaa959cfbdc75256946890ce9060"
+	homepage hasValue "https://projects.osmocom.org/projects/osmo-fl2k"
+	depends hasValue "libc6 (>= 2.17), libosmo-fl2k0"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.17"
+
+relationInstance depends(P0__osmo_fl2k,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libosmo-fl2k0"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__osmo_fl2k,1,DepAtom__1)
+

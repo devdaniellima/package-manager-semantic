@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology lifelines
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__lifelines memberOf Package
+	package hasValue "lifelines"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/misc"
+	installedSize hasValue "2527"
+	maintainer hasValue "Original-Felipe Augusto van de Wiel (faw) <faw@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.0.61-2.1"
+	fileName hasValue "pool/universe/l/lifelines/lifelines_3.0.61-2.1_amd64.deb"
+	size hasValue "592748"
+	md5sum hasValue "80fd3de7081483a1531579aa3a60cd2c"
+	sha1 hasValue "a1821faa5e721c011f1ade5e381727aa2ab5f4e2"
+	sha256 hasValue "9e4a7a7113a0cab2069137b1ff3dd12767ab4c78b1ae122dc006b9e618cda8f9"
+	description hasValue "programa de genealogia em modo texto"
+	descriptionMd5 hasValue "f2620cad3b7577eeffaee2d6dfbc8335"
+	depends hasValue "libc6 (>= 2.14), libncursesw6 (>= 6), libtinfo6 (>= 6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__lifelines,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libncursesw6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__lifelines,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libtinfo6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__lifelines,2,DepAtom__2)
+

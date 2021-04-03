@@ -1,0 +1,59 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libppd0
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libppd0 memberOf Package
+	package hasValue "libppd0"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "58"
+	maintainer hasValue "Original-A Mennucc1 <mennucc1@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2:0.10-7.3"
+	fileName hasValue "pool/universe/libp/libppd/libppd0_0.10-7.3_amd64.deb"
+	size hasValue "19910"
+	md5sum hasValue "db25abf6c02b87cf2b6d3a166e9b0387"
+	sha1 hasValue "97bbc884c32766b471601aea571b6e7378e2e2d4"
+	sha256 hasValue "b49dd3060cfdce4522b543f9bfc59942b12c2af1ae0161f195302313310f5ce5"
+	descriptionMd5 hasValue "df813c66a5e2e7f5f63c243f89894c1d"
+	depends hasValue "libc6 (>= 2.7), libglib2.0-0 (>= 2.12.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__libppd0,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libglib2.0-0"
+	comparison hasValue ">="
+	version hasValue "2.12.0"
+
+relationInstance depends(P0__libppd0,1,DepAtom__1)
+

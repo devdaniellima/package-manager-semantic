@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libjbigi_jni
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libjbigi_jni memberOf Package
+	package hasValue "libjbigi-jni"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/java"
+	installedSize hasValue "38"
+	maintainer hasValue "Original-Masayuki Hatta <mhatta@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.9.44-3"
+	fileName hasValue "pool/universe/i/i2p/libjbigi-jni_0.9.44-3_amd64.deb"
+	size hasValue "5160"
+	md5sum hasValue "85e4300d8190b25907b04488c81426bc"
+	sha1 hasValue "5650b99a5f14ce580602248201ed5765d14612c8"
+	sha256 hasValue "fc15601ca93da965c905fb96331d0ff663e9bc5c12ffb3e62a736f7a2b045269"
+	descriptionMd5 hasValue "9abc006aa799702ff868098881332bad"
+	homepage hasValue "https://geti2p.net/"
+	depends hasValue "i2p-router (= 0.9.44-3), libc6 (>= 2.4), libgmp10 (>= 2:5.0.5)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "i2p-router"
+	comparison hasValue "="
+	version hasValue "0.9.44-3"
+
+relationInstance depends(P0__libjbigi_jni,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libjbigi_jni,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libgmp10"
+	comparison hasValue ">="
+	version hasValue "2:5.0.5"
+
+relationInstance depends(P0__libjbigi_jni,2,DepAtom__2)
+

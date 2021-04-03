@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology squirrel3
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__squirrel3 memberOf Package
+	package hasValue "squirrel3"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/interpreters"
+	installedSize hasValue "430"
+	maintainer hasValue "Original-Fabian Wolff <fabi.wolff@arcor.de>"
+	architecture hasValue "amd64"
+	version hasValue "3.1-8build1"
+	fileName hasValue "pool/universe/s/squirrel3/squirrel3_3.1-8build1_amd64.deb"
+	size hasValue "374664"
+	md5sum hasValue "b8f81fba843ce118361d4c3377d3a5eb"
+	sha1 hasValue "a42c8e7569c6653697147550c179cee738d5a6ae"
+	sha256 hasValue "516ff44a7d092fccabcd3d411b93edad7713ce960b1867df450751adc7b00bf7"
+	descriptionMd5 hasValue "5cf3fb7260ee5375f83baf79ba48d1a3"
+	homepage hasValue "http://squirrel-lang.org/"
+	depends hasValue "libsquirrel3-0 (= 3.1-8build1), libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libsquirrel3-0"
+	comparison hasValue "="
+	version hasValue "3.1-8build1"
+
+relationInstance depends(P0__squirrel3,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__squirrel3,1,DepAtom__1)
+

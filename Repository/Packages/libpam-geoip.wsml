@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libpam_geoip
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libpam_geoip memberOf Package
+	package hasValue "libpam-geoip"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "64"
+	maintainer hasValue "Original-Patrick Matthäi <pmatthaei@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.1-6"
+	fileName hasValue "pool/universe/p/pam-geoip/libpam-geoip_1.1-6_amd64.deb"
+	size hasValue "16700"
+	md5sum hasValue "6fc44eb789b1f15f0058fbd21b271827"
+	sha1 hasValue "8a62eae00c6a19def83250adbbc4010c649bd904"
+	sha256 hasValue "c43a616d6bc3c03d014373f3214d2b15fa431cd650fd767224f6fc2a3521591b"
+	descriptionMd5 hasValue "ca33e249543e210cfc9a49a95f49cece"
+	homepage hasValue "http://ankh-morp.org/code/pam_geoip/"
+	depends hasValue "libc6 (>= 2.29), libgeoip1 (>= 1.6.12), libpam0g (>= 0.99.7.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__libpam_geoip,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgeoip1"
+	comparison hasValue ">="
+	version hasValue "1.6.12"
+
+relationInstance depends(P0__libpam_geoip,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libpam0g"
+	comparison hasValue ">="
+	version hasValue "0.99.7.1"
+
+relationInstance depends(P0__libpam_geoip,2,DepAtom__2)
+

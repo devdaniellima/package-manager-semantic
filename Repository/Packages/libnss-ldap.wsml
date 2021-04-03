@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libnss_ldap
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libnss_ldap memberOf Package
+	package hasValue "libnss-ldap"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/net"
+	installedSize hasValue "158"
+	maintainer hasValue "Original-Richard A Nelson (Rick) <cowboy@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "265-5ubuntu1"
+	fileName hasValue "pool/universe/libn/libnss-ldap/libnss-ldap_265-5ubuntu1_amd64.deb"
+	size hasValue "58816"
+	md5sum hasValue "978052c633e60903046b6d9823f79a62"
+	sha1 hasValue "bebde1b9ab7f49cc8f5c29b074ae2e28acee1f75"
+	sha256 hasValue "77961b157852a9fc94f7509cba52df674babd650dd7129f381c51fbca9670a4b"
+	descriptionMd5 hasValue "56ed54cdb5c4e9e7589f38a95f594518"
+	homepage hasValue "http://www.padl.com/OSS/nss_ldap.html"
+	depends hasValue "libc6 (>= 2.14), libgssapi-krb5-2 (>= 1.6.dfsg.2), libldap-2.4-2 (>= 2.4.7)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libnss_ldap,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgssapi-krb5-2"
+	comparison hasValue ">="
+	version hasValue "1.6.dfsg.2"
+
+relationInstance depends(P0__libnss_ldap,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libldap-2.4-2"
+	comparison hasValue ">="
+	version hasValue "2.4.7"
+
+relationInstance depends(P0__libnss_ldap,2,DepAtom__2)
+

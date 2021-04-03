@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology mysqmail
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__mysqmail memberOf Package
+	package hasValue "mysqmail"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/mail"
+	installedSize hasValue "34"
+	maintainer hasValue "Original-Thomas Goirand <zigo@debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.4.9-10.2build2"
+	fileName hasValue "pool/universe/m/mysqmail/mysqmail_0.4.9-10.2build2_all.deb"
+	size hasValue "11084"
+	md5sum hasValue "cb9fa87a2c2547476df93fd73025bfef"
+	sha1 hasValue "d103f18ac4336c4a51f87634c5f9aabb477c53d2"
+	sha256 hasValue "893cab76802d9fc99607cca9e8f99d1cf15eeb0f815c91e521a4cf8daef8ba6a"
+	descriptionMd5 hasValue "ecd6676908f8f30fea140302106a8b9d"
+	homepage hasValue "http://www.gplhost.com/software-mysqmail.html"
+	depends hasValue "debconf (>= 0.5) | debconf-2.0, debconf"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "debconf"
+	comparison hasValue ">="
+	version hasValue "0.5"
+
+relationInstance depends(P0__mysqmail,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "debconf-2.0"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__mysqmail,0,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "debconf"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__mysqmail,1,DepAtom__2)
+

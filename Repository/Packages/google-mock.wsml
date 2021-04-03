@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology google_mock
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__google_mock memberOf Package
+	package hasValue "google-mock"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "15"
+	maintainer hasValue "Original-Steve M. Robbins <smr@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.10.0-2"
+	fileName hasValue "pool/universe/g/googletest/google-mock_1.10.0-2_amd64.deb"
+	size hasValue "4076"
+	md5sum hasValue "3976fd43bbfb349825a61e9e190c66fd"
+	sha1 hasValue "d41f3ac91077c3e40d4d8edbe26cb06946ebecc2"
+	sha256 hasValue "d16ac09b16aacde7fa59de8505c66fea2ecd803028ae3af5f7994510e13c0a07"
+	descriptionMd5 hasValue "483ad6c5d0b69156560590a1aeff1f4d"
+	homepage hasValue "https://github.com/google/googletest"
+	depends hasValue "googletest (= 1.10.0-2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "googletest"
+	comparison hasValue "="
+	version hasValue "1.10.0-2"
+
+relationInstance depends(P0__google_mock,0,DepAtom__0)
+

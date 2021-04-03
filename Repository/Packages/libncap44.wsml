@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libncap44
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libncap44 memberOf Package
+	package hasValue "libncap44"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "72"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.9.2-4"
+	fileName hasValue "pool/universe/n/ncap/libncap44_1.9.2-4_amd64.deb"
+	size hasValue "26400"
+	md5sum hasValue "0c2b26c2994ba6515acd0b94f51bbe4f"
+	sha1 hasValue "e40ed1a8d32a3d1f5a482dd543d5b1b3e5c47899"
+	sha256 hasValue "275479447c7bef6c31464388e4d08f8b16236e9dd966378611f0b092d8a31f66"
+	description hasValue "network capture library"
+	descriptionMd5 hasValue "ac503e38f51d2dce652990c7a73274ae"
+	depends hasValue "libc6 (>= 2.15), libpcap0.8 (>= 0.9.8)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__libncap44,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libpcap0.8"
+	comparison hasValue ">="
+	version hasValue "0.9.8"
+
+relationInstance depends(P0__libncap44,1,DepAtom__1)
+

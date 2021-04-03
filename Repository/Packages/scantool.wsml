@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology scantool
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__scantool memberOf Package
+	package hasValue "scantool"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/electronics"
+	installedSize hasValue "517"
+	maintainer hasValue "Original-Kees Cook <kees@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.0-2"
+	fileName hasValue "pool/universe/s/scantool/scantool_2.0-2_amd64.deb"
+	size hasValue "158080"
+	md5sum hasValue "eb23e3b2127b36724ad4ecff1a4c149e"
+	sha1 hasValue "0601ba65e4f2cd6f46a440b092ce028da91b948b"
+	sha256 hasValue "d69ebdb976c51dcdf216b720663878418ac231dcb080b323b103e98b4babe988"
+	descriptionMd5 hasValue "15b2402ab1041f30144c7a2b0ef53047"
+	homepage hasValue "https://github.com/kees/scantool"
+	depends hasValue "liballegro4.4 (>= 2:4.4.3.1), libc6 (>= 2.15)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "liballegro4.4"
+	comparison hasValue ">="
+	version hasValue "2:4.4.3.1"
+
+relationInstance depends(P0__scantool,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__scantool,1,DepAtom__1)
+

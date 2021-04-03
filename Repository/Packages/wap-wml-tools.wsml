@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology wap_wml_tools
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__wap_wml_tools memberOf Package
+	package hasValue "wap-wml-tools"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "multiverse/web"
+	installedSize hasValue "151"
+	maintainer hasValue "Original-Axel Beckert <abe@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.0.4-7build1"
+	fileName hasValue "pool/multiverse/w/wap-wml-tools/wap-wml-tools_0.0.4-7build1_amd64.deb"
+	size hasValue "37948"
+	md5sum hasValue "9d3083624d7f0752a95541ab2af5f040"
+	sha1 hasValue "13c08b93091c318ad68056d6e44f9a95e9b263de"
+	sha256 hasValue "9709508a40a326a24aeb72cb5c12cf983b5162c337cb2171d978faf237453037"
+	descriptionMd5 hasValue "d6cb06102d6ab9d9d298d6ffda1df8de"
+	homepage hasValue "http://maintained.by.noone.org/wml-tools/"
+	depends hasValue "libc6 (>= 2.4), libxml2 (>= 2.7.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__wap_wml_tools,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libxml2"
+	comparison hasValue ">="
+	version hasValue "2.7.4"
+
+relationInstance depends(P0__wap_wml_tools,1,DepAtom__1)
+

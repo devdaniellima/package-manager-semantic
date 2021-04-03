@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology pmidi
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__pmidi memberOf Package
+	package hasValue "pmidi"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/sound"
+	installedSize hasValue "51"
+	maintainer hasValue "Original-Debian Multimedia Maintainers <pkg-multimedia-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.7.1-1"
+	fileName hasValue "pool/universe/p/pmidi/pmidi_1.7.1-1_amd64.deb"
+	size hasValue "16316"
+	md5sum hasValue "9263ef4ee0c5462e836af6ec942ca1e3"
+	sha1 hasValue "8a82d21ef86b3948f5e91e3b1b78c4896b6492b7"
+	sha256 hasValue "114ae35adb4346a6f97ede8db5c11718ecc685b4acd6ebc52fa1e3aa7d19eb3a"
+	descriptionMd5 hasValue "e3ed25fa0de8faee6c4152e7610b60e9"
+	homepage hasValue "http://www.parabola.me.uk/alsa/pmidi.html"
+	depends hasValue "libasound2 (>= 1.0.16), libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libasound2"
+	comparison hasValue ">="
+	version hasValue "1.0.16"
+
+relationInstance depends(P0__pmidi,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__pmidi,1,DepAtom__1)
+

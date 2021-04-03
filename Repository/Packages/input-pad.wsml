@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology input_pad
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__input_pad memberOf Package
+	package hasValue "input-pad"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "31"
+	maintainer hasValue "Original-Debian Input Method Team <debian-input-method@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.3-4"
+	fileName hasValue "pool/universe/i/input-pad/input-pad_1.0.3-4_amd64.deb"
+	size hasValue "4456"
+	md5sum hasValue "a2834ef54be1b8b68d7b16c942244841"
+	sha1 hasValue "a342e02664388922263051ba55a0393321f9e2cf"
+	sha256 hasValue "1d6c4638f8f8aeb92ce52b8a4d4c4ce5d6fea09a273e93bc0f98970fdad62e92"
+	descriptionMd5 hasValue "18b6ea174d7bbe657e1d0fd3ecab40c9"
+	homepage hasValue "https://github.com/fujiwarat/input-pad/wiki"
+	depends hasValue "libinput-pad1 (= 1.0.3-4), libc6 (>= 2.2.5)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libinput-pad1"
+	comparison hasValue "="
+	version hasValue "1.0.3-4"
+
+relationInstance depends(P0__input_pad,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.2.5"
+
+relationInstance depends(P0__input_pad,1,DepAtom__1)
+

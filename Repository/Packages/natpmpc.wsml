@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology natpmpc
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__natpmpc memberOf Package
+	package hasValue "natpmpc"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "29"
+	maintainer hasValue "Original-Thomas Goirand <zigo@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "20150609-7build1"
+	replaces hasValue "natpmp-utils (<< 20150609)"
+	fileName hasValue "pool/universe/libn/libnatpmp/natpmpc_20150609-7build1_amd64.deb"
+	size hasValue "6776"
+	md5sum hasValue "61e4455cefc9eb7321836f10822a3c38"
+	sha1 hasValue "c93621fe8e7c73f28abadc38842b17208ab0f9c4"
+	sha256 hasValue "b78f4320e7a9b1522bd1b34c271a44800529bf6c6dba7c387faa8afe5c4c0a71"
+	description hasValue "portable and fully compliant implementation of NAT-PMP (client)"
+	descriptionMd5 hasValue "3e6836b51e54105ace203d12cfd308e2"
+	homepage hasValue "http://miniupnp.free.fr/libnatpmp.html"
+	depends hasValue "libc6 (>= 2.15), libnatpmp1 (>= 20150609)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__natpmpc,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libnatpmp1"
+	comparison hasValue ">="
+	version hasValue "20150609"
+
+relationInstance depends(P0__natpmpc,1,DepAtom__1)
+

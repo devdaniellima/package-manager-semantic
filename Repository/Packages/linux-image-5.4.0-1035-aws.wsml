@@ -1,0 +1,69 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology linux_image_5Dot4Dot0_1035_aws
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__linux_image_5Dot4Dot0_1035_aws memberOf Package
+	package hasValue "linux-image-5.4.0-1035-aws"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "kernel"
+	installedSize hasValue "11520"
+	maintainer hasValue "Ubuntu Kernel Team <kernel-team@lists.ubuntu.com>"
+	architecture hasValue "amd64"
+	version hasValue "5.4.0-1035.37"
+	provides hasValue "aufs-dkms, fuse-module, linux-image, spl-dkms, spl-modules, zfs-dkms, zfs-modules"
+	conflicts hasValue "linux-image-unsigned-5.4.0-1035-aws"
+	fileName hasValue "pool/main/l/linux-aws/linux-image-5.4.0-1035-aws_5.4.0-1035.37_amd64.deb"
+	size hasValue "8604648"
+	md5sum hasValue "aea464df9af77c60fe08f74051e59bc0"
+	sha1 hasValue "4442d0c49330b6ee6bd3f4180e6952238cc7e346"
+	sha256 hasValue "cf44e034fb7481c939969e6014413b5c06edda59a942548f7519ac7e1b6fe39a"
+	sha512 hasValue "8a4225558c9f7313b31584c979c0719325ed989190b618f5d961a21f93875ac7004dc35cf0f3e1600e3aaa34508bc2deef7de0a9920f16e9d1ab5f210860cf55"
+	descriptionMd5 hasValue "5e60fafcf5d1aecfba19ab289c28194d"
+	depends hasValue "kmod, linux-base (>= 4.5ubuntu1~16.04.1), linux-modules-5.4.0-1035-aws"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "kmod"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__linux_image_5Dot4Dot0_1035_aws,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "linux-base"
+	comparison hasValue ">="
+	version hasValue "4.5ubuntu1~16.04.1"
+
+relationInstance depends(P0__linux_image_5Dot4Dot0_1035_aws,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "linux-modules-5.4.0-1035-aws"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__linux_image_5Dot4Dot0_1035_aws,2,DepAtom__2)
+

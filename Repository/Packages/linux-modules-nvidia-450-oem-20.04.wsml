@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology linux_modules_nvidia_450_oem_20Dot04
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__linux_modules_nvidia_450_oem_20Dot04 memberOf Package
+	package hasValue "linux-modules-nvidia-450-oem-20.04"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "restricted/kernel"
+	installedSize hasValue "19"
+	maintainer hasValue "Canonical Kernel Team <kernel-team@lists.ubuntu.com>"
+	architecture hasValue "amd64"
+	version hasValue "5.6.0-1050.54+1"
+	provides hasValue "nvidia-dkms-450 (= 450.102.04-0ubuntu0.20.04.1), nvidia-prebuilt-kernel"
+	fileName hasValue "pool/restricted/l/linux-restricted-modules-oem-5.6/linux-modules-nvidia-450-oem-20.04_5.6.0-1050.54+1_amd64.deb"
+	size hasValue "5492"
+	md5sum hasValue "a7cdb86d1101b76bc8dac6a6a7cf90bc"
+	sha1 hasValue "6804024283a854229fea0d74a8faa23a9b23d5a7"
+	sha256 hasValue "3c10024da8d7272f4ec48ebe8f92767b6a85dfdce7e0ddc6cc77e06f9960f580"
+	sha512 hasValue "08c64061c06e82050531796353ca0494f5743a5141e0b280d69a3c7b9c7668766b8a3bd40ffa80901923a96114e6ecc8b8b5047f5e546be295611318c62cfe82"
+	descriptionMd5 hasValue "21ef16de138b6e3326a6f8b520cbbc87"
+	depends hasValue "linux-modules-nvidia-450-5.6.0-1050-oem (= 5.6.0-1050.54+1), nvidia-kernel-common-450 (<= 450.102.04-1), nvidia-kernel-common-450 (>= 450.102.04)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "linux-modules-nvidia-450-5.6.0-1050-oem"
+	comparison hasValue "="
+	version hasValue "5.6.0-1050.54+1"
+
+relationInstance depends(P0__linux_modules_nvidia_450_oem_20Dot04,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "nvidia-kernel-common-450"
+	comparison hasValue "<="
+	version hasValue "450.102.04-1"
+
+relationInstance depends(P0__linux_modules_nvidia_450_oem_20Dot04,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "nvidia-kernel-common-450"
+	comparison hasValue ">="
+	version hasValue "450.102.04"
+
+relationInstance depends(P0__linux_modules_nvidia_450_oem_20Dot04,2,DepAtom__2)
+

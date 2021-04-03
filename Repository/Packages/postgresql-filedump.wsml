@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology postgresql_filedump
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__postgresql_filedump memberOf Package
+	package hasValue "postgresql-filedump"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/misc"
+	installedSize hasValue "84"
+	maintainer hasValue "Original-Debian PostgreSQL Maintainers <team+postgresql@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "11.0-1"
+	fileName hasValue "pool/universe/p/postgresql-filedump/postgresql-filedump_11.0-1_amd64.deb"
+	size hasValue "35580"
+	md5sum hasValue "2802c3dccea9718db7b2f9a6bf227b84"
+	sha1 hasValue "8220fb850295832a38822fccaab70d55b77dfd59"
+	sha256 hasValue "ae69d07ee90e1d37210330fffe45e4a1187115058f19cfb3d8b23d560025cd74"
+	descriptionMd5 hasValue "435e1299c3be6771eabee5f23066fa55"
+	homepage hasValue "https://wiki.postgresql.org/wiki/Pg_filedump"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__postgresql_filedump,0,DepAtom__0)
+

@@ -1,0 +1,74 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology saidar
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__saidar memberOf Package
+	package hasValue "saidar"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "43"
+	maintainer hasValue "Original-Bartosz Fenski <fenio@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.92-2"
+	fileName hasValue "pool/universe/libs/libstatgrab/saidar_0.92-2_amd64.deb"
+	size hasValue "11316"
+	md5sum hasValue "dd5a714fa64d23380f7b2184c54393e8"
+	sha1 hasValue "46c549aeb0e8c086b46ed571bd69c3cb6e2e7c23"
+	sha256 hasValue "8c82fbc7fb9b5973c6e950403bab4b99cc9ce2061fc889874abeebe0bc0068cc"
+	descriptionMd5 hasValue "71215d1545c006ad04b519e3a594cf10"
+	homepage hasValue "https://libstatgrab.org"
+	depends hasValue "libc6 (>= 2.4), libncurses6 (>= 6), libstatgrab10, libtinfo6 (>= 6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__saidar,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libncurses6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__saidar,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libstatgrab10"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__saidar,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "libtinfo6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__saidar,3,DepAtom__3)
+

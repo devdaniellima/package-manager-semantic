@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology tinyirc
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__tinyirc memberOf Package
+	package hasValue "tinyirc"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "71"
+	maintainer hasValue "Original-Jari Aalto <jari.aalto@cante.net>"
+	architecture hasValue "amd64"
+	version hasValue "1:1.1.dfsg.1-3build2"
+	fileName hasValue "pool/universe/t/tinyirc/tinyirc_1.1.dfsg.1-3build2_amd64.deb"
+	size hasValue "30396"
+	md5sum hasValue "94232f9b3619b3a02fe6666a89dc10c5"
+	sha1 hasValue "a14a747bdce96bf710e8c4650d19dac5db8d4b40"
+	sha256 hasValue "d16704fd1a6db63a55d0ee654e4df50be583a6d7e91ddcebd0a48e15eda9e5e2"
+	descriptionMd5 hasValue "555d6c748d732737d6ae6eadcd5883f9"
+	homepage hasValue "http://code.google.com/p/tinyirc"
+	depends hasValue "libc6 (>= 2.15), libtinfo6 (>= 6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__tinyirc,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libtinfo6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__tinyirc,1,DepAtom__1)
+

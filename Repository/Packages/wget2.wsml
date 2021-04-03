@@ -1,0 +1,74 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology wget2
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__wget2 memberOf Package
+	package hasValue "wget2"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/web"
+	installedSize hasValue "241"
+	maintainer hasValue "Original-Noël Köthe <noel@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.99.1-2.1"
+	fileName hasValue "pool/universe/w/wget2/wget2_1.99.1-2.1_amd64.deb"
+	size hasValue "95928"
+	md5sum hasValue "a659cffdfb614bdf3611d5b54a765cc3"
+	sha1 hasValue "4b3cb74f13450bf9855c9995796ca929ff34fa30"
+	sha256 hasValue "03cc5450e095f703bd9d7ffc56957607b1335029b0bfdd59e1fb40b362cd0688"
+	descriptionMd5 hasValue "645e0d0ba9e191f2d558315b17fd49ef"
+	homepage hasValue "https://gitlab.com/gnuwget/wget2"
+	depends hasValue "libc6 (>= 2.27), libgpgme11 (>= 1.2.0), libpcre2-8-0 (>= 10.22), libwget0"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.27"
+
+relationInstance depends(P0__wget2,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgpgme11"
+	comparison hasValue ">="
+	version hasValue "1.2.0"
+
+relationInstance depends(P0__wget2,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libpcre2-8-0"
+	comparison hasValue ">="
+	version hasValue "10.22"
+
+relationInstance depends(P0__wget2,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "libwget0"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__wget2,3,DepAtom__3)
+

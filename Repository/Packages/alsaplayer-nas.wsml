@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology alsaplayer_nas
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__alsaplayer_nas memberOf Package
+	package hasValue "alsaplayer-nas"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/sound"
+	installedSize hasValue "36"
+	maintainer hasValue "Original-Paul Brossier <piem@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.99.81-2build2"
+	provides hasValue "alsaplayer-output"
+	fileName hasValue "pool/universe/a/alsaplayer/alsaplayer-nas_0.99.81-2build2_amd64.deb"
+	size hasValue "8044"
+	md5sum hasValue "f28fd4050060e3e14ec69a0d8800f569"
+	sha1 hasValue "5127636e79df916ab0ecccbe0e418d37e0d0e2f2"
+	sha256 hasValue "86fca520b96b5a560836bd48621f46f537c57ef4788b3d40b400f7307be17764"
+	descriptionMd5 hasValue "89193f5335712b72838d93ef967ae5e8"
+	homepage hasValue "http://alsaplayer.sourceforge.net/"
+	depends hasValue "libaudio2, libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libaudio2"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__alsaplayer_nas,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__alsaplayer_nas,1,DepAtom__1)
+

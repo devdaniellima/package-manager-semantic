@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology sendpage_server
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__sendpage_server memberOf Package
+	package hasValue "sendpage-server"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/comm"
+	installedSize hasValue "144"
+	maintainer hasValue "Original-Kees Cook <kees@debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.0.3-1"
+	fileName hasValue "pool/universe/s/sendpage/sendpage-server_1.0.3-1_all.deb"
+	size hasValue "25980"
+	md5sum hasValue "462979cf6be1ea4e09fe38323f707ae2"
+	sha1 hasValue "6afb43223ca37c7d80c6e8befbee4ea4cab1e384"
+	sha256 hasValue "0c0613697f5446e96ee2b36726c0b3665fc4b25ec2f112a175d66f677c50a53a"
+	descriptionMd5 hasValue "972989f1565228955b24d7421cf7c25a"
+	homepage hasValue "http://sendpage.org/"
+	depends hasValue "sendpage-common (= 1.0.3-1), adduser"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "sendpage-common"
+	comparison hasValue "="
+	version hasValue "1.0.3-1"
+
+relationInstance depends(P0__sendpage_server,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "adduser"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__sendpage_server,1,DepAtom__1)
+

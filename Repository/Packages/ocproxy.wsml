@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ocproxy
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ocproxy memberOf Package
+	package hasValue "ocproxy"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "143"
+	maintainer hasValue "Original-Kevin Cernekee <cernekee@gmail.com>"
+	architecture hasValue "amd64"
+	version hasValue "1.60-1build2"
+	fileName hasValue "pool/universe/o/ocproxy/ocproxy_1.60-1build2_amd64.deb"
+	size hasValue "56252"
+	md5sum hasValue "20beffa6eeec0139ecea9164c7b30409"
+	sha1 hasValue "a00c7f099f52ea0a2f548f4f0b8899bdea37669a"
+	sha256 hasValue "e66c93e3a859813a374fc378e9a37485aaf9b2bfd0f4b90e079f9dca37ec0189"
+	descriptionMd5 hasValue "b045fcb3a9747aca5114dbad3e3bb2f5"
+	homepage hasValue "https://github.com/cernekee/ocproxy"
+	depends hasValue "libc6 (>= 2.14), libevent-2.1-7 (>= 2.1.8-stable)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__ocproxy,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libevent-2.1-7"
+	comparison hasValue ">="
+	version hasValue "2.1.8-stable"
+
+relationInstance depends(P0__ocproxy,1,DepAtom__1)
+

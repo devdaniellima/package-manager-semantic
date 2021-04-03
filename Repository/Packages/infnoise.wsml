@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology infnoise
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__infnoise memberOf Package
+	package hasValue "infnoise"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "190"
+	maintainer hasValue "Original-Stephen Kitt <skitt@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.3.1+dfsg-1"
+	fileName hasValue "pool/universe/i/infnoise/infnoise_0.3.1+dfsg-1_amd64.deb"
+	size hasValue "30308"
+	md5sum hasValue "b55021284cf57e57b6037ccfd3f87aa3"
+	sha1 hasValue "8bc7ed431d435c1ef9e076f47aab05211bdb7af9"
+	sha256 hasValue "52c4f0c31ab623d3da9a7f4e1c162322933c8fa8abc43d9a6e22b10d41e5bd68"
+	descriptionMd5 hasValue "ca82f5e0ad850bf0816dc64c4c80646c"
+	homepage hasValue "https://github.com/13-37-org/infnoise"
+	depends hasValue "libc6 (>= 2.29), libftdi1"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__infnoise,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libftdi1"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__infnoise,1,DepAtom__1)
+

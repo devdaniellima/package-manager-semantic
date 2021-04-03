@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology numactl
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__numactl memberOf Package
+	package hasValue "numactl"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "admin"
+	installedSize hasValue "146"
+	maintainer hasValue "Original-Ian Wienand <ianw@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.0.12-1"
+	fileName hasValue "pool/main/n/numactl/numactl_2.0.12-1_amd64.deb"
+	size hasValue "38452"
+	md5sum hasValue "0ced01e4761084b6fc29951911d4392a"
+	sha1 hasValue "70593d5c19bff14adfe620679af2772cfd2c75c3"
+	sha256 hasValue "15c593a04af3e68f9bd8336baec11943e14a1c05b0f6960f014414a4b53df602"
+	descriptionMd5 hasValue "94c993d6ff513ffae2836ae201c36b6d"
+	homepage hasValue "https://github.com/numactl/numactl"
+	depends hasValue "libc6 (>= 2.14), libnuma1 (>= 2.0.11)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__numactl,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libnuma1"
+	comparison hasValue ">="
+	version hasValue "2.0.11"
+
+relationInstance depends(P0__numactl,1,DepAtom__1)
+

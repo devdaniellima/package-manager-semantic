@@ -1,0 +1,56 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology make
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__make memberOf Package
+	package hasValue "make"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "devel"
+	installedSize hasValue "384"
+	maintainer hasValue "Original-Manoj Srivastava <srivasta@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "4.2.1-1.2"
+	replaces hasValue "make-guile"
+	conflicts hasValue "make-guile"
+	fileName hasValue "pool/main/m/make-dfsg/make_4.2.1-1.2_amd64.deb"
+	size hasValue "162292"
+	md5sum hasValue "88fde0193dafdf077fb69117ce1fe7c3"
+	sha1 hasValue "e6cdb7a566e5926b150e86f35bf06427aab946ff"
+	sha256 hasValue "41e534af98cdb6219bc98fa4276d9c928a0862b8b373d49ee1fbe0ae5db64dc2"
+	description hasValue "utilitário para compilação direta"
+	descriptionMd5 hasValue "3ef13fe0be8e85cb535b13ff062ae8eb"
+	homepage hasValue "https://www.gnu.org/software/make/"
+	depends hasValue "libc6 (>= 2.27)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.27"
+
+relationInstance depends(P0__make,0,DepAtom__0)
+

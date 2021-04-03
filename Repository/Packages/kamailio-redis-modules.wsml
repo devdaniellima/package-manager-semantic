@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology kamailio_redis_modules
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__kamailio_redis_modules memberOf Package
+	package hasValue "kamailio-redis-modules"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "913"
+	maintainer hasValue "Original-Debian VoIP Team <pkg-voip-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "5.3.2-1build3"
+	fileName hasValue "pool/universe/k/kamailio/kamailio-redis-modules_5.3.2-1build3_amd64.deb"
+	size hasValue "273156"
+	md5sum hasValue "7da888dd71aefd312f17a4e55afce3f7"
+	sha1 hasValue "0bfb058dfd4fa16c186cafde2ad9ddc3ff82ce1d"
+	sha256 hasValue "9414277f6bf047025375d78e304bbe05ebea04bb10a20808823c1f38138a005e"
+	descriptionMd5 hasValue "2a2e0163eb31c5413dfc1f2ff9e82735"
+	homepage hasValue "http://www.kamailio.org/"
+	depends hasValue "kamailio (= 5.3.2-1build3), libc6 (>= 2.4), libhiredis0.14 (>= 0.14.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "kamailio"
+	comparison hasValue "="
+	version hasValue "5.3.2-1build3"
+
+relationInstance depends(P0__kamailio_redis_modules,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__kamailio_redis_modules,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libhiredis0.14"
+	comparison hasValue ">="
+	version hasValue "0.14.0"
+
+relationInstance depends(P0__kamailio_redis_modules,2,DepAtom__2)
+

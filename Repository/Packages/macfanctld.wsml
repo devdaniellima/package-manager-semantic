@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology macfanctld
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__macfanctld memberOf Package
+	package hasValue "macfanctld"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/utils"
+	installedSize hasValue "48"
+	maintainer hasValue "Original-Debian Mactel Team <team+pkg-mactel-devel@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.6+repack1-2"
+	fileName hasValue "pool/universe/m/macfanctld/macfanctld_0.6+repack1-2_amd64.deb"
+	size hasValue "13328"
+	md5sum hasValue "2e5aa31309c89330dac9d943074a0678"
+	sha1 hasValue "5a6b23e1cedf0fc807a5b5f419e86473a3390b09"
+	sha256 hasValue "6c81f976ac71127dd1c78635d8855d568283c6f275856ebc24e0b818759ad59d"
+	description hasValue "daemon de controle do ventilador para computadores Apple MacBook/MacBook Pro"
+	descriptionMd5 hasValue "1f62f682bbefcc8cc79936e38b386b04"
+	homepage hasValue "https://github.com/MikaelStrom/macfanctld"
+	depends hasValue "libc6 (>= 2.4), lsb-base"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__macfanctld,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "lsb-base"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__macfanctld,1,DepAtom__1)
+

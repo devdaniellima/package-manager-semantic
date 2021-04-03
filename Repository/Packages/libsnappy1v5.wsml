@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libsnappy1v5
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libsnappy1v5 memberOf Package
+	package hasValue "libsnappy1v5"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "libs"
+	installedSize hasValue "56"
+	maintainer hasValue "Original-Laszlo Boszormenyi (GCS) <gcs@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.1.8-1build1"
+	conflicts hasValue "libsnappy1"
+	fileName hasValue "pool/main/s/snappy/libsnappy1v5_1.1.8-1build1_amd64.deb"
+	size hasValue "16672"
+	md5sum hasValue "d5b8b925b380a363baafa21bc74f5fdc"
+	sha1 hasValue "a07fa3fb98839026c1cfd52548db506bc23b9098"
+	sha256 hasValue "45656990b8613e70263cd4bacc8dd2c081ca1913d86952e95c11ba70db36d0b2"
+	descriptionMd5 hasValue "87a4defa5f66a7f4af2eb47bb53fe942"
+	homepage hasValue "https://google.github.io/snappy/"
+	depends hasValue "libc6 (>= 2.14), libgcc-s1 (>= 3.0), libstdc++6 (>= 5.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libsnappy1v5,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgcc-s1"
+	comparison hasValue ">="
+	version hasValue "3.0"
+
+relationInstance depends(P0__libsnappy1v5,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "5.2"
+
+relationInstance depends(P0__libsnappy1v5,2,DepAtom__2)
+

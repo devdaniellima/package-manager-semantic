@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libasm1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libasm1 memberOf Package
+	package hasValue "libasm1"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libs"
+	installedSize hasValue "67"
+	maintainer hasValue "Original-Kurt Roeckx <kurt@roeckx.be>"
+	architecture hasValue "amd64"
+	version hasValue "0.176-1.1build1"
+	fileName hasValue "pool/main/e/elfutils/libasm1_0.176-1.1build1_amd64.deb"
+	size hasValue "14220"
+	md5sum hasValue "e4a2ec5e78b9d008ad9e78c768698423"
+	sha1 hasValue "cc5809d57596624f3503a0440512ce8b2ae4a3f5"
+	sha256 hasValue "f46747e1788705e7e4f6cf2c74bbe766d81dc1dee76944d1cf82be85154d7d6a"
+	description hasValue "library with a programmable assembler interface"
+	descriptionMd5 hasValue "109ac518b441c307fe4c75e886e56331"
+	homepage hasValue "https://sourceware.org/elfutils/"
+	depends hasValue "libc6 (>= 2.14), libdw1 (= 0.176-1.1build1), libelf1 (= 0.176-1.1build1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libasm1,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libdw1"
+	comparison hasValue "="
+	version hasValue "0.176-1.1build1"
+
+relationInstance depends(P0__libasm1,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libelf1"
+	comparison hasValue "="
+	version hasValue "0.176-1.1build1"
+
+relationInstance depends(P0__libasm1,2,DepAtom__2)
+

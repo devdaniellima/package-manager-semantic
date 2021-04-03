@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology lv2proc
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__lv2proc memberOf Package
+	package hasValue "lv2proc"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "44"
+	maintainer hasValue "Original-Debian Multimedia Maintainers <debian-multimedia@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.5.1-1"
+	provides hasValue "lv2-host"
+	fileName hasValue "pool/universe/l/lv2proc/lv2proc_0.5.1-1_amd64.deb"
+	size hasValue "12476"
+	md5sum hasValue "c766aaa445d727ddc1eee1147c2f34f6"
+	sha1 hasValue "8ea3e2ab727d243174956d6a13457400fb321bb7"
+	sha256 hasValue "a210d11f2b265df8512a2d412695efe6c7b59bc2ee3d7edd5dcc59dc97116922"
+	descriptionMd5 hasValue "f9d92a3ead90ba84e8c319078c4cd08b"
+	homepage hasValue "http://naspro.sourceforge.net/"
+	depends hasValue "libc6 (>= 2.27), liblilv-0-0 (>= 0.4.2), libsndfile1 (>= 1.0.20)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.27"
+
+relationInstance depends(P0__lv2proc,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "liblilv-0-0"
+	comparison hasValue ">="
+	version hasValue "0.4.2"
+
+relationInstance depends(P0__lv2proc,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libsndfile1"
+	comparison hasValue ">="
+	version hasValue "1.0.20"
+
+relationInstance depends(P0__lv2proc,2,DepAtom__2)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology openjdk_11_jre_dcevm
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__openjdk_11_jre_dcevm memberOf Package
+	package hasValue "openjdk-11-jre-dcevm"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/java"
+	installedSize hasValue "17512"
+	maintainer hasValue "Original-Debian Java Maintainers <pkg-java-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "11.0.3+1-1"
+	fileName hasValue "pool/universe/o/openjdk-11-jre-dcevm/openjdk-11-jre-dcevm_11.0.3+1-1_amd64.deb"
+	size hasValue "4407568"
+	md5sum hasValue "7b4b6032aa4207331f4e789b15172abe"
+	sha1 hasValue "10ea8ad61ac5e7002a03c52ed3e4d2094f32d200"
+	sha256 hasValue "f95a3e80c1b47634b20f0513caedeb850cd89c9f2b4f599fba00a727c9f00f4b"
+	descriptionMd5 hasValue "68e6b77fa629f8c7692e213584cd125f"
+	homepage hasValue "https://github.com/HotswapProjects/openjdk-jdk11u-dcevm"
+	depends hasValue "openjdk-11-jre-headless, libc6 (>= 2.29)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "openjdk-11-jre-headless"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__openjdk_11_jre_dcevm,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__openjdk_11_jre_dcevm,1,DepAtom__1)
+

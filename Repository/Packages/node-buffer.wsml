@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology node_buffer
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__node_buffer memberOf Package
+	package hasValue "node-buffer"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/web"
+	installedSize hasValue "81"
+	maintainer hasValue "Original-Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "5.4.2-1"
+	provides hasValue "node-types-buffer (= 5.4.2-1)"
+	fileName hasValue "pool/universe/n/node-buffer/node-buffer_5.4.2-1_all.deb"
+	size hasValue "21648"
+	md5sum hasValue "33844633d68d19e2209a03d216a4c648"
+	sha1 hasValue "1a418dd3524f8d01218066eda720b2101d5444f0"
+	sha256 hasValue "16a025ca78080bdcff262a2bff0eb6fe09b232bc63a0a0da58a553775de9b428"
+	descriptionMd5 hasValue "7aae999e505089267f6bb06cb273f1d6"
+	homepage hasValue "https://github.com/feross/buffer"
+	depends hasValue "nodejs (>= 10), node-ieee754 (>= 1.1.4), node-base64-js (>= 1.0.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "nodejs"
+	comparison hasValue ">="
+	version hasValue "10"
+
+relationInstance depends(P0__node_buffer,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "node-ieee754"
+	comparison hasValue ">="
+	version hasValue "1.1.4"
+
+relationInstance depends(P0__node_buffer,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "node-base64-js"
+	comparison hasValue ">="
+	version hasValue "1.0.2"
+
+relationInstance depends(P0__node_buffer,2,DepAtom__2)
+

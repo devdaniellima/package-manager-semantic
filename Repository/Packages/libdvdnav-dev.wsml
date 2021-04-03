@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libdvdnav_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libdvdnav_dev memberOf Package
+	package hasValue "libdvdnav-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "220"
+	maintainer hasValue "Original-Debian Multimedia Maintainers <debian-multimedia@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "6.0.1-1build1"
+	fileName hasValue "pool/universe/libd/libdvdnav/libdvdnav-dev_6.0.1-1build1_amd64.deb"
+	size hasValue "50824"
+	md5sum hasValue "0b4e2d982cad65838916354623f89521"
+	sha1 hasValue "30138baeaf7bd6aaec60e96635d3c980962b7e66"
+	sha256 hasValue "fc70e734bbd73e231f15c92c53fdbd21361ce688743c94edf8b98b18b82db06f"
+	description hasValue "DVD navigation library (development)"
+	descriptionMd5 hasValue "b7551787c11bf7c45f395189a08987ad"
+	homepage hasValue "https://www.videolan.org/developers/libdvdnav.html"
+	depends hasValue "libdvdnav4 (= 6.0.1-1build1), libdvdread-dev (>= 6.0), pkg-config"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libdvdnav4"
+	comparison hasValue "="
+	version hasValue "6.0.1-1build1"
+
+relationInstance depends(P0__libdvdnav_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libdvdread-dev"
+	comparison hasValue ">="
+	version hasValue "6.0"
+
+relationInstance depends(P0__libdvdnav_dev,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "pkg-config"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libdvdnav_dev,2,DepAtom__2)
+

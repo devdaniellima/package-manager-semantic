@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology apparmor_profiles_extra
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__apparmor_profiles_extra memberOf Package
+	package hasValue "apparmor-profiles-extra"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/admin"
+	installedSize hasValue "43"
+	maintainer hasValue "Original-Debian AppArmor Team <pkg-apparmor-team@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.27"
+	fileName hasValue "pool/universe/a/apparmor-profiles-extra/apparmor-profiles-extra_1.27_all.deb"
+	size hasValue "7708"
+	md5sum hasValue "3f4dd6a10c36fa7e54fe3112d36962c5"
+	sha1 hasValue "2b8290b4ebc5503e91792cbcb20adcda10a49f0a"
+	sha256 hasValue "2acdc1d1ce6d62e3e4485c457b5e79e83e0948c9918e67c2e1021f2f396ed137"
+	descriptionMd5 hasValue "2abe7151bc1ebd61573106f9cce84757"
+	homepage hasValue "https://wiki.debian.org/AppArmor"
+	depends hasValue "apparmor (>= 2.13.1-1~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "apparmor"
+	comparison hasValue ">="
+	version hasValue "2.13.1-1~"
+
+relationInstance depends(P0__apparmor_profiles_extra,0,DepAtom__0)
+

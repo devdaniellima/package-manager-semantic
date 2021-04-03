@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libnss_unknown
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libnss_unknown memberOf Package
+	package hasValue "libnss-unknown"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "32"
+	maintainer hasValue "Original-Ritesh Raj Sarraf <rrs@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.0.2-2"
+	fileName hasValue "pool/universe/libn/libnss-unknown/libnss-unknown_0.0.2-2_amd64.deb"
+	size hasValue "5284"
+	md5sum hasValue "17e9583076e5b2c66837b12694ed98be"
+	sha1 hasValue "d6cfa98c29d3de946f6f13dd7396d8bb951deaee"
+	sha256 hasValue "62ea9e8c2d4703722ec48cf218e07bdba897388a02b6e419e16f7d14d56d2515"
+	descriptionMd5 hasValue "c31181ce67cbb4c615e3b94eba6bcba9"
+	homepage hasValue "https://gitlab.collabora.com/sjoerd/libnss-unknown"
+	depends hasValue "libc6 (>= 2.7)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__libnss_unknown,0,DepAtom__0)
+

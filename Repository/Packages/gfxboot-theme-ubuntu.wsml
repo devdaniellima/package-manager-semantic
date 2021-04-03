@@ -1,0 +1,52 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gfxboot_theme_ubuntu
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gfxboot_theme_ubuntu memberOf Package
+	package hasValue "gfxboot-theme-ubuntu"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "utils"
+	installedSize hasValue "3890"
+	maintainer hasValue "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	architecture hasValue "amd64"
+	version hasValue "0.23.3"
+	fileName hasValue "pool/main/g/gfxboot-theme-ubuntu/gfxboot-theme-ubuntu_0.23.3_amd64.deb"
+	size hasValue "509552"
+	md5sum hasValue "61c52b9f2cf43266b32eeb224245bfda"
+	sha1 hasValue "4790cae3f9a32023e6c62fb33f3868ba20623171"
+	sha256 hasValue "e1faefc21232272c3d9c24bf99e6a31071f716dbe328446f09f96b4164971f99"
+	descriptionMd5 hasValue "20c8ed8e2ecaec26141cbb8137defe84"
+	depends hasValue "gfxboot (>= 3.3.28)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "gfxboot"
+	comparison hasValue ">="
+	version hasValue "3.3.28"
+
+relationInstance depends(P0__gfxboot_theme_ubuntu,0,DepAtom__0)
+

@@ -1,0 +1,52 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology rwall
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__rwall memberOf Package
+	package hasValue "rwall"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "36"
+	maintainer hasValue "Original-Alberto Gonzalez Iniesta <agi@inittab.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.17-8"
+	fileName hasValue "pool/universe/n/netkit-rwall/rwall_0.17-8_amd64.deb"
+	size hasValue "9676"
+	md5sum hasValue "72644d76d13f35b1a158bf96478fb81a"
+	sha1 hasValue "0f7c5ce39e08fc2d8e204817df31c6242a476c34"
+	sha256 hasValue "1596a8fb4f4aa3dcfd4dd9491e26a2796d60b67a13b852964e2471bc2da67ec8"
+	descriptionMd5 hasValue "4f5eb3976785719a358bc101edb8a613"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__rwall,0,DepAtom__0)
+

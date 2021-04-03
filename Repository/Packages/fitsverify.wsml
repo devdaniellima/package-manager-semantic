@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology fitsverify
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__fitsverify memberOf Package
+	package hasValue "fitsverify"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/science"
+	installedSize hasValue "119"
+	maintainer hasValue "Original-Debian Astro Team <debian-astro-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "4.20-1build1"
+	fileName hasValue "pool/universe/f/fitsverify/fitsverify_4.20-1build1_amd64.deb"
+	size hasValue "46476"
+	md5sum hasValue "3d5e2b937196a85ea23106424d878ca6"
+	sha1 hasValue "815083bfa587de6335f869ca28014f0b0790c8d9"
+	sha256 hasValue "9cb807f08558396f090a5aa00b72f58136e0adcb9fd2b081eba5f9d41c7c9844"
+	descriptionMd5 hasValue "9bbb00fd4aa1f32572255a69aceb0c19"
+	homepage hasValue "https://heasarc.gsfc.nasa.gov/docs/software/ftools/fitsverify/"
+	depends hasValue "libc6 (>= 2.7), libcfitsio8 (>= 3.470~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__fitsverify,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libcfitsio8"
+	comparison hasValue ">="
+	version hasValue "3.470~"
+
+relationInstance depends(P0__fitsverify,1,DepAtom__1)
+

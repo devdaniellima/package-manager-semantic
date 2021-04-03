@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology stenc
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__stenc memberOf Package
+	package hasValue "stenc"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "79"
+	maintainer hasValue "Original-Denys Berkovskyy <berkovskyy@gmail.com>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.7-2build1"
+	fileName hasValue "pool/universe/s/stenc/stenc_1.0.7-2build1_amd64.deb"
+	size hasValue "27712"
+	md5sum hasValue "dfd9d1222319f15db6a683d7bcea92cf"
+	sha1 hasValue "3ccdd634f2176078aad53af1f3ee91c751244c2b"
+	sha256 hasValue "bb1e555491e4753bf006396d2d52688f64807a7ac53e0e55cd35b10bccf1dbb5"
+	descriptionMd5 hasValue "ab0e392fc75009fcbf3f725b68d7ec4b"
+	homepage hasValue "https://sourceforge.net/projects/stenc/"
+	depends hasValue "libc6 (>= 2.14), libgcc-s1 (>= 3.0), libstdc++6 (>= 9)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__stenc,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgcc-s1"
+	comparison hasValue ">="
+	version hasValue "3.0"
+
+relationInstance depends(P0__stenc,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "9"
+
+relationInstance depends(P0__stenc,2,DepAtom__2)
+

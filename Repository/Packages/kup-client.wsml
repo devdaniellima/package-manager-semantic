@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology kup_client
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__kup_client memberOf Package
+	package hasValue "kup-client"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/net"
+	installedSize hasValue "32"
+	maintainer hasValue "Original-Ben Hutchings <ben@decadent.org.uk>"
+	architecture hasValue "all"
+	version hasValue "0.3.6-2"
+	fileName hasValue "pool/universe/k/kup/kup-client_0.3.6-2_all.deb"
+	size hasValue "10924"
+	md5sum hasValue "62feee1f6bbf8e99edee1dd4dec84e44"
+	sha1 hasValue "1ca5aefe4e9437d5d193475ada71ff250e7f8cb0"
+	sha256 hasValue "37b8e34c7df9baf5f3f8b3d7ae5da0dc5313b87f93d1956ef409f1ac12357c5f"
+	descriptionMd5 hasValue "0a1f9c69bbd7485677824e12280a23f9"
+	homepage hasValue "https://git.kernel.org/cgit/utils/kup/kup.git/"
+	depends hasValue "libconfig-simple-perl, perl:any"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libconfig-simple-perl"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__kup_client,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "perl:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__kup_client,1,DepAtom__1)
+

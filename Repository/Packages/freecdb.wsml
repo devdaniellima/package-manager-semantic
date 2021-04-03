@@ -1,0 +1,52 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology freecdb
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__freecdb memberOf Package
+	package hasValue "freecdb"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "86"
+	maintainer hasValue "Original-Gerrit Pape <pape@smarden.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.75build4"
+	fileName hasValue "pool/universe/f/freecdb/freecdb_0.75build4_amd64.deb"
+	size hasValue "19240"
+	md5sum hasValue "64143b904498e7ab0cb045503c1f5459"
+	sha1 hasValue "13849316e1779f6bb294b4ca285fc3cc37f4338e"
+	sha256 hasValue "943319fc7bc1ae7fd07b0dc8b7b9a5381322c3b9271dac11198fb512560fb9e4"
+	descriptionMd5 hasValue "3c180c3b533714dec12c5c38f2b58eee"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__freecdb,0,DepAtom__0)
+

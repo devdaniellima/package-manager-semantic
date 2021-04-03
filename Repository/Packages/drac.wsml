@@ -1,0 +1,81 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology drac
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__drac memberOf Package
+	package hasValue "drac"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "65"
+	maintainer hasValue "Original-Noël Köthe <noel@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.12-8build2"
+	fileName hasValue "pool/universe/d/drac/drac_1.12-8build2_amd64.deb"
+	size hasValue "16704"
+	md5sum hasValue "927107a6e9e585a2870151b0dcacfe09"
+	sha1 hasValue "eea997a4756e0b75d39d7bb1260d0d1b584a0cec"
+	sha256 hasValue "48093eea5bb483a2516cf1e0c34a8a70e1b239a176cb1ad0522780c33f8a81fd"
+	descriptionMd5 hasValue "449e78303144af46f902093d99c0837b"
+	homepage hasValue "http://mail.cc.umanitoba.ca/drac/"
+	depends hasValue "libc6 (>= 2.15), libdb5.3, portmap, postfix | mail-transport-agent"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__drac,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libdb5.3"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__drac,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "portmap"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__drac,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "postfix"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__drac,3,DepAtom__3)
+
+instance DepAtom__4 memberOf DependencyAtom
+	package hasValue "mail-transport-agent"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__drac,3,DepAtom__4)
+

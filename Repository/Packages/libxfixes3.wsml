@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libxfixes3
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libxfixes3 memberOf Package
+	package hasValue "libxfixes3"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libs"
+	installedSize hasValue "47"
+	maintainer hasValue "Original-Debian X Strike Force <debian-x@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:5.0.3-2"
+	fileName hasValue "pool/main/libx/libxfixes/libxfixes3_5.0.3-2_amd64.deb"
+	size hasValue "10932"
+	md5sum hasValue "04ffd06ba6bf24bb77779d9a8b26e2c2"
+	sha1 hasValue "31b1f9e091a308a38173679ab62c2d2d77eda724"
+	sha256 hasValue "ee3d380e5f825048a381fea92e8215bc65662fa4ce06346579fbaada2b1f7acc"
+	description hasValue "X11 miscellaneous 'fixes' extension library"
+	descriptionMd5 hasValue "85c0ed5f6b35005b3aaa0011badce46a"
+	depends hasValue "libc6 (>= 2.14), libx11-6 (>= 2:1.6.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libxfixes3,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libx11-6"
+	comparison hasValue ">="
+	version hasValue "2:1.6.0"
+
+relationInstance depends(P0__libxfixes3,1,DepAtom__1)
+

@@ -1,0 +1,63 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology mew_beta_bin
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__mew_beta_bin memberOf Package
+	package hasValue "mew-beta-bin"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/mail"
+	installedSize hasValue "170"
+	maintainer hasValue "Original-Tatsuya Kinoshita <tats@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "7.0.50~6.8+0.20200130-1"
+	replaces hasValue "mew-bin"
+	provides hasValue "mail-reader, mew-bin, pinentry"
+	conflicts hasValue "mew-beta (<< 4), mew-bin"
+	fileName hasValue "pool/universe/m/mew-beta/mew-beta-bin_7.0.50~6.8+0.20200130-1_amd64.deb"
+	size hasValue "41968"
+	md5sum hasValue "76a2df774b320ba755c272d18e0a9b0f"
+	sha1 hasValue "5d4f7f08945b24e34491d11bdf5f7c87e98dc04a"
+	sha256 hasValue "632a9551d776461b49c72607c071d535086b60d7f367ec0c682131e85ee41200"
+	descriptionMd5 hasValue "2a8e0c6e55ff34bd8c6ba7e95c3c2c07"
+	homepage hasValue "http://www.mew.org/"
+	depends hasValue "libc6 (>= 2.7), zlib1g (>= 1:1.1.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__mew_beta_bin,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "zlib1g"
+	comparison hasValue ">="
+	version hasValue "1:1.1.4"
+
+relationInstance depends(P0__mew_beta_bin,1,DepAtom__1)
+

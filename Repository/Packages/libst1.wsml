@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libst1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libst1 memberOf Package
+	package hasValue "libst1"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "55"
+	maintainer hasValue "Original-Wesley W. Terpstra (Debian) <terpstra@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.9-3.1ubuntu1"
+	fileName hasValue "pool/universe/s/st/libst1_1.9-3.1ubuntu1_amd64.deb"
+	size hasValue "20878"
+	md5sum hasValue "956ff7596dfc12ede3ce128ba493534a"
+	sha1 hasValue "e2cadaf3e7cb3cb64332f850f6484d2a3f5507d9"
+	sha256 hasValue "dbdeb150dc247955525f7b79a4ca341c1e6305d7007f347f5c6a32449d1479cb"
+	descriptionMd5 hasValue "1b96e9d6ca2fafd1b653007782ae07f7"
+	homepage hasValue "http://state-threads.sourceforge.net/"
+	depends hasValue "libc6 (>= 2.15)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__libst1,0,DepAtom__0)
+

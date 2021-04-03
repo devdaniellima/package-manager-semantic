@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology git_review
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__git_review memberOf Package
+	package hasValue "git-review"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/python"
+	installedSize hasValue "157"
+	maintainer hasValue "Original-Debian OpenStack <team+openstack@tracker.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.27.0-1"
+	fileName hasValue "pool/universe/g/git-review/git-review_1.27.0-1_all.deb"
+	size hasValue "35632"
+	md5sum hasValue "1d7ef64673fe05de8c9143ca57f08d24"
+	sha1 hasValue "f4812f21ee79cb6be517114e477fa53b3dce5d3e"
+	sha256 hasValue "2268914ef5536f351d8374bcf68b998976157cd82429828f36f91cce0f60d094"
+	description hasValue "comando git para enviar ramos para o Gerrit"
+	descriptionMd5 hasValue "c8aa8354000e086523e1a4af03abd557"
+	homepage hasValue "http://docs.openstack.org/infra/git-review/"
+	depends hasValue "git, python3-requests, python3:any"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "git"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__git_review,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3-requests"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__git_review,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__git_review,2,DepAtom__2)
+

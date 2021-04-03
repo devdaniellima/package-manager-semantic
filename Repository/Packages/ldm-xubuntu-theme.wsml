@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ldm_xubuntu_theme
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ldm_xubuntu_theme memberOf Package
+	package hasValue "ldm-xubuntu-theme"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/misc"
+	installedSize hasValue "503"
+	maintainer hasValue "Ubuntu Core Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	architecture hasValue "all"
+	version hasValue "2:2.0.47"
+	provides hasValue "ldm-themes"
+	conflicts hasValue "ldm-ubuntu-themes (<= 2:2.0.40.1)"
+	fileName hasValue "pool/universe/l/ldm-ubuntu-themes/ldm-xubuntu-theme_2.0.47_all.deb"
+	size hasValue "453756"
+	md5sum hasValue "6eff05ffd04b3224baf1d19ed5e3919a"
+	sha1 hasValue "e53fc5a344575e83d28e41ffdee9367cf978c3e0"
+	sha256 hasValue "2df75265568bdf81a17668f6deff07f9cfac8c11ad973ed9dc27083b85a56d74"
+	descriptionMd5 hasValue "2db511374eee524d06977fea460141d9"
+	depends hasValue "human-theme, ldm (>= 2:2.0.6-1ubuntu1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "human-theme"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ldm_xubuntu_theme,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "ldm"
+	comparison hasValue ">="
+	version hasValue "2:2.0.6-1ubuntu1"
+
+relationInstance depends(P0__ldm_xubuntu_theme,1,DepAtom__1)
+

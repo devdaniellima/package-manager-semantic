@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology kopano_webapp_nginx
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__kopano_webapp_nginx memberOf Package
+	package hasValue "kopano-webapp-nginx"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/web"
+	installedSize hasValue "72"
+	maintainer hasValue "Original-Giraffe Maintainers <pkg-giraffe-maintainers@alioth-lists.debian.net>"
+	architecture hasValue "all"
+	version hasValue "3.5.14+dfsg1.orig-1"
+	fileName hasValue "pool/universe/k/kopano-webapp/kopano-webapp-nginx_3.5.14+dfsg1.orig-1_all.deb"
+	size hasValue "16664"
+	md5sum hasValue "33c5430b92d08fbffa0960337d2ec074"
+	sha1 hasValue "ef94b1f11530acb808260e1fede4c3deba99565b"
+	sha256 hasValue "ba3f5e612e4376cad7feb3de7a1e412063609495156e72b8d58c972657ab65f7"
+	descriptionMd5 hasValue "c12c43089829ba2d9e8e97be48eedd11"
+	homepage hasValue "https://github.com/Kopano-dev/kopano-webapp"
+	depends hasValue "nginx, kopano-webapp-common (>= 3.5.14+dfsg1.orig-1), php-fpm"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "nginx"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__kopano_webapp_nginx,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "kopano-webapp-common"
+	comparison hasValue ">="
+	version hasValue "3.5.14+dfsg1.orig-1"
+
+relationInstance depends(P0__kopano_webapp_nginx,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "php-fpm"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__kopano_webapp_nginx,2,DepAtom__2)
+

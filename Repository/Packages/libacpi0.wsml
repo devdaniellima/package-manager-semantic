@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libacpi0
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libacpi0 memberOf Package
+	package hasValue "libacpi0"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "32"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.2-5"
+	fileName hasValue "pool/universe/liba/libacpi/libacpi0_0.2-5_amd64.deb"
+	size hasValue "9608"
+	md5sum hasValue "2299baf6f3de3e2c6ba1679e2db8760c"
+	sha1 hasValue "113a563cdc771f86471ef0b8586f88cfb68b5590"
+	sha256 hasValue "83015449c76b96edb6ac2761698416f0420fc1e4e29e8720a565f54a8652f71a"
+	descriptionMd5 hasValue "f76cdab5aa702367d0c5e36833469359"
+	homepage hasValue "http://www.ngolde.de/libacpi.html"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libacpi0,0,DepAtom__0)
+

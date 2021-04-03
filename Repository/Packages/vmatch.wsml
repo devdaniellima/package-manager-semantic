@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology vmatch
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__vmatch memberOf Package
+	package hasValue "vmatch"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/science"
+	installedSize hasValue "3542"
+	maintainer hasValue "Original-Debian Med Packaging Team <debian-med-packaging@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.3.1+dfsg-6"
+	fileName hasValue "pool/universe/v/vmatch/vmatch_2.3.1+dfsg-6_amd64.deb"
+	size hasValue "436012"
+	md5sum hasValue "52bbe5d1182dc9815bc2031f91ec94e6"
+	sha1 hasValue "4d9caa89af62694bb4735396737ef135e6e0fea3"
+	sha256 hasValue "643b43c4ee3b112a52a3d26c6b52e05f155446cd0a5ba1209a99fcc0b869628f"
+	descriptionMd5 hasValue "9d62b1c9a56eb4258d2ebcd77f428bd9"
+	homepage hasValue "http://www.vmatch.de"
+	depends hasValue "libc6 (>= 2.29), zlib1g (>= 1:1.2.3.3)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__vmatch,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "zlib1g"
+	comparison hasValue ">="
+	version hasValue "1:1.2.3.3"
+
+relationInstance depends(P0__vmatch,1,DepAtom__1)
+

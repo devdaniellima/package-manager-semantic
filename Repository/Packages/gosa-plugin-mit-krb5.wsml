@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gosa_plugin_mit_krb5
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gosa_plugin_mit_krb5 memberOf Package
+	package hasValue "gosa-plugin-mit-krb5"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/web"
+	installedSize hasValue "350"
+	maintainer hasValue "Original-Debian Edu Packaging Team <debian-edu-pkg-team@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.7.4+reloaded3-11"
+	conflicts hasValue "gosa-plugin-heimdal"
+	fileName hasValue "pool/universe/g/gosa/gosa-plugin-mit-krb5_2.7.4+reloaded3-11_all.deb"
+	size hasValue "37652"
+	md5sum hasValue "7022c6bf1b923f314ae367038cb39ac9"
+	sha1 hasValue "9378cb93ea08708d3bc9a843ddd9a1bf956c174d"
+	sha256 hasValue "0bdbb797adaf17d856baaa5da80b58b52bba58d6b89c1e04088cfcff4992a380"
+	descriptionMd5 hasValue "4ebc55d5e9e7697696e182e83537b4e4"
+	homepage hasValue "https://github.com/gosa-project"
+	depends hasValue "gosa (= 2.7.4+reloaded3-11), gosa-plugin-systems (= 2.7.4+reloaded3-11)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "gosa"
+	comparison hasValue "="
+	version hasValue "2.7.4+reloaded3-11"
+
+relationInstance depends(P0__gosa_plugin_mit_krb5,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "gosa-plugin-systems"
+	comparison hasValue "="
+	version hasValue "2.7.4+reloaded3-11"
+
+relationInstance depends(P0__gosa_plugin_mit_krb5,1,DepAtom__1)
+

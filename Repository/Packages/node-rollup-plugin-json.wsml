@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology node_rollup_plugin_json
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__node_rollup_plugin_json memberOf Package
+	package hasValue "node-rollup-plugin-json"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/web"
+	installedSize hasValue "24"
+	maintainer hasValue "Original-Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "4.0.0-6"
+	fileName hasValue "pool/universe/n/node-rollup-plugin-json/node-rollup-plugin-json_4.0.0-6_all.deb"
+	size hasValue "5168"
+	md5sum hasValue "07060f1764f60c5f0ab814525922d4a3"
+	sha1 hasValue "ebbd4d0595fe5bcc7eb835aea4b266b53f88ff80"
+	sha256 hasValue "aa3c3acbfb08433510f0ed718cc1474307ca66a71e6358f48dc4afe76a30c288"
+	descriptionMd5 hasValue "036762097ab25c04714c384ed2cf6399"
+	homepage hasValue "https://github.com/rollup/rollup-plugin-json"
+	depends hasValue "node-rollup-pluginutils, nodejs (>= 10)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "node-rollup-pluginutils"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__node_rollup_plugin_json,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "nodejs"
+	comparison hasValue ">="
+	version hasValue "10"
+
+relationInstance depends(P0__node_rollup_plugin_json,1,DepAtom__1)
+

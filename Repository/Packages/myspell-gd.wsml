@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology myspell_gd
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__myspell_gd memberOf Package
+	package hasValue "myspell-gd"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/text"
+	installedSize hasValue "147"
+	maintainer hasValue "Original-Alastair McKinstry <mckinstry@debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.50-13"
+	provides hasValue "myspell-dictionary, myspell-dictionary-gd"
+	conflicts hasValue "openoffice.org (<= 1.0.3-2)"
+	fileName hasValue "pool/universe/i/igaelic/myspell-gd_0.50-13_all.deb"
+	size hasValue "39972"
+	md5sum hasValue "c79dcc9e30ad62b2cf71ebb2d8d63369"
+	sha1 hasValue "a0edd69e8de92f7f56a3023927df74858565351e"
+	sha256 hasValue "9dbc5389bc1f387630fd3fbb5876c78a4594abd5b34fb4379ccd1b726902d3e6"
+	description hasValue "dicionário gaélico escocês para o myspell"
+	descriptionMd5 hasValue "0031262f4ca42b127b6b61bfa0c22e19"
+	depends hasValue "dictionaries-common (>= 0.10) | openoffice.org-updatedicts"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "dictionaries-common"
+	comparison hasValue ">="
+	version hasValue "0.10"
+
+relationInstance depends(P0__myspell_gd,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "openoffice.org-updatedicts"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__myspell_gd,0,DepAtom__1)
+

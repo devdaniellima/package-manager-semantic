@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libsqlcipher0
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libsqlcipher0 memberOf Package
+	package hasValue "libsqlcipher0"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "903"
+	maintainer hasValue "Original-Hans-Christoph Steiner <hans@eds.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.4.1-1build2"
+	fileName hasValue "pool/universe/s/sqlcipher/libsqlcipher0_3.4.1-1build2_amd64.deb"
+	size hasValue "409192"
+	md5sum hasValue "8c3123bd52b4c8de29df203a1ae5e3d1"
+	sha1 hasValue "f0868bd9d6bb829a7da7a0c1164f853638117d76"
+	sha256 hasValue "daa56cf5cd5bd79275d632ede39438a9a4290f7906f7273eef15eeb1986daad7"
+	description hasValue "SQLCipher shared library"
+	descriptionMd5 hasValue "63fba3c9f3243408be04b0608add35b0"
+	homepage hasValue "http://sqlcipher.net/"
+	depends hasValue "libc6 (>= 2.28), libssl1.1 (>= 1.1.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.28"
+
+relationInstance depends(P0__libsqlcipher0,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libssl1.1"
+	comparison hasValue ">="
+	version hasValue "1.1.0"
+
+relationInstance depends(P0__libsqlcipher0,1,DepAtom__1)
+

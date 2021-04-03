@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology crack
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__crack memberOf Package
+	package hasValue "crack"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "132"
+	maintainer hasValue "Original-Debian Security Tools <team+pkg-security@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "5.0a-12"
+	conflicts hasValue "crack-md5"
+	fileName hasValue "pool/universe/c/crack/crack_5.0a-12_amd64.deb"
+	size hasValue "28648"
+	md5sum hasValue "5fa24c5640ae5e858088900208008d38"
+	sha1 hasValue "c074b7c73e8a85381114fc38fb438d5cf3fb7bac"
+	sha256 hasValue "b6df8733a4957883ddc1c10ec2be81b7f9eb7b2d28ab655e5519b2b53dcd490e"
+	description hasValue "Password guessing program (crypt() variant)"
+	descriptionMd5 hasValue "29788e610e458190a843f470c4c99c54"
+	homepage hasValue "http://www.crypticide.com/alecm/software/crack/"
+	depends hasValue "crack-common, libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "crack-common"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__crack,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__crack,1,DepAtom__1)
+

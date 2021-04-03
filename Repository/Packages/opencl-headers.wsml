@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology opencl_headers
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__opencl_headers memberOf Package
+	package hasValue "opencl-headers"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "15"
+	maintainer hasValue "Original-Debian OpenCL Maintainers <pkg-opencl-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.2~2019.08.06-g0d5f18c-1"
+	fileName hasValue "pool/universe/k/khronos-opencl-headers/opencl-headers_2.2~2019.08.06-g0d5f18c-1_all.deb"
+	size hasValue "2728"
+	md5sum hasValue "399a698dbf1af7585b0870d10d7dbd65"
+	sha1 hasValue "5c5a3ffe45dd8ec618ed92bfa035babe4ad756f4"
+	sha256 hasValue "cde81571b0559b8f087241eb166b3a0847f26a8e8a8865f7d1636df444fc3174"
+	descriptionMd5 hasValue "6d11af62fe085fbe0f444907729774d5"
+	homepage hasValue "https://www.khronos.org/registry/cl/"
+	depends hasValue "opencl-c-headers (= 2.2~2019.08.06-g0d5f18c-1), opencl-clhpp-headers (>= 2.0.10)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "opencl-c-headers"
+	comparison hasValue "="
+	version hasValue "2.2~2019.08.06-g0d5f18c-1"
+
+relationInstance depends(P0__opencl_headers,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "opencl-clhpp-headers"
+	comparison hasValue ">="
+	version hasValue "2.0.10"
+
+relationInstance depends(P0__opencl_headers,1,DepAtom__1)
+

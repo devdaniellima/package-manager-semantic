@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology isomd5sum
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__isomd5sum memberOf Package
+	package hasValue "isomd5sum"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/misc"
+	installedSize hasValue "63"
+	maintainer hasValue "Original-Ryan Finnie <ryan@finnie.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:1.2.3-4build1"
+	fileName hasValue "pool/universe/i/isomd5sum/isomd5sum_1.2.3-4build1_amd64.deb"
+	size hasValue "15276"
+	md5sum hasValue "51ce97f12634162909629554249f0fc4"
+	sha1 hasValue "af4f7e46e9431cf201def133a4b3c858de620852"
+	sha256 hasValue "c23a31de34dde2cfeda78c3bc81ba0b9726c3c986053a2ddb87e2a72f2fd200d"
+	descriptionMd5 hasValue "f6138bc2eedff9a12a16a1e58e03b460"
+	homepage hasValue "https://github.com/rhinstaller/isomd5sum"
+	depends hasValue "libc6 (>= 2.16), libpopt0 (>= 1.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.16"
+
+relationInstance depends(P0__isomd5sum,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libpopt0"
+	comparison hasValue ">="
+	version hasValue "1.14"
+
+relationInstance depends(P0__isomd5sum,1,DepAtom__1)
+

@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology librda0
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__librda0 memberOf Package
+	package hasValue "librda0"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "32"
+	maintainer hasValue "Original-Debian Remote Maintainers <debian-remote@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.0.5-1"
+	fileName hasValue "pool/universe/libr/librda/librda0_0.0.5-1_amd64.deb"
+	size hasValue "5780"
+	md5sum hasValue "7f514eb6d7ad2e865cc35189f3a35992"
+	sha1 hasValue "0d3b6fca8e3f1835b946e8b7d1c79e69e89ee1b3"
+	sha256 hasValue "1bd93c7e902c4f4c9b2e34e0c3bd2ce10128a57d3449b246a84a6d869ab788f8"
+	descriptionMd5 hasValue "8f901c1f22d93d28e0422d6cb02143aa"
+	homepage hasValue "https://github.com/ArcticaProject/librda"
+	depends hasValue "libc6 (>= 2.4), libglib2.0-0 (>= 2.37), librda-common (>= 0.0.5-1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__librda0,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libglib2.0-0"
+	comparison hasValue ">="
+	version hasValue "2.37"
+
+relationInstance depends(P0__librda0,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "librda-common"
+	comparison hasValue ">="
+	version hasValue "0.0.5-1"
+
+relationInstance depends(P0__librda0,2,DepAtom__2)
+

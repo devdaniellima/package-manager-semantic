@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libscca_utils
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libscca_utils memberOf Package
+	package hasValue "libscca-utils"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/otherosfs"
+	installedSize hasValue "72"
+	maintainer hasValue "Original-Debian Security Tools <team+pkg-security@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "20181227-1.1"
+	fileName hasValue "pool/universe/libs/libscca/libscca-utils_20181227-1.1_amd64.deb"
+	size hasValue "19604"
+	md5sum hasValue "d679d3762dadf8732c085f3151653371"
+	sha1 hasValue "246237d99fb6d81b286a9c9070aa48cfbe5e5ec0"
+	sha256 hasValue "3fee1cfd801573316099a6219181e2a4cb8df2daeb2d49411274031b6341258e"
+	descriptionMd5 hasValue "95ad3e760bfc72055b074b3ee4b97a6c"
+	homepage hasValue "https://github.com/libyal/libscca"
+	depends hasValue "libc6 (>= 2.4), libscca1 (>= 20160108)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libscca_utils,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libscca1"
+	comparison hasValue ">="
+	version hasValue "20160108"
+
+relationInstance depends(P0__libscca_utils,1,DepAtom__1)
+

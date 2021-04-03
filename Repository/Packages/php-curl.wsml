@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology php_curl
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__php_curl memberOf Package
+	package hasValue "php-curl"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "php"
+	installedSize hasValue "13"
+	maintainer hasValue "Original-Debian PHP Maintainers <team+pkg-php@tracker.debian.org>"
+	architecture hasValue "all"
+	version hasValue "2:7.4+75"
+	fileName hasValue "pool/main/p/php-defaults/php-curl_7.4+75_all.deb"
+	size hasValue "2000"
+	md5sum hasValue "bcd6745a16ba975e641625bf69de411a"
+	sha1 hasValue "0c904e6f35eb16ab686ac2b9a66c46b1452428ed"
+	sha256 hasValue "ebfecaddf43ac67c70d3b1f235916a43c9638819c7215306805fafbb77fd53cb"
+	description hasValue "CURL module for PHP [default]"
+	descriptionMd5 hasValue "8a0b537324d58c7476c9afd57f37d01b"
+	depends hasValue "php-common, php7.4-curl"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "php-common"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__php_curl,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "php7.4-curl"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__php_curl,1,DepAtom__1)
+

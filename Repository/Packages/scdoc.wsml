@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology scdoc
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__scdoc memberOf Package
+	package hasValue "scdoc"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/text"
+	installedSize hasValue "46"
+	maintainer hasValue "Original-Birger Schacht <birger@rantanplan.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.10.1-1"
+	fileName hasValue "pool/universe/s/scdoc/scdoc_1.10.1-1_amd64.deb"
+	size hasValue "14268"
+	md5sum hasValue "eff019eaa96d486fd786ff5b5094f707"
+	sha1 hasValue "99ad60f510e0c6df678e1dd7f18a3131cefc7769"
+	sha256 hasValue "b13dd5ea157c3b018ca6ebe3fe0c87a9bedb1ce0b709c6de37b0b18b839cb998"
+	descriptionMd5 hasValue "0a6e07197ba1d159f68bce7a36475077"
+	homepage hasValue "https://git.sr.ht/~sircmpwn/scdoc"
+	depends hasValue "libc6 (>= 2.7)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__scdoc,0,DepAtom__0)
+

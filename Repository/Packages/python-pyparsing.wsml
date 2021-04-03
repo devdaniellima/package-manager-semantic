@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python_pyparsing
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python_pyparsing memberOf Package
+	package hasValue "python-pyparsing"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "298"
+	maintainer hasValue "Original-Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.4.6-1"
+	provides hasValue "python2.7-pyparsing"
+	fileName hasValue "pool/universe/p/pyparsing/python-pyparsing_2.4.6-1_all.deb"
+	size hasValue "61236"
+	md5sum hasValue "ff5a445e1bd053071e074332e1fcadd6"
+	sha1 hasValue "d1e2a144173bc221a8ab18d767ff93b33088f38c"
+	sha256 hasValue "19b168ff3b0dcc6619c08fafa7fbe6ad4c3353d4e81f6cb5fae0a29107299a9f"
+	descriptionMd5 hasValue "8bc131f8015a16e0908870038a1f1a26"
+	homepage hasValue "https://github.com/pyparsing/pyparsing/"
+	depends hasValue "python2:any (<< 2.8), python2:any (>= 2.7~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue "<<"
+	version hasValue "2.8"
+
+relationInstance depends(P0__python_pyparsing,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue ">="
+	version hasValue "2.7~"
+
+relationInstance depends(P0__python_pyparsing,1,DepAtom__1)
+

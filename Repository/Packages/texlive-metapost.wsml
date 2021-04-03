@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology texlive_metapost
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__texlive_metapost memberOf Package
+	package hasValue "texlive-metapost"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/tex"
+	installedSize hasValue "2630"
+	maintainer hasValue "Original-Debian TeX Maintainers <debian-tex-maint@lists.debian.org>"
+	architecture hasValue "all"
+	version hasValue "2019.20200218-1"
+	fileName hasValue "pool/universe/t/texlive-base/texlive-metapost_2019.20200218-1_all.deb"
+	size hasValue "466576"
+	md5sum hasValue "3f8b77db0e53c2dd11e0c6b27dc2554a"
+	sha1 hasValue "0fa7d162a7b9ebfd1ed75d1256a7ef1e4a3a8b36"
+	sha256 hasValue "29b5000199ad18c7226fda4fc0fa716d17c323722596910706441a9c7498afbe"
+	descriptionMd5 hasValue "47bcd3f94f37f3734a5ce528d7218de4"
+	homepage hasValue "http://www.tug.org/texlive/"
+	depends hasValue "tex-common (>= 6.13), texlive-base (>= 2019.20200218), texlive-binaries (>= 2019.20190605)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "tex-common"
+	comparison hasValue ">="
+	version hasValue "6.13"
+
+relationInstance depends(P0__texlive_metapost,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "texlive-base"
+	comparison hasValue ">="
+	version hasValue "2019.20200218"
+
+relationInstance depends(P0__texlive_metapost,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "texlive-binaries"
+	comparison hasValue ">="
+	version hasValue "2019.20190605"
+
+relationInstance depends(P0__texlive_metapost,2,DepAtom__2)
+

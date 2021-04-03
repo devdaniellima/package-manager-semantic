@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology wabt
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__wabt memberOf Package
+	package hasValue "wabt"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "10691"
+	maintainer hasValue "Original-Markus Koschany <apo@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.13-1build1"
+	fileName hasValue "pool/universe/w/wabt/wabt_1.0.13-1build1_amd64.deb"
+	size hasValue "923168"
+	md5sum hasValue "d859bc3386d81d56954d6b2c0997a4a3"
+	sha1 hasValue "107d333a9ae4b7f527674b057f3dbf2997f0b3d4"
+	sha256 hasValue "8ad92b1dc6944a0ef454fdcf55bda71eb122f333c1c10b9a7704801c93cc0c01"
+	descriptionMd5 hasValue "c60655af7f47f03860e79fe5d4b5b9ec"
+	homepage hasValue "https://github.com/WebAssembly/wabt"
+	depends hasValue "libc6 (>= 2.14), libgcc-s1 (>= 3.4), libstdc++6 (>= 5.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__wabt,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgcc-s1"
+	comparison hasValue ">="
+	version hasValue "3.4"
+
+relationInstance depends(P0__wabt,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "5.2"
+
+relationInstance depends(P0__wabt,2,DepAtom__2)
+

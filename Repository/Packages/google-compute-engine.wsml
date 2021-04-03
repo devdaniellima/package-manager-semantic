@@ -1,0 +1,71 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology google_compute_engine
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__google_compute_engine memberOf Package
+	package hasValue "google-compute-engine"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "admin"
+	installedSize hasValue "71"
+	maintainer hasValue "Original-Daniel Watkins <daniel.watkins@canonical.com>"
+	architecture hasValue "all"
+	version hasValue "20201222.00-0ubuntu2~20.04.0"
+	replaces hasValue "gce-cloud-config, gce-compute-image-packages (<< 20191115), gce-daemon, gce-startup-scripts"
+	provides hasValue "irqbalance"
+	conflicts hasValue "gce-cloud-config, gce-compute-image-packages (<< 20191115), gce-daemon, gce-startup-scripts"
+	fileName hasValue "pool/main/g/gce-compute-image-packages/google-compute-engine_20201222.00-0ubuntu2~20.04.0_all.deb"
+	size hasValue "12820"
+	md5sum hasValue "d52dabe333c3f0b8da1972d184c5ca42"
+	sha1 hasValue "8113f9ad86e31c750afbd2db98c02a98851b992c"
+	sha256 hasValue "da616d1a90a527a91670100200f7de569adb8e2143423d104c87703da4dd2efa"
+	sha512 hasValue "a2093edc66b53850da36b33225d27e48756228a7bfe7508abe9cebe956acd48940c2df32192c00d66dad48b5b61d6434b602eaeedd95ecf25eb473c639c072e8"
+	descriptionMd5 hasValue "3d02273d24f60afb7027868edacd1b20"
+	homepage hasValue "https://github.com/GoogleCloudPlatform/compute-image-packages"
+	depends hasValue "google-compute-engine-oslogin (>> 20190801), google-guest-agent, nvme-cli"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "google-compute-engine-oslogin"
+	comparison hasValue ">>"
+	version hasValue "20190801"
+
+relationInstance depends(P0__google_compute_engine,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "google-guest-agent"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__google_compute_engine,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "nvme-cli"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__google_compute_engine,2,DepAtom__2)
+

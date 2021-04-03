@@ -1,0 +1,69 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libbtrfs0
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libbtrfs0 memberOf Package
+	package hasValue "libbtrfs0"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libs"
+	installedSize hasValue "358"
+	maintainer hasValue "Original-Adam Borowski <kilobyte@angband.pl>"
+	architecture hasValue "amd64"
+	version hasValue "5.4.1-2"
+	replaces hasValue "btrfs-progs (<< 4.16.1-1)"
+	fileName hasValue "pool/main/b/btrfs-progs/libbtrfs0_5.4.1-2_amd64.deb"
+	size hasValue "175196"
+	md5sum hasValue "05a3323d08f081e676eb0e49920f7631"
+	sha1 hasValue "ba9698286c148104556eb2958285d3b5e7f850e9"
+	sha256 hasValue "16fe933103281066a404ab6bb3531964b5ef51a561b0efdb7c59c2867192bdd3"
+	description hasValue "Checksumming Copy on Write Filesystem utilities (runtime library)"
+	descriptionMd5 hasValue "6487f97011cf6cf48e96f8fe09ae3191"
+	homepage hasValue "http://btrfs.wiki.kernel.org/"
+	depends hasValue "libblkid1 (>= 2.16), libc6 (>= 2.7), libuuid1 (>= 2.16)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libblkid1"
+	comparison hasValue ">="
+	version hasValue "2.16"
+
+relationInstance depends(P0__libbtrfs0,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__libbtrfs0,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libuuid1"
+	comparison hasValue ">="
+	version hasValue "2.16"
+
+relationInstance depends(P0__libbtrfs0,2,DepAtom__2)
+

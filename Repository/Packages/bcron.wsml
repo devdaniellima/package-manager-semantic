@@ -1,0 +1,77 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology bcron
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__bcron memberOf Package
+	package hasValue "bcron"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "233"
+	maintainer hasValue "Original-Dmitry Bogatov <KAction@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.11-9"
+	replaces hasValue "bcron-run, cron"
+	provides hasValue "bcron-run, cron, cron-daemon"
+	conflicts hasValue "bcron-run (<< 0.11-3~), cron"
+	fileName hasValue "pool/universe/b/bcron/bcron_0.11-9_amd64.deb"
+	size hasValue "54484"
+	md5sum hasValue "e08f80bd15b1b5af7a5c214ed18648e0"
+	sha1 hasValue "52bfd44a14f71b9a3b4632d64ee49d9891818098"
+	sha256 hasValue "77f9069e643afedc3e096d7002bf5e2ba6b4da7ef8b8a7c711b9cab3f43dd367"
+	descriptionMd5 hasValue "2bb678838c137c5e549837603fced6d7"
+	homepage hasValue "https://untroubled.org/bcron"
+	depends hasValue "ucspi-unix, sysuser-helper (<< 1.4), libbg2 (>= 2.03), libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "ucspi-unix"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__bcron,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "sysuser-helper"
+	comparison hasValue "<<"
+	version hasValue "1.4"
+
+relationInstance depends(P0__bcron,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libbg2"
+	comparison hasValue ">="
+	version hasValue "2.03"
+
+relationInstance depends(P0__bcron,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__bcron,3,DepAtom__3)
+

@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology intel_cmt_cat
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__intel_cmt_cat memberOf Package
+	package hasValue "intel-cmt-cat"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "459"
+	maintainer hasValue "Colin King <colin.king@canonical.com>"
+	architecture hasValue "amd64"
+	version hasValue "3.2-1"
+	fileName hasValue "pool/universe/i/intel-cmt-cat/intel-cmt-cat_3.2-1_amd64.deb"
+	size hasValue "116560"
+	md5sum hasValue "5b3933d06a45ca24c0239c1f57f125cf"
+	sha1 hasValue "a664aa1ef636e5b7a2bd633d62848226de25a98b"
+	sha256 hasValue "afabeb41415832f8fe3d439768c292eebcbfee9e7b7debde89ec5700ba15dec0"
+	descriptionMd5 hasValue "5e8596da4b51ae1f1715203e431ee98e"
+	homepage hasValue "https://github.com/01org/intel-cmt-cat"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__intel_cmt_cat,0,DepAtom__0)
+

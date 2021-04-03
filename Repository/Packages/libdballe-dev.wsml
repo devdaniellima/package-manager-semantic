@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libdballe_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libdballe_dev memberOf Package
+	package hasValue "libdballe-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "5429"
+	maintainer hasValue "Original-Enrico Zini <enrico@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "8.6-1ubuntu1"
+	fileName hasValue "pool/universe/d/dballe/libdballe-dev_8.6-1ubuntu1_amd64.deb"
+	size hasValue "687848"
+	md5sum hasValue "54c18e78810df7a1f1d60eb2d42d4db8"
+	sha1 hasValue "919c349aa49415f6e3590c7749dc0c6b5f36d08a"
+	sha256 hasValue "a2f38b4081eb7ab546ca1431ebf001b1599bd9a7fbf53aa6eb6bac608f53678a"
+	description hasValue "DB-All.e C development library for weather research"
+	descriptionMd5 hasValue "62b55365c2318bdf8394ec079be8712c"
+	homepage hasValue "https://github.com/ARPA-SIMC/dballe"
+	depends hasValue "libdballe8 (= 8.6-1ubuntu1), libwreport-dev (>= 3.22)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libdballe8"
+	comparison hasValue "="
+	version hasValue "8.6-1ubuntu1"
+
+relationInstance depends(P0__libdballe_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libwreport-dev"
+	comparison hasValue ">="
+	version hasValue "3.22"
+
+relationInstance depends(P0__libdballe_dev,1,DepAtom__1)
+

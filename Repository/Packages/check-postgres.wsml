@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology check_postgres
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__check_postgres memberOf Package
+	package hasValue "check-postgres"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/database"
+	installedSize hasValue "759"
+	maintainer hasValue "Original-Debian PostgreSQL Maintainers <team+postgresql@tracker.debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.25.0-1"
+	fileName hasValue "pool/universe/c/check-postgres/check-postgres_2.25.0-1_all.deb"
+	size hasValue "152256"
+	md5sum hasValue "164fe0a59d40e1a0365acceb8b22c186"
+	sha1 hasValue "e989dc630d0363d59d097b0051068c0887a4e002"
+	sha256 hasValue "481e2235c5c2ded6b1a70afdc1a59a1346d100a6d080d5b550a7aa357c89cd43"
+	descriptionMd5 hasValue "70e0f8840b281fd43a4e56d4d6a1cfed"
+	homepage hasValue "http://bucardo.org/wiki/Check_postgres"
+	depends hasValue "perl:any, postgresql-client"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "perl:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__check_postgres,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "postgresql-client"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__check_postgres,1,DepAtom__1)
+

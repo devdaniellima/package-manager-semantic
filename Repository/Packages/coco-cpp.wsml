@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology coco_cpp
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__coco_cpp memberOf Package
+	package hasValue "coco-cpp"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "208"
+	maintainer hasValue "Original-Markus Loeberbauer <Loeberbauer@ssw.jku.at>"
+	architecture hasValue "amd64"
+	version hasValue "20120102-1build2"
+	fileName hasValue "pool/universe/c/coco-cpp/coco-cpp_20120102-1build2_amd64.deb"
+	size hasValue "50548"
+	md5sum hasValue "0da8e1f3c3956e33f82c77af2aa70ab9"
+	sha1 hasValue "72b372e03e1f066240b30194668c1f18038e100c"
+	sha256 hasValue "0c1ba1f2558656fe6eac700bae46168c88ddb875b664158ea9c352e8b322963b"
+	description hasValue "gerador de compilador Coco/R (versão C++)"
+	descriptionMd5 hasValue "02d009ce52ba1690b30aabdb24096e50"
+	homepage hasValue "http://www.ssw.uni-linz.ac.at/Research/Projects/Coco/"
+	depends hasValue "libc6 (>= 2.14), libgcc-s1 (>= 3.0), libstdc++6 (>= 5)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__coco_cpp,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgcc-s1"
+	comparison hasValue ">="
+	version hasValue "3.0"
+
+relationInstance depends(P0__coco_cpp,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "5"
+
+relationInstance depends(P0__coco_cpp,2,DepAtom__2)
+

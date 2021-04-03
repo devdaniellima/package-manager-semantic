@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology conmon
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__conmon memberOf Package
+	package hasValue "conmon"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "82"
+	maintainer hasValue "Original-Podman Packaging Team <team+podman@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.0.9-1"
+	fileName hasValue "pool/universe/c/conmon/conmon_2.0.9-1_amd64.deb"
+	size hasValue "26800"
+	md5sum hasValue "229ecd9e134bfaf0c744e764c617f488"
+	sha1 hasValue "45dac8b72e88fb5bc6687ab0357950ef3916efe0"
+	sha256 hasValue "c43cd1bd8c70beef4c609d610d304285201c4cb5574abf74d964a55febb4f960"
+	descriptionMd5 hasValue "786c9a3438be4723bf60d40dd2db71a6"
+	homepage hasValue "https://github.com/containers/conmon"
+	depends hasValue "libc6 (>= 2.17), libglib2.0-0 (>= 2.35.8), libsystemd0"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.17"
+
+relationInstance depends(P0__conmon,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libglib2.0-0"
+	comparison hasValue ">="
+	version hasValue "2.35.8"
+
+relationInstance depends(P0__conmon,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libsystemd0"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__conmon,2,DepAtom__2)
+

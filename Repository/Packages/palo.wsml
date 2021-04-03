@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology palo
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__palo memberOf Package
+	package hasValue "palo"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "147"
+	maintainer hasValue "Original-Helge Deller <deller@gmx.de>"
+	architecture hasValue "amd64"
+	version hasValue "2.12"
+	fileName hasValue "pool/universe/p/palo/palo_2.12_amd64.deb"
+	size hasValue "56824"
+	md5sum hasValue "ececa47e55daeb5b4c9c15e224ddb189"
+	sha1 hasValue "b3a0e2162c1390341b62b36ebae2d8d1eab9a23e"
+	sha256 hasValue "790c118dc4fb95a3302b6815618d1471a2434a96e6be0a8be5a96978d7805256"
+	descriptionMd5 hasValue "7bba46af057c185e784bc82bebac1b40"
+	homepage hasValue "https://git.kernel.org/cgit/linux/kernel/git/deller/palo.git"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__palo,0,DepAtom__0)
+

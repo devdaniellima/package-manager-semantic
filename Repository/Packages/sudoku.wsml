@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology sudoku
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__sudoku memberOf Package
+	package hasValue "sudoku"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/games"
+	installedSize hasValue "121"
+	maintainer hasValue "Original-Peter Spiess-Knafl <dev@spiessknafl.at>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.5-2build3"
+	fileName hasValue "pool/universe/s/sudoku/sudoku_1.0.5-2build3_amd64.deb"
+	size hasValue "41564"
+	md5sum hasValue "8ba3e264214403ad19e1568064b27e0c"
+	sha1 hasValue "06863c5a49828e92258893f6961f5c773d80499f"
+	sha256 hasValue "85cefe2d7bcf1b272c8c1ea0f41353ababe38e3d45274b3a3c7ca9ab3843404e"
+	description hasValue "sudoku baseado em console"
+	descriptionMd5 hasValue "b7b515c5b1173672e084c8ec432ff43f"
+	homepage hasValue "https://github.com/cinemast/sudoku"
+	depends hasValue "libc6 (>= 2.4), libncurses6 (>= 6), libtinfo6 (>= 6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__sudoku,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libncurses6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__sudoku,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libtinfo6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__sudoku,2,DepAtom__2)
+

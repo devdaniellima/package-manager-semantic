@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ruby_batch_loader
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ruby_batch_loader memberOf Package
+	package hasValue "ruby-batch-loader"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/ruby"
+	installedSize hasValue "40"
+	maintainer hasValue "Original-Debian Ruby Extras Maintainers <pkg-ruby-extras-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.4.1+dfsg.1-3"
+	fileName hasValue "pool/universe/r/ruby-batch-loader/ruby-batch-loader_1.4.1+dfsg.1-3_all.deb"
+	size hasValue "12644"
+	md5sum hasValue "abb664d4fbe8f84198d40fab36d88a0e"
+	sha1 hasValue "cf76e29bee8103baf272723514706611d3fabf43"
+	sha256 hasValue "7ba22252ce631d486e239025230eac3bcc77286523a9195134edea6e0196034b"
+	descriptionMd5 hasValue "02d7229617256d927f6486c9ddf42f6a"
+	homepage hasValue "https://github.com/exAspArk/batch-loader"
+	depends hasValue "ruby-graphql (<< 2), ruby-graphql (>= 1.6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "ruby-graphql"
+	comparison hasValue "<<"
+	version hasValue "2"
+
+relationInstance depends(P0__ruby_batch_loader,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "ruby-graphql"
+	comparison hasValue ">="
+	version hasValue "1.6"
+
+relationInstance depends(P0__ruby_batch_loader,1,DepAtom__1)
+

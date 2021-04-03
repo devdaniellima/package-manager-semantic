@@ -1,0 +1,69 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology lzma
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__lzma memberOf Package
+	package hasValue "lzma"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "150"
+	maintainer hasValue "Original-Mohammed Adnène Trojette <adn+deb@diwi.org>"
+	architecture hasValue "amd64"
+	version hasValue "9.22-2.1build1"
+	conflicts hasValue "xz-lzma (<< 5.1.1alpha+20110809-2)"
+	fileName hasValue "pool/universe/l/lzma/lzma_9.22-2.1build1_amd64.deb"
+	size hasValue "46268"
+	md5sum hasValue "5b39d3c0b8c03b81d583436dfcbda4a1"
+	sha1 hasValue "b0c214a0aebd4b4c171bd39178ed2ae3569bb284"
+	sha256 hasValue "9a8236a0c0d3a4ef94a59495b8226926145e7ba161a9a1f4ac5d4b0237cf12d6"
+	description hasValue "Compressão e descompressão no formato LZMA - utilitário em linha de comando"
+	descriptionMd5 hasValue "2d94f8c37f21a8d03b49ea85653fef54"
+	homepage hasValue "http://www.7-zip.org/sdk.html"
+	depends hasValue "libc6 (>= 2.14), libgcc-s1 (>= 3.0), libstdc++6 (>= 5.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__lzma,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgcc-s1"
+	comparison hasValue ">="
+	version hasValue "3.0"
+
+relationInstance depends(P0__lzma,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "5.2"
+
+relationInstance depends(P0__lzma,2,DepAtom__2)
+

@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gPlusPlus_aarch64_linux_gnu
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gPlusPlus_aarch64_linux_gnu memberOf Package
+	package hasValue "g++-aarch64-linux-gnu"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "devel"
+	installedSize hasValue "11"
+	maintainer hasValue "Original-Debian GCC Maintainers <debian-gcc@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "4:9.3.0-1ubuntu2"
+	fileName hasValue "pool/main/g/gcc-defaults/g++-aarch64-linux-gnu_9.3.0-1ubuntu2_amd64.deb"
+	size hasValue "1128"
+	md5sum hasValue "e890bd80ab8f8586456ead322599c084"
+	sha1 hasValue "e3d7f3774949afec804325033b82ed043c4fa68f"
+	sha256 hasValue "73ed71eb84570ce3f8b3d2e5217866c31216fef73530de6c4e672884ef953881"
+	description hasValue "GNU C++ compiler for the arm64 architecture"
+	descriptionMd5 hasValue "841ad5010180ab9999db8cd40c9e8de4"
+	depends hasValue "cpp-aarch64-linux-gnu (= 4:9.3.0-1ubuntu2), gcc-aarch64-linux-gnu (= 4:9.3.0-1ubuntu2), g++-9-aarch64-linux-gnu (>= 9.3.0-3~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "cpp-aarch64-linux-gnu"
+	comparison hasValue "="
+	version hasValue "4:9.3.0-1ubuntu2"
+
+relationInstance depends(P0__gPlusPlus_aarch64_linux_gnu,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "gcc-aarch64-linux-gnu"
+	comparison hasValue "="
+	version hasValue "4:9.3.0-1ubuntu2"
+
+relationInstance depends(P0__gPlusPlus_aarch64_linux_gnu,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "g++-9-aarch64-linux-gnu"
+	comparison hasValue ">="
+	version hasValue "9.3.0-3~"
+
+relationInstance depends(P0__gPlusPlus_aarch64_linux_gnu,2,DepAtom__2)
+

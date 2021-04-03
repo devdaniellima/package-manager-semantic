@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology mercurial_common
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__mercurial_common memberOf Package
+	package hasValue "mercurial-common"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "13714"
+	maintainer hasValue "Original-Python Applications Packaging Team <python-apps-team@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "5.3.1-1ubuntu1"
+	replaces hasValue "mercurial (<< 2.6.3)"
+	fileName hasValue "pool/universe/m/mercurial/mercurial-common_5.3.1-1ubuntu1_all.deb"
+	size hasValue "2650284"
+	md5sum hasValue "9f7cf65e1d7dc3038ab790263aa073fa"
+	sha1 hasValue "34d284a0a38f6406519e3fa96cdf7f262f02bf13"
+	sha256 hasValue "e352d1315b116baad2aca8a9412545c01e7943dc196caab46ac94e604c3e611b"
+	description hasValue "easy-to-use, scalable distributed version control system (common files)"
+	descriptionMd5 hasValue "715b60ef17ae723625b571846d6d05da"
+	homepage hasValue "https://www.mercurial-scm.org/"
+	depends hasValue "python2:any (<< 2.8), python2:any (>= 2.7~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue "<<"
+	version hasValue "2.8"
+
+relationInstance depends(P0__mercurial_common,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue ">="
+	version hasValue "2.7~"
+
+relationInstance depends(P0__mercurial_common,1,DepAtom__1)
+

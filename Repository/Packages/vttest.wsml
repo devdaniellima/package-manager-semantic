@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology vttest
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__vttest memberOf Package
+	package hasValue "vttest"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "307"
+	maintainer hasValue "Original-Andreas Bombe <aeb@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.7+20190710-1"
+	fileName hasValue "pool/universe/v/vttest/vttest_2.7+20190710-1_amd64.deb"
+	size hasValue "99960"
+	md5sum hasValue "53d47f986730588c54a7325a51d4d9af"
+	sha1 hasValue "6812658ed865ae85333d517197c06378f6316241"
+	sha256 hasValue "fec8b21151bf3cb4d8391c2029be9b0b3662caeafdc4ce2dc40a0f4ee4881a58"
+	description hasValue "ferramenta para testar compatibilidade com VT100 de terminais"
+	descriptionMd5 hasValue "eaa214a2af2873e573781c6455127ac3"
+	homepage hasValue "https://invisible-island.net/vttest/"
+	depends hasValue "libc6 (>= 2.11)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.11"
+
+relationInstance depends(P0__vttest,0,DepAtom__0)
+

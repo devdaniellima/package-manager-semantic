@@ -1,0 +1,78 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology nvidia_dkms_450
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__nvidia_dkms_450 memberOf Package
+	package hasValue "nvidia-dkms-450"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "restricted/libs"
+	installedSize hasValue "130"
+	maintainer hasValue "Ubuntu Core Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	architecture hasValue "amd64"
+	version hasValue "450.102.04-0ubuntu0.20.04.1"
+	replaces hasValue "nvidia-384 (<< 390.25), nvidia-dkms-kernel, nvidia-kernel-source-450 (<< 390.25-0ubuntu2~)"
+	provides hasValue "nvidia-dkms-kernel"
+	conflicts hasValue "nvidia-dkms-kernel"
+	fileName hasValue "pool/restricted/n/nvidia-graphics-drivers-450/nvidia-dkms-450_450.102.04-0ubuntu0.20.04.1_amd64.deb"
+	size hasValue "29020"
+	md5sum hasValue "fd1d994f9d44f32787c39ca44f76efbb"
+	sha1 hasValue "f75b7e5d7653c3cb5b06c191161cb9b21897f487"
+	sha256 hasValue "b37a3f07ac574371dc039c08259102ec8c2b6939209f1cd0c3ce1cca9f7bb8a7"
+	sha512 hasValue "60935d55e1bd47704dc0f8730102742291568e863948250ea89723e6b3963323e84e7f1303b621ff11c7009f16bc5a60166f78e5fe93a5bb252d91c6843709a5"
+	descriptionMd5 hasValue "ec8c193060b5458922cc0bda62df7796"
+	homepage hasValue "http://www.nvidia.com"
+	depends hasValue "dkms, nvidia-kernel-source-450, nvidia-kernel-common-450 (<= 450.102.04-1), nvidia-kernel-common-450 (>= 450.102.04)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "dkms"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__nvidia_dkms_450,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "nvidia-kernel-source-450"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__nvidia_dkms_450,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "nvidia-kernel-common-450"
+	comparison hasValue "<="
+	version hasValue "450.102.04-1"
+
+relationInstance depends(P0__nvidia_dkms_450,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "nvidia-kernel-common-450"
+	comparison hasValue ">="
+	version hasValue "450.102.04"
+
+relationInstance depends(P0__nvidia_dkms_450,3,DepAtom__3)
+

@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology tcl_expect
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__tcl_expect memberOf Package
+	package hasValue "tcl-expect"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/interpreters"
+	installedSize hasValue "240"
+	maintainer hasValue "Original-Sergei Golovan <sgolovan@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "5.45.4-2build1"
+	conflicts hasValue "expectk (<< 5.45)"
+	fileName hasValue "pool/universe/e/expect/tcl-expect_5.45.4-2build1_amd64.deb"
+	size hasValue "105180"
+	md5sum hasValue "37340159ec9fe4a7c2352ae4fc17a68a"
+	sha1 hasValue "a9a65eda6fdb29bd588f5d2f4e7161654f99619f"
+	sha256 hasValue "5dcec25dbdd3d9f999bc4ae314ddd67fbdb014a32e20ffc6436b7c2efe33fb2c"
+	description hasValue "Automates interactive applications (Tcl package)"
+	descriptionMd5 hasValue "b1756b2ba47afc10b021d4bcbb58a6ac"
+	homepage hasValue "https://core.tcl.tk/expect/"
+	depends hasValue "libtcl8.6, libc6 (>= 2.29)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libtcl8.6"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__tcl_expect,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__tcl_expect,1,DepAtom__1)
+

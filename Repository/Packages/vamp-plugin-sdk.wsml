@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology vamp_plugin_sdk
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__vamp_plugin_sdk memberOf Package
+	package hasValue "vamp-plugin-sdk"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/sound"
+	installedSize hasValue "861"
+	maintainer hasValue "Original-Debian Multimedia Maintainers <debian-multimedia@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.9.0-1build1"
+	fileName hasValue "pool/universe/v/vamp-plugin-sdk/vamp-plugin-sdk_2.9.0-1build1_amd64.deb"
+	size hasValue "131972"
+	md5sum hasValue "3dd5f6db1feffe7304539f7e1a3260df"
+	sha1 hasValue "87d28baab02091f51047549bf2d08cfdd45baf66"
+	sha256 hasValue "1752b1dc190822be832d3ebab656f3db690306d6a48c52de631ee9bad817537c"
+	descriptionMd5 hasValue "d51069005dc52979e43aae38615d8f82"
+	homepage hasValue "http://www.vamp-plugins.org/"
+	depends hasValue "libvamp-hostsdk3v5 (= 2.9.0-1build1), libvamp-sdk2v5 (= 2.9.0-1build1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libvamp-hostsdk3v5"
+	comparison hasValue "="
+	version hasValue "2.9.0-1build1"
+
+relationInstance depends(P0__vamp_plugin_sdk,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libvamp-sdk2v5"
+	comparison hasValue "="
+	version hasValue "2.9.0-1build1"
+
+relationInstance depends(P0__vamp_plugin_sdk,1,DepAtom__1)
+

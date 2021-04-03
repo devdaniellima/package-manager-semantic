@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libmunge2
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libmunge2 memberOf Package
+	package hasValue "libmunge2"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/libs"
+	installedSize hasValue "70"
+	maintainer hasValue "Original-Gennaro Oliva <oliva.g@na.icar.cnr.it>"
+	architecture hasValue "amd64"
+	version hasValue "0.5.13-2build1"
+	fileName hasValue "pool/universe/m/munge/libmunge2_0.5.13-2build1_amd64.deb"
+	size hasValue "19700"
+	md5sum hasValue "695fd7edb3d7e705c32f337e8ab76b01"
+	sha1 hasValue "d89cff3c9975f2b357b8f5d102e32ab2681aa98e"
+	sha256 hasValue "dad07653cc0fb52b4c7b94db08dbd7763a0a02dc492f354137875c1485f711e4"
+	descriptionMd5 hasValue "b0b124971cd61d5ccbdcc2325e9f38b3"
+	homepage hasValue "https://dun.github.io/munge"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libmunge2,0,DepAtom__0)
+

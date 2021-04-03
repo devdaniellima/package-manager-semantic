@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libcolamd2
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libcolamd2 memberOf Package
+	package hasValue "libcolamd2"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libs"
+	installedSize hasValue "66"
+	maintainer hasValue "Original-Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:5.7.1+dfsg-2"
+	fileName hasValue "pool/main/s/suitesparse/libcolamd2_5.7.1+dfsg-2_amd64.deb"
+	size hasValue "17020"
+	md5sum hasValue "3cef7b528fea7586dd7e308cd859ef15"
+	sha1 hasValue "bfec7323b70ca2e0d889e01b88591a2120f8a63a"
+	sha256 hasValue "c5792b279a60c57523da081f07c9d62001df5932dae833a1d4387dc6fd9eb922"
+	descriptionMd5 hasValue "6d693e970300aa191a71ea529934c483"
+	homepage hasValue "http://www.suitesparse.com"
+	depends hasValue "libc6 (>= 2.4), libsuitesparseconfig5 (>= 1:5.0.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libcolamd2,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libsuitesparseconfig5"
+	comparison hasValue ">="
+	version hasValue "1:5.0.0"
+
+relationInstance depends(P0__libcolamd2,1,DepAtom__1)
+

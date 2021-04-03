@@ -1,0 +1,81 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology r_cran_gee
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__r_cran_gee memberOf Package
+	package hasValue "r-cran-gee"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/gnu-r"
+	installedSize hasValue "135"
+	maintainer hasValue "Original-Debian R Packages Maintainers <r-pkg-team@alioth-lists.debian.net>"
+	architecture hasValue "amd64"
+	version hasValue "4.13-20-1"
+	fileName hasValue "pool/universe/r/r-cran-gee/r-cran-gee_4.13-20-1_amd64.deb"
+	size hasValue "71576"
+	md5sum hasValue "7f92ce7c0f6f39d3d9cfcbeb32903848"
+	sha1 hasValue "00c4b4b8532bbe4a03fa2de11bb24d4df675ba24"
+	sha256 hasValue "4dcbafdd1bda98fb95072ec3c00b0032101b1b13f70736d73648545388946539"
+	descriptionMd5 hasValue "3c1919a7979fde3f0926abea664039c8"
+	homepage hasValue "https://cran.r-project.org/package=gee"
+	depends hasValue "r-base-core (>= 3.6.1-7), r-api-3.5, libblas3 | libblas.so.3, libc6 (>= 2.29)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "r-base-core"
+	comparison hasValue ">="
+	version hasValue "3.6.1-7"
+
+relationInstance depends(P0__r_cran_gee,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "r-api-3.5"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__r_cran_gee,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libblas3"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__r_cran_gee,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "libblas.so.3"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__r_cran_gee,2,DepAtom__3)
+
+instance DepAtom__4 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__r_cran_gee,3,DepAtom__4)
+

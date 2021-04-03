@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology jool_dkms
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__jool_dkms memberOf Package
+	package hasValue "jool-dkms"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/kernel"
+	installedSize hasValue "699"
+	maintainer hasValue "Original-Jool Team <jool@nic.mx>"
+	architecture hasValue "all"
+	version hasValue "4.0.7-1"
+	fileName hasValue "pool/universe/j/jool/jool-dkms_4.0.7-1_all.deb"
+	size hasValue "136124"
+	md5sum hasValue "4a60ad25b5bda349124b9da93df38d0f"
+	sha1 hasValue "41a3a8acb86d43f2eddc3fe0dae8c202802472ac"
+	sha256 hasValue "1427b6eb951a9fd6ead00174e888801579a8a41f27fe6d32557fd6c100cf1fec"
+	descriptionMd5 hasValue "eef52bd7459dce874b6cdbc1752cab75"
+	homepage hasValue "https://jool.mx"
+	depends hasValue "dkms (>= 2.1.0.0), libxtables12"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "dkms"
+	comparison hasValue ">="
+	version hasValue "2.1.0.0"
+
+relationInstance depends(P0__jool_dkms,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libxtables12"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__jool_dkms,1,DepAtom__1)
+

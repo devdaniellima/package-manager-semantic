@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libapache2_mod_upload_progress
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libapache2_mod_upload_progress memberOf Package
+	package hasValue "libapache2-mod-upload-progress"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/web"
+	installedSize hasValue "85"
+	maintainer hasValue "Original-Jérémy Bobbio <lunar@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.2-2"
+	fileName hasValue "pool/universe/a/apache-upload-progress-module/libapache2-mod-upload-progress_0.2-2_amd64.deb"
+	size hasValue "14798"
+	md5sum hasValue "d81d09fe81dd139e0cd4f72b3a5a6d27"
+	sha1 hasValue "8e1ac5feb8f51b5443245475483e491daaa608f2"
+	sha256 hasValue "0085b3213b00252fbe995942733a89bfb0df04a2e30cdcb18d039d51ac10dd90"
+	descriptionMd5 hasValue "70ad85d8a37e0173133c9b94cf6291ac"
+	homepage hasValue "http://github.com/drogus/apache-upload-progress-module/"
+	depends hasValue "libc6 (>= 2.4), apache2-api-20120211"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libapache2_mod_upload_progress,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "apache2-api-20120211"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libapache2_mod_upload_progress,1,DepAtom__1)
+

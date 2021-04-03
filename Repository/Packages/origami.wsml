@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology origami
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__origami memberOf Package
+	package hasValue "origami"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/science"
+	installedSize hasValue "62"
+	maintainer hasValue "Original-Christer Edwards <christer.edwards@gmail.com>"
+	architecture hasValue "all"
+	version hasValue "1.2.7+really0.7.4-1.1"
+	fileName hasValue "pool/universe/o/origami/origami_1.2.7+really0.7.4-1.1_all.deb"
+	size hasValue "15854"
+	md5sum hasValue "31cc14688d0458602bed73b6de4d745f"
+	sha1 hasValue "a2d7c61b016c3fbaef0663be26aff6f6ff36ec10"
+	sha256 hasValue "8f8ad17d459e135cad460172a3ba9ea7daded5e54339941637085172b0c81eba"
+	descriptionMd5 hasValue "c68aa71d52ad18dedf56355f0bc6716b"
+	homepage hasValue "http://zelut.org/projects/origami"
+	depends hasValue "wget | curl, bash (>= 3.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "wget"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__origami,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "curl"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__origami,0,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "bash"
+	comparison hasValue ">="
+	version hasValue "3.2"
+
+relationInstance depends(P0__origami,1,DepAtom__2)
+

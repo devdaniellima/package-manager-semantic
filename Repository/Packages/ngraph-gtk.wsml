@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ngraph_gtk
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ngraph_gtk memberOf Package
+	package hasValue "ngraph-gtk"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/graphics"
+	installedSize hasValue "1092"
+	maintainer hasValue "Original-Koichi Akabe <vbkaisetsu@gmail.com>"
+	architecture hasValue "amd64"
+	version hasValue "6.08.00-1.1build1"
+	fileName hasValue "pool/universe/n/ngraph-gtk/ngraph-gtk_6.08.00-1.1build1_amd64.deb"
+	size hasValue "94708"
+	md5sum hasValue "02d8a80e6762927d293cd9ccb79963ec"
+	sha1 hasValue "e3d9e2a62a294ed3d8d04bec7f40a618ca138f32"
+	sha256 hasValue "32c0d6e5a97a057348eafda59d61d1fb9cd7f52bd609fb9c6111aed640ab5549"
+	descriptionMd5 hasValue "2d1ee8fe42a06834fcde2c5c006684fc"
+	homepage hasValue "http://hito.music.coocan.jp/ngraph/ngraph-gtk.html"
+	depends hasValue "libc6 (>= 2.4), libngraph0 (>= 6.07.02)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__ngraph_gtk,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libngraph0"
+	comparison hasValue ">="
+	version hasValue "6.07.02"
+
+relationInstance depends(P0__ngraph_gtk,1,DepAtom__1)
+

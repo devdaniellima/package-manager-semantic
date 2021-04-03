@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libxom_java
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libxom_java memberOf Package
+	package hasValue "libxom-java"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "234"
+	maintainer hasValue "Original-Debian Java Maintainers <pkg-java-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.2.10-1"
+	fileName hasValue "pool/universe/x/xom/libxom-java_1.2.10-1_all.deb"
+	size hasValue "169580"
+	md5sum hasValue "d55451959df7cecea94ecb8996838d72"
+	sha1 hasValue "1acc73f05b45d71df393990075e7df7f8d5c84eb"
+	sha256 hasValue "036da9af4cfe68878701c2881aee938dd16a4b951d9cddefb541789e2f92b4bf"
+	descriptionMd5 hasValue "a8d1a9a18a1e7ad5b84a130a26b5a216"
+	homepage hasValue "http://www.xom.nu"
+	depends hasValue "libjaxen-java (>= 1.1~beta8), libxerces2-java"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libjaxen-java"
+	comparison hasValue ">="
+	version hasValue "1.1~beta8"
+
+relationInstance depends(P0__libxom_java,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libxerces2-java"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libxom_java,1,DepAtom__1)
+

@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology vtgrab
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__vtgrab memberOf Package
+	package hasValue "vtgrab"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "92"
+	maintainer hasValue "Original-RISKO Gergely <risko@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.1.8-3.2"
+	fileName hasValue "pool/universe/v/vtgrab/vtgrab_0.1.8-3.2_amd64.deb"
+	size hasValue "23000"
+	md5sum hasValue "fc7e9d531f2aa30d02e07683932fa667"
+	sha1 hasValue "c3b395336ac51cf764c9bea593822b755d128824"
+	sha256 hasValue "2d03350726ba75e9ee0c0526dbf388e083ca22b0a3b4e9eb55ee1f6587c5cbf3"
+	description hasValue "monitor de console estilo VNC"
+	descriptionMd5 hasValue "1325ea7429f859c3c81fd386ed8ccde7"
+	depends hasValue "libc6 (>= 2.15), libncurses6 (>= 6), libtinfo6 (>= 6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__vtgrab,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libncurses6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__vtgrab,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libtinfo6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__vtgrab,2,DepAtom__2)
+

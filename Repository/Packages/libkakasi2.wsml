@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libkakasi2
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libkakasi2 memberOf Package
+	package hasValue "libkakasi2"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "129"
+	maintainer hasValue "Original-Natural Language Processing (Japanese) <team+pkg-nlp-ja@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.3.6-4"
+	fileName hasValue "pool/universe/k/kakasi/libkakasi2_2.3.6-4_amd64.deb"
+	size hasValue "28804"
+	md5sum hasValue "876f59f05d972274cfc35b1a08742d7f"
+	sha1 hasValue "f83802643dae8e62cc298ba0a84a20f1e7d551b9"
+	sha256 hasValue "c69cae46718c1e3b90e35bcd597201a09623eedc669fe152ac5221a792cb8066"
+	description hasValue "Library version of KAKASI"
+	descriptionMd5 hasValue "57c077067587c6eef61560ae6a65ceec"
+	homepage hasValue "http://kakasi.namazu.org"
+	depends hasValue "libc6 (>= 2.4), kakasi-dic"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libkakasi2,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "kakasi-dic"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libkakasi2,1,DepAtom__1)
+

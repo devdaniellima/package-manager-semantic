@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology cdpr
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__cdpr memberOf Package
+	package hasValue "cdpr"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/net"
+	installedSize hasValue "58"
+	maintainer hasValue "Original-Matt Zagrabelny <mzagrabe@d.umn.edu>"
+	architecture hasValue "amd64"
+	version hasValue "2.4-2"
+	fileName hasValue "pool/universe/c/cdpr/cdpr_2.4-2_amd64.deb"
+	size hasValue "16840"
+	md5sum hasValue "90ba1296e757fdd68faf79de325400bb"
+	sha1 hasValue "a9010db363d08fe0e748c77e44e32fb7d73f0d73"
+	sha256 hasValue "52f3746f10c604602cf61259a8fe6ef64017bb2ec244477e5e345f322a1583f6"
+	description hasValue "Relator do protocolo Cisco Discovery"
+	descriptionMd5 hasValue "77dd2ca280526fc8efcbd3fb1086aab3"
+	homepage hasValue "http://cdpr.sourceforge.net/"
+	depends hasValue "libc6 (>= 2.7), libpcap0.8 (>= 0.9.8)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__cdpr,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libpcap0.8"
+	comparison hasValue ">="
+	version hasValue "0.9.8"
+
+relationInstance depends(P0__cdpr,1,DepAtom__1)
+

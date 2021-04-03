@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology elpa_ess
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__elpa_ess memberOf Package
+	package hasValue "elpa-ess"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/gnu-r"
+	installedSize hasValue "3243"
+	maintainer hasValue "Original-Dirk Eddelbuettel <edd@debian.org>"
+	architecture hasValue "all"
+	version hasValue "18.10.2-2"
+	conflicts hasValue "dhelp (<= 0.3.12)"
+	fileName hasValue "pool/universe/e/ess/elpa-ess_18.10.2-2_all.deb"
+	size hasValue "1217312"
+	md5sum hasValue "7588ffcd88a81bdd1235cb37e198b03f"
+	sha1 hasValue "d7715c385faba08027d9ab8be929af826be4989d"
+	sha256 hasValue "0031982ab0b367114dddd16aa85a20c24862eaf544342c18bb7e8bb84a5d00c2"
+	descriptionMd5 hasValue "6083b340205c0ac1e5c5dfc984ea6af1"
+	homepage hasValue "http://ess.r-project.org"
+	depends hasValue "emacsen-common (>= 2.0.8), dpkg (>= 1.15.4) | install-info"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "emacsen-common"
+	comparison hasValue ">="
+	version hasValue "2.0.8"
+
+relationInstance depends(P0__elpa_ess,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "dpkg"
+	comparison hasValue ">="
+	version hasValue "1.15.4"
+
+relationInstance depends(P0__elpa_ess,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "install-info"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__elpa_ess,1,DepAtom__2)
+

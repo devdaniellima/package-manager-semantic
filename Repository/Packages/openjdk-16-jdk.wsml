@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology openjdk_16_jdk
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S2 memberOf Source
+	uri hasValue "http://ppa.launchpad.net/openjdk-r/ppa/ubuntu"
+
+// Packages instances
+
+instance P0__openjdk_16_jdk memberOf Package
+	package hasValue "openjdk-16-jdk"
+	packageSource hasValue Source__S2
+	priority hasValue "optional"
+	section hasValue "java"
+	installedSize hasValue "54"
+	maintainer hasValue "OpenJDK Team <openjdk-16@packages.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "16+36-3~20.04"
+	provides hasValue "java-compiler, java-sdk, java10-sdk, java11-sdk, java12-sdk, java13-sdk, java14-sdk, java15-sdk, java16-sdk, java2-sdk, java5-sdk, java6-sdk, java7-sdk, java8-sdk, java9-sdk"
+	fileName hasValue "pool/main/o/openjdk-16/openjdk-16-jdk_16+36-3~20.04_amd64.deb"
+	size hasValue "10532"
+	md5sum hasValue "9e4db1bddcae10892ce96173cc144544"
+	sha1 hasValue "379cb4ed53c7840b21d1b64aa72a5dfa45a67662"
+	sha256 hasValue "d269a8b57ade7e2469237bbb288bf26d3dd7b2147568505aba2bd0ac5f849da1"
+	descriptionMd5 hasValue "b9e7f4837238c34971e4a8b72ab7d045"
+	depends hasValue "openjdk-16-jre (= 16+36-3~20.04), openjdk-16-jdk-headless (= 16+36-3~20.04), libc6 (>= 2.2.5)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "openjdk-16-jre"
+	comparison hasValue "="
+	version hasValue "16+36-3~20.04"
+
+relationInstance depends(P0__openjdk_16_jdk,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "openjdk-16-jdk-headless"
+	comparison hasValue "="
+	version hasValue "16+36-3~20.04"
+
+relationInstance depends(P0__openjdk_16_jdk,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.2.5"
+
+relationInstance depends(P0__openjdk_16_jdk,2,DepAtom__2)
+

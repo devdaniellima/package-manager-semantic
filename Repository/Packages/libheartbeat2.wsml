@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libheartbeat2
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libheartbeat2 memberOf Package
+	package hasValue "libheartbeat2"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "148"
+	maintainer hasValue "Original-Debian HA Maintainers <debian-ha-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:3.0.6-10build1"
+	replaces hasValue "heartbeat (<= 2.99.2+sles11r7-0+1)"
+	fileName hasValue "pool/universe/h/heartbeat/libheartbeat2_3.0.6-10build1_amd64.deb"
+	size hasValue "31432"
+	md5sum hasValue "ab30d4f1427c2dc15366985bc8ff260d"
+	sha1 hasValue "e505a1c4667c2da5d4e1253df2571205567a0dd8"
+	sha256 hasValue "a314273702a295474db9b7c430e46daf7a08eeefeb3bbea44345240734c8f1ce"
+	descriptionMd5 hasValue "d4f0fa776e9069054e6b632ec6f5a777"
+	homepage hasValue "http://www.linux-ha.org/"
+	depends hasValue "libc6 (>= 2.15), libglib2.0-0 (>= 2.12.0), libplumb2"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__libheartbeat2,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libglib2.0-0"
+	comparison hasValue ">="
+	version hasValue "2.12.0"
+
+relationInstance depends(P0__libheartbeat2,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libplumb2"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libheartbeat2,2,DepAtom__2)
+

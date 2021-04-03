@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python3_monasca_statsd
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python3_monasca_statsd memberOf Package
+	package hasValue "python3-monasca-statsd"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "54"
+	maintainer hasValue "Original-Debian OpenStack <team+openstack@tracker.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.11.0-2"
+	fileName hasValue "pool/universe/p/python-monasca-statsd/python3-monasca-statsd_1.11.0-2_all.deb"
+	size hasValue "8180"
+	md5sum hasValue "7a7cb5a46bd37dd3410ac1e86b7d64cf"
+	sha1 hasValue "cdfef51f5da1bfd6bb4841c8a33132504cbf597f"
+	sha256 hasValue "32f80d8e276a38770ecb50100c19661ca0c93196abbf10b88973bad9b3fa0525"
+	description hasValue "monasca statsd client - Python 3.x"
+	descriptionMd5 hasValue "a6d35d07d13e4433f4ad2b308075e8e2"
+	homepage hasValue "https://github.com/openstack/monasca-statsd"
+	depends hasValue "python3-six (>= 1.10.0), python3:any"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3-six"
+	comparison hasValue ">="
+	version hasValue "1.10.0"
+
+relationInstance depends(P0__python3_monasca_statsd,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__python3_monasca_statsd,1,DepAtom__1)
+

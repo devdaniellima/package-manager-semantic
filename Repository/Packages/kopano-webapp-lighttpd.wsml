@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology kopano_webapp_lighttpd
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__kopano_webapp_lighttpd memberOf Package
+	package hasValue "kopano-webapp-lighttpd"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/web"
+	installedSize hasValue "67"
+	maintainer hasValue "Original-Giraffe Maintainers <pkg-giraffe-maintainers@alioth-lists.debian.net>"
+	architecture hasValue "all"
+	version hasValue "3.5.14+dfsg1.orig-1"
+	fileName hasValue "pool/universe/k/kopano-webapp/kopano-webapp-lighttpd_3.5.14+dfsg1.orig-1_all.deb"
+	size hasValue "16192"
+	md5sum hasValue "bc7f37dcdf51b75c3f0dbe6010190c0b"
+	sha1 hasValue "9ac5bf8d59c43453ba7e1cef2135f91275717006"
+	sha256 hasValue "6fbd2baa33481ce69fb6089808fb1d33025e6dcff26647cd10b5d11257918b89"
+	descriptionMd5 hasValue "87a8a82df32a4d10d1ecae3eb4b1c5c1"
+	homepage hasValue "https://github.com/Kopano-dev/kopano-webapp"
+	depends hasValue "lighttpd, kopano-webapp-common (>= 3.5.14+dfsg1.orig-1), php-cgi"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "lighttpd"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__kopano_webapp_lighttpd,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "kopano-webapp-common"
+	comparison hasValue ">="
+	version hasValue "3.5.14+dfsg1.orig-1"
+
+relationInstance depends(P0__kopano_webapp_lighttpd,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "php-cgi"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__kopano_webapp_lighttpd,2,DepAtom__2)
+

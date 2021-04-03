@@ -1,0 +1,76 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libc_icap_mod_virus_scan
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libc_icap_mod_virus_scan memberOf Package
+	package hasValue "libc-icap-mod-virus-scan"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/net"
+	installedSize hasValue "140"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:0.5.4-1"
+	replaces hasValue "c-icap"
+	provides hasValue "libc-icap-module"
+	fileName hasValue "pool/universe/c/c-icap-modules/libc-icap-mod-virus-scan_0.5.4-1_amd64.deb"
+	size hasValue "32072"
+	md5sum hasValue "218e03dd0d0a4945cb764fe407feeec1"
+	sha1 hasValue "a16b7918aa1671f940249cf0bf71c1fb90cadbe0"
+	sha256 hasValue "78033522adfa5d9aba7df402ed1e85a087c50c5320f9a1a9e24a57b85d2114e7"
+	descriptionMd5 hasValue "9a1feb12d473b8a6d38b3d0fdcbffc97"
+	homepage hasValue "http://c-icap.sourceforge.net/"
+	depends hasValue "c-icap (>= 1:0.2.5~), clamav, libc6 (>= 2.7), libclamav9 (>= 0.102.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "c-icap"
+	comparison hasValue ">="
+	version hasValue "1:0.2.5~"
+
+relationInstance depends(P0__libc_icap_mod_virus_scan,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "clamav"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libc_icap_mod_virus_scan,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__libc_icap_mod_virus_scan,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "libclamav9"
+	comparison hasValue ">="
+	version hasValue "0.102.2"
+
+relationInstance depends(P0__libc_icap_mod_virus_scan,3,DepAtom__3)
+

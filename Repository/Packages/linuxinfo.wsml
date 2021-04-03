@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology linuxinfo
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__linuxinfo memberOf Package
+	package hasValue "linuxinfo"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "145"
+	maintainer hasValue "Original-Helge Kreutzmann <debian@helgefjell.de>"
+	architecture hasValue "amd64"
+	version hasValue "3.1.2-1"
+	fileName hasValue "pool/universe/l/linuxinfo/linuxinfo_3.1.2-1_amd64.deb"
+	size hasValue "26228"
+	md5sum hasValue "604437380a77908e77f67c2df3967925"
+	sha1 hasValue "f6bdc2f699d7afd362d210ce5e1e2c370b9fd241"
+	sha256 hasValue "59691eb086b4a1fb73dbacdaf0e7e9063c6d1df45a9b167f36ed01de8e3ad5de"
+	descriptionMd5 hasValue "9b8e0f9d63fd661b2d92f574c9670d77"
+	homepage hasValue "http://www.helgefjell.de/linuxinfo.php"
+	depends hasValue "libc6 (>= 2.7)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__linuxinfo,0,DepAtom__0)
+

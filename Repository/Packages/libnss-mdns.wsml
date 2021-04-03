@@ -1,0 +1,66 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libnss_mdns
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libnss_mdns memberOf Package
+	package hasValue "libnss-mdns"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "admin"
+	installedSize hasValue "149"
+	maintainer hasValue "Original-Utopia Maintenance Team <pkg-utopia-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.14.1-1ubuntu1"
+	fileName hasValue "pool/main/n/nss-mdns/libnss-mdns_0.14.1-1ubuntu1_amd64.deb"
+	size hasValue "22904"
+	md5sum hasValue "75a8809f6d6a0c08002feb2665302945"
+	sha1 hasValue "5f00720b4864b0e6cb80563ea0edf05b67f96d6c"
+	sha256 hasValue "40f786fc551f057df9af56add9d8d40ac2df115a948f740201d01ae47c12c3c1"
+	descriptionMd5 hasValue "444ce9bf0bb23eb51ed79b00c0d6d796"
+	depends hasValue "avahi-daemon (>= 0.6.16-1), base-files (>= 3.1.10), libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "avahi-daemon"
+	comparison hasValue ">="
+	version hasValue "0.6.16-1"
+
+relationInstance depends(P0__libnss_mdns,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "base-files"
+	comparison hasValue ">="
+	version hasValue "3.1.10"
+
+relationInstance depends(P0__libnss_mdns,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libnss_mdns,2,DepAtom__2)
+

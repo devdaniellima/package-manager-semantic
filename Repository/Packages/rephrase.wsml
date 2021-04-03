@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology rephrase
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__rephrase memberOf Package
+	package hasValue "rephrase"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/utils"
+	installedSize hasValue "42"
+	maintainer hasValue "Original-Debian Security Tools <team+pkg-security@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.2-3"
+	fileName hasValue "pool/universe/r/rephrase/rephrase_0.2-3_amd64.deb"
+	size hasValue "11688"
+	md5sum hasValue "3352fc220202e9c18410dd904191f995"
+	sha1 hasValue "14de305aa0c8d6b0088a55bd34c738d314ae2cd9"
+	sha256 hasValue "8d21930f24d13575a1e0d6a4a63ce19443eec6a4aee834a238515a7d74453974"
+	descriptionMd5 hasValue "c02d8dba2b8f4be50edf0ec8cadac9fd"
+	homepage hasValue "http://www.roguedaemon.net/rephrase/"
+	depends hasValue "libc6 (>= 2.4), gnupg"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__rephrase,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "gnupg"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__rephrase,1,DepAtom__1)
+

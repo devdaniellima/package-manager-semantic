@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology fdroidcl
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__fdroidcl memberOf Package
+	package hasValue "fdroidcl"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/devel"
+	installedSize hasValue "5733"
+	maintainer hasValue "Original-Debian Go Packaging Team <pkg-go-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.5.0-1"
+	fileName hasValue "pool/universe/f/fdroidcl/fdroidcl_0.5.0-1_amd64.deb"
+	size hasValue "1801828"
+	md5sum hasValue "5a127bdffd4401b7f8d9923a45b74a1a"
+	sha1 hasValue "af8a8a34c83550e4438fadf1e26201e963e44836"
+	sha256 hasValue "3053bd18af9af6cb518d0dffc22df45d1eca6ec70f4217c24eac1b0f95008d55"
+	descriptionMd5 hasValue "2c17cf3ba98f9f581baf362a32db7398"
+	homepage hasValue "https://github.com/mvdan/fdroidcl"
+	depends hasValue "libc6 (>= 2.4), adb"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__fdroidcl,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "adb"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__fdroidcl,1,DepAtom__1)
+

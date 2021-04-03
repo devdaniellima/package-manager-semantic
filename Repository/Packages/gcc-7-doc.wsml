@@ -1,0 +1,69 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gcc_7_doc
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gcc_7_doc memberOf Package
+	package hasValue "gcc-7-doc"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/doc"
+	installedSize hasValue "9523"
+	maintainer hasValue "Original-Debian GCC Maintainers <debian-gcc@lists.debian.org>"
+	architecture hasValue "all"
+	version hasValue "7.5.0-6ubuntu2"
+	replaces hasValue "gcc (<= 2.7.2.3-4.3), gcc-docs (<< 2.95.2)"
+	conflicts hasValue "gcc-docs (<< 2.95.2)"
+	fileName hasValue "pool/universe/g/gcc-7/gcc-7-doc_7.5.0-6ubuntu2_all.deb"
+	size hasValue "2327908"
+	md5sum hasValue "813d36048702c48ca3e0e0757e82b41f"
+	sha1 hasValue "92570944206d2dcc889c97045625ea65b5189bb6"
+	sha256 hasValue "b3f6e4145ea8c62b848144b593dd658adeddf2b2d0de5c4c2b9961d50c34c8b5"
+	descriptionMd5 hasValue "bf320d6d806b62ff03b567626d36b1fb"
+	homepage hasValue "http://gcc.gnu.org/"
+	depends hasValue "gcc-7-base (>= 7), dpkg (>= 1.15.4) | install-info"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "gcc-7-base"
+	comparison hasValue ">="
+	version hasValue "7"
+
+relationInstance depends(P0__gcc_7_doc,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "dpkg"
+	comparison hasValue ">="
+	version hasValue "1.15.4"
+
+relationInstance depends(P0__gcc_7_doc,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "install-info"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__gcc_7_doc,1,DepAtom__2)
+

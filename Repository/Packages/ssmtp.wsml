@@ -1,0 +1,78 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ssmtp
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ssmtp memberOf Package
+	package hasValue "ssmtp"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/mail"
+	installedSize hasValue "2"
+	maintainer hasValue "Original-Anibal Monsalve Salazar <anibal@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.64-8.1ubuntu1"
+	replaces hasValue "mail-transport-agent"
+	provides hasValue "mail-transport-agent"
+	conflicts hasValue "mail-transport-agent"
+	fileName hasValue "pool/universe/s/ssmtp/ssmtp_2.64-8.1ubuntu1_amd64.deb"
+	size hasValue "41240"
+	md5sum hasValue "9eadcc36ac9cf7aefefdd0edb953bbdf"
+	sha1 hasValue "201b251a25374164577ae2bfe941153e1f8dc869"
+	sha256 hasValue "53398e2c088fc6817589ddbe0447c679860ebea1c1222a16ae370432c92b6a30"
+	description hasValue "MTA extremamente simples para enviar email para fora do sistema para um concentrador de email"
+	descriptionMd5 hasValue "1a0ad197e535fe60ac8fbc4d6ec74458"
+	homepage hasValue "http://packages.qa.debian.org/s/ssmtp.html"
+	depends hasValue "libc6 (>= 2.14), libgnutls-openssl27 (>= 3.6.11-0), debconf | debconf-2.0"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__ssmtp,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgnutls-openssl27"
+	comparison hasValue ">="
+	version hasValue "3.6.11-0"
+
+relationInstance depends(P0__ssmtp,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "debconf"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ssmtp,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "debconf-2.0"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ssmtp,2,DepAtom__3)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology fpgatools
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__fpgatools memberOf Package
+	package hasValue "fpgatools"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/utils"
+	installedSize hasValue "34"
+	maintainer hasValue "Original-Xiangfu Liu <xiangfu@openmobilefree.net>"
+	architecture hasValue "amd64"
+	version hasValue "0.0+201212-1build1"
+	fileName hasValue "pool/universe/f/fpgatools/fpgatools_0.0+201212-1build1_amd64.deb"
+	size hasValue "6006"
+	md5sum hasValue "425fb79c04c2481780e1a3701258ea2d"
+	sha1 hasValue "b934cc65e41a6fffe3a34bb95e882a38ac38453d"
+	sha256 hasValue "b23c28cb5e2a8fd460ffb5b73035b5388b3c74c6bf5ec423a9fbd1a3bbc00dcf"
+	descriptionMd5 hasValue "eba3f33668a9bfb50ac15843ac3edf02"
+	homepage hasValue "https://github.com/Wolfgang-Spraul/fpgatools"
+	depends hasValue "libc6 (>= 2.4), libfpga0 (= 0.0+201212-1build1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__fpgatools,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libfpga0"
+	comparison hasValue "="
+	version hasValue "0.0+201212-1build1"
+
+relationInstance depends(P0__fpgatools,1,DepAtom__1)
+

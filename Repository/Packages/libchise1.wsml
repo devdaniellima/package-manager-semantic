@@ -1,0 +1,66 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libchise1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libchise1 memberOf Package
+	package hasValue "libchise1"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "41"
+	maintainer hasValue "Original-NIIBE Yutaka <gniibe@fsij.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.3.0-2.1"
+	fileName hasValue "pool/universe/c/chise-base/libchise1_0.3.0-2.1_amd64.deb"
+	size hasValue "9928"
+	md5sum hasValue "61430b120c13ccec9d99460310bd35a6"
+	sha1 hasValue "5b4936df024d63d8c355e74f17474a37da0065ce"
+	sha256 hasValue "9e6c1a71d609e481461236c05bb75e9780a1e372ad099a4251f0a1c7800cc11b"
+	descriptionMd5 hasValue "9d901c2e27c648ccc34071c7a0526d8d"
+	depends hasValue "chise-db, libc6 (>= 2.14), libdb5.3"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "chise-db"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libchise1,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libchise1,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libdb5.3"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libchise1,2,DepAtom__2)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology node_errno
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__node_errno memberOf Package
+	package hasValue "node-errno"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/web"
+	installedSize hasValue "24"
+	maintainer hasValue "Original-Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.1.7-1"
+	fileName hasValue "pool/universe/n/node-errno/node-errno_0.1.7-1_all.deb"
+	size hasValue "7520"
+	md5sum hasValue "318b05ad4f12dd43f4ed71e71305eae2"
+	sha1 hasValue "5b849d81c504904818035d39beaf9d15081f6534"
+	sha256 hasValue "8b6000ce6912dbc0b15e2e4581dc2fd2fbea2cbb774f23251129261ab5e67215"
+	descriptionMd5 hasValue "a0427d9520105651e743c35f5dc6c1d4"
+	homepage hasValue "https://github.com/rvagg/node-errno"
+	depends hasValue "nodejs (>= 4.7), node-prr"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "nodejs"
+	comparison hasValue ">="
+	version hasValue "4.7"
+
+relationInstance depends(P0__node_errno,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "node-prr"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__node_errno,1,DepAtom__1)
+

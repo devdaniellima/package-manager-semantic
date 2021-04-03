@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python_iso8601
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python_iso8601 memberOf Package
+	package hasValue "python-iso8601"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/python"
+	installedSize hasValue "47"
+	maintainer hasValue "Original-Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.1.12-1"
+	provides hasValue "python2.7-iso8601"
+	fileName hasValue "pool/universe/p/python-iso8601/python-iso8601_0.1.12-1_all.deb"
+	size hasValue "13460"
+	md5sum hasValue "86c9a89b76251914a15a93d80fb04b98"
+	sha1 hasValue "606ea8e28b4538bed8505481a883ee565e06c5bc"
+	sha256 hasValue "7c14c56c2ac9ea778a79f089165007b904af037cb3e2dfcdca7564e9ef47415b"
+	descriptionMd5 hasValue "0b4ff63e94fa932994b4682486a9661e"
+	homepage hasValue "https://pypi.python.org/pypi/iso8601"
+	depends hasValue "python2:any (<< 2.8), python2:any (>= 2.7~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue "<<"
+	version hasValue "2.8"
+
+relationInstance depends(P0__python_iso8601,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue ">="
+	version hasValue "2.7~"
+
+relationInstance depends(P0__python_iso8601,1,DepAtom__1)
+

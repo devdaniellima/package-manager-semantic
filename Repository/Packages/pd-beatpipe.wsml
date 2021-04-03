@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology pd_beatpipe
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__pd_beatpipe memberOf Package
+	package hasValue "pd-beatpipe"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/sound"
+	installedSize hasValue "29"
+	maintainer hasValue "Original-Debian Multimedia Maintainers <debian-multimedia@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.1-5"
+	fileName hasValue "pool/universe/p/pd-beatpipe/pd-beatpipe_0.1-5_amd64.deb"
+	size hasValue "7036"
+	md5sum hasValue "6b4598f7ca083187387f06a1c8ff28fd"
+	sha1 hasValue "9e06cc0fb0a9ed842e03f476292eefdd9ac27aa5"
+	sha256 hasValue "b36f88496cfccc6b0d40e663705a0c9755baed8efccd50e65676e87f7da0f978"
+	descriptionMd5 hasValue "78aed545e83c6d5a3ce3706ae4047fa6"
+	homepage hasValue "https://puredata.info"
+	depends hasValue "libc6 (>= 2.2.5), puredata-core | pd"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.2.5"
+
+relationInstance depends(P0__pd_beatpipe,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "puredata-core"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__pd_beatpipe,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "pd"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__pd_beatpipe,1,DepAtom__2)
+

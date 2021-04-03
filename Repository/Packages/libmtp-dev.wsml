@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libmtp_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libmtp_dev memberOf Package
+	package hasValue "libmtp-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libdevel"
+	installedSize hasValue "67"
+	maintainer hasValue "Original-Alessio Treglia <alessio@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.1.17-3"
+	fileName hasValue "pool/main/libm/libmtp/libmtp-dev_1.1.17-3_amd64.deb"
+	size hasValue "10132"
+	md5sum hasValue "5ca8ccbb99f0e11c6905f5d634461bc6"
+	sha1 hasValue "1bdc0d3cdf91232c2aad9065b8382a2628faebdd"
+	sha256 hasValue "94b1013397f19cd1fa6bc34c33a94a4755fab90597308fa854b850ab76d2ca55"
+	description hasValue "Media Transfer Protocol (MTP) development files"
+	descriptionMd5 hasValue "76d0f6320c50c3629a9f1d9cd6ba427a"
+	homepage hasValue "http://libmtp.sourceforge.net/"
+	depends hasValue "libmtp9 (= 1.1.17-3), libusb-1.0-0-dev"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libmtp9"
+	comparison hasValue "="
+	version hasValue "1.1.17-3"
+
+relationInstance depends(P0__libmtp_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libusb-1.0-0-dev"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libmtp_dev,1,DepAtom__1)
+

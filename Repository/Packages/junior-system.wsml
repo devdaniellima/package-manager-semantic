@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology junior_system
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__junior_system memberOf Package
+	package hasValue "junior-system"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/misc"
+	installedSize hasValue "25"
+	maintainer hasValue "Original-Debian Junior <debian-jr@lists.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.29ubuntu1"
+	fileName hasValue "pool/universe/d/debian-junior/junior-system_1.29ubuntu1_all.deb"
+	size hasValue "4260"
+	md5sum hasValue "31319b1e730044837801736bea4b5466"
+	sha1 hasValue "3adaa1cd640f0264c0d1447b022970b0c30d6b81"
+	sha256 hasValue "4bc77e8439b06c5b514c72a5c5baac6ef548a79f78ac09628daf15fd10aa9118"
+	description hasValue "Ferramentas de Sistema do Debian Jr."
+	descriptionMd5 hasValue "6517dc1492ae3de71eee822e53cd5edb"
+	homepage hasValue "http://blends.debian.org/junior/tasks/"
+	depends hasValue "junior-config (= 1.29ubuntu1), junior-tasks (= 1.29ubuntu1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "junior-config"
+	comparison hasValue "="
+	version hasValue "1.29ubuntu1"
+
+relationInstance depends(P0__junior_system,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "junior-tasks"
+	comparison hasValue "="
+	version hasValue "1.29ubuntu1"
+
+relationInstance depends(P0__junior_system,1,DepAtom__1)
+

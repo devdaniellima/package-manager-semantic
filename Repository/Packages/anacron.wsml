@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology anacron
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__anacron memberOf Package
+	package hasValue "anacron"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "admin"
+	installedSize hasValue "102"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.3-29"
+	fileName hasValue "pool/main/a/anacron/anacron_2.3-29_amd64.deb"
+	size hasValue "27916"
+	md5sum hasValue "cf2c23fdf87d98f6bb58d2be706f766d"
+	sha1 hasValue "a17556747650916db68ea88f264f4e9e0ca7d301"
+	sha256 hasValue "91159a20fc9869f4c4b724f7d18278c317445f0ce9ce17f830683170a7fadce2"
+	description hasValue "programa ao estilo do cron que não se perde com o tempo"
+	descriptionMd5 hasValue "cd9f07726e1ee3bc93fcfdb799520070"
+	homepage hasValue "http://sourceforge.net/projects/anacron/"
+	depends hasValue "debianutils (>= 1.7), lsb-base (>= 3.0-10), libc6 (>= 2.7)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "debianutils"
+	comparison hasValue ">="
+	version hasValue "1.7"
+
+relationInstance depends(P0__anacron,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "lsb-base"
+	comparison hasValue ">="
+	version hasValue "3.0-10"
+
+relationInstance depends(P0__anacron,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__anacron,2,DepAtom__2)
+

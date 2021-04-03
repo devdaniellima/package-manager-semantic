@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libbs2b0
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libbs2b0 memberOf Package
+	package hasValue "libbs2b0"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/libs"
+	installedSize hasValue "40"
+	maintainer hasValue "Original-Andrew Gainer <gainer.andrew@gmail.com>"
+	architecture hasValue "amd64"
+	version hasValue "3.1.0+dfsg-2.2build1"
+	fileName hasValue "pool/universe/libb/libbs2b/libbs2b0_3.1.0+dfsg-2.2build1_amd64.deb"
+	size hasValue "10164"
+	md5sum hasValue "2e633001314a0df67a9d0b4a31064c64"
+	sha1 hasValue "e883cba97c3168f70549a56d64fd4f398aa3f643"
+	sha256 hasValue "2cf73adeb858f9438d184145875a266f17d881eae5edcf80207cff239c8b1866"
+	descriptionMd5 hasValue "eef71aa12fe254c11f5d4cfef06a170a"
+	homepage hasValue "http://bs2b.sourceforge.net/"
+	depends hasValue "libc6 (>= 2.29), libstdc++6 (>= 4.1.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__libbs2b0,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "4.1.1"
+
+relationInstance depends(P0__libbs2b0,1,DepAtom__1)
+

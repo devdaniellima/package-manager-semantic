@@ -1,0 +1,52 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology prctl
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__prctl memberOf Package
+	package hasValue "prctl"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "29"
+	maintainer hasValue "Original-Khalid Aziz <khalid@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.6-1build1"
+	fileName hasValue "pool/universe/p/prctl/prctl_1.6-1build1_amd64.deb"
+	size hasValue "8244"
+	md5sum hasValue "40818330a0a48d73505834fa384d9cd9"
+	sha1 hasValue "c21a7c919374158b4eb807f583b9d87081221df4"
+	sha256 hasValue "338f89cc157b3d65d9532191beed872558e52b271ce6b1d4011dfc7433897feb"
+	descriptionMd5 hasValue "69bdc3a6f93f79fac7ba97cb9669f970"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__prctl,0,DepAtom__0)
+

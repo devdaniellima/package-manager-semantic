@@ -1,0 +1,63 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology adns_tools
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__adns_tools memberOf Package
+	package hasValue "adns-tools"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "128"
+	maintainer hasValue "Original-Ian Jackson <ijackson@chiark.greenend.org.uk>"
+	architecture hasValue "amd64"
+	version hasValue "1.5.1-0.1"
+	replaces hasValue "libadns1-bin"
+	provides hasValue "libadns1-bin"
+	conflicts hasValue "libadns0, libadns1-bin"
+	fileName hasValue "pool/universe/a/adns/adns-tools_1.5.1-0.1_amd64.deb"
+	size hasValue "28632"
+	md5sum hasValue "31dbb865fd697f0886efdda41110ec47"
+	sha1 hasValue "14c857f8a673b9491d18833e822a24df1f81200f"
+	sha256 hasValue "07d77111dee4d3e5b0a197e6cf67d7122b3d7883c2af7323e1a445b9e1bd4608"
+	descriptionMd5 hasValue "2c567a92eb55676cb0771def0af49103"
+	homepage hasValue "http://www.chiark.greenend.org.uk/~ian/adns/"
+	depends hasValue "libadns1 (>= 1.5.0~), libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libadns1"
+	comparison hasValue ">="
+	version hasValue "1.5.0~"
+
+relationInstance depends(P0__adns_tools,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__adns_tools,1,DepAtom__1)
+

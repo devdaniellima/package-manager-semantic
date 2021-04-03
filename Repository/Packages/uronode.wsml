@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology uronode
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__uronode memberOf Package
+	package hasValue "uronode"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/hamradio"
+	installedSize hasValue "327"
+	maintainer hasValue "Original-Debian Hamradio Maintainers <debian-hams@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.10-1"
+	replaces hasValue "ax25-node"
+	fileName hasValue "pool/universe/u/uronode/uronode_2.10-1_amd64.deb"
+	size hasValue "77924"
+	md5sum hasValue "bb15325450066e9cf9a69c09bc51a3e7"
+	sha1 hasValue "82cf98b25f44d8151c4e507cc07069e712fb7d42"
+	sha256 hasValue "e3c27ba2a7c01c5393190efbf25900008b171a688382fcdc3948b00536187ebe"
+	descriptionMd5 hasValue "d50b03f676be5232cb8e6c8701ec4c01"
+	homepage hasValue "http://uronode.sourceforge.net/"
+	depends hasValue "libax25, libc6 (>= 2.15)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libax25"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__uronode,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__uronode,1,DepAtom__1)
+

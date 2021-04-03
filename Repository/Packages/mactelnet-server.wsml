@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology mactelnet_server
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__mactelnet_server memberOf Package
+	package hasValue "mactelnet-server"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/net"
+	installedSize hasValue "71"
+	maintainer hasValue "Original-Håkon Nessjøen <haakon.nessjoen@gmail.com>"
+	architecture hasValue "amd64"
+	version hasValue "0.4.4-4"
+	fileName hasValue "pool/universe/m/mactelnet/mactelnet-server_0.4.4-4_amd64.deb"
+	size hasValue "22686"
+	md5sum hasValue "8c621f259d7a921b920b78852e990e42"
+	sha1 hasValue "abe4bf952e615920323f295ebd7b06e9dbf701c8"
+	sha256 hasValue "21024b3f19c3277f2beb974834b95d30ed88d325024df844d1bcd81917523580"
+	descriptionMd5 hasValue "5140a8d00e6080061c1723dec13dc4fc"
+	homepage hasValue "https://github.com/haakonnessjoen/MAC-Telnet/"
+	depends hasValue "libc6 (>= 2.15)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__mactelnet_server,0,DepAtom__0)
+

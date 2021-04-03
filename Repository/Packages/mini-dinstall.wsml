@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology mini_dinstall
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__mini_dinstall memberOf Package
+	package hasValue "mini-dinstall"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "160"
+	maintainer hasValue "Original-Christoph Goehre <christoph.goehre@gmx.de>"
+	architecture hasValue "all"
+	version hasValue "0.7.0"
+	fileName hasValue "pool/universe/m/mini-dinstall/mini-dinstall_0.7.0_all.deb"
+	size hasValue "34204"
+	md5sum hasValue "3c2444f4b29b2bf908ab7da42dd9e302"
+	sha1 hasValue "cd62f3f386c974bcb992bd4b13b70c5c59a466b8"
+	sha256 hasValue "df08a5e017a2dda1b93bf81adcd52574665a14ef6b28fa707955890f245759e7"
+	description hasValue "daemon para atualizar pacotes Debian num repositório"
+	descriptionMd5 hasValue "8c3fe68bae3a3f064eb74e765082170f"
+	depends hasValue "python3:any, python3-apt, apt-utils"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__mini_dinstall,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3-apt"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__mini_dinstall,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "apt-utils"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__mini_dinstall,2,DepAtom__2)
+

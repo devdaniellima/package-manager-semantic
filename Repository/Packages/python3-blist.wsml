@@ -1,0 +1,75 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python3_blist
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python3_blist memberOf Package
+	package hasValue "python3-blist"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/python"
+	installedSize hasValue "149"
+	maintainer hasValue "Original-Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "Python-3.8"
+	provides hasValue "python3.8-blist"
+	fileName hasValue "pool/universe/b/blist/python3-blist_1.3.6-6build2_amd64.deb"
+	size hasValue "46728"
+	md5sum hasValue "de40d1f906056074597510676bc3ff5c"
+	sha1 hasValue "f0e0af0603060c6554349fd425612e7b3827bdc1"
+	sha256 hasValue "8f6c92910ae1db0f06c58a6e681c4518feddaa84224a2d9fc5b8e91a1c6dee2f"
+	descriptionMd5 hasValue "1366a64835ca722b0bfbfde00a88604e"
+	homepage hasValue "https://pypi.python.org/pypi/blist"
+	depends hasValue "libc6 (>= 2.14), python3 (<< 3.9), python3 (>= 3.8~), python3:any"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__python3_blist,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3"
+	comparison hasValue "<<"
+	version hasValue "3.9"
+
+relationInstance depends(P0__python3_blist,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "python3"
+	comparison hasValue ">="
+	version hasValue "3.8~"
+
+relationInstance depends(P0__python3_blist,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__python3_blist,3,DepAtom__3)
+

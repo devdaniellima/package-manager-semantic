@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ratt
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ratt memberOf Package
+	package hasValue "ratt"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/devel"
+	installedSize hasValue "2624"
+	maintainer hasValue "Original-Debian Go Packaging Team <team+pkg-go@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.0~git20180127.c44413c-2"
+	fileName hasValue "pool/universe/r/ratt/ratt_0.0~git20180127.c44413c-2_amd64.deb"
+	size hasValue "818656"
+	md5sum hasValue "b114518e3384eeb00723279afe65c2af"
+	sha1 hasValue "14cd9bcfed3213d3f95ee86a49befd2bada75169"
+	sha256 hasValue "6141f2322ffafcd10c038d38c0ecd9df93a60fff8e3967d7c1fcdac8cca42bdb"
+	descriptionMd5 hasValue "ea8c420622886054f8c0d4688a4b3053"
+	homepage hasValue "https://github.com/debian/ratt"
+	depends hasValue "sbuild, libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "sbuild"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ratt,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__ratt,1,DepAtom__1)
+

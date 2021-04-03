@@ -1,0 +1,69 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology nss_plugin_pem
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__nss_plugin_pem memberOf Package
+	package hasValue "nss-plugin-pem"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "204"
+	maintainer hasValue "Original-Debian FreeIPA Team <pkg-freeipa-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.5-1"
+	replaces hasValue "libnsspem"
+	provides hasValue "libnsspem"
+	fileName hasValue "pool/universe/n/nss-pem/nss-plugin-pem_1.0.5-1_amd64.deb"
+	size hasValue "54644"
+	md5sum hasValue "9386e50d09836aeae562a05361a4f15e"
+	sha1 hasValue "9cd9977245ab616ce4cf6fbec74717d27e4857b1"
+	sha256 hasValue "3aff2bcf84e18836c68a9e0e70e85da75320fc569a46d62e323792dbd89f849b"
+	descriptionMd5 hasValue "1703d38e80cc721d0494173454f2cee3"
+	homepage hasValue "https://github.com/kdudka/nss-pem"
+	depends hasValue "libc6 (>= 2.14), libnspr4 (>= 2:4.12), libnss3 (>= 2:3.13.4-2~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__nss_plugin_pem,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libnspr4"
+	comparison hasValue ">="
+	version hasValue "2:4.12"
+
+relationInstance depends(P0__nss_plugin_pem,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libnss3"
+	comparison hasValue ">="
+	version hasValue "2:3.13.4-2~"
+
+relationInstance depends(P0__nss_plugin_pem,2,DepAtom__2)
+

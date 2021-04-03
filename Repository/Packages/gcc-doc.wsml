@@ -1,0 +1,52 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gcc_doc
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gcc_doc memberOf Package
+	package hasValue "gcc-doc"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "doc"
+	installedSize hasValue "35"
+	maintainer hasValue "Original-Debian GCC Maintainers <debian-gcc@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "4:9.3.0-1ubuntu2"
+	fileName hasValue "pool/main/g/gcc-defaults/gcc-doc_9.3.0-1ubuntu2_amd64.deb"
+	size hasValue "3400"
+	md5sum hasValue "201071113e1fa80b8a611e8c3d6e3933"
+	sha1 hasValue "c1ed079ec13cf23063c5019ea06b5d0c9698305f"
+	sha256 hasValue "fde9de71075f71e4d7619ab203a944b06bcbe641b39fbe1b880c4f70e7569aab"
+	descriptionMd5 hasValue "af77f0c56a32a74fc629f4cd7c91d2da"
+	depends hasValue "gcc-9-doc (>= 9.3.0-3~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "gcc-9-doc"
+	comparison hasValue ">="
+	version hasValue "9.3.0-3~"
+
+relationInstance depends(P0__gcc_doc,0,DepAtom__0)
+

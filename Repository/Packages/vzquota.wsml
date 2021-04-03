@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology vzquota
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__vzquota memberOf Package
+	package hasValue "vzquota"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "234"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.1-4"
+	fileName hasValue "pool/universe/v/vzquota/vzquota_3.1-4_amd64.deb"
+	size hasValue "49012"
+	md5sum hasValue "ba75147a8a5c557b3bd41d58267471bb"
+	sha1 hasValue "ca911256b3b0aa1d816cd234cd06a2e99029e288"
+	sha256 hasValue "ce5a90a94a0f64408b5ea061b076d67e305d70028af47c7100ddeda6b8ec6c58"
+	description hasValue "solução de virtualização de servidor - ferramentas de quota"
+	descriptionMd5 hasValue "66b1cc3ad2a5d7691be6af1b917a4b68"
+	depends hasValue "libc6 (>= 2.7)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__vzquota,0,DepAtom__0)
+

@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology fuzz
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__fuzz memberOf Package
+	package hasValue "fuzz"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "61"
+	maintainer hasValue "Original-Daniel Pimentel <d4n1@d4n1.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.6-18"
+	fileName hasValue "pool/universe/f/fuzz/fuzz_0.6-18_amd64.deb"
+	size hasValue "19776"
+	md5sum hasValue "76e4efd2c94eaa570b11af02cf02cf2c"
+	sha1 hasValue "6abccec6466bfdf2698cbd25a21656616aad62a8"
+	sha256 hasValue "5d1f461164ac3843bdd0b08a8f15d5a192974299ecccc7777c028c237dafb4fe"
+	description hasValue "Testa por stress programas dando a eles entrada randômica."
+	descriptionMd5 hasValue "ff3ef1b766f8b8faf96d0fbb67bed0cc"
+	homepage hasValue "http://sourceforge.net/projects/fuzz"
+	depends hasValue "libc6 (>= 2.7)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__fuzz,0,DepAtom__0)
+

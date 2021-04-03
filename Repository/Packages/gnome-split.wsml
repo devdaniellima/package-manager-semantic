@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gnome_split
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gnome_split memberOf Package
+	package hasValue "gnome-split"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/gnome"
+	installedSize hasValue "363"
+	maintainer hasValue "Original-Debian Java Maintainers <pkg-java-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.2-3"
+	fileName hasValue "pool/universe/g/gnome-split/gnome-split_1.2-3_all.deb"
+	size hasValue "193992"
+	md5sum hasValue "053aacc7375f3780aae5732b45d18ba4"
+	sha1 hasValue "bd7a8959dc9242bbb83b435ff9fdbf5c01c93815"
+	sha256 hasValue "2fe60da3b9e5983fa1aca69661fe3c32509342d4dfe468010fef0f38bd24080c"
+	description hasValue "GNOME Split - ferramenta para dividir arquivos para o desktop GNOME."
+	descriptionMd5 hasValue "6469b6814b9ab25cfe0215014d6ca258"
+	homepage hasValue "https://github.com/respawner/gnome-split"
+	depends hasValue "default-jre, libjava-gnome-java (>= 4.1.3)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "default-jre"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__gnome_split,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libjava-gnome-java"
+	comparison hasValue ">="
+	version hasValue "4.1.3"
+
+relationInstance depends(P0__gnome_split,1,DepAtom__1)
+

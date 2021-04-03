@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology procmail
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__procmail memberOf Package
+	package hasValue "procmail"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "mail"
+	installedSize hasValue "302"
+	maintainer hasValue "Original-Santiago Vila <sanvila@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.22-26"
+	fileName hasValue "pool/main/p/procmail/procmail_3.22-26_amd64.deb"
+	size hasValue "140228"
+	md5sum hasValue "5902dad27787ff63b7d2832864739683"
+	sha1 hasValue "8b33c74923a7a98d5aea24826a8369d7d074f8b4"
+	sha256 hasValue "146d0e8c76f1c953ecae78e695bea977739123190f3f477676bfa7a975d2b3e9"
+	description hasValue "Processador de e-mail versátil"
+	descriptionMd5 hasValue "5fe1752f436b234d8c33cb0e7484299f"
+	homepage hasValue "http://www.procmail.org/"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__procmail,0,DepAtom__0)
+

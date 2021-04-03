@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libpam_abl
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libpam_abl memberOf Package
+	package hasValue "libpam-abl"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/admin"
+	installedSize hasValue "129"
+	maintainer hasValue "Original-Alexandre Mestiashvili <alex@biotec.tu-dresden.de>"
+	architecture hasValue "amd64"
+	version hasValue "0.6.0-5"
+	fileName hasValue "pool/universe/libp/libpam-abl/libpam-abl_0.6.0-5_amd64.deb"
+	size hasValue "39344"
+	md5sum hasValue "8f9f283fc54f72fa04a560c08a7098ec"
+	sha1 hasValue "4150f6ee2332f80f67e625ab76f73b9f2f287811"
+	sha256 hasValue "8579f30c1dd5004561e6a3c79fde5b341c7a6436eb9cd5e32976cee1bbe77d8c"
+	descriptionMd5 hasValue "789ce08b518a05d9764bf9713f98255c"
+	homepage hasValue "http://pam-abl.sourceforge.net"
+	depends hasValue "libc6 (>= 2.14), libdb5.3, libpam0g (>= 0.99.7.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libpam_abl,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libdb5.3"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libpam_abl,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libpam0g"
+	comparison hasValue ">="
+	version hasValue "0.99.7.1"
+
+relationInstance depends(P0__libpam_abl,2,DepAtom__2)
+

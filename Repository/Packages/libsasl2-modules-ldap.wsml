@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libsasl2_modules_ldap
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libsasl2_modules_ldap memberOf Package
+	package hasValue "libsasl2-modules-ldap"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "62"
+	maintainer hasValue "Original-Debian Cyrus Team <team+cyrus@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.1.27+dfsg-2"
+	fileName hasValue "pool/universe/c/cyrus-sasl2/libsasl2-modules-ldap_2.1.27+dfsg-2_amd64.deb"
+	size hasValue "11568"
+	md5sum hasValue "476c53236a6028fee30fb2f62313ff12"
+	sha1 hasValue "9f8345f4ebcf4a83fd8a153d7dd791a3a17e4951"
+	sha256 hasValue "681887a46b6def433f975697d2a222c837cdc642745fdc55862fbd998359f2c3"
+	description hasValue "Cyrus SASL - módulo de autenticação plugável (LDAP)"
+	descriptionMd5 hasValue "046fb452cdaf5f7c51dacdbf2922d5de"
+	homepage hasValue "https://www.cyrusimap.org/sasl/"
+	depends hasValue "libsasl2-modules (= 2.1.27+dfsg-2), libc6 (>= 2.14), libldap-2.4-2 (>= 2.4.7)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libsasl2-modules"
+	comparison hasValue "="
+	version hasValue "2.1.27+dfsg-2"
+
+relationInstance depends(P0__libsasl2_modules_ldap,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libsasl2_modules_ldap,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libldap-2.4-2"
+	comparison hasValue ">="
+	version hasValue "2.4.7"
+
+relationInstance depends(P0__libsasl2_modules_ldap,2,DepAtom__2)
+

@@ -1,0 +1,63 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libcPlusPlusabi1_7
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libcPlusPlusabi1_7 memberOf Package
+	package hasValue "libc++abi1-7"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "281"
+	maintainer hasValue "Original-LLVM Packaging Team <pkg-llvm-team@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:7.0.1-12"
+	replaces hasValue "libc++abi-x.y"
+	provides hasValue "libc++abi-x.y"
+	conflicts hasValue "libc++abi-x.y"
+	fileName hasValue "pool/universe/l/llvm-toolchain-7/libc++abi1-7_7.0.1-12_amd64.deb"
+	size hasValue "61980"
+	md5sum hasValue "8f776e539791ff85950a34416f7e59d1"
+	sha1 hasValue "b5cd22f8a0803d452efb097975d79f33e8234e8a"
+	sha256 hasValue "50df788a643b659c11660d75bba0b832ad86158cfb7fc6ea0e85475749f128e6"
+	descriptionMd5 hasValue "6a197f8a8ae8385e801b369ea97886ce"
+	homepage hasValue "https://www.llvm.org/"
+	depends hasValue "libc6 (>= 2.18), libgcc-s1 (>= 3.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.18"
+
+relationInstance depends(P0__libcPlusPlusabi1_7,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgcc-s1"
+	comparison hasValue ">="
+	version hasValue "3.0"
+
+relationInstance depends(P0__libcPlusPlusabi1_7,1,DepAtom__1)
+

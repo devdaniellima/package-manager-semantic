@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology vboot_kernel_utils
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__vboot_kernel_utils memberOf Package
+	package hasValue "vboot-kernel-utils"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/admin"
+	installedSize hasValue "969"
+	maintainer hasValue "Original-Sophie Brun <sophie@offensive-security.com>"
+	architecture hasValue "amd64"
+	version hasValue "0~R81-12871.B-1"
+	fileName hasValue "pool/universe/v/vboot-utils/vboot-kernel-utils_0~R81-12871.B-1_amd64.deb"
+	size hasValue "292868"
+	md5sum hasValue "f9fc7a40e9f3c5edc19fafce4d78950c"
+	sha1 hasValue "82be900883b86f17e546f7eb4d3cafc05223056d"
+	sha256 hasValue "5115b38fa0d5b3e6dd5960b649b35fe193896f3693f69f648089a750a8e75d2a"
+	descriptionMd5 hasValue "9ea2f9771eacc87e2ef269dd3763d6eb"
+	homepage hasValue "https://chromium.googlesource.com/chromiumos/platform/vboot_reference"
+	depends hasValue "libc6 (>= 2.28), libssl1.1 (>= 1.1.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.28"
+
+relationInstance depends(P0__vboot_kernel_utils,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libssl1.1"
+	comparison hasValue ">="
+	version hasValue "1.1.0"
+
+relationInstance depends(P0__vboot_kernel_utils,1,DepAtom__1)
+

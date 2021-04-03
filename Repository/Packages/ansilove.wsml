@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ansilove
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ansilove memberOf Package
+	package hasValue "ansilove"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/graphics"
+	installedSize hasValue "90"
+	maintainer hasValue "Original-Gürkan Myczko <gurkan@phys.ethz.ch>"
+	architecture hasValue "amd64"
+	version hasValue "4.1.0-1"
+	fileName hasValue "pool/universe/a/ansilove/ansilove_4.1.0-1_amd64.deb"
+	size hasValue "23748"
+	md5sum hasValue "40d9cc26666e6f6d7a385b0b7b06d784"
+	sha1 hasValue "f306e7addf123fec8db91157072ab261d6b8cc1b"
+	sha256 hasValue "2888a9ea65a87d3c2d25a9f44a421c63f32593418384666d11b4109e8fc61b36"
+	descriptionMd5 hasValue "4ee198996b480f04b7f5f87643419277"
+	homepage hasValue "https://www.ansilove.org"
+	depends hasValue "libansilove1, libc6 (>= 2.8)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libansilove1"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ansilove,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.8"
+
+relationInstance depends(P0__ansilove,1,DepAtom__1)
+

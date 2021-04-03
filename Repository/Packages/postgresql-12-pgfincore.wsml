@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology postgresql_12_pgfincore
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__postgresql_12_pgfincore memberOf Package
+	package hasValue "postgresql-12-pgfincore"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/database"
+	installedSize hasValue "80"
+	maintainer hasValue "Original-Debian PostgreSQL Maintainers <team+postgresql@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.2.2-1"
+	fileName hasValue "pool/universe/p/pgfincore/postgresql-12-pgfincore_1.2.2-1_amd64.deb"
+	size hasValue "30560"
+	md5sum hasValue "a1b32729c91a57a8ff604900aca53c90"
+	sha1 hasValue "a7e9d61f238e339659bcd460962f2ed1076b2370"
+	sha256 hasValue "a93fab8e11cdad11f782a318b1e1f20ace4d52f5df8bdbb3ffb31e5710df5816"
+	descriptionMd5 hasValue "9e733b7fc48b0a8554e4a84f87b0292c"
+	homepage hasValue "http://villemain.org/projects/pgfincore"
+	depends hasValue "libc6 (>= 2.4), postgresql-12"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__postgresql_12_pgfincore,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "postgresql-12"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__postgresql_12_pgfincore,1,DepAtom__1)
+

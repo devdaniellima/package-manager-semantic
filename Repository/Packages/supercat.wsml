@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology supercat
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__supercat memberOf Package
+	package hasValue "supercat"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "77"
+	maintainer hasValue "Original-Kumar Appaiah <akumar@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.5.7-1"
+	fileName hasValue "pool/universe/s/supercat/supercat_0.5.7-1_amd64.deb"
+	size hasValue "19132"
+	md5sum hasValue "65fd5ce40729959f81b2109d162fbccd"
+	sha1 hasValue "08233e2233da461a1865665204c81edf4ecd647d"
+	sha256 hasValue "569136b9d520d8a38f975a36d2c97d2a12cd4365cb04f6d03b357401ad6896e1"
+	descriptionMd5 hasValue "f831773aa597407584dfb2fe5dc3e721"
+	homepage hasValue "http://supercat.nosredna.net/"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__supercat,0,DepAtom__0)
+

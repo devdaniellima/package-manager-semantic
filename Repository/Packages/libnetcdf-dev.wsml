@@ -1,0 +1,75 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libnetcdf_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libnetcdf_dev memberOf Package
+	package hasValue "libnetcdf-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "222"
+	maintainer hasValue "Original-Debian GIS Project <pkg-grass-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:4.7.3-1"
+	replaces hasValue "netcdf-bin (<< 1:4.3.3.1)"
+	fileName hasValue "pool/universe/n/netcdf/libnetcdf-dev_4.7.3-1_amd64.deb"
+	size hasValue "45672"
+	md5sum hasValue "fd553e0b62216fe81efcb57648f44419"
+	sha1 hasValue "b081ed9b935abac3dc4fa861768d462f6948040c"
+	sha256 hasValue "d8653f8a31cc97e43c879d98b87ff24a6ea3bf8de4174d6b84406e13e3b89147"
+	descriptionMd5 hasValue "a69d0426580d27f5d4f055305e9c725e"
+	homepage hasValue "http://www.unidata.ucar.edu/software/netcdf/"
+	depends hasValue "libnetcdf15 (= 1:4.7.3-1), libhdf5-dev (>= 1.8.6-1~), libcurl4-gnutls-dev | libcurl-ssl-dev"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libnetcdf15"
+	comparison hasValue "="
+	version hasValue "1:4.7.3-1"
+
+relationInstance depends(P0__libnetcdf_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libhdf5-dev"
+	comparison hasValue ">="
+	version hasValue "1.8.6-1~"
+
+relationInstance depends(P0__libnetcdf_dev,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libcurl4-gnutls-dev"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libnetcdf_dev,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "libcurl-ssl-dev"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libnetcdf_dev,2,DepAtom__3)
+

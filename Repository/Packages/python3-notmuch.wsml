@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python3_notmuch
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python3_notmuch memberOf Package
+	package hasValue "python3-notmuch"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "157"
+	maintainer hasValue "Original-Carl Worth <cworth@debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.29.3-1ubuntu2"
+	fileName hasValue "pool/universe/n/notmuch/python3-notmuch_0.29.3-1ubuntu2_all.deb"
+	size hasValue "25064"
+	md5sum hasValue "286029ce6470b3857e6616c8af9ba0ca"
+	sha1 hasValue "337318a31f784779889689837c12ce25fe6f4a4f"
+	sha256 hasValue "be4b2f65c60b8dec894216001a76e9ac0ffa8b3ff28d9e1c41d52b240b1ef948"
+	descriptionMd5 hasValue "4928a39a6d2a81900b936a3a2e23214f"
+	homepage hasValue "https://notmuchmail.org/"
+	depends hasValue "python3:any, libnotmuch5 (>= 0.29.3-1ubuntu2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__python3_notmuch,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libnotmuch5"
+	comparison hasValue ">="
+	version hasValue "0.29.3-1ubuntu2"
+
+relationInstance depends(P0__python3_notmuch,1,DepAtom__1)
+

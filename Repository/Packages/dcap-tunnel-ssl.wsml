@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology dcap_tunnel_ssl
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__dcap_tunnel_ssl memberOf Package
+	package hasValue "dcap-tunnel-ssl"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "29"
+	maintainer hasValue "Original-Mattias Ellert <mattias.ellert@physics.uu.se>"
+	architecture hasValue "amd64"
+	version hasValue "2.47.12-2build1"
+	fileName hasValue "pool/universe/d/dcap/dcap-tunnel-ssl_2.47.12-2build1_amd64.deb"
+	size hasValue "5744"
+	md5sum hasValue "0f56134f2281eabdafb56f9a88b87508"
+	sha1 hasValue "6cbbfc6910d7733f58c3d01c41600528a4322f97"
+	sha256 hasValue "65d4694e3c339a5efc980f1dc3cfef786a43a571752d1bbabf4db3bc80cf81b5"
+	descriptionMd5 hasValue "4e93e421e1d6ba0111afaa213bc8a714"
+	homepage hasValue "http://www.dcache.org/manuals/libdcap.shtml"
+	depends hasValue "libdcap1 (= 2.47.12-2build1), libc6 (>= 2.4), libssl1.1 (>= 1.1.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libdcap1"
+	comparison hasValue "="
+	version hasValue "2.47.12-2build1"
+
+relationInstance depends(P0__dcap_tunnel_ssl,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__dcap_tunnel_ssl,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libssl1.1"
+	comparison hasValue ">="
+	version hasValue "1.1.0"
+
+relationInstance depends(P0__dcap_tunnel_ssl,2,DepAtom__2)
+

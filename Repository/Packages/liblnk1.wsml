@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology liblnk1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__liblnk1 memberOf Package
+	package hasValue "liblnk1"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "1324"
+	maintainer hasValue "Original-Debian Security Tools <team+pkg-security@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "20181227-1.1"
+	fileName hasValue "pool/universe/libl/liblnk/liblnk1_20181227-1.1_amd64.deb"
+	size hasValue "339312"
+	md5sum hasValue "6394e670a3621b15fb482c7840e53e2c"
+	sha1 hasValue "b2f1e4ab6e79223649431625dc1559cbd7a15442"
+	sha256 hasValue "36cc1e6fac6729a5c8b29580868df3544293cdfa7be5a6cfd61e125b12b7b55e"
+	description hasValue "Windows Shortcut File format access library"
+	descriptionMd5 hasValue "85314865eac7cf483d7c93b144d957c3"
+	homepage hasValue "https://github.com/libyal/liblnk"
+	depends hasValue "libbfio1 (>= 20120425), libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libbfio1"
+	comparison hasValue ">="
+	version hasValue "20120425"
+
+relationInstance depends(P0__liblnk1,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__liblnk1,1,DepAtom__1)
+

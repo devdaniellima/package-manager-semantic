@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology cuetools
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__cuetools memberOf Package
+	package hasValue "cuetools"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/utils"
+	installedSize hasValue "255"
+	maintainer hasValue "Original-Guo Yixuan (郭溢譞) <culu.gyx@gmail.com>"
+	architecture hasValue "amd64"
+	version hasValue "1.4.1-0.2"
+	fileName hasValue "pool/universe/c/cuetools/cuetools_1.4.1-0.2_amd64.deb"
+	size hasValue "52884"
+	md5sum hasValue "5385eeaf96a2a5231bb2ea286b04121f"
+	sha1 hasValue "10463bbd2c0847f21e6474d40c7245e8dab17b52"
+	sha256 hasValue "3bc9ea1807143f784ff9c0fb0c949ca0b7b184b4189920ed8238a76316218d27"
+	description hasValue "ferramentas para manipular arquivos CUE/TOC"
+	descriptionMd5 hasValue "104b34f3945ab9357ebacfaed7341544"
+	homepage hasValue "https://github.com/svend/cuetools"
+	depends hasValue "libc6 (>= 2.14), python3-mutagen | id3v2"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__cuetools,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3-mutagen"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__cuetools,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "id3v2"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__cuetools,1,DepAtom__2)
+

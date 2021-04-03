@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology rcs
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__rcs memberOf Package
+	package hasValue "rcs"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "546"
+	maintainer hasValue "Original-Romain Francoise <rfrancoise@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "5.9.4-6"
+	fileName hasValue "pool/universe/r/rcs/rcs_5.9.4-6_amd64.deb"
+	size hasValue "187848"
+	md5sum hasValue "c7332524abdfc3791179e8ff3b515210"
+	sha1 hasValue "7b56802482e9ff7da04214d694a25c59574e7505"
+	sha256 hasValue "366b31a1bd47e40d4907abaa1ce39416094fff1e828350b62435431c9bbcba39"
+	descriptionMd5 hasValue "15e816a3413cbf988f8fe2207c3d11df"
+	homepage hasValue "https://www.gnu.org/software/rcs/"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__rcs,0,DepAtom__0)
+

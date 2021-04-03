@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology hobbit_plugins
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__hobbit_plugins memberOf Package
+	package hasValue "hobbit-plugins"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/net"
+	installedSize hasValue "317"
+	maintainer hasValue "Original-Christoph Berg <myon@debian.org>"
+	architecture hasValue "all"
+	version hasValue "20191218"
+	fileName hasValue "pool/universe/h/hobbit-plugins/hobbit-plugins_20191218_all.deb"
+	size hasValue "67812"
+	md5sum hasValue "12eea1a00575ae292dd5b60047387212"
+	sha1 hasValue "15b1c6d3cfde49c900cdc659fdfbe738e6cf4c0f"
+	sha256 hasValue "a88d63ff1f8883410ed317db121bdda6a02314272dec1c733b3adbbc74cd8869"
+	descriptionMd5 hasValue "2c6f2d39413070bd5502bf5ec886efb9"
+	homepage hasValue "https://salsa.debian.org/debian/hobbit-plugins#readme"
+	depends hasValue "xymon-client (>= 4.3.17-2~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "xymon-client"
+	comparison hasValue ">="
+	version hasValue "4.3.17-2~"
+
+relationInstance depends(P0__hobbit_plugins,0,DepAtom__0)
+

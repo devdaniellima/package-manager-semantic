@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology fast5
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__fast5 memberOf Package
+	package hasValue "fast5"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/science"
+	installedSize hasValue "30"
+	maintainer hasValue "Original-Debian Med Packaging Team <debian-med-packaging@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.6.5-4build1"
+	fileName hasValue "pool/universe/f/fast5/fast5_0.6.5-4build1_all.deb"
+	size hasValue "5956"
+	md5sum hasValue "66a26fdf06da9871523b55815893f1cb"
+	sha1 hasValue "f282f4e0120d8d04b6a665f205f4bebf074d3b73"
+	sha256 hasValue "93b747a7a02dccdc297ddc9ab1dab8391b061744be38e7c66b08ced4b75990bb"
+	descriptionMd5 hasValue "29ad35112fa0e0dc4cfa90fc249ba3d0"
+	homepage hasValue "https://github.com/mateidavid/fast5"
+	depends hasValue "python3:any, python3-fast5 (>= 0.6.5-4build1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__fast5,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3-fast5"
+	comparison hasValue ">="
+	version hasValue "0.6.5-4build1"
+
+relationInstance depends(P0__fast5,1,DepAtom__1)
+

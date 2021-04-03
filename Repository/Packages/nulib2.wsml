@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology nulib2
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__nulib2 memberOf Package
+	package hasValue "nulib2"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/otherosfs"
+	installedSize hasValue "300"
+	maintainer hasValue "Original-Stephen Kitt <skitt@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.1.0-2"
+	fileName hasValue "pool/universe/n/nulib2/nulib2_3.1.0-2_amd64.deb"
+	size hasValue "96980"
+	md5sum hasValue "c3e7a5d3d425cc16a215c919d93f0705"
+	sha1 hasValue "f47fab82c4ca2ff9e17566bef66f2b911f82ee2f"
+	sha256 hasValue "23a4e8d9ab768785a6c246645df5943dc530bc874aa0cf4c5bbde5b50ff3df43"
+	descriptionMd5 hasValue "2b5b53231b1c24ca3091eb2c55a0f1f1"
+	homepage hasValue "http://nulib.com"
+	depends hasValue "libbz2-1.0, libc6 (>= 2.14), zlib1g (>= 1:1.1.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libbz2-1.0"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__nulib2,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__nulib2,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "zlib1g"
+	comparison hasValue ">="
+	version hasValue "1:1.1.4"
+
+relationInstance depends(P0__nulib2,2,DepAtom__2)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology lmicdiusb
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__lmicdiusb memberOf Package
+	package hasValue "lmicdiusb"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/devel"
+	installedSize hasValue "35"
+	maintainer hasValue "Original-Agustin Henze <tin@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3:0.1.3-1"
+	fileName hasValue "pool/universe/l/lm4tools/lmicdiusb_0.1.3-1_amd64.deb"
+	size hasValue "9648"
+	md5sum hasValue "c5875d35d75e23a7b05b0455ef47dfef"
+	sha1 hasValue "eed3ca9d896a768f6afb44b869dde70f0bdc5458"
+	sha256 hasValue "295fbc159e30007cbf2e1e3c6a2835a0669052312fcd7c16585f6f4183466be2"
+	descriptionMd5 hasValue "2d4d6c36f21b4c8b7e494572c90d7141"
+	homepage hasValue "https://github.com/utzig/lm4tools"
+	depends hasValue "libc6 (>= 2.4), libusb-1.0-0 (>= 2:1.0.8)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__lmicdiusb,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libusb-1.0-0"
+	comparison hasValue ">="
+	version hasValue "2:1.0.8"
+
+relationInstance depends(P0__lmicdiusb,1,DepAtom__1)
+

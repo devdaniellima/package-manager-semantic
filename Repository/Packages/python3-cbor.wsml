@@ -1,0 +1,74 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python3_cbor
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python3_cbor memberOf Package
+	package hasValue "python3-cbor"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "84"
+	maintainer hasValue "Original-Agustin Henze <tin@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.0-1.1build1"
+	fileName hasValue "pool/universe/p/python-cbor/python3-cbor_1.0.0-1.1build1_amd64.deb"
+	size hasValue "20524"
+	md5sum hasValue "ecd9ab3f87833f9defbc6a15557fc76f"
+	sha1 hasValue "aa92e11a87925574e21560116af44e8741233500"
+	sha256 hasValue "13bd5aaeb71a00e0337b284f5d8e338e688a95da168f8102e6c9b2afc59ee79a"
+	descriptionMd5 hasValue "ffb24e95d32bc2ed6d2f6c3d760de96f"
+	homepage hasValue "https://bitbucket.org/bodhisnarkva/cbor"
+	depends hasValue "python3 (<< 3.9), python3 (>= 3.8~), python3:any (>= 3.3~), libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3"
+	comparison hasValue "<<"
+	version hasValue "3.9"
+
+relationInstance depends(P0__python3_cbor,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3"
+	comparison hasValue ">="
+	version hasValue "3.8~"
+
+relationInstance depends(P0__python3_cbor,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ">="
+	version hasValue "3.3~"
+
+relationInstance depends(P0__python3_cbor,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__python3_cbor,3,DepAtom__3)
+

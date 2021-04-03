@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology node_json_stable_stringify
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__node_json_stable_stringify memberOf Package
+	package hasValue "node-json-stable-stringify"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/web"
+	installedSize hasValue "19"
+	maintainer hasValue "Original-Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.0.1-1"
+	fileName hasValue "pool/universe/n/node-json-stable-stringify/node-json-stable-stringify_1.0.1-1_all.deb"
+	size hasValue "4498"
+	md5sum hasValue "530d56d4ba791b90a6f2e05ba8f51ecf"
+	sha1 hasValue "d85feeec9c10b7524e65fdabc39a0911e0823bd1"
+	sha256 hasValue "46250cf4cf74ab5ae330d3eda0d6ba69a14802ceacac1385234dd03924e97620"
+	descriptionMd5 hasValue "1a8b3c38e2e604515403cf5bfb3d675c"
+	homepage hasValue "https://github.com/substack/json-stable-stringify"
+	depends hasValue "nodejs, node-jsonify (>= 0.0.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "nodejs"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__node_json_stable_stringify,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "node-jsonify"
+	comparison hasValue ">="
+	version hasValue "0.0.0"
+
+relationInstance depends(P0__node_json_stable_stringify,1,DepAtom__1)
+

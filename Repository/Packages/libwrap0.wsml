@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libwrap0
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libwrap0 memberOf Package
+	package hasValue "libwrap0"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libs"
+	installedSize hasValue "109"
+	maintainer hasValue "Original-Marco d'Itri <md@linux.it>"
+	architecture hasValue "amd64"
+	version hasValue "7.6.q-30"
+	fileName hasValue "pool/main/t/tcp-wrappers/libwrap0_7.6.q-30_amd64.deb"
+	size hasValue "46280"
+	md5sum hasValue "d7873410bb08efae6a194841763c46a6"
+	sha1 hasValue "418e8beb6ed8a4c23b6c2cf33cb5fc653e123150"
+	sha256 hasValue "f9adf15b372329084215b635e5c630b7b19995484e2e97927c273edc448e613a"
+	description hasValue "biblioteca TCP Wrappers do Wietse Venema"
+	descriptionMd5 hasValue "398b420d625f5f15bad603d35ce5acb9"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libwrap0,0,DepAtom__0)
+

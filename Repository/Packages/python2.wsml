@@ -1,0 +1,64 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python2
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python2 memberOf Package
+	package hasValue "python2"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "136"
+	maintainer hasValue "Original-Matthias Klose <doko@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.7.17-2ubuntu4"
+	replaces hasValue "python (<< 2.7.15-2), python-dev (<< 2.6.5-2)"
+	provides hasValue "python-ctypes, python-email, python-importlib, python-profiler, python-wsgiref"
+	conflicts hasValue "python-central (<< 0.5.5)"
+	fileName hasValue "pool/universe/p/python-defaults/python2_2.7.17-2ubuntu4_amd64.deb"
+	size hasValue "26512"
+	md5sum hasValue "67643541ff02e74a8ef3f8fb17447482"
+	sha1 hasValue "6212e80e6936f2b1faee3e05ea7bd1124fb2a642"
+	sha256 hasValue "bf1a9521bbe0bf5f8757145b8469986d6b2e55231997a4ba9e0db3a7439d9a6c"
+	description hasValue "linguagem interativa de alto nível orientada a objetos (versão Python2)"
+	descriptionMd5 hasValue "8a23c719c291789e6e4e8971b03680c5"
+	homepage hasValue "https://www.python.org/"
+	depends hasValue "python2.7 (>= 2.7.17~rc1-1~), libpython2-stdlib (= 2.7.17-2ubuntu4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python2.7"
+	comparison hasValue ">="
+	version hasValue "2.7.17~rc1-1~"
+
+relationInstance depends(P0__python2,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libpython2-stdlib"
+	comparison hasValue "="
+	version hasValue "2.7.17-2ubuntu4"
+
+relationInstance depends(P0__python2,1,DepAtom__1)
+

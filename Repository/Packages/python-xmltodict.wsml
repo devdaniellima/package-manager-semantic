@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python_xmltodict
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python_xmltodict memberOf Package
+	package hasValue "python-xmltodict"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "45"
+	maintainer hasValue "Original-Sebastien Badia <sbadia@debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.12.0-1"
+	fileName hasValue "pool/universe/p/python-xmltodict/python-xmltodict_0.12.0-1_all.deb"
+	size hasValue "12468"
+	md5sum hasValue "326501c36fc952f24f7d4e95b50d0468"
+	sha1 hasValue "f48691ae5562d7eb529bf6e9eaa0f3d3b74d1d45"
+	sha256 hasValue "0b7ffdc69d33cb21ee5e94ef0bc7edc7fc2b8ae64e5c054a2e4609134fe96ec1"
+	descriptionMd5 hasValue "db5a3f7a3c3ef92b7b88ea645225618c"
+	homepage hasValue "https://github.com/martinblech/xmltodict"
+	depends hasValue "python2:any (<< 2.8), python2:any (>= 2.7~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue "<<"
+	version hasValue "2.8"
+
+relationInstance depends(P0__python_xmltodict,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue ">="
+	version hasValue "2.7~"
+
+relationInstance depends(P0__python_xmltodict,1,DepAtom__1)
+

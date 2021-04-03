@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology node_gulplog
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__node_gulplog memberOf Package
+	package hasValue "node-gulplog"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/web"
+	installedSize hasValue "17"
+	maintainer hasValue "Original-Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.0.0-1"
+	fileName hasValue "pool/universe/n/node-gulplog/node-gulplog_1.0.0-1_all.deb"
+	size hasValue "3358"
+	md5sum hasValue "cac1e3e95b43039b0f8f2340c66867f7"
+	sha1 hasValue "8a910516066c0d8a8bab7d318ca5e6ca8c38ecc1"
+	sha256 hasValue "cf4449689b466b503a566cfc3a66786d845f5fa4df43330c44b89d5eb46c8023"
+	descriptionMd5 hasValue "037bd9e5209dc43c4bb0802eea2b2f27"
+	homepage hasValue "https://github.com/gulpjs/gulplog#readme"
+	depends hasValue "nodejs, node-glogg (>= 1.0.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "nodejs"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__node_gulplog,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "node-glogg"
+	comparison hasValue ">="
+	version hasValue "1.0.0"
+
+relationInstance depends(P0__node_gulplog,1,DepAtom__1)
+

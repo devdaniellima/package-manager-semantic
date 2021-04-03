@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology rtpproxy
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__rtpproxy memberOf Package
+	package hasValue "rtpproxy"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "136"
+	maintainer hasValue "Original-Debian VoIP Team <pkg-voip-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.2.1-2.2"
+	fileName hasValue "pool/universe/r/rtpproxy/rtpproxy_1.2.1-2.2_amd64.deb"
+	size hasValue "42044"
+	md5sum hasValue "2adfb58c011fab7bad1d0af85a5dcabf"
+	sha1 hasValue "d8553173210eac590f354113aafeaa0aace6fd86"
+	sha256 hasValue "19535d6ab0aca554c39a265836598de95f90ad5e06522ba22b7b3da69947b914"
+	description hasValue "retransmissão para fluxos de mídia do Protocolo de Transporte de Tempo Real (RTP)"
+	descriptionMd5 hasValue "96871d8b5c31190cd194026a887f4404"
+	homepage hasValue "http://www.rtpproxy.org"
+	depends hasValue "adduser, libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "adduser"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__rtpproxy,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__rtpproxy,1,DepAtom__1)
+

@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology seafile_cli
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__seafile_cli memberOf Package
+	package hasValue "seafile-cli"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/utils"
+	installedSize hasValue "62"
+	maintainer hasValue "Original-Debian Seafile Team <team+seafile@tracker.debian.org>"
+	architecture hasValue "all"
+	version hasValue "7.0.6-1"
+	fileName hasValue "pool/universe/s/seafile/seafile-cli_7.0.6-1_all.deb"
+	size hasValue "12932"
+	md5sum hasValue "48351f144756790e5bb0f737583fa570"
+	sha1 hasValue "ea1da7e50cfaa40cb72e027d8eb803a5e1185a41"
+	sha256 hasValue "29a769732f58b2ca66d125eceeda44887b77efc328176559e5776d251edcb523"
+	descriptionMd5 hasValue "99e034720f835f69e569bbd4c520a3bb"
+	homepage hasValue "https://github.com/haiwen/seafile"
+	depends hasValue "python3:any, seafile-daemon (>= 7.0.6-1), python3-seafile (>= 7.0.6-1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__seafile_cli,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "seafile-daemon"
+	comparison hasValue ">="
+	version hasValue "7.0.6-1"
+
+relationInstance depends(P0__seafile_cli,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "python3-seafile"
+	comparison hasValue ">="
+	version hasValue "7.0.6-1"
+
+relationInstance depends(P0__seafile_cli,2,DepAtom__2)
+

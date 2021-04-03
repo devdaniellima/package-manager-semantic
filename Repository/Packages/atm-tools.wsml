@@ -1,0 +1,75 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology atm_tools
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__atm_tools memberOf Package
+	package hasValue "atm-tools"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "1207"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:2.5.1-4"
+	fileName hasValue "pool/universe/l/linux-atm/atm-tools_2.5.1-4_amd64.deb"
+	size hasValue "261960"
+	md5sum hasValue "47aa43b03ffedd2e0ad2747bc804da47"
+	sha1 hasValue "0d809f9528366081c06aeac210aa82b08dcd776b"
+	sha256 hasValue "183376cc23109f9b305b998bcfeb5090a026edcba07d60f1b0e1bbeb56278480"
+	description hasValue "programas base para ATM em Linux, o net-tools para ATM"
+	descriptionMd5 hasValue "5f4797b287ee785c9fbfa5f0ef3323ce"
+	homepage hasValue "http://linux-atm.sourceforge.net/"
+	depends hasValue "lsb-base, libatm1 (= 1:2.5.1-4), libc6 (>= 2.15), libfl2 (>= 2.5.33)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "lsb-base"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__atm_tools,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libatm1"
+	comparison hasValue "="
+	version hasValue "1:2.5.1-4"
+
+relationInstance depends(P0__atm_tools,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__atm_tools,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "libfl2"
+	comparison hasValue ">="
+	version hasValue "2.5.33"
+
+relationInstance depends(P0__atm_tools,3,DepAtom__3)
+

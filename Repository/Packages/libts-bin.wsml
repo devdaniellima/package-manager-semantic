@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libts_bin
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libts_bin memberOf Package
+	package hasValue "libts-bin"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/embedded"
+	installedSize hasValue "268"
+	maintainer hasValue "Original-Martin Kepplinger <martink@posteo.de>"
+	architecture hasValue "amd64"
+	version hasValue "1.21-1"
+	fileName hasValue "pool/universe/t/tslib/libts-bin_1.21-1_amd64.deb"
+	size hasValue "38572"
+	md5sum hasValue "657c9e2b6346ea39c4003e9a86035ec4"
+	sha1 hasValue "0538636bea87f62d6c689cc53bea14fc9bb76c7e"
+	sha256 hasValue "8c3a681dd9d7b991fef892d081b0c6808b25da1ddeb0eb36dd0a5388fcde3f31"
+	description hasValue "touch screen library utilities"
+	descriptionMd5 hasValue "92087b86b746888590db96fdb46e2073"
+	homepage hasValue "http://tslib.org"
+	depends hasValue "libts0 (= 1.21-1), libc6 (>= 2.15)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libts0"
+	comparison hasValue "="
+	version hasValue "1.21-1"
+
+relationInstance depends(P0__libts_bin,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__libts_bin,1,DepAtom__1)
+

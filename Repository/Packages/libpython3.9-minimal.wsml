@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libpython3Dot9_minimal
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libpython3Dot9_minimal memberOf Package
+	package hasValue "libpython3.9-minimal"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "4950"
+	maintainer hasValue "Original-Matthias Klose <doko@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.9.0-5~20.04"
+	replaces hasValue "libpython3.9-stdlib (<< 3.9.0~rc1)"
+	conflicts hasValue "binfmt-support (<< 1.1.2)"
+	fileName hasValue "pool/universe/p/python3.9/libpython3.9-minimal_3.9.0-5~20.04_amd64.deb"
+	size hasValue "751136"
+	md5sum hasValue "d8073533ddcbb50a98a745b2fa6188be"
+	sha1 hasValue "0152d5c04da1e4fafa2c7e87194cf82830e09b25"
+	sha256 hasValue "46f87ff1239ed86259fc094e659a1df3e12a01cb7b5cb413bf454f1990e73a52"
+	sha512 hasValue "2a75e0cde5a938a665c93ef7196035508e13938a70f2e8d21256d5fd61f8c0fd2b75d2d01cf2e70fd5e3480ad37b72cfe6dfa57431f11729bebf4220683eb7b1"
+	descriptionMd5 hasValue "df14675954e1e2ed15189dc69d42f238"
+	depends hasValue "libc6 (>= 2.4), libssl1.1 (>= 1.1.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libpython3Dot9_minimal,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libssl1.1"
+	comparison hasValue ">="
+	version hasValue "1.1.1"
+
+relationInstance depends(P0__libpython3Dot9_minimal,1,DepAtom__1)
+

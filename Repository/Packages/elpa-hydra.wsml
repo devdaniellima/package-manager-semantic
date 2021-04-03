@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology elpa_hydra
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__elpa_hydra memberOf Package
+	package hasValue "elpa-hydra"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/lisp"
+	installedSize hasValue "114"
+	maintainer hasValue "Original-Debian Emacsen team <debian-emacsen@lists.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.15.0-2"
+	fileName hasValue "pool/universe/h/hydra-el/elpa-hydra_0.15.0-2_all.deb"
+	size hasValue "27596"
+	md5sum hasValue "9e9221758cc29b05bc2ef97ad99f5db7"
+	sha1 hasValue "81a47dd9797fb52761fb18f02e797c4638676eb6"
+	sha256 hasValue "3c192391632af00b4aa7ff6be2052b42276bb1734b3244d15cf221157e3b9b44"
+	descriptionMd5 hasValue "6ca8f961d0862d08614f9e454451ff69"
+	homepage hasValue "https://github.com/abo-abo/hydra"
+	depends hasValue "elpa-lv (>= 0), emacsen-common"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "elpa-lv"
+	comparison hasValue ">="
+	version hasValue "0"
+
+relationInstance depends(P0__elpa_hydra,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "emacsen-common"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__elpa_hydra,1,DepAtom__1)
+

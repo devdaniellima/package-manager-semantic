@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology sendip
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__sendip memberOf Package
+	package hasValue "sendip"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "177"
+	maintainer hasValue "Original-Jonathan McDowell <noodles@earth.li>"
+	architecture hasValue "amd64"
+	version hasValue "2.5-7build1"
+	fileName hasValue "pool/universe/s/sendip/sendip_2.5-7build1_amd64.deb"
+	size hasValue "38676"
+	md5sum hasValue "d26bd666e2e34aefd1756adc246e52ff"
+	sha1 hasValue "36e114f602061a88adfdd2400f1b7ac1f2178514"
+	sha256 hasValue "309ada68a566908e7a2c0f9908ae9280080e46a27f74c7292532e065994404bf"
+	description hasValue "Commandline tool to allow sending arbitrary IP packets"
+	descriptionMd5 hasValue "287dbf84e9e8a33d4cc2d8578898e890"
+	homepage hasValue "http://www.earth.li/projectpurple/progs/sendip.html"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__sendip,0,DepAtom__0)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libfdkaac_ocaml
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libfdkaac_ocaml memberOf Package
+	package hasValue "libfdkaac-ocaml"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "multiverse/ocaml"
+	installedSize hasValue "27"
+	maintainer hasValue "Original-Debian OCaml Maintainers <debian-ocaml-maint@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.3.1-3"
+	fileName hasValue "pool/multiverse/o/ocaml-fdkaac/libfdkaac-ocaml_0.3.1-3_amd64.deb"
+	size hasValue "6196"
+	md5sum hasValue "b73037459c33cb158006ee743ec26252"
+	sha1 hasValue "af385cef8b79d56a1ef82eb91e4fd801fe5327b6"
+	sha256 hasValue "36ff7c42238dab014eb289a19036ba7a2de3760a93c83813dbbbd45e0a8ebc2d"
+	descriptionMd5 hasValue "bb2f9e8c4bbbe0171677f3112ec84bc4"
+	homepage hasValue "http://savonet.sourceforge.net/"
+	depends hasValue "libc6 (>= 2.14), libfdk-aac1 (>= 0.1.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libfdkaac_ocaml,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libfdk-aac1"
+	comparison hasValue ">="
+	version hasValue "0.1.4"
+
+relationInstance depends(P0__libfdkaac_ocaml,1,DepAtom__1)
+

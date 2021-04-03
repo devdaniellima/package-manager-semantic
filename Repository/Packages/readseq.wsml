@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology readseq
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__readseq memberOf Package
+	package hasValue "readseq"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/science"
+	installedSize hasValue "114"
+	maintainer hasValue "Original-Debian Med Packaging Team <debian-med-packaging@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1-13"
+	fileName hasValue "pool/universe/r/readseq/readseq_1-13_amd64.deb"
+	size hasValue "55700"
+	md5sum hasValue "16622784bfd1caa4071814a1a4434dd2"
+	sha1 hasValue "c9a181b435b01148c00ecd280832f6cbc77fab40"
+	sha256 hasValue "b45cf0386d7e8c48ee82fc0a4a6f46e420f92543a84b1971f8cc9cacd0ceb9b6"
+	description hasValue "Conversion between sequence formats"
+	descriptionMd5 hasValue "ea5b579d2401da971810ba00ea4b7cc8"
+	homepage hasValue "http://iubio.bio.indiana.edu/soft/molbio/readseq/"
+	depends hasValue "libc6 (>= 2.14), libncbi6 (>= 6.1.20030421)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__readseq,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libncbi6"
+	comparison hasValue ">="
+	version hasValue "6.1.20030421"
+
+relationInstance depends(P0__readseq,1,DepAtom__1)
+

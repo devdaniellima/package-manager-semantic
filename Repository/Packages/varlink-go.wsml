@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology varlink_go
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__varlink_go memberOf Package
+	package hasValue "varlink-go"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "9778"
+	maintainer hasValue "Original-Debian Go Packaging Team <team+pkg-go@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.3.0-1"
+	fileName hasValue "pool/universe/g/golang-github-varlink-go/varlink-go_0.3.0-1_amd64.deb"
+	size hasValue "2255884"
+	md5sum hasValue "ef66ac441a69821b15f3871c77e975ab"
+	sha1 hasValue "76ceae0ee2ff3cd20140853b22761dbfe2a48133"
+	sha256 hasValue "2a2c2e8ecd1222a1a1ea950c4a69cd37c5da5c7ce02d67b74eabb22194b37f9e"
+	descriptionMd5 hasValue "c74de2573287dedc47b06fd9f54f44ce"
+	homepage hasValue "https://github.com/varlink/go"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__varlink_go,0,DepAtom__0)
+

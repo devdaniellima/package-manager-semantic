@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology php_psr
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__php_psr memberOf Package
+	package hasValue "php-psr"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/php"
+	installedSize hasValue "117"
+	maintainer hasValue "Original-Debian PHP PECL Maintainers <team+php-pecl@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.7.0-2build1"
+	provides hasValue "php7.4-psr"
+	fileName hasValue "pool/universe/p/php-psr/php-psr_0.7.0-2build1_amd64.deb"
+	size hasValue "16380"
+	md5sum hasValue "6b09da8f984e65c9111525ff7743c45b"
+	sha1 hasValue "d5eaa08f012f60f8f7d5c2d361cf9ad7cb3ded21"
+	sha256 hasValue "89b1dd612fb43e8e420b4d388c541f1424160f1546dacba42a6b559ace870a8d"
+	descriptionMd5 hasValue "fb92eb598c5237eb002f23b4816dfda4"
+	homepage hasValue "http://pecl.php.net/package/psr"
+	depends hasValue "phpapi-20190902, libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "phpapi-20190902"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__php_psr,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__php_psr,1,DepAtom__1)
+

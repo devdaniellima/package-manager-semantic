@@ -1,0 +1,77 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology rep
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__rep memberOf Package
+	package hasValue "rep"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/lisp"
+	installedSize hasValue "638"
+	maintainer hasValue "Original-Jose M Calhariz <jose@calhariz.com>"
+	architecture hasValue "amd64"
+	version hasValue "0.92.5-3build5"
+	replaces hasValue "librep9 (<= 0.17.3-3)"
+	conflicts hasValue "librep9 (<= 0.17.3-3)"
+	fileName hasValue "pool/universe/libr/librep/rep_0.92.5-3build5_amd64.deb"
+	size hasValue "116584"
+	md5sum hasValue "b015488ce5500243529a7166332c0da2"
+	sha1 hasValue "ef6d64383af651510f6497e80453ef75ba847aa4"
+	sha256 hasValue "f6b9dbf55151a61ae62fa3317287abda46926ead346ae4903b44adef8bf85946"
+	description hasValue "interpretador de comandos lisp"
+	descriptionMd5 hasValue "902f579f55694d6fa5c9e1aa16b0f49f"
+	homepage hasValue "http://sawfish.tuxfamily.org/"
+	depends hasValue "libc6 (>= 2.15), libgdbm6 (>= 1.16), libreadline8 (>= 6.0), librep16 (>= 0.92.5)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__rep,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgdbm6"
+	comparison hasValue ">="
+	version hasValue "1.16"
+
+relationInstance depends(P0__rep,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libreadline8"
+	comparison hasValue ">="
+	version hasValue "6.0"
+
+relationInstance depends(P0__rep,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "librep16"
+	comparison hasValue ">="
+	version hasValue "0.92.5"
+
+relationInstance depends(P0__rep,3,DepAtom__3)
+

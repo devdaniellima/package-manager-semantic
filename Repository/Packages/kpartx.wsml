@@ -1,0 +1,75 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology kpartx
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__kpartx memberOf Package
+	package hasValue "kpartx"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "admin"
+	installedSize hasValue "100"
+	maintainer hasValue "Original-Debian DM Multipath Team <team+linux-blocks@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.8.3-1ubuntu2"
+	replaces hasValue "multipath-tools (<< 0.4.7-3)"
+	fileName hasValue "pool/main/m/multipath-tools/kpartx_0.8.3-1ubuntu2_amd64.deb"
+	size hasValue "28016"
+	md5sum hasValue "ff07b221e5ac97cf5c11038f40627774"
+	sha1 hasValue "dfd8a47c6d5870cf6cfa9708819007c9d00a3936"
+	sha256 hasValue "54972ed325fa0aab2590fac3f476ed73cd8863191946b897aafefacbad6581fd"
+	descriptionMd5 hasValue "5edc0d8999e24d591b49f95449a8741f"
+	homepage hasValue "http://christophe.varoqui.free.fr/"
+	depends hasValue "libc6 (>= 2.7), libdevmapper1.02.1 (>= 2:1.02.97), udev (>> 136-1), dmsetup (>= 2:1.02.24)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__kpartx,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libdevmapper1.02.1"
+	comparison hasValue ">="
+	version hasValue "2:1.02.97"
+
+relationInstance depends(P0__kpartx,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "udev"
+	comparison hasValue ">>"
+	version hasValue "136-1"
+
+relationInstance depends(P0__kpartx,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "dmsetup"
+	comparison hasValue ">="
+	version hasValue "2:1.02.24"
+
+relationInstance depends(P0__kpartx,3,DepAtom__3)
+

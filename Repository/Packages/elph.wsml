@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology elph
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__elph memberOf Package
+	package hasValue "elph"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/science"
+	installedSize hasValue "138"
+	maintainer hasValue "Original-Debian Med Packaging Team <debian-med-packaging@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.1-4build1"
+	fileName hasValue "pool/universe/e/elph/elph_1.0.1-4build1_amd64.deb"
+	size hasValue "52968"
+	md5sum hasValue "ce5ba0460476ff4f14dd1ade6f3db7bc"
+	sha1 hasValue "ef2c77489416fb86fa6c61f16e9da459f4454295"
+	sha256 hasValue "46df77351951be4ee18ef80c018b7188aec7b0d7070cd5be3f149927527298af"
+	descriptionMd5 hasValue "ff2f4f2b8b80531a0fac9dff581a151d"
+	homepage hasValue "https://www.cbcb.umd.edu/software/ELPH/"
+	depends hasValue "libc6 (>= 2.29), libstdc++6 (>= 5)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__elph,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "5"
+
+relationInstance depends(P0__elph,1,DepAtom__1)
+

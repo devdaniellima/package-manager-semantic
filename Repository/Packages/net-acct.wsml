@@ -1,0 +1,59 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology net_acct
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__net_acct memberOf Package
+	package hasValue "net-acct"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/net"
+	installedSize hasValue "122"
+	maintainer hasValue "Original-Stéphane Glondu <glondu@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.71-9.1"
+	fileName hasValue "pool/universe/n/net-acct/net-acct_0.71-9.1_amd64.deb"
+	size hasValue "42588"
+	md5sum hasValue "3f6ae1dbdb244c9b6ecfb4bbae5dc928"
+	sha1 hasValue "a7f9a67b0eb69ffbc16b1d672654013f9de08504"
+	sha256 hasValue "e101d76e3113db9518201715a65df8c6370720f83cb9f4662a8ad4989fd8728a"
+	descriptionMd5 hasValue "7d59c4ce52893a56d26782c91b0b12c5"
+	depends hasValue "logrotate, libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "logrotate"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__net_acct,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__net_acct,1,DepAtom__1)
+

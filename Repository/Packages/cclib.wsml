@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology cclib
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__cclib memberOf Package
+	package hasValue "cclib"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/science"
+	installedSize hasValue "28"
+	maintainer hasValue "Original-Debichem Team <debichem-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.6.2-2"
+	fileName hasValue "pool/universe/c/cclib/cclib_1.6.2-2_all.deb"
+	size hasValue "7056"
+	md5sum hasValue "41aede478f3ba4c7f1db5211c1371807"
+	sha1 hasValue "f6a5d2af4d0c063da46d777e8cdda3d989a4017d"
+	sha256 hasValue "3e989621b9909b84c3c6dd8abc2b167c104d6b3de72a6df4d2476afd54c77fdf"
+	descriptionMd5 hasValue "c683e0da670f2dd8eec83dee021ac933"
+	homepage hasValue "http://cclib.github.io"
+	depends hasValue "python3-cclib (= 1.6.2-2), python3:any"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3-cclib"
+	comparison hasValue "="
+	version hasValue "1.6.2-2"
+
+relationInstance depends(P0__cclib,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__cclib,1,DepAtom__1)
+

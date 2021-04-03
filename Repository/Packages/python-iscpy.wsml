@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python_iscpy
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python_iscpy memberOf Package
+	package hasValue "python-iscpy"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "41"
+	maintainer hasValue "Original-MAAS Maintainers <maas-devel@lists.launchpad.net>"
+	architecture hasValue "all"
+	version hasValue "1.05-0ubuntu3"
+	fileName hasValue "pool/universe/i/iscpy/python-iscpy_1.05-0ubuntu3_all.deb"
+	size hasValue "6832"
+	md5sum hasValue "2aa9cfe3a87dc5719aa208ac6f3ed7f1"
+	sha1 hasValue "861d028805e46dc3d8b67fbb354435f0cbf730e5"
+	sha256 hasValue "9bb233a69fde6beb67d1933602005befd3990b8db99283ef76267a05daf12ebc"
+	descriptionMd5 hasValue "17679b4047d6aac8e658d05dd783eb45"
+	homepage hasValue "https://pypi.python.org/pypi/iscpy"
+	depends hasValue "python2:any (<< 2.8), python2:any (>= 2.7~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue "<<"
+	version hasValue "2.8"
+
+relationInstance depends(P0__python_iscpy,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue ">="
+	version hasValue "2.7~"
+
+relationInstance depends(P0__python_iscpy,1,DepAtom__1)
+

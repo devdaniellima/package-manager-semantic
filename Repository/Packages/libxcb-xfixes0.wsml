@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libxcb_xfixes0
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libxcb_xfixes0 memberOf Package
+	package hasValue "libxcb-xfixes0"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libs"
+	installedSize hasValue "60"
+	maintainer hasValue "Original-Debian X Strike Force <debian-x@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.14-2"
+	fileName hasValue "pool/main/libx/libxcb/libxcb-xfixes0_1.14-2_amd64.deb"
+	size hasValue "* small library and lower memory footprint"
+	md5sum hasValue "03b45f74ea00406a22eaac050f9acae4"
+	sha1 hasValue "0aea842a95c56408a568a00c5266e608e87fb3d0"
+	sha256 hasValue "9fbb1bbb105749359d99580bd388bcfec472cf3c6ff7f3b353ee78e61ec1bb81"
+	description hasValue "X C Binding, xfixes extension"
+	descriptionMd5 hasValue "94f24b982ab532c251f90293506a8fed"
+	homepage hasValue "https://xcb.freedesktop.org"
+	depends hasValue "libc6 (>= 2.4), libxcb1"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libxcb_xfixes0,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libxcb1"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libxcb_xfixes0,1,DepAtom__1)
+

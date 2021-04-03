@@ -1,0 +1,75 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python3_miniupnpc
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python3_miniupnpc memberOf Package
+	package hasValue "python3-miniupnpc"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "43"
+	maintainer hasValue "Original-Thomas Goirand <zigo@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.1.20190824-0ubuntu2"
+	provides hasValue "python3.8-miniupnpc"
+	fileName hasValue "pool/universe/m/miniupnpc/python3-miniupnpc_2.1.20190824-0ubuntu2_amd64.deb"
+	size hasValue "8852"
+	md5sum hasValue "0c85e67bc3ceb4cf24a6cf6724b90859"
+	sha1 hasValue "fab5ff5bb6ba83283737ab707956bc5e3c17c7b1"
+	sha256 hasValue "67b906e82326bd9d538d6f921dcc7d0d4c56192c4fe9902221f8c93c7e9cce00"
+	descriptionMd5 hasValue "35c1a4d0138099dfc327bc83403d4c22"
+	homepage hasValue "http://miniupnp.free.fr/"
+	depends hasValue "libc6 (>= 2.4), libminiupnpc17 (>= 1.9.20140610), python3 (<< 3.9), python3 (>= 3.8~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__python3_miniupnpc,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libminiupnpc17"
+	comparison hasValue ">="
+	version hasValue "1.9.20140610"
+
+relationInstance depends(P0__python3_miniupnpc,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "python3"
+	comparison hasValue "<<"
+	version hasValue "3.9"
+
+relationInstance depends(P0__python3_miniupnpc,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "python3"
+	comparison hasValue ">="
+	version hasValue "3.8~"
+
+relationInstance depends(P0__python3_miniupnpc,3,DepAtom__3)
+

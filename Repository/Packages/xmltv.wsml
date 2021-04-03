@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology xmltv
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__xmltv memberOf Package
+	package hasValue "xmltv"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/interpreters"
+	installedSize hasValue "40"
+	maintainer hasValue "Original-Nick Morrott <knowledgejunkie@gmail.com>"
+	architecture hasValue "all"
+	version hasValue "0.6.1-1"
+	fileName hasValue "pool/universe/x/xmltv/xmltv_0.6.1-1_all.deb"
+	size hasValue "3332"
+	md5sum hasValue "3e312b3bc1e1b8ae071d0692990bb416"
+	sha1 hasValue "776370e90f2a40d73a79c52760b8c3ec08e4629d"
+	sha256 hasValue "db1f08228077e5d24c1321e236bb29281d4c2a82121723ef0ce2110a92f192e8"
+	descriptionMd5 hasValue "cb3687743de7aed9ab675306d23c2691"
+	homepage hasValue "http://xmltv.org/"
+	depends hasValue "libxmltv-perl (= 0.6.1-1), xmltv-gui (= 0.6.1-1), xmltv-util (= 0.6.1-1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libxmltv-perl"
+	comparison hasValue "="
+	version hasValue "0.6.1-1"
+
+relationInstance depends(P0__xmltv,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "xmltv-gui"
+	comparison hasValue "="
+	version hasValue "0.6.1-1"
+
+relationInstance depends(P0__xmltv,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "xmltv-util"
+	comparison hasValue "="
+	version hasValue "0.6.1-1"
+
+relationInstance depends(P0__xmltv,2,DepAtom__2)
+

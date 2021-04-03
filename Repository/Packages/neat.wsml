@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology neat
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__neat memberOf Package
+	package hasValue "neat"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/science"
+	installedSize hasValue "1963"
+	maintainer hasValue "Original-Debian Astronomy Team <debian-astro-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.2-1build1"
+	fileName hasValue "pool/universe/n/neat/neat_2.2-1build1_amd64.deb"
+	size hasValue "381588"
+	md5sum hasValue "2fb49242837e77c935169989ebff4eb3"
+	sha1 hasValue "68eb21a59597621a78afda2991a753ac5272d2da"
+	sha256 hasValue "36cbea7b73377e2b7365ad3041b2fe35ffeb945992eb407640192b7b74d2a950"
+	descriptionMd5 hasValue "8d2a7a5fc6c7f0c6eee4d6d241592283"
+	homepage hasValue "https://github.com/rwesson/NEAT"
+	depends hasValue "libc6 (>= 2.29), libgfortran5 (>= 8), libgomp1 (>= 6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__neat,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgfortran5"
+	comparison hasValue ">="
+	version hasValue "8"
+
+relationInstance depends(P0__neat,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libgomp1"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__neat,2,DepAtom__2)
+

@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ruby_archive_zip
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ruby_archive_zip memberOf Package
+	package hasValue "ruby-archive-zip"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/ruby"
+	installedSize hasValue "214"
+	maintainer hasValue "Original-Debian Ruby Extras Maintainers <pkg-ruby-extras-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.11.0-1"
+	fileName hasValue "pool/universe/r/ruby-archive-zip/ruby-archive-zip_0.11.0-1_all.deb"
+	size hasValue "35992"
+	md5sum hasValue "2f193e08b237391e0d95b5804efd5cb2"
+	sha1 hasValue "bc033d408bab68547fcd290a1905a88f0e912173"
+	sha256 hasValue "e4cdb45b0ae41a0b34caff44d603df9a18c79f89e40822e5b637dc6fe5b5054a"
+	descriptionMd5 hasValue "b893504632c3221acbbed8f0c3eb1c6e"
+	homepage hasValue "http://github.com/javanthropus/archive-zip"
+	depends hasValue "ruby | ruby-interpreter, ruby-io-like (>= 0.3.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "ruby"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ruby_archive_zip,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "ruby-interpreter"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ruby_archive_zip,0,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "ruby-io-like"
+	comparison hasValue ">="
+	version hasValue "0.3.0"
+
+relationInstance depends(P0__ruby_archive_zip,1,DepAtom__2)
+

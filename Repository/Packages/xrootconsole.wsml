@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology xrootconsole
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__xrootconsole memberOf Package
+	package hasValue "xrootconsole"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/x11"
+	installedSize hasValue "48"
+	maintainer hasValue "Original-Axel Beckert <abe@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:0.6-4"
+	fileName hasValue "pool/universe/x/xrootconsole/xrootconsole_0.6-4_amd64.deb"
+	size hasValue "16224"
+	md5sum hasValue "14c133f0989c05ce282528c499cd3205"
+	sha1 hasValue "766d432aa4b7a0ee502081355ca332efb1a3a31f"
+	sha256 hasValue "e4e49c9a88c2e7ea3dd9ad403407c32946e3aba0fb07f123e2dcbc8eba7d9a01"
+	descriptionMd5 hasValue "11c6eb136b3c96833449a28752c2b778"
+	homepage hasValue "https://sourceforge.net/projects/xrootconsole/"
+	depends hasValue "libc6 (>= 2.15), libx11-6"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__xrootconsole,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libx11-6"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__xrootconsole,1,DepAtom__1)
+

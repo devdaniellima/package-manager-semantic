@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology cbootimage
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__cbootimage memberOf Package
+	package hasValue "cbootimage"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/utils"
+	installedSize hasValue "596"
+	maintainer hasValue "Original-Marc Dietrich <marvin24@gmx.de>"
+	architecture hasValue "amd64"
+	version hasValue "1.8-1"
+	fileName hasValue "pool/universe/c/cbootimage/cbootimage_1.8-1_amd64.deb"
+	size hasValue "69416"
+	md5sum hasValue "564119939a7ab6432833422639585fc0"
+	sha1 hasValue "13a2889e20e2107957d577edb3718ea2d0d5fe9d"
+	sha256 hasValue "24db3c1456490e578024ae994326f3aca1082fd2ec0fc42ba75ca56da53108e3"
+	descriptionMd5 hasValue "b794495e33ace9543e3aa19c23528a2d"
+	homepage hasValue "https://github.com/NVIDIA/cbootimage"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__cbootimage,0,DepAtom__0)
+

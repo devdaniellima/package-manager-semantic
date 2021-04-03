@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology freesweep
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__freesweep memberOf Package
+	package hasValue "freesweep"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/games"
+	installedSize hasValue "139"
+	maintainer hasValue "Original-Debian Games Team <pkg-games-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.1-1"
+	fileName hasValue "pool/universe/f/freesweep/freesweep_1.0.1-1_amd64.deb"
+	size hasValue "54380"
+	md5sum hasValue "89ea6131271fa8ebc8fc75b35deca218"
+	sha1 hasValue "1e4a5c65f7a5a996f6fad79d18c1004a05eaa674"
+	sha256 hasValue "9aaa67dc9e33751c93e1f89b8694a5bca37766f73c2630fdeb305f933948761e"
+	description hasValue "campo minado em modo texto"
+	descriptionMd5 hasValue "0a4e1d6d578e5c04dce8433cb70cee1a"
+	homepage hasValue "https://github.com/rwestlund/freesweep"
+	depends hasValue "libc6 (>= 2.7), libncurses6 (>= 6), libtinfo6 (>= 6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__freesweep,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libncurses6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__freesweep,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libtinfo6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__freesweep,2,DepAtom__2)
+

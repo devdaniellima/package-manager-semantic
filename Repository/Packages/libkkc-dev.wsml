@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libkkc_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libkkc_dev memberOf Package
+	package hasValue "libkkc-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "837"
+	maintainer hasValue "Original-Debian Input Method Team <debian-input-method@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.3.5-7build1"
+	fileName hasValue "pool/universe/libk/libkkc/libkkc-dev_0.3.5-7build1_amd64.deb"
+	size hasValue "58700"
+	md5sum hasValue "1e4318468993bfa5b23ade571cf7a85d"
+	sha1 hasValue "68d7decc3f5d14c3337f069be71b841787387d7f"
+	sha256 hasValue "a52a46e180361cf79f42a4297249417710eddc2cc6c3ffade522d5dd78145923"
+	descriptionMd5 hasValue "d2d659aaf6d1da2e8ae140dfe3c03ca6"
+	homepage hasValue "https://github.com/ueno/libkkc"
+	depends hasValue "libkkc2 (= 0.3.5-7build1), gir1.2-kkc-1.0 (= 0.3.5-7build1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libkkc2"
+	comparison hasValue "="
+	version hasValue "0.3.5-7build1"
+
+relationInstance depends(P0__libkkc_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "gir1.2-kkc-1.0"
+	comparison hasValue "="
+	version hasValue "0.3.5-7build1"
+
+relationInstance depends(P0__libkkc_dev,1,DepAtom__1)
+

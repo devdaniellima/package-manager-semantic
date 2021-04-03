@@ -1,0 +1,59 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ubuntu_defaults_builder
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ubuntu_defaults_builder memberOf Package
+	package hasValue "ubuntu-defaults-builder"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "108"
+	maintainer hasValue "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	architecture hasValue "all"
+	version hasValue "0.57"
+	fileName hasValue "pool/universe/u/ubuntu-defaults-builder/ubuntu-defaults-builder_0.57_all.deb"
+	size hasValue "24134"
+	md5sum hasValue "37761af6340e1d04574671b3f2cbf791"
+	sha1 hasValue "d632f0f224d793364e596a3593f385fe4074d4e1"
+	sha256 hasValue "0331097c4ac7390c978059d99520f0c857b0166b07b554c49ca2ccd63448fb89"
+	descriptionMd5 hasValue "add8d6d8ce217beb06d5c16ac3ff8caf"
+	depends hasValue "* Extra dependencies (and Recommends:), i. e. packages that are"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "*"
+	comparison hasValue "Extra"
+	version hasValue "dependencies"
+
+relationInstance depends(P0__ubuntu_defaults_builder,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "i."
+	comparison hasValue "e."
+	version hasValue "packages"
+
+relationInstance depends(P0__ubuntu_defaults_builder,1,DepAtom__1)
+

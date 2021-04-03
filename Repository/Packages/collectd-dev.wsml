@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology collectd_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__collectd_dev memberOf Package
+	package hasValue "collectd-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "341"
+	maintainer hasValue "Original-Collectd Packaging Team <team+collectd@tracker.debian.org>"
+	architecture hasValue "all"
+	version hasValue "5.9.2.g-1ubuntu5"
+	fileName hasValue "pool/universe/c/collectd/collectd-dev_5.9.2.g-1ubuntu5_all.deb"
+	size hasValue "65496"
+	md5sum hasValue "c5c1107a270dad25bf94eb92f70e7387"
+	sha1 hasValue "089486d484e12630d974c93bdd59b398be0773fd"
+	sha256 hasValue "6ca8322ee0fb976d0e119ea81558b5fcfd2714bceb5d3ef3d7553baab75cf3e4"
+	description hasValue "statistics collection and monitoring daemon (development files)"
+	descriptionMd5 hasValue "f3446ffaf6495cfe6eeded886300ad69"
+	homepage hasValue "https://collectd.org/"
+	depends hasValue "collectd-core (>= 5.9.2.g-1ubuntu5), collectd-core (<< 5.9.2.g-1ubuntu5.1~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "collectd-core"
+	comparison hasValue ">="
+	version hasValue "5.9.2.g-1ubuntu5"
+
+relationInstance depends(P0__collectd_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "collectd-core"
+	comparison hasValue "<<"
+	version hasValue "5.9.2.g-1ubuntu5.1~"
+
+relationInstance depends(P0__collectd_dev,1,DepAtom__1)
+

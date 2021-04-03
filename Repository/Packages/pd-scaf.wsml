@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology pd_scaf
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__pd_scaf memberOf Package
+	package hasValue "pd-scaf"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/graphics"
+	installedSize hasValue "100"
+	maintainer hasValue "Original-Debian Multimedia Maintainers <debian-multimedia@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:0.14.1+darcs20180201-2"
+	fileName hasValue "pool/universe/p/pdp/pd-scaf_0.14.1+darcs20180201-2_amd64.deb"
+	size hasValue "22140"
+	md5sum hasValue "20136834dc1a902a3600a28529706eb0"
+	sha1 hasValue "184dab203f181364262466b57ae3e1f0d8cbcb94"
+	sha256 hasValue "0e1c060fc4b0d85190c059345d39ed1088d53caf88fc75ed49a5ac7a40aedf3b"
+	descriptionMd5 hasValue "7e3d7a05e83cb2fca8545175a3177a4d"
+	homepage hasValue "http://zwizwa.be/pdp/"
+	depends hasValue "libc6 (>= 2.4), pd-pdp"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__pd_scaf,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "pd-pdp"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__pd_scaf,1,DepAtom__1)
+

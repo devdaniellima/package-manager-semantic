@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology basez
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__basez memberOf Package
+	package hasValue "basez"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "103"
+	maintainer hasValue "Original-Milan Kupcevic <milan@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.6.2-1"
+	fileName hasValue "pool/universe/b/basez/basez_1.6.2-1_amd64.deb"
+	size hasValue "24472"
+	md5sum hasValue "fe3badd9525c693575966a5e3f18f586"
+	sha1 hasValue "7d65a2a22ceb60b9aaa2e335e0e6dec6d7c828d8"
+	sha256 hasValue "c592047b140d2c695d830f942e1c4bdb7b941015efb6bccbc2baffe700f6ffb7"
+	descriptionMd5 hasValue "0818946b0f0b5e51b8873d27ebb3576c"
+	homepage hasValue "http://www.quarkline.net/basez"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__basez,0,DepAtom__0)
+

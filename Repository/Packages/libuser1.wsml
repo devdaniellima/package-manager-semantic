@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libuser1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libuser1 memberOf Package
+	package hasValue "libuser1"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "251"
+	maintainer hasValue "Original-Ghe Rivero <ghe@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:0.62~dfsg-0.3"
+	fileName hasValue "pool/universe/libu/libuser/libuser1_0.62~dfsg-0.3_amd64.deb"
+	size hasValue "58280"
+	md5sum hasValue "0ce4d5a4cb052f0aa449a67cc4b49936"
+	sha1 hasValue "40629498812b8f20e4c2d5ae9e40c7471db016d3"
+	sha256 hasValue "928f7d964ea9b05de573fb07be75a23c376a5a4136b6d40656f3c99cf5e65335"
+	descriptionMd5 hasValue "d113d9e8ec5fd9669c971f54184757ab"
+	homepage hasValue "https://pagure.io/libuser/"
+	depends hasValue "libc6 (>= 2.17), libcrypt1 (>= 1:4.1.0), libglib2.0-0 (>= 2.16.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.17"
+
+relationInstance depends(P0__libuser1,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libcrypt1"
+	comparison hasValue ">="
+	version hasValue "1:4.1.0"
+
+relationInstance depends(P0__libuser1,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libglib2.0-0"
+	comparison hasValue ">="
+	version hasValue "2.16.0"
+
+relationInstance depends(P0__libuser1,2,DepAtom__2)
+

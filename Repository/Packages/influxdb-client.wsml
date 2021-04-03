@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology influxdb_client
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__influxdb_client memberOf Package
+	package hasValue "influxdb-client"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/database"
+	installedSize hasValue "5298"
+	maintainer hasValue "Original-Debian Go Packaging Team <pkg-go-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.6.4-1build1"
+	fileName hasValue "pool/universe/i/influxdb/influxdb-client_1.6.4-1build1_amd64.deb"
+	size hasValue "1574952"
+	md5sum hasValue "75823cd2811d52db79776b3a05c12e6a"
+	sha1 hasValue "5242811e77c67e2a6179928bef50ff696bd65b7c"
+	sha256 hasValue "e47bc3caaae9a665a80f691555da293a00a177d0c275aba68c6fe577814a2d26"
+	descriptionMd5 hasValue "6a069ec63536b234ccfd6c6cb9c622be"
+	homepage hasValue "https://influxdata.com/time-series-platform/influxdb/"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__influxdb_client,0,DepAtom__0)
+

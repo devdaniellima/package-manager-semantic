@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology uwsgi
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__uwsgi memberOf Package
+	package hasValue "uwsgi"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/web"
+	installedSize hasValue "104"
+	maintainer hasValue "Original-uWSGI packaging team <pkg-uwsgi-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.0.18-11ubuntu1"
+	fileName hasValue "pool/universe/u/uwsgi/uwsgi_2.0.18-11ubuntu1_amd64.deb"
+	size hasValue "17584"
+	md5sum hasValue "3970db78450f98060ca83fbea9b029e9"
+	sha1 hasValue "9691c87c37e66d25f5d2f689e2e9a2fe7efcc202"
+	sha256 hasValue "ae680194288b56b4b04dc59fb751fbea4a611c9d26df2a2ab1c32c352d0e1024"
+	descriptionMd5 hasValue "58463849d39022e9bde2acbbc728d93e"
+	homepage hasValue "http://projects.unbit.it/uwsgi/"
+	depends hasValue "lsb-base, uwsgi-core (= 2.0.18-11ubuntu1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "lsb-base"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__uwsgi,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "uwsgi-core"
+	comparison hasValue "="
+	version hasValue "2.0.18-11ubuntu1"
+
+relationInstance depends(P0__uwsgi,1,DepAtom__1)
+

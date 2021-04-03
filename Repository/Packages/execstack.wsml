@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology execstack
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__execstack memberOf Package
+	package hasValue "execstack"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "228"
+	maintainer hasValue "Original-Geoffrey Thomas <geofft@ldpreload.com>"
+	architecture hasValue "amd64"
+	version hasValue "0.0.20131005-1"
+	replaces hasValue "prelink"
+	conflicts hasValue "prelink (<< 0.0.20090311-2)"
+	fileName hasValue "pool/universe/p/prelink/execstack_0.0.20131005-1_amd64.deb"
+	size hasValue "74386"
+	md5sum hasValue "efe19df58e26f7cd1622538f480a0e9d"
+	sha1 hasValue "9f3ae2579b202aec41dc3f0e33963d9b49752221"
+	sha256 hasValue "02cea38ea0a267a230f2e9fd10840a178d4849f419dc33705046f8bfb1d1694f"
+	descriptionMd5 hasValue "b4977f65448ec7a7e1fca51450d83efb"
+	depends hasValue "libc6 (>= 2.14), libelf1 (>= 0.131), libselinux1 (>= 1.32)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__execstack,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libelf1"
+	comparison hasValue ">="
+	version hasValue "0.131"
+
+relationInstance depends(P0__execstack,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libselinux1"
+	comparison hasValue ">="
+	version hasValue "1.32"
+
+relationInstance depends(P0__execstack,2,DepAtom__2)
+

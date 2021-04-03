@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ftpgrab
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ftpgrab memberOf Package
+	package hasValue "ftpgrab"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "111"
+	maintainer hasValue "Original-Christian T. Steigies <cts@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.1.5-6build1"
+	fileName hasValue "pool/universe/f/ftpgrab/ftpgrab_0.1.5-6build1_amd64.deb"
+	size hasValue "36044"
+	md5sum hasValue "94c2a4afc15368120280177c2f7898f6"
+	sha1 hasValue "1f1636744b5a91b8bcd4f5de7b4601e3b3b368da"
+	sha256 hasValue "57cd1dc395435bef74aa62054857941657a76fd6e2ad4f3f10171eb4c62c4cf6"
+	description hasValue "Utilitário para espelhamento de arquivos"
+	descriptionMd5 hasValue "491b78c7cd2ccb92bb7a60aefc9ee941"
+	depends hasValue "libc6 (>= 2.15), libgcc-s1 (>= 3.0), libstdc++6 (>= 5)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__ftpgrab,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgcc-s1"
+	comparison hasValue ">="
+	version hasValue "3.0"
+
+relationInstance depends(P0__ftpgrab,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "5"
+
+relationInstance depends(P0__ftpgrab,2,DepAtom__2)
+

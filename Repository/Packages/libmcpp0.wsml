@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libmcpp0
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libmcpp0 memberOf Package
+	package hasValue "libmcpp0"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "165"
+	maintainer hasValue "Original-Kiyoshi Matsui <kmatsui@t3.rim.or.jp>"
+	architecture hasValue "amd64"
+	version hasValue "2.7.2-5"
+	fileName hasValue "pool/universe/m/mcpp/libmcpp0_2.7.2-5_amd64.deb"
+	size hasValue "67508"
+	md5sum hasValue "cd149e48744d16b61570243b26131c42"
+	sha1 hasValue "f73e6a5a38ae1b76aa1aeee3b8decbc23264d72d"
+	sha256 hasValue "688f084fc03e095f3755b8b4c089bbccdea09b1e45a9e3e7b3deeabd0a76b762"
+	descriptionMd5 hasValue "50d35e9f6b87fff3c47b700d85bb7bc0"
+	homepage hasValue "http://mcpp.sourceforge.net/"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libmcpp0,0,DepAtom__0)
+

@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology longrun
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__longrun memberOf Package
+	package hasValue "longrun"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/utils"
+	installedSize hasValue "74"
+	maintainer hasValue "Original-Uwe Hermann <uwe@debian.org>"
+	architecture hasValue "i386"
+	version hasValue "0.9-22.1"
+	fileName hasValue "pool/universe/l/longrun/longrun_0.9-22.1_i386.deb"
+	size hasValue "20128"
+	md5sum hasValue "774a5f40fa8d2522531ba60c1e735a41"
+	sha1 hasValue "3449fb1aec889cbe3691976e16fc46e5d9839fd8"
+	sha256 hasValue "c4a94bb81bf6bfe96be8ba6ef3ee41002b6bb7e7811358d2e5b0c2e1d8cb8a2d"
+	descriptionMd5 hasValue "96371ed99eb43a668fc2fe2c7b3c37eb"
+	homepage hasValue "https://kernel.org/pub/linux/utils/cpu/crusoe/"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__longrun,0,DepAtom__0)
+

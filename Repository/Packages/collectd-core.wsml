@@ -1,0 +1,83 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology collectd_core
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__collectd_core memberOf Package
+	package hasValue "collectd-core"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "5477"
+	maintainer hasValue "Original-Collectd Packaging Team <team+collectd@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "5.9.2.g-1ubuntu5"
+	replaces hasValue "collectd (<< 4.8.2-1~)"
+	fileName hasValue "pool/universe/c/collectd/collectd-core_5.9.2.g-1ubuntu5_amd64.deb"
+	size hasValue "1155108"
+	md5sum hasValue "1731983b5af6384d8facbc7ce3f99238"
+	sha1 hasValue "ea54bd4f37a8123ada9e8141012f5fc9dda5f1e9"
+	sha256 hasValue "e21628d2041369bed8031f45d6b216a298f1660d49fdce8f130733b2db0a372e"
+	description hasValue "statistics collection and monitoring daemon (core system)"
+	descriptionMd5 hasValue "bfa32cd12f2dbd65172d309db5add32f"
+	homepage hasValue "https://collectd.org/"
+	depends hasValue "libc6 (>= 2.17), libcap2 (>= 1:2.10), debconf (>= 0.5) | debconf-2.0, lsb-base"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.17"
+
+relationInstance depends(P0__collectd_core,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libcap2"
+	comparison hasValue ">="
+	version hasValue "1:2.10"
+
+relationInstance depends(P0__collectd_core,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "debconf"
+	comparison hasValue ">="
+	version hasValue "0.5"
+
+relationInstance depends(P0__collectd_core,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "debconf-2.0"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__collectd_core,2,DepAtom__3)
+
+instance DepAtom__4 memberOf DependencyAtom
+	package hasValue "lsb-base"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__collectd_core,3,DepAtom__4)
+

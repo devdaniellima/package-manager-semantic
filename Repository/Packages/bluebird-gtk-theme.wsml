@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology bluebird_gtk_theme
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__bluebird_gtk_theme memberOf Package
+	package hasValue "bluebird-gtk-theme"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/x11"
+	installedSize hasValue "1441"
+	maintainer hasValue "Original-Yves-Alexis Perez <corsac@debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.3-1"
+	replaces hasValue "murrine-themes (<< 0.98.11~), shimmer-wallpapers (<< 2.1.2-0ubuntu2~)"
+	fileName hasValue "pool/universe/b/bluebird-gtk-theme/bluebird-gtk-theme_1.3-1_all.deb"
+	size hasValue "139732"
+	md5sum hasValue "f7c927a3eb540760ff0b8ceaa2803cc3"
+	sha1 hasValue "c03d30a0442e181c6da913e3665add9cca9221fc"
+	sha256 hasValue "acbeb5819df284037cede9f110e5ff714bbe7252bf089e7b635adecb8dde51b4"
+	descriptionMd5 hasValue "6f19c81bbeb9b0585d80050b4845f495"
+	homepage hasValue "https://github.com/shimmerproject/Bluebird"
+	depends hasValue "gtk2-engines-murrine (>= 0.98), gtk2-engines-pixbuf"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "gtk2-engines-murrine"
+	comparison hasValue ">="
+	version hasValue "0.98"
+
+relationInstance depends(P0__bluebird_gtk_theme,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "gtk2-engines-pixbuf"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__bluebird_gtk_theme,1,DepAtom__1)
+

@@ -1,0 +1,59 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology rusty_tags
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__rusty_tags memberOf Package
+	package hasValue "rusty-tags"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/rust"
+	installedSize hasValue "1362"
+	maintainer hasValue "Original-Debian Rust Maintainers <pkg-rust-maintainers@alioth-lists.debian.net>"
+	architecture hasValue "amd64"
+	version hasValue "3.5.1-2build1"
+	fileName hasValue "pool/universe/r/rust-rusty-tags/rusty-tags_3.5.1-2build1_amd64.deb"
+	size hasValue "468888"
+	md5sum hasValue "f383110cd06c80dc11d19d6b23f47254"
+	sha1 hasValue "25aba7cc895d5a8618e1e519099d0622153ffbeb"
+	sha256 hasValue "84de5ccbd8c13f2bc112bd4b3ac1f3d4a3184ea91f0c2351baae284031c11805"
+	descriptionMd5 hasValue "1b8bad0d86ecbd351ff2d23acbf99633"
+	depends hasValue "libc6 (>= 2.18), libgcc-s1 (>= 4.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.18"
+
+relationInstance depends(P0__rusty_tags,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgcc-s1"
+	comparison hasValue ">="
+	version hasValue "4.2"
+
+relationInstance depends(P0__rusty_tags,1,DepAtom__1)
+

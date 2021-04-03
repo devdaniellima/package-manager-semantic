@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology amiga_fdisk_cross
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__amiga_fdisk_cross memberOf Package
+	package hasValue "amiga-fdisk-cross"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/admin"
+	installedSize hasValue "56"
+	maintainer hasValue "Original-Christian T. Steigies <cts@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.04-15build2"
+	conflicts hasValue "amiga-fdisk, amiga-fdisk-bf"
+	fileName hasValue "pool/universe/a/amiga-fdisk/amiga-fdisk-cross_0.04-15build2_amd64.deb"
+	size hasValue "17780"
+	md5sum hasValue "1a4850b5b1fad82fd05bda940fa02989"
+	sha1 hasValue "482808b7485dba33ed76866a97f514123c89dac1"
+	sha256 hasValue "8146ab5a2337cc5d280597fde29a3afaee10bce3353b1dcf08c074719ca0c51d"
+	description hasValue "editor de partições para Amiga (versão \"cross\")"
+	descriptionMd5 hasValue "134dfbdfd3cf5ff0fc80b91fc41e1a81"
+	homepage hasValue "https://alioth.debian.org/projects/amiga-fdisk/"
+	depends hasValue "libc6 (>= 2.7), libreadline8 (>= 6.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__amiga_fdisk_cross,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libreadline8"
+	comparison hasValue ">="
+	version hasValue "6.0"
+
+relationInstance depends(P0__amiga_fdisk_cross,1,DepAtom__1)
+

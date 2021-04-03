@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology genromfs
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__genromfs memberOf Package
+	package hasValue "genromfs"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/admin"
+	installedSize hasValue "41"
+	maintainer hasValue "Original-Juan Cespedes <cespedes@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.5.2-4"
+	fileName hasValue "pool/universe/g/genromfs/genromfs_0.5.2-4_amd64.deb"
+	size hasValue "16408"
+	md5sum hasValue "e7aa7cbef63df7afd8c057a6ab4878b9"
+	sha1 hasValue "ed754300b87ffc20b0120e0d39026090042f5d47"
+	sha256 hasValue "9f39fbb8b0c492c60dd5ebd6e04158a2e0c9e1a29025a3940e0900fc6603553a"
+	descriptionMd5 hasValue "78329ad9986d0af74d7f7bad45155ed8"
+	homepage hasValue "https://sourceforge.net/projects/romfs/"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__genromfs,0,DepAtom__0)
+

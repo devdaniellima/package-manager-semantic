@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology dsdp
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__dsdp memberOf Package
+	package hasValue "dsdp"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/science"
+	installedSize hasValue "97"
+	maintainer hasValue "Original-Soeren Sonnenburg <sonne@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "5.8-9.4build1"
+	fileName hasValue "pool/universe/d/dsdp/dsdp_5.8-9.4build1_amd64.deb"
+	size hasValue "27188"
+	md5sum hasValue "1d7cf0c7164bdc3f9d7adccf792b36f4"
+	sha1 hasValue "888e2cc31e7a2e59f8f8ef884244ddb3d3eab6ba"
+	sha256 hasValue "c0ef8e81848a9353b71f09e357bd1952d302266add6333071ece3678f6a6d28a"
+	description hasValue "Software for Semidefinite Programming"
+	descriptionMd5 hasValue "f23b1ccc0454351abde108cef0799570"
+	homepage hasValue "http://www-unix.mcs.anl.gov/DSDP/"
+	depends hasValue "libc6 (>= 2.7), libdsdp-5.8gf"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__dsdp,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libdsdp-5.8gf"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__dsdp,1,DepAtom__1)
+

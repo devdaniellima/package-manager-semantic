@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology chkboot
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__chkboot memberOf Package
+	package hasValue "chkboot"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "50"
+	maintainer hasValue "Original-Baptiste BEAUPLAT <lyknode@cilg.org>"
+	architecture hasValue "all"
+	version hasValue "1.3-5"
+	fileName hasValue "pool/universe/c/chkboot/chkboot_1.3-5_all.deb"
+	size hasValue "11180"
+	md5sum hasValue "ee560e41efe197f0d9edbac58c62d39b"
+	sha1 hasValue "163b1448b571c240ea5e1245df04f20f6451f4f9"
+	sha256 hasValue "880b38220972307696ffac997cff7bfa6fd2c3faff37d23a42545752d0a07f40"
+	descriptionMd5 hasValue "cfa9f8ad81eb8c6f57b408d11439d3e4"
+	homepage hasValue "https://github.com/grazzolini/chkboot"
+	depends hasValue "Pre-init-system-helpers (>= 1.54~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "Pre-init-system-helpers"
+	comparison hasValue ">="
+	version hasValue "1.54~"
+
+relationInstance depends(P0__chkboot,0,DepAtom__0)
+

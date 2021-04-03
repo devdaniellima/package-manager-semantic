@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libcaf_mpich_3
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libcaf_mpich_3 memberOf Package
+	package hasValue "libcaf-mpich-3"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "102"
+	maintainer hasValue "Original-Alastair McKinstry <mckinstry@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.8.0-1"
+	replaces hasValue "libcoarrays0d (<< 1.8.10)"
+	fileName hasValue "pool/universe/o/open-coarrays/libcaf-mpich-3_2.8.0-1_amd64.deb"
+	size hasValue "35160"
+	md5sum hasValue "c48eb49ee4f537c85c781fa3d540f3ec"
+	sha1 hasValue "2572f4c23d697e37cb7406f8ae50d3570faa84e0"
+	sha256 hasValue "fc4dbce6168c773115c7538cc2d2a180fa24944bd6ae6d3eec6410311def68f7"
+	descriptionMd5 hasValue "9d9412e935ae276ba04b111249f3e1db"
+	homepage hasValue "https://www.opencoarrays.org/"
+	depends hasValue "libc6 (>= 2.14), libmpich12"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libcaf_mpich_3,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libmpich12"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libcaf_mpich_3,1,DepAtom__1)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology pcb_rnd_debug
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__pcb_rnd_debug memberOf Package
+	package hasValue "pcb-rnd-debug"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/electronics"
+	installedSize hasValue "232"
+	maintainer hasValue "Original-Debian Electronics Team <pkg-electronics-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.2.0-3"
+	fileName hasValue "pool/universe/p/pcb-rnd/pcb-rnd-debug_2.2.0-3_amd64.deb"
+	size hasValue "71728"
+	md5sum hasValue "ff8c4c0c908091457ca27faf0c105f58"
+	sha1 hasValue "127f4093a416af1431ccd3efdd42f946464cb9cc"
+	sha256 hasValue "7151dabf2d0c56b18a1c50d2625e4d25e0550ecba77cfe7f14fac2e274ba0c2d"
+	descriptionMd5 hasValue "adbbc03339c6b5ffb8961c31bc885c31"
+	homepage hasValue "http://repo.hu/projects/pcb-rnd"
+	depends hasValue "libc6 (>= 2.4), pcb-rnd-core"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__pcb_rnd_debug,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "pcb-rnd-core"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__pcb_rnd_debug,1,DepAtom__1)
+

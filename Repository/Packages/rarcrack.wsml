@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology rarcrack
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__rarcrack memberOf Package
+	package hasValue "rarcrack"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/utils"
+	installedSize hasValue "47"
+	maintainer hasValue "Original-Pierre Rudloff <contact@rudloff.pro>"
+	architecture hasValue "amd64"
+	version hasValue "0.2-1build1"
+	fileName hasValue "pool/universe/r/rarcrack/rarcrack_0.2-1build1_amd64.deb"
+	size hasValue "17428"
+	md5sum hasValue "a051616807d1988eba74c2a1bfa27128"
+	sha1 hasValue "3046768c728a63a89fd05f9fa6d7ca398e075d16"
+	sha256 hasValue "cd6c0b8c209a5cf9cd879a49bd295ab13d173ac5c4bd163107b12707595e5eef"
+	descriptionMd5 hasValue "fc6f3b48bc2f6d07f80dc13f274f471c"
+	homepage hasValue "http://rarcrack.sourceforge.net/"
+	depends hasValue "libc6 (>= 2.7), libxml2 (>= 2.7.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__rarcrack,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libxml2"
+	comparison hasValue ">="
+	version hasValue "2.7.4"
+
+relationInstance depends(P0__rarcrack,1,DepAtom__1)
+

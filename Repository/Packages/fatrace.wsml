@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology fatrace
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__fatrace memberOf Package
+	package hasValue "fatrace"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "39"
+	maintainer hasValue "Original-Martin Pitt <mpitt@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.13-2"
+	fileName hasValue "pool/universe/f/fatrace/fatrace_0.13-2_amd64.deb"
+	size hasValue "11648"
+	md5sum hasValue "9ec2a5e977fd70b07647fd4d5cdbba21"
+	sha1 hasValue "95cd5f0be3910467ba903130e83409818e2b1bb5"
+	sha256 hasValue "b75b2c471bdb1017bea51e8e67658af77309839d670fbf078cbd720d90238b8b"
+	descriptionMd5 hasValue "93aea8860e9021f1c584bfdfe25751c2"
+	homepage hasValue "https://launchpad.net/fatrace"
+	depends hasValue "libc6 (>= 2.13)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.13"
+
+relationInstance depends(P0__fatrace,0,DepAtom__0)
+

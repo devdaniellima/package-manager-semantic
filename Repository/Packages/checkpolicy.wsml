@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology checkpolicy
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__checkpolicy memberOf Package
+	package hasValue "checkpolicy"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "917"
+	maintainer hasValue "Original-Debian SELinux maintainers <selinux-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.0-1"
+	fileName hasValue "pool/universe/c/checkpolicy/checkpolicy_3.0-1_amd64.deb"
+	size hasValue "224800"
+	md5sum hasValue "e0e29c25cfdabafa17abdb0830da3dfa"
+	sha1 hasValue "caffe440c3732831b84739501d83ca54e93df1b9"
+	sha256 hasValue "32ff14b539aa8988a9049079f0fa72bfae696473b6c160766b472303debda1ab"
+	description hasValue "compilador de política SELinux"
+	descriptionMd5 hasValue "863da67d6724107de7579bcd3c30b3db"
+	homepage hasValue "http://userspace.selinuxproject.org/"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__checkpolicy,0,DepAtom__0)
+

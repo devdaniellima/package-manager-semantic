@@ -1,0 +1,77 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology wine_development
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__wine_development memberOf Package
+	package hasValue "wine-development"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/otherosfs"
+	installedSize hasValue "197"
+	maintainer hasValue "Original-Debian Wine Party <debian-wine@lists.debian.org>"
+	architecture hasValue "all"
+	version hasValue "5.5-3ubuntu1"
+	replaces hasValue "wine-stable (<< 3.0.1ubuntu1~)"
+	provides hasValue "wine"
+	fileName hasValue "pool/universe/w/wine-development/wine-development_5.5-3ubuntu1_all.deb"
+	size hasValue "51228"
+	md5sum hasValue "31d00b3cccee6da78160f03096bff841"
+	sha1 hasValue "d77fca0c1a70f4b172131a471cfabca5853a42ff"
+	sha256 hasValue "15d573c339cda9311db35ac4265a50c2708ea50301d897362ef8d00fbb1f96dc"
+	description hasValue "implementação da API do windows - suite padrão"
+	descriptionMd5 hasValue "139da20fbef0c3dd79adf5ac1f0975f8"
+	homepage hasValue "https://www.winehq.org"
+	depends hasValue "wine64-development (>= 5.5-3ubuntu1) | wine32-development (>= 5.5-3ubuntu1), wine64-development (<< 5.5-3ubuntu1.1~) | wine32-development (<< 5.5-3ubuntu1.1~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "wine64-development"
+	comparison hasValue ">="
+	version hasValue "5.5-3ubuntu1"
+
+relationInstance depends(P0__wine_development,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "wine32-development"
+	comparison hasValue ">="
+	version hasValue "5.5-3ubuntu1"
+
+relationInstance depends(P0__wine_development,0,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "wine64-development"
+	comparison hasValue "<<"
+	version hasValue "5.5-3ubuntu1.1~"
+
+relationInstance depends(P0__wine_development,1,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "wine32-development"
+	comparison hasValue "<<"
+	version hasValue "5.5-3ubuntu1.1~"
+
+relationInstance depends(P0__wine_development,1,DepAtom__3)
+

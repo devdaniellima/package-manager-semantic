@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology puppet_module_puppetlabs_apt
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__puppet_module_puppetlabs_apt memberOf Package
+	package hasValue "puppet-module-puppetlabs-apt"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "124"
+	maintainer hasValue "Original-Puppet Package Maintainers <pkg-puppet-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "6.1.1-1"
+	fileName hasValue "pool/universe/p/puppet-module-puppetlabs-apt/puppet-module-puppetlabs-apt_6.1.1-1_all.deb"
+	size hasValue "27528"
+	md5sum hasValue "d44ee9f55c429cd5be10b74b6024e4f5"
+	sha1 hasValue "bd82a43c3468f86321cabdc44ec0f14c93759120"
+	sha256 hasValue "028834ed4a9810e000f20f6cd2046057ef092e0d3c09cb66538563884b804b71"
+	descriptionMd5 hasValue "ebcb57394212327967648cd00c1f5f85"
+	homepage hasValue "https://forge.puppet.com/puppetlabs/apt"
+	depends hasValue "puppet, puppet-module-puppetlabs-stdlib (>= 4.16.0), puppet-module-puppetlabs-translate"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "puppet"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__puppet_module_puppetlabs_apt,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "puppet-module-puppetlabs-stdlib"
+	comparison hasValue ">="
+	version hasValue "4.16.0"
+
+relationInstance depends(P0__puppet_module_puppetlabs_apt,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "puppet-module-puppetlabs-translate"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__puppet_module_puppetlabs_apt,2,DepAtom__2)
+

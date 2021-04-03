@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python3_venv
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python3_venv memberOf Package
+	package hasValue "python3-venv"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "11"
+	maintainer hasValue "Original-Matthias Klose <doko@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.8.2-0ubuntu2"
+	fileName hasValue "pool/universe/p/python3-defaults/python3-venv_3.8.2-0ubuntu2_amd64.deb"
+	size hasValue "1228"
+	md5sum hasValue "c5cae1dcf4431742f2176a4a1a56dcf8"
+	sha1 hasValue "516da63ce9617ba24a43bb92a02683477f7bf222"
+	sha256 hasValue "a60d83da9e3ec3cdc62654be30ee55af31c0946432f1c924cfe0fcdb313a8226"
+	descriptionMd5 hasValue "2ba431bd8cbe86a20aafe2f832a01efa"
+	homepage hasValue "https://www.python.org/"
+	depends hasValue "python3.8-venv (>= 3.8.2-1~), python3 (= 3.8.2-0ubuntu2), python3-distutils (>= 3.8.2-1~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3.8-venv"
+	comparison hasValue ">="
+	version hasValue "3.8.2-1~"
+
+relationInstance depends(P0__python3_venv,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3"
+	comparison hasValue "="
+	version hasValue "3.8.2-0ubuntu2"
+
+relationInstance depends(P0__python3_venv,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "python3-distutils"
+	comparison hasValue ">="
+	version hasValue "3.8.2-1~"
+
+relationInstance depends(P0__python3_venv,2,DepAtom__2)
+

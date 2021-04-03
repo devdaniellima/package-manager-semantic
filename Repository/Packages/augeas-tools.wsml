@@ -1,0 +1,75 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology augeas_tools
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__augeas_tools memberOf Package
+	package hasValue "augeas-tools"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "105"
+	maintainer hasValue "Original-Hilko Bengen <bengen@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.12.0-1build1"
+	fileName hasValue "pool/universe/a/augeas/augeas-tools_1.12.0-1build1_amd64.deb"
+	size hasValue "31172"
+	md5sum hasValue "e300bc73c8fb3f53f01d3a3970638253"
+	sha1 hasValue "2a664866b205e85317db6b9b37105bfcc90758a1"
+	sha256 hasValue "ee2f91e405d4d42b0e6073665c94e181fcaea8b721d3ca151271b32b4b909873"
+	description hasValue "ferramentas de linha de comando augeas"
+	descriptionMd5 hasValue "3910bb8edac0a7a2eb4c78437f67490b"
+	homepage hasValue "http://augeas.net/"
+	depends hasValue "libaugeas0 (>= 1.10.0), libc6 (>= 2.8), libgcc-s1 (>= 3.3.1), libreadline8 (>= 6.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libaugeas0"
+	comparison hasValue ">="
+	version hasValue "1.10.0"
+
+relationInstance depends(P0__augeas_tools,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.8"
+
+relationInstance depends(P0__augeas_tools,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libgcc-s1"
+	comparison hasValue ">="
+	version hasValue "3.3.1"
+
+relationInstance depends(P0__augeas_tools,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "libreadline8"
+	comparison hasValue ">="
+	version hasValue "6.0"
+
+relationInstance depends(P0__augeas_tools,3,DepAtom__3)
+

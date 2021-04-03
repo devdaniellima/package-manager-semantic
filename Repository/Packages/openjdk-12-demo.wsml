@@ -1,0 +1,52 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology openjdk_12_demo
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S2 memberOf Source
+	uri hasValue "http://ppa.launchpad.net/openjdk-r/ppa/ubuntu"
+
+// Packages instances
+
+instance P0__openjdk_12_demo memberOf Package
+	package hasValue "openjdk-12-demo"
+	packageSource hasValue Source__S2
+	priority hasValue "optional"
+	section hasValue "java"
+	installedSize hasValue "5838"
+	maintainer hasValue "OpenJDK Team <openjdk@lists.launchpad.net>"
+	architecture hasValue "amd64"
+	version hasValue "12.0.2+9-2ubuntu2"
+	fileName hasValue "pool/main/o/openjdk-12/openjdk-12-demo_12.0.2+9-2ubuntu2_amd64.deb"
+	size hasValue "4108408"
+	md5sum hasValue "9946e00a28ddbbf04d5f997a3ce13ee9"
+	sha1 hasValue "64ed3ea64783d249073dd1bfcea98ccc177f5b3c"
+	sha256 hasValue "30cf37746787af7e1180f21099345476f9bb604052441b79563e52c0450ac4a3"
+	descriptionMd5 hasValue "8c587e17f25fb354ef51e27e56507756"
+	depends hasValue "openjdk-12-jre (= 12.0.2+9-2ubuntu2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "openjdk-12-jre"
+	comparison hasValue "="
+	version hasValue "12.0.2+9-2ubuntu2"
+
+relationInstance depends(P0__openjdk_12_demo,0,DepAtom__0)
+

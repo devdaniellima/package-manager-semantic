@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology rabbitvcs_gedit
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__rabbitvcs_gedit memberOf Package
+	package hasValue "rabbitvcs-gedit"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "54"
+	maintainer hasValue "Original-Python Applications Packaging Team <python-apps-team@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.18-1ubuntu1"
+	fileName hasValue "pool/universe/r/rabbitvcs/rabbitvcs-gedit_0.18-1ubuntu1_all.deb"
+	size hasValue "8552"
+	md5sum hasValue "e273ee2573f0551d68bc47277e3318a2"
+	sha1 hasValue "dee61a9f8be59c0b6c53226b62cd1d9dc2f8b3fa"
+	sha256 hasValue "79a6558d1cbe0a824cb3bb7c95ccaecd1e9a24c4c762f0262ba785f342e4e5c2"
+	descriptionMd5 hasValue "82c13f5f8547fb03f1250e9c188ab6e1"
+	homepage hasValue "http://www.rabbitvcs.org"
+	depends hasValue "gedit, rabbitvcs-core (>= 0.15)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "gedit"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__rabbitvcs_gedit,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "rabbitvcs-core"
+	comparison hasValue ">="
+	version hasValue "0.15"
+
+relationInstance depends(P0__rabbitvcs_gedit,1,DepAtom__1)
+

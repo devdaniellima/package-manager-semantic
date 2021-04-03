@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology boinc
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__boinc memberOf Package
+	package hasValue "boinc"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "92"
+	maintainer hasValue "Original-Debian BOINC Maintainers <pkg-boinc-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "7.16.6+dfsg-1"
+	fileName hasValue "pool/universe/b/boinc/boinc_7.16.6+dfsg-1_all.deb"
+	size hasValue "15212"
+	md5sum hasValue "f7fbadfb9ab798c29f4e8a8c864f605e"
+	sha1 hasValue "08af470ab3b283ef421de63f73886427e85e306f"
+	sha256 hasValue "61b08e7e8903ea6949b9751445b35ed6e226773e5cb9a3f377c530be4a7ae24c"
+	description hasValue "metapacote para o cliente e o gerente BOINC"
+	descriptionMd5 hasValue "79307295fad5fe1f0172f7d981ebfbac"
+	homepage hasValue "https://boinc.berkeley.edu/"
+	depends hasValue "boinc-client (>= 7.16.6+dfsg-1), boinc-manager (>= 7.16.6+dfsg-1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "boinc-client"
+	comparison hasValue ">="
+	version hasValue "7.16.6+dfsg-1"
+
+relationInstance depends(P0__boinc,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "boinc-manager"
+	comparison hasValue ">="
+	version hasValue "7.16.6+dfsg-1"
+
+relationInstance depends(P0__boinc,1,DepAtom__1)
+

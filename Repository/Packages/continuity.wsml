@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology continuity
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__continuity memberOf Package
+	package hasValue "continuity"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "4234"
+	maintainer hasValue "Original-Debian Go Packaging Team <pkg-go-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.0~git20180216.d8fb858-1"
+	fileName hasValue "pool/universe/c/continuity/continuity_0.0~git20180216.d8fb858-1_amd64.deb"
+	size hasValue "1216036"
+	md5sum hasValue "e8896dc3481b6d978e1ce796b174583f"
+	sha1 hasValue "0a74a7fbe68ee1eeba50e44ee4cabeb9611a834c"
+	sha256 hasValue "000a3b564708ca13a30947d48e29caf29a7447e3fea79279c2b4b51454388e84"
+	descriptionMd5 hasValue "db204dbcead5b13ce18297940269e7a5"
+	homepage hasValue "https://github.com/containerd/continuity"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__continuity,0,DepAtom__0)
+

@@ -1,0 +1,52 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology sbrshd
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__sbrshd memberOf Package
+	package hasValue "sbrshd"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/net"
+	installedSize hasValue "88"
+	maintainer hasValue "Original-Riku Voipio <riku.voipio@iki.fi>"
+	architecture hasValue "amd64"
+	version hasValue "7.6.1build1"
+	fileName hasValue "pool/universe/s/sbrsh/sbrshd_7.6.1build1_amd64.deb"
+	size hasValue "31544"
+	md5sum hasValue "bd4565b4d94b7380ad69cd207e733c93"
+	sha1 hasValue "0ddddc5fea56cf298d5ccc517638dcd16a1a8fed"
+	sha256 hasValue "e126681b061a8d0def65c75666900cc55171fcfe003dea685803d84a53e3f6a0"
+	descriptionMd5 hasValue "508f6db50b206e7e00d47dd0e3140917"
+	depends hasValue "libc6 (>= 2.15)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__sbrshd,0,DepAtom__0)
+

@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology aspell_hsb
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__aspell_hsb memberOf Package
+	package hasValue "aspell-hsb"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/text"
+	installedSize hasValue "260"
+	maintainer hasValue "Original-Jan Jeroným Zvánovec <jero@zvano.net>"
+	architecture hasValue "all"
+	version hasValue "0.02.0-1"
+	provides hasValue "aspell-dictionary"
+	fileName hasValue "pool/universe/a/aspell-hsb/aspell-hsb_0.02.0-1_all.deb"
+	size hasValue "121892"
+	md5sum hasValue "a7b773fe17ced663452163bf39573c10"
+	sha1 hasValue "929db7cfe32fc3c846251a67c6d47075c72f4dc3"
+	sha256 hasValue "ce22e2d49bfb96f0eafe7e20cc2445441e88e6da96cbae23d25f27ab26b61ebb"
+	description hasValue "dicionário de alto sorábio para GNU Aspell"
+	descriptionMd5 hasValue "49d4a1859875beeff610029c734ecae8"
+	depends hasValue "aspell (>= 0.60.6-2), dictionaries-common (>= 1.4.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "aspell"
+	comparison hasValue ">="
+	version hasValue "0.60.6-2"
+
+relationInstance depends(P0__aspell_hsb,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "dictionaries-common"
+	comparison hasValue ">="
+	version hasValue "1.4.0"
+
+relationInstance depends(P0__aspell_hsb,1,DepAtom__1)
+

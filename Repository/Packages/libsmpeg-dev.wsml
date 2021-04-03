@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libsmpeg_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libsmpeg_dev memberOf Package
+	package hasValue "libsmpeg-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "429"
+	maintainer hasValue "Original-Debian SDL packages maintainers <pkg-sdl-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.4.5+cvs20030824-8build1"
+	fileName hasValue "pool/universe/s/smpeg/libsmpeg-dev_0.4.5+cvs20030824-8build1_amd64.deb"
+	size hasValue "95408"
+	md5sum hasValue "51e500811a2ddd18a72b18a80dbff332"
+	sha1 hasValue "4a5fd2082f99133b0e20824f52a025d99776e5ce"
+	sha256 hasValue "40f58ed62ef2beecd5ab9564d0ba34f6e5f750dc4837611bc5f451f6e2532a8e"
+	description hasValue "SDL MPEG Player Library - development files"
+	descriptionMd5 hasValue "9c5f6a20982161c1e4e22c814e79576e"
+	homepage hasValue "https://icculus.org/smpeg/"
+	depends hasValue "libsmpeg0 (= 0.4.5+cvs20030824-8build1), libsdl1.2-dev (>= 1.2.2-3.3)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libsmpeg0"
+	comparison hasValue "="
+	version hasValue "0.4.5+cvs20030824-8build1"
+
+relationInstance depends(P0__libsmpeg_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libsdl1.2-dev"
+	comparison hasValue ">="
+	version hasValue "1.2.2-3.3"
+
+relationInstance depends(P0__libsmpeg_dev,1,DepAtom__1)
+

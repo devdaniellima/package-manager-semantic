@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology codegroup
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__codegroup memberOf Package
+	package hasValue "codegroup"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/text"
+	installedSize hasValue "80"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "19981025-8"
+	fileName hasValue "pool/universe/c/codegroup/codegroup_19981025-8_amd64.deb"
+	size hasValue "50244"
+	md5sum hasValue "7b92514f9403b0dcdb19792d3a7428bb"
+	sha1 hasValue "f638fbeeb620efc0eb2ee718d2f08291982f4874"
+	sha256 hasValue "23b691df426b34ad4e15a0d8da14227de74130cab83dbb62ea706d98ca7fa642"
+	description hasValue "converte qualquer arquivo, incluindo binário, em códigos de 5 letras"
+	descriptionMd5 hasValue "508505728494a0bef2f14533bc2d0ab0"
+	homepage hasValue "http://www.fourmilab.ch/codegroup/"
+	depends hasValue "libc6 (>= 2.3.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.3.4"
+
+relationInstance depends(P0__codegroup,0,DepAtom__0)
+

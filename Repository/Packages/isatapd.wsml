@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology isatapd
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__isatapd memberOf Package
+	package hasValue "isatapd"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/net"
+	installedSize hasValue "77"
+	maintainer hasValue "Original-Bernhard Schmidt <berni@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.9.7-4"
+	fileName hasValue "pool/universe/i/isatapd/isatapd_0.9.7-4_amd64.deb"
+	size hasValue "19374"
+	md5sum hasValue "a3c82d42c1524118ad0471a62ab32dd9"
+	sha1 hasValue "66ea63b58719c99ed8cee78c322936500a6cbb9b"
+	sha256 hasValue "a171bd623c30743f00b02b8bafce1336b2cc3355f6ccb40c8dee8e3c36ad8139"
+	descriptionMd5 hasValue "a15e66e4c8e1744347876ee1da186ec1"
+	homepage hasValue "http://saschahlusiak.de/linux/isatap.htm"
+	depends hasValue "libc6 (>= 2.15), init-system-helpers (>= 1.18~), lsb-base (>= 3.0-6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__isatapd,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "init-system-helpers"
+	comparison hasValue ">="
+	version hasValue "1.18~"
+
+relationInstance depends(P0__isatapd,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "lsb-base"
+	comparison hasValue ">="
+	version hasValue "3.0-6"
+
+relationInstance depends(P0__isatapd,2,DepAtom__2)
+

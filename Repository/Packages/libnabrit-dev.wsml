@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libnabrit_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libnabrit_dev memberOf Package
+	package hasValue "libnabrit-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "50"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.5.1-2"
+	fileName hasValue "pool/universe/n/naspro-bridge-it/libnabrit-dev_0.5.1-2_amd64.deb"
+	size hasValue "7422"
+	md5sum hasValue "ca2f87f6e905f6841fecabf5e001236b"
+	sha1 hasValue "632bb6efe769d61374ce4fa0448509bbf57d86f7"
+	sha256 hasValue "b5c1bb869e51a3f003a5bec5bacd0a66ea14cc933d6c65f88c24a8d2cabde9b6"
+	descriptionMd5 hasValue "21d1e1d12a91f9e6b4b92e30a83dab6e"
+	homepage hasValue "http://naspro.sourceforge.net/"
+	depends hasValue "libnabrit3 (= 0.5.1-2), libnacore-dev (>= 0.3.0), lv2-dev"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libnabrit3"
+	comparison hasValue "="
+	version hasValue "0.5.1-2"
+
+relationInstance depends(P0__libnabrit_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libnacore-dev"
+	comparison hasValue ">="
+	version hasValue "0.3.0"
+
+relationInstance depends(P0__libnabrit_dev,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "lv2-dev"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libnabrit_dev,2,DepAtom__2)
+

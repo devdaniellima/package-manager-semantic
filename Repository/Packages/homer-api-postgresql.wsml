@@ -1,0 +1,83 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology homer_api_postgresql
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__homer_api_postgresql memberOf Package
+	package hasValue "homer-api-postgresql"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "80"
+	maintainer hasValue "Original-Debian VoIP Team <pkg-voip-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "5.0.6+dfsg2-3.1"
+	provides hasValue "homer-api-datastore"
+	conflicts hasValue "homer-api-mysql"
+	fileName hasValue "pool/universe/h/homer-api/homer-api-postgresql_5.0.6+dfsg2-3.1_amd64.deb"
+	size hasValue "14468"
+	md5sum hasValue "d424e2110b43fae569cb6c198c0f4c9d"
+	sha1 hasValue "716c531b89723414cf25e59f4a2671458365e54a"
+	sha256 hasValue "f1593fd1b2da9c0c44fbbaaaab1c1a7757c0b9448575548ca80b15ef86e3ed24"
+	descriptionMd5 hasValue "3c07dd386e116970ba48ce8e760ceac7"
+	homepage hasValue "http://sipcapture.org"
+	depends hasValue "homer-api (= 5.0.6+dfsg2-3.1), php-pgsql | php5-pgsql, kamailio-postgres-modules (>= 4.3.0), libdbd-pg-perl"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "homer-api"
+	comparison hasValue "="
+	version hasValue "5.0.6+dfsg2-3.1"
+
+relationInstance depends(P0__homer_api_postgresql,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "php-pgsql"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__homer_api_postgresql,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "php5-pgsql"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__homer_api_postgresql,1,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "kamailio-postgres-modules"
+	comparison hasValue ">="
+	version hasValue "4.3.0"
+
+relationInstance depends(P0__homer_api_postgresql,2,DepAtom__3)
+
+instance DepAtom__4 memberOf DependencyAtom
+	package hasValue "libdbd-pg-perl"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__homer_api_postgresql,3,DepAtom__4)
+

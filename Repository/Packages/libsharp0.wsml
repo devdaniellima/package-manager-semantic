@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libsharp0
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libsharp0 memberOf Package
+	package hasValue "libsharp0"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "260"
+	maintainer hasValue "Original-Debian Astro Team <debian-astro-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.0-2"
+	fileName hasValue "pool/universe/libs/libsharp/libsharp0_1.0.0-2_amd64.deb"
+	size hasValue "78736"
+	md5sum hasValue "f3fd7a57fe5f209fef3abd46cd8250f6"
+	sha1 hasValue "2609ed6eb769d04a929af63df88da27c91fd88ac"
+	sha256 hasValue "a1c1024b379deeb5ce5eff77af4bc18a024f3a34330d6d0b54c0633454a4cfce"
+	descriptionMd5 hasValue "69bd5cbd96034f709fee36ea9de1a561"
+	homepage hasValue "https://healpix.sourceforge.net"
+	depends hasValue "libc6 (>= 2.15), libgomp1 (>= 6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__libsharp0,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgomp1"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__libsharp0,1,DepAtom__1)
+

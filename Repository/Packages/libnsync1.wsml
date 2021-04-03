@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libnsync1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libnsync1 memberOf Package
+	package hasValue "libnsync1"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "55"
+	maintainer hasValue "Original-Debian Science Maintainers <debian-science-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.23.0-1build1"
+	fileName hasValue "pool/universe/n/nsync/libnsync1_1.23.0-1build1_amd64.deb"
+	size hasValue "17680"
+	md5sum hasValue "6dae9d888ac473b8313469d0668a072b"
+	sha1 hasValue "ed18bfc25278c0f6722668de64020b369f5c132a"
+	sha256 hasValue "a1729e6f9b02e447069966d1000efb62626de340c9cf2d3eb0a06a04710eea94"
+	descriptionMd5 hasValue "5ca9abf8b4be059f692364e470a75608"
+	homepage hasValue "https://github.com/google/nsync"
+	depends hasValue "libc6 (>= 2.17)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.17"
+
+relationInstance depends(P0__libnsync1,0,DepAtom__0)
+

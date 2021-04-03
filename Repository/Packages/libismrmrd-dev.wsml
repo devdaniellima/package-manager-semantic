@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libismrmrd_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libismrmrd_dev memberOf Package
+	package hasValue "libismrmrd-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "80"
+	maintainer hasValue "Original-Debian Med Packaging Team <debian-med-packaging@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.4.0-1build1"
+	fileName hasValue "pool/universe/i/ismrmrd/libismrmrd-dev_1.4.0-1build1_amd64.deb"
+	size hasValue "14932"
+	md5sum hasValue "3c4ae7883fd7fde9cea72295482bd4c2"
+	sha1 hasValue "52fe8f0b4163fb9726178f50ba5517b9cb5537b6"
+	sha256 hasValue "58abc014e0816a5295050330f2bfb99b81cf92ea2f214001977218f1700c787b"
+	descriptionMd5 hasValue "ddf945cd3a75bcf364e523bd7139c5d4"
+	homepage hasValue "http://ismrmrd.github.io/"
+	depends hasValue "libhdf5-dev, libismrmrd1.3 (= 1.4.0-1build1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libhdf5-dev"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libismrmrd_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libismrmrd1.3"
+	comparison hasValue "="
+	version hasValue "1.4.0-1build1"
+
+relationInstance depends(P0__libismrmrd_dev,1,DepAtom__1)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libnewt_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libnewt_dev memberOf Package
+	package hasValue "libnewt-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libdevel"
+	installedSize hasValue "283"
+	maintainer hasValue "Original-Alastair McKinstry <mckinstry@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.52.21-4ubuntu2"
+	fileName hasValue "pool/main/n/newt/libnewt-dev_0.52.21-4ubuntu2_amd64.deb"
+	size hasValue "64320"
+	md5sum hasValue "043adfcc2b7309fdb190519a716de17b"
+	sha1 hasValue "ec8d636f45d3b6c975cc799504fcb88c4b31f30e"
+	sha256 hasValue "858d0f08828c99fe17d1474f97e9d22705a13c646be797312777d24a69651aa5"
+	descriptionMd5 hasValue "4444039a4a6e54b75dae85173c39b133"
+	homepage hasValue "https://pagure.io/newt"
+	depends hasValue "libslang2-dev (>= 2.0.2), libnewt0.52 (= 0.52.21-4ubuntu2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libslang2-dev"
+	comparison hasValue ">="
+	version hasValue "2.0.2"
+
+relationInstance depends(P0__libnewt_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libnewt0.52"
+	comparison hasValue "="
+	version hasValue "0.52.21-4ubuntu2"
+
+relationInstance depends(P0__libnewt_dev,1,DepAtom__1)
+

@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology php_klogger
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__php_klogger memberOf Package
+	package hasValue "php-klogger"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/php"
+	installedSize hasValue "28"
+	maintainer hasValue "Original-Debian PHP PEAR Maintainers <pkg-php-pear@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.2.1-4"
+	fileName hasValue "pool/universe/p/php-klogger/php-klogger_1.2.1-4_all.deb"
+	size hasValue "9060"
+	md5sum hasValue "68a17c6800e7c8e2bc46910c0dffef47"
+	sha1 hasValue "a89153664f51aee35428cb0ef7b79539f9541df1"
+	sha256 hasValue "ff52a9e55866eaa314552d97a94d1ebc564da52fdbff536bee8bc7e1db946e55"
+	descriptionMd5 hasValue "12c6252efa413c41289310809792b2e2"
+	homepage hasValue "https://packagist.org/packages/katzgrau/klogger"
+	depends hasValue "php-common, php-psr-log (>= 1.0.0), php-psr-log (<< 2~~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "php-common"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__php_klogger,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "php-psr-log"
+	comparison hasValue ">="
+	version hasValue "1.0.0"
+
+relationInstance depends(P0__php_klogger,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "php-psr-log"
+	comparison hasValue "<<"
+	version hasValue "2~~"
+
+relationInstance depends(P0__php_klogger,2,DepAtom__2)
+

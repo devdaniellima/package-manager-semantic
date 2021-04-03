@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology node_pkg_dir
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__node_pkg_dir memberOf Package
+	package hasValue "node-pkg-dir"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/web"
+	installedSize hasValue "17"
+	maintainer hasValue "Original-Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "4.2.0-2"
+	fileName hasValue "pool/universe/n/node-pkg-dir/node-pkg-dir_4.2.0-2_all.deb"
+	size hasValue "3932"
+	md5sum hasValue "09d6286c0e5903858275cedd9a43b6f2"
+	sha1 hasValue "d92cb7e0b0843e64a463191577e480929f5632c1"
+	sha256 hasValue "3e027d173b1944598f65eda952d4fcc94fc17f44322be9cb0af27729fc4c0b22"
+	descriptionMd5 hasValue "60057560f626edc628648dd3e935861c"
+	homepage hasValue "https://github.com/sindresorhus/pkg-dir"
+	depends hasValue "nodejs, node-find-up"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "nodejs"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__node_pkg_dir,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "node-find-up"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__node_pkg_dir,1,DepAtom__1)
+

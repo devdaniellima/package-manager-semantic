@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libkf5sane_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libkf5sane_dev memberOf Package
+	package hasValue "libkf5sane-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "59"
+	maintainer hasValue "Original-Debian/Kubuntu Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "19.12.3-0ubuntu1"
+	fileName hasValue "pool/universe/libk/libkf5sane/libkf5sane-dev_19.12.3-0ubuntu1_amd64.deb"
+	size hasValue "12308"
+	md5sum hasValue "5120514f8fb1228185cababd39df0895"
+	sha1 hasValue "b40e5ba6800de1df9147f81f683bc6d5e18bb8aa"
+	sha256 hasValue "6ef73a4bc44ff5c6a9991fb24fa0fb9e777b79a83ab85c44c1a4f13702967807"
+	descriptionMd5 hasValue "9c888fd40eed984d3cd8c91b83806d08"
+	homepage hasValue "https://phabricator.kde.org/source/libksane/"
+	depends hasValue "libkf5sane5 (= 19.12.3-0ubuntu1), qtbase5-dev (>= 5.7.0~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libkf5sane5"
+	comparison hasValue "="
+	version hasValue "19.12.3-0ubuntu1"
+
+relationInstance depends(P0__libkf5sane_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "qtbase5-dev"
+	comparison hasValue ">="
+	version hasValue "5.7.0~"
+
+relationInstance depends(P0__libkf5sane_dev,1,DepAtom__1)
+

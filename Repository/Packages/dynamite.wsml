@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology dynamite
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__dynamite memberOf Package
+	package hasValue "dynamite"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "34"
+	maintainer hasValue "Original-Evgeni Golov <evgeni@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.1.1-2build1"
+	fileName hasValue "pool/universe/d/dynamite/dynamite_0.1.1-2build1_amd64.deb"
+	size hasValue "6208"
+	md5sum hasValue "98b676ee35fb7371667ec6b2ba21efe4"
+	sha1 hasValue "9e9fbdfc615a4fd62d3e28fe715fb315e0384ce5"
+	sha256 hasValue "0228b1499d2c8a6d07e4548214436a7f040e3e15f023eff0318d25b479ccc4ba"
+	descriptionMd5 hasValue "00b801fc1af91c4a40194fcf0a479d48"
+	homepage hasValue "http://sourceforge.net/projects/synce"
+	depends hasValue "libc6 (>= 2.14), libdynamite0"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__dynamite,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libdynamite0"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__dynamite,1,DepAtom__1)
+

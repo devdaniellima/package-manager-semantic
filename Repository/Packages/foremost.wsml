@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology foremost
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__foremost memberOf Package
+	package hasValue "foremost"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "97"
+	maintainer hasValue "Original-Raúl Benencia <rul@kalgan.cc>"
+	architecture hasValue "amd64"
+	version hasValue "1.5.7-9"
+	fileName hasValue "pool/universe/f/foremost/foremost_1.5.7-9_amd64.deb"
+	size hasValue "38764"
+	md5sum hasValue "5b012a48e537da2ec163b791ba4513a6"
+	sha1 hasValue "6f16c6b49c2ab437e2fb49c2ab5404674df0499a"
+	sha256 hasValue "0161accb11f82fe1d0ca56b759a07f6cb30792ae064b9697f42b1a082202418e"
+	descriptionMd5 hasValue "a4c203200ff8fc06c24eec52adcd041b"
+	homepage hasValue "https://sourceforge.net/projects/foremost/"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__foremost,0,DepAtom__0)
+

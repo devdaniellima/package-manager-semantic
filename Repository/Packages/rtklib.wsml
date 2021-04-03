@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology rtklib
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__rtklib memberOf Package
+	package hasValue "rtklib"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/misc"
+	installedSize hasValue "5023"
+	maintainer hasValue "Original-Gürkan Myczko <gurkan@phys.ethz.ch>"
+	architecture hasValue "amd64"
+	version hasValue "2.4.3+dfsg1-2.1build1"
+	fileName hasValue "pool/universe/r/rtklib/rtklib_2.4.3+dfsg1-2.1build1_amd64.deb"
+	size hasValue "918408"
+	md5sum hasValue "9753f144c4269bd89dbdd9a2f7f65987"
+	sha1 hasValue "898ff67125e447c46ba47631f4dbfc2248e4df80"
+	sha256 hasValue "f1d0cf62dad10e75faf45eae2c52c037840722fd171785c7f4a2e54c3abd1682"
+	descriptionMd5 hasValue "4e18576295e37ecdc36b5fd866b76096"
+	homepage hasValue "http://gpspp.sakura.ne.jp/rtklib/rtklib.htm"
+	depends hasValue "libc6 (>= 2.29)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__rtklib,0,DepAtom__0)
+

@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libsoil1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libsoil1 memberOf Package
+	package hasValue "libsoil1"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/libs"
+	installedSize hasValue "109"
+	maintainer hasValue "Original-Debian Games Team <pkg-games-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.07~20080707.dfsg-4"
+	fileName hasValue "pool/universe/libs/libsoil/libsoil1_1.07~20080707.dfsg-4_amd64.deb"
+	size hasValue "43076"
+	md5sum hasValue "cdb8dfd6b2292284d33b63fb81fc80f0"
+	sha1 hasValue "0ad00ca8e1dc878c93a54e0f442aa57be355bdad"
+	sha256 hasValue "de326ec11af1a370ad8d6e6ae18622b2f1cf5a252d64b64e5cc7bfdfb677a313"
+	descriptionMd5 hasValue "592ac35975852881dc92c461ea847d2b"
+	homepage hasValue "http://www.lonesock.net/soil.html"
+	depends hasValue "libc6 (>= 2.14), libgl1-mesa-glx | libgl1"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libsoil1,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgl1-mesa-glx"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libsoil1,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libgl1"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libsoil1,1,DepAtom__2)
+

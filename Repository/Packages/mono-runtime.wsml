@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology mono_runtime
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__mono_runtime memberOf Package
+	package hasValue "mono-runtime"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/interpreters"
+	installedSize hasValue "98"
+	maintainer hasValue "Original-Debian Mono Group <pkg-mono-group@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "6.8.0.105+dfsg-2"
+	fileName hasValue "pool/universe/m/mono/mono-runtime_6.8.0.105+dfsg-2_amd64.deb"
+	size hasValue "14772"
+	md5sum hasValue "59733584a8f86d1054d15aa012bd3636"
+	sha1 hasValue "a55e713fb4dfeb4854e8960da7e3e9ae80be1d7b"
+	sha256 hasValue "13f5141d3d75126d1fe62cf733e5cf822d4b0e398c38e5434338297b0d2c5dd6"
+	description hasValue "Mono runtime - default version"
+	descriptionMd5 hasValue "0ef9550e0b708629302fd4b5f9bdeb39"
+	homepage hasValue "http://www.mono-project.com/"
+	depends hasValue "libc6 (>= 2.2.5), mono-runtime-sgen (= 6.8.0.105+dfsg-2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.2.5"
+
+relationInstance depends(P0__mono_runtime,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "mono-runtime-sgen"
+	comparison hasValue "="
+	version hasValue "6.8.0.105+dfsg-2"
+
+relationInstance depends(P0__mono_runtime,1,DepAtom__1)
+

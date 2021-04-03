@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libflite1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libflite1 memberOf Package
+	package hasValue "libflite1"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/libs"
+	installedSize hasValue "27490"
+	maintainer hasValue "Original-Debian Accessibility Team <pkg-a11y-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.1-release-3"
+	fileName hasValue "pool/universe/f/flite/libflite1_2.1-release-3_amd64.deb"
+	size hasValue "12807788"
+	md5sum hasValue "8d694c16bfe38102a097878eafc994f9"
+	sha1 hasValue "939c42d247615038f000dcd24deaf8f714d304ea"
+	sha256 hasValue "645c959aac9ed832eb5241fb4011a7a1907c08f1aac99c5792828035576e54ca"
+	description hasValue "Small run-time speech synthesis engine - shared libraries"
+	descriptionMd5 hasValue "f5b781eb0e174fa4560e27783c44da62"
+	homepage hasValue "http://www.speech.cs.cmu.edu/flite"
+	depends hasValue "libasound2 (>= 1.0.16), libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libasound2"
+	comparison hasValue ">="
+	version hasValue "1.0.16"
+
+relationInstance depends(P0__libflite1,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libflite1,1,DepAtom__1)
+

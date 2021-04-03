@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology pipexec
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__pipexec memberOf Package
+	package hasValue "pipexec"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "71"
+	maintainer hasValue "Original-Thorsten Alteholz <debian@alteholz.de>"
+	architecture hasValue "amd64"
+	version hasValue "2.5.5-2"
+	fileName hasValue "pool/universe/p/pipexec/pipexec_2.5.5-2_amd64.deb"
+	size hasValue "17520"
+	md5sum hasValue "7c2736b305ea4b6b4d3dc74470a00fed"
+	sha1 hasValue "3e6dc7264977633f2de6260741309abc42ed1457"
+	sha256 hasValue "0e10c11133d36ac9112150a89fc575fba07106372a28cb9e9e2b8adb6b459a30"
+	descriptionMd5 hasValue "eb226c36765d758f7d2355c388ecff23"
+	homepage hasValue "https://github.com/flonatel/pipexec"
+	depends hasValue "libc6 (>= 2.10)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.10"
+
+relationInstance depends(P0__pipexec,0,DepAtom__0)
+

@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ucf
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ucf memberOf Package
+	package hasValue "ucf"
+	packageSource hasValue Source__S1
+	priority hasValue "important"
+	section hasValue "utils"
+	installedSize hasValue "188"
+	maintainer hasValue "Original-Manoj Srivastava <srivasta@debian.org>"
+	architecture hasValue "all"
+	version hasValue "3.0038+nmu1"
+	fileName hasValue "pool/main/u/ucf/ucf_3.0038+nmu1_all.deb"
+	size hasValue "51620"
+	md5sum hasValue "4f9b6de36dce0fc25483ab8d098dd5a9"
+	sha1 hasValue "113e451321b2dc78d43f0bbfc58a08051fe8de66"
+	sha256 hasValue "0fd6782ac99f3d9814960edefd5cceaa84f3a33feec6a149f7edf59431f3a3ac"
+	description hasValue "Update Configuration File(s): preserva as mudanças do usuário para os arquivos de configuração"
+	descriptionMd5 hasValue "83e3ff2859524c831253d938da348878"
+	depends hasValue "debconf (>= 1.5.19), coreutils (>= 5.91), sensible-utils"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "debconf"
+	comparison hasValue ">="
+	version hasValue "1.5.19"
+
+relationInstance depends(P0__ucf,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "coreutils"
+	comparison hasValue ">="
+	version hasValue "5.91"
+
+relationInstance depends(P0__ucf,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "sensible-utils"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ucf,2,DepAtom__2)
+

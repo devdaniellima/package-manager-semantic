@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology mrtg_contrib
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__mrtg_contrib memberOf Package
+	package hasValue "mrtg-contrib"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/net"
+	installedSize hasValue "1702"
+	maintainer hasValue "Original-Sandro Tosi <morph@debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.17.7-1ubuntu1"
+	fileName hasValue "pool/universe/m/mrtg/mrtg-contrib_2.17.7-1ubuntu1_all.deb"
+	size hasValue "377384"
+	md5sum hasValue "1e9cc6dbf758478fbd80ba83687a1312"
+	sha1 hasValue "e6471934ee63061f63c0d866878113a0d8ffd9d3"
+	sha256 hasValue "025efa78664da8c33a16459c07e34acf089ae88b3ae9c158a899ee51ef0c04d1"
+	descriptionMd5 hasValue "aa8043d2694b89c984b19f2ed06d405e"
+	homepage hasValue "http://oss.oetiker.ch/mrtg"
+	depends hasValue "mrtg (>= 2.17.7-1ubuntu1), mrtg (<< 2.17.7-1ubuntu1.1~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "mrtg"
+	comparison hasValue ">="
+	version hasValue "2.17.7-1ubuntu1"
+
+relationInstance depends(P0__mrtg_contrib,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "mrtg"
+	comparison hasValue "<<"
+	version hasValue "2.17.7-1ubuntu1.1~"
+
+relationInstance depends(P0__mrtg_contrib,1,DepAtom__1)
+

@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology aspell_hy
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__aspell_hy memberOf Package
+	package hasValue "aspell-hy"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/text"
+	installedSize hasValue "320"
+	maintainer hasValue "Original-Alan Baghumian <alan@technotux.org>"
+	architecture hasValue "all"
+	version hasValue "0.10.0-0-3"
+	provides hasValue "aspell-dictionary"
+	fileName hasValue "pool/universe/a/aspell-hy/aspell-hy_0.10.0-0-3_all.deb"
+	size hasValue "252536"
+	md5sum hasValue "824c9ba31b630b64a3d440a26716ab11"
+	sha1 hasValue "abbc31b01653c7ff16deb99e094e5af421717c66"
+	sha256 hasValue "b2f90a05c3fc3bccbff6385ddd39e7e1d89644c9b66a6221529ee95964c01976"
+	description hasValue "dicionário armênio para o GNU Aspell"
+	descriptionMd5 hasValue "254e3ec2bb3439b21b42de2129be13c0"
+	homepage hasValue "ftp://ftp.gnu.org/gnu/aspell/dict/hy/"
+	depends hasValue "aspell (>= 0.60.4), dictionaries-common (>= 0.70.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "aspell"
+	comparison hasValue ">="
+	version hasValue "0.60.4"
+
+relationInstance depends(P0__aspell_hy,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "dictionaries-common"
+	comparison hasValue ">="
+	version hasValue "0.70.0"
+
+relationInstance depends(P0__aspell_hy,1,DepAtom__1)
+

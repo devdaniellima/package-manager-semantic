@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libfaudio_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libfaudio_dev memberOf Package
+	package hasValue "libfaudio-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "147"
+	maintainer hasValue "Original-Debian Wine Team <debian-wine@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "20.04-2"
+	fileName hasValue "pool/universe/f/faudio/libfaudio-dev_20.04-2_amd64.deb"
+	size hasValue "28336"
+	md5sum hasValue "308ffd6628d59ae87adf5142836e5fcc"
+	sha1 hasValue "58c21ddf81a2de4d30bc9d3c0dfe70def97075cd"
+	sha256 hasValue "38ca539e43d33ff5be0fbcc6edaa2528ece664c446176dd03ab279e7d952c85d"
+	descriptionMd5 hasValue "e1aa8fad3c5d4085884bbe480265a0c1"
+	homepage hasValue "https://github.com/FNA-XNA/FAudio"
+	depends hasValue "libc6 (>= 2.4), libfaudio0 (= 20.04-2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libfaudio_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libfaudio0"
+	comparison hasValue "="
+	version hasValue "20.04-2"
+
+relationInstance depends(P0__libfaudio_dev,1,DepAtom__1)
+

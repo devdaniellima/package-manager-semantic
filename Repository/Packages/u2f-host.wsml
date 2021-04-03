@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology u2f_host
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__u2f_host memberOf Package
+	package hasValue "u2f-host"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/utils"
+	installedSize hasValue "41"
+	maintainer hasValue "Original-Debian Authentication Maintainers <team+auth@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.1.10-1"
+	fileName hasValue "pool/universe/libu/libu2f-host/u2f-host_1.1.10-1_amd64.deb"
+	size hasValue "8984"
+	md5sum hasValue "f249d6380d1af1d84bedd718b44090f4"
+	sha1 hasValue "7ff0efb49ced3d93292a28ab2fc4e6476c9b3a19"
+	sha256 hasValue "f6ab3cf9fcfade90bd6459c355489abd002b04fff34b7c5922b04e3cd416a551"
+	descriptionMd5 hasValue "237819570c3e299e687665f1f0cba2cc"
+	homepage hasValue "https://developers.yubico.com/libu2f-host/"
+	depends hasValue "libc6 (>= 2.14), libu2f-host0 (>= 1.1.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__u2f_host,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libu2f-host0"
+	comparison hasValue ">="
+	version hasValue "1.1.0"
+
+relationInstance depends(P0__u2f_host,1,DepAtom__1)
+

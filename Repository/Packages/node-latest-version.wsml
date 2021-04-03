@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology node_latest_version
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__node_latest_version memberOf Package
+	package hasValue "node-latest-version"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/javascript"
+	installedSize hasValue "16"
+	maintainer hasValue "Original-Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "3.1.0-1"
+	fileName hasValue "pool/universe/n/node-latest-version/node-latest-version_3.1.0-1_all.deb"
+	size hasValue "3164"
+	md5sum hasValue "74b1cce0fd7ac779d6daee9700681840"
+	sha1 hasValue "35d5c9f772a4e2181d57123250df9e8d720dfbdc"
+	sha256 hasValue "5c6e774c71c6db58b44fee5b9923e845b87463591e10d0d4abb5072c18810241"
+	descriptionMd5 hasValue "919b74f6fc13e47c1bd3cde439e39818"
+	homepage hasValue "https://github.com/sindresorhus/latest-version#readme"
+	depends hasValue "nodejs, node-package-json (>= 4.0.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "nodejs"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__node_latest_version,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "node-package-json"
+	comparison hasValue ">="
+	version hasValue "4.0.0"
+
+relationInstance depends(P0__node_latest_version,1,DepAtom__1)
+

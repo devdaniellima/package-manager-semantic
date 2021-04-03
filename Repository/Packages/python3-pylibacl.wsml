@@ -1,0 +1,75 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python3_pylibacl
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python3_pylibacl memberOf Package
+	package hasValue "python3-pylibacl"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "python"
+	installedSize hasValue "72"
+	maintainer hasValue "Original-Iustin Pop <iustin@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.5.4-2"
+	provides hasValue "python3.8-pylibacl"
+	fileName hasValue "pool/main/p/python-pylibacl/python3-pylibacl_0.5.4-2_amd64.deb"
+	size hasValue "16396"
+	md5sum hasValue "bba8fb87acf20298eea539e70a2cdb6b"
+	sha1 hasValue "daf7a6eb5c7f67242ae43d6cec6c6bb02b6a91c8"
+	sha256 hasValue "d384a1dd5d89d9ca93f93f119c336cdb173263421d999bed154cce7b44c4a999"
+	descriptionMd5 hasValue "4bd59e818435be53a6aa0808ebf948f8"
+	homepage hasValue "http://pylibacl.k1024.org/"
+	depends hasValue "python3 (<< 3.9), python3 (>= 3.8~), libacl1 (>= 2.2.23), libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3"
+	comparison hasValue "<<"
+	version hasValue "3.9"
+
+relationInstance depends(P0__python3_pylibacl,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3"
+	comparison hasValue ">="
+	version hasValue "3.8~"
+
+relationInstance depends(P0__python3_pylibacl,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libacl1"
+	comparison hasValue ">="
+	version hasValue "2.2.23"
+
+relationInstance depends(P0__python3_pylibacl,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__python3_pylibacl,3,DepAtom__3)
+

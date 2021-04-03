@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libjerasure2
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libjerasure2 memberOf Package
+	package hasValue "libjerasure2"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "libs"
+	installedSize hasValue "72"
+	maintainer hasValue "Original-Debian OpenStack <openstack-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.0.0+2017.04.10.git.de1739cc84-1"
+	fileName hasValue "pool/main/j/jerasure/libjerasure2_2.0.0+2017.04.10.git.de1739cc84-1_amd64.deb"
+	size hasValue "26798"
+	md5sum hasValue "6b7a9a36de07d843e94092bd69d4a56c"
+	sha1 hasValue "fb98ec6d9360b1d671195db69f984216422bbea7"
+	sha256 hasValue "1a2543a463491d23cfa551881804ec9cf3a12ce02622974cc0ad11f73c146f0d"
+	description hasValue "forward error correction erasure channel library - shared library"
+	descriptionMd5 hasValue "52f44ea46b6015a3e1eb58abe90111f5"
+	homepage hasValue "http://jerasure.org/"
+	depends hasValue "libc6 (>= 2.14), libgf-complete1 (>= 1.0.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libjerasure2,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgf-complete1"
+	comparison hasValue ">="
+	version hasValue "1.0.2"
+
+relationInstance depends(P0__libjerasure2,1,DepAtom__1)
+

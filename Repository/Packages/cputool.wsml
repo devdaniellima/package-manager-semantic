@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology cputool
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__cputool memberOf Package
+	package hasValue "cputool"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "33"
+	maintainer hasValue "Original-Nigel Kukard <nkukard@lbsd.net>"
+	architecture hasValue "amd64"
+	version hasValue "0.0.8-2build1"
+	fileName hasValue "pool/universe/c/cputool/cputool_0.0.8-2build1_amd64.deb"
+	size hasValue "11040"
+	md5sum hasValue "173e4198894a28c58037fec7853f5254"
+	sha1 hasValue "7cc21ddb70b2788ee9245cdd7321ffa6ccdbea86"
+	sha256 hasValue "e512dda1b9948e8682c655f93e8c9e2e319d8100510fd061ae64116b0a5b1315"
+	descriptionMd5 hasValue "e9fa1076afa4033be29e0fd68210b9ff"
+	homepage hasValue "http://gitlab.devlabs.linuxassist.net/cputool/cputool"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__cputool,0,DepAtom__0)
+

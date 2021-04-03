@@ -1,0 +1,66 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology sdop
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__sdop memberOf Package
+	package hasValue "sdop"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/text"
+	installedSize hasValue "2249"
+	maintainer hasValue "Original-Andreas Metzler <ametzler@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.81-1"
+	fileName hasValue "pool/universe/s/sdop/sdop_0.81-1_amd64.deb"
+	size hasValue "548692"
+	md5sum hasValue "4525523ca63bfcd614022f0323027d05"
+	sha1 hasValue "0438f60ea03b7d248f58d69ab773de0b5a841b90"
+	sha256 hasValue "b843556b9bccc125e836b5c4f4957f41732733b432e55921a351ea487390f64c"
+	descriptionMd5 hasValue "94e505dbaf94081148051f9a47ddde60"
+	depends hasValue "libc6 (>= 2.14), libjpeg8 (>= 8c), libpng16-16 (>= 1.6.2-1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__sdop,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libjpeg8"
+	comparison hasValue ">="
+	version hasValue "8c"
+
+relationInstance depends(P0__sdop,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libpng16-16"
+	comparison hasValue ">="
+	version hasValue "1.6.2-1"
+
+relationInstance depends(P0__sdop,2,DepAtom__2)
+

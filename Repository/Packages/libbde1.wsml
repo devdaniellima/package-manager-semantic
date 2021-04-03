@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libbde1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libbde1 memberOf Package
+	package hasValue "libbde1"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "1405"
+	maintainer hasValue "Original-Debian Security Tools <team+pkg-security@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "20190102-1.1"
+	fileName hasValue "pool/universe/libb/libbde/libbde1_20190102-1.1_amd64.deb"
+	size hasValue "447640"
+	md5sum hasValue "00facfaba45dd06721905cb11947c8c3"
+	sha1 hasValue "308437ed711a619f887f56bb4c7721a2ce1d32ab"
+	sha256 hasValue "4fa6056dee249317e1934506e5ad2fc2c5c36033fb9c84246ad212fc3405cabc"
+	descriptionMd5 hasValue "e8855bb0882e361448b4ce50c1634b6b"
+	homepage hasValue "https://github.com/libyal/libbde"
+	depends hasValue "libbfio1 (>= 20120425), libc6 (>= 2.17)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libbfio1"
+	comparison hasValue ">="
+	version hasValue "20120425"
+
+relationInstance depends(P0__libbde1,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.17"
+
+relationInstance depends(P0__libbde1,1,DepAtom__1)
+

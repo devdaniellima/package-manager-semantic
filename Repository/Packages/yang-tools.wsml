@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology yang_tools
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__yang_tools memberOf Package
+	package hasValue "yang-tools"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "194"
+	maintainer hasValue "Original-David Lamparter <equinox-debian@diac24.net>"
+	architecture hasValue "amd64"
+	version hasValue "0.16.105-3build1"
+	fileName hasValue "pool/universe/liby/libyang/yang-tools_0.16.105-3build1_amd64.deb"
+	size hasValue "79136"
+	md5sum hasValue "e86bb439c84cb9abe0cc4c64b1a77901"
+	sha1 hasValue "7bfbbb10402dead53a0b5e1919ec073b258541fa"
+	sha256 hasValue "e758d24fe5587e2bd8806066d62eb87dbbde7a09b60e1db86889d4bfe17cf2b5"
+	descriptionMd5 hasValue "fdc769da03903182b8dfae207b816c19"
+	homepage hasValue "https://netopeer.liberouter.org/"
+	depends hasValue "libc6 (>= 2.14), libyang0.16 (= 0.16.105-3build1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__yang_tools,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libyang0.16"
+	comparison hasValue "="
+	version hasValue "0.16.105-3build1"
+
+relationInstance depends(P0__yang_tools,1,DepAtom__1)
+

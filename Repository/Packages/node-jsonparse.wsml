@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology node_jsonparse
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__node_jsonparse memberOf Package
+	package hasValue "node-jsonparse"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/web"
+	installedSize hasValue "33"
+	maintainer hasValue "Original-Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.3.1-7"
+	fileName hasValue "pool/universe/n/node-jsonparse/node-jsonparse_1.3.1-7_all.deb"
+	size hasValue "7004"
+	md5sum hasValue "086edd2f5a81285f9b9ea062e28132f7"
+	sha1 hasValue "192cab5fd1ddbdc833f2131ed36d60b1bd308dcc"
+	sha256 hasValue "151012fb85df63aa5d8b4b13e628b8eea409b5bd222a4ffd0dcc04ac17e6c990"
+	descriptionMd5 hasValue "aeb3c11f7569476d2647cdf3dea6d48f"
+	homepage hasValue "https://github.com/creationix/jsonparse"
+	depends hasValue "nodejs (>= 6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "nodejs"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__node_jsonparse,0,DepAtom__0)
+

@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology clex
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__clex memberOf Package
+	package hasValue "clex"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/misc"
+	installedSize hasValue "459"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "4.6.patch8-1"
+	fileName hasValue "pool/universe/c/clex/clex_4.6.patch8-1_amd64.deb"
+	size hasValue "126036"
+	md5sum hasValue "0735ef55a382d2ee23552d9270f3bd7f"
+	sha1 hasValue "12eeafcd73eee8fc0e596832d830e508c83a19e2"
+	sha256 hasValue "600bdf9c726caeb4bf9bcefbf32e62c0ece5ccf03c679457c2fd80f8c6ae156f"
+	description hasValue "gerenciador de arquivos em linha de comando que usa a biblioteca ncurses"
+	descriptionMd5 hasValue "d5b3423cfcdea8ca134d03f16e60b835"
+	homepage hasValue "http://www.clex.sk"
+	depends hasValue "libc6 (>= 2.4), libncursesw6 (>= 6), libtinfo6 (>= 6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__clex,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libncursesw6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__clex,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libtinfo6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__clex,2,DepAtom__2)
+

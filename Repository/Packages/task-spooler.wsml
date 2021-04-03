@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology task_spooler
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__task_spooler memberOf Package
+	package hasValue "task-spooler"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/misc"
+	installedSize hasValue "85"
+	maintainer hasValue "Original-Alexander Inyukhin <shurick@sectorb.msk.ru>"
+	architecture hasValue "amd64"
+	version hasValue "1.0-1"
+	fileName hasValue "pool/universe/t/task-spooler/task-spooler_1.0-1_amd64.deb"
+	size hasValue "33438"
+	md5sum hasValue "ededfd0103d034efc4dbbc446a3e7333"
+	sha1 hasValue "efcb59659b7b8cb81c38a2901f5ec3d82bc4c826"
+	sha256 hasValue "a4d32c569b13f1b4488b19ae6a46683fcd38c0caa2ac1c6d036f4ea086182449"
+	descriptionMd5 hasValue "2770bf2e5456ac7ac05f66f704bece4d"
+	homepage hasValue "http://viric.name/soft/ts/"
+	depends hasValue "libc6 (>= 2.15)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__task_spooler,0,DepAtom__0)
+

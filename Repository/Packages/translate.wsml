@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology translate
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__translate memberOf Package
+	package hasValue "translate"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/text"
+	installedSize hasValue "72"
+	maintainer hasValue "Original-Anibal Monsalve Salazar <anibal@debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.6-11"
+	fileName hasValue "pool/universe/t/translate/translate_0.6-11_all.deb"
+	size hasValue "6470"
+	md5sum hasValue "27356989d13fb1089a2a3a17a0c09301"
+	sha1 hasValue "d24b498399a93fc5e6ffbb9a4a4d96de01980e4d"
+	sha256 hasValue "2c741faa08bd4ddeefe07b18897db6b9724048bd9a29877470d2ede8afa66201"
+	description hasValue "traduz palavras do inglês para o alemão e vice-versa"
+	descriptionMd5 hasValue "ab7f4897c2d26dad06e13b9cd8b9585a"
+	depends hasValue "trans-de-en (>= 1.4-1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "trans-de-en"
+	comparison hasValue ">="
+	version hasValue "1.4-1"
+
+relationInstance depends(P0__translate,0,DepAtom__0)
+

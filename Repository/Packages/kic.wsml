@@ -1,0 +1,59 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology kic
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__kic memberOf Package
+	package hasValue "kic"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "multiverse/x11"
+	installedSize hasValue "821"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.4a-2build1"
+	fileName hasValue "pool/multiverse/k/kic/kic_2.4a-2build1_amd64.deb"
+	size hasValue "226904"
+	md5sum hasValue "d72d55bacf961a020316f37710567a4b"
+	sha1 hasValue "517b6c49a74b90c3cd9f5ecc1fc046d5b6363293"
+	sha256 hasValue "df49c88c4529bb14e92d2605911ae8afc0ca6740972948e6952e07c684a794f1"
+	descriptionMd5 hasValue "1fb3eb6f319849a5e679555bc413d946"
+	depends hasValue "libc6 (>= 2.14), libx11-6"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__kic,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libx11-6"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__kic,1,DepAtom__1)
+

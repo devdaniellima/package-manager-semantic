@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libgetdata_tools
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libgetdata_tools memberOf Package
+	package hasValue "libgetdata-tools"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/libs"
+	installedSize hasValue "57"
+	maintainer hasValue "Original-Debian Science Maintainers <debian-science-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.10.0-6build3"
+	fileName hasValue "pool/universe/libg/libgetdata/libgetdata-tools_0.10.0-6build3_amd64.deb"
+	size hasValue "14036"
+	md5sum hasValue "ddb6f049ce3d8da88f04578a6a851c45"
+	sha1 hasValue "8e4f02fb4df1c86ef20c8a12828d9f235bf78212"
+	sha256 hasValue "2745ef48faa75e8eee71eadd1b7253320a3c365267c1ccfa73b572d117de2561"
+	descriptionMd5 hasValue "02624a5c377e2d5506d7c770d07c672c"
+	homepage hasValue "https://getdata.sourceforge.net/"
+	depends hasValue "libgetdata8 (= 0.10.0-6build3), libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libgetdata8"
+	comparison hasValue "="
+	version hasValue "0.10.0-6build3"
+
+relationInstance depends(P0__libgetdata_tools,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libgetdata_tools,1,DepAtom__1)
+

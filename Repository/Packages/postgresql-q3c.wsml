@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology postgresql_q3c
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__postgresql_q3c memberOf Package
+	package hasValue "postgresql-q3c"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/database"
+	installedSize hasValue "3297"
+	maintainer hasValue "Original-Debian PostgreSQL Maintainers <team+postgresql@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.8.2-1"
+	provides hasValue "postgresql-12-q3c"
+	fileName hasValue "pool/universe/p/postgresql-q3c/postgresql-q3c_1.8.2-1_amd64.deb"
+	size hasValue "159868"
+	md5sum hasValue "e4f76c7549c6a3bd4a541e292c49db60"
+	sha1 hasValue "2914af8cab27aa5da0513468e0ef61e7b64f7f85"
+	sha256 hasValue "ccf7e98d2097bf6159fca1770a28a967172d04230997c4f1c1bccd7b203a8b3c"
+	descriptionMd5 hasValue "d89d9a4a260199137be203b2078c57da"
+	homepage hasValue "http://www.sai.msu.su/~megera/wiki/SkyPixelization"
+	depends hasValue "postgresql-12, libc6 (>= 2.29)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "postgresql-12"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__postgresql_q3c,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__postgresql_q3c,1,DepAtom__1)
+

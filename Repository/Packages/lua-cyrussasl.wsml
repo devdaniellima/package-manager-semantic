@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology lua_cyrussasl
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__lua_cyrussasl memberOf Package
+	package hasValue "lua-cyrussasl"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/interpreters"
+	installedSize hasValue "116"
+	maintainer hasValue "Original-Enrico Tassi <gareuselesinge@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.1.0-1"
+	provides hasValue "lua5.1-cyrussasl, lua5.2-cyrussasl, lua5.3-cyrussasl"
+	fileName hasValue "pool/universe/l/lua-cyrussasl/lua-cyrussasl_1.1.0-1_amd64.deb"
+	size hasValue "13492"
+	md5sum hasValue "82d9b2b3bbf15a181615343e57bf3b6d"
+	sha1 hasValue "2c46db721e379d750ce09f6272584581980829eb"
+	sha256 hasValue "e35ee14f159d9124fb971b39e255e3f691ed7607c8fb4d1f94da7ad2e89ce576"
+	descriptionMd5 hasValue "f5b686eef47b0a5a0246bc446cee6028"
+	homepage hasValue "http://github.com/JorjBauer/lua-cyrussasl"
+	depends hasValue "libc6 (>= 2.14), libsasl2-2 (>= 2.1.27+dfsg)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__lua_cyrussasl,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libsasl2-2"
+	comparison hasValue ">="
+	version hasValue "2.1.27+dfsg"
+
+relationInstance depends(P0__lua_cyrussasl,1,DepAtom__1)
+

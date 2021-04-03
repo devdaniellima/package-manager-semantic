@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology cvs_mailcommit
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__cvs_mailcommit memberOf Package
+	package hasValue "cvs-mailcommit"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "29"
+	maintainer hasValue "Original-Martin Schulze <joey@debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.19-2.1"
+	fileName hasValue "pool/universe/c/cvs-mailcommit/cvs-mailcommit_1.19-2.1_all.deb"
+	size hasValue "11152"
+	md5sum hasValue "ba8c34189c7fd0eba169319eb2754017"
+	sha1 hasValue "75869ec66f12b51f7b67171dd51981696a0c37b9"
+	sha256 hasValue "655d4e176880e2fb6ef5ac0bd7ee92081c1965fbcda13a281c03ba0447d03552"
+	description hasValue "envia efetivações CVS por e-mail"
+	descriptionMd5 hasValue "fa14c6bd9547d070cf2fdbc89ca2118a"
+	depends hasValue "postfix | mail-transport-agent, rcs"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "postfix"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__cvs_mailcommit,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "mail-transport-agent"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__cvs_mailcommit,0,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "rcs"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__cvs_mailcommit,1,DepAtom__2)
+

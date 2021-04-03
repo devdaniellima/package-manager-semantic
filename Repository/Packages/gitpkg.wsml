@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gitpkg
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gitpkg memberOf Package
+	package hasValue "gitpkg"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "112"
+	maintainer hasValue "Original-Ron Lee <ron@debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.29"
+	fileName hasValue "pool/universe/g/gitpkg/gitpkg_0.29_all.deb"
+	size hasValue "39736"
+	md5sum hasValue "609b4f0f6dcc40867401d555bf216660"
+	sha1 hasValue "1d2d40aca0f0295ba7dbd270a2f7f3de1a236252"
+	sha256 hasValue "eb07f299913b24db2f617f03f271c2df88ecbbed6d146a623fcc53ce385fc8d7"
+	description hasValue "ferramentas para manter pacotes Debian com git"
+	descriptionMd5 hasValue "57ae8c97d20a1a87539651805ecee9aa"
+	depends hasValue "git (>= 1:1.7.0), dpkg-dev"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "git"
+	comparison hasValue ">="
+	version hasValue "1:1.7.0"
+
+relationInstance depends(P0__gitpkg,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "dpkg-dev"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__gitpkg,1,DepAtom__1)
+

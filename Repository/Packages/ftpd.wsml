@@ -1,0 +1,85 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ftpd
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ftpd memberOf Package
+	package hasValue "ftpd"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/net"
+	installedSize hasValue "130"
+	maintainer hasValue "Original-Mats Erik Andersson <mats.andersson@gisladisker.se>"
+	architecture hasValue "amd64"
+	version hasValue "0.17-36.2"
+	replaces hasValue "netstd"
+	provides hasValue "ftp-server"
+	conflicts hasValue "ftp-server"
+	fileName hasValue "pool/universe/l/linux-ftpd/ftpd_0.17-36.2_amd64.deb"
+	size hasValue "47496"
+	md5sum hasValue "6d51125392a746c2a0a316657eac3ad8"
+	sha1 hasValue "649a71aecb9a42f9cb4e76f5003d9e4a03a1173b"
+	sha256 hasValue "7a3762a98e44b6a5ff193865e81cc2c9b229521efef5fc16cad936f579f78d8a"
+	description hasValue "servidor de FTP (File Transfer Protocol - Protocolo de Transferência de Arquivos)"
+	descriptionMd5 hasValue "c8a3d27dbf865e8912a8563dd06a336c"
+	homepage hasValue "http://ftp.uk.linux.org/pub/linux/Networking/netkit/"
+	depends hasValue "openbsd-inetd | inet-superserver, libpam-modules, libc6 (>= 2.28), libpam0g (>= 0.99.7.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "openbsd-inetd"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ftpd,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "inet-superserver"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ftpd,0,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libpam-modules"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ftpd,1,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.28"
+
+relationInstance depends(P0__ftpd,2,DepAtom__3)
+
+instance DepAtom__4 memberOf DependencyAtom
+	package hasValue "libpam0g"
+	comparison hasValue ">="
+	version hasValue "0.99.7.1"
+
+relationInstance depends(P0__ftpd,3,DepAtom__4)
+

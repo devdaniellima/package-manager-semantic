@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libminimap_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libminimap_dev memberOf Package
+	package hasValue "libminimap-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "122"
+	maintainer hasValue "Original-Debian Med Packaging Team <debian-med-packaging@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.2-4"
+	fileName hasValue "pool/universe/m/minimap/libminimap-dev_0.2-4_amd64.deb"
+	size hasValue "33256"
+	md5sum hasValue "ec1dd4964c7ce1a4e8fd235efc75d917"
+	sha1 hasValue "7b90319f26491673c18867bfb05f1f040e07f64c"
+	sha256 hasValue "77f8dd8ceb1090cae3f9b8f11d632e08c60d1f0d085301794763737294cbd9cd"
+	descriptionMd5 hasValue "647ab7371e272e602da39011f6ce9161"
+	homepage hasValue "https://github.com/lh3/minimap"
+	depends hasValue "libminimap0 (= 0.2-4), zlib1g-dev"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libminimap0"
+	comparison hasValue "="
+	version hasValue "0.2-4"
+
+relationInstance depends(P0__libminimap_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "zlib1g-dev"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libminimap_dev,1,DepAtom__1)
+

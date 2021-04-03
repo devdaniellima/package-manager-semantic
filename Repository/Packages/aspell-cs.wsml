@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology aspell_cs
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__aspell_cs memberOf Package
+	package hasValue "aspell-cs"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/text"
+	installedSize hasValue "1035"
+	maintainer hasValue "Original-Miroslav Kure <kurem@debian.cz>"
+	architecture hasValue "all"
+	version hasValue "0.51.0-1"
+	provides hasValue "aspell-dictionary"
+	fileName hasValue "pool/universe/a/aspell-cs/aspell-cs_0.51.0-1_all.deb"
+	size hasValue "1002298"
+	md5sum hasValue "963fd5c23d5d58bb0367e2945b93ddb5"
+	sha1 hasValue "3270cada1ca1c87bd6729dbae33e4463d8d21465"
+	sha256 hasValue "4fda7b381c9816a0dac1c9ecc8d9a0c83351fd555c506945cadf547533cf264c"
+	description hasValue "dicionário tcheco para o GNU Aspell"
+	descriptionMd5 hasValue "166da7b47282ee84e409efcc75c2432c"
+	depends hasValue "aspell (>= 0.60.3-3), dictionaries-common (>= 0.49.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "aspell"
+	comparison hasValue ">="
+	version hasValue "0.60.3-3"
+
+relationInstance depends(P0__aspell_cs,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "dictionaries-common"
+	comparison hasValue ">="
+	version hasValue "0.49.2"
+
+relationInstance depends(P0__aspell_cs,1,DepAtom__1)
+

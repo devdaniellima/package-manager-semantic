@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology mfoc
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__mfoc memberOf Package
+	package hasValue "mfoc"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "69"
+	maintainer hasValue "Original-Debian Security Tools <team+pkg-security@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.10.7+git20180724-1"
+	fileName hasValue "pool/universe/m/mfoc/mfoc_0.10.7+git20180724-1_amd64.deb"
+	size hasValue "24684"
+	md5sum hasValue "48151af341e791f9d332d77d4e2e26ab"
+	sha1 hasValue "a49054caefadc87941b176c9c8335d7e5e17e2b1"
+	sha256 hasValue "e9355584c3909e392793d039af4d90a89035b8964270773eb544ed0e6d6e5861"
+	descriptionMd5 hasValue "9a9def5bbb3ba307f326233b2cbc11a9"
+	homepage hasValue "https://github.com/nfc-tools/mfoc"
+	depends hasValue "libc6 (>= 2.10), libnfc5 (>= 1.7.0~rc7)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.10"
+
+relationInstance depends(P0__mfoc,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libnfc5"
+	comparison hasValue ">="
+	version hasValue "1.7.0~rc7"
+
+relationInstance depends(P0__mfoc,1,DepAtom__1)
+

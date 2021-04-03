@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libadacgi3
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libadacgi3 memberOf Package
+	package hasValue "libadacgi3"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "81"
+	maintainer hasValue "Original-Phil Brooke <pjb@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.6-23"
+	fileName hasValue "pool/universe/a/adacgi/libadacgi3_1.6-23_amd64.deb"
+	size hasValue "27012"
+	md5sum hasValue "5fa2c7b23702615c963163f136a09142"
+	sha1 hasValue "791251042f64073b5b2d8855991b3210dff9fc15"
+	sha256 hasValue "6396b02e5bc93b381214da8d1db938c5952d79493c0677e3318327bdc7441f12"
+	description hasValue "Ada CGI interface: shared library"
+	descriptionMd5 hasValue "da0ee1d23ca5c3bd75ce2a44d7695b9a"
+	homepage hasValue "http://www.dwheeler.com/adacgi"
+	depends hasValue "libc6 (>= 2.14), libgcc-s1 (>= 3.0), libgnat-9 (>= 9.2.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libadacgi3,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgcc-s1"
+	comparison hasValue ">="
+	version hasValue "3.0"
+
+relationInstance depends(P0__libadacgi3,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libgnat-9"
+	comparison hasValue ">="
+	version hasValue "9.2.1"
+
+relationInstance depends(P0__libadacgi3,2,DepAtom__2)
+

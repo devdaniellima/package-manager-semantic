@@ -1,0 +1,74 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology squid_deb_proxy
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__squid_deb_proxy memberOf Package
+	package hasValue "squid-deb-proxy"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/net"
+	installedSize hasValue "64"
+	maintainer hasValue "Original-Michael Vogt <mvo@debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.8.15"
+	fileName hasValue "pool/universe/s/squid-deb-proxy/squid-deb-proxy_0.8.15_all.deb"
+	size hasValue "12608"
+	md5sum hasValue "4d4e6d9e949687cf55c58b58675e2ac5"
+	sha1 hasValue "2cd92514c33e4d52a8cace65b1905c868fc0df8d"
+	sha256 hasValue "aa6a88dbd8f4a33f991df6c6f7a91a6d186c588d07462af5219e936d1173f32d"
+	descriptionMd5 hasValue "4497a417bd9b0636a1d4551833596b68"
+	homepage hasValue "https://launchpad.net/squid-deb-proxy"
+	depends hasValue "lsb-base, squid, debconf (>= 0.5) | debconf-2.0"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "lsb-base"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__squid_deb_proxy,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "squid"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__squid_deb_proxy,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "debconf"
+	comparison hasValue ">="
+	version hasValue "0.5"
+
+relationInstance depends(P0__squid_deb_proxy,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "debconf-2.0"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__squid_deb_proxy,2,DepAtom__3)
+

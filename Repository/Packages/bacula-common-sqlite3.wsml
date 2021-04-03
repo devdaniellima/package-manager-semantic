@@ -1,0 +1,69 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology bacula_common_sqlite3
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__bacula_common_sqlite3 memberOf Package
+	package hasValue "bacula-common-sqlite3"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "49"
+	maintainer hasValue "Original-Debian Bacula Team <pkg-bacula-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "9.4.2-2ubuntu5"
+	conflicts hasValue "bacula-common-mysql, bacula-common-pgsql"
+	fileName hasValue "pool/universe/b/bacula/bacula-common-sqlite3_9.4.2-2ubuntu5_amd64.deb"
+	size hasValue "9752"
+	md5sum hasValue "5da2c7b32e04272e2f694f34382bc329"
+	sha1 hasValue "442c560609836c265720a99331ca22c8b8c723e9"
+	sha256 hasValue "16d3aeec5eddd67197cac334afe137f516bdfce3600d5f06171cf9550066048e"
+	description hasValue "network backup service - SQLite v3 common files"
+	descriptionMd5 hasValue "5dd5383fa711d37f105290c46d19905e"
+	homepage hasValue "http://www.bacula.org/"
+	depends hasValue "bacula-common (= 9.4.2-2ubuntu5), libc6 (>= 2.4), libsqlite3-0 (>= 3.5.9)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "bacula-common"
+	comparison hasValue "="
+	version hasValue "9.4.2-2ubuntu5"
+
+relationInstance depends(P0__bacula_common_sqlite3,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__bacula_common_sqlite3,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libsqlite3-0"
+	comparison hasValue ">="
+	version hasValue "3.5.9"
+
+relationInstance depends(P0__bacula_common_sqlite3,2,DepAtom__2)
+

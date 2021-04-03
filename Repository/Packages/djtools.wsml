@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology djtools
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__djtools memberOf Package
+	package hasValue "djtools"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/text"
+	installedSize hasValue "210"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.2.7build2"
+	fileName hasValue "pool/universe/d/djtools/djtools_1.2.7build2_amd64.deb"
+	size hasValue "152852"
+	md5sum hasValue "c5955a4c39161fa79d1924826dfe7083"
+	sha1 hasValue "0a8ef67c4262b70c6d01ba8018acc0912e289ffe"
+	sha256 hasValue "886a7bdcb3583b8c50bb7649bc83de834e1597c01f3350f9b448d43a87f422d6"
+	description hasValue "ferramentas para impressora HP Deskjet"
+	descriptionMd5 hasValue "3756683724c7e212dbc71f678a826d5e"
+	depends hasValue "libc6 (>= 2.7), libpaper1, libstdc++6 (>= 5)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__djtools,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libpaper1"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__djtools,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "5"
+
+relationInstance depends(P0__djtools,2,DepAtom__2)
+

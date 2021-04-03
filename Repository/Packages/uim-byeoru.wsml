@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology uim_byeoru
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__uim_byeoru memberOf Package
+	package hasValue "uim-byeoru"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "9"
+	maintainer hasValue "Original-HIGUCHI Daisuke (VDR dai) <dai@debian.org>"
+	architecture hasValue "all"
+	version hasValue "1:1.8.8-6.1build2"
+	fileName hasValue "pool/universe/u/uim/uim-byeoru_1.8.8-6.1build2_all.deb"
+	size hasValue "1972"
+	md5sum hasValue "4979b37530721109f6d6c788ca228213"
+	sha1 hasValue "c8e81ddfb561ab92f406b906a75e34b0789db3f2"
+	sha256 hasValue "94b21ed3ce403d7e2317104ece449243b5d510519ad85be006e117f1e3b0999d"
+	descriptionMd5 hasValue "cf9ccf236e5aa929c2d1fa958f937420"
+	homepage hasValue "https://github.com/uim/uim/wiki"
+	depends hasValue "uim-data (= 1:1.8.8-6.1build2), uim (>= 1:1.8.8-6.1build2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "uim-data"
+	comparison hasValue "="
+	version hasValue "1:1.8.8-6.1build2"
+
+relationInstance depends(P0__uim_byeoru,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "uim"
+	comparison hasValue ">="
+	version hasValue "1:1.8.8-6.1build2"
+
+relationInstance depends(P0__uim_byeoru,1,DepAtom__1)
+

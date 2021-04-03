@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology flog
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__flog memberOf Package
+	package hasValue "flog"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/utils"
+	installedSize hasValue "29"
+	maintainer hasValue "Original-Christoph Berg <myon@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.8+orig-2"
+	fileName hasValue "pool/universe/f/flog/flog_1.8+orig-2_amd64.deb"
+	size hasValue "8132"
+	md5sum hasValue "7748550030f27926609e2872aa72a40c"
+	sha1 hasValue "e644fea4d202d54bf698a43389a67cf788c23276"
+	sha256 hasValue "5aef9c115be6bf52f317096ebee8869ab5c4c14930aeca989cb604cb89cd21fe"
+	descriptionMd5 hasValue "8f76104061af70bd94790937629bd8a5"
+	homepage hasValue "http://oss.ezic.com/"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__flog,0,DepAtom__0)
+

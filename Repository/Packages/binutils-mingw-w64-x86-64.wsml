@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology binutils_mingw_w64_x86_64
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__binutils_mingw_w64_x86_64 memberOf Package
+	package hasValue "binutils-mingw-w64-x86-64"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/devel"
+	installedSize hasValue "24359"
+	maintainer hasValue "Stephen Kitt <skitt@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.34-5ubuntu1+8.8"
+	replaces hasValue "binutils-mingw-w64 (<< 2.22-1+1)"
+	fileName hasValue "pool/universe/b/binutils-mingw-w64/binutils-mingw-w64-x86-64_2.34-5ubuntu1+8.8_amd64.deb"
+	size hasValue "2731896"
+	md5sum hasValue "3ec5b9c283a1a95fb805795c8d1762e7"
+	sha1 hasValue "4994b2fdb0a8f4f76d7724f3552773b461488c8d"
+	sha256 hasValue "0cbc1590f9239ad7dea400de3c2e9911ba33007e8fb55194411e41912ff72af4"
+	descriptionMd5 hasValue "534c34076079da99080913185690e895"
+	homepage hasValue "https://www.gnu.org/software/binutils/"
+	depends hasValue "libc6 (>= 2.14), zlib1g (>= 1:1.2.0), binutils-common (>= 2.34)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__binutils_mingw_w64_x86_64,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "zlib1g"
+	comparison hasValue ">="
+	version hasValue "1:1.2.0"
+
+relationInstance depends(P0__binutils_mingw_w64_x86_64,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "binutils-common"
+	comparison hasValue ">="
+	version hasValue "2.34"
+
+relationInstance depends(P0__binutils_mingw_w64_x86_64,2,DepAtom__2)
+

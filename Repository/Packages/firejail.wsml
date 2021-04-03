@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology firejail
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__firejail memberOf Package
+	package hasValue "firejail"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "1112"
+	maintainer hasValue "Original-Reiner Herrmann <reiner@reiner-h.de>"
+	architecture hasValue "amd64"
+	version hasValue "0.9.62-3"
+	fileName hasValue "pool/universe/f/firejail/firejail_0.9.62-3_amd64.deb"
+	size hasValue "309420"
+	md5sum hasValue "11180477fe45c0fb23f0e0c7750b7061"
+	sha1 hasValue "c7170836887cd0ac76d6b638ef90d71adf7f09f2"
+	sha256 hasValue "5dab5c7b7cb8f9d7dbd8079cf6e17ad0c15af10d622d8b32a79d5d7458a96e69"
+	descriptionMd5 hasValue "001e4831e20916b1cb21d90a1306806f"
+	homepage hasValue "https://firejail.wordpress.com"
+	depends hasValue "libapparmor1 (>= 2.7.0~beta1+bzr1772), libc6 (>= 2.27)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libapparmor1"
+	comparison hasValue ">="
+	version hasValue "2.7.0~beta1+bzr1772"
+
+relationInstance depends(P0__firejail,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.27"
+
+relationInstance depends(P0__firejail,1,DepAtom__1)
+

@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology corkscrew
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__corkscrew memberOf Package
+	package hasValue "corkscrew"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "30"
+	maintainer hasValue "Original-Jari Aalto <jari.aalto@cante.net>"
+	architecture hasValue "amd64"
+	version hasValue "2.0-11"
+	fileName hasValue "pool/universe/c/corkscrew/corkscrew_2.0-11_amd64.deb"
+	size hasValue "10640"
+	md5sum hasValue "52474e1d10c22f8242aecaa369943c4d"
+	sha1 hasValue "c7e63edc66239d22b9ee03506c824cecb1a30c8e"
+	sha256 hasValue "1dc8071aa47838591148ec07a965008795c61da22636f200818d6c3cba97e0d2"
+	description hasValue "túnel de conexões TCP através de proxies HTTP"
+	descriptionMd5 hasValue "cab4c2ae5f916570c28d1dbc0cdf3eee"
+	homepage hasValue "http://agroman.net/corkscrew/"
+	depends hasValue "libc6 (>= 2.15)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__corkscrew,0,DepAtom__0)
+

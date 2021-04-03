@@ -1,0 +1,76 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology le
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__le memberOf Package
+	package hasValue "le"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/editors"
+	installedSize hasValue "587"
+	maintainer hasValue "Original-Raphael Geissert <geissert@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.16.5-0.1build1"
+	provides hasValue "editor"
+	fileName hasValue "pool/universe/l/le/le_1.16.5-0.1build1_amd64.deb"
+	size hasValue "197488"
+	md5sum hasValue "787bb853d449794a892e930987d44df6"
+	sha1 hasValue "dc3dfac45e099305d3ea07103df06940cbb17868"
+	sha256 hasValue "d0b0daa6708eefde34aca9d671874c2a988e07bec723501ea2bf6007b1d2e767"
+	description hasValue "editor de texto com operações de bloco e binárias"
+	descriptionMd5 hasValue "6cb8ae58ec72fc60410fbe3e7bc02482"
+	homepage hasValue "http://lav.yar.ru/programs.html"
+	depends hasValue "libc6 (>= 2.16), libgcc-s1 (>= 4.2), libncursesw6 (>= 6), libtinfo6 (>= 6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.16"
+
+relationInstance depends(P0__le,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgcc-s1"
+	comparison hasValue ">="
+	version hasValue "4.2"
+
+relationInstance depends(P0__le,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libncursesw6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__le,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "libtinfo6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__le,3,DepAtom__3)
+

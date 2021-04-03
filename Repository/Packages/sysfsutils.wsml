@@ -1,0 +1,74 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology sysfsutils
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__sysfsutils memberOf Package
+	package hasValue "sysfsutils"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "utils"
+	installedSize hasValue "60"
+	maintainer hasValue "Original-Guillem Jover <guillem@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.1.0+repack-6"
+	fileName hasValue "pool/main/s/sysfsutils/sysfsutils_2.1.0+repack-6_amd64.deb"
+	size hasValue "13692"
+	md5sum hasValue "2b77c7d72501fe8a74bede9624391aaf"
+	sha1 hasValue "6f828c2fc65ed4a7a272590bca1848aa8f643582"
+	sha256 hasValue "6209edf4be88b9b0c651d1c11e04a259ff894d2b5100e83675e47773097d1238"
+	descriptionMd5 hasValue "07811d91c926da426d94db98052434b1"
+	homepage hasValue "http://linux-diag.sourceforge.net/Sysfsutils.html"
+	depends hasValue "libc6 (>= 2.7), libsysfs2 (>= 2.0.0), lsb-base, pci.ids"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__sysfsutils,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libsysfs2"
+	comparison hasValue ">="
+	version hasValue "2.0.0"
+
+relationInstance depends(P0__sysfsutils,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "lsb-base"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__sysfsutils,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "pci.ids"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__sysfsutils,3,DepAtom__3)
+

@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology mrtg_rrd
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__mrtg_rrd memberOf Package
+	package hasValue "mrtg-rrd"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/web"
+	installedSize hasValue "51"
+	maintainer hasValue "Original-Taku YASUI <tach@debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.7-5.1"
+	fileName hasValue "pool/universe/m/mrtg-rrd/mrtg-rrd_0.7-5.1_all.deb"
+	size hasValue "14436"
+	md5sum hasValue "5691a7e54e76c9064f1de65dcf55ed51"
+	sha1 hasValue "a4c9bf97865c1ff2cfdc55b62bae13d72fe58316"
+	sha256 hasValue "80bdc4d7d7874526fbbb6f1c460a49443305a6157033aaa6a60327998450c348"
+	descriptionMd5 hasValue "80287b45c9debcce7bdbe477eb672b6c"
+	homepage hasValue "http://www.fi.muni.cz/~kas/mrtg-rrd/"
+	depends hasValue "perl, mrtg, librrds-perl"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "perl"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__mrtg_rrd,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "mrtg"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__mrtg_rrd,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "librrds-perl"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__mrtg_rrd,2,DepAtom__2)
+

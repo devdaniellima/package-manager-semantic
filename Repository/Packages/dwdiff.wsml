@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology dwdiff
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__dwdiff memberOf Package
+	package hasValue "dwdiff"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/utils"
+	installedSize hasValue "176"
+	maintainer hasValue "Original-Barak A. Pearlmutter <bap@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.1.2-2build2"
+	fileName hasValue "pool/universe/d/dwdiff/dwdiff_2.1.2-2build2_amd64.deb"
+	size hasValue "55960"
+	md5sum hasValue "0037997954e24a2e1613530a772da2b8"
+	sha1 hasValue "8e4f10d8233b7242c719565cb326583e75ba66d0"
+	sha256 hasValue "9aa3a44135fc33c005d258f26371cd58d40191d593cca53f4bd0d3796f356c1f"
+	descriptionMd5 hasValue "66edb2f54f6b6dc08d3a45a2a4fb784e"
+	homepage hasValue "http://os.ghalkes.nl/dwdiff.html"
+	depends hasValue "libc6 (>= 2.14), libicu66 (>= 66.1~rc-1~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__dwdiff,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libicu66"
+	comparison hasValue ">="
+	version hasValue "66.1~rc-1~"
+
+relationInstance depends(P0__dwdiff,1,DepAtom__1)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology linux_generic_hwe_20Dot04_edge
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__linux_generic_hwe_20Dot04_edge memberOf Package
+	package hasValue "linux-generic-hwe-20.04-edge"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "kernel"
+	installedSize hasValue "18"
+	maintainer hasValue "Ubuntu Kernel Team <kernel-team@lists.ubuntu.com>"
+	architecture hasValue "amd64"
+	version hasValue "5.8.0.45.51~20.04.31"
+	fileName hasValue "pool/main/l/linux-meta-hwe-5.8/linux-generic-hwe-20.04-edge_5.8.0.45.51~20.04.31_amd64.deb"
+	size hasValue "1892"
+	md5sum hasValue "fc84731744788e6bb747f5979fe6077c"
+	sha1 hasValue "d55904da1d94c7532ec2fc287f05c361ed18c70d"
+	sha256 hasValue "0c8d3ab5c4fced177c402272ef307a9fd951be9eb208561efdf1b472ea08fa03"
+	sha512 hasValue "c449c99289f3e4c3a7f461b861a86a4da87c312236703753daa1c7b1ec28b6c5fd841f66651b2a3211fc425132bc398eba995a91bfe6f8e000bcd41d47da42a8"
+	descriptionMd5 hasValue "000d0a6187a93215f75bba542cc6df27"
+	depends hasValue "linux-image-generic-hwe-20.04-edge (= 5.8.0.45.51~20.04.31), linux-headers-generic-hwe-20.04-edge (= 5.8.0.45.51~20.04.31)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "linux-image-generic-hwe-20.04-edge"
+	comparison hasValue "="
+	version hasValue "5.8.0.45.51~20.04.31"
+
+relationInstance depends(P0__linux_generic_hwe_20Dot04_edge,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "linux-headers-generic-hwe-20.04-edge"
+	comparison hasValue "="
+	version hasValue "5.8.0.45.51~20.04.31"
+
+relationInstance depends(P0__linux_generic_hwe_20Dot04_edge,1,DepAtom__1)
+

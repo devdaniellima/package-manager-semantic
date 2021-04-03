@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology renattach
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__renattach memberOf Package
+	package hasValue "renattach"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/mail"
+	installedSize hasValue "84"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.2.4-5"
+	fileName hasValue "pool/universe/r/renattach/renattach_1.2.4-5_amd64.deb"
+	size hasValue "36154"
+	md5sum hasValue "766ac5b01a18bb2a39507cb5ca52b3eb"
+	sha1 hasValue "2afdaaffb50def619d8acae811fc01ee003dab92"
+	sha256 hasValue "de77c25241fe20cfe7d1f6f8be89071e62c94e67c0a03fb15fc6dccc6bbba661"
+	description hasValue "renomeia anexos sob demanda (on the fly)"
+	descriptionMd5 hasValue "d467f7645de54f85c5066dbf2b3b5c21"
+	homepage hasValue "http://www.pc-tools.net/unix/renattach/"
+	depends hasValue "exim4 | mail-transport-agent, libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "exim4"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__renattach,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "mail-transport-agent"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__renattach,0,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__renattach,1,DepAtom__2)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology flvmeta
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__flvmeta memberOf Package
+	package hasValue "flvmeta"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/video"
+	installedSize hasValue "127"
+	maintainer hasValue "Original-Neutron Soutmun <neutrons@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.2.1-1"
+	fileName hasValue "pool/universe/f/flvmeta/flvmeta_1.2.1-1_amd64.deb"
+	size hasValue "46908"
+	md5sum hasValue "b84f7d73842d4662d5091123b5b5fbbf"
+	sha1 hasValue "197aeabc1a1e0bacbac26b3dc10690c9b5cae879"
+	sha256 hasValue "1913dc2bab105019cc1c5b28ca2c2facdd70f9fda25409e2fda3368cd42a4d2e"
+	descriptionMd5 hasValue "0d1243de51706c43a73453351ad0ad60"
+	homepage hasValue "http://github.com/noirotm/flvmeta"
+	depends hasValue "libc6 (>= 2.14), libyaml-0-2"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__flvmeta,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libyaml-0-2"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__flvmeta,1,DepAtom__1)
+

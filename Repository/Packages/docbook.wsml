@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology docbook
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__docbook memberOf Package
+	package hasValue "docbook"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/text"
+	installedSize hasValue "2694"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "all"
+	version hasValue "4.5-6"
+	fileName hasValue "pool/universe/d/docbook/docbook_4.5-6_all.deb"
+	size hasValue "122010"
+	md5sum hasValue "5afbf6d79088be14944b4929ab57acbd"
+	sha1 hasValue "c9aefe5003bd41c97f0ea84fb26b6ce15b64a0fb"
+	sha256 hasValue "f5dd66e689acde5084777b920f2f98922e6b8f6e576d6e50ba1dea4864075e89"
+	description hasValue "Representação de sistema padrão SGML para documentos técnicos"
+	descriptionMd5 hasValue "ead20f911a71259289f56248053bcdf9"
+	homepage hasValue "http://www.oasis-open.org/docbook/sgml/"
+	depends hasValue "sgml-data (>= 1.5.0), sgml-base (>= 1.26+nmu2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "sgml-data"
+	comparison hasValue ">="
+	version hasValue "1.5.0"
+
+relationInstance depends(P0__docbook,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "sgml-base"
+	comparison hasValue ">="
+	version hasValue "1.26+nmu2"
+
+relationInstance depends(P0__docbook,1,DepAtom__1)
+

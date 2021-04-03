@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ap_utils
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ap_utils memberOf Package
+	package hasValue "ap-utils"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "1307"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.5-3build1"
+	fileName hasValue "pool/universe/a/ap-utils/ap-utils_1.5-3build1_amd64.deb"
+	size hasValue "252636"
+	md5sum hasValue "45641ab894e70854ef2fd8758a80c3a0"
+	sha1 hasValue "20a53fc0765138c7b0a017c28bb42b9ea13c6271"
+	sha256 hasValue "c949795aeaa5d0475d8fe472a4e58c1685814b8555d0b550e25943a712c124e3"
+	description hasValue "utilitários Linux para Pontos de Acesso com SNMP"
+	descriptionMd5 hasValue "e7c3191e2ce01e12305e29d8aa39358b"
+	homepage hasValue "http://ap-utils.polesye.net/"
+	depends hasValue "libc6 (>= 2.15), libncurses6 (>= 6), libtinfo6 (>= 6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__ap_utils,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libncurses6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__ap_utils,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libtinfo6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__ap_utils,2,DepAtom__2)
+

@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology linux_modules_nvidia_450_oracle
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__linux_modules_nvidia_450_oracle memberOf Package
+	package hasValue "linux-modules-nvidia-450-oracle"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "restricted/kernel"
+	installedSize hasValue "20"
+	maintainer hasValue "Canonical Kernel Team <kernel-team@lists.ubuntu.com>"
+	architecture hasValue "amd64"
+	version hasValue "5.4.0-1039.42+1"
+	provides hasValue "nvidia-dkms-450 (= 450.102.04-0ubuntu0.20.04.1), nvidia-prebuilt-kernel"
+	fileName hasValue "pool/restricted/l/linux-restricted-modules-oracle/linux-modules-nvidia-450-oracle_5.4.0-1039.42+1_amd64.deb"
+	size hasValue "5484"
+	md5sum hasValue "1824173e2ea177642e82836fdf235791"
+	sha1 hasValue "3c036fb46c56a3564b088dbb79c03908aa0209a3"
+	sha256 hasValue "139b1e46a6e7d0fc99e351dcec93e7c97f26355d2a2c270b314143da97c02d8c"
+	sha512 hasValue "1e0fd46201f75ddf12da947de7fd95fd417b24f8ab98bea3dcce87f5f933a2c4bb276677bd79991346dfe31f3b18227f9c1bd59a545ce1699bea95f49eea6ce7"
+	descriptionMd5 hasValue "99c189bc58c91eeda0128feff86c910d"
+	depends hasValue "linux-modules-nvidia-450-5.4.0-1039-oracle (= 5.4.0-1039.42+1), nvidia-kernel-common-450 (<= 450.102.04-1), nvidia-kernel-common-450 (>= 450.102.04)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "linux-modules-nvidia-450-5.4.0-1039-oracle"
+	comparison hasValue "="
+	version hasValue "5.4.0-1039.42+1"
+
+relationInstance depends(P0__linux_modules_nvidia_450_oracle,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "nvidia-kernel-common-450"
+	comparison hasValue "<="
+	version hasValue "450.102.04-1"
+
+relationInstance depends(P0__linux_modules_nvidia_450_oracle,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "nvidia-kernel-common-450"
+	comparison hasValue ">="
+	version hasValue "450.102.04"
+
+relationInstance depends(P0__linux_modules_nvidia_450_oracle,2,DepAtom__2)
+

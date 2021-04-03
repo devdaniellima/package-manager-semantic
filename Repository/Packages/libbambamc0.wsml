@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libbambamc0
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libbambamc0 memberOf Package
+	package hasValue "libbambamc0"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "105"
+	maintainer hasValue "Original-Debian Med Packaging Team <debian-med-packaging@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.0.50-3"
+	fileName hasValue "pool/universe/b/bambamc/libbambamc0_0.0.50-3_amd64.deb"
+	size hasValue "36868"
+	md5sum hasValue "53af50073a5141b88b923d69bf791397"
+	sha1 hasValue "e8197bd8afe473b3e6f3bbddde5312af78a5f7b9"
+	sha256 hasValue "35e382867f449b793fcc8224acfa3ee0936e4da1ad8c26fd52d06e64dadd23b4"
+	descriptionMd5 hasValue "e78ea04e5559990688ac8a4206222b99"
+	homepage hasValue "https://github.com/gt1/bambamc"
+	depends hasValue "libc6 (>= 2.14), zlib1g (>= 1:1.2.0.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libbambamc0,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "zlib1g"
+	comparison hasValue ">="
+	version hasValue "1:1.2.0.2"
+
+relationInstance depends(P0__libbambamc0,1,DepAtom__1)
+

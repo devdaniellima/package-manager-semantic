@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python_pypdf2
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python_pypdf2 memberOf Package
+	package hasValue "python-pypdf2"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "257"
+	maintainer hasValue "Original-Laszlo Boszormenyi (GCS) <gcs@debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.26.0-3ubuntu1"
+	provides hasValue "python2.7-pypdf2"
+	fileName hasValue "pool/universe/p/pypdf2/python-pypdf2_1.26.0-3ubuntu1_all.deb"
+	size hasValue "49356"
+	md5sum hasValue "5f5b9b9e24e911a97a717ffb778828a8"
+	sha1 hasValue "66a0181805cc6e8cd90d48efb347f21d311c4af0"
+	sha256 hasValue "e16eb16ff5da6b8ea0ada54205806c46758f4c00512a220c32125acc45770d7d"
+	description hasValue "Pure-Python library built as a PDF toolkit (Python 2)"
+	descriptionMd5 hasValue "15354d496718c37d91ea5281a2a8bf86"
+	homepage hasValue "http://pythonhosted.org/PyPDF2/"
+	depends hasValue "python2:any (<< 2.8), python2:any (>= 2.7~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue "<<"
+	version hasValue "2.8"
+
+relationInstance depends(P0__python_pypdf2,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue ">="
+	version hasValue "2.7~"
+
+relationInstance depends(P0__python_pypdf2,1,DepAtom__1)
+

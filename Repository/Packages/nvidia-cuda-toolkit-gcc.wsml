@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology nvidia_cuda_toolkit_gcc
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__nvidia_cuda_toolkit_gcc memberOf Package
+	package hasValue "nvidia-cuda-toolkit-gcc"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "multiverse/devel"
+	installedSize hasValue "86"
+	maintainer hasValue "Original-Debian NVIDIA Maintainers <pkg-nvidia-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "10.1.243-3"
+	fileName hasValue "pool/multiverse/n/nvidia-cuda-toolkit/nvidia-cuda-toolkit-gcc_10.1.243-3_amd64.deb"
+	size hasValue "15300"
+	md5sum hasValue "d13016ece0209de3657fb5468ccfbd7a"
+	sha1 hasValue "4357645af68d675e2d7a75f63b80cd333c17fecb"
+	sha256 hasValue "2f6914fa3584bc38f0d5db625e8922659b73855e001c3f04a7f662e97d8987ba"
+	descriptionMd5 hasValue "3fb666316ef4562383ecd8260bc3bc9f"
+	homepage hasValue "https://developer.nvidia.com/cuda-zone"
+	depends hasValue "gcc-8, g++-8, nvidia-cuda-toolkit (= 10.1.243-3)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "gcc-8"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__nvidia_cuda_toolkit_gcc,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "g++-8"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__nvidia_cuda_toolkit_gcc,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "nvidia-cuda-toolkit"
+	comparison hasValue "="
+	version hasValue "10.1.243-3"
+
+relationInstance depends(P0__nvidia_cuda_toolkit_gcc,2,DepAtom__2)
+

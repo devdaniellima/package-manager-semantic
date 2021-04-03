@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libxcb_xf86dri0
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libxcb_xf86dri0 memberOf Package
+	package hasValue "libxcb-xf86dri0"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libs"
+	installedSize hasValue "42"
+	maintainer hasValue "Original-Debian X Strike Force <debian-x@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.14-2"
+	fileName hasValue "pool/main/libx/libxcb/libxcb-xf86dri0_1.14-2_amd64.deb"
+	size hasValue "* small library and lower memory footprint"
+	md5sum hasValue "f8d978da9bda57841c78576e97d19e97"
+	sha1 hasValue "46a21456b28f96d7970b825cd66fca340d795b7b"
+	sha256 hasValue "a95fb6375959a0d174b573cafd58dd353fc82de1cd405c6afc552e04ac6a9bb7"
+	description hasValue "X C Binding, xf86dri extension"
+	descriptionMd5 hasValue "f6b61b1dd5cbcdd3b35b95162a6d84e0"
+	homepage hasValue "https://xcb.freedesktop.org"
+	depends hasValue "libc6 (>= 2.4), libxcb1"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libxcb_xf86dri0,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libxcb1"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libxcb_xf86dri0,1,DepAtom__1)
+

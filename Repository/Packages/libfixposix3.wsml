@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libfixposix3
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libfixposix3 memberOf Package
+	package hasValue "libfixposix3"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "55"
+	maintainer hasValue "Original-Debian Common Lisp Team <debian-common-lisp@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:0.4.3-1"
+	fileName hasValue "pool/universe/libf/libfixposix/libfixposix3_0.4.3-1_amd64.deb"
+	size hasValue "15104"
+	md5sum hasValue "a48ccdc622bf3cc32969ce7674012f19"
+	sha1 hasValue "2b54504f4194473ae9eb53ed144df20cf0241a65"
+	sha256 hasValue "e746558c13ebd6512507e5c8ac3903046af068f95e1bab058fc420af54a35ca8"
+	description hasValue "Replacement for inconsistent parts of POSIX (runtime)"
+	descriptionMd5 hasValue "7afa76517aff6ad9069d6df3756787f7"
+	homepage hasValue "https://common-lisp.net/project/iolib/"
+	depends hasValue "libc6 (>= 2.17)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.17"
+
+relationInstance depends(P0__libfixposix3,0,DepAtom__0)
+

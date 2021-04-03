@@ -1,0 +1,75 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python3_utmp
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python3_utmp memberOf Package
+	package hasValue "python3-utmp"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "58"
+	maintainer hasValue "Original-Radovan Garabík <garabik@kassiopeia.juls.savba.sk>"
+	architecture hasValue "amd64"
+	version hasValue "0.9-1build1"
+	provides hasValue "python3.8-utmp"
+	fileName hasValue "pool/universe/p/python-utmp/python3-utmp_0.9-1build1_amd64.deb"
+	size hasValue "18644"
+	md5sum hasValue "deb9324aeaba6e5cdc6c33c39eacf791"
+	sha1 hasValue "3bbcf3fe37ca77c5ef712c995e4e4d070a41c255"
+	sha256 hasValue "0eb3c48b95017c670343bf970e8443e5b39357017e439659250a9b030dc64292"
+	description hasValue "Módulo python para trabalho com utmp"
+	descriptionMd5 hasValue "fd947f53790b9c81fe0aa5bdde2563af"
+	depends hasValue "python3 (<< 3.9), python3 (>= 3.8~), python3:any, libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3"
+	comparison hasValue "<<"
+	version hasValue "3.9"
+
+relationInstance depends(P0__python3_utmp,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3"
+	comparison hasValue ">="
+	version hasValue "3.8~"
+
+relationInstance depends(P0__python3_utmp,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__python3_utmp,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__python3_utmp,3,DepAtom__3)
+

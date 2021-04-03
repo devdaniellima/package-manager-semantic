@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology node_columnify
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__node_columnify memberOf Package
+	package hasValue "node-columnify"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/javascript"
+	installedSize hasValue "44"
+	maintainer hasValue "Original-Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.5.4-1"
+	fileName hasValue "pool/universe/n/node-columnify/node-columnify_1.5.4-1_all.deb"
+	size hasValue "11164"
+	md5sum hasValue "a05e8eeb091c84a2a6ee612cd01dcf1d"
+	sha1 hasValue "fdbd5a3a09d94a7eaf8b2c1acb0672e5e0cdc521"
+	sha256 hasValue "436f32b2506951af969d7524cb755db16a859d5bef2ee89b0f6c9e18eb021048"
+	descriptionMd5 hasValue "b860bc9a434cf3cd81164a4d1ff8153c"
+	homepage hasValue "https://github.com/timoxley/columnify"
+	depends hasValue "nodejs, node-strip-ansi (>= 3.0.0), node-wcwidth.js (>= 1.0.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "nodejs"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__node_columnify,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "node-strip-ansi"
+	comparison hasValue ">="
+	version hasValue "3.0.0"
+
+relationInstance depends(P0__node_columnify,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "node-wcwidth.js"
+	comparison hasValue ">="
+	version hasValue "1.0.0"
+
+relationInstance depends(P0__node_columnify,2,DepAtom__2)
+

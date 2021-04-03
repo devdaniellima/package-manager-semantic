@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology tempest
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__tempest memberOf Package
+	package hasValue "tempest"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/python"
+	installedSize hasValue "4450"
+	maintainer hasValue "Original-Debian OpenStack <team+openstack@tracker.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1:23.0.0-0ubuntu2"
+	fileName hasValue "pool/universe/t/tempest/tempest_23.0.0-0ubuntu2_all.deb"
+	size hasValue "1055448"
+	md5sum hasValue "5a39f9f856bcba7f58d30cb1d01e2e5e"
+	sha1 hasValue "b128f0be55fcbf5d86f404ff71f80829cf32aaf8"
+	sha256 hasValue "1daf73707a9775a9636714706507af5058950a8db428b9d9481f917d52f8faef"
+	descriptionMd5 hasValue "c55a0de38db2cdc80214ba00b454d24a"
+	homepage hasValue "https://github.com/openstack/tempest"
+	depends hasValue "e2fsprogs, python3-tempest (= 1:23.0.0-0ubuntu2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "e2fsprogs"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__tempest,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3-tempest"
+	comparison hasValue "="
+	version hasValue "1:23.0.0-0ubuntu2"
+
+relationInstance depends(P0__tempest,1,DepAtom__1)
+

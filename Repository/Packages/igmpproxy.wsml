@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology igmpproxy
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__igmpproxy memberOf Package
+	package hasValue "igmpproxy"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "82"
+	maintainer hasValue "Original-Pali Rohár <pali.rohar@gmail.com>"
+	architecture hasValue "amd64"
+	version hasValue "0.2.1-1"
+	fileName hasValue "pool/universe/i/igmpproxy/igmpproxy_0.2.1-1_amd64.deb"
+	size hasValue "27816"
+	md5sum hasValue "588cc27a0eee589c9f65bfd3f196a692"
+	sha1 hasValue "c95d06bdba18e6a60b7e03312c80e3d2797f15fd"
+	sha256 hasValue "adc0df7d23b0db84067a1fd1855d6f6803a730156fccb35e4dd4fbbcf0403c77"
+	descriptionMd5 hasValue "7c3f568312d927aa3001624a60ed2881"
+	homepage hasValue "https://github.com/pali/igmpproxy"
+	depends hasValue "lsb-base (>= 3.2-14), libc6 (>= 2.17)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "lsb-base"
+	comparison hasValue ">="
+	version hasValue "3.2-14"
+
+relationInstance depends(P0__igmpproxy,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.17"
+
+relationInstance depends(P0__igmpproxy,1,DepAtom__1)
+

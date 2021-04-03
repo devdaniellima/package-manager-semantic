@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology minilzip
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__minilzip memberOf Package
+	package hasValue "minilzip"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "61"
+	maintainer hasValue "Original-Daniel Baumann <daniel.baumann@progress-linux.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.11-7"
+	provides hasValue "lzip-alternative, lzip-compressor, lzip-decompressor"
+	fileName hasValue "pool/universe/l/lzlib/minilzip_1.11-7_amd64.deb"
+	size hasValue "17136"
+	md5sum hasValue "9593e33765cb752d7db375413f3ba6a7"
+	sha1 hasValue "0b692578b4b2e9b27a0c9c7df5e25303a3f58ff0"
+	sha256 hasValue "998299219e807d9a13a2ef64c13a1aae2eae8cbdf197652d87f596d17e7a5c5f"
+	description hasValue "minified, lossless data compressor based on the LZMA algorithm"
+	descriptionMd5 hasValue "67f66df083ee6cdb46b9ff726a874655"
+	homepage hasValue "http://www.nongnu.org/lzip/lzlib.html"
+	depends hasValue "libc6 (>= 2.4), liblz1 (>= 1.11)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__minilzip,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "liblz1"
+	comparison hasValue ">="
+	version hasValue "1.11"
+
+relationInstance depends(P0__minilzip,1,DepAtom__1)
+

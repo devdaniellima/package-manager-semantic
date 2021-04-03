@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libosmosdr0
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libosmosdr0 memberOf Package
+	package hasValue "libosmosdr0"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/libs"
+	installedSize hasValue "40"
+	maintainer hasValue "Original-A. Maitland Bottoms <bottoms@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.1.8.effcaa7-7"
+	fileName hasValue "pool/universe/libo/libosmosdr/libosmosdr0_0.1.8.effcaa7-7_amd64.deb"
+	size hasValue "9526"
+	md5sum hasValue "b550e305d9df72db4ca10a2c9caccc6c"
+	sha1 hasValue "f505b39d47ff3476a411289e251ac00d96008ec8"
+	sha256 hasValue "f765cb0e9a8412cee1e505b0de2c8a0ddabe7fa6ed746c46c268c4674558a184"
+	description hasValue "Software defined radio support for OsmoSDR hardware (library)"
+	descriptionMd5 hasValue "7ca0e25e4381b1a49425468e74f6e817"
+	homepage hasValue "http://sdr.osmocom.org/trac/"
+	depends hasValue "libc6 (>= 2.4), libusb-1.0-0 (>= 2:1.0.8)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libosmosdr0,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libusb-1.0-0"
+	comparison hasValue ">="
+	version hasValue "2:1.0.8"
+
+relationInstance depends(P0__libosmosdr0,1,DepAtom__1)
+

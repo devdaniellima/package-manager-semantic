@@ -1,0 +1,75 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology unixodbc
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__unixodbc memberOf Package
+	package hasValue "unixodbc"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "105"
+	maintainer hasValue "Original-Steve Langasek <vorlon@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.3.6-0.1build1"
+	fileName hasValue "pool/universe/u/unixodbc/unixodbc_2.3.6-0.1build1_amd64.deb"
+	size hasValue "24616"
+	md5sum hasValue "a6586aeef1baa3f6829a21808b4aae26"
+	sha1 hasValue "162288266bd6b974e51cf244a49664317efae72b"
+	sha256 hasValue "f7fe07b8bef4b1a8d785c8eb277c074a21cfa7955d2dc9dd495988b5c6b2b2c1"
+	description hasValue "Ferramentas básicas de ODBC"
+	descriptionMd5 hasValue "dbef25e3cf8e980a394982ef6927a9ca"
+	homepage hasValue "http://www.unixodbc.org/"
+	depends hasValue "libc6 (>= 2.14), libodbc1 (>= 2.3.1), libreadline8 (>= 6.0), odbcinst1debian2 (>= 2.3.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__unixodbc,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libodbc1"
+	comparison hasValue ">="
+	version hasValue "2.3.1"
+
+relationInstance depends(P0__unixodbc,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libreadline8"
+	comparison hasValue ">="
+	version hasValue "6.0"
+
+relationInstance depends(P0__unixodbc,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "odbcinst1debian2"
+	comparison hasValue ">="
+	version hasValue "2.3.1"
+
+relationInstance depends(P0__unixodbc,3,DepAtom__3)
+

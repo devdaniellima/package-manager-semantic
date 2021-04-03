@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology node_resolve_cwd
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__node_resolve_cwd memberOf Package
+	package hasValue "node-resolve-cwd"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/javascript"
+	installedSize hasValue "16"
+	maintainer hasValue "Original-Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.0.0-2"
+	fileName hasValue "pool/universe/n/node-resolve-cwd/node-resolve-cwd_2.0.0-2_all.deb"
+	size hasValue "3576"
+	md5sum hasValue "5fb6f4f1c5fbadd6428ad820ca2d1ebd"
+	sha1 hasValue "b5b60c052fa3587011e60b39ad26f314eb3c1634"
+	sha256 hasValue "e0bd77b21c44b8cbd3a5bd679f8b0688a180f797ff762bf96e6a7c3984636e20"
+	descriptionMd5 hasValue "24c79879d31c7e86dc26e22a55c014df"
+	homepage hasValue "https://github.com/sindresorhus/resolve-cwd#readme"
+	depends hasValue "nodejs, node-resolve-from (>= 3.0.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "nodejs"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__node_resolve_cwd,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "node-resolve-from"
+	comparison hasValue ">="
+	version hasValue "3.0.0"
+
+relationInstance depends(P0__node_resolve_cwd,1,DepAtom__1)
+

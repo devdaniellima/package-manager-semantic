@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ruby_qdbm
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ruby_qdbm memberOf Package
+	package hasValue "ruby-qdbm"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/ruby"
+	installedSize hasValue "159"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.8.78-9build3"
+	fileName hasValue "pool/universe/q/qdbm/ruby-qdbm_1.8.78-9build3_amd64.deb"
+	size hasValue "19412"
+	md5sum hasValue "3189d693d8c7f871131858f6de7acfd1"
+	sha1 hasValue "97540899ca18e71c0f656c9d250e4ce1811a8786"
+	sha256 hasValue "aa0ef15b79572cc4248392d0555fabfcb96bf96e742bc547547944a7989ffa70"
+	descriptionMd5 hasValue "a44c68871160f458b5bc45bfe58dd5d8"
+	homepage hasValue "http://fallabs.com/qdbm/"
+	depends hasValue "libc6 (>= 2.4), libqdbm14 (>= 1.8.74), libruby2.7 (>= 2.7.0-4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__ruby_qdbm,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libqdbm14"
+	comparison hasValue ">="
+	version hasValue "1.8.74"
+
+relationInstance depends(P0__ruby_qdbm,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libruby2.7"
+	comparison hasValue ">="
+	version hasValue "2.7.0-4"
+
+relationInstance depends(P0__ruby_qdbm,2,DepAtom__2)
+

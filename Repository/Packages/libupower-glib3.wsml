@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libupower_glib3
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libupower_glib3 memberOf Package
+	package hasValue "libupower-glib3"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libs"
+	installedSize hasValue "202"
+	maintainer hasValue "Original-Utopia Maintenance Team <pkg-utopia-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.99.11-1build2"
+	fileName hasValue "pool/main/u/upower/libupower-glib3_0.99.11-1build2_amd64.deb"
+	size hasValue "43196"
+	md5sum hasValue "9707b75e65ba80bb70c94266737b1cc7"
+	sha1 hasValue "41f15898b60e29b154cbcbaae8fe881cc96c948a"
+	sha256 hasValue "5628998c0dc0b667b75036546e7c9c098d6574e32452b1fb9057e5aca4d46376"
+	description hasValue "Abstração para gestão de energia - biblioteca compartilhada"
+	descriptionMd5 hasValue "11709d9e0d03275e3ab6991c83469900"
+	homepage hasValue "https://upower.freedesktop.org/"
+	depends hasValue "libc6 (>= 2.4), libglib2.0-0 (>= 2.37.3)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libupower_glib3,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libglib2.0-0"
+	comparison hasValue ">="
+	version hasValue "2.37.3"
+
+relationInstance depends(P0__libupower_glib3,1,DepAtom__1)
+

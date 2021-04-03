@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology r_cran_prediction
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__r_cran_prediction memberOf Package
+	package hasValue "r-cran-prediction"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/gnu-r"
+	installedSize hasValue "341"
+	maintainer hasValue "Original-Debian R Packages Maintainers <r-pkg-team@alioth-lists.debian.net>"
+	architecture hasValue "all"
+	version hasValue "0.3.14-1"
+	fileName hasValue "pool/universe/r/r-cran-prediction/r-cran-prediction_0.3.14-1_all.deb"
+	size hasValue "229392"
+	md5sum hasValue "2b7582521c097800951dd3d0f25d8976"
+	sha1 hasValue "c3215a4248824fe8418d1c88404176c9faf5b157"
+	sha256 hasValue "40d13c27f6659020f84d010ad33f6f471d6545d5682076ebd07e9fe7dfc5c1fa"
+	descriptionMd5 hasValue "f18288e80cb0e54b7a5f4f2cfcc2fe66"
+	homepage hasValue "https://cran.r-project.org/package=prediction"
+	depends hasValue "r-base-core (>= 3.6.1-2), r-api-3.5, r-cran-data.table"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "r-base-core"
+	comparison hasValue ">="
+	version hasValue "3.6.1-2"
+
+relationInstance depends(P0__r_cran_prediction,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "r-api-3.5"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__r_cran_prediction,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "r-cran-data.table"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__r_cran_prediction,2,DepAtom__2)
+

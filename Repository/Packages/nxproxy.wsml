@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology nxproxy
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__nxproxy memberOf Package
+	package hasValue "nxproxy"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/x11"
+	installedSize hasValue "193"
+	maintainer hasValue "Original-Debian Remote Maintainers <debian-remote@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2:3.5.99.23-1build1"
+	replaces hasValue "nxauth, qvd-nxproxy"
+	fileName hasValue "pool/universe/n/nx-libs/nxproxy_3.5.99.23-1build1_amd64.deb"
+	size hasValue "32828"
+	md5sum hasValue "2130a325df7bd33b59a3a47a3ecef2e2"
+	sha1 hasValue "f6a377dd71d2a2802b653999a011f85c25d975b3"
+	sha256 hasValue "98ee6f6e7f230a86b1fa613f9d4fdb68072993ce51ef16ad0c570f67b17751f5"
+	descriptionMd5 hasValue "535efe982dd954a773c0924b9bd58a62"
+	homepage hasValue "https://github.com/ArcticaProject/nx-libs/"
+	depends hasValue "libxcomp3 (= 2:3.5.99.23-1build1), libc6 (>= 2.3.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libxcomp3"
+	comparison hasValue "="
+	version hasValue "2:3.5.99.23-1build1"
+
+relationInstance depends(P0__nxproxy,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.3.4"
+
+relationInstance depends(P0__nxproxy,1,DepAtom__1)
+

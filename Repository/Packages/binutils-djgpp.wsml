@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology binutils_djgpp
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__binutils_djgpp memberOf Package
+	package hasValue "binutils-djgpp"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "12308"
+	maintainer hasValue "Stephen Kitt <skitt@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.34-3ubuntu1+1.4"
+	fileName hasValue "pool/universe/b/binutils-djgpp/binutils-djgpp_2.34-3ubuntu1+1.4_amd64.deb"
+	size hasValue "1672888"
+	md5sum hasValue "fc624104c96927ed1d564a366e281fbf"
+	sha1 hasValue "ed84d0fd765fce204ccb7315f3f0cf6e20e71f91"
+	sha256 hasValue "059a096014869b41dfa32ca3208f043acb31826e2fa538c6da810a1032ec1033"
+	descriptionMd5 hasValue "89a3800c75f7965bf647be0d7cc3955a"
+	homepage hasValue "https://www.gnu.org/software/binutils/"
+	depends hasValue "libc6 (>= 2.14), zlib1g (>= 1:1.2.0), binutils-common (>= 2.34)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__binutils_djgpp,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "zlib1g"
+	comparison hasValue ">="
+	version hasValue "1:1.2.0"
+
+relationInstance depends(P0__binutils_djgpp,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "binutils-common"
+	comparison hasValue ">="
+	version hasValue "2.34"
+
+relationInstance depends(P0__binutils_djgpp,2,DepAtom__2)
+

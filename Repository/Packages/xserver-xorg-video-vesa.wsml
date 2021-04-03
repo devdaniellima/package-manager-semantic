@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology xserver_xorg_video_vesa
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__xserver_xorg_video_vesa memberOf Package
+	package hasValue "xserver-xorg-video-vesa"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "x11"
+	installedSize hasValue "54"
+	maintainer hasValue "Original-Debian X Strike Force <debian-x@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:2.4.0-2"
+	provides hasValue "xorg-driver-video"
+	fileName hasValue "pool/main/x/xserver-xorg-video-vesa/xserver-xorg-video-vesa_2.4.0-2_amd64.deb"
+	size hasValue "14956"
+	md5sum hasValue "86229d7206e81f4c52fdd015fcc78817"
+	sha1 hasValue "d2910c6c47ef0d9aaedb8ff177e04ab8e15bf975"
+	sha256 hasValue "396ec1751e63f1ddd17e36c3ce02b4e797a0749d16d31b46eb23ef690c3e6d01"
+	description hasValue "X.Org X server -- VESA display driver"
+	descriptionMd5 hasValue "09beb2a31bd27ae3444fb260bf0f887f"
+	depends hasValue "libc6 (>= 2.14), xorg-video-abi-24, xserver-xorg-core (>= 2:1.18.99.901)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__xserver_xorg_video_vesa,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "xorg-video-abi-24"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__xserver_xorg_video_vesa,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "xserver-xorg-core"
+	comparison hasValue ">="
+	version hasValue "2:1.18.99.901"
+
+relationInstance depends(P0__xserver_xorg_video_vesa,2,DepAtom__2)
+

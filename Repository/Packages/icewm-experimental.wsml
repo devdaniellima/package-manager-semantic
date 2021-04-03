@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology icewm_experimental
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__icewm_experimental memberOf Package
+	package hasValue "icewm-experimental"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/x11"
+	installedSize hasValue "21"
+	maintainer hasValue "Original-Eduard Bloch <blade@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.6.4-1"
+	provides hasValue "x-window-manager"
+	fileName hasValue "pool/universe/i/icewm/icewm-experimental_1.6.4-1_amd64.deb"
+	size hasValue "2204"
+	md5sum hasValue "1fc2661d21eba263712d64a20d921bc0"
+	sha1 hasValue "5101a3c2950db7b0f6d0fb72c99f4908c17dd299"
+	sha256 hasValue "caadf40b8852fcf00fc45e1b3d9f5ef9a24528b58d9d9d133dcf78d5e31b75cb"
+	description hasValue "gerenciador de janelas maravilhoso no estilo Win95-OS/2-Motif"
+	descriptionMd5 hasValue "ec685794b2bb6d5bbba1bcb89d2c3080"
+	depends hasValue "icewm (= 1.6.4-1), icewm-common (= 1.6.4-1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "icewm"
+	comparison hasValue "="
+	version hasValue "1.6.4-1"
+
+relationInstance depends(P0__icewm_experimental,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "icewm-common"
+	comparison hasValue "="
+	version hasValue "1.6.4-1"
+
+relationInstance depends(P0__icewm_experimental,1,DepAtom__1)
+

@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology attr
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__attr memberOf Package
+	package hasValue "attr"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "utils"
+	installedSize hasValue "136"
+	maintainer hasValue "Original-Guillem Jover <guillem@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:2.4.48-5"
+	fileName hasValue "pool/main/a/attr/attr_2.4.48-5_amd64.deb"
+	size hasValue "21944"
+	md5sum hasValue "ec6dd0bfe7bc81fdc091e6b79907aec6"
+	sha1 hasValue "c682b348fa9eaf4a16bd472d7eed295edf4293d2"
+	sha256 hasValue "96de577abb8f4ca6b1710602382a7eeea64616b7f9680e457a3418936dc9e2d0"
+	description hasValue "utilities for manipulating filesystem extended attributes"
+	descriptionMd5 hasValue "eba64610d62d0ff261b3286c19b2e130"
+	homepage hasValue "https://savannah.nongnu.org/projects/attr/"
+	depends hasValue "libattr1 (= 1:2.4.48-5), libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libattr1"
+	comparison hasValue "="
+	version hasValue "1:2.4.48-5"
+
+relationInstance depends(P0__attr,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__attr,1,DepAtom__1)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology dh_lisp
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__dh_lisp memberOf Package
+	package hasValue "dh-lisp"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "35"
+	maintainer hasValue "Original-Debian Common Lisp Team <debian-common-lisp@lists.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.7.2"
+	fileName hasValue "pool/universe/d/dh-lisp/dh-lisp_0.7.2_all.deb"
+	size hasValue "9108"
+	md5sum hasValue "f9760ca16edbca0b4a6d5fd56a15e7be"
+	sha1 hasValue "9a211ad7d1eaec517e5d5184bcc329e509334b82"
+	sha256 hasValue "d91f59c88792b844369152683ecf7b36ffa4d7212adec35c7ff61c1e826fb94b"
+	description hasValue "Ferramentas Debhelper para construir pacotes relacionados ao Lisp comum"
+	descriptionMd5 hasValue "763690cb3ab0445034a94405681fad1c"
+	depends hasValue "debhelper (>= 7), perl"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "debhelper"
+	comparison hasValue ">="
+	version hasValue "7"
+
+relationInstance depends(P0__dh_lisp,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "perl"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__dh_lisp,1,DepAtom__1)
+

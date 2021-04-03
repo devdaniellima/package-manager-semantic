@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python3_fontpens
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python3_fontpens memberOf Package
+	package hasValue "python3-fontpens"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "76"
+	maintainer hasValue "Original-Debian Fonts Task Force <debian-fonts@lists.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.2.4-1"
+	fileName hasValue "pool/universe/f/fontpens/python3-fontpens_0.2.4-1_all.deb"
+	size hasValue "12444"
+	md5sum hasValue "ff3af5fffc8c05e461769de89b7d33ee"
+	sha1 hasValue "ac745d510a2e7edf659addae7ac387c6a0ea16be"
+	sha256 hasValue "6fce4762483d8c08ad4e1625d856196e80d4b0656558e1ccb9d7ed3188c6987e"
+	descriptionMd5 hasValue "f02d4e4232753471266a98588a20fcea"
+	homepage hasValue "https://github.com/robofab-developers/fontPens"
+	depends hasValue "python3-fonttools (>= 3.32.0), python3:any"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3-fonttools"
+	comparison hasValue ">="
+	version hasValue "3.32.0"
+
+relationInstance depends(P0__python3_fontpens,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__python3_fontpens,1,DepAtom__1)
+

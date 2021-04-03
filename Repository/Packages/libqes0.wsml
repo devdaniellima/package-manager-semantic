@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libqes0
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libqes0 memberOf Package
+	package hasValue "libqes0"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "47"
+	maintainer hasValue "Original-Debian Med Packaging Team <debian-med-packaging@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.2.8-1"
+	fileName hasValue "pool/universe/libq/libqes/libqes0_0.2.8-1_amd64.deb"
+	size hasValue "15296"
+	md5sum hasValue "226463ddc75cfd4e40570f0f0c26d436"
+	sha1 hasValue "6c46098c0a8c414d3632861de5497dac63dacc77"
+	sha256 hasValue "c6f75ccb4fe318fb5b9c0f1a08ee5c6d4a97716d2de8dc9146f9099e2ac2f2a9"
+	descriptionMd5 hasValue "5ae04551622364c6702f079257c5699a"
+	homepage hasValue "https://github.com/kdmurray91/libqes"
+	depends hasValue "libc6 (>= 2.14), zlib1g (>= 1:1.1.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libqes0,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "zlib1g"
+	comparison hasValue ">="
+	version hasValue "1:1.1.4"
+
+relationInstance depends(P0__libqes0,1,DepAtom__1)
+

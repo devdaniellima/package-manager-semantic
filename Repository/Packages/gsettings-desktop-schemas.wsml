@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gsettings_desktop_schemas
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gsettings_desktop_schemas memberOf Package
+	package hasValue "gsettings-desktop-schemas"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libs"
+	installedSize hasValue "284"
+	maintainer hasValue "Original-Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "3.36.0-1ubuntu1"
+	fileName hasValue "pool/main/g/gsettings-desktop-schemas/gsettings-desktop-schemas_3.36.0-1ubuntu1_all.deb"
+	size hasValue "28976"
+	md5sum hasValue "86ef0e293e01236de63e7facac76bfa1"
+	sha1 hasValue "034d28c1d8e4798caad0e586c0127296fb6d8751"
+	sha256 hasValue "bf9c1662992a492210e11af477cd3dae879c89a979c67f6821c9af1b3ec8abde"
+	description hasValue "GSettings desktop-wide schemas"
+	descriptionMd5 hasValue "97f1d5003d2c7b91b06ad6146ef3c5d4"
+	homepage hasValue "http://www.gnome.org/"
+	depends hasValue "dconf-gsettings-backend | gsettings-backend"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "dconf-gsettings-backend"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__gsettings_desktop_schemas,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "gsettings-backend"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__gsettings_desktop_schemas,0,DepAtom__1)
+

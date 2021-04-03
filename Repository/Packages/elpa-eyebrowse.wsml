@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology elpa_eyebrowse
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__elpa_eyebrowse memberOf Package
+	package hasValue "elpa-eyebrowse"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/lisp"
+	installedSize hasValue "60"
+	maintainer hasValue "Original-Debian Emacsen team <debian-emacsen@lists.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.7.8-1"
+	fileName hasValue "pool/universe/e/eyebrowse-el/elpa-eyebrowse_0.7.8-1_all.deb"
+	size hasValue "15176"
+	md5sum hasValue "d765dc5ef87dac3a07e6a5d9b2c71ebf"
+	sha1 hasValue "0ed2a260aa58fecc25e383a6edae4a70a3b69f36"
+	sha256 hasValue "450725732c6a58309b6c26e0c2bbbde9d7607aa9ed6b640df42cee0dc6c1de79"
+	descriptionMd5 hasValue "ae2fa194820a78e23cbc8eb9c479ecee"
+	homepage hasValue "https://github.com/wasamasa/eyebrowse"
+	depends hasValue "elpa-dash (>= 2.7.0), emacsen-common"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "elpa-dash"
+	comparison hasValue ">="
+	version hasValue "2.7.0"
+
+relationInstance depends(P0__elpa_eyebrowse,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "emacsen-common"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__elpa_eyebrowse,1,DepAtom__1)
+

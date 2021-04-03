@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology dbconfig_no_thanks
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__dbconfig_no_thanks memberOf Package
+	package hasValue "dbconfig-no-thanks"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "9"
+	maintainer hasValue "Original-Paul Gevers <elbrus@debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.0.13"
+	conflicts hasValue "dbconfig-mysql, dbconfig-pgsql, dbconfig-sqlite, dbconfig-sqlite3"
+	fileName hasValue "pool/universe/d/dbconfig-common/dbconfig-no-thanks_2.0.13_all.deb"
+	size hasValue "1396"
+	md5sum hasValue "42b3c83d1d36d4466f2d3f2a73620b68"
+	sha1 hasValue "10cd67d2534ce2beda57bbef1ebf828e25a902b0"
+	sha256 hasValue "addfbb3081bbc4b2d3ca074b2b90c442689e452ac8daff78a163e639b7462f82"
+	descriptionMd5 hasValue "7ded10652661a4b00392e2394031026e"
+	depends hasValue "dbconfig-common (= 2.0.13)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "dbconfig-common"
+	comparison hasValue "="
+	version hasValue "2.0.13"
+
+relationInstance depends(P0__dbconfig_no_thanks,0,DepAtom__0)
+

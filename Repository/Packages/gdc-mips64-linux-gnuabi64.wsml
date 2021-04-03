@@ -1,0 +1,59 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gdc_mips64_linux_gnuabi64
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gdc_mips64_linux_gnuabi64 memberOf Package
+	package hasValue "gdc-mips64-linux-gnuabi64"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "11"
+	maintainer hasValue "Original-Debian GCC Maintainers <debian-gcc@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "4:9.2.1-4.1"
+	fileName hasValue "pool/universe/g/gcc-defaults-mipsen/gdc-mips64-linux-gnuabi64_9.2.1-4.1_amd64.deb"
+	size hasValue "1176"
+	md5sum hasValue "84d1712dbc30bedd8b220ebf724ab42d"
+	sha1 hasValue "c238c988068c8a019cabd937c555d21965f9d347"
+	sha256 hasValue "0ef7b24148f9d913a583f7db3c7e0b4e5a6620f87e1f8d979244a02528e3247c"
+	descriptionMd5 hasValue "ca2c35a9c1ca38af88d01e517e59854e"
+	depends hasValue "cpp-mips64-linux-gnuabi64 (>= 4:9.2.1-4.1), gdc-9-mips64-linux-gnuabi64 (>= 9.2.1-1~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "cpp-mips64-linux-gnuabi64"
+	comparison hasValue ">="
+	version hasValue "4:9.2.1-4.1"
+
+relationInstance depends(P0__gdc_mips64_linux_gnuabi64,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "gdc-9-mips64-linux-gnuabi64"
+	comparison hasValue ">="
+	version hasValue "9.2.1-1~"
+
+relationInstance depends(P0__gdc_mips64_linux_gnuabi64,1,DepAtom__1)
+

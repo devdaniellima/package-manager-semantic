@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology metis_edf
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__metis_edf memberOf Package
+	package hasValue "metis-edf"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "multiverse/math"
+	installedSize hasValue "92"
+	maintainer hasValue "Original-Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "4.1-2-4build2"
+	fileName hasValue "pool/multiverse/m/metis-edf/metis-edf_4.1-2-4build2_amd64.deb"
+	size hasValue "18288"
+	md5sum hasValue "8330e213336519b636de5aab05b73769"
+	sha1 hasValue "1b74d47f70ff19884275250c90445404e6384306"
+	sha256 hasValue "01088568efed06e71cfd7057dc3cdeada7d1f125ab941ecba7820c8aae24d79a"
+	descriptionMd5 hasValue "cb6751263ecac7c2d5d449476be962b4"
+	homepage hasValue "http://glaros.dtc.umn.edu/gkhome/metis/metis/overview"
+	depends hasValue "libmetis-edf4.1 (= 4.1-2-4build2), libc6 (>= 2.7), libgfortran5 (>= 8)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libmetis-edf4.1"
+	comparison hasValue "="
+	version hasValue "4.1-2-4build2"
+
+relationInstance depends(P0__metis_edf,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__metis_edf,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libgfortran5"
+	comparison hasValue ">="
+	version hasValue "8"
+
+relationInstance depends(P0__metis_edf,2,DepAtom__2)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology php_ldap
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__php_ldap memberOf Package
+	package hasValue "php-ldap"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "php"
+	installedSize hasValue "13"
+	maintainer hasValue "Original-Debian PHP Maintainers <team+pkg-php@tracker.debian.org>"
+	architecture hasValue "all"
+	version hasValue "2:7.4+75"
+	fileName hasValue "pool/main/p/php-defaults/php-ldap_7.4+75_all.deb"
+	size hasValue "2004"
+	md5sum hasValue "108638a6e68ba7266985182a507bf1b8"
+	sha1 hasValue "1acdf42f840250b4d22c1947d7dbb9852ee5c8c2"
+	sha256 hasValue "8c5b7b1e45c16bc630c1152cdbc53c7b3b354f9d81b2d3d66478f3fd8dfd7fe5"
+	description hasValue "LDAP module for PHP [default]"
+	descriptionMd5 hasValue "6075d6be9bd5f375194e0983bcc461d4"
+	depends hasValue "php-common, php7.4-ldap"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "php-common"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__php_ldap,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "php7.4-ldap"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__php_ldap,1,DepAtom__1)
+

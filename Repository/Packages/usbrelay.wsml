@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology usbrelay
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__usbrelay memberOf Package
+	package hasValue "usbrelay"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/electronics"
+	installedSize hasValue "365"
+	maintainer hasValue "Original-Jan Dittberner <jandd@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.4-2"
+	fileName hasValue "pool/universe/u/usbrelay/usbrelay_0.4-2_amd64.deb"
+	size hasValue "343928"
+	md5sum hasValue "7b117b7b3494aa325e93be6a485933d0"
+	sha1 hasValue "b3f5eb6078e42d7e8899d11f43f442280f27ff8f"
+	sha256 hasValue "911fe2570450148276c1407f010e21b5a60b43ec5e6ecf553ae80f75cba1a541"
+	descriptionMd5 hasValue "e5ddc481ecfba0db0b64d0b8133206d7"
+	homepage hasValue "https://github.com/darrylb123/usbrelay"
+	depends hasValue "libc6 (>= 2.4), libhidapi-hidraw0 (>= 0.8.0~rc1+git20140201.3a66d4e+dfsg)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__usbrelay,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libhidapi-hidraw0"
+	comparison hasValue ">="
+	version hasValue "0.8.0~rc1+git20140201.3a66d4e+dfsg"
+
+relationInstance depends(P0__usbrelay,1,DepAtom__1)
+

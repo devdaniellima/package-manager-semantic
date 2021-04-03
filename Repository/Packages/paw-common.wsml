@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology paw_common
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__paw_common memberOf Package
+	package hasValue "paw-common"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/science"
+	installedSize hasValue "50"
+	maintainer hasValue "Original-Debian Science Maintainers <debian-science-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1:2.14.04.dfsg.2-9.1build4"
+	fileName hasValue "pool/universe/p/paw/paw-common_2.14.04.dfsg.2-9.1build4_all.deb"
+	size hasValue "10892"
+	md5sum hasValue "d1b69b23ad1140522a91cb32a6719f44"
+	sha1 hasValue "1501bd7ab2f4895ffe5fff9aaa071e3bb24508f7"
+	sha256 hasValue "0f8cf65795cb77566892f24f0e1e016dc79bbc08f99f1bb02ea5da87c827bfac"
+	description hasValue "Physics Analysis Workstation (common files)"
+	descriptionMd5 hasValue "4f45296b0cd0f511626bc6ee6f9c86b5"
+	homepage hasValue "http://paw.web.cern.ch/paw/"
+	depends hasValue "cernlib-base, netbase (>= 4.08)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "cernlib-base"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__paw_common,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "netbase"
+	comparison hasValue ">="
+	version hasValue "4.08"
+
+relationInstance depends(P0__paw_common,1,DepAtom__1)
+

@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology clasp
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__clasp memberOf Package
+	package hasValue "clasp"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/interpreters"
+	installedSize hasValue "1723"
+	maintainer hasValue "Original-Debian Science Maintainers <debian-science-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.3.4-2build1"
+	fileName hasValue "pool/universe/c/clasp/clasp_3.3.4-2build1_amd64.deb"
+	size hasValue "609692"
+	md5sum hasValue "af72db9730f24c9c650c05d8c2d00c16"
+	sha1 hasValue "d407a7f5630b84f135401d49dafc4be6e4498008"
+	sha256 hasValue "f0ccd3fb12036cafd60a2f06a56e5bdf3059e0bcd7ac1752e784dde73bc64d61"
+	descriptionMd5 hasValue "618ecb2971ab1f6d5fd7213f2985ff5b"
+	homepage hasValue "https://www.potassco.org/clasp/"
+	depends hasValue "libc6 (>= 2.29), libgcc-s1 (>= 3.0), libstdc++6 (>= 6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__clasp,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgcc-s1"
+	comparison hasValue ">="
+	version hasValue "3.0"
+
+relationInstance depends(P0__clasp,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__clasp,2,DepAtom__2)
+

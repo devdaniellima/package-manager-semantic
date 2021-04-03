@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology swarm
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__swarm memberOf Package
+	package hasValue "swarm"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/science"
+	installedSize hasValue "726"
+	maintainer hasValue "Original-Debian Med Packaging Team <debian-med-packaging@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.0.0+dfsg-2build1"
+	fileName hasValue "pool/universe/s/swarm-cluster/swarm_3.0.0+dfsg-2build1_amd64.deb"
+	size hasValue "620376"
+	md5sum hasValue "d86fa6c640e7349086814cbd91a604c1"
+	sha1 hasValue "4be2dbaabfea6faa88cd861df09571545d0cb285"
+	sha256 hasValue "883aca2747ca3cd422e149b605dafae461b6be9f3bc4a98f7b433ada4367249b"
+	descriptionMd5 hasValue "20655f5d65101df022fdc3f06e912b67"
+	homepage hasValue "https://github.com/torognes/swarm"
+	depends hasValue "libc6 (>= 2.14), libgcc-s1 (>= 3.3.1), libstdc++6 (>= 4.1.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__swarm,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgcc-s1"
+	comparison hasValue ">="
+	version hasValue "3.3.1"
+
+relationInstance depends(P0__swarm,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "4.1.1"
+
+relationInstance depends(P0__swarm,2,DepAtom__2)
+

@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology scute
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__scute memberOf Package
+	package hasValue "scute"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/utils"
+	installedSize hasValue "490"
+	maintainer hasValue "Original-NIIBE Yutaka <gniibe@fsij.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:1.5.0-1"
+	fileName hasValue "pool/universe/s/scute/scute_1.5.0-1_amd64.deb"
+	size hasValue "333728"
+	md5sum hasValue "500b40e506a6b444694f7744d227a508"
+	sha1 hasValue "6b67dcacc2053152632d00b257b68d62ecf96249"
+	sha256 hasValue "bc75fa316999c3893de49cd73bc14789498efd4e49a5863d933dc2a7f69e3ead"
+	descriptionMd5 hasValue "fc250324dd6455a484ebc53e06838133"
+	homepage hasValue "http://www.scute.org/"
+	depends hasValue "libassuan0 (>= 2.0.1), libc6 (>= 2.14), libgpg-error0 (>= 1.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libassuan0"
+	comparison hasValue ">="
+	version hasValue "2.0.1"
+
+relationInstance depends(P0__scute,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__scute,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libgpg-error0"
+	comparison hasValue ">="
+	version hasValue "1.14"
+
+relationInstance depends(P0__scute,2,DepAtom__2)
+

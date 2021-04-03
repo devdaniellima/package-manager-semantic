@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology travis
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__travis memberOf Package
+	package hasValue "travis"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/science"
+	installedSize hasValue "3572"
+	maintainer hasValue "Original-Debichem Team <debichem-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "190101-1build1"
+	fileName hasValue "pool/universe/t/travis/travis_190101-1build1_amd64.deb"
+	size hasValue "1304988"
+	md5sum hasValue "808f888d9e6c92f35d81c0bd26e6bcfe"
+	sha1 hasValue "8f6a10f33a6603974f4f5d6b34e0f25bea5c06b3"
+	sha256 hasValue "871f8d29002a55277cb38434a31f0965845d334d8d835bb00a34901776bb046f"
+	descriptionMd5 hasValue "922519d7d4b473553d883cee9df07ecb"
+	homepage hasValue "http://www.travis-analyzer.de"
+	depends hasValue "libc6 (>= 2.29), libgcc-s1 (>= 3.0), libstdc++6 (>= 5.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__travis,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgcc-s1"
+	comparison hasValue ">="
+	version hasValue "3.0"
+
+relationInstance depends(P0__travis,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "5.2"
+
+relationInstance depends(P0__travis,2,DepAtom__2)
+

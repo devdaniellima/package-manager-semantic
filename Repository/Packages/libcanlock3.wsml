@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libcanlock3
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libcanlock3 memberOf Package
+	package hasValue "libcanlock3"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "45"
+	maintainer hasValue "Original-Florian Schlichting <fsfs@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.1.0-1"
+	fileName hasValue "pool/universe/c/canlock/libcanlock3_3.1.0-1_amd64.deb"
+	size hasValue "14376"
+	md5sum hasValue "d5b51ab30514584f8615bd91f716ab75"
+	sha1 hasValue "e11ef811be39bd284d73e8cbbdca32be1d64b09d"
+	sha256 hasValue "d694474843b1844ccedcbbd15fce3ef32cb734cb1eba64acfada2ae2e8308adb"
+	description hasValue "library for creating and verifying Usenet cancel locks"
+	descriptionMd5 hasValue "dba911ccd76a44babb844c3e2cca62de"
+	homepage hasValue "https://micha.freeshell.org/libcanlock/"
+	depends hasValue "libc6 (>= 2.25)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.25"
+
+relationInstance depends(P0__libcanlock3,0,DepAtom__0)
+

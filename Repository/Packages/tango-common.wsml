@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology tango_common
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__tango_common memberOf Package
+	package hasValue "tango-common"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/net"
+	installedSize hasValue "25"
+	maintainer hasValue "Original-Debian Science Maintainers <debian-science-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "9.2.5a+dfsg1-2ubuntu1"
+	fileName hasValue "pool/universe/t/tango/tango-common_9.2.5a+dfsg1-2ubuntu1_all.deb"
+	size hasValue "5728"
+	md5sum hasValue "2af25dd900e5e9f172c53a4e3a915470"
+	sha1 hasValue "9abf9dcdc4a608157e9e7f0e84c41e3e941b9dea"
+	sha256 hasValue "26a8f8bf172a1efc54e694cf5bb5227e725136c24b99da1b7bc10539269dc461"
+	descriptionMd5 hasValue "abe68002b5c0074a5b3403547a332b83"
+	homepage hasValue "http://www.tango-controls.org"
+	depends hasValue "debconf (>= 0.5) | debconf-2.0, adduser"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "debconf"
+	comparison hasValue ">="
+	version hasValue "0.5"
+
+relationInstance depends(P0__tango_common,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "debconf-2.0"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__tango_common,0,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "adduser"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__tango_common,1,DepAtom__2)
+

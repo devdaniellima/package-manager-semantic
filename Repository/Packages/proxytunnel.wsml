@@ -1,0 +1,59 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology proxytunnel
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__proxytunnel memberOf Package
+	package hasValue "proxytunnel"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "81"
+	maintainer hasValue "Original-Julian Gilbey <jdg@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.9.0+svn250-6build1"
+	fileName hasValue "pool/universe/p/proxytunnel/proxytunnel_1.9.0+svn250-6build1_amd64.deb"
+	size hasValue "32844"
+	md5sum hasValue "3c9fb2f5f3f5111c338816982bdba47d"
+	sha1 hasValue "cfcc9ea881a9b69518835ab8f5eef28757e94e8f"
+	sha256 hasValue "463032adf967d42be4db953e061733bcf745e7dbc2c1a14b01be7a13f3fb319b"
+	descriptionMd5 hasValue "283fc47c104825ad549ac44d65fe8c69"
+	depends hasValue "libc6 (>= 2.15), libssl1.1 (>= 1.1.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__proxytunnel,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libssl1.1"
+	comparison hasValue ">="
+	version hasValue "1.1.0"
+
+relationInstance depends(P0__proxytunnel,1,DepAtom__1)
+

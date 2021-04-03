@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology egctl
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__egctl memberOf Package
+	package hasValue "egctl"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/misc"
+	installedSize hasValue "30"
+	maintainer hasValue "Original-Héctor Orón Martínez <zumbi@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:0.1-1"
+	fileName hasValue "pool/universe/e/egctl/egctl_0.1-1_amd64.deb"
+	size hasValue "8650"
+	md5sum hasValue "fa383064d2dea2376380ed19ff2da9c5"
+	sha1 hasValue "ae2ed4a22d59933563a7bf04e7f11b1056eb25f3"
+	sha256 hasValue "5baf2d739ab6d2094767fde042c83a5f821dc4942fd2421bed0afc02ece6952c"
+	descriptionMd5 hasValue "628cb4e1087a3b8ea1272eb676af6d9c"
+	homepage hasValue "https://github.com/unterwulf/egctl"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__egctl,0,DepAtom__0)
+

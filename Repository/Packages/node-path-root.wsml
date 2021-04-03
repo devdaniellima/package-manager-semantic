@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology node_path_root
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__node_path_root memberOf Package
+	package hasValue "node-path-root"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/web"
+	installedSize hasValue "19"
+	maintainer hasValue "Original-Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.1.1-1"
+	fileName hasValue "pool/universe/n/node-path-root/node-path-root_0.1.1-1_all.deb"
+	size hasValue "4036"
+	md5sum hasValue "f737ddab0ad83db7ec8718468d9e83d2"
+	sha1 hasValue "cbd6b1c479b927454e4863dc19d86691d5af252a"
+	sha256 hasValue "051156216484fdc3869fead07ba7476bed7838d57c3020b379d60402215501f3"
+	descriptionMd5 hasValue "7f34b23073a774e5a4d8c0b153a8d09c"
+	homepage hasValue "https://github.com/jonschlinkert/path-root"
+	depends hasValue "nodejs, node-path-root-regex (>= 0.1.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "nodejs"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__node_path_root,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "node-path-root-regex"
+	comparison hasValue ">="
+	version hasValue "0.1.0"
+
+relationInstance depends(P0__node_path_root,1,DepAtom__1)
+

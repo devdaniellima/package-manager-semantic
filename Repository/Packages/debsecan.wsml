@@ -1,0 +1,81 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology debsecan
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__debsecan memberOf Package
+	package hasValue "debsecan"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "109"
+	maintainer hasValue "Original-Florian Weimer <fw@deneb.enyo.de>"
+	architecture hasValue "all"
+	version hasValue "0.4.20.1"
+	fileName hasValue "pool/universe/d/debsecan/debsecan_0.4.20.1_all.deb"
+	size hasValue "30384"
+	md5sum hasValue "a41cffa7b2b599bf3ae7b337e7f0d7de"
+	sha1 hasValue "962b552c6008bab89ee0ecc23f1aa9e1c2faeca4"
+	sha256 hasValue "53c1dff328e62eb547178cb1bac01e241697bc6200e4c2344f5b5329cf695b44"
+	descriptionMd5 hasValue "02c585842f4cdb670bd20e06b66ecc85"
+	homepage hasValue "https://security-team.debian.org/security_tracker.html"
+	depends hasValue "debconf (>= 0.5) | debconf-2.0, python3:any, python3-apt, ca-certificates"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "debconf"
+	comparison hasValue ">="
+	version hasValue "0.5"
+
+relationInstance depends(P0__debsecan,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "debconf-2.0"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__debsecan,0,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__debsecan,1,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "python3-apt"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__debsecan,2,DepAtom__3)
+
+instance DepAtom__4 memberOf DependencyAtom
+	package hasValue "ca-certificates"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__debsecan,3,DepAtom__4)
+

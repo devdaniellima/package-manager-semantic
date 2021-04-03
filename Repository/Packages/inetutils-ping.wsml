@@ -1,0 +1,69 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology inetutils_ping
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__inetutils_ping memberOf Package
+	package hasValue "inetutils-ping"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "355"
+	maintainer hasValue "Original-Guillem Jover <guillem@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2:1.9.4-11"
+	provides hasValue "ping"
+	conflicts hasValue "ping"
+	fileName hasValue "pool/universe/i/inetutils/inetutils-ping_1.9.4-11_amd64.deb"
+	size hasValue "60760"
+	md5sum hasValue "28b1417e8e12cf64aacd7fe7d779ec97"
+	sha1 hasValue "c8bf8782e53abfeaba96c436ce18002f6b3d4b01"
+	sha256 hasValue "45ed13cad3628643331c6a1eb04d7a029d362c6043d97984169a42164c59c5b1"
+	descriptionMd5 hasValue "6200ee972698b85f830ed80937e3d9da"
+	homepage hasValue "https://www.gnu.org/software/inetutils/"
+	depends hasValue "libc6 (>= 2.15), libidn11 (>= 1.13), netbase"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__inetutils_ping,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libidn11"
+	comparison hasValue ">="
+	version hasValue "1.13"
+
+relationInstance depends(P0__inetutils_ping,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "netbase"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__inetutils_ping,2,DepAtom__2)
+

@@ -1,0 +1,74 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology haserl
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__haserl memberOf Package
+	package hasValue "haserl"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/interpreters"
+	installedSize hasValue "77"
+	maintainer hasValue "Original-Chow Loong Jin <hyperair@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.9.35-2"
+	fileName hasValue "pool/universe/h/haserl/haserl_0.9.35-2_amd64.deb"
+	size hasValue "29276"
+	md5sum hasValue "5cb380de06b5c6a7762b50da02221683"
+	sha1 hasValue "7ba0e6f3cf34282133f4255e5248adaeccfc792c"
+	sha256 hasValue "5eb234eff21b96e8111de1b17270592c78c98e6f027f804d5ff7c8e10ebdd514"
+	descriptionMd5 hasValue "b77d8a66f67b7bc4c60a90f8bbba7bb9"
+	homepage hasValue "http://haserl.sourceforge.net/"
+	depends hasValue "libc6 (>= 2.14), liblua5.2-0, debconf (>= 0.5) | debconf-2.0"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__haserl,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "liblua5.2-0"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__haserl,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "debconf"
+	comparison hasValue ">="
+	version hasValue "0.5"
+
+relationInstance depends(P0__haserl,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "debconf-2.0"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__haserl,2,DepAtom__3)
+

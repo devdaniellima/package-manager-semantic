@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology openjdk_12_jdk_headless
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S2 memberOf Source
+	uri hasValue "http://ppa.launchpad.net/openjdk-r/ppa/ubuntu"
+
+// Packages instances
+
+instance P0__openjdk_12_jdk_headless memberOf Package
+	package hasValue "openjdk-12-jdk-headless"
+	packageSource hasValue Source__S2
+	priority hasValue "optional"
+	section hasValue "java"
+	installedSize hasValue "237765"
+	maintainer hasValue "OpenJDK Team <openjdk@lists.launchpad.net>"
+	architecture hasValue "amd64"
+	version hasValue "12.0.2+9-2ubuntu2"
+	replaces hasValue "openjdk-11-jre-headless (<< 11~19-2)"
+	provides hasValue "java-compiler, java-sdk-headless, java10-sdk-headless, java11-sdk-headless, java12-sdk-headless, java2-sdk-headless, java5-sdk-headless, java6-sdk-headless, java7-sdk-headless, java8-sdk-headless, java9-sdk-headless"
+	conflicts hasValue "openjdk-11-jre-headless (<< 11~19-2)"
+	fileName hasValue "pool/main/o/openjdk-12/openjdk-12-jdk-headless_12.0.2+9-2ubuntu2_amd64.deb"
+	size hasValue "233542360"
+	md5sum hasValue "3e5d6806eba8dfef074ed134250bf0af"
+	sha1 hasValue "0300f4bdad54ca3781920d48a9ae90ec8c4bc1d9"
+	sha256 hasValue "aea7749fed29f7d1817f125b385c4be934edda972c128d84f8416c21ca999a7e"
+	descriptionMd5 hasValue "494a52f34d707a832270d6d51a78f511"
+	depends hasValue "openjdk-12-jre-headless (= 12.0.2+9-2ubuntu2), libc6 (>= 2.2.5)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "openjdk-12-jre-headless"
+	comparison hasValue "="
+	version hasValue "12.0.2+9-2ubuntu2"
+
+relationInstance depends(P0__openjdk_12_jdk_headless,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.2.5"
+
+relationInstance depends(P0__openjdk_12_jdk_headless,1,DepAtom__1)
+

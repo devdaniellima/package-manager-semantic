@@ -1,0 +1,52 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology postmark
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__postmark memberOf Package
+	package hasValue "postmark"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/utils"
+	installedSize hasValue "47"
+	maintainer hasValue "Original-Noël Köthe <noel@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.53-2"
+	fileName hasValue "pool/universe/p/postmark/postmark_1.53-2_amd64.deb"
+	size hasValue "15620"
+	md5sum hasValue "5de54af19e822ec04fb7c20cbc987fbc"
+	sha1 hasValue "bc270b8fdf0909fa9257202aeddb94249c8d5825"
+	sha256 hasValue "8bff419ee613f6265162da2ed6576e560f953dc9c33630377d45c2f8c6fad51f"
+	descriptionMd5 hasValue "2ec4caba691d107084b3dd174767661b"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__postmark,0,DepAtom__0)
+

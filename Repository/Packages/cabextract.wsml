@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology cabextract
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__cabextract memberOf Package
+	package hasValue "cabextract"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "82"
+	maintainer hasValue "Original-Eric Sharkey <sharkey@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.9-3"
+	fileName hasValue "pool/universe/c/cabextract/cabextract_1.9-3_amd64.deb"
+	size hasValue "23376"
+	md5sum hasValue "ab5fa6bf3a330c9c5eb5b452986ebb9e"
+	sha1 hasValue "88367e964038587524a2902f82d3ab689a0ea24f"
+	sha256 hasValue "377342e564db998aaf982a46b329b616aa4a1dbcac0dad03b845cd7a5b47df58"
+	description hasValue "Descompactador de arquivos Microsoft Cabinet"
+	descriptionMd5 hasValue "3be58181913cd1a65aef709347d1f1f1"
+	depends hasValue "libmspack0 (>= 0.9.1-1), libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libmspack0"
+	comparison hasValue ">="
+	version hasValue "0.9.1-1"
+
+relationInstance depends(P0__cabextract,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__cabextract,1,DepAtom__1)
+

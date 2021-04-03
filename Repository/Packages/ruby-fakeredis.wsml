@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ruby_fakeredis
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ruby_fakeredis memberOf Package
+	package hasValue "ruby-fakeredis"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/ruby"
+	installedSize hasValue "95"
+	maintainer hasValue "Original-Debian Ruby Extras Maintainers <pkg-ruby-extras-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.8.0-3"
+	fileName hasValue "pool/universe/r/ruby-fakeredis/ruby-fakeredis_0.8.0-3_all.deb"
+	size hasValue "19124"
+	md5sum hasValue "0456fb949664989567d3170ccb0352a7"
+	sha1 hasValue "faead78f3c576ba68da450d97bcc9e99be25c6cb"
+	sha256 hasValue "c1740c32aafdc2281b1b4cf533e98e0374221e71a77652e3a9b88ffc0e25675a"
+	descriptionMd5 hasValue "178fa4ab06e99e383c5bd30aa310ee4f"
+	homepage hasValue "https://github.com/guilleiguaran/fakeredis"
+	depends hasValue "ruby | ruby-interpreter, ruby-redis (>= 4~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "ruby"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ruby_fakeredis,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "ruby-interpreter"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ruby_fakeredis,0,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "ruby-redis"
+	comparison hasValue ">="
+	version hasValue "4~"
+
+relationInstance depends(P0__ruby_fakeredis,1,DepAtom__2)
+

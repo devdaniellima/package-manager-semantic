@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology r_cran_clisymbols
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__r_cran_clisymbols memberOf Package
+	package hasValue "r-cran-clisymbols"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/gnu-r"
+	installedSize hasValue "63"
+	maintainer hasValue "Original-Debian R Packages Maintainers <r-pkg-team@alioth-lists.debian.net>"
+	architecture hasValue "all"
+	version hasValue "1.2.0-1"
+	fileName hasValue "pool/universe/r/r-cran-clisymbols/r-cran-clisymbols_1.2.0-1_all.deb"
+	size hasValue "19624"
+	md5sum hasValue "3ba1dbb6eea58aab36450a85b6a4e1d2"
+	sha1 hasValue "2f2ec3c9230baa7683b5581092add926fe9bf209"
+	sha256 hasValue "b77000b11e676e6f1eeeb68c0a77d17522e86704c138fd9927a19c13f52409f7"
+	descriptionMd5 hasValue "93f1d7ca755a38bf37a5cb042f08a58f"
+	homepage hasValue "https://cran.r-project.org/package=clisymbols"
+	depends hasValue "r-base-core (>= 3.5.1-1build1), r-api-3.5"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "r-base-core"
+	comparison hasValue ">="
+	version hasValue "3.5.1-1build1"
+
+relationInstance depends(P0__r_cran_clisymbols,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "r-api-3.5"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__r_cran_clisymbols,1,DepAtom__1)
+

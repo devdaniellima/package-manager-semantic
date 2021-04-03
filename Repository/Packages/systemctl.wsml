@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology systemctl
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__systemctl memberOf Package
+	package hasValue "systemctl"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "269"
+	maintainer hasValue "Original-Dmitry Smirnov <onlyjob@debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.4.3424-2"
+	conflicts hasValue "systemd"
+	fileName hasValue "pool/universe/d/docker-systemctl-replacement/systemctl_1.4.3424-2_all.deb"
+	size hasValue "75544"
+	md5sum hasValue "30e68bf0a2e3af3a0f922911084f2346"
+	sha1 hasValue "e1b7d32da22ce475bc41ae06ea22dfa2408e59bf"
+	sha256 hasValue "40d69dfcee072daeea4be1d5c8c4c6c509679b4de26ede93b5a9edbd27268276"
+	descriptionMd5 hasValue "365260d0ce4d4a9f51b3dc0038b375bf"
+	homepage hasValue "https://github.com/gdraheim/docker-systemctl-replacement"
+	depends hasValue "python3:any"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__systemctl,0,DepAtom__0)
+

@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology librust_failurePlusderive_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__librust_failurePlusderive_dev memberOf Package
+	package hasValue "librust-failure+derive-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/rust"
+	installedSize hasValue "6"
+	maintainer hasValue "Original-Debian Rust Maintainers <pkg-rust-maintainers@alioth-lists.debian.net>"
+	architecture hasValue "amd64"
+	version hasValue "0.1.5-1build1"
+	provides hasValue "librust-failure-0+derive-dev (= 0.1.5-1build1), librust-failure-0.1+derive-dev (= 0.1.5-1build1), librust-failure-0.1.5+derive-dev (= 0.1.5-1build1)"
+	fileName hasValue "pool/universe/r/rust-failure/librust-failure+derive-dev_0.1.5-1build1_amd64.deb"
+	size hasValue "1116"
+	md5sum hasValue "919af87b3cceb415fa49b8e03d662c3d"
+	sha1 hasValue "98a7c78937ed09ec10ed5ee869dd6d376885bc28"
+	sha256 hasValue "8f8de74c85f8bcd0ab9b767874e0bc50cd5832803d3e6f4b6e7ac989a419bf16"
+	descriptionMd5 hasValue "081c73d5c227ea4131a1b14783b22c71"
+	homepage hasValue "https://rust-lang-nursery.github.io/failure/"
+	depends hasValue "librust-failure-dev (= 0.1.5-1build1), librust-failure-derive-0.1+default-dev (>= 0.1.5-~~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "librust-failure-dev"
+	comparison hasValue "="
+	version hasValue "0.1.5-1build1"
+
+relationInstance depends(P0__librust_failurePlusderive_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "librust-failure-derive-0.1+default-dev"
+	comparison hasValue ">="
+	version hasValue "0.1.5-~~"
+
+relationInstance depends(P0__librust_failurePlusderive_dev,1,DepAtom__1)
+

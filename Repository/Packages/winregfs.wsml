@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology winregfs
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__winregfs memberOf Package
+	package hasValue "winregfs"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "107"
+	maintainer hasValue "Original-Debian Security Tools <team+pkg-security@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.7-3"
+	fileName hasValue "pool/universe/w/winregfs/winregfs_0.7-3_amd64.deb"
+	size hasValue "31068"
+	md5sum hasValue "4c4fab6d75ab0c3f1bbec15cc530d789"
+	sha1 hasValue "76b9d69a42b47bcb3e18ecf2a5fcdcebecf5fb50"
+	sha256 hasValue "14b2d08530513c6376106aaee9bce17d20b74264632076fb268f6e7253f436f7"
+	descriptionMd5 hasValue "610b4161ed7302e41917c1962b3b6c15"
+	homepage hasValue "https://github.com/jbruchon/winregfs"
+	depends hasValue "libc6 (>= 2.14), libfuse2 (>= 2.8)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__winregfs,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libfuse2"
+	comparison hasValue ">="
+	version hasValue "2.8"
+
+relationInstance depends(P0__winregfs,1,DepAtom__1)
+

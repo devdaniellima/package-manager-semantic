@@ -1,0 +1,70 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libselinux1_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libselinux1_dev memberOf Package
+	package hasValue "libselinux1-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libs"
+	installedSize hasValue "765"
+	maintainer hasValue "Original-Debian SELinux maintainers <selinux-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.0-1build2"
+	provides hasValue "libselinux-dev"
+	conflicts hasValue "libselinux-dev"
+	fileName hasValue "pool/main/libs/libselinux/libselinux1-dev_3.0-1build2_amd64.deb"
+	size hasValue "151180"
+	md5sum hasValue "1e7a9b554dfd646dcec8badcd83b4e0c"
+	sha1 hasValue "4162f9a231fd2fe77c0ec16284bdd2aefecddaad"
+	sha256 hasValue "1399933025fc1d2855f01381c92b376867128b3daf00844e1865869368321e49"
+	description hasValue "cabeçalhos de desenvolvimento SELinux"
+	descriptionMd5 hasValue "ca6eeba78d95ecb95827216f2b16ab42"
+	homepage hasValue "http://userspace.selinuxproject.org/"
+	depends hasValue "libselinux1 (= 3.0-1build2), libsepol1-dev (>= 3.0), libpcre2-dev"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libselinux1"
+	comparison hasValue "="
+	version hasValue "3.0-1build2"
+
+relationInstance depends(P0__libselinux1_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libsepol1-dev"
+	comparison hasValue ">="
+	version hasValue "3.0"
+
+relationInstance depends(P0__libselinux1_dev,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libpcre2-dev"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libselinux1_dev,2,DepAtom__2)
+

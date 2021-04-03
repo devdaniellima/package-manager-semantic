@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology powercap_utils
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__powercap_utils memberOf Package
+	package hasValue "powercap-utils"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "117"
+	maintainer hasValue "Connor Imes <ckimes@ubuntu.com>"
+	architecture hasValue "amd64"
+	version hasValue "0.2.0-1"
+	fileName hasValue "pool/universe/p/powercap/powercap-utils_0.2.0-1_amd64.deb"
+	size hasValue "23116"
+	md5sum hasValue "504123f7c26640599ebf3a7535f346a0"
+	sha1 hasValue "9ac91c61a52d570084646c48e43aeb70d1457ad6"
+	sha256 hasValue "03f65906846ef00ce0ec95fb590a4183d66c86871183a4db2ac13c19412617fd"
+	descriptionMd5 hasValue "7b7c71eb50b455ca4ec74ec12ea4adc6"
+	homepage hasValue "https://github.com/powercap/powercap"
+	depends hasValue "libc6 (>= 2.4), libpowercap0 (= 0.2.0-1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__powercap_utils,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libpowercap0"
+	comparison hasValue "="
+	version hasValue "0.2.0-1"
+
+relationInstance depends(P0__powercap_utils,1,DepAtom__1)
+

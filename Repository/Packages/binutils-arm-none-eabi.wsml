@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology binutils_arm_none_eabi
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__binutils_arm_none_eabi memberOf Package
+	package hasValue "binutils-arm-none-eabi"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/devel"
+	installedSize hasValue "30754"
+	maintainer hasValue "Original-Joaquin de Andres <me@xcancerberox.com.ar>"
+	architecture hasValue "amd64"
+	version hasValue "2.34-4ubuntu1+13ubuntu1"
+	fileName hasValue "pool/universe/b/binutils-arm-none-eabi/binutils-arm-none-eabi_2.34-4ubuntu1+13ubuntu1_amd64.deb"
+	size hasValue "2570560"
+	md5sum hasValue "3787b2425334571fda0fe8586b85085d"
+	sha1 hasValue "85ceadb9f44ec343b2c2cfafe5f9d219756e3684"
+	sha256 hasValue "739c9afe5ab48d615dae873fd61318c34faeced4d8d5d4fcf4a3f7572ab0ccd5"
+	descriptionMd5 hasValue "f75c79ad4cf4a6315ad1103f5b7e3723"
+	homepage hasValue "https://sourceware.org/binutils/"
+	depends hasValue "libc6 (>= 2.27), zlib1g (>= 1:1.2.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.27"
+
+relationInstance depends(P0__binutils_arm_none_eabi,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "zlib1g"
+	comparison hasValue ">="
+	version hasValue "1:1.2.0"
+
+relationInstance depends(P0__binutils_arm_none_eabi,1,DepAtom__1)
+

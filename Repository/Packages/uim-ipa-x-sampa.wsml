@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology uim_ipa_x_sampa
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__uim_ipa_x_sampa memberOf Package
+	package hasValue "uim-ipa-x-sampa"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "9"
+	maintainer hasValue "Original-HIGUCHI Daisuke (VDR dai) <dai@debian.org>"
+	architecture hasValue "all"
+	version hasValue "1:1.8.8-6.1build2"
+	fileName hasValue "pool/universe/u/uim/uim-ipa-x-sampa_1.8.8-6.1build2_all.deb"
+	size hasValue "2036"
+	md5sum hasValue "d309c83b663140822d6de5b1180812e1"
+	sha1 hasValue "af7baee19ef728b17d5051db53e7d8360a442fe5"
+	sha256 hasValue "d3de267984f0c22c0509021df8b1e83e1e0f345130b68f26a7a04a9da6ae56ee"
+	descriptionMd5 hasValue "c2650de1193bcb2174f13bebef0e458d"
+	homepage hasValue "https://github.com/uim/uim/wiki"
+	depends hasValue "uim-data (= 1:1.8.8-6.1build2), uim (>= 1:1.8.8-6.1build2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "uim-data"
+	comparison hasValue "="
+	version hasValue "1:1.8.8-6.1build2"
+
+relationInstance depends(P0__uim_ipa_x_sampa,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "uim"
+	comparison hasValue ">="
+	version hasValue "1:1.8.8-6.1build2"
+
+relationInstance depends(P0__uim_ipa_x_sampa,1,DepAtom__1)
+

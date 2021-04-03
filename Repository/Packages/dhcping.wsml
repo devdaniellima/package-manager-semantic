@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology dhcping
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__dhcping memberOf Package
+	package hasValue "dhcping"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "42"
+	maintainer hasValue "Original-Martin Schulze <joey@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.2-4.2"
+	fileName hasValue "pool/universe/d/dhcping/dhcping_1.2-4.2_amd64.deb"
+	size hasValue "13372"
+	md5sum hasValue "2229b98a620a7675136c2baabc1040ce"
+	sha1 hasValue "eeecb3f143ca51623a4a8dd8e9a4aa34ffadcdb0"
+	sha256 hasValue "43fd9744434552fdff8728a28bcfdd00c40ba394e06b0f87932d2f90d262f25b"
+	description hasValue "Programa de daemon ping de DHCP"
+	descriptionMd5 hasValue "c1656353f4bd68e86cd8d21688eaf5ac"
+	depends hasValue "libc6 (>= 2.15)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__dhcping,0,DepAtom__0)
+

@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology brandy
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__brandy memberOf Package
+	package hasValue "brandy"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/interpreters"
+	installedSize hasValue "490"
+	maintainer hasValue "Original-Colin Tuckley <colint@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.20.1-1build1"
+	fileName hasValue "pool/universe/b/brandy/brandy_1.20.1-1build1_amd64.deb"
+	size hasValue "239200"
+	md5sum hasValue "17edbbba2dd169ebbd7d7a85aa626f3f"
+	sha1 hasValue "6b7c6a76adb985e646cfee8037e1696d0726d58f"
+	sha256 hasValue "59851333b4396fcd76940b78cdf3918ac790b678a56da41a8b0af00b9c1b2ff4"
+	description hasValue "interpretador BBC BASIC V"
+	descriptionMd5 hasValue "87052efb62063bde1423433f8602c5be"
+	homepage hasValue "http://sourceforge.net/projects/brandy"
+	depends hasValue "libc6 (>= 2.15), libsdl1.2debian (>= 1.2.11)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__brandy,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libsdl1.2debian"
+	comparison hasValue ">="
+	version hasValue "1.2.11"
+
+relationInstance depends(P0__brandy,1,DepAtom__1)
+

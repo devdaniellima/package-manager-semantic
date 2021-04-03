@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gfortran_8_doc
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gfortran_8_doc memberOf Package
+	package hasValue "gfortran-8-doc"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/doc"
+	installedSize hasValue "1768"
+	maintainer hasValue "Original-Debian GCC Maintainers <debian-gcc@lists.debian.org>"
+	architecture hasValue "all"
+	version hasValue "8.4.0-3ubuntu2"
+	fileName hasValue "pool/universe/g/gcc-8/gfortran-8-doc_8.4.0-3ubuntu2_all.deb"
+	size hasValue "370976"
+	md5sum hasValue "d2046d5b7e56e2e81259b82bdfbd632a"
+	sha1 hasValue "1d07b7d4051840fd945b93bf221cefc1a5c8e22c"
+	sha256 hasValue "f9aafed0c2356f3e23b545f33ce034b34f2e89d0b4297b09eb98828b1a901fc7"
+	descriptionMd5 hasValue "17a01a9ada93e104865a01e6615e2401"
+	homepage hasValue "http://gcc.gnu.org/"
+	depends hasValue "gcc-8-base (>= 8), dpkg (>= 1.15.4) | install-info"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "gcc-8-base"
+	comparison hasValue ">="
+	version hasValue "8"
+
+relationInstance depends(P0__gfortran_8_doc,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "dpkg"
+	comparison hasValue ">="
+	version hasValue "1.15.4"
+
+relationInstance depends(P0__gfortran_8_doc,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "install-info"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__gfortran_8_doc,1,DepAtom__2)
+

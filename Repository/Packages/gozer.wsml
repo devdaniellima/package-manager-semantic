@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gozer
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gozer memberOf Package
+	package hasValue "gozer"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/graphics"
+	installedSize hasValue "54"
+	maintainer hasValue "Original-Eric Dorland <eric@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.7.nofont.1-7"
+	fileName hasValue "pool/universe/g/gozer/gozer_0.7.nofont.1-7_amd64.deb"
+	size hasValue "16068"
+	md5sum hasValue "b800379e0894e243db39e3744da424b1"
+	sha1 hasValue "7ff99dacd858f6e014d73c1be9df4e9666461c0c"
+	sha256 hasValue "3f4cab92b352396e16ec73f4611388a700123173f3422d6fa3988878f4947031"
+	descriptionMd5 hasValue "961ca43525aa9fb50787ca35f32f414d"
+	homepage hasValue "http://linuxbrit.co.uk/gozer/"
+	depends hasValue "giblib1 (>= 1.2.4), libc6 (>= 2.14), libimlib2 (>= 1.4.5)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "giblib1"
+	comparison hasValue ">="
+	version hasValue "1.2.4"
+
+relationInstance depends(P0__gozer,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__gozer,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libimlib2"
+	comparison hasValue ">="
+	version hasValue "1.4.5"
+
+relationInstance depends(P0__gozer,2,DepAtom__2)
+

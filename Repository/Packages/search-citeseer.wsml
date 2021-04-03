@@ -1,0 +1,59 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology search_citeseer
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__search_citeseer memberOf Package
+	package hasValue "search-citeseer"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/tex"
+	installedSize hasValue "40"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.3-2"
+	fileName hasValue "pool/universe/s/search-citeseer/search-citeseer_0.3-2_all.deb"
+	size hasValue "8106"
+	md5sum hasValue "b9a001e4654dc279edacb33d585a0da4"
+	sha1 hasValue "e66ec504b7983b5c35e2cdf386a830bf9543dbae"
+	sha256 hasValue "a5771252184570dd61943117483176e4dba0f2925c78928c7568c71ce30809a4"
+	descriptionMd5 hasValue "576c48c005e047143bb7e8e508b50219"
+	depends hasValue "perl:any, libwww-perl (>= 5.47-1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "perl:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__search_citeseer,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libwww-perl"
+	comparison hasValue ">="
+	version hasValue "5.47-1"
+
+relationInstance depends(P0__search_citeseer,1,DepAtom__1)
+

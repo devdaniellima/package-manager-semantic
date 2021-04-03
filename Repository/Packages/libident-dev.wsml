@@ -1,0 +1,59 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libident_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libident_dev memberOf Package
+	package hasValue "libident-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "45"
+	maintainer hasValue "Original-Paul Slootman <paul@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.22-3.1"
+	fileName hasValue "pool/universe/libi/libident/libident-dev_0.22-3.1_amd64.deb"
+	size hasValue "8764"
+	md5sum hasValue "d040da5c95a36f9ec1aff2158a9895a2"
+	sha1 hasValue "7529f95888360f88056324de319857b78e30f464"
+	sha256 hasValue "a127fe5d761b0fea1cee25eee952ceba25a9e3919537fcb6cbe9ab2920ec9819"
+	descriptionMd5 hasValue "bd1f80eb38a9d9516738a18e1156d9fb"
+	depends hasValue "libident (= 0.22-3.1), libc6 (>= 2.15)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libident"
+	comparison hasValue "="
+	version hasValue "0.22-3.1"
+
+relationInstance depends(P0__libident_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__libident_dev,1,DepAtom__1)
+

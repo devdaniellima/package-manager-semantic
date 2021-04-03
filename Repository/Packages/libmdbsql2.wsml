@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libmdbsql2
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libmdbsql2 memberOf Package
+	package hasValue "libmdbsql2"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "82"
+	maintainer hasValue "Original-Jean-Michel Vourgère <nirgal@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.7.1-6build1"
+	fileName hasValue "pool/universe/m/mdbtools/libmdbsql2_0.7.1-6build1_amd64.deb"
+	size hasValue "22592"
+	md5sum hasValue "5f4f030e33682f2753876d9fea47b04d"
+	sha1 hasValue "081ea6c2fd403fcf0f3d851ec1cb7acffd815fc5"
+	sha256 hasValue "9b9b5df16b61d176167da833f7483b402d6bce52759e6f942bf3b598949ec346"
+	descriptionMd5 hasValue "4631d1cf31db9c8b0dbb06584f110982"
+	homepage hasValue "https://github.com/brianb/mdbtools"
+	depends hasValue "libc6 (>= 2.14), libglib2.0-0 (>= 2.12.0), libmdb2 (>= 0.7~rc1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libmdbsql2,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libglib2.0-0"
+	comparison hasValue ">="
+	version hasValue "2.12.0"
+
+relationInstance depends(P0__libmdbsql2,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libmdb2"
+	comparison hasValue ">="
+	version hasValue "0.7~rc1"
+
+relationInstance depends(P0__libmdbsql2,2,DepAtom__2)
+

@@ -1,0 +1,74 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python3_cccolutils
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python3_cccolutils memberOf Package
+	package hasValue "python3-cccolutils"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "31"
+	maintainer hasValue "Original-Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.4-2build2"
+	fileName hasValue "pool/universe/c/cccolutils/python3-cccolutils_1.4-2build2_amd64.deb"
+	size hasValue "5252"
+	md5sum hasValue "0b6e8f4e16a501b20b59ff6977ea3f34"
+	sha1 hasValue "df502d16e4f2b35dce78014b116de8424affa2ac"
+	sha256 hasValue "9af6e73ad75b90ddc02088ce2065a2a6a1d34dbbd92dbd1d63e14fca06e6f896"
+	descriptionMd5 hasValue "cc6243040a9863789d8eba3b6029e9a2"
+	homepage hasValue "https://pagure.io/cccolutils"
+	depends hasValue "python3 (<< 3.9), python3 (>= 3.8~), libc6 (>= 2.4), libkrb5-3 (>= 1.11+dfsg)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3"
+	comparison hasValue "<<"
+	version hasValue "3.9"
+
+relationInstance depends(P0__python3_cccolutils,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3"
+	comparison hasValue ">="
+	version hasValue "3.8~"
+
+relationInstance depends(P0__python3_cccolutils,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__python3_cccolutils,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "libkrb5-3"
+	comparison hasValue ">="
+	version hasValue "1.11+dfsg"
+
+relationInstance depends(P0__python3_cccolutils,3,DepAtom__3)
+

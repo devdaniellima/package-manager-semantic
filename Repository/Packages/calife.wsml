@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology calife
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__calife memberOf Package
+	package hasValue "calife"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "52"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:3.0.1-5"
+	fileName hasValue "pool/universe/c/calife/calife_3.0.1-5_amd64.deb"
+	size hasValue "21976"
+	md5sum hasValue "6ad771fb71bdc9fcf71ee60501b75470"
+	sha1 hasValue "357f55dcee9ad403d4408c734652e2116b0dbb82"
+	sha256 hasValue "2a818a738b2163281f53f0f83fc89ea564f3f85b3546dccd0a0ca379e965acdd"
+	description hasValue "fornece privilégios de super usuário a usuários específicos"
+	descriptionMd5 hasValue "c179ce954c78b064b0b4327213fc7a89"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__calife,0,DepAtom__0)
+

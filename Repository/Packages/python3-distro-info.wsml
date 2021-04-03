@@ -1,0 +1,59 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python3_distro_info
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python3_distro_info memberOf Package
+	package hasValue "python3-distro-info"
+	packageSource hasValue Source__S1
+	priority hasValue "standard"
+	section hasValue "python"
+	installedSize hasValue "32"
+	maintainer hasValue "Original-Benjamin Drung <bdrung@debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.23ubuntu1"
+	fileName hasValue "pool/main/d/distro-info/python3-distro-info_0.23ubuntu1_all.deb"
+	size hasValue "5924"
+	md5sum hasValue "449115796eec7b4a7f9f5eb81332eb4f"
+	sha1 hasValue "5ee41f56ceee00676f4e7b619335814dc07ab3ac"
+	sha256 hasValue "30c3911207fe1f9687b4a9b79d4d4e8d3389f09064713d928590759ce59d4e08"
+	descriptionMd5 hasValue "0792778c111d953817469a438613f2f3"
+	depends hasValue "distro-info-data, python3:any"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "distro-info-data"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__python3_distro_info,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__python3_distro_info,1,DepAtom__1)
+

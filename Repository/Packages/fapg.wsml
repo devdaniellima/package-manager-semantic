@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology fapg
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__fapg memberOf Package
+	package hasValue "fapg"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/sound"
+	installedSize hasValue "72"
+	maintainer hasValue "Original-Antoine Jacquet <royale@zerezo.com>"
+	architecture hasValue "amd64"
+	version hasValue "0.41-1build1"
+	fileName hasValue "pool/universe/f/fapg/fapg_0.41-1build1_amd64.deb"
+	size hasValue "19788"
+	md5sum hasValue "077dc0ad3a7dbcd88b56b2a9cd1db6bd"
+	sha1 hasValue "24709cc20dc01af64ad3b5e31c05f581be255b93"
+	sha256 hasValue "d7282415409da872d755a4cefbc9ca7e7ffba57f1ce200e9a41cbce5cd44c067"
+	descriptionMd5 hasValue "be8013fed806e7b3dd3ee7168dfd91d6"
+	homepage hasValue "http://royale.zerezo.com/fapg/"
+	depends hasValue "libc6 (>= 2.4), liburiparser1 (>= 0.6.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__fapg,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "liburiparser1"
+	comparison hasValue ">="
+	version hasValue "0.6.0"
+
+relationInstance depends(P0__fapg,1,DepAtom__1)
+

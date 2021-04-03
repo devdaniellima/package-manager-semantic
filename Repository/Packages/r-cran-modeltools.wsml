@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology r_cran_modeltools
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__r_cran_modeltools memberOf Package
+	package hasValue "r-cran-modeltools"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/gnu-r"
+	installedSize hasValue "280"
+	maintainer hasValue "Original-Debian R Packages Maintainers <r-pkg-team@alioth-lists.debian.net>"
+	architecture hasValue "all"
+	version hasValue "0.2-22-1"
+	fileName hasValue "pool/universe/r/r-cran-modeltools/r-cran-modeltools_0.2-22-1_all.deb"
+	size hasValue "211376"
+	md5sum hasValue "a3b812a750cfe6f9d34de8d1f7c393e6"
+	sha1 hasValue "ea8104bd58fdfcc549d45e622ace7edb7a8e2868"
+	sha256 hasValue "e36af645a15bbc4faf2f9700c95daa8b62115abf1d64e74cac39a289ca40274a"
+	descriptionMd5 hasValue "0279fb0e208f63d7c4b2e62cfdc0eeb1"
+	homepage hasValue "http://cran.r-project.org/package=modeltools"
+	depends hasValue "r-base-core (>= 3.5.1-1build1), r-api-3.5"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "r-base-core"
+	comparison hasValue ">="
+	version hasValue "3.5.1-1build1"
+
+relationInstance depends(P0__r_cran_modeltools,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "r-api-3.5"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__r_cran_modeltools,1,DepAtom__1)
+

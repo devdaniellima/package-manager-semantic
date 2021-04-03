@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ocaml_obuild
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ocaml_obuild memberOf Package
+	package hasValue "ocaml-obuild"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/ocaml"
+	installedSize hasValue "3039"
+	maintainer hasValue "Original-Debian OCaml Maintainers <debian-ocaml-maint@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.1.10-3"
+	fileName hasValue "pool/universe/o/ocaml-obuild/ocaml-obuild_0.1.10-3_amd64.deb"
+	size hasValue "511088"
+	md5sum hasValue "1a657c53e7119d57f59c32fedc1b72cd"
+	sha1 hasValue "6f4b88a7455a200c0298b20aeb6d8133c9003d59"
+	sha256 hasValue "80c4c909eadb76015d4a6ed8fe28ea6b4a16d6878f18ce62347f488d6acd6cf6"
+	descriptionMd5 hasValue "223191fdcc4e1db6a2835d2b451148ff"
+	homepage hasValue "https://github.com/ocaml-obuild/obuild"
+	depends hasValue "libc6 (>= 2.17)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.17"
+
+relationInstance depends(P0__ocaml_obuild,0,DepAtom__0)
+

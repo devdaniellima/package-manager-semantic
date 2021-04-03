@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology lua_inotify
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__lua_inotify memberOf Package
+	package hasValue "lua-inotify"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/interpreters"
+	installedSize hasValue "71"
+	maintainer hasValue "Original-Sophie Brun <sophie@freexian.com>"
+	architecture hasValue "amd64"
+	version hasValue "0.4+git20151119-2"
+	provides hasValue "lua5.1-inotify, lua5.2-inotify, lua5.3-inotify"
+	fileName hasValue "pool/universe/l/lua-inotify/lua-inotify_0.4+git20151119-2_amd64.deb"
+	size hasValue "7484"
+	md5sum hasValue "fbd2980186cb422059ad44db1f6090b3"
+	sha1 hasValue "366571c724ab55c315d44067e0f6970c9b86caf3"
+	sha256 hasValue "21dddbf788aaa233f3faf67c29f31e55ea44c4a0e2d1033cf1341501b523740c"
+	descriptionMd5 hasValue "3a8fb85296e3f3fc3a5468a5c465bf28"
+	homepage hasValue "https://github.com/hoelzro/linotify"
+	depends hasValue "libc6 (>= 2.9)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.9"
+
+relationInstance depends(P0__lua_inotify,0,DepAtom__0)
+

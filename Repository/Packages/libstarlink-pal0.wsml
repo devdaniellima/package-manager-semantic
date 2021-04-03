@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libstarlink_pal0
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libstarlink_pal0 memberOf Package
+	package hasValue "libstarlink-pal0"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/libs"
+	installedSize hasValue "135"
+	maintainer hasValue "Original-Debian Astronomy Team <debian-astro-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.9.8-1"
+	fileName hasValue "pool/universe/s/starlink-pal/libstarlink-pal0_0.9.8-1_amd64.deb"
+	size hasValue "43900"
+	md5sum hasValue "78c560bb0717bbd8b813a6ccbc6c118b"
+	sha1 hasValue "42413e5eb588aabab9e295c6d2033b731d84746f"
+	sha256 hasValue "a5f912c73777366b0c23b77f444948f623b245cd5d98712b2d1387c4db45a04f"
+	descriptionMd5 hasValue "db5c4dd1c409a10044bd68bdd2c43518"
+	homepage hasValue "http://starlink.eao.hawaii.edu/starlink"
+	depends hasValue "libc6 (>= 2.4), liberfa1 (>= 1.1.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libstarlink_pal0,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "liberfa1"
+	comparison hasValue ">="
+	version hasValue "1.1.0"
+
+relationInstance depends(P0__libstarlink_pal0,1,DepAtom__1)
+

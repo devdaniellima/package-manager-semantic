@@ -1,0 +1,59 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ros_desktop
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ros_desktop memberOf Package
+	package hasValue "ros-desktop"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/metapackages"
+	installedSize hasValue "9"
+	maintainer hasValue "Original-Debian Science Maintainers <debian-science-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.15"
+	fileName hasValue "pool/universe/r/ros-metapackages/ros-desktop_1.15_all.deb"
+	size hasValue "1780"
+	md5sum hasValue "c80ba5d5b576e299f58a0a64bb6a215f"
+	sha1 hasValue "ec60033c29eef2b3ef9636456eefd916c7811a20"
+	sha256 hasValue "41f9f14e00b7d7c17070203089b7b7cef6f4790fed7e582fcceb7114423a48eb"
+	descriptionMd5 hasValue "78e1a8a93b0a4168dc78a7149a5b21ac"
+	depends hasValue "ros-robot, ros-viz"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "ros-robot"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ros_desktop,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "ros-viz"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ros_desktop,1,DepAtom__1)
+

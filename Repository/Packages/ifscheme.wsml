@@ -1,0 +1,66 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ifscheme
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ifscheme memberOf Package
+	package hasValue "ifscheme"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/net"
+	installedSize hasValue "57"
+	maintainer hasValue "Original-Guus Sliepen <guus@debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.7-5"
+	fileName hasValue "pool/universe/i/ifscheme/ifscheme_1.7-5_all.deb"
+	size hasValue "13468"
+	md5sum hasValue "7979a2824cc05a314a1039a1d36b8ca1"
+	sha1 hasValue "05cb489d68f6e6cf2edd2914e796c1c35787b597"
+	sha256 hasValue "da508ec0a0751a0807c209d3d2e32b9b525e20de778fe7fcb02483c0a85d6460"
+	descriptionMd5 hasValue "a133c827dc237453f8aa8d3c9d44c4eb"
+	depends hasValue "ifupdown (>= 0.6.5), init-system-helpers (>= 1.18~), lsb-base (>= 3.0-6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "ifupdown"
+	comparison hasValue ">="
+	version hasValue "0.6.5"
+
+relationInstance depends(P0__ifscheme,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "init-system-helpers"
+	comparison hasValue ">="
+	version hasValue "1.18~"
+
+relationInstance depends(P0__ifscheme,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "lsb-base"
+	comparison hasValue ">="
+	version hasValue "3.0-6"
+
+relationInstance depends(P0__ifscheme,2,DepAtom__2)
+

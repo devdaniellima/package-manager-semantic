@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology telnet_ssl
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__telnet_ssl memberOf Package
+	package hasValue "telnet-ssl"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/net"
+	installedSize hasValue "209"
+	maintainer hasValue "Original-Mats Erik Andersson <mats.andersson@gisladisker.se>"
+	architecture hasValue "amd64"
+	version hasValue "0.17.41+0.2-3.2build1"
+	provides hasValue "telnet-client"
+	fileName hasValue "pool/universe/n/netkit-telnet-ssl/telnet-ssl_0.17.41+0.2-3.2build1_amd64.deb"
+	size hasValue "80624"
+	md5sum hasValue "6529001eccdae795b18dbc4c6eebe781"
+	sha1 hasValue "78ac0fde8973f36587050aa43bac6375881812b3"
+	sha256 hasValue "e6e2e2f3d1c20b2842c9b2fda25d57d192b23cbac6e7fd028de5b667177dd301"
+	descriptionMd5 hasValue "b1a107a34bdf1d1c73e4c10892e5ba7c"
+	depends hasValue "libc6 (>= 2.15), libssl1.1 (>= 1.1.0), libstdc++6 (>= 5)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__telnet_ssl,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libssl1.1"
+	comparison hasValue ">="
+	version hasValue "1.1.0"
+
+relationInstance depends(P0__telnet_ssl,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "5"
+
+relationInstance depends(P0__telnet_ssl,2,DepAtom__2)
+

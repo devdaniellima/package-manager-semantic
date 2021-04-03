@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python_lockfile
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python_lockfile memberOf Package
+	package hasValue "python-lockfile"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/python"
+	installedSize hasValue "64"
+	maintainer hasValue "Original-Ben Finney <bignose@debian.org>"
+	architecture hasValue "all"
+	version hasValue "1:0.12.2-2ubuntu2"
+	fileName hasValue "pool/universe/p/python-lockfile/python-lockfile_0.12.2-2ubuntu2_all.deb"
+	size hasValue "14436"
+	md5sum hasValue "dfd42ca26f0cb168951901998d3292eb"
+	sha1 hasValue "d19ee18e4f245195f8ee9a42eb264c2f3a5022e6"
+	sha256 hasValue "61db5d02c5f71b96bfd5ff717d4ae6c0b94774e7c0a328699f46422aa5c20f03"
+	descriptionMd5 hasValue "99918331539000a98062b881836b13d4"
+	homepage hasValue "https://pypi.python.org/pypi/lockfile/"
+	depends hasValue "python2:any (<< 2.8), python2:any (>= 2.7~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue "<<"
+	version hasValue "2.8"
+
+relationInstance depends(P0__python_lockfile,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue ">="
+	version hasValue "2.7~"
+
+relationInstance depends(P0__python_lockfile,1,DepAtom__1)
+

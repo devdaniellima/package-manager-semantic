@@ -1,0 +1,59 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology latd
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__latd memberOf Package
+	package hasValue "latd"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/net"
+	installedSize hasValue "267"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.35"
+	fileName hasValue "pool/universe/l/latd/latd_1.35_amd64.deb"
+	size hasValue "78144"
+	md5sum hasValue "9122f6a79ec03c7ad79215a99b062e67"
+	sha1 hasValue "2f760a866ad3112e5c45878f7587a082e24738ef"
+	sha256 hasValue "d63329fd2d1ab500e064a1679a7f4996a3e0f50a25d2c8d0da57b1cd23eaeace"
+	descriptionMd5 hasValue "e359686f95cf7048a9783c5ea0e28a1b"
+	depends hasValue "libc6 (>= 2.15), libstdc++6 (>= 5.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__latd,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "5.2"
+
+relationInstance depends(P0__latd,1,DepAtom__1)
+

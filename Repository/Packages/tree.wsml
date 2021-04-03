@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology tree
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__tree memberOf Package
+	package hasValue "tree"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "112"
+	maintainer hasValue "Original-Florian Ernst <florian@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.8.0-1"
+	fileName hasValue "pool/universe/t/tree/tree_1.8.0-1_amd64.deb"
+	size hasValue "43044"
+	md5sum hasValue "2f2dfe898e63dfe44fef9ecbd08ea7ff"
+	sha1 hasValue "4e285f21c81ae331ed46a5541916cac1b66e36ab"
+	sha256 hasValue "9e53230fd20047586d12d3de6f3cadcef51d41a8594d742d0f58c571eda72282"
+	description hasValue "mostra uma árvore de diretórios indentada, em cores"
+	descriptionMd5 hasValue "9b53b68087a50d4cd859ac0117aecc08"
+	homepage hasValue "http://mama.indstate.edu/users/ice/tree/"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__tree,0,DepAtom__0)
+

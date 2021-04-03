@@ -1,0 +1,69 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ruby_obexftp
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ruby_obexftp memberOf Package
+	package hasValue "ruby-obexftp"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/ruby"
+	installedSize hasValue "62"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.24-6build2"
+	replaces hasValue "libobexftp-ruby (<< 0.23-2~)"
+	provides hasValue "libobexftp-ruby"
+	fileName hasValue "pool/universe/o/obexftp/ruby-obexftp_0.24-6build2_amd64.deb"
+	size hasValue "13912"
+	md5sum hasValue "a89b16ae24c77bb084c8b98c8835c497"
+	sha1 hasValue "7b74a3d37a4bcf492b4f64ebb5e3a5479a85d137"
+	sha256 hasValue "f9f28edf5a5a97288485777409ac0f275f6de287dbc9db5b71a6e9fe9e216582"
+	descriptionMd5 hasValue "dc520555636c19317e0cda9c9735b8b2"
+	homepage hasValue "http://triq.net/obex"
+	depends hasValue "libobexftp0 (= 0.24-6build2), libc6 (>= 2.4), libruby2.7"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libobexftp0"
+	comparison hasValue "="
+	version hasValue "0.24-6build2"
+
+relationInstance depends(P0__ruby_obexftp,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__ruby_obexftp,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libruby2.7"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ruby_obexftp,2,DepAtom__2)
+

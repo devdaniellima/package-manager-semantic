@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libudf0
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libudf0 memberOf Package
+	package hasValue "libudf0"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libs"
+	installedSize hasValue "174"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.0.0-2"
+	fileName hasValue "pool/main/libc/libcdio/libudf0_2.0.0-2_amd64.deb"
+	size hasValue "9904"
+	md5sum hasValue "16b6cfa31bf3dd3541d1674ce5f3573d"
+	sha1 hasValue "52e6006197cfb9fabfdca539d634ff16129b760a"
+	sha256 hasValue "6051a4ef569c7e32eb51d06877b3673521830b7ab68ebcc37608bfbcbe0fe389"
+	descriptionMd5 hasValue "01adae615002a974b055f09ce3aca55c"
+	homepage hasValue "http://www.gnu.org/software/libcdio/"
+	depends hasValue "libc6 (>= 2.4), libcdio18 (>= 2.0.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libudf0,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libcdio18"
+	comparison hasValue ">="
+	version hasValue "2.0.0"
+
+relationInstance depends(P0__libudf0,1,DepAtom__1)
+

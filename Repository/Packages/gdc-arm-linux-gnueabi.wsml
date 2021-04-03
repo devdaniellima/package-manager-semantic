@@ -1,0 +1,59 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gdc_arm_linux_gnueabi
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gdc_arm_linux_gnueabi memberOf Package
+	package hasValue "gdc-arm-linux-gnueabi"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "11"
+	maintainer hasValue "Original-Debian GCC Maintainers <debian-gcc@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "4:10.0-1ubuntu2"
+	fileName hasValue "pool/universe/g/gcc-defaults/gdc-arm-linux-gnueabi_10.0-1ubuntu2_amd64.deb"
+	size hasValue "1184"
+	md5sum hasValue "348ca95f3769f8f51570d13d9ed9940b"
+	sha1 hasValue "587093faef670b87b68c64c2d1a2ea919548f50d"
+	sha256 hasValue "925b901ef66e7cd0fbf05fd6bffb5f37a570c65bcf6c28819aab1a431ce328a0"
+	descriptionMd5 hasValue "c8661d2b4e69f78c27ffacf6036e1fd6"
+	depends hasValue "cpp-arm-linux-gnueabi (>= 4:9.3.0-1ubuntu2), gdc-10-arm-linux-gnueabi (>= 10-20200307-0ubuntu1~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "cpp-arm-linux-gnueabi"
+	comparison hasValue ">="
+	version hasValue "4:9.3.0-1ubuntu2"
+
+relationInstance depends(P0__gdc_arm_linux_gnueabi,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "gdc-10-arm-linux-gnueabi"
+	comparison hasValue ">="
+	version hasValue "10-20200307-0ubuntu1~"
+
+relationInstance depends(P0__gdc_arm_linux_gnueabi,1,DepAtom__1)
+

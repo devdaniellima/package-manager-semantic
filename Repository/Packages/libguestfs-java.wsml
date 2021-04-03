@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libguestfs_java
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libguestfs_java memberOf Package
+	package hasValue "libguestfs-java"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/java"
+	installedSize hasValue "3946"
+	maintainer hasValue "Original-Debian Libvirt Maintainers <pkg-libvirt-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:1.40.2-7ubuntu5"
+	conflicts hasValue "libguestfs-dev (<< 1:1.15.15-1~)"
+	fileName hasValue "pool/universe/libg/libguestfs/libguestfs-java_1.40.2-7ubuntu5_amd64.deb"
+	size hasValue "528184"
+	md5sum hasValue "629575454a6e84b036d0c5fb9790e620"
+	sha1 hasValue "3318ad93c4c4fc49cca7c88e6cd46ff613f1b44c"
+	sha256 hasValue "d73da28655669dea3cd5326724750902b8b7030864c06d0e98551c7cf1feac9c"
+	description hasValue "guest disk image management system - Java bindings"
+	descriptionMd5 hasValue "131958fceff780a08da5538a00119621"
+	homepage hasValue "http://libguestfs.org"
+	depends hasValue "libc6 (>= 2.17), libguestfs0 (>= 1:1.39.8)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.17"
+
+relationInstance depends(P0__libguestfs_java,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libguestfs0"
+	comparison hasValue ">="
+	version hasValue "1:1.39.8"
+
+relationInstance depends(P0__libguestfs_java,1,DepAtom__1)
+

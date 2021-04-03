@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology mlock
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__mlock memberOf Package
+	package hasValue "mlock"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/mail"
+	installedSize hasValue "61"
+	maintainer hasValue "Original-Magnus Holmgren <holmgren@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "8:2007f~dfsg-7"
+	fileName hasValue "pool/universe/u/uw-imap/mlock_2007f~dfsg-7_amd64.deb"
+	size hasValue "11988"
+	md5sum hasValue "750b325bb084558fb360e03e3141c45c"
+	sha1 hasValue "b34a6f0b7bb17ac3c8cfa82108704bca3d8e97a2"
+	sha256 hasValue "5cc03ccc426241a74e354f27e95d23bc644b2306d936ddb8af9a2195c38598d9"
+	description hasValue "programa para bloquear caixa de correio"
+	descriptionMd5 hasValue "afe8a4d97e103642cba447a9323f0878"
+	homepage hasValue "http://www.washington.edu/imap/"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__mlock,0,DepAtom__0)
+

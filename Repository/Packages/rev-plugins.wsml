@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology rev_plugins
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__rev_plugins memberOf Package
+	package hasValue "rev-plugins"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/sound"
+	installedSize hasValue "52"
+	maintainer hasValue "Original-Debian Multimedia Maintainers <pkg-multimedia-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.7.1-3ubuntu3"
+	provides hasValue "ladspa-plugin"
+	fileName hasValue "pool/universe/r/rev-plugins/rev-plugins_0.7.1-3ubuntu3_amd64.deb"
+	size hasValue "14164"
+	md5sum hasValue "04bf366d3e955c94c881c60582bfac9a"
+	sha1 hasValue "4e2e7fa4bcfe33965420f02eca65eb4b6a2e32b3"
+	sha256 hasValue "9525c18e9ec6d5bba5f829bfe025bebfff70dbf8709cf79a7fb32bb94ee12093"
+	descriptionMd5 hasValue "12335738427b1867affbbbf30b1c275d"
+	homepage hasValue "http://kokkinizita.linuxaudio.org/linuxaudio/index.html"
+	depends hasValue "libc6 (>= 2.27), libgcc-s1 (>= 3.0), libstdc++6 (>= 5)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.27"
+
+relationInstance depends(P0__rev_plugins,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgcc-s1"
+	comparison hasValue ">="
+	version hasValue "3.0"
+
+relationInstance depends(P0__rev_plugins,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "5"
+
+relationInstance depends(P0__rev_plugins,2,DepAtom__2)
+

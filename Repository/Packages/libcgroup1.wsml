@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libcgroup1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libcgroup1 memberOf Package
+	package hasValue "libcgroup1"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/libs"
+	installedSize hasValue "125"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.41-10"
+	fileName hasValue "pool/universe/libc/libcgroup/libcgroup1_0.41-10_amd64.deb"
+	size hasValue "42856"
+	md5sum hasValue "6b332859d1c965ff16ac0bdd4c9443a4"
+	sha1 hasValue "2cb84d26b596a9523dafe0826983adbf96a330e8"
+	sha256 hasValue "8a842591677c8fac2b315e8b70eaf09992eacf19a81761b013725af2f864d1c4"
+	description hasValue "control and monitor control groups (library)"
+	descriptionMd5 hasValue "91f51cf74160eb9398561ff90bcc52f8"
+	homepage hasValue "http://libcg.sourceforge.net/"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libcgroup1,0,DepAtom__0)
+

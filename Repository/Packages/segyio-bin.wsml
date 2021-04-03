@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology segyio_bin
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__segyio_bin memberOf Package
+	package hasValue "segyio-bin"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/science"
+	installedSize hasValue "113"
+	maintainer hasValue "Original-Debian Science Maintainers <debian-science-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.8.3-1build2"
+	fileName hasValue "pool/universe/s/segyio/segyio-bin_1.8.3-1build2_amd64.deb"
+	size hasValue "22300"
+	md5sum hasValue "13b8dd482d5aa33e2fdac7b4ad4d2074"
+	sha1 hasValue "d28f34b0365a660067a86018f1b05026c604b1b2"
+	sha256 hasValue "bc99108a378acb3f2e2e9e9090cd15b1363f2c15e69ae61707e58f727b5a5a89"
+	descriptionMd5 hasValue "a794f7ae1ab8140d5de46449eb2b8f37"
+	homepage hasValue "https://github.com/statoil/segyio"
+	depends hasValue "libsegyio1 (= 1.8.3-1build2), libc6 (>= 2.7)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libsegyio1"
+	comparison hasValue "="
+	version hasValue "1.8.3-1build2"
+
+relationInstance depends(P0__segyio_bin,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__segyio_bin,1,DepAtom__1)
+

@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libsha_ocaml
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libsha_ocaml memberOf Package
+	package hasValue "libsha-ocaml"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "132"
+	maintainer hasValue "Original-Debian OCaml Maintainers <debian-ocaml-maint@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.11-1build1"
+	provides hasValue "libsha-ocaml-rjvk5"
+	fileName hasValue "pool/universe/o/ocaml-sha/libsha-ocaml_1.11-1build1_amd64.deb"
+	size hasValue "20256"
+	md5sum hasValue "75a81c6bebdc17435b8a811176a3ebb1"
+	sha1 hasValue "8a8028670ed0f6abfb0415a43e50d088a2b24d7f"
+	sha256 hasValue "6660404617d80313585c60d6274cc88377acb835ef4c71b0184cfd35882c8626"
+	descriptionMd5 hasValue "a64c97e961ca9a38d1d6d4fe9aa2fd72"
+	homepage hasValue "https://github.com/vincenthz/ocaml-sha"
+	depends hasValue "ocaml-base-nox-4.08.1, libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "ocaml-base-nox-4.08.1"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libsha_ocaml,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libsha_ocaml,1,DepAtom__1)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology tlp_rdw
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__tlp_rdw memberOf Package
+	package hasValue "tlp-rdw"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "36"
+	maintainer hasValue "Original-Raphaël Halimi <raphael.halimi@gmail.com>"
+	architecture hasValue "all"
+	version hasValue "1.3.1-2"
+	fileName hasValue "pool/universe/t/tlp/tlp-rdw_1.3.1-2_all.deb"
+	size hasValue "4920"
+	md5sum hasValue "8adb89aa14bcd738e509254ac67e53d2"
+	sha1 hasValue "49dad7fec062b5c02897434ac05a78b04587bda6"
+	sha256 hasValue "858d676ad64a5784afbcffecc319e7863a33b5ec00178ec8b41700e9ba6738e5"
+	descriptionMd5 hasValue "ce82da1600176820c2ce2d794ae00b8b"
+	homepage hasValue "https://linrunner.de/tlp"
+	depends hasValue "network-manager, tlp (= 1.3.1-2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "network-manager"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__tlp_rdw,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "tlp"
+	comparison hasValue "="
+	version hasValue "1.3.1-2"
+
+relationInstance depends(P0__tlp_rdw,1,DepAtom__1)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology sacc
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__sacc memberOf Package
+	package hasValue "sacc"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "48"
+	maintainer hasValue "Original-Paride Legovini <pl@ninthfloor.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.00-1"
+	fileName hasValue "pool/universe/s/sacc/sacc_1.00-1_amd64.deb"
+	size hasValue "14268"
+	md5sum hasValue "79e6bdd58aa489b6f8b73605fa46dd61"
+	sha1 hasValue "40fc299a45c4e77d3493dc8e5eaf847f796e9623"
+	sha256 hasValue "c9549af1fc9a2c01b1ea8da5ee7dac5893a3de07887b93f5212bfa1faab263d0"
+	descriptionMd5 hasValue "ec6997bf66d52e8b7f6ff4d89042c574"
+	homepage hasValue "gopher://bitreich.org/1/scm/sacc"
+	depends hasValue "libc6 (>= 2.4), libtinfo6 (>= 6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__sacc,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libtinfo6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__sacc,1,DepAtom__1)
+

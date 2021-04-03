@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libdeflate_tools
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libdeflate_tools memberOf Package
+	package hasValue "libdeflate-tools"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "177"
+	maintainer hasValue "Original-Debian Med Packaging Team <debian-med-packaging@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.5-3"
+	fileName hasValue "pool/universe/libd/libdeflate/libdeflate-tools_1.5-3_amd64.deb"
+	size hasValue "44784"
+	md5sum hasValue "068377964c733ba757527bdb1c29d2de"
+	sha1 hasValue "74ff0f58292aa4e036d220d16e5e6616be691bec"
+	sha256 hasValue "6b83e8bf8707ddd89d8e4d4f0392580327745c1cdc9507c231185ee644216d86"
+	descriptionMd5 hasValue "638ff9ba1a6c2de85e12cc1db779f062"
+	homepage hasValue "https://github.com/ebiggers/libdeflate"
+	depends hasValue "libdeflate0 (= 1.5-3), libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libdeflate0"
+	comparison hasValue "="
+	version hasValue "1.5-3"
+
+relationInstance depends(P0__libdeflate_tools,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libdeflate_tools,1,DepAtom__1)
+

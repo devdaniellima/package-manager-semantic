@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libmatroska_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libmatroska_dev memberOf Package
+	package hasValue "libmatroska-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "148"
+	maintainer hasValue "Original-Debian Multimedia Maintainers <debian-multimedia@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.5.2-3build1"
+	fileName hasValue "pool/universe/libm/libmatroska/libmatroska-dev_1.5.2-3build1_amd64.deb"
+	size hasValue "17896"
+	md5sum hasValue "5ba8986e244ebc67c266072d73a93875"
+	sha1 hasValue "1f7565a27d13cdfd8c843a28f9668e384c0daeaf"
+	sha256 hasValue "8f50ce86f68349e6230977a5e650a3678d536b17bb18f34878e30eabcd21c430"
+	description hasValue "extensible open standard audio/video container format (development files)"
+	descriptionMd5 hasValue "e540f73aa5eb543cd7a5e0cb371615b5"
+	homepage hasValue "https://www.matroska.org/"
+	depends hasValue "libmatroska6v5 (= 1.5.2-3build1), libebml-dev (>= 1.3.5)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libmatroska6v5"
+	comparison hasValue "="
+	version hasValue "1.5.2-3build1"
+
+relationInstance depends(P0__libmatroska_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libebml-dev"
+	comparison hasValue ">="
+	version hasValue "1.3.5"
+
+relationInstance depends(P0__libmatroska_dev,1,DepAtom__1)
+

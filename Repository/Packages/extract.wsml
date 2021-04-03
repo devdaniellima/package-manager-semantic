@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology extract
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__extract memberOf Package
+	package hasValue "extract"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "430"
+	maintainer hasValue "Original-Bertrand Marc <bmarc@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:1.9-3"
+	fileName hasValue "pool/universe/libe/libextractor/extract_1.9-3_amd64.deb"
+	size hasValue "94196"
+	md5sum hasValue "8cd9535348b208570eece9f8da7f820f"
+	sha1 hasValue "18c3185b0f565938d47430a2e05752e3b2925d51"
+	sha256 hasValue "755d5568097dedd1fc33ba07b957bcc5d4e93af1a339b1c2481eff6b60a370ca"
+	description hasValue "exibe metadados de arquivos de tipos arbitrários"
+	descriptionMd5 hasValue "0462416e734799d71f39017dc71a5adf"
+	homepage hasValue "http://www.gnu.org/software/libextractor/"
+	depends hasValue "libc6 (>= 2.4), libextractor3 (>= 0.6.3)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__extract,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libextractor3"
+	comparison hasValue ">="
+	version hasValue "0.6.3"
+
+relationInstance depends(P0__extract,1,DepAtom__1)
+

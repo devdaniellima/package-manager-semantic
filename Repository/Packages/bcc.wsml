@@ -1,0 +1,63 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology bcc
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__bcc memberOf Package
+	package hasValue "bcc"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "278"
+	maintainer hasValue "Original-Juan Cespedes <cespedes@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.16.17-3.3"
+	replaces hasValue "linux86"
+	provides hasValue "c-compiler"
+	conflicts hasValue "linux86"
+	fileName hasValue "pool/universe/l/linux86/bcc_0.16.17-3.3_amd64.deb"
+	size hasValue "108748"
+	md5sum hasValue "bb33f4d627d0e8571ed0e583ba787b0b"
+	sha1 hasValue "cb88024917d4c6a48d24a974a3d0f748c539de6c"
+	sha256 hasValue "242bfd00fcf105aa7f900fd14656443339a57b1560f90167461dfe6dc0bd0d6a"
+	description hasValue "compilador C x86 16-bit"
+	descriptionMd5 hasValue "94a771a7960d74aa5756bcf089ebb595"
+	depends hasValue "libc6 (>= 2.14), bin86 (= 0.16.17-3.3)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__bcc,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "bin86"
+	comparison hasValue "="
+	version hasValue "0.16.17-3.3"
+
+relationInstance depends(P0__bcc,1,DepAtom__1)
+

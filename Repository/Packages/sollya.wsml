@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology sollya
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__sollya memberOf Package
+	package hasValue "sollya"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/math"
+	installedSize hasValue "54"
+	maintainer hasValue "Original-Debian Science Maintainers <debian-science-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "7.0+ds-3build1"
+	fileName hasValue "pool/universe/s/sollya/sollya_7.0+ds-3build1_amd64.deb"
+	size hasValue "13352"
+	md5sum hasValue "907b156e084a9ad90767cd3a46bf677d"
+	sha1 hasValue "5af2e654d7eee8a25e02c8e827948b48a98ca110"
+	sha256 hasValue "59146676d3c074b3f38c4e650a7b2e909d7b988f397e324def9b4be7dfe2677c"
+	descriptionMd5 hasValue "1563098f1598e08331b404a7d166b911"
+	homepage hasValue "http://sollya.gforge.inria.fr/"
+	depends hasValue "libc6 (>= 2.2.5), libsollya7 (>= 7.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.2.5"
+
+relationInstance depends(P0__sollya,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libsollya7"
+	comparison hasValue ">="
+	version hasValue "7.0"
+
+relationInstance depends(P0__sollya,1,DepAtom__1)
+

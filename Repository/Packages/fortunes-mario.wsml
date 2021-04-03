@@ -1,0 +1,55 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology fortunes_mario
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__fortunes_mario memberOf Package
+	package hasValue "fortunes-mario"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/games"
+	installedSize hasValue "3064"
+	maintainer hasValue "Original-Otavio Salvador <otavio@debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.21-1.1"
+	provides hasValue "fortune-cookie-db"
+	fileName hasValue "pool/universe/f/fortunes-mario/fortunes-mario_0.21-1.1_all.deb"
+	size hasValue "1797364"
+	md5sum hasValue "8376bde082a18ee76ab96d0c312af711"
+	sha1 hasValue "5bf306450eeb45b5f449a457067e16179459fc3b"
+	sha256 hasValue "9884a75f689e1e8308a1e1620bbc0ba95201f34c351d7e69412bf31d46081f56"
+	description hasValue "Arquivos de biscoitos da sorte (\"fortune\") do Mario"
+	descriptionMd5 hasValue "5c08a26b8b28a4c0aeccd5b21cc8f386"
+	homepage hasValue "http://github.com/fike/fortunes-mario"
+	depends hasValue "fortune-mod (>= 1.99.1-6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "fortune-mod"
+	comparison hasValue ">="
+	version hasValue "1.99.1-6"
+
+relationInstance depends(P0__fortunes_mario,0,DepAtom__0)
+

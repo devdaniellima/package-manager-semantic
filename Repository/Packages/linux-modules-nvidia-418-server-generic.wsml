@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology linux_modules_nvidia_418_server_generic
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__linux_modules_nvidia_418_server_generic memberOf Package
+	package hasValue "linux-modules-nvidia-418-server-generic"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "restricted/kernel"
+	installedSize hasValue "22"
+	maintainer hasValue "Canonical Kernel Team <kernel-team@lists.ubuntu.com>"
+	architecture hasValue "amd64"
+	version hasValue "5.4.0-67.75+1"
+	provides hasValue "nvidia-dkms-418-server (= 418.181.07-0ubuntu0.20.04.1), nvidia-prebuilt-kernel"
+	fileName hasValue "pool/restricted/l/linux-restricted-modules/linux-modules-nvidia-418-server-generic_5.4.0-67.75+1_amd64.deb"
+	size hasValue "5496"
+	md5sum hasValue "d91ac39b2f151701e1b05c0b0cfef8ac"
+	sha1 hasValue "6ff7ac08b4cb241258c0460c0f64ae42dfef0b9d"
+	sha256 hasValue "bf0119f8d58b3f8b21d09727f71d5097771bd3c57dee07dd4db6b6dfcb86bafe"
+	sha512 hasValue "318c20459609736a3acb4d71627cc69e53cacb57c077426d624b3f40db3a2d2762e4372f6d8f904d36d2989fce101526953ffc126d633a9f33c5b4ee0f280c4e"
+	descriptionMd5 hasValue "378eb66400ac80023d5f97d32c7a39d2"
+	depends hasValue "linux-modules-nvidia-418-server-5.4.0-67-generic (= 5.4.0-67.75+1), nvidia-kernel-common-418-server (<= 418.181.07-1), nvidia-kernel-common-418-server (>= 418.181.07)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "linux-modules-nvidia-418-server-5.4.0-67-generic"
+	comparison hasValue "="
+	version hasValue "5.4.0-67.75+1"
+
+relationInstance depends(P0__linux_modules_nvidia_418_server_generic,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "nvidia-kernel-common-418-server"
+	comparison hasValue "<="
+	version hasValue "418.181.07-1"
+
+relationInstance depends(P0__linux_modules_nvidia_418_server_generic,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "nvidia-kernel-common-418-server"
+	comparison hasValue ">="
+	version hasValue "418.181.07"
+
+relationInstance depends(P0__linux_modules_nvidia_418_server_generic,2,DepAtom__2)
+

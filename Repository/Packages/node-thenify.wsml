@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology node_thenify
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__node_thenify memberOf Package
+	package hasValue "node-thenify"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/javascript"
+	installedSize hasValue "22"
+	maintainer hasValue "Original-Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "3.3.0-1"
+	fileName hasValue "pool/universe/n/node-thenify/node-thenify_3.3.0-1_all.deb"
+	size hasValue "4608"
+	md5sum hasValue "0ce7858c5bd6c56b8f3e93c8b1ca7fd3"
+	sha1 hasValue "5be923552529056712109e5bad971e143997fc95"
+	sha256 hasValue "5c3b6f7bfba138a78558f27827e9e046b36c84bb36eedbac4e0f6c4398cc8839"
+	descriptionMd5 hasValue "6eade1ced51fc142af2e90332eedd78a"
+	homepage hasValue "https://github.com/thenables/thenify#readme"
+	depends hasValue "nodejs, node-any-promise (>= 1.0.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "nodejs"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__node_thenify,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "node-any-promise"
+	comparison hasValue ">="
+	version hasValue "1.0.0"
+
+relationInstance depends(P0__node_thenify,1,DepAtom__1)
+

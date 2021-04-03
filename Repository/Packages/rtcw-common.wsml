@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology rtcw_common
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__rtcw_common memberOf Package
+	package hasValue "rtcw-common"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "multiverse/games"
+	installedSize hasValue "2115"
+	maintainer hasValue "Original-Debian Games Team <pkg-games-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.51.c+dfsg1-2build1"
+	fileName hasValue "pool/multiverse/i/iortcw/rtcw-common_1.51.c+dfsg1-2build1_amd64.deb"
+	size hasValue "683380"
+	md5sum hasValue "ea7ef51705cd6ad9a6d162107d8991b1"
+	sha1 hasValue "357741a6761ece789de341d23392a2ea0d810b76"
+	sha256 hasValue "2018e44e21c50f5e5fabe29d0dccb42fd5e58254f2f4c2aaa4e1f5b9d2927a77"
+	descriptionMd5 hasValue "08a6eb6fc05c5aba9bb913d30587c612"
+	homepage hasValue "https://github.com/iortcw/iortcw/"
+	depends hasValue "rtcw-data (>= 1.42b+40) | game-data-packager (>= 40), libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "rtcw-data"
+	comparison hasValue ">="
+	version hasValue "1.42b+40"
+
+relationInstance depends(P0__rtcw_common,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "game-data-packager"
+	comparison hasValue ">="
+	version hasValue "40"
+
+relationInstance depends(P0__rtcw_common,0,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__rtcw_common,1,DepAtom__2)
+

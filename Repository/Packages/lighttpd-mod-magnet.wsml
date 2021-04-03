@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology lighttpd_mod_magnet
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__lighttpd_mod_magnet memberOf Package
+	package hasValue "lighttpd-mod-magnet"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/web"
+	installedSize hasValue "121"
+	maintainer hasValue "Original-Debian lighttpd maintainers <team+lighttpd@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.4.55-1ubuntu1"
+	fileName hasValue "pool/universe/l/lighttpd/lighttpd-mod-magnet_1.4.55-1ubuntu1_amd64.deb"
+	size hasValue "12524"
+	md5sum hasValue "47417a9c1534620267f43cc1e6ba4437"
+	sha1 hasValue "917d4edf902680fd0a57cbeb71abe338008f42cf"
+	sha256 hasValue "a4422d25dbb70f3096e86c4c90d09f63dd0dbf604900ce27404a6986811181ae"
+	descriptionMd5 hasValue "21507a9a15e97ab84f252703ace80d9d"
+	homepage hasValue "https://www.lighttpd.net/"
+	depends hasValue "libc6 (>= 2.11), liblua5.1-0, lighttpd (= 1.4.55-1ubuntu1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.11"
+
+relationInstance depends(P0__lighttpd_mod_magnet,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "liblua5.1-0"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__lighttpd_mod_magnet,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "lighttpd"
+	comparison hasValue "="
+	version hasValue "1.4.55-1ubuntu1"
+
+relationInstance depends(P0__lighttpd_mod_magnet,2,DepAtom__2)
+

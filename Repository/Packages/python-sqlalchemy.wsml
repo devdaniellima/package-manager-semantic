@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python_sqlalchemy
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python_sqlalchemy memberOf Package
+	package hasValue "python-sqlalchemy"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "4595"
+	maintainer hasValue "Original-Piotr Ożarowski <piotr@debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.3.12+ds1-1ubuntu2"
+	fileName hasValue "pool/universe/s/sqlalchemy/python-sqlalchemy_1.3.12+ds1-1ubuntu2_all.deb"
+	size hasValue "764192"
+	md5sum hasValue "3040f2509ccd6f3645e3eaac1d553faf"
+	sha1 hasValue "eceed48db49345986bcc6d2cc328292b3ff13423"
+	sha256 hasValue "124a6b48c237234206cb369a652921c4cc3483ed27b10feeff0af42dd0f2acb1"
+	descriptionMd5 hasValue "304b4f5d471b523d00f34c7c91faec22"
+	homepage hasValue "http://www.sqlalchemy.org/"
+	depends hasValue "python2:any (<< 2.8), python2:any (>= 2.7~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue "<<"
+	version hasValue "2.8"
+
+relationInstance depends(P0__python_sqlalchemy,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue ">="
+	version hasValue "2.7~"
+
+relationInstance depends(P0__python_sqlalchemy,1,DepAtom__1)
+

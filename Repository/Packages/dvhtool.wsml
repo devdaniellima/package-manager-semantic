@@ -1,0 +1,52 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology dvhtool
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__dvhtool memberOf Package
+	package hasValue "dvhtool"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "36"
+	maintainer hasValue "Original-Guido Guenther <agx@sigxcpu.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.1-5build1"
+	fileName hasValue "pool/universe/d/dvhtool/dvhtool_1.0.1-5build1_amd64.deb"
+	size hasValue "12760"
+	md5sum hasValue "0ea720600293f1b7af5f09fb1506f218"
+	sha1 hasValue "2245c4d370df4fd213871b8519f63ca3dd73b889"
+	sha256 hasValue "80958a56a214d9589d2dbefe97d3adb79be5b4f26369a3b234ef7e9a63e8c253"
+	descriptionMd5 hasValue "9170eccbc3bc4240a3c27a7734180d60"
+	depends hasValue "libc6 (>= 2.7)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__dvhtool,0,DepAtom__0)
+

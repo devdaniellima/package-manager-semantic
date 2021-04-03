@@ -1,0 +1,69 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology fingerd
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__fingerd memberOf Package
+	package hasValue "fingerd"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "38"
+	maintainer hasValue "Original-Josue Ortega <josue@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.17-17"
+	replaces hasValue "netstd"
+	fileName hasValue "pool/universe/b/bsd-finger/fingerd_0.17-17_amd64.deb"
+	size hasValue "11040"
+	md5sum hasValue "2ead89cc2061207473a687f301cb771e"
+	sha1 hasValue "63650b4ed54eb2151f3da5297396c22fa065dc55"
+	sha256 hasValue "dce32efc18bf29b389dc6a6559c203c281548df4004f8442cddf2128137204a7"
+	description hasValue "servidor de informações de usuários remotos"
+	descriptionMd5 hasValue "252aeb1f06e592ea0a2e97dcb289d598"
+	homepage hasValue "http://ftp.linux.org.uk/pub/linux/Networking/netkit/"
+	depends hasValue "update-inetd, netbase, libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "update-inetd"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__fingerd,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "netbase"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__fingerd,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__fingerd,2,DepAtom__2)
+

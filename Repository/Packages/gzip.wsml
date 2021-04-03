@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gzip
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gzip memberOf Package
+	package hasValue "gzip"
+	packageSource hasValue Source__S1
+	priority hasValue "required"
+	section hasValue "utils"
+	installedSize hasValue "245"
+	maintainer hasValue "Original-Bdale Garbee <bdale@gag.com>"
+	architecture hasValue "amd64"
+	version hasValue "1.10-0ubuntu4"
+	fileName hasValue "pool/main/g/gzip/gzip_1.10-0ubuntu4_amd64.deb"
+	size hasValue "95332"
+	md5sum hasValue "1214e7e6e66e9e9a3556f8e5af846650"
+	sha1 hasValue "590ca21c672e0cd0ddbb8967ec860fcfa84f1586"
+	sha256 hasValue "87a6a5c7acd0d94e5ccd51ea8e749f1894f212d9793683969d1a10ffb30433f8"
+	description hasValue "utilitários de compactação GNU"
+	descriptionMd5 hasValue "100720c9e2c6508f1a1f3731537b38e5"
+	homepage hasValue "https://www.gnu.org/software/gzip/"
+	depends hasValue "dpkg (>= 1.15.4) | install-info"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "dpkg"
+	comparison hasValue ">="
+	version hasValue "1.15.4"
+
+relationInstance depends(P0__gzip,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "install-info"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__gzip,0,DepAtom__1)
+

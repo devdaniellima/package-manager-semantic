@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology read_edid
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__read_edid memberOf Package
+	package hasValue "read-edid"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "68"
+	maintainer hasValue "Original-Dariusz Dwornikowski <dariusz.dwornikowski@cs.put.poznan.pl>"
+	architecture hasValue "amd64"
+	version hasValue "3.0.2-1build1"
+	fileName hasValue "pool/universe/r/read-edid/read-edid_3.0.2-1build1_amd64.deb"
+	size hasValue "18920"
+	md5sum hasValue "b7666db6081efd55edbbf7772063bc39"
+	sha1 hasValue "95e54f6c826d65e3a19ac660871440b55f8c9dac"
+	sha256 hasValue "438215efa68023a90716dc6485b12f214ca673e3680df64ddf4d43f4642fe77a"
+	description hasValue "coleta informações de hardware de monitores VESA PnP"
+	descriptionMd5 hasValue "47a6a60c061631811f9635c58782eaf5"
+	homepage hasValue "http://www.polypux.org/projects/read-edid/"
+	depends hasValue "libc6 (>= 2.4), libx86-1 (>= 0.99-1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__read_edid,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libx86-1"
+	comparison hasValue ">="
+	version hasValue "0.99-1"
+
+relationInstance depends(P0__read_edid,1,DepAtom__1)
+

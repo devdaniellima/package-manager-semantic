@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libavahi_client_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libavahi_client_dev memberOf Package
+	package hasValue "libavahi-client-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "net"
+	installedSize hasValue "217"
+	maintainer hasValue "Original-Utopia Maintenance Team <pkg-utopia-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.7-4ubuntu7"
+	fileName hasValue "pool/main/a/avahi/libavahi-client-dev_0.7-4ubuntu7_amd64.deb"
+	size hasValue "36104"
+	md5sum hasValue "60bcd13a2a77f642d147d5564e87955e"
+	sha1 hasValue "69f4ee6f53d110ea827251293c2a5ac59bbc7abe"
+	sha256 hasValue "79df372e8763b59d9b0e0f5727ff41fa5157798f0ac79032af54e3614f202acd"
+	description hasValue "Development files for the Avahi client library"
+	descriptionMd5 hasValue "70b3114997bfcd9053f7bf3f89550ef9"
+	homepage hasValue "http://avahi.org/"
+	depends hasValue "libavahi-client3 (= 0.7-4ubuntu7), libavahi-common-dev, libdbus-1-dev (>= 0.60)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libavahi-client3"
+	comparison hasValue "="
+	version hasValue "0.7-4ubuntu7"
+
+relationInstance depends(P0__libavahi_client_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libavahi-common-dev"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libavahi_client_dev,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libdbus-1-dev"
+	comparison hasValue ">="
+	version hasValue "0.60"
+
+relationInstance depends(P0__libavahi_client_dev,2,DepAtom__2)
+

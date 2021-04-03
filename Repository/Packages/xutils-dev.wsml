@@ -1,0 +1,59 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology xutils_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__xutils_dev memberOf Package
+	package hasValue "xutils-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/x11"
+	installedSize hasValue "1493"
+	maintainer hasValue "Original-Debian X Strike Force <debian-x@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:7.7+5ubuntu2"
+	fileName hasValue "pool/universe/x/xutils-dev/xutils-dev_7.7+5ubuntu2_amd64.deb"
+	size hasValue "238896"
+	md5sum hasValue "9fa175e0e86447b6494c8c7f802fa419"
+	sha1 hasValue "e8c92849bb5e6d4f235fa725e0e61f95d0022442"
+	sha256 hasValue "83aa697217e578fc35b3f26748a8b1010737a3a9fe27555329b9bc26ecd5a542"
+	descriptionMd5 hasValue "956cbf0a9d05ff058023a9db9744d941"
+	depends hasValue "libc6 (>= 2.14), cpp"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__xutils_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "cpp"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__xutils_dev,1,DepAtom__1)
+

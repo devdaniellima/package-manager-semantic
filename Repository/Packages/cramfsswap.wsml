@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology cramfsswap
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__cramfsswap memberOf Package
+	package hasValue "cramfsswap"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "25"
+	maintainer hasValue "Original-Juliane Holzt <debian@julijane.de>"
+	architecture hasValue "amd64"
+	version hasValue "1.4.1.1ubuntu1"
+	fileName hasValue "pool/universe/c/cramfsswap/cramfsswap_1.4.1.1ubuntu1_amd64.deb"
+	size hasValue "7128"
+	md5sum hasValue "094cbca6ed45efcf4a8620db014dc396"
+	sha1 hasValue "e4649cc032237a51ef63989ccbea57ed48a718c0"
+	sha256 hasValue "b65bfb56a30cab05dd456fdabb438e8197881ede24eba473ae87c8819ac68724"
+	description hasValue "troca a ordem dos bytes de um sistema de arquivos cram (cramfs)"
+	descriptionMd5 hasValue "796947001fae0a27e674ada4f59cd10d"
+	depends hasValue "libc6 (>= 2.4), zlib1g (>= 1:1.1.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__cramfsswap,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "zlib1g"
+	comparison hasValue ">="
+	version hasValue "1:1.1.4"
+
+relationInstance depends(P0__cramfsswap,1,DepAtom__1)
+

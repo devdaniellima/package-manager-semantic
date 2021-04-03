@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python_capstone
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python_capstone memberOf Package
+	package hasValue "python-capstone"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "390"
+	maintainer hasValue "Original-Debian Security Tools <team+pkg-security@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "Python-2.7"
+	fileName hasValue "pool/universe/c/capstone/python-capstone_4.0.1+really+3.0.5-1build1_amd64.deb"
+	size hasValue "58164"
+	md5sum hasValue "c2535d7684d190eb828b9bb82d01c397"
+	sha1 hasValue "7b8e88d089f8dc77eeb03cac3377e964c4afe84f"
+	sha256 hasValue "b01e9d1437ea5b518c4233c7e4275e7870ef72509775bc1a56d8668b0a607acb"
+	descriptionMd5 hasValue "5d49b7c1b4c3db897efe355ea4e73a63"
+	homepage hasValue "http://www.capstone-engine.org/"
+	depends hasValue "python2:any (<< 2.8), python2:any (>= 2.7~), libcapstone3"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue "<<"
+	version hasValue "2.8"
+
+relationInstance depends(P0__python_capstone,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue ">="
+	version hasValue "2.7~"
+
+relationInstance depends(P0__python_capstone,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libcapstone3"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__python_capstone,2,DepAtom__2)
+

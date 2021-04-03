@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology textql
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__textql memberOf Package
+	package hasValue "textql"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "3312"
+	maintainer hasValue "Original-Debian Go Packaging Team <pkg-go-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.0.3-3"
+	fileName hasValue "pool/universe/t/textql/textql_2.0.3-3_amd64.deb"
+	size hasValue "955256"
+	md5sum hasValue "28a84be229de82668366c56a52855b44"
+	sha1 hasValue "03edbca4c7bccb93996f180a4f14f63ecb50685a"
+	sha256 hasValue "34636a9b156643e2b36936a84470ed89cb9e888bd34d5a3d5f676debe937fd4f"
+	descriptionMd5 hasValue "91337aa2e02f440bc101ff50360cf624"
+	homepage hasValue "https://github.com/dinedal/textql/"
+	depends hasValue "libc6 (>= 2.4), libsqlite3-0 (>= 3.7.15), sqlite3"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__textql,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libsqlite3-0"
+	comparison hasValue ">="
+	version hasValue "3.7.15"
+
+relationInstance depends(P0__textql,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "sqlite3"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__textql,2,DepAtom__2)
+

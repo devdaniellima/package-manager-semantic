@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gpp
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gpp memberOf Package
+	package hasValue "gpp"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "183"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.25-1"
+	fileName hasValue "pool/universe/g/gpp/gpp_2.25-1_amd64.deb"
+	size hasValue "81216"
+	md5sum hasValue "8178b23f2d4497f604727945a2e8a54c"
+	sha1 hasValue "eafcb72e0538cc857102bc604776bb25844b1f86"
+	sha256 hasValue "2f029a78330021ed83003dbdd27f3a3c7f861669c7b893595b98f235e79af231"
+	descriptionMd5 hasValue "c83fa3b36766455e830c89f51c395315"
+	homepage hasValue "https://logological.org/gpp"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__gpp,0,DepAtom__0)
+

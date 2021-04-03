@@ -1,0 +1,74 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python3_libfwsi
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python3_libfwsi memberOf Package
+	package hasValue "python3-libfwsi"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "786"
+	maintainer hasValue "Original-Debian Security Tools <team+pkg-security@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "20181227-1.1"
+	fileName hasValue "pool/universe/libf/libfwsi/python3-libfwsi_20181227-1.1_amd64.deb"
+	size hasValue "291720"
+	md5sum hasValue "27d2edac91f924eea32ae070b333586e"
+	sha1 hasValue "e5fe23d4476a1023caacf6fcc45565e225ed1444"
+	sha256 hasValue "aaf2c38b67fbbeefbc9782bc76c9b85c62ddc366204a40c1c75ba05e7232b200"
+	descriptionMd5 hasValue "e808d650187ab3731325c99631742326"
+	homepage hasValue "https://github.com/libyal/libfwsi"
+	depends hasValue "libfwsi1 (= 20181227-1.1), libc6 (>= 2.14), python3 (<< 3.9), python3 (>= 3.8~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libfwsi1"
+	comparison hasValue "="
+	version hasValue "20181227-1.1"
+
+relationInstance depends(P0__python3_libfwsi,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__python3_libfwsi,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "python3"
+	comparison hasValue "<<"
+	version hasValue "3.9"
+
+relationInstance depends(P0__python3_libfwsi,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "python3"
+	comparison hasValue ">="
+	version hasValue "3.8~"
+
+relationInstance depends(P0__python3_libfwsi,3,DepAtom__3)
+

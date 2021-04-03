@@ -1,0 +1,59 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology binutils_msp430
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__binutils_msp430 memberOf Package
+	package hasValue "binutils-msp430"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/devel"
+	installedSize hasValue "17440"
+	maintainer hasValue "Original-Luca Bruno <lucab@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.22~msp20120406-5.1"
+	fileName hasValue "pool/universe/b/binutils-msp430/binutils-msp430_2.22~msp20120406-5.1_amd64.deb"
+	size hasValue "1213456"
+	md5sum hasValue "eeae21053aee4d7d0db50dacc8ba1a5c"
+	sha1 hasValue "c4d7e52d3a1c125d9fb04ea2fdef3029db3fb932"
+	sha256 hasValue "97333371a30328d1fc5965d92fe2e8e2e80279ae389d2392a8cab106a0c2acc4"
+	descriptionMd5 hasValue "2e19182dd27a8e48d01677260766620e"
+	depends hasValue "libc6 (>= 2.14), msp430mcu"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__binutils_msp430,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "msp430mcu"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__binutils_msp430,1,DepAtom__1)
+

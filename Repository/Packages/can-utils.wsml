@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology can_utils
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__can_utils memberOf Package
+	package hasValue "can-utils"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "641"
+	maintainer hasValue "Original-Alexander GQ Gerasiov <gq@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2018.02.0-1ubuntu1"
+	fileName hasValue "pool/universe/c/can-utils/can-utils_2018.02.0-1ubuntu1_amd64.deb"
+	size hasValue "117432"
+	md5sum hasValue "39fe3518244127eb553cba52a2b94176"
+	sha1 hasValue "fe6bd38b339c4be74aa58ad590010abebf484c83"
+	sha256 hasValue "f6d6b624f228cc060bf3f53ea52c5111013098031e2e5e5507c5ea1adc04f182"
+	descriptionMd5 hasValue "65a4f6e799cef84f4f1b06be5d3a5f5b"
+	homepage hasValue "https://github.com/linux-can/can-utils"
+	depends hasValue "libc6 (>= 2.17)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.17"
+
+relationInstance depends(P0__can_utils,0,DepAtom__0)
+

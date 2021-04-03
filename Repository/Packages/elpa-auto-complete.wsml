@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology elpa_auto_complete
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__elpa_auto_complete memberOf Package
+	package hasValue "elpa-auto-complete"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/lisp"
+	installedSize hasValue "507"
+	maintainer hasValue "Original-Takaya Yamashita <takaya@debian.or.jp>"
+	architecture hasValue "all"
+	version hasValue "1.5.1-0.1"
+	replaces hasValue "auto-complate-el (<< 1.5.1-0.1~)"
+	fileName hasValue "pool/universe/a/auto-complete-el/elpa-auto-complete_1.5.1-0.1_all.deb"
+	size hasValue "147576"
+	md5sum hasValue "7baa0709358d68f01dc8c34def15c8a9"
+	sha1 hasValue "7caee8afc0f134796e6f58e15f1c010c55b654f8"
+	sha256 hasValue "8879017130dd1773664307ae936c2982f4a71ff3fe4dfe55b78e7893e57d98af"
+	descriptionMd5 hasValue "c84f70cdaf0fc7b17bb2ab5c87f229af"
+	homepage hasValue "https://github.com/auto-complete/auto-complete"
+	depends hasValue "elpa-popup (>= 0.5.0), emacsen-common"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "elpa-popup"
+	comparison hasValue ">="
+	version hasValue "0.5.0"
+
+relationInstance depends(P0__elpa_auto_complete,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "emacsen-common"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__elpa_auto_complete,1,DepAtom__1)
+

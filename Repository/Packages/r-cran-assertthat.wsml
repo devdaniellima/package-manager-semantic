@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology r_cran_assertthat
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__r_cran_assertthat memberOf Package
+	package hasValue "r-cran-assertthat"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/gnu-r"
+	installedSize hasValue "102"
+	maintainer hasValue "Original-Debian R Packages Maintainers <r-pkg-team@alioth-lists.debian.net>"
+	architecture hasValue "all"
+	version hasValue "0.2.1-1"
+	fileName hasValue "pool/universe/r/r-cran-assertthat/r-cran-assertthat_0.2.1-1_all.deb"
+	size hasValue "56652"
+	md5sum hasValue "8288171e2ed553ff3f2464121680a940"
+	sha1 hasValue "3106bfe6d0160427a7c2684d5b6fa2b16e65d379"
+	sha256 hasValue "912fff46550a3ac6d1f2353fb866c3233bb34449600bcc5f55d4ab016988f8f7"
+	descriptionMd5 hasValue "db29ec831be4cd0c845c8e259820fc2e"
+	homepage hasValue "https://cran.r-project.org/package=yassertthat"
+	depends hasValue "r-base-core (>= 3.6.1-2), r-api-3.5"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "r-base-core"
+	comparison hasValue ">="
+	version hasValue "3.6.1-2"
+
+relationInstance depends(P0__r_cran_assertthat,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "r-api-3.5"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__r_cran_assertthat,1,DepAtom__1)
+

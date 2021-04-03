@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libvdb_sqlite2
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libvdb_sqlite2 memberOf Package
+	package hasValue "libvdb-sqlite2"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "5893"
+	maintainer hasValue "Original-Debian Med Packaging Team <debian-med-packaging@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.10.3+dfsg-1"
+	fileName hasValue "pool/universe/n/ncbi-vdb/libvdb-sqlite2_2.10.3+dfsg-1_amd64.deb"
+	size hasValue "1414696"
+	md5sum hasValue "49413467aeb47439af37c1f0b65a0080"
+	sha1 hasValue "a741e539fb941248cce912c5c6964b1785d33e72"
+	sha256 hasValue "457d6998f026f716fcb6d97b691e8864887528acd0728a12f334224c7541feae"
+	descriptionMd5 hasValue "bc4a3447dd836f200efec1a994dac392"
+	homepage hasValue "https://github.com/ncbi/ncbi-vdb"
+	depends hasValue "libc6 (>= 2.30), libxml2 (>= 2.7.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.30"
+
+relationInstance depends(P0__libvdb_sqlite2,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libxml2"
+	comparison hasValue ">="
+	version hasValue "2.7.4"
+
+relationInstance depends(P0__libvdb_sqlite2,1,DepAtom__1)
+

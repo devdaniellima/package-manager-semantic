@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libxv1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libxv1 memberOf Package
+	package hasValue "libxv1"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libs"
+	installedSize hasValue "36"
+	maintainer hasValue "Original-Debian X Strike Force <debian-x@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2:1.0.11-1"
+	fileName hasValue "pool/main/libx/libxv/libxv1_1.0.11-1_amd64.deb"
+	size hasValue "10702"
+	md5sum hasValue "ccee1ab8612804be2c2900f5f0203d0b"
+	sha1 hasValue "413bdb3199a4fcee8889308f9aba134838d3570f"
+	sha256 hasValue "b9340e0e0a48d7c0375d36327a13e97ffa15499c55e15e12b1cbe091c19c918f"
+	description hasValue "X11 Video extension library"
+	descriptionMd5 hasValue "74cba3221d4427cf5cc62e42d4a4336f"
+	depends hasValue "libc6 (>= 2.14), libx11-6 (>= 2:1.6.0), libxext6"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libxv1,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libx11-6"
+	comparison hasValue ">="
+	version hasValue "2:1.6.0"
+
+relationInstance depends(P0__libxv1,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libxext6"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libxv1,2,DepAtom__2)
+

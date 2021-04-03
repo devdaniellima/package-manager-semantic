@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ruby_debug_inspector
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ruby_debug_inspector memberOf Package
+	package hasValue "ruby-debug-inspector"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/ruby"
+	installedSize hasValue "40"
+	maintainer hasValue "Original-Debian Ruby Extras Maintainers <pkg-ruby-extras-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.0.2-1.1build6"
+	fileName hasValue "pool/universe/r/ruby-debug-inspector/ruby-debug-inspector_0.0.2-1.1build6_amd64.deb"
+	size hasValue "6104"
+	md5sum hasValue "db688b7ff8f81a72cafdb6b9938b4353"
+	sha1 hasValue "8f6b87780c863ddd368f0b592ddcf94e5bba7a40"
+	sha256 hasValue "701491dfb9a3cc380d20c07963dac3c4d3065c7aec6e619767205d813f8df4e0"
+	descriptionMd5 hasValue "c68c8194f71ea45686a633024725e965"
+	homepage hasValue "https://github.com/banister/debug_inspector"
+	depends hasValue "ruby (>= 1:2.7~0), libruby2.7 (>= 2.7.0-4), ruby (<< 1:2.8~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "ruby"
+	comparison hasValue ">="
+	version hasValue "1:2.7~0"
+
+relationInstance depends(P0__ruby_debug_inspector,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libruby2.7"
+	comparison hasValue ">="
+	version hasValue "2.7.0-4"
+
+relationInstance depends(P0__ruby_debug_inspector,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "ruby"
+	comparison hasValue "<<"
+	version hasValue "1:2.8~"
+
+relationInstance depends(P0__ruby_debug_inspector,2,DepAtom__2)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libopenhmd0
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libopenhmd0 memberOf Package
+	package hasValue "libopenhmd0"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "172"
+	maintainer hasValue "Original-Emmanuel Arias <emmanuelarias30@gmail.com>"
+	architecture hasValue "amd64"
+	version hasValue "0.3.0-1"
+	fileName hasValue "pool/universe/libo/libopenhmd/libopenhmd0_0.3.0-1_amd64.deb"
+	size hasValue "68156"
+	md5sum hasValue "93282e61af3e994d32c89f1e9cd95b5f"
+	sha1 hasValue "a587fa93e28cf5f3c495e08368cefaba4166c448"
+	sha256 hasValue "c58aa5bfd8691dd0ba4dc8bd3e82d8fd35e406ee512d5441f2d6877c62986fd2"
+	descriptionMd5 hasValue "4f245a94c3c301ef8ed19f4292bb76f9"
+	homepage hasValue "http://openhmd.net/"
+	depends hasValue "libc6 (>= 2.17), libhidapi-libusb0 (>= 0.8.0~rc1+git20140201.3a66d4e+dfsg)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.17"
+
+relationInstance depends(P0__libopenhmd0,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libhidapi-libusb0"
+	comparison hasValue ">="
+	version hasValue "0.8.0~rc1+git20140201.3a66d4e+dfsg"
+
+relationInstance depends(P0__libopenhmd0,1,DepAtom__1)
+

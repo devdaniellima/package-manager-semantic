@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology fbset
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__fbset memberOf Package
+	package hasValue "fbset"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "admin"
+	installedSize hasValue "320"
+	maintainer hasValue "Original-Sudip Mukherjee <sudipm.mukherjee@gmail.com>"
+	architecture hasValue "amd64"
+	version hasValue "2.1-31"
+	fileName hasValue "pool/main/f/fbset/fbset_2.1-31_amd64.deb"
+	size hasValue "118300"
+	md5sum hasValue "4c4e0fab3b6c4c8967bf9b5b27e9f856"
+	sha1 hasValue "d6761bae983b46138587ba958ab1a0f37299c93b"
+	sha256 hasValue "e30eb86d059b6586c701bc97eb13f718c649fd77220d70992dc078f39d68212d"
+	description hasValue "framebuffer device maintenance program"
+	descriptionMd5 hasValue "7997084a9c5398cd30090426f11200a0"
+	homepage hasValue "http://users.telenet.be/geertu/Linux/fbdev/"
+	depends hasValue "libc6 (>= 2.14), udev | makedev (>= 2.3.1-24)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__fbset,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "udev"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__fbset,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "makedev"
+	comparison hasValue ">="
+	version hasValue "2.3.1-24"
+
+relationInstance depends(P0__fbset,1,DepAtom__2)
+

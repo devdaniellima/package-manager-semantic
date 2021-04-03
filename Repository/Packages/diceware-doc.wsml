@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology diceware_doc
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__diceware_doc memberOf Package
+	package hasValue "diceware-doc"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/doc"
+	installedSize hasValue "663"
+	maintainer hasValue "Original-Andre Bianchi <drebs@riseup.net>"
+	architecture hasValue "all"
+	version hasValue "0.9.6-1"
+	fileName hasValue "pool/universe/d/diceware/diceware-doc_0.9.6-1_all.deb"
+	size hasValue "77228"
+	md5sum hasValue "732ebd0c0ad7edb17c806133ac15d5b8"
+	sha1 hasValue "02c18de9c0c24f554ee51dca7118cd63622f4be1"
+	sha256 hasValue "bfe6d240f9ca0158be7b06be0c46a1df7835b328fdf6f0c6fb6d093d5d86bf80"
+	descriptionMd5 hasValue "a21e46cd62d03b77c56161be029f62c2"
+	homepage hasValue "https://github.com/ulif/diceware"
+	depends hasValue "libjs-sphinxdoc (>= 1.0), sphinx-rtd-theme-common (>= 0.4.2+dfsg)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libjs-sphinxdoc"
+	comparison hasValue ">="
+	version hasValue "1.0"
+
+relationInstance depends(P0__diceware_doc,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "sphinx-rtd-theme-common"
+	comparison hasValue ">="
+	version hasValue "0.4.2+dfsg"
+
+relationInstance depends(P0__diceware_doc,1,DepAtom__1)
+

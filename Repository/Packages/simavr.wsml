@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology simavr
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__simavr memberOf Package
+	package hasValue "simavr"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/electronics"
+	installedSize hasValue "36"
+	maintainer hasValue "Original-Milan Kupcevic <milan@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.6+dfsg-3"
+	fileName hasValue "pool/universe/s/simavr/simavr_1.6+dfsg-3_amd64.deb"
+	size hasValue "9976"
+	md5sum hasValue "4b11a8af7ebf515bb4117d802a385e84"
+	sha1 hasValue "6c218dc7ad7161bdf59add3e363b18cc819129a0"
+	sha256 hasValue "09e393c1568de42d36660254dd01a0e8268e293b1e5fcb59097be05a836acde2"
+	descriptionMd5 hasValue "fd7ce74f2f4e4f6435c67f5b0fbf1244"
+	homepage hasValue "https://github.com/buserror/simavr"
+	depends hasValue "libc6 (>= 2.4), libsimavr2 (>= 1.6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__simavr,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libsimavr2"
+	comparison hasValue ">="
+	version hasValue "1.6"
+
+relationInstance depends(P0__simavr,1,DepAtom__1)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology sickle
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__sickle memberOf Package
+	package hasValue "sickle"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/science"
+	installedSize hasValue "52"
+	maintainer hasValue "Original-Debian Med Packaging Team <debian-med-packaging@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.33+git20150314.f3d6ae3-1"
+	fileName hasValue "pool/universe/s/sickle/sickle_1.33+git20150314.f3d6ae3-1_amd64.deb"
+	size hasValue "18808"
+	md5sum hasValue "d3d8aff445840d01b4369baa200a3584"
+	sha1 hasValue "6db12ca2a05986a382572b3c89acbca3284953f3"
+	sha256 hasValue "1cb3e5424f37598c41382fdf9112c7f91b836f7f6ba74db3f9bc147b294b208d"
+	descriptionMd5 hasValue "669442b6169b604f66a4edae2b8390cc"
+	homepage hasValue "https://github.com/najoshi/sickle"
+	depends hasValue "libc6 (>= 2.14), zlib1g (>= 1:1.1.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__sickle,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "zlib1g"
+	comparison hasValue ">="
+	version hasValue "1:1.1.4"
+
+relationInstance depends(P0__sickle,1,DepAtom__1)
+

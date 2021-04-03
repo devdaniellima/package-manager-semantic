@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology maq
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__maq memberOf Package
+	package hasValue "maq"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/science"
+	installedSize hasValue "531"
+	maintainer hasValue "Original-Debian Med Packaging Team <debian-med-packaging@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.7.1-8build1"
+	fileName hasValue "pool/universe/m/maq/maq_0.7.1-8build1_amd64.deb"
+	size hasValue "287916"
+	md5sum hasValue "763a7f73236a32bb3d1ea31c6cdf0848"
+	sha1 hasValue "9ab63e322647ba757e33be54a367c33a166765d1"
+	sha256 hasValue "98194de702f744c9601c7de122927e644fad0a8c9b67437720c38dcd259d1c49"
+	descriptionMd5 hasValue "a53ece25af8b0564674b82b8ba4c34e7"
+	homepage hasValue "http://maq.sourceforge.net/"
+	depends hasValue "libc6 (>= 2.29), libstdc++6 (>= 5), zlib1g (>= 1:1.2.3.3)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__maq,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "5"
+
+relationInstance depends(P0__maq,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "zlib1g"
+	comparison hasValue ">="
+	version hasValue "1:1.2.3.3"
+
+relationInstance depends(P0__maq,2,DepAtom__2)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology wcstools
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__wcstools memberOf Package
+	package hasValue "wcstools"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/science"
+	installedSize hasValue "1155"
+	maintainer hasValue "Original-Debian Astro Team <debian-astro-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.9.5-3"
+	fileName hasValue "pool/universe/w/wcstools/wcstools_3.9.5-3_amd64.deb"
+	size hasValue "283328"
+	md5sum hasValue "2ae1f9086642323984d5a92468aa632c"
+	sha1 hasValue "376dda5c57c9792f0340b8b49568406afe281a65"
+	sha256 hasValue "58aafa4b71501a4e8f1593b251a5708ffb01f059da173ec5ab3e42353d04b7ad"
+	descriptionMd5 hasValue "397c0d50d35b328f9d1349538875a220"
+	homepage hasValue "http://tdc-www.harvard.edu/software/wcstools/"
+	depends hasValue "libwcstools1 (= 3.9.5-3), libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libwcstools1"
+	comparison hasValue "="
+	version hasValue "3.9.5-3"
+
+relationInstance depends(P0__wcstools,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__wcstools,1,DepAtom__1)
+

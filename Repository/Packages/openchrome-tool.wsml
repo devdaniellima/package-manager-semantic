@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology openchrome_tool
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__openchrome_tool memberOf Package
+	package hasValue "openchrome-tool"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/x11"
+	installedSize hasValue "74"
+	maintainer hasValue "Original-Debian X Strike Force <debian-x@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:0.6.0-3build1"
+	fileName hasValue "pool/universe/x/xserver-xorg-video-openchrome/openchrome-tool_0.6.0-3build1_amd64.deb"
+	size hasValue "13296"
+	md5sum hasValue "973f1e29acc238ab32ae431bf81cfe69"
+	sha1 hasValue "fa609314efc603b5752f071a8615477f1ab86d7b"
+	sha256 hasValue "f6693f6d328be2e7d51ed3dadb2a6c5ab169c791880de45c793dc262b2cefe25"
+	descriptionMd5 hasValue "6dd578cc7d02212d87bf660700b12de8"
+	homepage hasValue "https://www.freedesktop.org/wiki/Openchrome/"
+	depends hasValue "libc6 (>= 2.4), xserver-xorg-video-openchrome (= 1:0.6.0-3build1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__openchrome_tool,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "xserver-xorg-video-openchrome"
+	comparison hasValue "="
+	version hasValue "1:0.6.0-3build1"
+
+relationInstance depends(P0__openchrome_tool,1,DepAtom__1)
+

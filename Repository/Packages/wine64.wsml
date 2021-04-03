@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology wine64
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__wine64 memberOf Package
+	package hasValue "wine64"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/otherosfs"
+	installedSize hasValue "727"
+	maintainer hasValue "Original-Debian Wine Party <debian-wine@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "5.0-3ubuntu1"
+	fileName hasValue "pool/universe/w/wine/wine64_5.0-3ubuntu1_amd64.deb"
+	size hasValue "213668"
+	md5sum hasValue "87af787c4a4c1b513842f910f43c8f51"
+	sha1 hasValue "f72ad4844679e231c18ba161228ae8c1de181496"
+	sha256 hasValue "d1b2d29a2e481c1bc32311c9454e45336bb0723156c1052eaceb410a6aa2c161"
+	description hasValue "implementação da API do Windows - carregador do binário de 64-bit"
+	descriptionMd5 hasValue "2f2e7bcb65f9cc48805a9b8e3ffa77a9"
+	homepage hasValue "https://www.winehq.org"
+	depends hasValue "libc6 (>= 2.17), libwine (= 5.0-3ubuntu1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.17"
+
+relationInstance depends(P0__wine64,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libwine"
+	comparison hasValue "="
+	version hasValue "5.0-3ubuntu1"
+
+relationInstance depends(P0__wine64,1,DepAtom__1)
+

@@ -1,0 +1,63 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python2_minimal
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python2_minimal memberOf Package
+	package hasValue "python2-minimal"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "144"
+	maintainer hasValue "Original-Matthias Klose <doko@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.7.17-2ubuntu4"
+	replaces hasValue "python (<= 2.7.3-1~), python-minimal (<< 2.7.15-2)"
+	conflicts hasValue "python-central (<< 0.5.5)"
+	fileName hasValue "pool/universe/p/python-defaults/python2-minimal_2.7.17-2ubuntu4_amd64.deb"
+	size hasValue "27500"
+	md5sum hasValue "b6ca2072e22e9839485a6db347ab571b"
+	sha1 hasValue "1d76f13951d9806ce67d44d29b4b756fbe293b68"
+	sha256 hasValue "23761b11807fa51de60b4f2d39d69eddd3338280e4014db081fa896c383b3a12"
+	description hasValue "conjunto mínimo de pacotes da linguagem Python2"
+	descriptionMd5 hasValue "39bbe74365740924be57582a5cfc507f"
+	homepage hasValue "https://www.python.org/"
+	depends hasValue "python2.7-minimal (>= 2.7.17~rc1-1~), dpkg (>= 1.13.20)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python2.7-minimal"
+	comparison hasValue ">="
+	version hasValue "2.7.17~rc1-1~"
+
+relationInstance depends(P0__python2_minimal,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "dpkg"
+	comparison hasValue ">="
+	version hasValue "1.13.20"
+
+relationInstance depends(P0__python2_minimal,1,DepAtom__1)
+

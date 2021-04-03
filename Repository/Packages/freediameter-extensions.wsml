@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology freediameter_extensions
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__freediameter_extensions memberOf Package
+	package hasValue "freediameter-extensions"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "801"
+	maintainer hasValue "Original-Debian Mobcom Maintainers <Debian-mobcom-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.2.1-7"
+	fileName hasValue "pool/universe/f/freediameter/freediameter-extensions_1.2.1-7_amd64.deb"
+	size hasValue "142488"
+	md5sum hasValue "3ce2c9b75e966c964a8237f1d6321727"
+	sha1 hasValue "dca9818de7257cb8a970fd0ce3d8a5bd574896a1"
+	sha256 hasValue "4c18d23784fd6dd69cb3485339a536afcfb0849ce1b605a81f683cd04293fd78"
+	descriptionMd5 hasValue "d01adc0e4006cd366f7f72cb3d912d79"
+	homepage hasValue "http://www.freediameter.net/trac/"
+	depends hasValue "libfdcore6 (= 1.2.1-7), libfdproto6 (= 1.2.1-7), libc6 (>= 2.17)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libfdcore6"
+	comparison hasValue "="
+	version hasValue "1.2.1-7"
+
+relationInstance depends(P0__freediameter_extensions,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libfdproto6"
+	comparison hasValue "="
+	version hasValue "1.2.1-7"
+
+relationInstance depends(P0__freediameter_extensions,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.17"
+
+relationInstance depends(P0__freediameter_extensions,2,DepAtom__2)
+

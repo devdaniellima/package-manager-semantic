@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology loadwatch
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__loadwatch memberOf Package
+	package hasValue "loadwatch"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "45"
+	maintainer hasValue "Original-Nicolas Boullis <nboullis@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0+1.1alpha1-6build1"
+	fileName hasValue "pool/universe/l/loadwatch/loadwatch_1.0+1.1alpha1-6build1_amd64.deb"
+	size hasValue "12384"
+	md5sum hasValue "b6fe2227c1ebb23c80857289d1793dea"
+	sha1 hasValue "b7d29b823dd6b58725b3d3698ccaa88346af5ca2"
+	sha256 hasValue "4586841512e9fb758f10656874a46501237a9237a501c1dd46833c540b6384e5"
+	description hasValue "Executa um programa usando apenas ciclos ociosos"
+	descriptionMd5 hasValue "1dfcb130ca929b18d33f35a15989ca48"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__loadwatch,0,DepAtom__0)
+

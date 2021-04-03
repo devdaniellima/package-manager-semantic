@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology buffer
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__buffer memberOf Package
+	package hasValue "buffer"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/utils"
+	installedSize hasValue "45"
+	maintainer hasValue "Original-Martin Buck <mbuck@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.19-12build1"
+	fileName hasValue "pool/universe/b/buffer/buffer_1.19-12build1_amd64.deb"
+	size hasValue "15000"
+	md5sum hasValue "ccf3bcea02b4225fb24ad1393520557a"
+	sha1 hasValue "94664448b6d495776a896c854d5d9c99e8a11d11"
+	sha256 hasValue "f48f78ba200a0cae2b51efa4fcabe2622b9d3ba3c401b49b5ce459f2b62936af"
+	description hasValue "Buffering/reblocking para backups em fita, impressão, etc."
+	descriptionMd5 hasValue "971464346e26a04027ca6aa2f128fed0"
+	depends hasValue "libc6 (>= 2.7)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__buffer,0,DepAtom__0)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libsfark0
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libsfark0 memberOf Package
+	package hasValue "libsfark0"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "53"
+	maintainer hasValue "Original-Debian Multimedia Maintainers <debian-multimedia@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.24-3build1"
+	fileName hasValue "pool/universe/s/sfarklib/libsfark0_2.24-3build1_amd64.deb"
+	size hasValue "16340"
+	md5sum hasValue "b74da1cd1c3c82866da3ebfc7654b627"
+	sha1 hasValue "86754c48b7823aaf5bf33c2ef087248f5b65eeba"
+	sha256 hasValue "508819a3f31d41ab0793954e609d86985505a16ca78ed857a8f6c94749f45d92"
+	descriptionMd5 hasValue "fa0e4f5ad43a08ab3e97078ae5a3088c"
+	homepage hasValue "https://github.com/raboof/sfArkLib"
+	depends hasValue "libc6 (>= 2.14), zlib1g (>= 1:1.1.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libsfark0,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "zlib1g"
+	comparison hasValue ">="
+	version hasValue "1:1.1.4"
+
+relationInstance depends(P0__libsfark0,1,DepAtom__1)
+

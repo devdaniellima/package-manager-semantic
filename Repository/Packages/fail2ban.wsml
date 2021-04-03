@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology fail2ban
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__fail2ban memberOf Package
+	package hasValue "fail2ban"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "1965"
+	maintainer hasValue "Original-Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.11.1-1"
+	fileName hasValue "pool/universe/f/fail2ban/fail2ban_0.11.1-1_all.deb"
+	size hasValue "374672"
+	md5sum hasValue "394cf995fa2db4f91daa4f0a52d35660"
+	sha1 hasValue "5d1f9f26e1a100e0cb042c0e778b608e61abbf3d"
+	sha256 hasValue "3c9d9f501710269f43a6c6ea756ed42d6e45f58790a1588e4df45898bc9d7ccc"
+	description hasValue "Proíbe o acesso de máquinas que causam diversos erros no momento da autenticação"
+	descriptionMd5 hasValue "2aaeac0c71609eb6bfd4102c0adc7275"
+	homepage hasValue "http://www.fail2ban.org"
+	depends hasValue "python3:any, lsb-base (>= 2.0-7)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__fail2ban,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "lsb-base"
+	comparison hasValue ">="
+	version hasValue "2.0-7"
+
+relationInstance depends(P0__fail2ban,1,DepAtom__1)
+

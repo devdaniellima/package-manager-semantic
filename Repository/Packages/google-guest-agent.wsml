@@ -1,0 +1,55 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology google_guest_agent
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__google_guest_agent memberOf Package
+	package hasValue "google-guest-agent"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "23837"
+	maintainer hasValue "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	architecture hasValue "amd64"
+	version hasValue "20201217.02-0ubuntu1~20.04.0"
+	replaces hasValue "gce-compute-image-packages (<< 20191115)"
+	fileName hasValue "pool/universe/g/google-guest-agent/google-guest-agent_20201217.02-0ubuntu1~20.04.0_amd64.deb"
+	size hasValue "6762000"
+	md5sum hasValue "7ea26415def5dae4fb68fe4bad666919"
+	sha1 hasValue "cede1401815a65603fe1e99f007d2cb0d38d7230"
+	sha256 hasValue "23d52e73793c9fc6162b7f31e05bce4d97821ef5567568d195988a8d92458531"
+	sha512 hasValue "199fe7cc36a6eae09a3eb5b7cfaf082557af8b81d31535e6d56f7f0d6f6a7dc03687d385c9050edf622427f4c9958ed610ee82393bc5f7218d631bbb67828968"
+	descriptionMd5 hasValue "631281603d95decc0c24b058cbfb142f"
+	homepage hasValue "https://github.com/GoogleCloudPlatform/guest-agent"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__google_guest_agent,0,DepAtom__0)
+

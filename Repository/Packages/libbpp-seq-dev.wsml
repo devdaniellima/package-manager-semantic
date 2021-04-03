@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libbpp_seq_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libbpp_seq_dev memberOf Package
+	package hasValue "libbpp-seq-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "7586"
+	maintainer hasValue "Original-Debian Med Packaging Team <debian-med-packaging@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.4.1-4build1"
+	fileName hasValue "pool/universe/libb/libbpp-seq/libbpp-seq-dev_2.4.1-4build1_amd64.deb"
+	size hasValue "754188"
+	md5sum hasValue "2ce5ed25f94ef47e29dc287aa7d56a28"
+	sha1 hasValue "ccc5815ff0631b07ba31888b8854b0ca40cae95a"
+	sha256 hasValue "ba05e9fdaf956c7e1326b341ed7412f5a6b82ea0af47146035cc624d4d9f3796"
+	descriptionMd5 hasValue "277fc09c00aacce05de693cc1624eff6"
+	homepage hasValue "http://biopp.univ-montp2.fr/wiki/index.php/Main_Page"
+	depends hasValue "libbpp-seq12 (= 2.4.1-4build1), libbpp-core-dev (>= 2.4.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libbpp-seq12"
+	comparison hasValue "="
+	version hasValue "2.4.1-4build1"
+
+relationInstance depends(P0__libbpp_seq_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libbpp-core-dev"
+	comparison hasValue ">="
+	version hasValue "2.4.1"
+
+relationInstance depends(P0__libbpp_seq_dev,1,DepAtom__1)
+

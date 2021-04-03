@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gfarm_client
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gfarm_client memberOf Package
+	package hasValue "gfarm-client"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/utils"
+	installedSize hasValue "1015"
+	maintainer hasValue "Original-Dmitry Smirnov <onlyjob@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.7.15+dfsg-1"
+	fileName hasValue "pool/universe/g/gfarm/gfarm-client_2.7.15+dfsg-1_amd64.deb"
+	size hasValue "222412"
+	md5sum hasValue "c2d8ba10ae63bfee6920e0e645ee121c"
+	sha1 hasValue "de363e315a61723d5b6228417d889080ce5ef7f0"
+	sha256 hasValue "a4d82471adda0a712654b1fbd13903c62aa6b877995e834789016243968b46ed"
+	descriptionMd5 hasValue "53c09bb5deaa4cef06699deaddd7dfc8"
+	homepage hasValue "https://sourceforge.net/p/gfarm/wiki/Home/"
+	depends hasValue "libc6 (>= 2.15), libgfarm1 (>= 2.7.15), libgomp1 (>= 6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__gfarm_client,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgfarm1"
+	comparison hasValue ">="
+	version hasValue "2.7.15"
+
+relationInstance depends(P0__gfarm_client,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libgomp1"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__gfarm_client,2,DepAtom__2)
+

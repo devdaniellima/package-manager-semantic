@@ -1,0 +1,76 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology cwm
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__cwm memberOf Package
+	package hasValue "cwm"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/x11"
+	installedSize hasValue "130"
+	maintainer hasValue "Original-James McDonald <james@jamesmcdonald.com>"
+	architecture hasValue "amd64"
+	version hasValue "6.3-1"
+	provides hasValue "x-window-manager"
+	fileName hasValue "pool/universe/c/cwm/cwm_6.3-1_amd64.deb"
+	size hasValue "47400"
+	md5sum hasValue "03af78510b6f810ca050bee179a8b2d8"
+	sha1 hasValue "2a234247ee3476b8335cf5f351347feb408cf16b"
+	sha256 hasValue "1673aa0ec2cbda3aa255a6be6c6c6a4312ce777436cf0b68cd384c089a79b577"
+	description hasValue "Gerenciador de janelas leve e eficiente para X11"
+	descriptionMd5 hasValue "24ca182d6a7a795394d6fcbaf5a16038"
+	homepage hasValue "https://github.com/chneukirchen/cwm"
+	depends hasValue "libc6 (>= 2.27), libx11-6, libxft2 (>> 2.1.1), libxrandr2 (>= 2:1.2.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.27"
+
+relationInstance depends(P0__cwm,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libx11-6"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__cwm,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libxft2"
+	comparison hasValue ">>"
+	version hasValue "2.1.1"
+
+relationInstance depends(P0__cwm,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "libxrandr2"
+	comparison hasValue ">="
+	version hasValue "2:1.2.0"
+
+relationInstance depends(P0__cwm,3,DepAtom__3)
+

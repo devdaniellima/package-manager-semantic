@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libhfsp_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libhfsp_dev memberOf Package
+	package hasValue "libhfsp-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libdevel"
+	installedSize hasValue "180"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.4-15"
+	fileName hasValue "pool/main/h/hfsplus/libhfsp-dev_1.0.4-15_amd64.deb"
+	size hasValue "40988"
+	md5sum hasValue "9583198dc13ebf1293f3139ad28dbe37"
+	sha1 hasValue "430f46b8b059b8ac78df3f1a71b7518828b3b4f1"
+	sha256 hasValue "b6fd226f82771eede0c94b22f3bb5ce2376eb2119d7c992a7967d0d94043680e"
+	description hasValue "Library to access HFS+ formatted volumes"
+	descriptionMd5 hasValue "e11c049c3b4224354c6827f09df05cca"
+	depends hasValue "libhfsp0 (= 1.0.4-15), libc6-dev"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libhfsp0"
+	comparison hasValue "="
+	version hasValue "1.0.4-15"
+
+relationInstance depends(P0__libhfsp_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6-dev"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libhfsp_dev,1,DepAtom__1)
+

@@ -1,0 +1,69 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology deluge
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__deluge memberOf Package
+	package hasValue "deluge"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "70"
+	maintainer hasValue "Original-Cristian Greco <cristian@debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.0.3-2"
+	replaces hasValue "deluge-common (<< 1.2.0~rc1-1)"
+	fileName hasValue "pool/universe/d/deluge/deluge_2.0.3-2_all.deb"
+	size hasValue "17188"
+	md5sum hasValue "9f66ef797cb4f3e367babb1240b3e859"
+	sha1 hasValue "f3b28e77538fa2be4dc9f2ca902719688ff9a8be"
+	sha256 hasValue "a5e0b87f9d0008f5b6008e177d9ded05fdb23d36d71c2e8bf52c734a324b818c"
+	description hasValue "cliente bittorrent escrito em Python/PyGTK"
+	descriptionMd5 hasValue "1c006fa7b74be6be008fe5ca6d13b9c7"
+	homepage hasValue "https://www.deluge-torrent.org/"
+	depends hasValue "python3:any, python3-libtorrent (>= 1.1.2.0), deluge-gtk (= 2.0.3-2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__deluge,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3-libtorrent"
+	comparison hasValue ">="
+	version hasValue "1.1.2.0"
+
+relationInstance depends(P0__deluge,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "deluge-gtk"
+	comparison hasValue "="
+	version hasValue "2.0.3-2"
+
+relationInstance depends(P0__deluge,2,DepAtom__2)
+

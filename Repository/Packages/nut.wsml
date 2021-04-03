@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology nut
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__nut memberOf Package
+	package hasValue "nut"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "admin"
+	installedSize hasValue "180"
+	maintainer hasValue "Original-Arnaud Quette <aquette@debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.7.4-11ubuntu4"
+	fileName hasValue "pool/main/n/nut/nut_2.7.4-11ubuntu4_all.deb"
+	size hasValue "85760"
+	md5sum hasValue "40e52ef35821a8c6fcfae8a9923adfe0"
+	sha1 hasValue "4fb248e967a242936aa658182dd238b8efb2e5e2"
+	sha256 hasValue "3679148dd22501ca1cf0515fb4603860eafeda6105b7ea790b3efd4186393a04"
+	description hasValue "network UPS tools - metapackage"
+	descriptionMd5 hasValue "ac00395fb1ff129232ba0df5e10c0949"
+	homepage hasValue "https://networkupstools.org/"
+	depends hasValue "nut-client, nut-server"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "nut-client"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__nut,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "nut-server"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__nut,1,DepAtom__1)
+

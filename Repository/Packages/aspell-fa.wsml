@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology aspell_fa
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__aspell_fa memberOf Package
+	package hasValue "aspell-fa"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/text"
+	installedSize hasValue "270"
+	maintainer hasValue "Original-Lior Kaplan <kaplan@debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.11-0-4"
+	provides hasValue "aspell-dictionary"
+	fileName hasValue "pool/universe/a/aspell-fa/aspell-fa_0.11-0-4_all.deb"
+	size hasValue "191952"
+	md5sum hasValue "36b951066df25a4b44a82d74c1173cf5"
+	sha1 hasValue "c6d51e3989ca13359de4acd514ad84cbb7da9d2b"
+	sha256 hasValue "c85a5009175ad1be352a2843b171488c6d2d78c8221e891cfa3c9c1c1dd1456f"
+	description hasValue "dicionário persa para o GNU Aspell"
+	descriptionMd5 hasValue "75445f9ba1ce13724d31533267e2375d"
+	homepage hasValue "http://ftp.gnu.org/gnu/aspell/dict/fa/"
+	depends hasValue "aspell (>= 0.60.4), dictionaries-common (>= 0.70.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "aspell"
+	comparison hasValue ">="
+	version hasValue "0.60.4"
+
+relationInstance depends(P0__aspell_fa,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "dictionaries-common"
+	comparison hasValue ">="
+	version hasValue "0.70.0"
+
+relationInstance depends(P0__aspell_fa,1,DepAtom__1)
+

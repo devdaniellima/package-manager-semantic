@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology cl_clx_sbcl
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__cl_clx_sbcl memberOf Package
+	package hasValue "cl-clx-sbcl"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "1634"
+	maintainer hasValue "Original-Milan Zamazal <pdm@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.7.4.20160323-1.1"
+	fileName hasValue "pool/universe/c/cl-clx-sbcl/cl-clx-sbcl_0.7.4.20160323-1.1_amd64.deb"
+	size hasValue "368788"
+	md5sum hasValue "0e5cd02c5339befb256af126266d9ec3"
+	sha1 hasValue "048eef95911c87cae94e2672a3d97985b0a1232c"
+	sha256 hasValue "54eb95785faef0c18d82aaa5e65dc7062c0afcd788f278d39750cf0f776cc381"
+	description hasValue "X11 Common Lisp client library for SBCL"
+	descriptionMd5 hasValue "1c05306a6da83bcf588ec8e34166ed2f"
+	depends hasValue "cl-asdf (>= 1.86), dpkg (>= 1.15.4) | install-info"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "cl-asdf"
+	comparison hasValue ">="
+	version hasValue "1.86"
+
+relationInstance depends(P0__cl_clx_sbcl,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "dpkg"
+	comparison hasValue ">="
+	version hasValue "1.15.4"
+
+relationInstance depends(P0__cl_clx_sbcl,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "install-info"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__cl_clx_sbcl,1,DepAtom__2)
+

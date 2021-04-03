@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology xattr
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__xattr memberOf Package
+	package hasValue "xattr"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "17"
+	maintainer hasValue "Original-Federico Ceratto <federico@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.9.6-1.1"
+	replaces hasValue "python-xattr (<< 0.9.3-1)"
+	fileName hasValue "pool/universe/p/python-xattr/xattr_0.9.6-1.1_amd64.deb"
+	size hasValue "4044"
+	md5sum hasValue "a32fe7d2edeb4aa398a1cdf7079a7f08"
+	sha1 hasValue "dc94721cb9009e51d13acc9d886e150c57359e9f"
+	sha256 hasValue "db462b5c3ed21dca9d7e97eb6657374d6ced3d68de3404cef3614a4b0c24a340"
+	descriptionMd5 hasValue "4abd01adaa5bda608a89908277aefdf9"
+	homepage hasValue "https://github.com/xattr/xattr"
+	depends hasValue "python3:any, python3-xattr (= 0.9.6-1.1), python3-pkg-resources"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__xattr,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3-xattr"
+	comparison hasValue "="
+	version hasValue "0.9.6-1.1"
+
+relationInstance depends(P0__xattr,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "python3-pkg-resources"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__xattr,2,DepAtom__2)
+

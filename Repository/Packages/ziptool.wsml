@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ziptool
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ziptool memberOf Package
+	package hasValue "ziptool"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "61"
+	maintainer hasValue "Original-Stefan Schörghofer <amd1212@4md.gr>"
+	architecture hasValue "amd64"
+	version hasValue "1.5.1-0ubuntu1"
+	fileName hasValue "pool/universe/libz/libzip/ziptool_1.5.1-0ubuntu1_amd64.deb"
+	size hasValue "14876"
+	md5sum hasValue "998bfbc9335c513c2d0e7049988acb61"
+	sha1 hasValue "728359629ff94d0360dfdef77b93cf329e75f564"
+	sha256 hasValue "9d74215917f4407bc8c598203cc12b92f5bf3a8e3dd5a173c9ede885bccc187e"
+	descriptionMd5 hasValue "af7dd666a1c58fb99a8fce3b92e989da"
+	homepage hasValue "http://www.nih.at/libzip/"
+	depends hasValue "libc6 (>= 2.4), libzip5 (>= 1.3.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__ziptool,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libzip5"
+	comparison hasValue ">="
+	version hasValue "1.3.0"
+
+relationInstance depends(P0__ziptool,1,DepAtom__1)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ploop
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ploop memberOf Package
+	package hasValue "ploop"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/libs"
+	installedSize hasValue "115"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.15-6"
+	fileName hasValue "pool/universe/p/ploop/ploop_1.15-6_amd64.deb"
+	size hasValue "31852"
+	md5sum hasValue "87527e5c26b862bc438b74c8e11324b6"
+	sha1 hasValue "f0406782e7c0acdc5d0b8dbb78a348b0adbc39e8"
+	sha256 hasValue "1f36b094b25710250c2fcd4af7f49139a6ee6fa0fa1534b5a80f5f174d89dd58"
+	descriptionMd5 hasValue "e675367809717d33b0fa2a53a664cf26"
+	homepage hasValue "https://wiki.openvz.org/Ploop"
+	depends hasValue "libc6 (>= 2.14), libploop1 (= 1.15-6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__ploop,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libploop1"
+	comparison hasValue "="
+	version hasValue "1.15-6"
+
+relationInstance depends(P0__ploop,1,DepAtom__1)
+

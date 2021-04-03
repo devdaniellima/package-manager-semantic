@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology vmfs6_tools
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__vmfs6_tools memberOf Package
+	package hasValue "vmfs6-tools"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/otherosfs"
+	installedSize hasValue "307"
+	maintainer hasValue "Thomas Ward <teward@ubuntu.com>"
+	architecture hasValue "amd64"
+	version hasValue "0.1.0-3"
+	fileName hasValue "pool/universe/v/vmfs6-tools/vmfs6-tools_0.1.0-3_amd64.deb"
+	size hasValue "59496"
+	md5sum hasValue "be4245eccabfe20ab20bcc4e9d619596"
+	sha1 hasValue "5f67fac85fb05268a1ad989d81d8a89a8c5ddb46"
+	sha256 hasValue "5753810c1ecb5d479e897941f6e7ad73cbc8f7939321277e54fa93603b13128e"
+	descriptionMd5 hasValue "2b7e7c664f42a3b931917a9adac24e38"
+	homepage hasValue "https://salsa.debian.org/debian/vmfs6-tools"
+	depends hasValue "libc6 (>= 2.28), libfuse2 (>= 2.6), libuuid1 (>= 2.16)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.28"
+
+relationInstance depends(P0__vmfs6_tools,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libfuse2"
+	comparison hasValue ">="
+	version hasValue "2.6"
+
+relationInstance depends(P0__vmfs6_tools,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libuuid1"
+	comparison hasValue ">="
+	version hasValue "2.16"
+
+relationInstance depends(P0__vmfs6_tools,2,DepAtom__2)
+

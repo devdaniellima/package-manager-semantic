@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology axhttpd
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__axhttpd memberOf Package
+	package hasValue "axhttpd"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/httpd"
+	installedSize hasValue "66"
+	maintainer hasValue "Original-Yangfl <mmyangfl@gmail.com>"
+	architecture hasValue "amd64"
+	version hasValue "2.1.5+ds-1"
+	fileName hasValue "pool/universe/a/axtls/axhttpd_2.1.5+ds-1_amd64.deb"
+	size hasValue "16976"
+	md5sum hasValue "8881daf352fe6f486243e80485626a4e"
+	sha1 hasValue "106df6048b2d8c7bfbaeec4e78ccfe9ac701a505"
+	sha256 hasValue "6864835af74428cab58561eb0aac3533fbd07bad097f295d901a3027da0835dc"
+	descriptionMd5 hasValue "21a4942001bf0b0265ee7b3f5217bbb7"
+	homepage hasValue "http://axtls.sourceforge.net/"
+	depends hasValue "libaxtls1 (>= 2.1.5), libc6 (>= 2.15)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libaxtls1"
+	comparison hasValue ">="
+	version hasValue "2.1.5"
+
+relationInstance depends(P0__axhttpd,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__axhttpd,1,DepAtom__1)
+

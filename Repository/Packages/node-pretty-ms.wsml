@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology node_pretty_ms
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__node_pretty_ms memberOf Package
+	package hasValue "node-pretty-ms"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/web"
+	installedSize hasValue "23"
+	maintainer hasValue "Original-Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "6.0.1-1"
+	fileName hasValue "pool/universe/n/node-pretty-ms/node-pretty-ms_6.0.1-1_all.deb"
+	size hasValue "5648"
+	md5sum hasValue "700bcc8d5352ed545189295a511d6a5c"
+	sha1 hasValue "0bd34e50790d0351966406652eecf8f9b99ce079"
+	sha256 hasValue "d80e2ec53d68d3c1ea67ab9f672e3547e5e9bd9115dacfdbe8381dc4cfee1d84"
+	descriptionMd5 hasValue "1ce4e8696800b2d97daff180bdc18ec5"
+	homepage hasValue "https://github.com/sindresorhus/pretty-ms"
+	depends hasValue "node-parse-ms (>= 2.1.0), nodejs"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "node-parse-ms"
+	comparison hasValue ">="
+	version hasValue "2.1.0"
+
+relationInstance depends(P0__node_pretty_ms,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "nodejs"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__node_pretty_ms,1,DepAtom__1)
+

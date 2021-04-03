@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology flannel
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__flannel memberOf Package
+	package hasValue "flannel"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/devel"
+	installedSize hasValue "33162"
+	maintainer hasValue "Original-Debian Go Packaging Team <pkg-go-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.9.1~ds1-1"
+	fileName hasValue "pool/universe/f/flannel/flannel_0.9.1~ds1-1_amd64.deb"
+	size hasValue "5904664"
+	md5sum hasValue "5891b475e0f96e15aa312868f0728387"
+	sha1 hasValue "3d833152194da3bb1b943e9a9da851049804f2c2"
+	sha256 hasValue "8f507e595cc5f10d6b09db44626bc4189476cd13ff49faeda010c2c6e6ba1c7d"
+	descriptionMd5 hasValue "f98d4b28ba6cabb1cc49ce10ec3a1f9e"
+	homepage hasValue "https://github.com/coreos/flannel"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__flannel,0,DepAtom__0)
+

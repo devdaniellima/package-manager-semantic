@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ltrace
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ltrace memberOf Package
+	package hasValue "ltrace"
+	packageSource hasValue Source__S1
+	priority hasValue "standard"
+	section hasValue "utils"
+	installedSize hasValue "368"
+	maintainer hasValue "Original-Juan Cespedes <cespedes@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.7.3-6.1ubuntu1"
+	fileName hasValue "pool/main/l/ltrace/ltrace_0.7.3-6.1ubuntu1_amd64.deb"
+	size hasValue "121348"
+	md5sum hasValue "787af18c335104b39e4949efd4b0f540"
+	sha1 hasValue "3b748c721fc0a37bd2fec909df54c7a31085de7d"
+	sha256 hasValue "7e3167285ce55c60b19cef4e74ab4f5c3714e35766773813b7383d2395ddb307"
+	description hasValue "Rastreia chamadas a bibliotecas em programa linkado dinamicamente"
+	descriptionMd5 hasValue "ff2cc28bbc4f3ce119d059af641ea073"
+	depends hasValue "libc6 (>= 2.14), libelf1 (>= 0.131), libselinux1 (>= 1.32)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__ltrace,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libelf1"
+	comparison hasValue ">="
+	version hasValue "0.131"
+
+relationInstance depends(P0__ltrace,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libselinux1"
+	comparison hasValue ">="
+	version hasValue "1.32"
+
+relationInstance depends(P0__ltrace,2,DepAtom__2)
+

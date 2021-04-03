@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology potrace
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__potrace memberOf Package
+	package hasValue "potrace"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/graphics"
+	installedSize hasValue "190"
+	maintainer hasValue "Original-Bartosz Fenski <fenio@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.16-2"
+	fileName hasValue "pool/universe/p/potrace/potrace_1.16-2_amd64.deb"
+	size hasValue "71752"
+	md5sum hasValue "322abce7247b60aab7f634177678e6af"
+	sha1 hasValue "3a30fdcd56cb7b8d3344671320449c319858b802"
+	sha256 hasValue "30f0a461c3cdb53a3a3c2e0ab6a109ef690adf24cb8538f4262ee7b585240b4d"
+	descriptionMd5 hasValue "dbd3417ca728263b1d9ddb25c6233224"
+	homepage hasValue "http://potrace.sourceforge.net/"
+	depends hasValue "libc6 (>= 2.29), libpotrace0 (>= 1.16-2), zlib1g (>= 1:1.1.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__potrace,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libpotrace0"
+	comparison hasValue ">="
+	version hasValue "1.16-2"
+
+relationInstance depends(P0__potrace,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "zlib1g"
+	comparison hasValue ">="
+	version hasValue "1:1.1.4"
+
+relationInstance depends(P0__potrace,2,DepAtom__2)
+

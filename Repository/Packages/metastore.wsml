@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology metastore
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__metastore memberOf Package
+	package hasValue "metastore"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/misc"
+	installedSize hasValue "68"
+	maintainer hasValue "Original-Romain Francoise <rfrancoise@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.1.2-3"
+	fileName hasValue "pool/universe/m/metastore/metastore_1.1.2-3_amd64.deb"
+	size hasValue "21704"
+	md5sum hasValue "0a6f0e324881c3301d709ba96fdc59e7"
+	sha1 hasValue "b43e3f0ef432ca3f01541a6eb720f4cb603091fb"
+	sha256 hasValue "548537168b34362eef6421f7d65276fb064159261b45515bea68a1edd1da0b64"
+	descriptionMd5 hasValue "c4000f7a16559f1debc3090c46bb68f2"
+	homepage hasValue "https://github.com/przemoc/metastore"
+	depends hasValue "libbsd0 (>= 0.1.0), libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libbsd0"
+	comparison hasValue ">="
+	version hasValue "0.1.0"
+
+relationInstance depends(P0__metastore,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__metastore,1,DepAtom__1)
+

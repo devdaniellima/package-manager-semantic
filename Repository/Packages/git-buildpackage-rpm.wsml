@@ -1,0 +1,81 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology git_buildpackage_rpm
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__git_buildpackage_rpm memberOf Package
+	package hasValue "git-buildpackage-rpm"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/vcs"
+	installedSize hasValue "268"
+	maintainer hasValue "Original-Guido Günther <agx@sigxcpu.org>"
+	architecture hasValue "all"
+	version hasValue "0.9.19"
+	fileName hasValue "pool/universe/g/git-buildpackage/git-buildpackage-rpm_0.9.19_all.deb"
+	size hasValue "45532"
+	md5sum hasValue "e758966e0d76ff1afcf0792ccf82a0b0"
+	sha1 hasValue "fe33e1e032b5f3fe68edcfce477ef349614438b4"
+	sha256 hasValue "ff6f2cbcb3b571c31072bbae23c5b936fb1070378f5cbd93a3d68dcb531c3687"
+	descriptionMd5 hasValue "bb34be0ae56b9a1ec204088f9cfd4e4a"
+	homepage hasValue "https://honk.sigxcpu.org/piki/projects/git-buildpackage/"
+	depends hasValue "python3:any (>= 3.5~), cpio, git-buildpackage (= 0.9.19), python3-rpm, rpm"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ">="
+	version hasValue "3.5~"
+
+relationInstance depends(P0__git_buildpackage_rpm,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "cpio"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__git_buildpackage_rpm,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "git-buildpackage"
+	comparison hasValue "="
+	version hasValue "0.9.19"
+
+relationInstance depends(P0__git_buildpackage_rpm,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "python3-rpm"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__git_buildpackage_rpm,3,DepAtom__3)
+
+instance DepAtom__4 memberOf DependencyAtom
+	package hasValue "rpm"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__git_buildpackage_rpm,4,DepAtom__4)
+

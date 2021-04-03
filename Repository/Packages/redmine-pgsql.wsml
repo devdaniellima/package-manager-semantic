@@ -1,0 +1,74 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology redmine_pgsql
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__redmine_pgsql memberOf Package
+	package hasValue "redmine-pgsql"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/web"
+	installedSize hasValue "26"
+	maintainer hasValue "Original-Debian Ruby Extras Maintainers <pkg-ruby-extras-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "4.0.6-2"
+	fileName hasValue "pool/universe/r/redmine/redmine-pgsql_4.0.6-2_all.deb"
+	size hasValue "5916"
+	md5sum hasValue "b6821cd302fd1c2650ba10190554d513"
+	sha1 hasValue "81176917687dd86879e9b8555ee6393a7978e83e"
+	sha256 hasValue "492a817e43b82c53d12dcbe3436192f2429b859060b50b77a9e8a920c13c13b5"
+	descriptionMd5 hasValue "f308cd100ee4983a5adb6ff3370520bf"
+	homepage hasValue "https://www.redmine.org"
+	depends hasValue "dbconfig-pgsql | dbconfig-no-thanks, postgresql-client, ruby-pg (>= 1.1~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "dbconfig-pgsql"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__redmine_pgsql,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "dbconfig-no-thanks"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__redmine_pgsql,0,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "postgresql-client"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__redmine_pgsql,1,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "ruby-pg"
+	comparison hasValue ">="
+	version hasValue "1.1~"
+
+relationInstance depends(P0__redmine_pgsql,2,DepAtom__3)
+

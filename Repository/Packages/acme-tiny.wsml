@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology acme_tiny
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__acme_tiny memberOf Package
+	package hasValue "acme-tiny"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "41"
+	maintainer hasValue "Original-Debian Let's Encrypt Team <team+letsencrypt@tracker.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1:4.1.0-1"
+	fileName hasValue "pool/universe/a/acme-tiny/acme-tiny_4.1.0-1_all.deb"
+	size hasValue "13408"
+	md5sum hasValue "aea3ce18769d85378bb36f87bc435f76"
+	sha1 hasValue "915df29fda3af3dd76ea2ebb2726cffadd6b8d59"
+	sha256 hasValue "102319964568018ab55f3077c824c7c3008e40056760944a293b11a0cb4f2303"
+	descriptionMd5 hasValue "5085d7a0169e6f77012dffd350070b68"
+	homepage hasValue "https://github.com/diafygi/acme-tiny"
+	depends hasValue "openssl (>= 1.0.1k), python3-pkg-resources, python3:any"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "openssl"
+	comparison hasValue ">="
+	version hasValue "1.0.1k"
+
+relationInstance depends(P0__acme_tiny,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3-pkg-resources"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__acme_tiny,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__acme_tiny,2,DepAtom__2)
+

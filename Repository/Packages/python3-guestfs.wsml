@@ -1,0 +1,83 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python3_guestfs
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python3_guestfs memberOf Package
+	package hasValue "python3-guestfs"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/python"
+	installedSize hasValue "907"
+	maintainer hasValue "Original-Debian Libvirt Maintainers <pkg-libvirt-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:1.40.2-7ubuntu5"
+	replaces hasValue "python-guestfs"
+	fileName hasValue "pool/universe/libg/libguestfs/python3-guestfs_1.40.2-7ubuntu5_amd64.deb"
+	size hasValue "165196"
+	md5sum hasValue "5cbee15a71ebe4bc204070d42f6aae0d"
+	sha1 hasValue "a31521cf2d82fac76d2bb6c6fe980b12b0248c2f"
+	sha256 hasValue "faf310e057781b13d689d3febf2a83dd1713f39f7ba3f9486b97476e41e2ee35"
+	description hasValue "guest disk image management system - Python 3 bindings"
+	descriptionMd5 hasValue "0f4dad0418f659813a0a1911917e8612"
+	homepage hasValue "http://libguestfs.org"
+	depends hasValue "libc6 (>= 2.14), libguestfs0 (>= 1:1.39.8), python3 (<< 3.9), python3 (>= 3.8~), python3:any"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__python3_guestfs,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libguestfs0"
+	comparison hasValue ">="
+	version hasValue "1:1.39.8"
+
+relationInstance depends(P0__python3_guestfs,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "python3"
+	comparison hasValue "<<"
+	version hasValue "3.9"
+
+relationInstance depends(P0__python3_guestfs,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "python3"
+	comparison hasValue ">="
+	version hasValue "3.8~"
+
+relationInstance depends(P0__python3_guestfs,3,DepAtom__3)
+
+instance DepAtom__4 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__python3_guestfs,4,DepAtom__4)
+

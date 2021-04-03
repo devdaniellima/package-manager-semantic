@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology tuned_utils_systemtap
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__tuned_utils_systemtap memberOf Package
+	package hasValue "tuned-utils-systemtap"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "42"
+	maintainer hasValue "Original-Evgeni Golov <evgeni@debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.10.0-1"
+	fileName hasValue "pool/universe/t/tuned/tuned-utils-systemtap_2.10.0-1_all.deb"
+	size hasValue "10708"
+	md5sum hasValue "f155bf15f10bc0f97fccc880ad32e367"
+	sha1 hasValue "4fb5b22659d9ab525ff3ced7c08406f640276f30"
+	sha256 hasValue "fbc19ce392753a90496c451276a6f4cd921b6bf87a05522365b710c4127aa569"
+	descriptionMd5 hasValue "ed95c7665ca65c37ed45ecc0ef1ae224"
+	homepage hasValue "https://tuned-project.org/"
+	depends hasValue "systemtap, tuned (= 2.10.0-1), python3:any"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "systemtap"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__tuned_utils_systemtap,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "tuned"
+	comparison hasValue "="
+	version hasValue "2.10.0-1"
+
+relationInstance depends(P0__tuned_utils_systemtap,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__tuned_utils_systemtap,2,DepAtom__2)
+

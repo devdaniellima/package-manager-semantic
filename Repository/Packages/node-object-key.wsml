@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology node_object_key
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__node_object_key memberOf Package
+	package hasValue "node-object-key"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/web"
+	installedSize hasValue "15"
+	maintainer hasValue "Original-Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.2.0-3"
+	fileName hasValue "pool/universe/n/node-object-key/node-object-key_0.2.0-3_all.deb"
+	size hasValue "3756"
+	md5sum hasValue "da8d0e6f551d589e001026795de1ba7a"
+	sha1 hasValue "6dc9ff3f203240bc4a53790feace1ccd84ed42e2"
+	sha256 hasValue "a68ab5c376324f11fcd0c881b79664dfaf947193ddadef3bf000f9b34eaedb70"
+	descriptionMd5 hasValue "782da853fdc2df1b9a057495617359cd"
+	homepage hasValue "https://github.com/fabriciotav/object-key"
+	depends hasValue "nodejs, node-lodash (>= 4.2.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "nodejs"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__node_object_key,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "node-lodash"
+	comparison hasValue ">="
+	version hasValue "4.2.1"
+
+relationInstance depends(P0__node_object_key,1,DepAtom__1)
+

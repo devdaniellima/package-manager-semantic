@@ -1,0 +1,64 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libjack0
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libjack0 memberOf Package
+	package hasValue "libjack0"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "336"
+	maintainer hasValue "Original-Debian Multimedia Maintainers <pkg-multimedia-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:0.125.0-3build2"
+	replaces hasValue "jackd1 (<< 1:0.125.0-3), libjack-0.116, libjack-0.125"
+	provides hasValue "libjack-0.116, libjack-0.125"
+	conflicts hasValue "jackd1 (>> 1:0.125.0-3build2), jackd1 (<< 1:0.125.0-3build2), libjack-0.116, libjack-0.125"
+	fileName hasValue "pool/universe/j/jack-audio-connection-kit/libjack0_0.125.0-3build2_amd64.deb"
+	size hasValue "93324"
+	md5sum hasValue "87d8690eaf10f140c33aaa29d2885e29"
+	sha1 hasValue "c80915be638fa1e03887077ae2e1bd6b5c86de34"
+	sha256 hasValue "becf97881220ff41e7628afec1ce6c7509da58ba82dcb3ca53b378ae44eeda57"
+	description hasValue "JACK Audio Connection Kit (libraries)"
+	descriptionMd5 hasValue "f4743a9e2f04ed05673483cd1fe0eb38"
+	homepage hasValue "http://jackaudio.org/"
+	depends hasValue "libc6 (>= 2.17), libdb5.3"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.17"
+
+relationInstance depends(P0__libjack0,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libdb5.3"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libjack0,1,DepAtom__1)
+

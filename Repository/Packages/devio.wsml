@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology devio
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__devio memberOf Package
+	package hasValue "devio"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "utils"
+	installedSize hasValue "50"
+	maintainer hasValue "Original-Rod Whitby <rod@whitby.id.au>"
+	architecture hasValue "amd64"
+	version hasValue "1.2-1.2"
+	fileName hasValue "pool/main/d/devio/devio_1.2-1.2_amd64.deb"
+	size hasValue "16602"
+	md5sum hasValue "68a6affacb5bf91e7be053770029ce7a"
+	sha1 hasValue "550e532ec4811e9b436f8926051ac959c5972a1a"
+	sha256 hasValue "70e5b9b1a708a4301eeb208631d3633d9b9bb7f9a9dd0157a87617c7e690f8fc"
+	description hasValue "lê (ou escreve) corretamente uma região de um dispositivo de bloco"
+	descriptionMd5 hasValue "0bd1a5ee0f78f228d879d86ec100473d"
+	homepage hasValue "http://devio.sf.net"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__devio,0,DepAtom__0)
+

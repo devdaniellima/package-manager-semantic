@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology syslog_ng_mod_stardate
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__syslog_ng_mod_stardate memberOf Package
+	package hasValue "syslog-ng-mod-stardate"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/admin"
+	installedSize hasValue "62"
+	maintainer hasValue "Original-syslog-ng maintainers <syslog-ng-maintainers@alioth-lists.debian.net>"
+	architecture hasValue "amd64"
+	version hasValue "3.25.1-3"
+	fileName hasValue "pool/universe/s/syslog-ng/syslog-ng-mod-stardate_3.25.1-3_amd64.deb"
+	size hasValue "8252"
+	md5sum hasValue "f228354997dfc74aa92002e91aa30cd5"
+	sha1 hasValue "f266e6d4e5c64780774a020e4c3034bc25b4db73"
+	sha256 hasValue "894dc392b44c7537c40e1d76c74998715f9d16e4e7fe40b58e33ca519f2c80cb"
+	description hasValue "Enhanced system logging daemon (stardate plugin)"
+	descriptionMd5 hasValue "1efe99b6ad547ec072dacba942d465a2"
+	homepage hasValue "https://www.syslog-ng.com/"
+	depends hasValue "libc6 (>= 2.4), syslog-ng-core (>= 3.25.1-3), syslog-ng-core (<< 3.25.1-3.1~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__syslog_ng_mod_stardate,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "syslog-ng-core"
+	comparison hasValue ">="
+	version hasValue "3.25.1-3"
+
+relationInstance depends(P0__syslog_ng_mod_stardate,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "syslog-ng-core"
+	comparison hasValue "<<"
+	version hasValue "3.25.1-3.1~"
+
+relationInstance depends(P0__syslog_ng_mod_stardate,2,DepAtom__2)
+

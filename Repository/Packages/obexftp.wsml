@@ -1,0 +1,69 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology obexftp
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__obexftp memberOf Package
+	package hasValue "obexftp"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/comm"
+	installedSize hasValue "89"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.24-6build2"
+	provides hasValue "flexmem"
+	conflicts hasValue "libobexftp1"
+	fileName hasValue "pool/universe/o/obexftp/obexftp_0.24-6build2_amd64.deb"
+	size hasValue "17032"
+	md5sum hasValue "a496339db1043bd4c5beff5b7ba2a742"
+	sha1 hasValue "69558b568d34324c726ae503e50bd2d1fc6d87ee"
+	sha256 hasValue "2acb97787995f59efa5755677e2e5e9bc59e1b8ae62d9f090203ca0dbe101ec3"
+	descriptionMd5 hasValue "4e5ed2b1b825c5491076ea2bd0b77783"
+	homepage hasValue "http://triq.net/obex"
+	depends hasValue "libc6 (>= 2.14), libobexftp0, libopenobex2"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__obexftp,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libobexftp0"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__obexftp,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libopenobex2"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__obexftp,2,DepAtom__2)
+

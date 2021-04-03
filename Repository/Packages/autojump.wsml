@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology autojump
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__autojump memberOf Package
+	package hasValue "autojump"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/shells"
+	installedSize hasValue "153"
+	maintainer hasValue "Original-Tanguy Ortolo <tanguy+debian@ortolo.eu>"
+	architecture hasValue "all"
+	version hasValue "22.5.1-1"
+	fileName hasValue "pool/universe/a/autojump/autojump_22.5.1-1_all.deb"
+	size hasValue "32872"
+	md5sum hasValue "936dfc18461374446ae6e57c79c71553"
+	sha1 hasValue "081013c1d1df33087529c08d29278e5f1154e86a"
+	sha256 hasValue "fdc5d79502a0585fe9141960ac60fc84554a5dcbe5215199ee52d5c910896ae1"
+	descriptionMd5 hasValue "71d66d6e65f1c151b90b631ac03fe6c3"
+	homepage hasValue "https://github.com/wting/autojump"
+	depends hasValue "python3:any (>= 3.3.2-2~), python3 (>= 3.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ">="
+	version hasValue "3.3.2-2~"
+
+relationInstance depends(P0__autojump,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3"
+	comparison hasValue ">="
+	version hasValue "3.2"
+
+relationInstance depends(P0__autojump,1,DepAtom__1)
+

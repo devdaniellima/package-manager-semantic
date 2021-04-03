@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology erofs_utils
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__erofs_utils memberOf Package
+	package hasValue "erofs-utils"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "70"
+	maintainer hasValue "Original-Gao Xiang <xiang@kernel.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0-3"
+	fileName hasValue "pool/universe/e/erofs-utils/erofs-utils_1.0-3_amd64.deb"
+	size hasValue "23228"
+	md5sum hasValue "e759bada8f31c257ef6cd6a0a1f42df8"
+	sha1 hasValue "cf881d64922a721f107b1e89848a5f1e21fd1edf"
+	sha256 hasValue "9ffd23ffe89264eeb24ea507238f6fae18c8ad261e3b49c2e9d87f56be4847a6"
+	descriptionMd5 hasValue "4bb2da847d1e07ff56a58930bc9df83a"
+	homepage hasValue "http://git.kernel.org/pub/scm/linux/kernel/git/xiang/erofs-utils.git"
+	depends hasValue "libc6 (>= 2.14), liblz4-1 (>= 1.9.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__erofs_utils,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "liblz4-1"
+	comparison hasValue ">="
+	version hasValue "1.9.1"
+
+relationInstance depends(P0__erofs_utils,1,DepAtom__1)
+

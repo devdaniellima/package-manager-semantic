@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology retry
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__retry memberOf Package
+	package hasValue "retry"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "40"
+	maintainer hasValue "Original-Joao Eriberto Mota Filho <eriberto@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.4-1"
+	fileName hasValue "pool/universe/r/retry/retry_1.0.4-1_amd64.deb"
+	size hasValue "9356"
+	md5sum hasValue "b2aae10d124123a1e432e0f397df76bc"
+	sha1 hasValue "0f1658e27978ebf0ce8378b27fe0b1042ad3fcbd"
+	sha256 hasValue "63a014e0a88065b4e3820d0f7d4d4896832d48bd3c376759923d48fd3972d1d3"
+	descriptionMd5 hasValue "4d6b8c2833b40add90bc20cc2db07725"
+	homepage hasValue "https://github.com/minfrin/retry"
+	depends hasValue "libc6 (>= 2.16)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.16"
+
+relationInstance depends(P0__retry,0,DepAtom__0)
+

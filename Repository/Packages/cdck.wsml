@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology cdck
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__cdck memberOf Package
+	package hasValue "cdck"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "136"
+	maintainer hasValue "Original-gregor herrmann <gregoa@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.7.0+dfsg-2build1"
+	fileName hasValue "pool/universe/c/cdck/cdck_0.7.0+dfsg-2build1_amd64.deb"
+	size hasValue "46348"
+	md5sum hasValue "beee1bcdddd8f298206000e5ed1b8a45"
+	sha1 hasValue "fc02c4547b83226edb55b8a80b8b65dde3fd28ca"
+	sha256 hasValue "ebec593ceb502a0b8b92bd3eebdc106e3dad4ea102b46b58bb1bd76459539752"
+	description hasValue "ferramenta para verificar a qualidade dos CDs/DVDs gravados"
+	descriptionMd5 hasValue "c8c08a093de640839bb76ef33c2469b3"
+	homepage hasValue "http://swaj.net/unix/index.html#cdck"
+	depends hasValue "libc6 (>= 2.14), libgcc-s1 (>= 4.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__cdck,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgcc-s1"
+	comparison hasValue ">="
+	version hasValue "4.2"
+
+relationInstance depends(P0__cdck,1,DepAtom__1)
+

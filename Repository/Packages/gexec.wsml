@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gexec
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gexec memberOf Package
+	package hasValue "gexec"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/x11"
+	installedSize hasValue "39"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.4-2"
+	fileName hasValue "pool/universe/g/gexec/gexec_0.4-2_amd64.deb"
+	size hasValue "12304"
+	md5sum hasValue "e45ccc351e26e773fd439a17211b1eba"
+	sha1 hasValue "14da0ffe0cfdc9af0a03c4f26dd0af376ec43873"
+	sha256 hasValue "a99628b3bee34367dc5817415ed3073001b77eca0033fdf5c5d66739194cffc2"
+	descriptionMd5 hasValue "2c1dca112603f212e2e1442f022e8524"
+	homepage hasValue "https://github.com/fboender/gexec"
+	depends hasValue "libc6 (>= 2.4), libglib2.0-0 (>= 2.12.0), libgtk2.0-0 (>= 2.8.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__gexec,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libglib2.0-0"
+	comparison hasValue ">="
+	version hasValue "2.12.0"
+
+relationInstance depends(P0__gexec,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libgtk2.0-0"
+	comparison hasValue ">="
+	version hasValue "2.8.0"
+
+relationInstance depends(P0__gexec,2,DepAtom__2)
+

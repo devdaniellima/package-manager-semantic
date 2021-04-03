@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology netdiscover
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__netdiscover memberOf Package
+	package hasValue "netdiscover"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "2372"
+	maintainer hasValue "Original-Joao Eriberto Mota Filho <eriberto@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.5.1-4"
+	fileName hasValue "pool/universe/n/netdiscover/netdiscover_0.5.1-4_amd64.deb"
+	size hasValue "401232"
+	md5sum hasValue "bc2c81d923a9eb31c6166029b1510133"
+	sha1 hasValue "03cbd7f02f37fa33e5f6e74d94deff0afb5cb74c"
+	sha256 hasValue "14b7fc19b9b8eec181687c3f408afd47837b6419c00e252319f7e9f77c5b47c2"
+	descriptionMd5 hasValue "d128895a35f7519d661d60347a12ebe7"
+	homepage hasValue "https://github.com/netdiscover-scanner/netdiscover"
+	depends hasValue "libc6 (>= 2.14), libpcap0.8 (>= 0.9.8)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__netdiscover,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libpcap0.8"
+	comparison hasValue ">="
+	version hasValue "0.9.8"
+
+relationInstance depends(P0__netdiscover,1,DepAtom__1)
+

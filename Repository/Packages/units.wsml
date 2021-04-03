@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology units
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__units memberOf Package
+	package hasValue "units"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "591"
+	maintainer hasValue "Original-Stephen Kitt <skitt@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.19-1"
+	fileName hasValue "pool/universe/u/units/units_2.19-1_amd64.deb"
+	size hasValue "244444"
+	md5sum hasValue "d7dc5789c790ce2bf24bcd0346dbd28c"
+	sha1 hasValue "ad1c8eac05c9d5a1b1578ff6dcd2b9b607dfa765"
+	sha256 hasValue "b40a2dd59688f0b1d952230ce0f814463dbb358d7304b63988685cc98666b0ab"
+	description hasValue "converte entre diferentes sistemas de unidades"
+	descriptionMd5 hasValue "3f0e22e56efb4bbf67ee38b43e1392c8"
+	homepage hasValue "https://www.gnu.org/software/units/"
+	depends hasValue "libc6 (>= 2.29), libreadline8 (>= 6.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__units,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libreadline8"
+	comparison hasValue ">="
+	version hasValue "6.0"
+
+relationInstance depends(P0__units,1,DepAtom__1)
+

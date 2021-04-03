@@ -1,0 +1,70 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology brz
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__brz memberOf Package
+	package hasValue "brz"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/vcs"
+	installedSize hasValue "78"
+	maintainer hasValue "Original-Debian Breezy Maintainers <pkg-bazaar-maint@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "3.0.2-4ubuntu2"
+	provides hasValue "bzr, bzr-email, bzr-fastimport, bzr-git, bzr-stats, bzr-upload"
+	conflicts hasValue "bzr (<< 2.7.0+bzr6622-1)"
+	fileName hasValue "pool/universe/b/breezy/brz_3.0.2-4ubuntu2_all.deb"
+	size hasValue "38056"
+	md5sum hasValue "7e2de2cff896c51323b1efbe05cdb277"
+	sha1 hasValue "e2c5f52c0f26f6743bc6c9c006d2c7d2910005c3"
+	sha256 hasValue "239e92f4fdad3090646b9727d91b9794a0f39217be9011ed85b6c8cdfdc19dab"
+	description hasValue "sistema de controle de versão distribuído fácil de usar"
+	descriptionMd5 hasValue "4daa260c32bc7524a58f92196d3808bc"
+	homepage hasValue "https://www.breezy-vcs.org/"
+	depends hasValue "python3-breezy (<= 3.0.2-4ubuntu2.1~), python3-breezy (>= 3.0.2-4ubuntu2), python3:any"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3-breezy"
+	comparison hasValue "<="
+	version hasValue "3.0.2-4ubuntu2.1~"
+
+relationInstance depends(P0__brz,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3-breezy"
+	comparison hasValue ">="
+	version hasValue "3.0.2-4ubuntu2"
+
+relationInstance depends(P0__brz,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__brz,2,DepAtom__2)
+

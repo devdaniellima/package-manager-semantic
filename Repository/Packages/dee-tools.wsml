@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology dee_tools
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__dee_tools memberOf Package
+	package hasValue "dee-tools"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "36"
+	maintainer hasValue "Original-Kartik Mistry <kartik@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.2.7+17.10.20170616-4ubuntu6"
+	fileName hasValue "pool/universe/d/dee/dee-tools_1.2.7+17.10.20170616-4ubuntu6_amd64.deb"
+	size hasValue "6588"
+	md5sum hasValue "11f2d5f3581a5c9725416e5d774cdaa6"
+	sha1 hasValue "63604fbcb569b2d96ef0eaaef96c9f983af073db"
+	sha256 hasValue "953588c4b00216e102409c89aef55859c4c5a84f23d65c721aada5ffdda7ddfe"
+	descriptionMd5 hasValue "de38c622ccab0eefbeba050be1de276c"
+	homepage hasValue "https://launchpad.net/dee"
+	depends hasValue "libc6 (>= 2.4), libdee-1.0-4 (>= 1.0.0), libglib2.0-0 (>= 2.26.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__dee_tools,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libdee-1.0-4"
+	comparison hasValue ">="
+	version hasValue "1.0.0"
+
+relationInstance depends(P0__dee_tools,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libglib2.0-0"
+	comparison hasValue ">="
+	version hasValue "2.26.0"
+
+relationInstance depends(P0__dee_tools,2,DepAtom__2)
+

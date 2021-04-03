@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology r_cran_zip
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__r_cran_zip memberOf Package
+	package hasValue "r-cran-zip"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/gnu-r"
+	installedSize hasValue "384"
+	maintainer hasValue "Original-Dirk Eddelbuettel <edd@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.0.4-1"
+	fileName hasValue "pool/universe/r/r-cran-zip/r-cran-zip_2.0.4-1_amd64.deb"
+	size hasValue "107020"
+	md5sum hasValue "e42013b5235f044491ab927b1298e41c"
+	sha1 hasValue "d066741adbc724aa1c7beac88ecd3060838c9fa5"
+	sha256 hasValue "705fd69f8df9bc0ac81d5b61a3b4d2a4949e2f317fc10de9db70c0c80c3fff56"
+	descriptionMd5 hasValue "22e73a54842b240c5ac38375debd1819"
+	homepage hasValue "https://cran.r-project.org/package=zip"
+	depends hasValue "libc6 (>= 2.14), r-base-core (>= 3.6.1-4), r-api-3.5"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__r_cran_zip,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "r-base-core"
+	comparison hasValue ">="
+	version hasValue "3.6.1-4"
+
+relationInstance depends(P0__r_cran_zip,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "r-api-3.5"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__r_cran_zip,2,DepAtom__2)
+

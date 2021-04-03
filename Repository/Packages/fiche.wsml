@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology fiche
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__fiche memberOf Package
+	package hasValue "fiche"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "34"
+	maintainer hasValue "Original-Geert Stappers <stappers@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.9.1-1"
+	fileName hasValue "pool/universe/f/fiche/fiche_0.9.1-1_amd64.deb"
+	size hasValue "9132"
+	md5sum hasValue "0efdefa94a2f9d745e1c574a525f0a74"
+	sha1 hasValue "9081d4776b269764fbfb4b7f544f9f0b4f28b410"
+	sha256 hasValue "5af3f77bde79c19ee052b4638a9496320b06087f698ac341eda9e94e1882142a"
+	descriptionMd5 hasValue "021c27a7a474e490b3c1a8b67120adea"
+	homepage hasValue "https://github.com/solusipse/fiche"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__fiche,0,DepAtom__0)
+

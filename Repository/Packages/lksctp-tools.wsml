@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology lksctp_tools
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__lksctp_tools memberOf Package
+	package hasValue "lksctp-tools"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "179"
+	maintainer hasValue "Original-Michael Biebl <biebl@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.18+dfsg-1"
+	fileName hasValue "pool/universe/l/lksctp-tools/lksctp-tools_1.0.18+dfsg-1_amd64.deb"
+	size hasValue "45196"
+	md5sum hasValue "b5468d3817fb8ac12f71c4cb3d8ce298"
+	sha1 hasValue "fe1e76cb67dcf9ab3a46f4d08fd800bb94e78516"
+	sha256 hasValue "95d1a9a350b1163b6d7f23435e8d46e372cd80d19d55d9bfc6ad88aea4277799"
+	descriptionMd5 hasValue "461d09027f08c978d8b88395f123484d"
+	homepage hasValue "http://lksctp.sf.net/"
+	depends hasValue "libc6 (>= 2.16), libsctp1 (>= 1.0.12+dfsg)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.16"
+
+relationInstance depends(P0__lksctp_tools,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libsctp1"
+	comparison hasValue ">="
+	version hasValue "1.0.12+dfsg"
+
+relationInstance depends(P0__lksctp_tools,1,DepAtom__1)
+

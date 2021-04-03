@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology dhcp_helper
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__dhcp_helper memberOf Package
+	package hasValue "dhcp-helper"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "46"
+	maintainer hasValue "Original-Simon Kelley <simon@thekelleys.org.uk>"
+	architecture hasValue "amd64"
+	version hasValue "1.2-1build1"
+	conflicts hasValue "dhcp3-relay, dhcp3-server, isc-dhcp-relay, isc-dhcp-server, udhcpd"
+	fileName hasValue "pool/universe/d/dhcp-helper/dhcp-helper_1.2-1build1_amd64.deb"
+	size hasValue "10604"
+	md5sum hasValue "5cc640ebabe4e8630994dac4ee6ce09f"
+	sha1 hasValue "def11de41c43cb0400787a9cd70c72711c302a97"
+	sha256 hasValue "4d404971976eaddfa8f1f7fd1e79d5b14016694ade2f5322f35f6917b12848e3"
+	descriptionMd5 hasValue "3f0d81b105ba1a53061098aecf217692"
+	depends hasValue "netbase, libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "netbase"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__dhcp_helper,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__dhcp_helper,1,DepAtom__1)
+

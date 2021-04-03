@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology logsave
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__logsave memberOf Package
+	package hasValue "logsave"
+	packageSource hasValue Source__S1
+	priority hasValue "required"
+	section hasValue "admin"
+	installedSize hasValue "92"
+	maintainer hasValue "Original-Theodore Y. Ts'o <tytso@mit.edu>"
+	architecture hasValue "amd64"
+	version hasValue "1.45.5-2ubuntu1"
+	replaces hasValue "e2fsprogs (<< 1.45.3-1)"
+	fileName hasValue "pool/main/e/e2fsprogs/logsave_1.45.5-2ubuntu1_amd64.deb"
+	size hasValue "10180"
+	md5sum hasValue "86d65c16ae061b690f9a2bf984de80b3"
+	sha1 hasValue "ad20b3af47b4c1a857bb5eed96b2b43efe9dfc2d"
+	sha256 hasValue "5126cb3b00e392eb5b662280cf9c1d72093a212df08b2cd88a7ef24f9292d7a9"
+	descriptionMd5 hasValue "423ff285c4e5f41ac959b0fda6f812fe"
+	homepage hasValue "http://e2fsprogs.sourceforge.net"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__logsave,0,DepAtom__0)
+

@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology nslcd_utils
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__nslcd_utils memberOf Package
+	package hasValue "nslcd-utils"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/admin"
+	installedSize hasValue "92"
+	maintainer hasValue "Original-Arthur de Jong <adejong@debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.9.11-1"
+	fileName hasValue "pool/universe/n/nss-pam-ldapd/nslcd-utils_0.9.11-1_all.deb"
+	size hasValue "13064"
+	md5sum hasValue "228e82aa5947ee80136b4ec7dbaf61ca"
+	sha1 hasValue "b1c8a1a5590907a6c689660ec982cc1fbe5a2589"
+	sha256 hasValue "6b16aff6598467ede7b95a4dab439205616f73f8e47e034847a727a2f79e31fd"
+	descriptionMd5 hasValue "c3396e22a26c7e76603905c01d8a44e9"
+	homepage hasValue "https://arthurdejong.org/nss-pam-ldapd/"
+	depends hasValue "python3:any, nslcd (>= 0.9.0) | nslcd-2"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__nslcd_utils,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "nslcd"
+	comparison hasValue ">="
+	version hasValue "0.9.0"
+
+relationInstance depends(P0__nslcd_utils,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "nslcd-2"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__nslcd_utils,1,DepAtom__2)
+

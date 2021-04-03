@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology lakai
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__lakai memberOf Package
+	package hasValue "lakai"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/sound"
+	installedSize hasValue "181"
+	maintainer hasValue "Original-Debian Multimedia Maintainers <pkg-multimedia-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.1-2"
+	fileName hasValue "pool/universe/l/lakai/lakai_0.1-2_amd64.deb"
+	size hasValue "37804"
+	md5sum hasValue "080057b95e4b318924a88603f97aa3e8"
+	sha1 hasValue "f5fe79fc4e8bbc6e6e3b67539f377f7dc1f6af64"
+	sha256 hasValue "7b83aa43fdb6e968c9636ad909ce6b1b5b37a8ae7c3e0798c4db00da07306009"
+	descriptionMd5 hasValue "adac96f5cb8c6872c7fe1e4a36120ac8"
+	homepage hasValue "http://lakai.sf.net/index.shtml"
+	depends hasValue "libc6 (>= 2.7)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__lakai,0,DepAtom__0)
+

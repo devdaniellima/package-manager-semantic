@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology kpartx_boot
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__kpartx_boot memberOf Package
+	package hasValue "kpartx-boot"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "admin"
+	installedSize hasValue "39"
+	maintainer hasValue "Original-Debian DM Multipath Team <team+linux-blocks@tracker.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.8.3-1ubuntu2"
+	fileName hasValue "pool/main/m/multipath-tools/kpartx-boot_0.8.3-1ubuntu2_all.deb"
+	size hasValue "6256"
+	md5sum hasValue "edfdb07da7b034d8d102a4bdec7a5d69"
+	sha1 hasValue "c791e70c8c3e6e35a2b3bc9b2e5bd2492b9fecb0"
+	sha256 hasValue "9459788ac637488b76be7eb661c403487013328ad5c982bf46da41ea2b5ffdca"
+	descriptionMd5 hasValue "7e8d6d2d84c83cf99042105730d733a4"
+	homepage hasValue "http://christophe.varoqui.free.fr/"
+	depends hasValue "initramfs-tools, kpartx (>= 0.8.3-1ubuntu2), kpartx (<< 0.8.3-1ubuntu2.1~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "initramfs-tools"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__kpartx_boot,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "kpartx"
+	comparison hasValue ">="
+	version hasValue "0.8.3-1ubuntu2"
+
+relationInstance depends(P0__kpartx_boot,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "kpartx"
+	comparison hasValue "<<"
+	version hasValue "0.8.3-1ubuntu2.1~"
+
+relationInstance depends(P0__kpartx_boot,2,DepAtom__2)
+

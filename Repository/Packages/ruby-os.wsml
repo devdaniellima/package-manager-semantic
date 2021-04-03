@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ruby_os
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ruby_os memberOf Package
+	package hasValue "ruby-os"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/ruby"
+	installedSize hasValue "25"
+	maintainer hasValue "Original-Debian Ruby Extras Maintainers <pkg-ruby-extras-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.9.6-1"
+	fileName hasValue "pool/universe/r/ruby-os/ruby-os_0.9.6-1_all.deb"
+	size hasValue "5836"
+	md5sum hasValue "4f75e14d4d0d26f5155dbf2be31a4010"
+	sha1 hasValue "f2b4528d34fb45787ee8637b6891193ae0916648"
+	sha256 hasValue "1b36e5993b7b4443bdddc68fcc0e114195e84924bb75a56b18b01b948540d3ae"
+	descriptionMd5 hasValue "cfce1c82ffab274b14baf5ea467bf65c"
+	homepage hasValue "http://github.com/rdp/os"
+	depends hasValue "ruby | ruby-interpreter"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "ruby"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ruby_os,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "ruby-interpreter"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ruby_os,0,DepAtom__1)
+

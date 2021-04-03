@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology aptly_publisher
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__aptly_publisher memberOf Package
+	package hasValue "aptly-publisher"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "105"
+	maintainer hasValue "Original-Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.12.10-2"
+	fileName hasValue "pool/universe/p/python-aptly/aptly-publisher_0.12.10-2_all.deb"
+	size hasValue "69500"
+	md5sum hasValue "44dc8ea518ccafa3befdeeba1c0243b5"
+	sha1 hasValue "76d903ebe72f7c6c01bb7f647daae473868c3c03"
+	sha256 hasValue "eeb89ac3da2dd71341ad2af0439784af7a722a8ce37b8bd4c40ec57608fb67f2"
+	descriptionMd5 hasValue "f5faf07d5823cd54dce52e2a328ded13"
+	homepage hasValue "https://github.com/tcpcloud/python-aptly"
+	depends hasValue "python3-aptly (= 0.12.10-2), python3:any"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3-aptly"
+	comparison hasValue "="
+	version hasValue "0.12.10-2"
+
+relationInstance depends(P0__aptly_publisher,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__aptly_publisher,1,DepAtom__1)
+

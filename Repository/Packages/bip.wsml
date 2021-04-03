@@ -1,0 +1,75 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology bip
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__bip memberOf Package
+	package hasValue "bip"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "323"
+	maintainer hasValue "Original-Pierre-Louis Bonicoli <pierre-louis.bonicoli@gmx.fr>"
+	architecture hasValue "amd64"
+	version hasValue "0.9.0~rc3-1"
+	fileName hasValue "pool/universe/b/bip/bip_0.9.0~rc3-1_amd64.deb"
+	size hasValue "108260"
+	md5sum hasValue "546ebdc735c28a1d535ec7e444166949"
+	sha1 hasValue "7968d5b85eebf27db02ccf27e51fe87479f00f2e"
+	sha256 hasValue "bd1ec1f0fa356c4a69454319024f17ce9998511d818f4d9e05e9ee90da69598e"
+	description hasValue "proxy irc multi-usuário com repetição de conversação e mais"
+	descriptionMd5 hasValue "4cb69a0b8d8f447f1635e92329295c89"
+	homepage hasValue "https://bip.milkypond.org/"
+	depends hasValue "libc6 (>= 2.17), libssl1.1 (>= 1.1.0), adduser, lsb-base (>= 3.2-14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.17"
+
+relationInstance depends(P0__bip,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libssl1.1"
+	comparison hasValue ">="
+	version hasValue "1.1.0"
+
+relationInstance depends(P0__bip,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "adduser"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__bip,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "lsb-base"
+	comparison hasValue ">="
+	version hasValue "3.2-14"
+
+relationInstance depends(P0__bip,3,DepAtom__3)
+

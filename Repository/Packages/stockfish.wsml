@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology stockfish
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__stockfish memberOf Package
+	package hasValue "stockfish"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/games"
+	installedSize hasValue "302"
+	maintainer hasValue "Original-Milan Zamazal <pdm@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "11-1build1"
+	fileName hasValue "pool/universe/s/stockfish/stockfish_11-1build1_amd64.deb"
+	size hasValue "150544"
+	md5sum hasValue "3968b1ecca7cb4ee417c7fb263910b77"
+	sha1 hasValue "2599c50747ccd3ffb8c1a58445d6ad1c60cbc557"
+	sha256 hasValue "0115fc3fbac0560064cf3f8ac6fcd182948dc92dddbd30af22ba4d35d8103cd4"
+	description hasValue "motor de xadrez forte, para jogar contra"
+	descriptionMd5 hasValue "1c88e787fea0cbec572e73232f9d09df"
+	homepage hasValue "https://stockfishchess.org"
+	depends hasValue "libc6 (>= 2.29), libgcc-s1 (>= 3.4), libstdc++6 (>= 9)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__stockfish,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgcc-s1"
+	comparison hasValue ">="
+	version hasValue "3.4"
+
+relationInstance depends(P0__stockfish,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "9"
+
+relationInstance depends(P0__stockfish,2,DepAtom__2)
+

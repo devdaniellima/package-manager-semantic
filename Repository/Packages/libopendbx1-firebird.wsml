@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libopendbx1_firebird
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libopendbx1_firebird memberOf Package
+	package hasValue "libopendbx1-firebird"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "34"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.4.6-13build4"
+	provides hasValue "libopendbx1-backend"
+	fileName hasValue "pool/universe/libo/libopendbx/libopendbx1-firebird_1.4.6-13build4_amd64.deb"
+	size hasValue "7316"
+	md5sum hasValue "e5ab115ea03dd14eae67e1c7e426cdef"
+	sha1 hasValue "c9f7b2ad3ab743f2b965cf6334111abcfcd0ade8"
+	sha256 hasValue "f123569cfd5513a5155430665ea80b9e779c770305e0774ab187f96790f1f7a9"
+	descriptionMd5 hasValue "0f8bb25c8946b4bf468ddd1e3bdffc46"
+	homepage hasValue "http://www.linuxnetworks.de/doc/index.php/OpenDBX"
+	depends hasValue "libopendbx1 (= 1.4.6-13build4), libc6 (>= 2.14), libfbclient2 (>= 2.5.0.25784~ReleaseCandidate1.ds2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libopendbx1"
+	comparison hasValue "="
+	version hasValue "1.4.6-13build4"
+
+relationInstance depends(P0__libopendbx1_firebird,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libopendbx1_firebird,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libfbclient2"
+	comparison hasValue ">="
+	version hasValue "2.5.0.25784~ReleaseCandidate1.ds2"
+
+relationInstance depends(P0__libopendbx1_firebird,2,DepAtom__2)
+

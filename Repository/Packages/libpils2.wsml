@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libpils2
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libpils2 memberOf Package
+	package hasValue "libpils2"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libs"
+	installedSize hasValue "70"
+	maintainer hasValue "Original-Debian HA Maintainers <debian-ha-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.12-15"
+	fileName hasValue "pool/main/c/cluster-glue/libpils2_1.0.12-15_amd64.deb"
+	size hasValue "17360"
+	md5sum hasValue "b5734f1cd1193ef152b500ae5c51ddcd"
+	sha1 hasValue "cd4e5c5da4326c92896cf9b135bf073bc03f33e2"
+	sha256 hasValue "d25cda7309f829d5fa1500efbc1f45c84bdcb6e25bb9d75eb7c73aac7d1166af"
+	descriptionMd5 hasValue "b8480d712a7a446e05aea97a1e76868a"
+	homepage hasValue "https://github.com/ClusterLabs/cluster-glue"
+	depends hasValue "libc6 (>= 2.4), libglib2.0-0 (>= 2.16.0), libltdl7 (>= 2.4.6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libpils2,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libglib2.0-0"
+	comparison hasValue ">="
+	version hasValue "2.16.0"
+
+relationInstance depends(P0__libpils2,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libltdl7"
+	comparison hasValue ">="
+	version hasValue "2.4.6"
+
+relationInstance depends(P0__libpils2,2,DepAtom__2)
+

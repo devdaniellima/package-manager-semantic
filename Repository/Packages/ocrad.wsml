@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ocrad
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ocrad memberOf Package
+	package hasValue "ocrad"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/graphics"
+	installedSize hasValue "306"
+	maintainer hasValue "Original-Gürkan Myczko <gurkan@phys.ethz.ch>"
+	architecture hasValue "amd64"
+	version hasValue "0.27-2build1"
+	fileName hasValue "pool/universe/o/ocrad/ocrad_0.27-2build1_amd64.deb"
+	size hasValue "130520"
+	md5sum hasValue "7c20a47e46626908b5c19bd446d23ce7"
+	sha1 hasValue "96e74d7182a1b879758ab02b2b17f223ad565b7f"
+	sha256 hasValue "627c88258ed49a7f5664484f39d05c906245f917ecf8f02b9b07be6d4b4982be"
+	descriptionMd5 hasValue "fc39bf0314a34942956b23b481ad19d8"
+	homepage hasValue "http://www.gnu.org/software/ocrad/ocrad.html"
+	depends hasValue "libc6 (>= 2.14), libgcc-s1 (>= 3.0), libstdc++6 (>= 5.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__ocrad,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgcc-s1"
+	comparison hasValue ">="
+	version hasValue "3.0"
+
+relationInstance depends(P0__ocrad,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "5.2"
+
+relationInstance depends(P0__ocrad,2,DepAtom__2)
+

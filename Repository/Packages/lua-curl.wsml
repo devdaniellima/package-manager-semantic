@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology lua_curl
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__lua_curl memberOf Package
+	package hasValue "lua-curl"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/interpreters"
+	installedSize hasValue "108"
+	maintainer hasValue "Original-Enrico Tassi <gareuselesinge@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.3.0-9.2"
+	provides hasValue "lua5.1-curl, lua5.2-curl"
+	fileName hasValue "pool/universe/l/lua-curl/lua-curl_0.3.0-9.2_amd64.deb"
+	size hasValue "17420"
+	md5sum hasValue "0966712c3936b35e59970750d9db74d6"
+	sha1 hasValue "243509f276d9ba9194f41704252ecd37b421a576"
+	sha256 hasValue "c493a59c4ce7185fa765488853cd808f8358bb8ddb43a02b275714cd84b6c43d"
+	descriptionMd5 hasValue "19ae034f10b9622c019fca2ce7934638"
+	homepage hasValue "http://www.luaforge.net/projects/luacurl"
+	depends hasValue "libc6 (>= 2.14), libcurl3-gnutls (>= 7.16.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__lua_curl,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libcurl3-gnutls"
+	comparison hasValue ">="
+	version hasValue "7.16.2"
+
+relationInstance depends(P0__lua_curl,1,DepAtom__1)
+

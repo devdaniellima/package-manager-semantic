@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology shineenc
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__shineenc memberOf Package
+	package hasValue "shineenc"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "30"
+	maintainer hasValue "Original-Debian Multimedia Maintainers <debian-multimedia@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.1.1-2"
+	fileName hasValue "pool/universe/s/shine/shineenc_3.1.1-2_amd64.deb"
+	size hasValue "7512"
+	md5sum hasValue "92c59ecb3ae23dddebd68ca759ea5678"
+	sha1 hasValue "6089830885169ae8a8d09e6c2d503f8c301f2897"
+	sha256 hasValue "a38df3a06a61bdb34c5a2d40d2cb3b87c137cc06fb3fc2aa84708e60b14b7dda"
+	descriptionMd5 hasValue "8be70a8098d67ac483794b6168b87a4a"
+	homepage hasValue "https://github.com/savonet/shine"
+	depends hasValue "libshine3 (= 3.1.1-2), libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libshine3"
+	comparison hasValue "="
+	version hasValue "3.1.1-2"
+
+relationInstance depends(P0__shineenc,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__shineenc,1,DepAtom__1)
+

@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology lxc_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__lxc_dev memberOf Package
+	package hasValue "lxc-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "73"
+	maintainer hasValue "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	architecture hasValue "all"
+	version hasValue "1:4.0.2-0ubuntu1"
+	fileName hasValue "pool/universe/l/lxc/lxc-dev_4.0.2-0ubuntu1_all.deb"
+	size hasValue "2452"
+	md5sum hasValue "4ce325736e6209f0d0630b6478d3661d"
+	sha1 hasValue "af1d35792561599ec2cefd9bf49079cc0652df4e"
+	sha256 hasValue "924664aa64ac674d5ee2c821dedbef5630f0249b017d0adf0e3ffe938020f163"
+	description hasValue "Transitional package - lxc-dev -> liblxc-dev"
+	descriptionMd5 hasValue "901ee3caa837071f9dec6c5062db7b76"
+	homepage hasValue "https://linuxcontainers.org"
+	depends hasValue "liblxc-dev (>= 1:4.0.2-0ubuntu1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "liblxc-dev"
+	comparison hasValue ">="
+	version hasValue "1:4.0.2-0ubuntu1"
+
+relationInstance depends(P0__lxc_dev,0,DepAtom__0)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology node_p_timeout
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__node_p_timeout memberOf Package
+	package hasValue "node-p-timeout"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/web"
+	installedSize hasValue "16"
+	maintainer hasValue "Original-Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.2.0-1"
+	fileName hasValue "pool/universe/n/node-p-timeout/node-p-timeout_1.2.0-1_all.deb"
+	size hasValue "3680"
+	md5sum hasValue "90be10ef95bcd01303348601adf2a3b8"
+	sha1 hasValue "92767cc6ca0a4bf15ec97278045e41eb66762542"
+	sha256 hasValue "508744de80615145a19929a0a0b0c0af3a48e9acf4face533fa1dc2bf8682476"
+	descriptionMd5 hasValue "eae7bd8e467a21197a6c74ae1b34d9ef"
+	homepage hasValue "https://github.com/sindresorhus/p-timeout#readme"
+	depends hasValue "nodejs, node-p-finally (>= 1.0.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "nodejs"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__node_p_timeout,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "node-p-finally"
+	comparison hasValue ">="
+	version hasValue "1.0.0"
+
+relationInstance depends(P0__node_p_timeout,1,DepAtom__1)
+

@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology bacula_server
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__bacula_server memberOf Package
+	package hasValue "bacula-server"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "102"
+	maintainer hasValue "Original-Debian Bacula Team <pkg-bacula-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "9.4.2-2ubuntu5"
+	fileName hasValue "pool/universe/b/bacula/bacula-server_9.4.2-2ubuntu5_all.deb"
+	size hasValue "21876"
+	md5sum hasValue "55fa3e7ef2b34bd52906d99265a04447"
+	sha1 hasValue "969281cb5e831a2a4fca89f57ed6f15b36a8802f"
+	sha256 hasValue "1eb4cf9d8099fdf7ffa55effc964107989138dbdb4af9675a7e90addbdbea45f"
+	description hasValue "network backup service - server metapackage"
+	descriptionMd5 hasValue "6dda915ea1962f81a01b5beba6c56634"
+	homepage hasValue "http://www.bacula.org/"
+	depends hasValue "bacula-bscan (>= 9.4.2-2ubuntu5), bacula-director (>= 9.4.2-2ubuntu5), bacula-sd (>= 9.4.2-2ubuntu5)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "bacula-bscan"
+	comparison hasValue ">="
+	version hasValue "9.4.2-2ubuntu5"
+
+relationInstance depends(P0__bacula_server,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "bacula-director"
+	comparison hasValue ">="
+	version hasValue "9.4.2-2ubuntu5"
+
+relationInstance depends(P0__bacula_server,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "bacula-sd"
+	comparison hasValue ">="
+	version hasValue "9.4.2-2ubuntu5"
+
+relationInstance depends(P0__bacula_server,2,DepAtom__2)
+

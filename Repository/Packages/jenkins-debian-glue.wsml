@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology jenkins_debian_glue
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__jenkins_debian_glue memberOf Package
+	package hasValue "jenkins-debian-glue"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/admin"
+	installedSize hasValue "176"
+	maintainer hasValue "Original-Michael Prokop <mika@debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.20.1"
+	conflicts hasValue "jenkins-debian-glue-buildenv-git, jenkins-debian-glue-buildenv-lintian, jenkins-debian-glue-buildenv-piuparts, jenkins-debian-glue-buildenv-slave, jenkins-debian-glue-buildenv-svn, jenkins-debian-glue-buildenv-taptools"
+	fileName hasValue "pool/universe/j/jenkins-debian-glue/jenkins-debian-glue_0.20.1_all.deb"
+	size hasValue "38280"
+	md5sum hasValue "fcfabcc50b20af0511da8291b2b1f0fe"
+	sha1 hasValue "19346fdd54b81f8d0160124badc865282fec8230"
+	sha256 hasValue "2dbc1360641da7d52d62e0fbe5d4758382a43736d621723c597ee5f0f04f1bf5"
+	descriptionMd5 hasValue "7b51a8e326a1db99808ce80d3c2b6fb0"
+	homepage hasValue "https://github.com/mika/jenkins-debian-glue"
+	depends hasValue "sudo | sudo-ldap"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "sudo"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__jenkins_debian_glue,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "sudo-ldap"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__jenkins_debian_glue,0,DepAtom__1)
+

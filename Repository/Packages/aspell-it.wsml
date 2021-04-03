@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology aspell_it
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__aspell_it memberOf Package
+	package hasValue "aspell-it"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/text"
+	installedSize hasValue "328"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.4-20070901-0-3"
+	provides hasValue "aspell-dictionary"
+	fileName hasValue "pool/universe/a/aspell-it/aspell-it_2.4-20070901-0-3_all.deb"
+	size hasValue "237664"
+	md5sum hasValue "7f865ced80407822741715229bfc1719"
+	sha1 hasValue "448b9b233f2b1a41223625f903b8c1dd64bea80d"
+	sha256 hasValue "6e7bb3c0ba7910efa47beaae8449c9f68d0bd9ee4166c7d791e85ec7bae6e43e"
+	description hasValue "Italian dictionary for GNU Aspell"
+	descriptionMd5 hasValue "c8e955edc72544390fe0c90afc035014"
+	homepage hasValue "http://linguistico.sourceforge.net"
+	depends hasValue "aspell, dictionaries-common (>= 1.23~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "aspell"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__aspell_it,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "dictionaries-common"
+	comparison hasValue ">="
+	version hasValue "1.23~"
+
+relationInstance depends(P0__aspell_it,1,DepAtom__1)
+

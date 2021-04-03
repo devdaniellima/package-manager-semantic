@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology bat
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__bat memberOf Package
+	package hasValue "bat"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "4224"
+	maintainer hasValue "Original-Debian Rust Maintainers <pkg-rust-maintainers@alioth-lists.debian.net>"
+	architecture hasValue "amd64"
+	version hasValue "0.12.1-1build1"
+	fileName hasValue "pool/universe/r/rust-bat/bat_0.12.1-1build1_amd64.deb"
+	size hasValue "1584644"
+	md5sum hasValue "42e717aaeedaeda25d8db4f1a372a9c7"
+	sha1 hasValue "aef05f920262cc8c4e5d020e40a508b7c536b5ea"
+	sha256 hasValue "5b7e281e48dcc19a1b25c08c1ca3862cdb77e43788cafbf7c9700ba35adfe0ca"
+	descriptionMd5 hasValue "c3d5180c2f97b5de01bb1d988d683ed8"
+	homepage hasValue "https://github.com/sharkdp/bat"
+	depends hasValue "libc6 (>= 2.18), libgcc-s1 (>= 4.2), libgit2-28 (>= 0.28.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.18"
+
+relationInstance depends(P0__bat,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgcc-s1"
+	comparison hasValue ">="
+	version hasValue "4.2"
+
+relationInstance depends(P0__bat,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libgit2-28"
+	comparison hasValue ">="
+	version hasValue "0.28.1"
+
+relationInstance depends(P0__bat,2,DepAtom__2)
+

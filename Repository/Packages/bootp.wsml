@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology bootp
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__bootp memberOf Package
+	package hasValue "bootp"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/net"
+	installedSize hasValue "211"
+	maintainer hasValue "Original-Anibal Monsalve Salazar <anibal@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.4.3-18build2"
+	fileName hasValue "pool/universe/b/bootp/bootp_2.4.3-18build2_amd64.deb"
+	size hasValue "59228"
+	md5sum hasValue "016aa9db30ca1281e95521f5b6e9a50b"
+	sha1 hasValue "9c578a9cce4c4a585fa923d3702477e9e85669c3"
+	sha256 hasValue "b69dfa90eb4254c74f7286efc08b3cbc710389835ae0f13d9307c225db1a13a7"
+	description hasValue "servidor para o protocolo bootp com suporte DHCP"
+	descriptionMd5 hasValue "fecd82a0cca42b2c7e5ec410b50e2641"
+	homepage hasValue "ftp://ftp.ntplx.net/pub/networking/bootp/"
+	depends hasValue "libc6 (>= 2.15), netbase, update-inetd"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__bootp,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "netbase"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__bootp,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "update-inetd"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__bootp,2,DepAtom__2)
+

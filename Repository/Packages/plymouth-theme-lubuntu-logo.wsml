@@ -1,0 +1,63 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology plymouth_theme_lubuntu_logo
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__plymouth_theme_lubuntu_logo memberOf Package
+	package hasValue "plymouth-theme-lubuntu-logo"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/x11"
+	installedSize hasValue "85"
+	maintainer hasValue "Lubuntu Developers <lubuntu-devel@lists.ubuntu.com>"
+	architecture hasValue "all"
+	version hasValue "20.04.3"
+	replaces hasValue "lubuntu-plymouth-theme, plymouth (<< 0.8.1-1~), plymouth-theme-lubuntu-next-logo (<< 1.0)"
+	provides hasValue "plymouth-theme"
+	conflicts hasValue "lubuntu-plymouth-theme, plymouth-theme-lubuntu-next-logo (<< 1.0)"
+	fileName hasValue "pool/universe/l/lubuntu-artwork/plymouth-theme-lubuntu-logo_20.04.3_all.deb"
+	size hasValue "26080"
+	md5sum hasValue "ba5beea43db08aa08b32e9ac5ab109e6"
+	sha1 hasValue "4f5e6e2deec8a773ab51a7f724ccfb31f772990c"
+	sha256 hasValue "45b6ee478d4aab55c4756f49d8f4cef84290f16521bf7e6da0a2e2ce920eb140"
+	descriptionMd5 hasValue "aedf875177338c1c2f6e0bdec8aeaec6"
+	homepage hasValue "https://lubuntu.me"
+	depends hasValue "plymouth (>= 0.9.2-3ubuntu1~), plymouth-label"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "plymouth"
+	comparison hasValue ">="
+	version hasValue "0.9.2-3ubuntu1~"
+
+relationInstance depends(P0__plymouth_theme_lubuntu_logo,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "plymouth-label"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__plymouth_theme_lubuntu_logo,1,DepAtom__1)
+

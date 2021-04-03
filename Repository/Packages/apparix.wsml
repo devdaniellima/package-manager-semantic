@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology apparix
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__apparix memberOf Package
+	package hasValue "apparix"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/utils"
+	installedSize hasValue "211"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "11-062-1"
+	fileName hasValue "pool/universe/a/apparix/apparix_11-062-1_amd64.deb"
+	size hasValue "98480"
+	md5sum hasValue "1d5176cc898da587f8de6f08c04e375a"
+	sha1 hasValue "1ad99a1da82536c345b4ecf6c0cf187e65c62aac"
+	sha256 hasValue "3ec99f1bf85114558a0148500a7a51d16e24ed2c896c8a75038cfa70347e3e5d"
+	description hasValue "ferram. de marcadores em console p/ navegação rápida no sistema de arquivos"
+	descriptionMd5 hasValue "9fbd5e6f310e0e3a967acb6625c6ffd1"
+	homepage hasValue "https://micans.org/apparix/"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__apparix,0,DepAtom__0)
+

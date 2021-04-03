@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology sockstat
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__sockstat memberOf Package
+	package hasValue "sockstat"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/admin"
+	installedSize hasValue "40"
+	maintainer hasValue "Original-Thorsten Alteholz <debian@alteholz.de>"
+	architecture hasValue "amd64"
+	version hasValue "0.4.1-1"
+	fileName hasValue "pool/universe/s/sockstat/sockstat_0.4.1-1_amd64.deb"
+	size hasValue "12780"
+	md5sum hasValue "41a47d2babd257ac9b1882217044c552"
+	sha1 hasValue "ee1f244f3cde0d6382b1fff5c356f0c225bcee7d"
+	sha256 hasValue "c564b9f95d262deb92e9e75d3ea523238d6861f6de939e518f2e5558e707a92d"
+	descriptionMd5 hasValue "4a5818a9883ddee1e3af1b0b8369ea75"
+	homepage hasValue "https://github.com/alteholz/sockstat"
+	depends hasValue "libc6 (>= 2.7)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__sockstat,0,DepAtom__0)
+

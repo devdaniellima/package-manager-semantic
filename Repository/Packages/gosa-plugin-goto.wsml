@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gosa_plugin_goto
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gosa_plugin_goto memberOf Package
+	package hasValue "gosa-plugin-goto"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/web"
+	installedSize hasValue "2988"
+	maintainer hasValue "Original-Debian Edu Packaging Team <debian-edu-pkg-team@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.7.4+reloaded3-11"
+	fileName hasValue "pool/universe/g/gosa/gosa-plugin-goto_2.7.4+reloaded3-11_all.deb"
+	size hasValue "314392"
+	md5sum hasValue "8a67893b4fda59e56b7b406316ea2e33"
+	sha1 hasValue "56375071fc91d4456f15b776596febf77a30a57b"
+	sha256 hasValue "672943dbb2ba471d1ad4409b1c04624c3fe3c172e334a49a316a8d5d928f9e65"
+	descriptionMd5 hasValue "e5f30893703e4fa4303f59cf8262ee90"
+	homepage hasValue "https://github.com/gosa-project"
+	depends hasValue "gosa (= 2.7.4+reloaded3-11), gosa-plugin-systems (= 2.7.4+reloaded3-11)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "gosa"
+	comparison hasValue "="
+	version hasValue "2.7.4+reloaded3-11"
+
+relationInstance depends(P0__gosa_plugin_goto,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "gosa-plugin-systems"
+	comparison hasValue "="
+	version hasValue "2.7.4+reloaded3-11"
+
+relationInstance depends(P0__gosa_plugin_goto,1,DepAtom__1)
+

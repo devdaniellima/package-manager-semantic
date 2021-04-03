@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology pd_bassemu
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__pd_bassemu memberOf Package
+	package hasValue "pd-bassemu"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/sound"
+	installedSize hasValue "36"
+	maintainer hasValue "Original-Debian Multimedia Maintainers <debian-multimedia@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.3-5"
+	fileName hasValue "pool/universe/p/pd-bassemu/pd-bassemu_0.3-5_amd64.deb"
+	size hasValue "9524"
+	md5sum hasValue "967059d52be531bb96cf3a17facee897"
+	sha1 hasValue "77dc9a3b4f6bc3723ece78e1cbaeac893daa3f0d"
+	sha256 hasValue "4008828f767387ebaa2b4770c1d1742833a04f650dc0f6f9485e872d39a197f9"
+	descriptionMd5 hasValue "69ff3fdcf948f91b9f1d0fbff7d5b48b"
+	homepage hasValue "https://puredata.info"
+	depends hasValue "libc6 (>= 2.2.5), puredata-core | pd"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.2.5"
+
+relationInstance depends(P0__pd_bassemu,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "puredata-core"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__pd_bassemu,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "pd"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__pd_bassemu,1,DepAtom__2)
+

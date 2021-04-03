@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology r_cran_clipr
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__r_cran_clipr memberOf Package
+	package hasValue "r-cran-clipr"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/gnu-r"
+	installedSize hasValue "106"
+	maintainer hasValue "Original-Debian R Packages Maintainers <r-pkg-team@alioth-lists.debian.net>"
+	architecture hasValue "all"
+	version hasValue "0.7.0-1"
+	fileName hasValue "pool/universe/r/r-cran-clipr/r-cran-clipr_0.7.0-1_all.deb"
+	size hasValue "50412"
+	md5sum hasValue "0d1fa113eb9032719b2aba7d47b8921b"
+	sha1 hasValue "466afa2c2af56fe13e8f2d65d4f576c77c3ac65c"
+	sha256 hasValue "ba0edf060c73e3266a7aeaa6117adb1c4d028786d691dbfb2e372712967a8dc7"
+	descriptionMd5 hasValue "41afb747b934df488ce704d630462664"
+	homepage hasValue "https://cran.r-project.org/package=clipr"
+	depends hasValue "r-base-core (>= 3.6.1-3), r-api-3.5"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "r-base-core"
+	comparison hasValue ">="
+	version hasValue "3.6.1-3"
+
+relationInstance depends(P0__r_cran_clipr,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "r-api-3.5"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__r_cran_clipr,1,DepAtom__1)
+

@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology altermime
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__altermime memberOf Package
+	package hasValue "altermime"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/mail"
+	installedSize hasValue "155"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.3.10-10"
+	fileName hasValue "pool/universe/a/altermime/altermime_0.3.10-10_amd64.deb"
+	size hasValue "51788"
+	md5sum hasValue "b092b69801d03d3dd9b8b1dd6cb01c09"
+	sha1 hasValue "90157df97deeaf5904378cd9a4f103be38499cd3"
+	sha256 hasValue "ab9203b0c27e6bd3a021db9519b18ca34362fd08b2fdd6f12508ecdb6ec7cbc4"
+	description hasValue "utilitário usado para alterar pacotes de e-mail codificados em MIME"
+	descriptionMd5 hasValue "3b276af8be268e563cfc16ea2999afc0"
+	homepage hasValue "https://pldaniels.com/altermime/"
+	depends hasValue "default-mta | mail-transport-agent, libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "default-mta"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__altermime,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "mail-transport-agent"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__altermime,0,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__altermime,1,DepAtom__2)
+

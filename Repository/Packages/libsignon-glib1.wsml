@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libsignon_glib1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libsignon_glib1 memberOf Package
+	package hasValue "libsignon-glib1"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "150"
+	maintainer hasValue "Ubuntu Desktop Team <ubuntu-desktop@lists.ubuntu.com>"
+	architecture hasValue "amd64"
+	version hasValue "1.14+17.04.20161117-0ubuntu5"
+	fileName hasValue "pool/universe/libs/libsignon-glib/libsignon-glib1_1.14+17.04.20161117-0ubuntu5_amd64.deb"
+	size hasValue "34404"
+	md5sum hasValue "6c1d0b717cbec25d05aa6dc8943315df"
+	sha1 hasValue "75bf425a1907c2db910b57007ab1845a4001a191"
+	sha256 hasValue "f086f3f731b72de8665c1fe102d78b66824d75272fa960a9d944a034aa577409"
+	description hasValue "library for signond"
+	descriptionMd5 hasValue "516378637027ec145f398aaba1c06c74"
+	homepage hasValue "http://code.google.com/p/accounts-sso/"
+	depends hasValue "libc6 (>= 2.4), libglib2.0-0 (>= 2.37.3)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libsignon_glib1,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libglib2.0-0"
+	comparison hasValue ">="
+	version hasValue "2.37.3"
+
+relationInstance depends(P0__libsignon_glib1,1,DepAtom__1)
+

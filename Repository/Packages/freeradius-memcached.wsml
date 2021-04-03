@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology freeradius_memcached
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__freeradius_memcached memberOf Package
+	package hasValue "freeradius-memcached"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "66"
+	maintainer hasValue "Original-Debian FreeRADIUS Packaging Team <pkg-freeradius-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.0.20+dfsg-3build1"
+	fileName hasValue "pool/universe/f/freeradius/freeradius-memcached_3.0.20+dfsg-3build1_amd64.deb"
+	size hasValue "9952"
+	md5sum hasValue "a28621def966d968cb80cc5a18156df5"
+	sha1 hasValue "70b25ddc21b9208c55769af55ae1a325eeefdd66"
+	sha256 hasValue "85986fa1703a33d15968752022e7a3a588338568053fa848049b486202d8b9ed"
+	descriptionMd5 hasValue "6c7415181d540694968e8e8c5fbf1877"
+	homepage hasValue "http://www.freeradius.org/"
+	depends hasValue "freeradius (= 3.0.20+dfsg-3build1), libc6 (>= 2.4), libmemcached11"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "freeradius"
+	comparison hasValue "="
+	version hasValue "3.0.20+dfsg-3build1"
+
+relationInstance depends(P0__freeradius_memcached,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__freeradius_memcached,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libmemcached11"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__freeradius_memcached,2,DepAtom__2)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology hexyl
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__hexyl memberOf Package
+	package hasValue "hexyl"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "681"
+	maintainer hasValue "Original-Debian Rust Maintainers <pkg-rust-maintainers@alioth-lists.debian.net>"
+	architecture hasValue "amd64"
+	version hasValue "0.6.0-2build1"
+	fileName hasValue "pool/universe/r/rust-hexyl/hexyl_0.6.0-2build1_amd64.deb"
+	size hasValue "253520"
+	md5sum hasValue "dd8111d7f242d7ba21a1f8ca698b153d"
+	sha1 hasValue "63ea6426dd8f1e48a5aa7401c768cc13aef5d3a7"
+	sha256 hasValue "4617fc6e89bfd4bfa52713f4d64fdc8d4cafbd5c4330ebe0976291f98dfa3bd7"
+	descriptionMd5 hasValue "bc2d1cfc8e4ca83fb3f5254ad7df7215"
+	homepage hasValue "https://github.com/sharkdp/hexyl"
+	depends hasValue "libc6 (>= 2.18), libgcc-s1 (>= 4.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.18"
+
+relationInstance depends(P0__hexyl,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgcc-s1"
+	comparison hasValue ">="
+	version hasValue "4.2"
+
+relationInstance depends(P0__hexyl,1,DepAtom__1)
+

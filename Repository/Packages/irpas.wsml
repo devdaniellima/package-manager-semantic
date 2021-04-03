@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology irpas
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__irpas memberOf Package
+	package hasValue "irpas"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "multiverse/net"
+	installedSize hasValue "400"
+	maintainer hasValue "Original-Debian Security Tools <team+pkg-security@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.10-7"
+	fileName hasValue "pool/multiverse/i/irpas/irpas_0.10-7_amd64.deb"
+	size hasValue "75924"
+	md5sum hasValue "3133ed8e3fd5748caa0cf2830dd45cc5"
+	sha1 hasValue "c05594ed75b0eb873ec518e20866271caa8f19c8"
+	sha256 hasValue "9d0e108ae0165a822290c1724f004c27d69e02e3116e28b089e8861c7bca549d"
+	descriptionMd5 hasValue "cbde3547a237ae47ecb99af35eddfefb"
+	homepage hasValue "http://www.phenoelit.org/fr/tools.html"
+	depends hasValue "libc6 (>= 2.14), libpcap0.8 (>= 0.9.8)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__irpas,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libpcap0.8"
+	comparison hasValue ">="
+	version hasValue "0.9.8"
+
+relationInstance depends(P0__irpas,1,DepAtom__1)
+

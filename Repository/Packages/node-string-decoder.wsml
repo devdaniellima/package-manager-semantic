@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology node_string_decoder
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__node_string_decoder memberOf Package
+	package hasValue "node-string-decoder"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/web"
+	installedSize hasValue "25"
+	maintainer hasValue "Original-Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.2.0-2"
+	fileName hasValue "pool/universe/n/node-string-decoder/node-string-decoder_1.2.0-2_all.deb"
+	size hasValue "6596"
+	md5sum hasValue "9c05393f50db4d80aa6b6b52f58edc43"
+	sha1 hasValue "1fff603e03cf4fe796980e9745666072c1f49e28"
+	sha256 hasValue "432ba2d8287e72265c105a3e74a0a843e2fedff428bae45d5fbe0c968e41294f"
+	descriptionMd5 hasValue "27596e3bdcda9531b4923e263877e871"
+	homepage hasValue "https://github.com/nodejs/string_decoder"
+	depends hasValue "nodejs (>= 8), node-safe-buffer"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "nodejs"
+	comparison hasValue ">="
+	version hasValue "8"
+
+relationInstance depends(P0__node_string_decoder,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "node-safe-buffer"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__node_string_decoder,1,DepAtom__1)
+

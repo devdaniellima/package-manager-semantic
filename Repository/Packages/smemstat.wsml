@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology smemstat
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__smemstat memberOf Package
+	package hasValue "smemstat"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "54"
+	maintainer hasValue "Colin King <colin.king@canonical.com>"
+	architecture hasValue "amd64"
+	version hasValue "0.02.07-1"
+	fileName hasValue "pool/universe/s/smemstat/smemstat_0.02.07-1_amd64.deb"
+	size hasValue "16244"
+	md5sum hasValue "6df3d28a7f7d8a37b58e977073e48a64"
+	sha1 hasValue "cf7b3a72ccb894532f92e39c9b3e4f04b75f8d03"
+	sha256 hasValue "ddfbe8b0605afc801055637a6f951e897cbb80632a6d6c27de8fb20d49c77dfb"
+	descriptionMd5 hasValue "5aff95d83a6f3a8d43ad3e580f8abbe3"
+	homepage hasValue "http://kernel.ubuntu.com/~cking/smemstat"
+	depends hasValue "libc6 (>= 2.7), libncursesw6 (>= 6), libtinfo6 (>= 6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__smemstat,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libncursesw6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__smemstat,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libtinfo6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__smemstat,2,DepAtom__2)
+

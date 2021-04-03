@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology liblog4c3
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__liblog4c3 memberOf Package
+	package hasValue "liblog4c3"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/libs"
+	installedSize hasValue "100"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.2.4-2"
+	fileName hasValue "pool/universe/l/log4c/liblog4c3_1.2.4-2_amd64.deb"
+	size hasValue "29844"
+	md5sum hasValue "94b736115c1493ab1a380c10cf159243"
+	sha1 hasValue "b515b4e5ebcf2089dd14deac45370337eb0f313e"
+	sha256 hasValue "1925dfc6a6c97f6699a3cb74b1fbbd460bea8a8865b28bf1e188ba76b6b46025"
+	descriptionMd5 hasValue "bf0e59217bb8b62c9e3c550e222d0a17"
+	homepage hasValue "http://log4c.sourceforge.net"
+	depends hasValue "libc6 (>= 2.14), libexpat1 (>= 2.0.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__liblog4c3,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libexpat1"
+	comparison hasValue ">="
+	version hasValue "2.0.1"
+
+relationInstance depends(P0__liblog4c3,1,DepAtom__1)
+

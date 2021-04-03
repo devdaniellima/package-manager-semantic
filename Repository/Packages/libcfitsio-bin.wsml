@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libcfitsio_bin
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libcfitsio_bin memberOf Package
+	package hasValue "libcfitsio-bin"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "178"
+	maintainer hasValue "Original-Debian Astronomy Maintainers <debian-astro-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.470-3"
+	fileName hasValue "pool/universe/c/cfitsio/libcfitsio-bin_3.470-3_amd64.deb"
+	size hasValue "37764"
+	md5sum hasValue "a2759d945891506f557a2ee84229bb70"
+	sha1 hasValue "d290cfc9c47d527e73990bdc311fa8b85d27c012"
+	sha256 hasValue "faa0047ae0677fbf1e4dde7dc0f3e4952639b63c5573d54caea4c9ad967cd878"
+	description hasValue "CFITSIO based utilities"
+	descriptionMd5 hasValue "9ee658ca804c9a6f49e3fe88d5a212cc"
+	homepage hasValue "https://heasarc.gsfc.nasa.gov/fitsio/fitsio.html"
+	depends hasValue "libc6 (>= 2.14), libcfitsio8 (>= 3.470~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libcfitsio_bin,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libcfitsio8"
+	comparison hasValue ">="
+	version hasValue "3.470~"
+
+relationInstance depends(P0__libcfitsio_bin,1,DepAtom__1)
+

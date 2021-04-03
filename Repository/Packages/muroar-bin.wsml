@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology muroar_bin
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__muroar_bin memberOf Package
+	package hasValue "muroar-bin"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "34"
+	maintainer hasValue "Original-Patrick Matthäi <pmatthaei@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.1.13-5"
+	replaces hasValue "libmuroar0 (<< 0.1.13-3)"
+	fileName hasValue "pool/universe/m/muroar/muroar-bin_0.1.13-5_amd64.deb"
+	size hasValue "7712"
+	md5sum hasValue "0b15c7a2b9017a20cf2e7c5aab4cfc12"
+	sha1 hasValue "0ba8030e0bb8db708940f14b8ddcf24684baed80"
+	sha256 hasValue "218b8c8e06f8328523428d3a05ac75952a9590a61d7d823c9a6202fc0e0148c8"
+	descriptionMd5 hasValue "6a622b26491983b1caa8b0eae4ba53a6"
+	homepage hasValue "http://roaraudio.keep-cool.org/"
+	depends hasValue "libc6 (>= 2.4), libmuroar0 (>= 0.1.13)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__muroar_bin,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libmuroar0"
+	comparison hasValue ">="
+	version hasValue "0.1.13"
+
+relationInstance depends(P0__muroar_bin,1,DepAtom__1)
+

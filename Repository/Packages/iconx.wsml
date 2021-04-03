@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology iconx
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__iconx memberOf Package
+	package hasValue "iconx"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "469"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "9.4.3-7ubuntu1"
+	fileName hasValue "pool/universe/i/icon/iconx_9.4.3-7ubuntu1_amd64.deb"
+	size hasValue "172968"
+	md5sum hasValue "88346bf0042eacdc7090dd3ad183242d"
+	sha1 hasValue "7d308ad5fd3feed3e0a9f4af80c56611e7f936d4"
+	sha256 hasValue "29d337468082312a3a75b690ff3242e63a954ff102ec3bb26b96a500eedbcb36"
+	description hasValue "Executor for Icon, a high-level programming language"
+	descriptionMd5 hasValue "4afe00cd9fc1151ce65edb169ff82c7f"
+	depends hasValue "libc6 (>= 2.14), libx11-6"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__iconx,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libx11-6"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__iconx,1,DepAtom__1)
+

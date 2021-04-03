@@ -1,0 +1,59 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology olpc_powerd
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__olpc_powerd memberOf Package
+	package hasValue "olpc-powerd"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "712"
+	maintainer hasValue "Original-Andres Salomon <dilinger@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "23-2build1"
+	fileName hasValue "pool/universe/o/olpc-powerd/olpc-powerd_23-2build1_amd64.deb"
+	size hasValue "44472"
+	md5sum hasValue "a6efb74d0dce2ecb4244f339652beaf1"
+	sha1 hasValue "c11ec316bd671c32fd60c618165ac6d66e35af5b"
+	sha256 hasValue "fe6e9b9f8577613be5fa3e2085ebce419d0569babe24e19b5e8295cfc84c72fb"
+	descriptionMd5 hasValue "1cb9b83905db91ca54403311d9a7869e"
+	depends hasValue "libc6 (>= 2.15), ethtool"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__olpc_powerd,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "ethtool"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__olpc_powerd,1,DepAtom__1)
+

@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology fstrcmp
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__fstrcmp memberOf Package
+	package hasValue "fstrcmp"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "32"
+	maintainer hasValue "Original-Peter Miller <pmiller@opensource.org.au>"
+	architecture hasValue "amd64"
+	version hasValue "0.7.D001-1.1build1"
+	replaces hasValue "libfstrcmp-dev (<< 0.5)"
+	fileName hasValue "pool/universe/f/fstrcmp/fstrcmp_0.7.D001-1.1build1_amd64.deb"
+	size hasValue "7568"
+	md5sum hasValue "fdb3500af8603fb95f998dddd6530da2"
+	sha1 hasValue "83704f8e47fb304c0922b528051c3828ecdc49d5"
+	sha256 hasValue "664231fdc40a544f71748d61a576e6911c3df2864f042f59006d2f9d249bbbfd"
+	descriptionMd5 hasValue "f46525797f96335ca1e9b249ee43c6c7"
+	homepage hasValue "http://fstrcmp.sourceforge.net/"
+	depends hasValue "libc6 (>= 2.4), libfstrcmp0"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__fstrcmp,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libfstrcmp0"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__fstrcmp,1,DepAtom__1)
+

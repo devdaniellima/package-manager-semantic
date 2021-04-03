@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libipmctl4
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libipmctl4 memberOf Package
+	package hasValue "libipmctl4"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "2950"
+	maintainer hasValue "Original-Adam Borowski <kilobyte@angband.pl>"
+	architecture hasValue "amd64"
+	version hasValue "02.00.00.3709+ds-1"
+	replaces hasValue "libipmctl3"
+	fileName hasValue "pool/universe/i/ipmctl/libipmctl4_02.00.00.3709+ds-1_amd64.deb"
+	size hasValue "446920"
+	md5sum hasValue "c45e2a30367e0a9cc217d607c8074b21"
+	sha1 hasValue "bde50584fcebfbd8001b249c159f2ec41f7a1801"
+	sha256 hasValue "e5140f2fd6b436cdf619b6d3cd840031f0a27aefefe64737207adca70a4cbd7e"
+	descriptionMd5 hasValue "f9335482a05d7640c59dcdd63b6220c0"
+	homepage hasValue "https://github.com/intel/ipmctl"
+	depends hasValue "libc6 (>= 2.17), libndctl6 (>= 63)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.17"
+
+relationInstance depends(P0__libipmctl4,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libndctl6"
+	comparison hasValue ">="
+	version hasValue "63"
+
+relationInstance depends(P0__libipmctl4,1,DepAtom__1)
+

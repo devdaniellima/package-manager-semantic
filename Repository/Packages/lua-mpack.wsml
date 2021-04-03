@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology lua_mpack
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__lua_mpack memberOf Package
+	package hasValue "lua-mpack"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/libs"
+	installedSize hasValue "104"
+	maintainer hasValue "Original-James McCoy <jamessan@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.7-2"
+	provides hasValue "lua5.1-mpack, lua5.2-mpack, lua5.3-mpack"
+	fileName hasValue "pool/universe/libm/libmpack-lua/lua-mpack_1.0.7-2_amd64.deb"
+	size hasValue "16096"
+	md5sum hasValue "d5be6bab2e443981e080d4ba53d06e4c"
+	sha1 hasValue "683306a9d3bcdcc5dd1925519ec5ae71a381fe60"
+	sha256 hasValue "2de3244fbeb4531a07d0d9e55b9e1885fb10ea7b0824a504ee7ba58f4bbc56f0"
+	descriptionMd5 hasValue "5319f8419e3848a6fff3b5d3444e7aec"
+	homepage hasValue "https://github.com/libmpack/libmpack-lua/"
+	depends hasValue "libc6 (>= 2.14), libmpack0 (>= 1.0.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__lua_mpack,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libmpack0"
+	comparison hasValue ">="
+	version hasValue "1.0.0"
+
+relationInstance depends(P0__lua_mpack,1,DepAtom__1)
+

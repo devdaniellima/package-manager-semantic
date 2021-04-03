@@ -1,0 +1,82 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python3_gpg
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python3_gpg memberOf Package
+	package hasValue "python3-gpg"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "python"
+	installedSize hasValue "1084"
+	maintainer hasValue "Original-Debian GnuPG Maintainers <pkg-gnupg-maint@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.13.1-7ubuntu2"
+	provides hasValue "python3.8-gpg"
+	fileName hasValue "pool/main/g/gpgme1.0/python3-gpg_1.13.1-7ubuntu2_amd64.deb"
+	size hasValue "164612"
+	md5sum hasValue "7bd7c0f6feb1fd52f76ebe11f29f1d1d"
+	sha1 hasValue "8d4b88eb71bbd9428d17a47d5ae647394fe96cc9"
+	sha256 hasValue "0d4a287d2dac21e83bf62274fa8999104b760d9ea6af8a6836aee1b8dba762c5"
+	descriptionMd5 hasValue "fbb5ba3b9bbf707dc1621fe624609243"
+	homepage hasValue "https://www.gnupg.org/related_software/gpgme/"
+	depends hasValue "python3 (<< 3.9), python3 (>= 3.8~), python3:any, libc6 (>= 2.14), libgpgme11 (>= 1.12.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3"
+	comparison hasValue "<<"
+	version hasValue "3.9"
+
+relationInstance depends(P0__python3_gpg,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3"
+	comparison hasValue ">="
+	version hasValue "3.8~"
+
+relationInstance depends(P0__python3_gpg,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__python3_gpg,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__python3_gpg,3,DepAtom__3)
+
+instance DepAtom__4 memberOf DependencyAtom
+	package hasValue "libgpgme11"
+	comparison hasValue ">="
+	version hasValue "1.12.0"
+
+relationInstance depends(P0__python3_gpg,4,DepAtom__4)
+

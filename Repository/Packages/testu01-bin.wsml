@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology testu01_bin
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__testu01_bin memberOf Package
+	package hasValue "testu01-bin"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "multiverse/math"
+	installedSize hasValue "30"
+	maintainer hasValue "Original-Debian Science Maintainers <debian-science-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.2.3+ds1-1"
+	fileName hasValue "pool/multiverse/t/testu01/testu01-bin_1.2.3+ds1-1_amd64.deb"
+	size hasValue "7888"
+	md5sum hasValue "a0d0a045048288317b94d6f3dfa112b8"
+	sha1 hasValue "135a589138363fbee572cfe5108ec8cbf3328652"
+	sha256 hasValue "36154c20fe679b5d36911e42e93265d37c2023da70debf14119d55d9781d8164"
+	descriptionMd5 hasValue "48963c8862307c3ba87741d00b36b108"
+	homepage hasValue "http://simul.iro.umontreal.ca/testu01/tu01.html"
+	depends hasValue "libtestu01-0 (= 1.2.3+ds1-1), libc6 (>= 2.3.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libtestu01-0"
+	comparison hasValue "="
+	version hasValue "1.2.3+ds1-1"
+
+relationInstance depends(P0__testu01_bin,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.3.4"
+
+relationInstance depends(P0__testu01_bin,1,DepAtom__1)
+

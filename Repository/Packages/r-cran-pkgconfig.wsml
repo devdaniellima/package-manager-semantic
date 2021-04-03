@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology r_cran_pkgconfig
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__r_cran_pkgconfig memberOf Package
+	package hasValue "r-cran-pkgconfig"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/gnu-r"
+	installedSize hasValue "58"
+	maintainer hasValue "Original-Debian R Packages Maintainers <r-pkg-team@alioth-lists.debian.net>"
+	architecture hasValue "all"
+	version hasValue "2.0.3-1"
+	fileName hasValue "pool/universe/r/r-cran-pkgconfig/r-cran-pkgconfig_2.0.3-1_all.deb"
+	size hasValue "19692"
+	md5sum hasValue "2b7db498f91d9132d05b91c520ad47fa"
+	sha1 hasValue "6231eaa2a7851789ec63ec75efca1e15bef850ca"
+	sha256 hasValue "9c9e0f1718897899288933ff0c5103eb2ed6c2475b45692ea32d2657c659ed8c"
+	descriptionMd5 hasValue "163752c342a325730b1a84b16149cacc"
+	homepage hasValue "https://cran.r-project.org/package=pkgconfig"
+	depends hasValue "r-base-core (>= 3.6.1-4), r-api-3.5"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "r-base-core"
+	comparison hasValue ">="
+	version hasValue "3.6.1-4"
+
+relationInstance depends(P0__r_cran_pkgconfig,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "r-api-3.5"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__r_cran_pkgconfig,1,DepAtom__1)
+

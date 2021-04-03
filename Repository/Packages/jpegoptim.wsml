@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology jpegoptim
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__jpegoptim memberOf Package
+	package hasValue "jpegoptim"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/graphics"
+	installedSize hasValue "59"
+	maintainer hasValue "Original-Mathieu Malaterre <malat@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.4.6-1"
+	fileName hasValue "pool/universe/j/jpegoptim/jpegoptim_1.4.6-1_amd64.deb"
+	size hasValue "19552"
+	md5sum hasValue "3fe1fe3dd829eabeb4d3574edcf48909"
+	sha1 hasValue "8805fe07e746553277bde1b32d29f0703049c751"
+	sha256 hasValue "77fe6b18572c870e9c425e15318b89a49c7885e4f4576383143914bb826497c6"
+	description hasValue "utilitário para otimizar arquivos jpeg"
+	descriptionMd5 hasValue "700963fe7d553b18b87898b31acad40e"
+	homepage hasValue "http://www.kokkonen.net/tjko/projects.html"
+	depends hasValue "libc6 (>= 2.14), libjpeg8 (>= 8c)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__jpegoptim,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libjpeg8"
+	comparison hasValue ">="
+	version hasValue "8c"
+
+relationInstance depends(P0__jpegoptim,1,DepAtom__1)
+

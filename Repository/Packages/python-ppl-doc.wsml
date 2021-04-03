@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python_ppl_doc
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python_ppl_doc memberOf Package
+	package hasValue "python-ppl-doc"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/doc"
+	installedSize hasValue "683"
+	maintainer hasValue "Original-Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.8.4-4"
+	fileName hasValue "pool/universe/p/pplpy/python-ppl-doc_0.8.4-4_all.deb"
+	size hasValue "46956"
+	md5sum hasValue "3743a42e62ee4563a30cfa7a8096b728"
+	sha1 hasValue "8917421c2ee8a03a95bbece8c36818a21cec03b7"
+	sha256 hasValue "89b1639e93811d25acbf835d2e286d2b8f753689303f8eb140d779650457da50"
+	descriptionMd5 hasValue "3da4948a5ea5520712290eaf768472a1"
+	homepage hasValue "https://gitlab.com/videlec/pplpy"
+	depends hasValue "libjs-sphinxdoc (>= 1.0), libjs-mathjax"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libjs-sphinxdoc"
+	comparison hasValue ">="
+	version hasValue "1.0"
+
+relationInstance depends(P0__python_ppl_doc,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libjs-mathjax"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__python_ppl_doc,1,DepAtom__1)
+

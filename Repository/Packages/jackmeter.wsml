@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology jackmeter
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__jackmeter memberOf Package
+	package hasValue "jackmeter"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/sound"
+	installedSize hasValue "30"
+	maintainer hasValue "Original-Debian Multimedia Maintainers <pkg-multimedia-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.4-1build2"
+	fileName hasValue "pool/universe/j/jackmeter/jackmeter_0.4-1build2_amd64.deb"
+	size hasValue "8328"
+	md5sum hasValue "7a4d4fe5806947e1ff32f78272fbe7a5"
+	sha1 hasValue "886720c75efd2981ba3d8873b5d2856d0411a90e"
+	sha256 hasValue "4d42b27b8ff41ea3d39712761c5e28a1afa8ec29a165a025af5a88fd8b07c51b"
+	descriptionMd5 hasValue "9ee62be3c24eb07894f1bfb9e03b5e98"
+	homepage hasValue "http://www.aelius.com/njh/jackmeter/"
+	depends hasValue "libc6 (>= 2.27), libjack-jackd2-0 (>= 1.9.10+20150825) | libjack-0.125"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.27"
+
+relationInstance depends(P0__jackmeter,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libjack-jackd2-0"
+	comparison hasValue ">="
+	version hasValue "1.9.10+20150825"
+
+relationInstance depends(P0__jackmeter,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libjack-0.125"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__jackmeter,1,DepAtom__2)
+

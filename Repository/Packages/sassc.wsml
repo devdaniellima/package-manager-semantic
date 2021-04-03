@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology sassc
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__sassc memberOf Package
+	package hasValue "sassc"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/web"
+	installedSize hasValue "40"
+	maintainer hasValue "Original-Debian Sass team <pkg-sass-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.6.1-2"
+	fileName hasValue "pool/universe/s/sassc/sassc_3.6.1-2_amd64.deb"
+	size hasValue "10364"
+	md5sum hasValue "b335821c4a8523c2c72187044d0ecf07"
+	sha1 hasValue "1c7554e85188c77de0df504e8e67ac73a189144e"
+	sha256 hasValue "55c4922111d76a13cd3f4bf3cd6c2694e46feae83f897f3a342c5789770bd491"
+	descriptionMd5 hasValue "d12f226dacdf71dc245cec574d861679"
+	homepage hasValue "https://github.com/sass/sassc"
+	depends hasValue "libsass1 (>= 3.6.1), libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libsass1"
+	comparison hasValue ">="
+	version hasValue "3.6.1"
+
+relationInstance depends(P0__sassc,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__sassc,1,DepAtom__1)
+

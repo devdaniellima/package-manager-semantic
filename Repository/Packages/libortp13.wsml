@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libortp13
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libortp13 memberOf Package
+	package hasValue "libortp13"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "223"
+	maintainer hasValue "Original-Debian VoIP Team <pkg-voip-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:1.0.2-1.1"
+	fileName hasValue "pool/universe/o/ortp/libortp13_1.0.2-1.1_amd64.deb"
+	size hasValue "71344"
+	md5sum hasValue "337b6c8b4896acb261d54075164315e3"
+	sha1 hasValue "78f2dc4cf60ad3d647e57977188010d5c34a1f32"
+	sha256 hasValue "8f34bcea6033e7f11f0edb11be937f446bedc2b20e5a6749aa54ef887394751f"
+	descriptionMd5 hasValue "ac10e3c31a1525587dc9e43b1af59e75"
+	homepage hasValue "http://www.linphone.org/technical-corner/ortp/overview"
+	depends hasValue "libbctoolbox1 (>= 0.6.0), libbctoolbox1 (<< 0.7.0), libc6 (>= 2.27)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libbctoolbox1"
+	comparison hasValue ">="
+	version hasValue "0.6.0"
+
+relationInstance depends(P0__libortp13,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libbctoolbox1"
+	comparison hasValue "<<"
+	version hasValue "0.7.0"
+
+relationInstance depends(P0__libortp13,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.27"
+
+relationInstance depends(P0__libortp13,2,DepAtom__2)
+

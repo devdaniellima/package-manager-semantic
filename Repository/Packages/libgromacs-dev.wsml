@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libgromacs_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libgromacs_dev memberOf Package
+	package hasValue "libgromacs-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "489"
+	maintainer hasValue "Original-Debichem Team <debichem-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2020.1-1"
+	fileName hasValue "pool/universe/g/gromacs/libgromacs-dev_2020.1-1_amd64.deb"
+	size hasValue "81988"
+	md5sum hasValue "ad0e3449e17ee3c481ff9b909442a033"
+	sha1 hasValue "7e19dfd8924e395a72f246cd0f9f76b23e4325f8"
+	sha256 hasValue "96d1bd8605cbe4e8b8aad25e683dee0b4c894523b69ad09085fa19f4b1cf42ab"
+	description hasValue "GROMACS molecular dynamics sim, development kit"
+	descriptionMd5 hasValue "aab3304779c4ebcd0dbb20ae1eb40866"
+	homepage hasValue "http://www.gromacs.org/"
+	depends hasValue "fftw3-dev, libgromacs5 (= 2020.1-1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "fftw3-dev"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libgromacs_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgromacs5"
+	comparison hasValue "="
+	version hasValue "2020.1-1"
+
+relationInstance depends(P0__libgromacs_dev,1,DepAtom__1)
+

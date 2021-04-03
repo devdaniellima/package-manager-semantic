@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libsublib_cil
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libsublib_cil memberOf Package
+	package hasValue "libsublib-cil"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "153"
+	maintainer hasValue "Original-Debian CLI Libraries Team <pkg-cli-libs-team@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.9-5"
+	fileName hasValue "pool/universe/s/sublib/libsublib-cil_0.9-5_all.deb"
+	size hasValue "43740"
+	md5sum hasValue "e969a14852bb68eaafb5840b9e13b23a"
+	sha1 hasValue "749adef879c49ded8ea96716656ba225170a2235"
+	sha256 hasValue "f3f87e55db937701b78846ed85d6273f9a0757f05721fdf615a3edb73502a2a9"
+	descriptionMd5 hasValue "dcb133e94ceddb76318560064ac1e144"
+	homepage hasValue "http://sublib.sourceforge.net/"
+	depends hasValue "libmono-corlib4.5-cil (>= 3.2.8), libmono-system4.0-cil (>= 3.2.8)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libmono-corlib4.5-cil"
+	comparison hasValue ">="
+	version hasValue "3.2.8"
+
+relationInstance depends(P0__libsublib_cil,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libmono-system4.0-cil"
+	comparison hasValue ">="
+	version hasValue "3.2.8"
+
+relationInstance depends(P0__libsublib_cil,1,DepAtom__1)
+

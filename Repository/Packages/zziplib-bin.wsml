@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology zziplib_bin
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__zziplib_bin memberOf Package
+	package hasValue "zziplib-bin"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "99"
+	maintainer hasValue "Original-Scott Howard <showard@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.13.62-3.2ubuntu1"
+	fileName hasValue "pool/universe/z/zziplib/zziplib-bin_0.13.62-3.2ubuntu1_amd64.deb"
+	size hasValue "10980"
+	md5sum hasValue "51d3c33fb69683d5d5b6829629d2204f"
+	sha1 hasValue "db88b3452619f71ab7eb70bd6a4875d867edb1cf"
+	sha256 hasValue "7a83d95594b34f80529755f2b160011c3280bffceffd840b9dff67e7483b489b"
+	description hasValue "biblioteca que fornece acesso de leitura em ZIP-arquivos - binários"
+	descriptionMd5 hasValue "226d055c4f586cd69eb6f69325c1ca77"
+	homepage hasValue "http://zziplib.sourceforge.net"
+	depends hasValue "libc6 (>= 2.4), libzzip-0-13 (>= 0.13.56)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__zziplib_bin,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libzzip-0-13"
+	comparison hasValue ">="
+	version hasValue "0.13.56"
+
+relationInstance depends(P0__zziplib_bin,1,DepAtom__1)
+

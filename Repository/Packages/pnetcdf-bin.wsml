@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology pnetcdf_bin
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__pnetcdf_bin memberOf Package
+	package hasValue "pnetcdf-bin"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/science"
+	installedSize hasValue "3741"
+	maintainer hasValue "Original-Alastair McKinstry <mckinstry@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.12.1-1ubuntu2"
+	fileName hasValue "pool/universe/p/pnetcdf/pnetcdf-bin_1.12.1-1ubuntu2_amd64.deb"
+	size hasValue "372136"
+	md5sum hasValue "cb72d751fb2e4289d8c7b00dca220ea4"
+	sha1 hasValue "f25c5aa06372b44dc148441e82ecd4d8d5d0ba86"
+	sha256 hasValue "8a37e68f022a62000fba69a3ee1d8ed6e4de23e9f7e00ffb487924b3c4f69ad0"
+	descriptionMd5 hasValue "f36b60f2cd05ed9a45a319fdadbcd2cf"
+	homepage hasValue "https://trac.mcs.anl.gov/projects/parallel-netcdf"
+	depends hasValue "libc6 (>= 2.14), libopenmpi3 (>= 4.0.3~rc4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__pnetcdf_bin,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libopenmpi3"
+	comparison hasValue ">="
+	version hasValue "4.0.3~rc4"
+
+relationInstance depends(P0__pnetcdf_bin,1,DepAtom__1)
+

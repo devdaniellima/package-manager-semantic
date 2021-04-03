@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology aragorn
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__aragorn memberOf Package
+	package hasValue "aragorn"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/science"
+	installedSize hasValue "373"
+	maintainer hasValue "Original-Debian Med Packaging Team <debian-med-packaging@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.2.38-2"
+	fileName hasValue "pool/universe/a/aragorn/aragorn_1.2.38-2_amd64.deb"
+	size hasValue "85932"
+	md5sum hasValue "7c299b3f532cfb1ef75ece0cd1c3f5d7"
+	sha1 hasValue "c98c1c1f4b0773712e17fda3cc6dec2065d8ba58"
+	sha256 hasValue "bc47409208ac658075a0466ad77e18da55080bad9f0aeac4af4192637a8eb1fb"
+	descriptionMd5 hasValue "9dfb74b77cab6ab1e8b625d5e65b71c6"
+	homepage hasValue "http://mbio-serv2.mbioekol.lu.se/ARAGORN/"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__aragorn,0,DepAtom__0)
+

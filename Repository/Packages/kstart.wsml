@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology kstart
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__kstart memberOf Package
+	package hasValue "kstart"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "143"
+	maintainer hasValue "Original-Russ Allbery <rra@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "4.2-2"
+	fileName hasValue "pool/universe/k/kstart/kstart_4.2-2_amd64.deb"
+	size hasValue "58872"
+	md5sum hasValue "4dd478b8a77257d5909ce82bf3dab250"
+	sha1 hasValue "2ec0e9e27584f688ca3c1b8facd8d4cc2afb3a9d"
+	sha256 hasValue "9ebef5efba82081f6e790898bfb6cada46a4692cec3a8167d20fbd31b53df3bc"
+	description hasValue "kinit do Kerberos suportando AFS e refresh de tiquete"
+	descriptionMd5 hasValue "b0e0a4c811a8298797976c50aad2caba"
+	homepage hasValue "https://www.eyrie.org/~eagle/software/kstart/"
+	depends hasValue "libc6 (>= 2.26), libkrb5-3 (>= 1.10+dfsg~alpha1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.26"
+
+relationInstance depends(P0__kstart,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libkrb5-3"
+	comparison hasValue ">="
+	version hasValue "1.10+dfsg~alpha1"
+
+relationInstance depends(P0__kstart,1,DepAtom__1)
+

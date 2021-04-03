@@ -1,0 +1,59 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gdc_mipsel_linux_gnu
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gdc_mipsel_linux_gnu memberOf Package
+	package hasValue "gdc-mipsel-linux-gnu"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "11"
+	maintainer hasValue "Original-Debian GCC Maintainers <debian-gcc@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "4:9.2.1-4.1"
+	fileName hasValue "pool/universe/g/gcc-defaults-mipsen/gdc-mipsel-linux-gnu_9.2.1-4.1_amd64.deb"
+	size hasValue "1164"
+	md5sum hasValue "50afb5b287f09fce460d1b0536def165"
+	sha1 hasValue "f56cce36b735dde4edd7552f291144e576b1a1ae"
+	sha256 hasValue "1777cf8ad9f575016a71e28baacab91786df632fe860144f15cc5d60e4fbea22"
+	descriptionMd5 hasValue "d9d6ff8a398518385061e7285b5e0068"
+	depends hasValue "cpp-mipsel-linux-gnu (>= 4:9.2.1-4.1), gdc-9-mipsel-linux-gnu (>= 9.2.1-1~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "cpp-mipsel-linux-gnu"
+	comparison hasValue ">="
+	version hasValue "4:9.2.1-4.1"
+
+relationInstance depends(P0__gdc_mipsel_linux_gnu,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "gdc-9-mipsel-linux-gnu"
+	comparison hasValue ">="
+	version hasValue "9.2.1-1~"
+
+relationInstance depends(P0__gdc_mipsel_linux_gnu,1,DepAtom__1)
+

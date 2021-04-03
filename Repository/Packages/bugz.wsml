@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology bugz
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__bugz memberOf Package
+	package hasValue "bugz"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/misc"
+	installedSize hasValue "123"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.13-1"
+	fileName hasValue "pool/universe/b/bugz/bugz_0.13-1_all.deb"
+	size hasValue "23496"
+	md5sum hasValue "c8c851e5c993e811baf5e3f784d2ed2e"
+	sha1 hasValue "3067a21a93d74f43951644d759e73d3e379750a3"
+	sha256 hasValue "75ff479fc1c5866997497d58c3e3f1429897706fcc8ec27e6fc848710a9d93ae"
+	description hasValue "interface em linha de comando para o Bugzilla"
+	descriptionMd5 hasValue "f981c52cb13e3054a077e596ceaecd3a"
+	homepage hasValue "https://github.com/williamh/pybugz"
+	depends hasValue "python3:any (>= 3.3.2-2~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ">="
+	version hasValue "3.3.2-2~"
+
+relationInstance depends(P0__bugz,0,DepAtom__0)
+

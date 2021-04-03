@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology envstore
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__envstore memberOf Package
+	package hasValue "envstore"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "33"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.1-5"
+	fileName hasValue "pool/universe/e/envstore/envstore_2.1-5_amd64.deb"
+	size hasValue "8984"
+	md5sum hasValue "a284bd6e3cd32af5b9566faf8db31444"
+	sha1 hasValue "01bb84d32f2b3fb18e17740fa5e21cb2d49f0826"
+	sha256 hasValue "ef7699dcdcf22e03f59f9b79c07f615d06fe687919c5007804614d6f1afabf30"
+	descriptionMd5 hasValue "b91b2c04b39c3d8dbefac3bb83a1dfc7"
+	homepage hasValue "http://derf.homelinux.org/projects/envstore/"
+	depends hasValue "libc6 (>= 2.7)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__envstore,0,DepAtom__0)
+

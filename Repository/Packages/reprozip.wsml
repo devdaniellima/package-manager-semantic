@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology reprozip
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__reprozip memberOf Package
+	package hasValue "reprozip"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "14"
+	maintainer hasValue "Original-Debian Science Maintainers <debian-science-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.0.16-0ubuntu3"
+	fileName hasValue "pool/universe/r/reprozip/reprozip_1.0.16-0ubuntu3_all.deb"
+	size hasValue "2708"
+	md5sum hasValue "a1aa3dded3a74c9206d0a6829fb81f79"
+	sha1 hasValue "3f462b31afbc9467c7a24b112361cd378126dfa3"
+	sha256 hasValue "a301b01b3bf68732ddf63ec3fffa240607ad621537962d0978da7baf17c9edc8"
+	descriptionMd5 hasValue "344fa00548e9e518fc896be25591b656"
+	homepage hasValue "https://www.reprozip.org"
+	depends hasValue "python3:any (>= 3.3~), python3-reprozip"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ">="
+	version hasValue "3.3~"
+
+relationInstance depends(P0__reprozip,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3-reprozip"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__reprozip,1,DepAtom__1)
+

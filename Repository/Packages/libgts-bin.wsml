@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libgts_bin
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libgts_bin memberOf Package
+	package hasValue "libgts-bin"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/math"
+	installedSize hasValue "186"
+	maintainer hasValue "Original-Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.7.6+darcs121130-4"
+	replaces hasValue "libgts-0.7-1, libgts-dev (<< 0.7.6+darcs121130-4)"
+	fileName hasValue "pool/universe/g/gts/libgts-bin_0.7.6+darcs121130-4_amd64.deb"
+	size hasValue "41254"
+	md5sum hasValue "b5c506e04f1d0aba2ae883a8a28d51f4"
+	sha1 hasValue "b8581fb9df8e8688f3544858d43622c132fb5604"
+	sha256 hasValue "1f151176994d3f48a88acef7be19ae6cd9a1c22b8facf16ab3b5baa6a1052316"
+	descriptionMd5 hasValue "cede45ba9417854bd2ea51164cccc797"
+	homepage hasValue "http://gts.sourceforge.net/"
+	depends hasValue "libc6 (>= 2.7), libglib2.0-0 (>= 2.16.0), libgts-0.7-5 (= 0.7.6+darcs121130-4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__libgts_bin,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libglib2.0-0"
+	comparison hasValue ">="
+	version hasValue "2.16.0"
+
+relationInstance depends(P0__libgts_bin,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libgts-0.7-5"
+	comparison hasValue "="
+	version hasValue "0.7.6+darcs121130-4"
+
+relationInstance depends(P0__libgts_bin,2,DepAtom__2)
+

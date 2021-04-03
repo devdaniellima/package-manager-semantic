@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libmosquitto1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libmosquitto1 memberOf Package
+	package hasValue "libmosquitto1"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "176"
+	maintainer hasValue "Original-Roger A. Light <roger@atchoo.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.6.9-1"
+	fileName hasValue "pool/universe/m/mosquitto/libmosquitto1_1.6.9-1_amd64.deb"
+	size hasValue "45868"
+	md5sum hasValue "eef1ab108c0c17e2746feb9b7c1556dd"
+	sha1 hasValue "ed161db33a4cd4904d72ee7f68e7a640ca6aea18"
+	sha256 hasValue "ab6accc262c3c592f613f59585404ac0519edab09092a6dcd8cac5c951f124cd"
+	descriptionMd5 hasValue "d6db03b5024e1bf84fc82288546d2e4d"
+	homepage hasValue "https://mosquitto.org/"
+	depends hasValue "libc6 (>= 2.17), libssl1.1 (>= 1.1.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.17"
+
+relationInstance depends(P0__libmosquitto1,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libssl1.1"
+	comparison hasValue ">="
+	version hasValue "1.1.0"
+
+relationInstance depends(P0__libmosquitto1,1,DepAtom__1)
+

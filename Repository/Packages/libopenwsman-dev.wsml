@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libopenwsman_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libopenwsman_dev memberOf Package
+	package hasValue "libopenwsman-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/admin"
+	installedSize hasValue "292"
+	maintainer hasValue "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	architecture hasValue "amd64"
+	version hasValue "2.6.5-0ubuntu5"
+	fileName hasValue "pool/universe/o/openwsman/libopenwsman-dev_2.6.5-0ubuntu5_amd64.deb"
+	size hasValue "44472"
+	md5sum hasValue "c2fde99b9853508bb2fe11ab0c3ff6a3"
+	sha1 hasValue "a8ee154b10a171e94d090cf4f8c7af36278ccbbe"
+	sha256 hasValue "d9e3fcd31e509db4dadbe0f554078c4583827f6370c85474d03f37007315a72d"
+	descriptionMd5 hasValue "ea659a1a43a24fe018142b77dd1eb544"
+	homepage hasValue "http://openwsman.github.io/"
+	depends hasValue "libwsman1 (= 2.6.5-0ubuntu5), openwsman (= 2.6.5-0ubuntu5)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libwsman1"
+	comparison hasValue "="
+	version hasValue "2.6.5-0ubuntu5"
+
+relationInstance depends(P0__libopenwsman_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "openwsman"
+	comparison hasValue "="
+	version hasValue "2.6.5-0ubuntu5"
+
+relationInstance depends(P0__libopenwsman_dev,1,DepAtom__1)
+

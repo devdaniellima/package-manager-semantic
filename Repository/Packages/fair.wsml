@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology fair
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__fair memberOf Package
+	package hasValue "fair"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/net"
+	installedSize hasValue "104"
+	maintainer hasValue "Original-Guus Sliepen <guus@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.5.3-2"
+	fileName hasValue "pool/universe/f/fair/fair_0.5.3-2_amd64.deb"
+	size hasValue "27948"
+	md5sum hasValue "91e61249fc2c46bf3ecfeb35329d3f20"
+	sha1 hasValue "2cce0a54d02412367d4c373341b367121a78815f"
+	sha256 hasValue "16b8abeaf5898faaec722246b088d389f73e4e70951a3f80afb108e768015005"
+	description hasValue "balanceador de carga de alta disponibilidade para conexões TCP"
+	descriptionMd5 hasValue "6505b050389fb152164db062ef5b088d"
+	depends hasValue "libavl1, libc6 (>= 2.15)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libavl1"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__fair,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__fair,1,DepAtom__1)
+

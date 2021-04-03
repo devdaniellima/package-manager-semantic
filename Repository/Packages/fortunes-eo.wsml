@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology fortunes_eo
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__fortunes_eo memberOf Package
+	package hasValue "fortunes-eo"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/games"
+	installedSize hasValue "130"
+	maintainer hasValue "Original-Radovan Garabík <garabik@kassiopeia.juls.savba.sk>"
+	architecture hasValue "all"
+	version hasValue "20020729b-1"
+	provides hasValue "fortune-cookie-db"
+	fileName hasValue "pool/universe/f/fortunes-eo/fortunes-eo_20020729b-1_all.deb"
+	size hasValue "46528"
+	md5sum hasValue "257fe14ecca9225f864329570b73c848"
+	sha1 hasValue "328eb8f1a36d1492a4a397489b575bcbf1096251"
+	sha256 hasValue "aa53d50e921f164bb4c0124d45e058a95c4f76a882a5354c235f431c3557e3de"
+	descriptionMd5 hasValue "9144c190bd3cf765f24e57e6559b2237"
+	depends hasValue "fortune-mod (>= 9708-31)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "fortune-mod"
+	comparison hasValue ">="
+	version hasValue "9708-31"
+
+relationInstance depends(P0__fortunes_eo,0,DepAtom__0)
+

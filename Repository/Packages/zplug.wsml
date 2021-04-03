@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology zplug
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__zplug memberOf Package
+	package hasValue "zplug"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/shells"
+	installedSize hasValue "319"
+	maintainer hasValue "Original-Debian Zsh Maintainers <pkg-zsh-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.4.2-1"
+	fileName hasValue "pool/universe/z/zplug/zplug_2.4.2-1_all.deb"
+	size hasValue "75136"
+	md5sum hasValue "289a591b4265587ca05e3762d39afa68"
+	sha1 hasValue "de4046344b1e4b927ca1803f820ef397e95a7f32"
+	sha256 hasValue "b46abc2a4ac1df1eae9db26975626b1f1b66dcaadee6deab339abe16c56a72e6"
+	descriptionMd5 hasValue "743ba415342fa6ca1a6a887e00be7605"
+	homepage hasValue "https://zplug.sh/"
+	depends hasValue "git, zsh (>= 4.3.9)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "git"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__zplug,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "zsh"
+	comparison hasValue ">="
+	version hasValue "4.3.9"
+
+relationInstance depends(P0__zplug,1,DepAtom__1)
+

@@ -1,0 +1,69 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ldap2zone
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ldap2zone memberOf Package
+	package hasValue "ldap2zone"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "58"
+	maintainer hasValue "Original-Debian Edu Packaging Team <debian-edu-pkg-team@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.2-11build1"
+	conflicts hasValue "ldapdns"
+	fileName hasValue "pool/universe/l/ldap2zone/ldap2zone_0.2-11build1_amd64.deb"
+	size hasValue "15288"
+	md5sum hasValue "7250f0bf2e62180555f7e50b6caed74a"
+	sha1 hasValue "f2ffe958a129c592300f311efe006013e96a55a2"
+	sha256 hasValue "800acadc67813b32c37ef6757c2551e6306953d3330865648424de26645e413e"
+	description hasValue "extrai zonas e DNS de árvores LDAP"
+	descriptionMd5 hasValue "d50c04cde0e2246050329bcf3ab97746"
+	homepage hasValue "https://oss.gonicus.de/labs/gosa"
+	depends hasValue "libc6 (>= 2.14), libldap-2.4-2 (>= 2.4.7), bind9"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__ldap2zone,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libldap-2.4-2"
+	comparison hasValue ">="
+	version hasValue "2.4.7"
+
+relationInstance depends(P0__ldap2zone,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "bind9"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ldap2zone,2,DepAtom__2)
+

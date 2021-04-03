@@ -1,0 +1,69 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology dh_python
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__dh_python memberOf Package
+	package hasValue "dh-python"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "415"
+	maintainer hasValue "Original-Piotr Ożarowski <piotr@debian.org>"
+	architecture hasValue "all"
+	version hasValue "4.20191017ubuntu7"
+	replaces hasValue "python3 (<< 3.3.2-4~)"
+	provides hasValue "dh-sequence-pypy, dh-sequence-python2, dh-sequence-python3"
+	fileName hasValue "pool/universe/d/dh-python/dh-python_4.20191017ubuntu7_all.deb"
+	size hasValue "87056"
+	md5sum hasValue "093d73219a35c8bfe4bdd03e2ad0c30c"
+	sha1 hasValue "99eddc3b85f6c3a34a3025a5b7eebb5535882b1b"
+	sha256 hasValue "35af29eae1b92006485da7268a2a69f1ee74d62b7970fba87d2d9a21c3ee6d7f"
+	description hasValue "ferramentas auxiliares do Debian para aplicativos e bibliotecas de empacotamento Python"
+	descriptionMd5 hasValue "9f24690d2f6e9b70048dc4079a2dfca7"
+	depends hasValue "python3:any, python3-distutils | python3 (<< 3.6.5~rc1-1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__dh_python,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3-distutils"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__dh_python,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "python3"
+	comparison hasValue "<<"
+	version hasValue "3.6.5~rc1-1"
+
+relationInstance depends(P0__dh_python,1,DepAtom__2)
+

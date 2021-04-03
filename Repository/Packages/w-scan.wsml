@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology w_scan
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__w_scan memberOf Package
+	package hasValue "w-scan"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/misc"
+	installedSize hasValue "432"
+	maintainer hasValue "Original-Debian VDR Team <pkg-vdr-dvb-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "20170107-2"
+	fileName hasValue "pool/universe/w/w-scan/w-scan_20170107-2_amd64.deb"
+	size hasValue "120616"
+	md5sum hasValue "4c5c1381bb0ead42e9dd7108233052fc"
+	sha1 hasValue "be834433f34950f2e0cec6b899f1fc03ccaf8122"
+	sha256 hasValue "01080a223bbaccd4886327abe3bdb8b4350133007a0b9cd12e606d7b347daa44"
+	descriptionMd5 hasValue "73c6a77b6ba405abcb60f0a991ab8098"
+	homepage hasValue "http://wirbel.htpc-forum.de/w_scan/index2.html"
+	depends hasValue "libc6 (>= 2.17)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.17"
+
+relationInstance depends(P0__w_scan,0,DepAtom__0)
+

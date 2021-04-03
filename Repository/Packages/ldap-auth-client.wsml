@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ldap_auth_client
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ldap_auth_client memberOf Package
+	package hasValue "ldap-auth-client"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/admin"
+	installedSize hasValue "9"
+	maintainer hasValue "Rick Clark <rick.clark@ubuntu.com>"
+	architecture hasValue "all"
+	version hasValue "0.5.4"
+	conflicts hasValue "libnss-ldap (<< 255-1ubuntu1), libpam-ldap (<< 184-1ubuntu1)"
+	fileName hasValue "pool/universe/l/ldap-auth-client/ldap-auth-client_0.5.4_all.deb"
+	size hasValue "3012"
+	md5sum hasValue "5922536e345ab8d8b144a11d9e7813b0"
+	sha1 hasValue "f3e0b32a6d1b9f373938a0723159349e90ca93df"
+	sha256 hasValue "0e6d336cd097e12d74a98e528c52da90db5f0f5ad994ebbe1727d79a62067746"
+	descriptionMd5 hasValue "50269fd0d6d0f7be7b9b925af000b0dd"
+	depends hasValue "libpam-ldap, libnss-ldap"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libpam-ldap"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ldap_auth_client,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libnss-ldap"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ldap_auth_client,1,DepAtom__1)
+

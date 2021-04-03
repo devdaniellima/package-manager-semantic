@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology pcregrep
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__pcregrep memberOf Package
+	package hasValue "pcregrep"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "71"
+	maintainer hasValue "Original-Matthew Vernon <matthew@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2:8.39-12build1"
+	replaces hasValue "pgrep (<< 4.5)"
+	fileName hasValue "pool/universe/p/pcre3/pcregrep_8.39-12build1_amd64.deb"
+	size hasValue "27796"
+	md5sum hasValue "b581793ddb6a2f1f1227ac3b90561f05"
+	sha1 hasValue "6c8acc0b17f277e29f3bdfd31631720148fbd739"
+	sha256 hasValue "7b8a7b7ac2df9bb5f1c8e3908755095533f74e7be9453a594c480e9ce0c1b713"
+	descriptionMd5 hasValue "b0a601c5f8b647ddc42b4beaba17e22e"
+	depends hasValue "libc6 (>= 2.4), libpcre3"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__pcregrep,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libpcre3"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__pcregrep,1,DepAtom__1)
+

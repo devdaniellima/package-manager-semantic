@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology growisofs
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__growisofs memberOf Package
+	package hasValue "growisofs"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/video"
+	installedSize hasValue "195"
+	maintainer hasValue "Original-Optical Media Tools Team <pkg-opt-media-team@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "7.1-14build1"
+	replaces hasValue "dvd+rw-tools (<< 7.1-9)"
+	fileName hasValue "pool/universe/d/dvd+rw-tools/growisofs_7.1-14build1_amd64.deb"
+	size hasValue "61620"
+	md5sum hasValue "eef1668719fa6a262e5d6cc7fd237a67"
+	sha1 hasValue "2b58199ce710edaeaf6ce41909438cc9c9faf714"
+	sha256 hasValue "4f495f6eb0c721ff3f6c7ea8f8236206d5f935bde7d0be6d87d9b3e62bf9f248"
+	description hasValue "gravador de DVD+-RW/R"
+	descriptionMd5 hasValue "11a5fa8747e3713569def36f6fbc2b0e"
+	homepage hasValue "http://fy.chalmers.se/~appro/linux/DVD+RW/"
+	depends hasValue "libc6 (>= 2.28), libstdc++6 (>= 4.1.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.28"
+
+relationInstance depends(P0__growisofs,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "4.1.1"
+
+relationInstance depends(P0__growisofs,1,DepAtom__1)
+

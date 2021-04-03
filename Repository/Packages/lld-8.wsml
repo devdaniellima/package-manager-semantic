@@ -1,0 +1,74 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology lld_8
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__lld_8 memberOf Package
+	package hasValue "lld-8"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "3230"
+	maintainer hasValue "Original-LLVM Packaging Team <pkg-llvm-team@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:8.0.1-9"
+	fileName hasValue "pool/universe/l/llvm-toolchain-8/lld-8_8.0.1-9_amd64.deb"
+	size hasValue "797312"
+	md5sum hasValue "6c2564dcbc9570dcb8ad1043c7d1944a"
+	sha1 hasValue "718c56042bce25d6cb26e6cc6d8b18f3f3ca2465"
+	sha256 hasValue "d1e97fd6f4d203c8dcd008dc1d16bdaaa446d34c57c7d34912828f52fba46bf5"
+	descriptionMd5 hasValue "39b52f07f105b329dd7852cce89ebb7d"
+	homepage hasValue "https://www.llvm.org/"
+	depends hasValue "libc6 (>= 2.14), libgcc-s1 (>= 3.0), libllvm8 (= 1:8.0.1-9), libstdc++6 (>= 6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__lld_8,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgcc-s1"
+	comparison hasValue ">="
+	version hasValue "3.0"
+
+relationInstance depends(P0__lld_8,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libllvm8"
+	comparison hasValue "="
+	version hasValue "1:8.0.1-9"
+
+relationInstance depends(P0__lld_8,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__lld_8,3,DepAtom__3)
+

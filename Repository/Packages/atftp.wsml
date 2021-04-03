@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology atftp
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__atftp memberOf Package
+	package hasValue "atftp"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "99"
+	maintainer hasValue "Original-Ludovic Drolez <ldrolez@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.7.git20120829-3.1"
+	fileName hasValue "pool/universe/a/atftp/atftp_0.7.git20120829-3.1_amd64.deb"
+	size hasValue "32128"
+	md5sum hasValue "247a94ad7d55d73418b78003630b94b2"
+	sha1 hasValue "097d944a689fb0fca1153853215a284786112f3a"
+	sha256 hasValue "8d8d2bb3415809a2837ebc383a429d795fcb52ac4053be93e247105778f0183e"
+	description hasValue "cliente TFTP avançado"
+	descriptionMd5 hasValue "f898d8c7e405abc5e5a5efa0aefed626"
+	depends hasValue "libc6 (>= 2.15), libreadline8 (>= 6.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__atftp,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libreadline8"
+	comparison hasValue ">="
+	version hasValue "6.0"
+
+relationInstance depends(P0__atftp,1,DepAtom__1)
+

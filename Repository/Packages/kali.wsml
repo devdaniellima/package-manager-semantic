@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology kali
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__kali memberOf Package
+	package hasValue "kali"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/math"
+	installedSize hasValue "143"
+	maintainer hasValue "Colin Watson <cjwatson@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.1-18"
+	fileName hasValue "pool/universe/k/kali/kali_3.1-18_amd64.deb"
+	size hasValue "40028"
+	md5sum hasValue "79606ef8d3e4482f1dd15b4762265e5a"
+	sha1 hasValue "c98be8396e1ed21249a7cb991923ac56b9836a7d"
+	sha256 hasValue "45f718f5e672ae436917cf37ecd34ec397d8a02edac9c2f10d1e45965716990a"
+	description hasValue "desenha ladrilhos, padrões de frisos e assim por diante"
+	descriptionMd5 hasValue "ac34457ae89060728b968945c15548c5"
+	homepage hasValue "http://www.geom.uiuc.edu/software/download/kali.html"
+	depends hasValue "libc6 (>= 2.7), libforms2, libx11-6"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__kali,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libforms2"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__kali,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libx11-6"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__kali,2,DepAtom__2)
+

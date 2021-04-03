@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology r_doc_info
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__r_doc_info memberOf Package
+	package hasValue "r-doc-info"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/doc"
+	installedSize hasValue "640"
+	maintainer hasValue "Original-Dirk Eddelbuettel <edd@debian.org>"
+	architecture hasValue "all"
+	version hasValue "3.6.3-2"
+	replaces hasValue "r-base (<= 1.4.1-1)"
+	fileName hasValue "pool/universe/r/r-base/r-doc-info_3.6.3-2_all.deb"
+	size hasValue "600836"
+	md5sum hasValue "e86bf7ccbe192d4b207131eadcfb31d2"
+	sha1 hasValue "9fc8e068fc27dd9e42513379ffe1aa66a8db1c37"
+	sha256 hasValue "54232e3cdb36868502ef9b0c0858f80425900d7bac2e9bc729190ddd874ee027"
+	descriptionMd5 hasValue "473a7b2c67dab81cd13f242acf3f1254"
+	homepage hasValue "http://www.r-project.org/"
+	depends hasValue "dpkg (>= 1.15.4) | install-info"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "dpkg"
+	comparison hasValue ">="
+	version hasValue "1.15.4"
+
+relationInstance depends(P0__r_doc_info,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "install-info"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__r_doc_info,0,DepAtom__1)
+

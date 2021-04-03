@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libquorum_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libquorum_dev memberOf Package
+	package hasValue "libquorum-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libdevel"
+	installedSize hasValue "58"
+	maintainer hasValue "Original-Debian HA Maintainers <debian-ha-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.0.3-2ubuntu2"
+	fileName hasValue "pool/main/c/corosync/libquorum-dev_3.0.3-2ubuntu2_amd64.deb"
+	size hasValue "21008"
+	md5sum hasValue "f5278196f8d0cd60c41b6aabb5a07d47"
+	sha1 hasValue "7aa7b33230516c2fd555c0dbe79ae99249a4827a"
+	sha256 hasValue "d5cd58e398fd79b61ca10f308f5f74d01717c345d8236565a665f7f33b5af056"
+	descriptionMd5 hasValue "5a1401b508b369fbcb611507f3de14c1"
+	homepage hasValue "https://corosync.github.io/corosync/"
+	depends hasValue "libcorosync-common-dev (= 3.0.3-2ubuntu2), libquorum5 (= 3.0.3-2ubuntu2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libcorosync-common-dev"
+	comparison hasValue "="
+	version hasValue "3.0.3-2ubuntu2"
+
+relationInstance depends(P0__libquorum_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libquorum5"
+	comparison hasValue "="
+	version hasValue "3.0.3-2ubuntu2"
+
+relationInstance depends(P0__libquorum_dev,1,DepAtom__1)
+

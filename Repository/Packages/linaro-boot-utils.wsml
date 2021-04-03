@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology linaro_boot_utils
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__linaro_boot_utils memberOf Package
+	package hasValue "linaro-boot-utils"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/devel"
+	installedSize hasValue "23"
+	maintainer hasValue "Original-John Rigby <john.rigby@linaro.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.1-0ubuntu2"
+	fileName hasValue "pool/universe/l/linaro-boot-utils/linaro-boot-utils_0.1-0ubuntu2_amd64.deb"
+	size hasValue "6948"
+	md5sum hasValue "2372d61094fc620f3fff1cd95b6b694e"
+	sha1 hasValue "8cc2f60fd3f531d5e30a02012f414415b28b125c"
+	sha256 hasValue "5e24f404c9031b5087669c6a8e24b2bb11bfb61aab77b99d640cf03b71ae3df8"
+	descriptionMd5 hasValue "b88bd2b3d1d59abb6887b1106376e092"
+	homepage hasValue "http://www.linaro.org"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__linaro_boot_utils,0,DepAtom__0)
+

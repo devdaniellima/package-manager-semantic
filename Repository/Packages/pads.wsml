@@ -1,0 +1,74 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology pads
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__pads memberOf Package
+	package hasValue "pads"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "316"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.2-12"
+	fileName hasValue "pool/universe/p/pads/pads_1.2-12_amd64.deb"
+	size hasValue "93924"
+	md5sum hasValue "653663ad16a7fbd38023279342d5768c"
+	sha1 hasValue "85150d515741031c621a7b1d3d4a3fe74cc5ecc2"
+	sha256 hasValue "89d912c0b927d45637beaac13ee2f14e14586e34bfcfd2f7d995db65f69a21de"
+	descriptionMd5 hasValue "0fb99b49cad9a3a1cf6c4cdec2e6f4e0"
+	homepage hasValue "http://passive.sourceforge.net"
+	depends hasValue "libc6 (>= 2.14), libpcap0.8 (>= 0.9.8), libpcre3, lsb-base (>= 3.0-6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__pads,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libpcap0.8"
+	comparison hasValue ">="
+	version hasValue "0.9.8"
+
+relationInstance depends(P0__pads,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libpcre3"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__pads,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "lsb-base"
+	comparison hasValue ">="
+	version hasValue "3.0-6"
+
+relationInstance depends(P0__pads,3,DepAtom__3)
+

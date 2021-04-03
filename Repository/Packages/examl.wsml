@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology examl
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__examl memberOf Package
+	package hasValue "examl"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/science"
+	installedSize hasValue "5989"
+	maintainer hasValue "Original-Debian Med Packaging Team <debian-med-packaging@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.0.21-3"
+	fileName hasValue "pool/universe/e/examl/examl_3.0.21-3_amd64.deb"
+	size hasValue "923156"
+	md5sum hasValue "ae783d5b2945aacb0f14b9de2224f0a5"
+	sha1 hasValue "e6a4acc075d6fc6b3526a967e4f23fb128df105e"
+	sha256 hasValue "4b82db56f3a27ff1878268e37c75a4af865616786c501796370a1acb8c050d78"
+	descriptionMd5 hasValue "4972cdf739509b60035d9f3b35bafb60"
+	homepage hasValue "https://github.com/stamatak/ExaML"
+	depends hasValue "libc6 (>= 2.29), libopenmpi3 (>= 4.0.2), openmpi-bin"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__examl,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libopenmpi3"
+	comparison hasValue ">="
+	version hasValue "4.0.2"
+
+relationInstance depends(P0__examl,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "openmpi-bin"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__examl,2,DepAtom__2)
+

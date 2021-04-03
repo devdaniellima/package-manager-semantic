@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology linux_modules_nvidia_460_server_lowlatency
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__linux_modules_nvidia_460_server_lowlatency memberOf Package
+	package hasValue "linux-modules-nvidia-460-server-lowlatency"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "restricted/kernel"
+	installedSize hasValue "22"
+	maintainer hasValue "Canonical Kernel Team <kernel-team@lists.ubuntu.com>"
+	architecture hasValue "amd64"
+	version hasValue "5.4.0-67.75+1"
+	provides hasValue "nvidia-dkms-460-server (= 460.32.03-0ubuntu0.20.04.1), nvidia-prebuilt-kernel"
+	fileName hasValue "pool/restricted/l/linux-restricted-modules/linux-modules-nvidia-460-server-lowlatency_5.4.0-67.75+1_amd64.deb"
+	size hasValue "5496"
+	md5sum hasValue "0f237cde5c5166b90eaae40241cddbb0"
+	sha1 hasValue "ea28333b0c1616e49de917aa67b2412b3caf45d0"
+	sha256 hasValue "fc0b0e412da0130556dcec016a826e83bae7c3314fdfc3eea360f75bde42debd"
+	sha512 hasValue "bf19fb782f5cb8cd3f809aadc02d5f36652865dd8eb82efd1c71b6c3ef7c154d788542c7e6842139a7cb96017f976d503fbc99dc7b74ae76b8c20d1031406013"
+	descriptionMd5 hasValue "e990ec50037e672c5260efce6ad6f54b"
+	depends hasValue "linux-modules-nvidia-460-server-5.4.0-67-lowlatency (= 5.4.0-67.75+1), nvidia-kernel-common-460-server (<= 460.32.03-1), nvidia-kernel-common-460-server (>= 460.32.03)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "linux-modules-nvidia-460-server-5.4.0-67-lowlatency"
+	comparison hasValue "="
+	version hasValue "5.4.0-67.75+1"
+
+relationInstance depends(P0__linux_modules_nvidia_460_server_lowlatency,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "nvidia-kernel-common-460-server"
+	comparison hasValue "<="
+	version hasValue "460.32.03-1"
+
+relationInstance depends(P0__linux_modules_nvidia_460_server_lowlatency,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "nvidia-kernel-common-460-server"
+	comparison hasValue ">="
+	version hasValue "460.32.03"
+
+relationInstance depends(P0__linux_modules_nvidia_460_server_lowlatency,2,DepAtom__2)
+

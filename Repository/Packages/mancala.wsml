@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology mancala
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__mancala memberOf Package
+	package hasValue "mancala"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/games"
+	installedSize hasValue "60"
+	maintainer hasValue "Original-Debian Games Team <pkg-games-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.3-1build1"
+	fileName hasValue "pool/universe/m/mancala/mancala_1.0.3-1build1_amd64.deb"
+	size hasValue "16284"
+	md5sum hasValue "3ece8abce97bf9278d0e3751fe78967f"
+	sha1 hasValue "a40cf92082914d8d7853a6f1cc86f72771f1eb06"
+	sha256 hasValue "9bd71eb47d54c240b45d7629ccc2bb783690c088987e240358cd8f9cd9a1ee30"
+	description hasValue "implementação do jogo de tabuleiro simples chamado Mancala"
+	descriptionMd5 hasValue "7f72f6fc09bb917e38c4bd556eabe2ff"
+	homepage hasValue "http://shh.thathost.com/pub-unix/#Mancala"
+	depends hasValue "libc6 (>= 2.4), libforms2"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__mancala,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libforms2"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__mancala,1,DepAtom__1)
+

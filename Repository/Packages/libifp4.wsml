@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libifp4
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libifp4 memberOf Package
+	package hasValue "libifp4"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/libs"
+	installedSize hasValue "97"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.0.2-5ubuntu2"
+	fileName hasValue "pool/universe/libi/libifp/libifp4_1.0.0.2-5ubuntu2_amd64.deb"
+	size hasValue "31836"
+	md5sum hasValue "b4c9445df8f66816b4b02265725b18e1"
+	sha1 hasValue "35a6a0295d4a6406dc40d65990768c7ea0773c11"
+	sha256 hasValue "8f36266a0447b4f0a0896d21fa19817b11b5e7f7dc54e991affe16acbe98a3f4"
+	descriptionMd5 hasValue "a13b2058427ae81c89989c926a3e190e"
+	homepage hasValue "http://ifp-driver.sourceforge.net/libifp/"
+	depends hasValue "libc6 (>= 2.14), libusb-0.1-4 (>= 2:0.1.12)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libifp4,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libusb-0.1-4"
+	comparison hasValue ">="
+	version hasValue "2:0.1.12"
+
+relationInstance depends(P0__libifp4,1,DepAtom__1)
+

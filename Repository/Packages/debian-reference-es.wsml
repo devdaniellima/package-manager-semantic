@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology debian_reference_es
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__debian_reference_es memberOf Package
+	package hasValue "debian-reference-es"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/doc"
+	installedSize hasValue "4812"
+	maintainer hasValue "Original-Osamu Aoki <osamu@debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.76ubuntu1"
+	fileName hasValue "pool/universe/d/debian-reference/debian-reference-es_2.76ubuntu1_all.deb"
+	size hasValue "2369788"
+	md5sum hasValue "dfc9fc4ff87feb428b447071685cad63"
+	sha1 hasValue "00ddcd09f6595f1b66dc8dd5a0a2e4e7cf0d2427"
+	sha256 hasValue "c3a67a854da9e6ba10950e64810e518b1ada5ff2a6885b8c44f18819b6297c74"
+	description hasValue "Debian system administration guide, Spanish translation"
+	descriptionMd5 hasValue "6e8b3f941b8cff99339c1443e19d653e"
+	homepage hasValue "https://www.debian.org/doc/user-manuals#quick-reference"
+	depends hasValue "debian-reference-common (>= 2.51)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "debian-reference-common"
+	comparison hasValue ">="
+	version hasValue "2.51"
+
+relationInstance depends(P0__debian_reference_es,0,DepAtom__0)
+

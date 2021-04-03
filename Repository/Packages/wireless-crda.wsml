@@ -1,0 +1,52 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology wireless_crda
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__wireless_crda memberOf Package
+	package hasValue "wireless-crda"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "27"
+	maintainer hasValue "Ubuntu Kernel Team <kernel-team@lists.ubuntu.com>"
+	architecture hasValue "amd64"
+	version hasValue "1.16"
+	fileName hasValue "pool/universe/w/wireless-crda/wireless-crda_1.16_amd64.deb"
+	size hasValue "2664"
+	md5sum hasValue "b86cbc10ac8adab94e657940e23008ac"
+	sha1 hasValue "6f403d3f1753347ad4f63610a0fcfb44f7acb2c8"
+	sha256 hasValue "eab8b7e1f12aa4d7813fd6b3fa9eb5d1bd206a3da585303311b49740893cb7eb"
+	descriptionMd5 hasValue "2f50646a9cc27fe57c1e75312e35cbfb"
+	depends hasValue "crda (>= 1.1.1-1ubuntu2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "crda"
+	comparison hasValue ">="
+	version hasValue "1.1.1-1ubuntu2"
+
+relationInstance depends(P0__wireless_crda,0,DepAtom__0)
+

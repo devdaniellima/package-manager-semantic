@@ -1,0 +1,52 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology debian_el
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__debian_el memberOf Package
+	package hasValue "debian-el"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "15"
+	maintainer hasValue "Original-Debian Emacsen team <debian-emacsen@lists.debian.org>"
+	architecture hasValue "all"
+	version hasValue "37.9"
+	fileName hasValue "pool/universe/d/debian-el/debian-el_37.9_all.deb"
+	size hasValue "2412"
+	md5sum hasValue "ba95b1ab533c522c31165f5d37759b66"
+	sha1 hasValue "f11693ae8894eb021d0fce8feee2214c6b61ac5e"
+	sha256 hasValue "72c1bd3a52797ed8251e4baadee947fd6a12265baf16150ad414d26c153ce00e"
+	descriptionMd5 hasValue "5f14f32d57202336d4a391a21108e758"
+	depends hasValue "elpa-debian-el"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "elpa-debian-el"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__debian_el,0,DepAtom__0)
+

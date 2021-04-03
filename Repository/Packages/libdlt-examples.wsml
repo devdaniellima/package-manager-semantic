@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libdlt_examples
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libdlt_examples memberOf Package
+	package hasValue "libdlt-examples"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "704"
+	maintainer hasValue "Original-Aigars Mahinovs <aigarius@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.18.4-0.1"
+	fileName hasValue "pool/universe/d/dlt-daemon/libdlt-examples_2.18.4-0.1_amd64.deb"
+	size hasValue "317520"
+	md5sum hasValue "cd1ffb2740eaad2359aeae14a3eb9aa7"
+	sha1 hasValue "91d98014826a55407df397b0899f793cca2cedac"
+	sha256 hasValue "782c9dd010893a3f444b0ce0fb0bf869ebbd65beca99917ed076ed0c58cb1550"
+	descriptionMd5 hasValue "4484f9762e15a7da08ef4ebafeac8188"
+	homepage hasValue "https://at.projects.genivi.org/wiki/display/PROJ/Diagnostic+Log+and+Trace"
+	depends hasValue "libc6 (>= 2.4), libdlt2 (>= 2.18.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libdlt_examples,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libdlt2"
+	comparison hasValue ">="
+	version hasValue "2.18.4"
+
+relationInstance depends(P0__libdlt_examples,1,DepAtom__1)
+

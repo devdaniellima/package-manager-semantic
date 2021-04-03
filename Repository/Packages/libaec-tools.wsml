@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libaec_tools
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libaec_tools memberOf Package
+	package hasValue "libaec-tools"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "25"
+	maintainer hasValue "Original-Alastair McKinstry <mckinstry@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.4-1"
+	fileName hasValue "pool/universe/liba/libaec/libaec-tools_1.0.4-1_amd64.deb"
+	size hasValue "5392"
+	md5sum hasValue "bcc16be26f5537880eb6b3ed7e0d52f7"
+	sha1 hasValue "659084b164299c452434e017c95a415539cd0677"
+	sha256 hasValue "b5fb1f0e44957e9d4960f8d15dbe40202d80e9db330f2f77b648e8ea38363927"
+	descriptionMd5 hasValue "8e346182eaf04f15a9a5a8ec50eb5cf1"
+	homepage hasValue "https://gitlab.dkrz.de/k202009/libaec"
+	depends hasValue "libaec0 (>= 1.0.4), libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libaec0"
+	comparison hasValue ">="
+	version hasValue "1.0.4"
+
+relationInstance depends(P0__libaec_tools,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libaec_tools,1,DepAtom__1)
+

@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology source_extractor
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__source_extractor memberOf Package
+	package hasValue "source-extractor"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/science"
+	installedSize hasValue "1222"
+	maintainer hasValue "Original-Debian Astronomy Maintainers <debian-astro-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.25.0+ds-2"
+	fileName hasValue "pool/universe/s/source-extractor/source-extractor_2.25.0+ds-2_amd64.deb"
+	size hasValue "297780"
+	md5sum hasValue "d62e8bbafc84f1246555b82f701b141f"
+	sha1 hasValue "ea1ba5bbf625457bcf9070da507a4c2554e05517"
+	sha256 hasValue "dbf9cb924fcfa0e57da6b7f9c73aa10207410e533d6780a2dbc350add637dad0"
+	descriptionMd5 hasValue "5f1bb3db51fb9466350c4b7bfa188e0a"
+	homepage hasValue "https://www.astromatic.net/software/sextractor"
+	depends hasValue "libatlas3-base, libc6 (>= 2.29), libfftw3-single3 (>= 3.3.5)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libatlas3-base"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__source_extractor,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__source_extractor,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libfftw3-single3"
+	comparison hasValue ">="
+	version hasValue "3.3.5"
+
+relationInstance depends(P0__source_extractor,2,DepAtom__2)
+

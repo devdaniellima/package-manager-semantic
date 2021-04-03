@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology escputil
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__escputil memberOf Package
+	package hasValue "escputil"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "188"
+	maintainer hasValue "Original-Debian Printing Group <debian-printing@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "5.3.3-4"
+	fileName hasValue "pool/universe/g/gutenprint/escputil_5.3.3-4_amd64.deb"
+	size hasValue "61892"
+	md5sum hasValue "61c5f2b915c9e6a1dd9a04fd76195210"
+	sha1 hasValue "4a1ee456290d4601d042e28b697f97d5d83ed14e"
+	sha256 hasValue "ee26fbf4a5749a2034511b2bae1c1a534cead4ec1604adeeb29a5d1d8885389f"
+	description hasValue "maintenance utility for Epson Stylus printers"
+	descriptionMd5 hasValue "a84d4b8c7361eb8365a95150358419f2"
+	homepage hasValue "http://gimp-print.sourceforge.net/"
+	depends hasValue "libgutenprint9 (= 5.3.3-4), libc6 (>= 2.14), libreadline8 (>= 6.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libgutenprint9"
+	comparison hasValue "="
+	version hasValue "5.3.3-4"
+
+relationInstance depends(P0__escputil,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__escputil,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libreadline8"
+	comparison hasValue ">="
+	version hasValue "6.0"
+
+relationInstance depends(P0__escputil,2,DepAtom__2)
+

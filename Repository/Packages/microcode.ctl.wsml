@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology microcodeDotctl
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__microcodeDotctl memberOf Package
+	package hasValue "microcode.ctl"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "multiverse/utils"
+	installedSize hasValue "35"
+	maintainer hasValue "Original-Giacomo Catenazzi <cate@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.18~0+nmu2"
+	conflicts hasValue "intel-microcode (<< 1)"
+	fileName hasValue "pool/multiverse/m/microcode.ctl/microcode.ctl_1.18~0+nmu2_amd64.deb"
+	size hasValue "4840"
+	md5sum hasValue "f98cb29ade26e001ce03c8ef13695bf4"
+	sha1 hasValue "1e73b063b597753610d1818f920af6b8e2c243f2"
+	sha256 hasValue "0c00f48e38346c4218bdffac7ab66e3b5f31c5a80352f041872ab792b8c4d22a"
+	descriptionMd5 hasValue "41a033496b4807c1446772590af07241"
+	depends hasValue "intel-microcode (>> 1), iucode-tool"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "intel-microcode"
+	comparison hasValue ">>"
+	version hasValue "1"
+
+relationInstance depends(P0__microcodeDotctl,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "iucode-tool"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__microcodeDotctl,1,DepAtom__1)
+

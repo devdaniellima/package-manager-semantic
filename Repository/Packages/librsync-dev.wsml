@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology librsync_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__librsync_dev memberOf Package
+	package hasValue "librsync-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libdevel"
+	installedSize hasValue "37"
+	maintainer hasValue "Original-Andrey Rahmatullin <wrar@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.0.2-1ubuntu1"
+	conflicts hasValue "librsync1"
+	fileName hasValue "pool/main/libr/librsync/librsync-dev_2.0.2-1ubuntu1_amd64.deb"
+	size hasValue "9264"
+	md5sum hasValue "a4b52a647f014929c34dee6975b5e2fc"
+	sha1 hasValue "1fe49eed9fad7a61a88c11a686921c674225e2d6"
+	sha256 hasValue "9c6d3b3efb35ed47f25c4edafd38bbc8f14667895bf60dbeaba685fcad036863"
+	description hasValue "rsync remote-delta algorithm library (development)"
+	descriptionMd5 hasValue "ea307aaa7473a706ad1a66d631ffce5a"
+	homepage hasValue "https://github.com/librsync/librsync"
+	depends hasValue "librsync2 (= 2.0.2-1ubuntu1), libpopt-dev"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "librsync2"
+	comparison hasValue "="
+	version hasValue "2.0.2-1ubuntu1"
+
+relationInstance depends(P0__librsync_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libpopt-dev"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__librsync_dev,1,DepAtom__1)
+

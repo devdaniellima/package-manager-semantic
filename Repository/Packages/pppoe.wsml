@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology pppoe
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__pppoe memberOf Package
+	package hasValue "pppoe"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "256"
+	maintainer hasValue "Original-Andreas Barth <aba@not.so.argh.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.12-1.2ubuntu2"
+	fileName hasValue "pool/universe/r/rp-pppoe/pppoe_3.12-1.2ubuntu2_amd64.deb"
+	size hasValue "73208"
+	md5sum hasValue "c191e45de27537378c32a1df72c627db"
+	sha1 hasValue "bb44f81cc9b9bb454ec075deeab95d90b777dfcd"
+	sha256 hasValue "1f9a775f268e1755cd7db940c003342c493bf32374af2733e391fdfbdb3708d7"
+	description hasValue "Driver Ethernet sobre PPP."
+	descriptionMd5 hasValue "b3d04783084fc7cdb649ce3379a14704"
+	depends hasValue "libc6 (>= 2.15), ppp (>= 2.3.10-1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__pppoe,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "ppp"
+	comparison hasValue ">="
+	version hasValue "2.3.10-1"
+
+relationInstance depends(P0__pppoe,1,DepAtom__1)
+

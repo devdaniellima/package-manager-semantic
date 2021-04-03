@@ -1,0 +1,69 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gimp_help_ca
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gimp_help_ca memberOf Package
+	package hasValue "gimp-help-ca"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/doc"
+	installedSize hasValue "36436"
+	maintainer hasValue "Original-Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.8.2-2ubuntu1"
+	provides hasValue "gimp-help"
+	fileName hasValue "pool/universe/g/gimp-help/gimp-help-ca_2.8.2-2ubuntu1_all.deb"
+	size hasValue "25542008"
+	md5sum hasValue "8dba53bbd460a875205044e26a249a77"
+	sha1 hasValue "3dc0b32370e83f3f6c5026fcfdb8088d68bb8c98"
+	sha256 hasValue "83a3d9bf42807e900873e59909da6067f32ddd519978628ddcfeb7f55e4d6e8f"
+	description hasValue "Documentation for the GIMP (Catalan)"
+	descriptionMd5 hasValue "e865a8137a5d865877a6ca815ce981bf"
+	homepage hasValue "https://www.gimp.org"
+	depends hasValue "gimp-help-common (= 2.8.2-2ubuntu1), gimp-helpbrowser | www-browser"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "gimp-help-common"
+	comparison hasValue "="
+	version hasValue "2.8.2-2ubuntu1"
+
+relationInstance depends(P0__gimp_help_ca,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "gimp-helpbrowser"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__gimp_help_ca,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "www-browser"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__gimp_help_ca,1,DepAtom__2)
+

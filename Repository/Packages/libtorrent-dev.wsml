@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libtorrent_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libtorrent_dev memberOf Package
+	package hasValue "libtorrent-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "419"
+	maintainer hasValue "Original-Jose Luis Rivas <ghostbar@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.13.8-2build1"
+	fileName hasValue "pool/universe/libt/libtorrent/libtorrent-dev_0.13.8-2build1_amd64.deb"
+	size hasValue "53112"
+	md5sum hasValue "c49b29f3943cc723b1bf7c7b092e89c6"
+	sha1 hasValue "dd0645d3b92784cf99b159bc77cfb92a5c985481"
+	sha256 hasValue "730e31bb07ac8715b91dab4e3e6f8d83b7f44dccee1a19c320b596bd89bdec9b"
+	description hasValue "C++ BitTorrent library by Rakshasa (development files)"
+	descriptionMd5 hasValue "f80a46b339a0f082a22024cbd602e1e7"
+	homepage hasValue "https://rakshasa.github.io/rtorrent/"
+	depends hasValue "libsigc++-2.0-dev, libtorrent21 (= 0.13.8-2build1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libsigc++-2.0-dev"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libtorrent_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libtorrent21"
+	comparison hasValue "="
+	version hasValue "0.13.8-2build1"
+
+relationInstance depends(P0__libtorrent_dev,1,DepAtom__1)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology erlang_cf
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__erlang_cf memberOf Package
+	package hasValue "erlang-cf"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "42"
+	maintainer hasValue "Original-Debian Erlang Packagers <pkg-erlang-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.3.1-1"
+	fileName hasValue "pool/universe/e/erlang-cf/erlang-cf_0.3.1-1_amd64.deb"
+	size hasValue "16484"
+	md5sum hasValue "635a59c0814af81b5e6d032f9c9f7b7c"
+	sha1 hasValue "5dce7773765d8de51d28835590e46e8419aaa720"
+	sha256 hasValue "1e5662dc7e8ce8a02d241f0cd33422a8d5474ff8c52b86c71336153e9250f138"
+	descriptionMd5 hasValue "c80291394ce02a789ce107159ca28f00"
+	homepage hasValue "https://github.com/project-fifo/cf"
+	depends hasValue "erlang-base (>= 1:20.2.2+dfsg) | erlang-base-hipe (>= 1:20.2.2+dfsg)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "erlang-base"
+	comparison hasValue ">="
+	version hasValue "1:20.2.2+dfsg"
+
+relationInstance depends(P0__erlang_cf,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "erlang-base-hipe"
+	comparison hasValue ">="
+	version hasValue "1:20.2.2+dfsg"
+
+relationInstance depends(P0__erlang_cf,0,DepAtom__1)
+

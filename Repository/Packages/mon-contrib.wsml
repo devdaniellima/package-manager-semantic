@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology mon_contrib
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__mon_contrib memberOf Package
+	package hasValue "mon-contrib"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/admin"
+	installedSize hasValue "448"
+	maintainer hasValue "Original-Dario Minnucci <midget@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0+dfsg-4"
+	fileName hasValue "pool/universe/m/mon-contrib/mon-contrib_1.0+dfsg-4_amd64.deb"
+	size hasValue "74388"
+	md5sum hasValue "71014ec79f7fff8bed6b9d84bc90553e"
+	sha1 hasValue "edeb2717d57a87088712a9a41bf79c1388eb52cb"
+	sha256 hasValue "45b0ec200071987b0e2246caa306993154755abd19a66fa693e4ddf9f0f90dc1"
+	descriptionMd5 hasValue "1630e3b7ffcb0f301b353621cdccb34a"
+	homepage hasValue "https://mon.wiki.kernel.org/articles/c/o/n/Contrib_repository.html"
+	depends hasValue "mon (>= 1.2.0-3)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "mon"
+	comparison hasValue ">="
+	version hasValue "1.2.0-3"
+
+relationInstance depends(P0__mon_contrib,0,DepAtom__0)
+

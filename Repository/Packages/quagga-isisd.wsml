@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology quagga_isisd
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__quagga_isisd memberOf Package
+	package hasValue "quagga-isisd"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "net"
+	installedSize hasValue "378"
+	maintainer hasValue "Original-Brett Parker <iDunno@sommitrealweird.co.uk>"
+	architecture hasValue "amd64"
+	version hasValue "1.2.4-4build1"
+	replaces hasValue "quagga (<< 1.1.0-1)"
+	fileName hasValue "pool/main/q/quagga/quagga-isisd_1.2.4-4build1_amd64.deb"
+	size hasValue "112840"
+	md5sum hasValue "1f7a54e657053eb67e12e561bd8616e4"
+	sha1 hasValue "9125b68a2bdf623428f0c469c362724e8c4c1bb2"
+	sha256 hasValue "8cf3adea604592457d0a64a6ff8a163dfc87e1c67158f90ba48ab67a3e194f78"
+	descriptionMd5 hasValue "6a23165750c282fa12790f3279acdc84"
+	homepage hasValue "http://www.quagga.net/"
+	depends hasValue "quagga-core (= 1.2.4-4build1), libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "quagga-core"
+	comparison hasValue "="
+	version hasValue "1.2.4-4build1"
+
+relationInstance depends(P0__quagga_isisd,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__quagga_isisd,1,DepAtom__1)
+

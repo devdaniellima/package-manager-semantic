@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology pcmciautils
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__pcmciautils memberOf Package
+	package hasValue "pcmciautils"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "admin"
+	installedSize hasValue "105"
+	maintainer hasValue "Colin Watson <cjwatson@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "018-11"
+	fileName hasValue "pool/main/p/pcmciautils/pcmciautils_018-11_amd64.deb"
+	size hasValue "27276"
+	md5sum hasValue "2fa316a8a755da97e03d227e0b1d440c"
+	sha1 hasValue "0556fff7305e7861e838432db0f507b175267acd"
+	sha256 hasValue "1ca988902f4231c010ad46a9909471f50efaba03360ff43ba3b0296f453bfeba"
+	description hasValue "utilitários PCMCIA para o Linux 2.6"
+	descriptionMd5 hasValue "d01e24437b6f27ffd8779126e3ecaeec"
+	homepage hasValue "https://www.kernel.org/pub/linux/utils/kernel/pcmcia/"
+	depends hasValue "libc6 (>= 2.27)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.27"
+
+relationInstance depends(P0__pcmciautils,0,DepAtom__0)
+

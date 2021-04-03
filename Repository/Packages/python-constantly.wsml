@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python_constantly
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python_constantly memberOf Package
+	package hasValue "python-constantly"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "40"
+	maintainer hasValue "Original-Free Ekanayaka <freee@debian.org>"
+	architecture hasValue "all"
+	version hasValue "15.1.0-1build1"
+	fileName hasValue "pool/universe/c/constantly/python-constantly_15.1.0-1build1_all.deb"
+	size hasValue "8168"
+	md5sum hasValue "0c56b97a65fb68a084840e077d77c129"
+	sha1 hasValue "c04554a71197c59afc00c412597fce34b9f47185"
+	sha256 hasValue "3949b35cde80cec1a49e19330be0963a3ea6d9f52163ec072538d4b5927ec35d"
+	descriptionMd5 hasValue "8ef127db732ba9db16bf1974a2f127b5"
+	homepage hasValue "https://github.com/twisted/constantly"
+	depends hasValue "python2:any (<< 2.8), python2:any (>= 2.7~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue "<<"
+	version hasValue "2.8"
+
+relationInstance depends(P0__python_constantly,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue ">="
+	version hasValue "2.7~"
+
+relationInstance depends(P0__python_constantly,1,DepAtom__1)
+

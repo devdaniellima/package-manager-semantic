@@ -1,0 +1,55 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology inn2_inews
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__inn2_inews memberOf Package
+	package hasValue "inn2-inews"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/news"
+	installedSize hasValue "347"
+	maintainer hasValue "Original-Marco d'Itri <md@linux.it>"
+	architecture hasValue "amd64"
+	version hasValue "2.6.3-3"
+	provides hasValue "inews"
+	fileName hasValue "pool/universe/i/inn2/inn2-inews_2.6.3-3_amd64.deb"
+	size hasValue "125000"
+	md5sum hasValue "0f3ff046ac7320c8d6d6163c9de0d2f7"
+	sha1 hasValue "8c7e403b9a023cd0470f980878a3c40260525705"
+	sha256 hasValue "e1b7f4963e07cecca6f09769cc6cb0a11b597ec10fb5e6ab1c7a525a90eda25f"
+	description hasValue "Cliente de news NNTP injector, da InterNetNews (INN)"
+	descriptionMd5 hasValue "a5db9d905d5a55d55a233c52b39dad00"
+	homepage hasValue "https://www.eyrie.org/~eagle/software/inn/"
+	depends hasValue "libc6 (>= 2.26)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.26"
+
+relationInstance depends(P0__inn2_inews,0,DepAtom__0)
+

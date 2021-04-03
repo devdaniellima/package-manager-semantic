@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology morbig
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__morbig memberOf Package
+	package hasValue "morbig"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "4587"
+	maintainer hasValue "Original-Debian OCaml Maintainers <debian-ocaml-maint@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.10.4-3"
+	fileName hasValue "pool/universe/m/morbig/morbig_0.10.4-3_amd64.deb"
+	size hasValue "760876"
+	md5sum hasValue "fadf9d6c0f65e5aad50561afb8e6f7f5"
+	sha1 hasValue "82cb4084dabc66614c480bd10487ec819b87c8ab"
+	sha256 hasValue "f852c6fd8bb2c0908bb33f4795b3df77aa7f0099ebef9a5361ad90ccb2c7da39"
+	descriptionMd5 hasValue "d445cb4fca8c723edd463f1f00188399"
+	homepage hasValue "https://github.com/colis-anr/morbig"
+	depends hasValue "libc6 (>= 2.29), xz-utils"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__morbig,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "xz-utils"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__morbig,1,DepAtom__1)
+

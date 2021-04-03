@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology autoconf
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__autoconf memberOf Package
+	package hasValue "autoconf"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "devel"
+	installedSize hasValue "1860"
+	maintainer hasValue "Original-Ben Pfaff <pfaffben@debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.69-11.1"
+	fileName hasValue "pool/main/a/autoconf/autoconf_2.69-11.1_all.deb"
+	size hasValue "321476"
+	md5sum hasValue "b640aefbcb36e686887517e0a1f0f5b6"
+	sha1 hasValue "37ed910573cb8536951b8f15ea606d0889fed78c"
+	sha256 hasValue "f554697f01a6267127ef20e6eae4e8ed983507c816475ac72dbb8be26d94c796"
+	description hasValue "construtor automático de script configure"
+	descriptionMd5 hasValue "4336cf24a71f6337447f744a61a67166"
+	homepage hasValue "http://www.gnu.org/software/autoconf/"
+	depends hasValue "perl (>> 5.005), m4 (>= 1.4.13), debianutils (>= 1.8)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "perl"
+	comparison hasValue ">>"
+	version hasValue "5.005"
+
+relationInstance depends(P0__autoconf,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "m4"
+	comparison hasValue ">="
+	version hasValue "1.4.13"
+
+relationInstance depends(P0__autoconf,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "debianutils"
+	comparison hasValue ">="
+	version hasValue "1.8"
+
+relationInstance depends(P0__autoconf,2,DepAtom__2)
+

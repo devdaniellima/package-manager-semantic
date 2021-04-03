@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ncurses_bin
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ncurses_bin memberOf Package
+	package hasValue "ncurses-bin"
+	packageSource hasValue Source__S1
+	priority hasValue "required"
+	section hasValue "utils"
+	installedSize hasValue "642"
+	maintainer hasValue "Original-Craig Small <csmall@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "6.2-0ubuntu2"
+	fileName hasValue "pool/main/n/ncurses/ncurses-bin_6.2-0ubuntu2_amd64.deb"
+	size hasValue "172996"
+	md5sum hasValue "cd548570b91d81cb4cff4682320a7149"
+	sha1 hasValue "3c73a3284492eb0e5d5af47ee64c2dcfeac65f2a"
+	sha256 hasValue "418ebdb2880c2e5fab03db3e554c292bf700af58184a8ab5ea12015b9a8eb940"
+	description hasValue "programas e páginas de manual relacionadas a terminais"
+	descriptionMd5 hasValue "682ee2624c08c54a53ecaefd778a4d86"
+	homepage hasValue "https://invisible-island.net/ncurses/"
+	depends hasValue "Pre-libc6 (>= 2.14), libtinfo6 (>= 6.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "Pre-libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__ncurses_bin,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libtinfo6"
+	comparison hasValue ">="
+	version hasValue "6.2"
+
+relationInstance depends(P0__ncurses_bin,1,DepAtom__1)
+

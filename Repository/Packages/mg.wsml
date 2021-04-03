@@ -1,0 +1,69 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology mg
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__mg memberOf Package
+	package hasValue "mg"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/editors"
+	installedSize hasValue "248"
+	maintainer hasValue "Original-Harald Dunkel <harri@afaics.de>"
+	architecture hasValue "amd64"
+	version hasValue "20180927-1"
+	provides hasValue "editor"
+	fileName hasValue "pool/universe/m/mg/mg_20180927-1_amd64.deb"
+	size hasValue "104540"
+	md5sum hasValue "8dbba2aad7e7fc2193a289ae5fd7f024"
+	sha1 hasValue "3138733e0e2ef15b701d1baaec65b859c98dc3c7"
+	sha256 hasValue "d2cfb31a9d52d6f9ca89ada8fd0f81f8514b5c91279b8f0707182c12b5d032b9"
+	description hasValue "editor estilo GNU Emacs microscópico"
+	descriptionMd5 hasValue "782b5369f4f7cf6ecd11dbfc7a175c86"
+	homepage hasValue "http://homepage.boetes.org/software/mg/"
+	depends hasValue "libbsd0 (>= 0.7.0), libc6 (>= 2.14), libtinfo6 (>= 6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libbsd0"
+	comparison hasValue ">="
+	version hasValue "0.7.0"
+
+relationInstance depends(P0__mg,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__mg,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libtinfo6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__mg,2,DepAtom__2)
+

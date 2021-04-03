@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology elpa_no_littering
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__elpa_no_littering memberOf Package
+	package hasValue "elpa-no-littering"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/lisp"
+	installedSize hasValue "50"
+	maintainer hasValue "Original-Debian Emacsen team <debian-emacsen@lists.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.0.3-1"
+	fileName hasValue "pool/universe/n/no-littering-el/elpa-no-littering_1.0.3-1_all.deb"
+	size hasValue "11952"
+	md5sum hasValue "8f9972fe80cb8a408499f555af04032c"
+	sha1 hasValue "dce2fe3fcf98cd4c5c7ca4e656736bc3c5f70944"
+	sha256 hasValue "dda5baeec7b0635c241185671831a1db05b21765ac4b11e2886e7daa769855d0"
+	descriptionMd5 hasValue "21cdd0dfe9e7949ab043cc053e2a18ff"
+	homepage hasValue "https://github.com/emacscollective/no-littering"
+	depends hasValue "dh-elpa-helper, emacsen-common"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "dh-elpa-helper"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__elpa_no_littering,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "emacsen-common"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__elpa_no_littering,1,DepAtom__1)
+

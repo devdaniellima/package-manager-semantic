@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology maradns_zoneserver
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__maradns_zoneserver memberOf Package
+	package hasValue "maradns-zoneserver"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/net"
+	installedSize hasValue "274"
+	maintainer hasValue "Original-Dariusz Dwornikowski <dariusz.dwornikowski@cs.put.poznan.pl>"
+	architecture hasValue "amd64"
+	version hasValue "2.0.13-1.4build1"
+	fileName hasValue "pool/universe/m/maradns/maradns-zoneserver_2.0.13-1.4build1_amd64.deb"
+	size hasValue "81216"
+	md5sum hasValue "01e906deba78017813c8e73e3d5f31b5"
+	sha1 hasValue "b4287174314402ea950e8244936186009523f47f"
+	sha256 hasValue "1ed49140bb6dfec8ec7c3b2cf9ae85a447be7e4193ac999db68d243ece89f3b0"
+	descriptionMd5 hasValue "9e21b9ef82eb2e786065ffde995f81fa"
+	homepage hasValue "http://maradns.org"
+	depends hasValue "maradns (>= 2.0.09-1), libc6 (>= 2.15)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "maradns"
+	comparison hasValue ">="
+	version hasValue "2.0.09-1"
+
+relationInstance depends(P0__maradns_zoneserver,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__maradns_zoneserver,1,DepAtom__1)
+

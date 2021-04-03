@@ -1,0 +1,82 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python3_cap_ng
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python3_cap_ng memberOf Package
+	package hasValue "python3-cap-ng"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "66"
+	maintainer hasValue "Original-Pierre Chifflier <pollux@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.7.9-2.1build1"
+	provides hasValue "python3.8-cap-ng"
+	fileName hasValue "pool/universe/libc/libcap-ng/python3-cap-ng_0.7.9-2.1build1_amd64.deb"
+	size hasValue "15276"
+	md5sum hasValue "02168d712e7cbe322660296d26b1aed4"
+	sha1 hasValue "f36b5d41b4349eade03eb8693c45efe4f898443f"
+	sha256 hasValue "84614e54113a94bf7b6ffbfceab801a32b1fddc07e95c4a097ba143a6a0c90ec"
+	descriptionMd5 hasValue "521b77645310fef36116cdd36c66ce26"
+	homepage hasValue "http://people.redhat.com/sgrubb/libcap-ng"
+	depends hasValue "libc6 (>= 2.14), libcap-ng0 (>= 0.7.9), python3 (<< 3.9), python3 (>= 3.8~), python3:any"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__python3_cap_ng,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libcap-ng0"
+	comparison hasValue ">="
+	version hasValue "0.7.9"
+
+relationInstance depends(P0__python3_cap_ng,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "python3"
+	comparison hasValue "<<"
+	version hasValue "3.9"
+
+relationInstance depends(P0__python3_cap_ng,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "python3"
+	comparison hasValue ">="
+	version hasValue "3.8~"
+
+relationInstance depends(P0__python3_cap_ng,3,DepAtom__3)
+
+instance DepAtom__4 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__python3_cap_ng,4,DepAtom__4)
+

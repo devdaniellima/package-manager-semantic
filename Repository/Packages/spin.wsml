@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology spin
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__spin memberOf Package
+	package hasValue "spin"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "1590"
+	maintainer hasValue "Original-Tom Lee <debian@tomlee.co>"
+	architecture hasValue "amd64"
+	version hasValue "6.4.9+dfsg-1"
+	replaces hasValue "staden (<< 2.0.0+b11)"
+	fileName hasValue "pool/universe/s/spin/spin_6.4.9+dfsg-1_amd64.deb"
+	size hasValue "405376"
+	md5sum hasValue "992c0e91ca116ace31a1ed0d5140d252"
+	sha1 hasValue "c8037cfecb9e6985ae2fbbd5f5e064f54ed93901"
+	sha256 hasValue "d694d1d29359bf2d87942ae7412fc66b3e77acdeac71d32472ffcc7d11845f48"
+	descriptionMd5 hasValue "6f4b806803aec0404f0de2b0f81b16b3"
+	homepage hasValue "http://spinroot.com"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__spin,0,DepAtom__0)
+

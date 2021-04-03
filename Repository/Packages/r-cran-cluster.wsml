@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology r_cran_cluster
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__r_cran_cluster memberOf Package
+	package hasValue "r-cran-cluster"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/math"
+	installedSize hasValue "686"
+	maintainer hasValue "Original-Dirk Eddelbuettel <edd@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.1.0-2"
+	replaces hasValue "r-recommended (<< 1.9.0)"
+	fileName hasValue "pool/universe/c/cluster/r-cran-cluster_2.1.0-2_amd64.deb"
+	size hasValue "525056"
+	md5sum hasValue "a7ab83ab8bc06d011bc7b2a0496953a1"
+	sha1 hasValue "09e32e31b275b90e6ac2de698a64618d98479960"
+	sha256 hasValue "1d8b10bcedb1940c190b1ee1c4e6a3ee80939ac87674304babac3f7c18879e38"
+	descriptionMd5 hasValue "5647ef359600aebbe447688e07f07bb6"
+	homepage hasValue "https://cran.r-project.org/package=cluster"
+	depends hasValue "r-base-core (>= 3.6.1-4), r-api-3.5, libc6 (>= 2.29)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "r-base-core"
+	comparison hasValue ">="
+	version hasValue "3.6.1-4"
+
+relationInstance depends(P0__r_cran_cluster,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "r-api-3.5"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__r_cran_cluster,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__r_cran_cluster,2,DepAtom__2)
+

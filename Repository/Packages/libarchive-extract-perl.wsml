@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libarchive_extract_perl
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libarchive_extract_perl memberOf Package
+	package hasValue "libarchive-extract-perl"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/perl"
+	installedSize hasValue "72"
+	maintainer hasValue "Original-Debian Perl Group <pkg-perl-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.86-1"
+	fileName hasValue "pool/universe/liba/libarchive-extract-perl/libarchive-extract-perl_0.86-1_all.deb"
+	size hasValue "20752"
+	md5sum hasValue "ab513484e67ec6d305f69b0af51e6e46"
+	sha1 hasValue "f2cecc0b48dc3c1d04f975264fa3a8f03639e6a8"
+	sha256 hasValue "96cd02a666874ae75807443f4566bc5ad66e5dbc386255f1786e9c04e87bb1c9"
+	description hasValue "módulo genérico para extração de arquivos"
+	descriptionMd5 hasValue "a9917e6be8ae1dd729c20bd956a215e3"
+	homepage hasValue "https://metacpan.org/release/Archive-Extract"
+	depends hasValue "perl, libmodule-load-conditional-perl (>= 0.66)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "perl"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libarchive_extract_perl,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libmodule-load-conditional-perl"
+	comparison hasValue ">="
+	version hasValue "0.66"
+
+relationInstance depends(P0__libarchive_extract_perl,1,DepAtom__1)
+

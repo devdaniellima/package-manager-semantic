@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libupse2
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libupse2 memberOf Package
+	package hasValue "libupse2"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/libs"
+	installedSize hasValue "144"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.0-2build1"
+	fileName hasValue "pool/universe/u/upse/libupse2_1.0.0-2build1_amd64.deb"
+	size hasValue "36708"
+	md5sum hasValue "7799634636aeb57ca217255c86996df0"
+	sha1 hasValue "ac3c7e2d057bd1c27f6313e6c22e1294981c479d"
+	sha256 hasValue "aeb04add5c79d4d508687a41f653d270911e94686780f6d7ef2df257aa572032"
+	descriptionMd5 hasValue "26f913cdc0419bd33ca297eed3e5e47f"
+	homepage hasValue "http://nenolod.net/upse"
+	depends hasValue "libc6 (>= 2.14), zlib1g (>= 1:1.1.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libupse2,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "zlib1g"
+	comparison hasValue ">="
+	version hasValue "1:1.1.4"
+
+relationInstance depends(P0__libupse2,1,DepAtom__1)
+

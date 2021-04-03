@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology sqlcipher
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__sqlcipher memberOf Package
+	package hasValue "sqlcipher"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/database"
+	installedSize hasValue "109"
+	maintainer hasValue "Original-Hans-Christoph Steiner <hans@eds.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.4.1-1build2"
+	fileName hasValue "pool/universe/s/sqlcipher/sqlcipher_3.4.1-1build2_amd64.deb"
+	size hasValue "40640"
+	md5sum hasValue "fd67a0ac8212b9cbf1d0feda5eaa7bb4"
+	sha1 hasValue "bfb995a1310ab0768f7b063c20171aaa33e850b3"
+	sha256 hasValue "ae0401ea4862256c13a207b6e623f8e050ba02061e3e14ed3406d2a6747cc5e6"
+	description hasValue "Command line interface for SQLCipher"
+	descriptionMd5 hasValue "df5d6eb95e55a0edac15563747fa0cd0"
+	homepage hasValue "http://sqlcipher.net/"
+	depends hasValue "libc6 (>= 2.14), libreadline8 (>= 6.0), libsqlcipher0 (= 3.4.1-1build2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__sqlcipher,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libreadline8"
+	comparison hasValue ">="
+	version hasValue "6.0"
+
+relationInstance depends(P0__sqlcipher,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libsqlcipher0"
+	comparison hasValue "="
+	version hasValue "3.4.1-1build2"
+
+relationInstance depends(P0__sqlcipher,2,DepAtom__2)
+

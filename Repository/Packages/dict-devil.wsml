@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology dict_devil
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__dict_devil memberOf Package
+	package hasValue "dict-devil"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/text"
+	installedSize hasValue "192"
+	maintainer hasValue "Original-Sven Joachim <svenjoac@gmx.de>"
+	architecture hasValue "all"
+	version hasValue "1.0-13"
+	provides hasValue "dictd-dictionary"
+	fileName hasValue "pool/universe/d/dict-devil/dict-devil_1.0-13_all.deb"
+	size hasValue "179460"
+	md5sum hasValue "5ff7d2a6f5c72b9b462f70e698356ea6"
+	sha1 hasValue "2895cac719b8289b17996ec8e941bcc64f4909e3"
+	sha256 hasValue "ced7af82bc07024fc11b6971fba15466ddf2f317751aed41e875d0b24b19e948"
+	descriptionMd5 hasValue "ece6a3dcf12c28b50a1557427750581a"
+	depends hasValue "dictd | dict-server"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "dictd"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__dict_devil,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "dict-server"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__dict_devil,0,DepAtom__1)
+

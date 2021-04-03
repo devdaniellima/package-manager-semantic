@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ciso
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ciso memberOf Package
+	package hasValue "ciso"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "27"
+	maintainer hasValue "Original-Gaëtan Petit <tenshu@gmail.com>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.0-0ubuntu3"
+	fileName hasValue "pool/universe/c/ciso/ciso_1.0.0-0ubuntu3_amd64.deb"
+	size hasValue "6920"
+	md5sum hasValue "63cdfd9ff58a4d0d9a8500fafc63591b"
+	sha1 hasValue "e254af541f014964762f775a7627df5bc6f20754"
+	sha256 hasValue "997d432c07261b70f5baaf6411da6b3acfe7deee13ba5a7f7bf6694ab69e6231"
+	descriptionMd5 hasValue "dd5fe06a47031002f95e17b9e1ee67e6"
+	homepage hasValue "http://ciso.tenshu.fr/"
+	depends hasValue "libc6 (>= 2.14), zlib1g (>= 1:1.1.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__ciso,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "zlib1g"
+	comparison hasValue ">="
+	version hasValue "1:1.1.4"
+
+relationInstance depends(P0__ciso,1,DepAtom__1)
+

@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology auto_apt_proxy
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__auto_apt_proxy memberOf Package
+	package hasValue "auto-apt-proxy"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "30"
+	maintainer hasValue "Original-Antonio Terceiro <terceiro@debian.org>"
+	architecture hasValue "all"
+	version hasValue "12"
+	fileName hasValue "pool/universe/a/auto-apt-proxy/auto-apt-proxy_12_all.deb"
+	size hasValue "7868"
+	md5sum hasValue "9c9221041c3324ec4a971f0e77115bce"
+	sha1 hasValue "0b9db6930f97aa73e97233e51219c3ecf16a10f4"
+	sha256 hasValue "e7baec29d161b4949a24517ec0ae061f67526931281cf2051fb0bd099002ceca"
+	description hasValue "detector automático de configurações de proxy APT"
+	descriptionMd5 hasValue "0c8c4965d1f33ed60761fad8385682e5"
+	homepage hasValue "https://salsa.debian.org/debian/auto-apt-proxy"
+	depends hasValue "apt"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "apt"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__auto_apt_proxy,0,DepAtom__0)
+

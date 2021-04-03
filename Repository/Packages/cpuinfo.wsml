@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology cpuinfo
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__cpuinfo memberOf Package
+	package hasValue "cpuinfo"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/science"
+	installedSize hasValue "78"
+	maintainer hasValue "Original-Debian Science Maintainers <debian-science-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.0~git20190201.d5e37ad-2"
+	fileName hasValue "pool/universe/c/cpuinfo/cpuinfo_0.0~git20190201.d5e37ad-2_amd64.deb"
+	size hasValue "12384"
+	md5sum hasValue "ae536d7740c0824d0c282108bd264e23"
+	sha1 hasValue "63d69a47104ac25938c2918abd120405e3e20a56"
+	sha256 hasValue "fc56616518afaccd014a794785216c08f171cbacaafc6fdc1abc6b981b59879b"
+	descriptionMd5 hasValue "ab666464e290c05f055e53ee0e828d2c"
+	homepage hasValue "https://github.com/pytorch/cpuinfo"
+	depends hasValue "libc6 (>= 2.4), libcpuinfo0 (= 0.0~git20190201.d5e37ad-2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__cpuinfo,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libcpuinfo0"
+	comparison hasValue "="
+	version hasValue "0.0~git20190201.d5e37ad-2"
+
+relationInstance depends(P0__cpuinfo,1,DepAtom__1)
+

@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology pakcs
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__pakcs memberOf Package
+	package hasValue "pakcs"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/devel"
+	installedSize hasValue "62107"
+	maintainer hasValue "Original-Debian Curry Maintainers <pkg-curry-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.2.0-1"
+	fileName hasValue "pool/universe/p/pakcs/pakcs_2.2.0-1_amd64.deb"
+	size hasValue "5643556"
+	md5sum hasValue "e1a84acd2c83dc4a5b3fda02f8107bac"
+	sha1 hasValue "1c25281d3646db7f7a8e4bfc2f41c9e971fbf96b"
+	sha256 hasValue "5b6036afaa58b7c087627137b802da6c8db10b46cb447ce2c51deba1662777bc"
+	descriptionMd5 hasValue "0ed781f09b55416cf4fd5eb5941653e1"
+	homepage hasValue "https://www-ps.informatik.uni-kiel.de/~pakcs/"
+	depends hasValue "curry-frontend (>= 1.0.4-3~), swi-prolog-nox (>= 7.4), lockfile-progs"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "curry-frontend"
+	comparison hasValue ">="
+	version hasValue "1.0.4-3~"
+
+relationInstance depends(P0__pakcs,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "swi-prolog-nox"
+	comparison hasValue ">="
+	version hasValue "7.4"
+
+relationInstance depends(P0__pakcs,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "lockfile-progs"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__pakcs,2,DepAtom__2)
+

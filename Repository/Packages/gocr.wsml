@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gocr
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gocr memberOf Package
+	package hasValue "gocr"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/graphics"
+	installedSize hasValue "530"
+	maintainer hasValue "Original-Gürkan Myczko <gurkan@phys.ethz.ch>"
+	architecture hasValue "amd64"
+	version hasValue "0.52-3"
+	fileName hasValue "pool/universe/g/gocr/gocr_0.52-3_amd64.deb"
+	size hasValue "227624"
+	md5sum hasValue "edd0c69ca4b92890863e92b8b508398d"
+	sha1 hasValue "50bb8149b257ca0e82dad0004e2f0531e72a321e"
+	sha256 hasValue "a94e7845792e5bbd5e8a1aa8608961c8eb94139941d40093b51a5f6caa402fa1"
+	description hasValue "OCR por linha de comando"
+	descriptionMd5 hasValue "d8466b1bc9d106554f49d616fc0a5a1f"
+	homepage hasValue "https://www-e.uni-magdeburg.de/jschulen/ocr/"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__gocr,0,DepAtom__0)
+

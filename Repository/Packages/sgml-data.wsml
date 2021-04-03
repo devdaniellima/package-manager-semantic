@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology sgml_data
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__sgml_data memberOf Package
+	package hasValue "sgml-data"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "text"
+	installedSize hasValue "1354"
+	maintainer hasValue "Original-Debian XML SGML Team <debian-sgml@lists.debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.0.11"
+	replaces hasValue "docbook-xml (<= 3.1.3.6-1), sp (<< 1.3.4-1.2.1-14)"
+	fileName hasValue "pool/main/s/sgml-data/sgml-data_2.0.11_all.deb"
+	size hasValue "170764"
+	md5sum hasValue "99fe93ab81ec1e01b04e0a51696350cd"
+	sha1 hasValue "8d19413d50d168cc456a0e71d8955db1d75aab81"
+	sha256 hasValue "630498bb4a3a4af645d6b3176641b2cafd10606eb907a6b47ee24beb09422aac"
+	descriptionMd5 hasValue "9935796ef22964b6b4fa5a9aeb6d91c8"
+	depends hasValue "perl:any, sgml-base (>= 1.28), xml-core (>= 0.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "perl:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__sgml_data,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "sgml-base"
+	comparison hasValue ">="
+	version hasValue "1.28"
+
+relationInstance depends(P0__sgml_data,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "xml-core"
+	comparison hasValue ">="
+	version hasValue "0.14"
+
+relationInstance depends(P0__sgml_data,2,DepAtom__2)
+

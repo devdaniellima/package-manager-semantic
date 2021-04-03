@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology patroni_doc
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__patroni_doc memberOf Package
+	package hasValue "patroni-doc"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/doc"
+	installedSize hasValue "707"
+	maintainer hasValue "Original-Debian PostgreSQL Maintainers <team+postgresql@tracker.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.6.4-2ubuntu1"
+	fileName hasValue "pool/universe/p/patroni/patroni-doc_1.6.4-2ubuntu1_all.deb"
+	size hasValue "94960"
+	md5sum hasValue "c105d5262509201d05c70444c91c7162"
+	sha1 hasValue "f80852ae0a173830117f3dc976d9655fa444e2ee"
+	sha256 hasValue "ee6d57490379159a86368a389df8fc05ad585793fd6ffee976028b23476f8bb7"
+	descriptionMd5 hasValue "ba8197d3956a299b4dae037bf2de7967"
+	homepage hasValue "https://github.com/zalando/patroni"
+	depends hasValue "libjs-sphinxdoc (>= 1.0), sphinx-rtd-theme-common (>= 0.4.3+dfsg)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libjs-sphinxdoc"
+	comparison hasValue ">="
+	version hasValue "1.0"
+
+relationInstance depends(P0__patroni_doc,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "sphinx-rtd-theme-common"
+	comparison hasValue ">="
+	version hasValue "0.4.3+dfsg"
+
+relationInstance depends(P0__patroni_doc,1,DepAtom__1)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python_acme_doc
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python_acme_doc memberOf Package
+	package hasValue "python-acme-doc"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/doc"
+	installedSize hasValue "789"
+	maintainer hasValue "Original-Debian Let's Encrypt <team+letsencrypt@tracker.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.1.0-1"
+	fileName hasValue "pool/universe/p/python-acme/python-acme-doc_1.1.0-1_all.deb"
+	size hasValue "64700"
+	md5sum hasValue "21124d6580643dc8abbd36ae30f43159"
+	sha1 hasValue "eaacb54a9000337383908d02f4e1d7864f5ad1ac"
+	sha256 hasValue "3a62d909a0c7f62ee1a7c549fd5e64759825d1f067fa75bbabb425a473580712"
+	descriptionMd5 hasValue "f49a01b1dca8b6f0113bea17543ca6cf"
+	homepage hasValue "https://letsencrypt.org/"
+	depends hasValue "libjs-sphinxdoc (>= 1.0), sphinx-rtd-theme-common (>= 0.4.3+dfsg)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libjs-sphinxdoc"
+	comparison hasValue ">="
+	version hasValue "1.0"
+
+relationInstance depends(P0__python_acme_doc,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "sphinx-rtd-theme-common"
+	comparison hasValue ">="
+	version hasValue "0.4.3+dfsg"
+
+relationInstance depends(P0__python_acme_doc,1,DepAtom__1)
+

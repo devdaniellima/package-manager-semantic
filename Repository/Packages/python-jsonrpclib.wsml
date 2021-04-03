@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python_jsonrpclib
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python_jsonrpclib memberOf Package
+	package hasValue "python-jsonrpclib"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "62"
+	maintainer hasValue "Original-Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.1.7-1build1"
+	fileName hasValue "pool/universe/p/python-jsonrpclib/python-jsonrpclib_0.1.7-1build1_all.deb"
+	size hasValue "14676"
+	md5sum hasValue "781d0ac1749bfe3ec2b0dac0e416ab17"
+	sha1 hasValue "f6d6f761e3f7ff63b4f077dbbfe6860892cd4686"
+	sha256 hasValue "48761defb998b88be51a1b16cc2fff88c2ab99c6991dca6d12d7d6b69b9bebb2"
+	descriptionMd5 hasValue "df1059d39ea649b629d8d90d579fb364"
+	homepage hasValue "https://pypi.python.org/pypi/jsonrpclib"
+	depends hasValue "python2:any (<< 2.8), python2:any (>= 2.7~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue "<<"
+	version hasValue "2.8"
+
+relationInstance depends(P0__python_jsonrpclib,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue ">="
+	version hasValue "2.7~"
+
+relationInstance depends(P0__python_jsonrpclib,1,DepAtom__1)
+

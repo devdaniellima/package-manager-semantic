@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python_kmodpy
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python_kmodpy memberOf Package
+	package hasValue "python-kmodpy"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "50"
+	maintainer hasValue "Original-Chrysostomos Nanakos <cnanakos@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.1.10-2.1build1"
+	fileName hasValue "pool/universe/k/kmodpy/python-kmodpy_0.1.10-2.1build1_amd64.deb"
+	size hasValue "8628"
+	md5sum hasValue "b9adabaf325ea531e529ce2d4437229d"
+	sha1 hasValue "23360008a56e81598301d4fbc5a7af67d997b20c"
+	sha256 hasValue "5dec29f1fcc5a718792bf739895eaa11d09c37447e1ffe46ffb3b671d48017a4"
+	descriptionMd5 hasValue "45cdf5dd4430c4b5233869b474799534"
+	homepage hasValue "https://github.com/cnanakos/kmodpy"
+	depends hasValue "python2:any (<< 2.8), python2:any (>= 2.7~), libkmod2 (>= 18-1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue "<<"
+	version hasValue "2.8"
+
+relationInstance depends(P0__python_kmodpy,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue ">="
+	version hasValue "2.7~"
+
+relationInstance depends(P0__python_kmodpy,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libkmod2"
+	comparison hasValue ">="
+	version hasValue "18-1"
+
+relationInstance depends(P0__python_kmodpy,2,DepAtom__2)
+

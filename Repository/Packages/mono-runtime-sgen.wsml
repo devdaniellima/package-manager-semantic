@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology mono_runtime_sgen
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__mono_runtime_sgen memberOf Package
+	package hasValue "mono-runtime-sgen"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/cli-mono"
+	installedSize hasValue "4785"
+	maintainer hasValue "Original-Debian Mono Group <pkg-mono-group@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "6.8.0.105+dfsg-2"
+	fileName hasValue "pool/universe/m/mono/mono-runtime-sgen_6.8.0.105+dfsg-2_amd64.deb"
+	size hasValue "1662656"
+	md5sum hasValue "c47b53b29adb14c864b48ca8c864a6af"
+	sha1 hasValue "79247fce19984de8058d5e6818a976d542a05d07"
+	sha256 hasValue "bc9d23f9508e8715bf01b4155f96fa65cc42f20ca52ee9a891e23fb917319db6"
+	description hasValue "Mono runtime - SGen"
+	descriptionMd5 hasValue "5235eb83a7b861ac1e2aadac6b0f72f6"
+	homepage hasValue "http://www.mono-project.com/Compacting_GC"
+	depends hasValue "libc6 (>= 2.29), libgcc-s1 (>= 3.3), mono-runtime-common (= 6.8.0.105+dfsg-2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__mono_runtime_sgen,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgcc-s1"
+	comparison hasValue ">="
+	version hasValue "3.3"
+
+relationInstance depends(P0__mono_runtime_sgen,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "mono-runtime-common"
+	comparison hasValue "="
+	version hasValue "6.8.0.105+dfsg-2"
+
+relationInstance depends(P0__mono_runtime_sgen,2,DepAtom__2)
+

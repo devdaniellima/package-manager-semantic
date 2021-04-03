@@ -1,0 +1,73 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology android_sdk
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__android_sdk memberOf Package
+	package hasValue "android-sdk"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/metapackages"
+	installedSize hasValue "30"
+	maintainer hasValue "Original-Android Tools Maintainers <android-tools-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "25.0.0+12"
+	fileName hasValue "pool/universe/a/android-sdk-meta/android-sdk_25.0.0+12_amd64.deb"
+	size hasValue "2500"
+	md5sum hasValue "92859866a1b585732a45519b8d1a2119"
+	sha1 hasValue "30022e0586ed978219b7b8c5ea41370169a1bba8"
+	sha256 hasValue "7088564315fdbd7c5de4a1590b00a93f9c0eca12a1556a4b56f0bfe2864ea30f"
+	descriptionMd5 hasValue "6d199f77014c62b8baf8cbdddbe08a29"
+	depends hasValue "android-sdk-build-tools, android-sdk-common (>= 25.0.0+12), android-sdk-platform-tools (>= 20), proguard-cli"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "android-sdk-build-tools"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__android_sdk,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "android-sdk-common"
+	comparison hasValue ">="
+	version hasValue "25.0.0+12"
+
+relationInstance depends(P0__android_sdk,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "android-sdk-platform-tools"
+	comparison hasValue ">="
+	version hasValue "20"
+
+relationInstance depends(P0__android_sdk,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "proguard-cli"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__android_sdk,3,DepAtom__3)
+

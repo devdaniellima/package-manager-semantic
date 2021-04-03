@@ -1,0 +1,74 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ruby_kgio
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ruby_kgio memberOf Package
+	package hasValue "ruby-kgio"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/ruby"
+	installedSize hasValue "96"
+	maintainer hasValue "Original-Debian Ruby Extras Maintainers <pkg-ruby-extras-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.11.2-1build1"
+	fileName hasValue "pool/universe/r/ruby-kgio/ruby-kgio_2.11.2-1build1_amd64.deb"
+	size hasValue "29976"
+	md5sum hasValue "72461c925dddb5f170f47efd99bab0f9"
+	sha1 hasValue "6d08a1fc0d6a0972662b7679939141b8b5ffb3f5"
+	sha256 hasValue "915dd3234753cd537588ef6153473b24cfcf0458a8536fca6f651698bf0136c8"
+	descriptionMd5 hasValue "5167dbb6381dca96305b4427e11b3f36"
+	homepage hasValue "http://bogomips.org/kgio/"
+	depends hasValue "ruby (>= 1:2.7~0), libc6 (>= 2.17), libruby2.7 (>= 2.7.0-4), ruby (<< 1:2.8~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "ruby"
+	comparison hasValue ">="
+	version hasValue "1:2.7~0"
+
+relationInstance depends(P0__ruby_kgio,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.17"
+
+relationInstance depends(P0__ruby_kgio,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libruby2.7"
+	comparison hasValue ">="
+	version hasValue "2.7.0-4"
+
+relationInstance depends(P0__ruby_kgio,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "ruby"
+	comparison hasValue "<<"
+	version hasValue "1:2.8~"
+
+relationInstance depends(P0__ruby_kgio,3,DepAtom__3)
+

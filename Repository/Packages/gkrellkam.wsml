@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gkrellkam
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gkrellkam memberOf Package
+	package hasValue "gkrellkam"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/x11"
+	installedSize hasValue "79"
+	maintainer hasValue "Original-paul cannon <pik@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.0.0-1.2"
+	fileName hasValue "pool/universe/g/gkrellkam/gkrellkam_2.0.0-1.2_amd64.deb"
+	size hasValue "22074"
+	md5sum hasValue "c40b3467e606c51a6d5692172f68ca60"
+	sha1 hasValue "95dd8a54c1cc4a998fb60b5b35d3c4d1575953ea"
+	sha256 hasValue "5915896c24fb04a971776162647a496131e29cc20cfa9f9aec5fca3ecdbbd912"
+	description hasValue "Plugin GKrellM que exibe imagem atualizada periodicamente."
+	descriptionMd5 hasValue "64477b1935b0b09454647c88a807fb46"
+	depends hasValue "gkrellm (>= 2.0.0), libc6 (>= 2.7)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "gkrellm"
+	comparison hasValue ">="
+	version hasValue "2.0.0"
+
+relationInstance depends(P0__gkrellkam,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__gkrellkam,1,DepAtom__1)
+

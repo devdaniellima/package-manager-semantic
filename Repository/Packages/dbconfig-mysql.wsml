@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology dbconfig_mysql
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__dbconfig_mysql memberOf Package
+	package hasValue "dbconfig-mysql"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "9"
+	maintainer hasValue "Original-Paul Gevers <elbrus@debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.0.13"
+	conflicts hasValue "dbconfig-no-thanks"
+	fileName hasValue "pool/universe/d/dbconfig-common/dbconfig-mysql_2.0.13_all.deb"
+	size hasValue "1136"
+	md5sum hasValue "5a363e2863976723a8cd88abee773d65"
+	sha1 hasValue "cd1b549dd443521d289e98dec9da1ac9ad8ce994"
+	sha256 hasValue "780a4a38b8d5a0fe7e33ec5fcebad809df53209d15b25cce08f5e72b93430ed7"
+	descriptionMd5 hasValue "4248687ebe9cb0e9aeec4708e9f12e41"
+	depends hasValue "dbconfig-common (= 2.0.13), default-mysql-client | virtual-mysql-client"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "dbconfig-common"
+	comparison hasValue "="
+	version hasValue "2.0.13"
+
+relationInstance depends(P0__dbconfig_mysql,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "default-mysql-client"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__dbconfig_mysql,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "virtual-mysql-client"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__dbconfig_mysql,1,DepAtom__2)
+

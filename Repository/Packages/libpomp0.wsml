@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libpomp0
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libpomp0 memberOf Package
+	package hasValue "libpomp0"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/libs"
+	installedSize hasValue "42"
+	maintainer hasValue "Original-Samuel Thibault <sthibault@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.1+dfsg-8build1"
+	fileName hasValue "pool/universe/o/opari/libpomp0_1.1+dfsg-8build1_amd64.deb"
+	size hasValue "8516"
+	md5sum hasValue "f7d920c6074fbf339ce158af6d608377"
+	sha1 hasValue "042a1a205956969ccdde19aa6471ad51f0ef3cb8"
+	sha256 hasValue "789988a6a10139c9db7f117a39ae4f1121050823b868e76adf84e4a5fffa2a57"
+	description hasValue "OpenMP Pragma And Region Instrumentor - shared library"
+	descriptionMd5 hasValue "0086375d9ce71a51b049c4eacc96e93d"
+	depends hasValue "libc6 (>= 2.3.4), libgomp1 (>= 4.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.3.4"
+
+relationInstance depends(P0__libpomp0,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgomp1"
+	comparison hasValue ">="
+	version hasValue "4.4"
+
+relationInstance depends(P0__libpomp0,1,DepAtom__1)
+

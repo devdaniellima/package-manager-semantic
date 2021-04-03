@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology golang_cfssl
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__golang_cfssl memberOf Package
+	package hasValue "golang-cfssl"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/devel"
+	installedSize hasValue "36170"
+	maintainer hasValue "Original-Debian Go Packaging Team <pkg-go-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.2.0+git20160825.89.7fb22c8-3"
+	fileName hasValue "pool/universe/g/golang-github-cloudflare-cfssl/golang-cfssl_1.2.0+git20160825.89.7fb22c8-3_amd64.deb"
+	size hasValue "5855964"
+	md5sum hasValue "cc5ed5b1849c9e536e3b05aefbf81547"
+	sha1 hasValue "a2f4311b16f2cafc1d2bc69ebd9a4f3b60a4b6d8"
+	sha256 hasValue "8150b08e9af4a0103ad8da71c64b0451515c8392055c24ef21d7959f1d9d4058"
+	descriptionMd5 hasValue "290503ccf54716d4f75d150f7c114fc8"
+	homepage hasValue "https://github.com/cloudflare/cfssl"
+	depends hasValue "libc6 (>= 2.4), libsqlite3-0 (>= 3.7.15)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__golang_cfssl,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libsqlite3-0"
+	comparison hasValue ">="
+	version hasValue "3.7.15"
+
+relationInstance depends(P0__golang_cfssl,1,DepAtom__1)
+

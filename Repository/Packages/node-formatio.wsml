@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology node_formatio
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__node_formatio memberOf Package
+	package hasValue "node-formatio"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/web"
+	installedSize hasValue "26"
+	maintainer hasValue "Original-Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.2.0-2"
+	fileName hasValue "pool/universe/n/node-formatio/node-formatio_1.2.0-2_all.deb"
+	size hasValue "7722"
+	md5sum hasValue "cb3e48dbaf84ac93a98337117e6a2c9a"
+	sha1 hasValue "6b57d9425e5b37da1c66e4ce1676d30dad67ecb1"
+	sha256 hasValue "6bcf63c79eaa297fa938f2686d28209e8c036ca38b268418951b5a028f47f1e0"
+	descriptionMd5 hasValue "c0bbcba7d257f5f48f4f8f1b1067de6d"
+	homepage hasValue "https://github.com/busterjs/formatio"
+	depends hasValue "nodejs, node-samsam (>= 1.0~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "nodejs"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__node_formatio,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "node-samsam"
+	comparison hasValue ">="
+	version hasValue "1.0~"
+
+relationInstance depends(P0__node_formatio,1,DepAtom__1)
+

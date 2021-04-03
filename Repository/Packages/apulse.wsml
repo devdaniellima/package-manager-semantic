@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology apulse
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__apulse memberOf Package
+	package hasValue "apulse"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/sound"
+	installedSize hasValue "155"
+	maintainer hasValue "Original-Mirek Kratochvil <exa.exa@gmail.com>"
+	architecture hasValue "amd64"
+	version hasValue "0.1.12-2"
+	fileName hasValue "pool/universe/a/apulse/apulse_0.1.12-2_amd64.deb"
+	size hasValue "39012"
+	md5sum hasValue "e6d17e426cac078792897c4b1bb03741"
+	sha1 hasValue "f469b9f74f1f5e931f0f34196d8cde66cfc60696"
+	sha256 hasValue "16e1738edeb8a260c7e45f6c7442d1eb098ae5a5639103f672fdfa88caec7ddf"
+	descriptionMd5 hasValue "f63aab262a204b98c258a475efbeecb3"
+	homepage hasValue "https://github.com/i-rinat/apulse"
+	depends hasValue "libasound2 (>= 1.0.18), libc6 (>= 2.17), libglib2.0-0 (>= 2.14.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libasound2"
+	comparison hasValue ">="
+	version hasValue "1.0.18"
+
+relationInstance depends(P0__apulse,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.17"
+
+relationInstance depends(P0__apulse,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libglib2.0-0"
+	comparison hasValue ">="
+	version hasValue "2.14.0"
+
+relationInstance depends(P0__apulse,2,DepAtom__2)
+

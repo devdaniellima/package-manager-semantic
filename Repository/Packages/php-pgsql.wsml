@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology php_pgsql
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__php_pgsql memberOf Package
+	package hasValue "php-pgsql"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "php"
+	installedSize hasValue "13"
+	maintainer hasValue "Original-Debian PHP Maintainers <team+pkg-php@tracker.debian.org>"
+	architecture hasValue "all"
+	version hasValue "2:7.4+75"
+	fileName hasValue "pool/main/p/php-defaults/php-pgsql_7.4+75_all.deb"
+	size hasValue "2008"
+	md5sum hasValue "0097788d5c4972f5e1bf8a04ebdf2b02"
+	sha1 hasValue "f39ec7a4a3beb592e07fb4bb7425d30cadd68494"
+	sha256 hasValue "3d825273ca396ef83ee0d546d1520cfa54df7be871df5f0161b389bb7904c13c"
+	description hasValue "PostgreSQL module for PHP [default]"
+	descriptionMd5 hasValue "5fcbcc736e803e8055f7a71eb10c2f96"
+	depends hasValue "php-common, php7.4-pgsql"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "php-common"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__php_pgsql,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "php7.4-pgsql"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__php_pgsql,1,DepAtom__1)
+

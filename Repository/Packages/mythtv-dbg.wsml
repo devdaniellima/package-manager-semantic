@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology mythtv_dbg
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__mythtv_dbg memberOf Package
+	package hasValue "mythtv-dbg"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "multiverse/debug"
+	installedSize hasValue "200476"
+	maintainer hasValue "MythTV Ubuntu Maintainers <ubuntu-mythtv@lists.ubuntu.com>"
+	architecture hasValue "amd64"
+	version hasValue "2:31.0+fixes.20200323.9579662cdc-0ubuntu1"
+	replaces hasValue "mythplugins-dbg"
+	conflicts hasValue "mythplugins-dbg"
+	fileName hasValue "pool/multiverse/m/mythtv/mythtv-dbg_31.0+fixes.20200323.9579662cdc-0ubuntu1_amd64.deb"
+	size hasValue "192030456"
+	md5sum hasValue "2079d9d424db77ba553c603826d5a583"
+	sha1 hasValue "dd402739e33af31bb8f9307b5be126fc3cc3074f"
+	sha256 hasValue "d1b5cb2bb053f96fd808bf83aeebb5ea487eddc2ad63f5aa532fdb4d933b5577"
+	descriptionMd5 hasValue "b75efe12f9262ea1392215c42915eaab"
+	homepage hasValue "http://www.mythtv.org"
+	depends hasValue "mythtv-backend (= 2:31.0+fixes.20200323.9579662cdc-0ubuntu1) | mythtv-frontend (= 2:31.0+fixes.20200323.9579662cdc-0ubuntu1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "mythtv-backend"
+	comparison hasValue "="
+	version hasValue "2:31.0+fixes.20200323.9579662cdc-0ubuntu1"
+
+relationInstance depends(P0__mythtv_dbg,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "mythtv-frontend"
+	comparison hasValue "="
+	version hasValue "2:31.0+fixes.20200323.9579662cdc-0ubuntu1"
+
+relationInstance depends(P0__mythtv_dbg,0,DepAtom__1)
+

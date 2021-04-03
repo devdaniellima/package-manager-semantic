@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology uw_mailutils
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__uw_mailutils memberOf Package
+	package hasValue "uw-mailutils"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/mail"
+	installedSize hasValue "143"
+	maintainer hasValue "Original-Magnus Holmgren <holmgren@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "8:2007f~dfsg-7"
+	fileName hasValue "pool/universe/u/uw-imap/uw-mailutils_2007f~dfsg-7_amd64.deb"
+	size hasValue "31164"
+	md5sum hasValue "21564ad565926b87d7e316fe2d12aa33"
+	sha1 hasValue "48780af248e09a0a6353c6d31fb3bb615bd03e85"
+	sha256 hasValue "b9d4b7a7009efdbc1e09b56a13e043de289dc4ae672f79b594a2485f4e627fa2"
+	description hasValue "c-client support programs"
+	descriptionMd5 hasValue "45e2e7554cd7cf146c8c6e3357a99140"
+	homepage hasValue "http://www.washington.edu/imap/"
+	depends hasValue "libc-client2007e, libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc-client2007e"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__uw_mailutils,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__uw_mailutils,1,DepAtom__1)
+

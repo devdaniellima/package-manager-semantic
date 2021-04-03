@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology fflas_ffpack
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__fflas_ffpack memberOf Package
+	package hasValue "fflas-ffpack"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/math"
+	installedSize hasValue "42"
+	maintainer hasValue "Original-Debian Science Maintainers <debian-science-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.4.3-1"
+	fileName hasValue "pool/universe/f/fflas-ffpack/fflas-ffpack_2.4.3-1_amd64.deb"
+	size hasValue "12488"
+	md5sum hasValue "329094fabf576a92dfd51a8cc85a0b21"
+	sha1 hasValue "f6b5844edcd90bf2d0c68bfb0573bca966095628"
+	sha256 hasValue "fed186eb8ea40dcd059fbb3a75abfc86a311a212f767d1236798f8dde412ebbb"
+	descriptionMd5 hasValue "8a31b80b4692685e090b0269f1c3cfc1"
+	homepage hasValue "http://linbox-team.github.io/fflas-ffpack/"
+	depends hasValue "fflas-ffpack-common (= 2.4.3-1), libgivaro-dev (>= 4.1.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "fflas-ffpack-common"
+	comparison hasValue "="
+	version hasValue "2.4.3-1"
+
+relationInstance depends(P0__fflas_ffpack,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgivaro-dev"
+	comparison hasValue ">="
+	version hasValue "4.1.1"
+
+relationInstance depends(P0__fflas_ffpack,1,DepAtom__1)
+

@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology emacs_bin_common
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__emacs_bin_common memberOf Package
+	package hasValue "emacs-bin-common"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/editors"
+	installedSize hasValue "470"
+	maintainer hasValue "Original-Rob Browning <rlb@defaultvalue.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:26.3+1-1ubuntu2"
+	fileName hasValue "pool/universe/e/emacs/emacs-bin-common_26.3+1-1ubuntu2_amd64.deb"
+	size hasValue "111504"
+	md5sum hasValue "f8472838e2c352b5009f5be016174522"
+	sha1 hasValue "8016b73eda6e4a20ecd8dfe95f5ba12b8e51abd9"
+	sha256 hasValue "82983c6f02d1380060359e300d8d01f7c506c5ef213b2cf10af0c4d910854264"
+	description hasValue "arquivos compartilhados dependentes de arquitetura do editor GNU Emacs"
+	descriptionMd5 hasValue "aca5839c665e000e012365be48ed6ddb"
+	homepage hasValue "https://www.gnu.org/software/emacs/"
+	depends hasValue "emacs-common (= 1:26.3+1-1ubuntu2), libc6 (>= 2.17)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "emacs-common"
+	comparison hasValue "="
+	version hasValue "1:26.3+1-1ubuntu2"
+
+relationInstance depends(P0__emacs_bin_common,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.17"
+
+relationInstance depends(P0__emacs_bin_common,1,DepAtom__1)
+

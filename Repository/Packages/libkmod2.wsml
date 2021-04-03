@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libkmod2
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libkmod2 memberOf Package
+	package hasValue "libkmod2"
+	packageSource hasValue Source__S1
+	priority hasValue "important"
+	section hasValue "libs"
+	installedSize hasValue "134"
+	maintainer hasValue "Original-Marco d'Itri <md@linux.it>"
+	architecture hasValue "amd64"
+	version hasValue "27-1ubuntu2"
+	fileName hasValue "pool/main/k/kmod/libkmod2_27-1ubuntu2_amd64.deb"
+	size hasValue "44328"
+	md5sum hasValue "2067942fd2257f283ae2aa2f54d7c520"
+	sha1 hasValue "c362b7400a4b6736242a5e3bb66e9fdfecfbb66e"
+	sha256 hasValue "f3ff2f9f9e0277a73704b449af05620e0c9e40d36a243c321a172eaaa7d732c1"
+	description hasValue "biblioteca compartilhada libkmod"
+	descriptionMd5 hasValue "e60216aabe72168f06218f037958581e"
+	depends hasValue "libc6 (>= 2.17), liblzma5 (>= 5.1.1alpha+20120614), libssl1.1 (>= 1.1.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.17"
+
+relationInstance depends(P0__libkmod2,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "liblzma5"
+	comparison hasValue ">="
+	version hasValue "5.1.1alpha+20120614"
+
+relationInstance depends(P0__libkmod2,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libssl1.1"
+	comparison hasValue ">="
+	version hasValue "1.1.0"
+
+relationInstance depends(P0__libkmod2,2,DepAtom__2)
+

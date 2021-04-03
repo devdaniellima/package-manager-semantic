@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology traildb_cli
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__traildb_cli memberOf Package
+	package hasValue "traildb-cli"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/database"
+	installedSize hasValue "68"
+	maintainer hasValue "Original-ChangZhuo Chen (陳昌倬) <czchen@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.6+dfsg1-1"
+	fileName hasValue "pool/universe/t/traildb/traildb-cli_0.6+dfsg1-1_amd64.deb"
+	size hasValue "23244"
+	md5sum hasValue "cbf9a6a2f8d75184f41c90aaa74a17a7"
+	sha1 hasValue "91742279df8e65e8cc6cac540b56b5aae6940a45"
+	sha256 hasValue "cbac9564f42a3828bd2e5b092a3c727c80a87dc7d3b83e7024f3679fa67f4888"
+	descriptionMd5 hasValue "31dbe9d5ceb23d249ce337d90357b5f6"
+	homepage hasValue "https://github.com/traildb/traildb"
+	depends hasValue "libc6 (>= 2.14), libjudydebian1, libtraildb0 (= 0.6+dfsg1-1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__traildb_cli,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libjudydebian1"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__traildb_cli,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libtraildb0"
+	comparison hasValue "="
+	version hasValue "0.6+dfsg1-1"
+
+relationInstance depends(P0__traildb_cli,2,DepAtom__2)
+

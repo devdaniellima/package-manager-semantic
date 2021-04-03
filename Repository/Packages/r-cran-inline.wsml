@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology r_cran_inline
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__r_cran_inline memberOf Package
+	package hasValue "r-cran-inline"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/gnu-r"
+	installedSize hasValue "188"
+	maintainer hasValue "Original-Dirk Eddelbuettel <edd@debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.3.15-2"
+	fileName hasValue "pool/universe/r/r-cran-inline/r-cran-inline_0.3.15-2_all.deb"
+	size hasValue "123296"
+	md5sum hasValue "eef9770da6e9679319f1ec2fc0109f07"
+	sha1 hasValue "3c43a685966f2f0c2a46fde32e626dcbfb9ea25d"
+	sha256 hasValue "8ab631856b60fdc29f67e22056652763ef032ab8565a39a028a19931a5f6c98a"
+	descriptionMd5 hasValue "dbcc316e3cc6b4f829ac9e5cf7b3dbaa"
+	homepage hasValue "https://cran.r-project.org/package=inline"
+	depends hasValue "r-base-core (>= 3.5.0-5), r-api-3.5"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "r-base-core"
+	comparison hasValue ">="
+	version hasValue "3.5.0-5"
+
+relationInstance depends(P0__r_cran_inline,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "r-api-3.5"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__r_cran_inline,1,DepAtom__1)
+

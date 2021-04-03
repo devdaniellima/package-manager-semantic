@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libroar_compat2
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libroar_compat2 memberOf Package
+	package hasValue "libroar-compat2"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "122"
+	maintainer hasValue "Original-Patrick Matthäi <pmatthaei@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0~beta12-3"
+	replaces hasValue "libroar-compat0, libroar-compat1"
+	conflicts hasValue "libroar-compat0, libroar-compat1"
+	fileName hasValue "pool/universe/r/roaraudio/libroar-compat2_1.0~beta12-3_amd64.deb"
+	size hasValue "20792"
+	md5sum hasValue "b97583baccb9de3fc9006f43851b492e"
+	sha1 hasValue "2c3651f2319e1830fd5960b8e031916850482524"
+	sha256 hasValue "1febcfb2ca591047119a7a48eecc92378682c74dc5fbfab170237ef6fc78388b"
+	descriptionMd5 hasValue "0e0d6cec2765b20a4e44c4bc87eee7a3"
+	homepage hasValue "http://roaraudio.keep-cool.org/"
+	depends hasValue "libc6 (>= 2.15), libroar2 (>= 1.0~beta12)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__libroar_compat2,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libroar2"
+	comparison hasValue ">="
+	version hasValue "1.0~beta12"
+
+relationInstance depends(P0__libroar_compat2,1,DepAtom__1)
+

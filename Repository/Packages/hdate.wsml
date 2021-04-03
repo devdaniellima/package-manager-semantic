@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology hdate
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__hdate memberOf Package
+	package hasValue "hdate"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "140"
+	maintainer hasValue "Original-Debian Hebrew Packaging Team <team+hebrew@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.6.02-2ubuntu2"
+	replaces hasValue "libhdate0 (<< 1.6-1ubuntu1)"
+	fileName hasValue "pool/universe/libh/libhdate/hdate_1.6.02-2ubuntu2_amd64.deb"
+	size hasValue "39432"
+	md5sum hasValue "b9aa2fad7c7a43d86b51f872729f22e4"
+	sha1 hasValue "e24a0032d85754a2177aecff723babaf656cc860"
+	sha256 hasValue "4ebf73b7d433f100eb7f606df99834c3fc66f5cf689382e3433fdc943a78b474"
+	descriptionMd5 hasValue "3a748b7e3d5e0c3e7492c6f9096040d5"
+	homepage hasValue "http://libhdate.sourceforge.net/"
+	depends hasValue "libhdate1 (= 1.6.02-2ubuntu2), libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libhdate1"
+	comparison hasValue "="
+	version hasValue "1.6.02-2ubuntu2"
+
+relationInstance depends(P0__hdate,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__hdate,1,DepAtom__1)
+

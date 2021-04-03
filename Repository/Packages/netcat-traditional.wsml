@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology netcat_traditional
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__netcat_traditional memberOf Package
+	package hasValue "netcat-traditional"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "144"
+	maintainer hasValue "Original-Ruben Molina <rmolina@udea.edu.co>"
+	architecture hasValue "amd64"
+	version hasValue "1.10-41.1ubuntu1"
+	provides hasValue "netcat"
+	fileName hasValue "pool/universe/n/netcat/netcat-traditional_1.10-41.1ubuntu1_amd64.deb"
+	size hasValue "61504"
+	md5sum hasValue "4e18f0d454f3ea2e65e44c3ac92c6bb6"
+	sha1 hasValue "da32f8e718f2d098b9a8eda01ccee672c777efcb"
+	sha256 hasValue "b840020c5d06b0f7fd74b44e456cbe3f5dce340d11ea0576a4677eec146d6a47"
+	description hasValue "canivete suíço para TCP/IP"
+	descriptionMd5 hasValue "83fb6fcb16e6638fb447527fffff1e0a"
+	depends hasValue "libc6 (>= 2.15)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__netcat_traditional,0,DepAtom__0)
+

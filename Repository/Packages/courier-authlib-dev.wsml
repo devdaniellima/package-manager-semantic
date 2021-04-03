@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology courier_authlib_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__courier_authlib_dev memberOf Package
+	package hasValue "courier-authlib-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/mail"
+	installedSize hasValue "835"
+	maintainer hasValue "Original-Markus Wanner <markus@bluegap.ch>"
+	architecture hasValue "amd64"
+	version hasValue "0.69.0-2build3"
+	fileName hasValue "pool/universe/c/courier-authlib/courier-authlib-dev_0.69.0-2build3_amd64.deb"
+	size hasValue "152332"
+	md5sum hasValue "6f0bf2c8b82afb952ce7fd4df6225db9"
+	sha1 hasValue "667c10bee7bd922e63293a4b5d78dc4db5a207d1"
+	sha256 hasValue "203abf12b518fa539cc2c78149f5fb15debf5a5bbc140af5156ace5eca8c71b6"
+	description hasValue "bibliotecas de desenvolvimento para a biblioteca de autenticação Courier"
+	descriptionMd5 hasValue "8959e6186e43e1f0907ee705b7526166"
+	homepage hasValue "https://www.courier-mta.org/"
+	depends hasValue "courier-authlib (>= 0.69.0-2build3), libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "courier-authlib"
+	comparison hasValue ">="
+	version hasValue "0.69.0-2build3"
+
+relationInstance depends(P0__courier_authlib_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__courier_authlib_dev,1,DepAtom__1)
+

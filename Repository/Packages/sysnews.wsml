@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology sysnews
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__sysnews memberOf Package
+	package hasValue "sysnews"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "55"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.9-18"
+	replaces hasValue "news"
+	conflicts hasValue "news"
+	fileName hasValue "pool/universe/s/sysnews/sysnews_0.9-18_amd64.deb"
+	size hasValue "13004"
+	md5sum hasValue "6652a4bc227b86073893e0257211c679"
+	sha1 hasValue "9906e5fe99f531305dfa5b642f8dde386073f597"
+	sha256 hasValue "f3afeb30e4ea2d5abfb21f1d248eda67c4ecd6a1a2a9286070bf52e6fc25caf7"
+	descriptionMd5 hasValue "c282863a7fd634b63360a2517069518c"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__sysnews,0,DepAtom__0)
+

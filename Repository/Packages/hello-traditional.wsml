@@ -1,0 +1,70 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology hello_traditional
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__hello_traditional memberOf Package
+	package hasValue "hello-traditional"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/devel"
+	installedSize hasValue "282"
+	maintainer hasValue "Original-Santiago Vila <sanvila@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.10-5"
+	replaces hasValue "hello, hello-debhelper (<< 2.9)"
+	provides hasValue "hello"
+	conflicts hasValue "hello"
+	fileName hasValue "pool/universe/h/hello-traditional/hello-traditional_2.10-5_amd64.deb"
+	size hasValue "48112"
+	md5sum hasValue "db8c7c29c419821536a807357aca050e"
+	sha1 hasValue "0fb2e10d824554a821db10f48f979cc170fcb0e0"
+	sha256 hasValue "42a0d7825bc4c17bf5aa8824c3b700b259a4961a6b7e358448661bdbad3d8fd7"
+	descriptionMd5 hasValue "5b672b9e8dff1814062ff9b2e8b2fe5a"
+	homepage hasValue "http://www.gnu.org/software/hello/"
+	depends hasValue "libc6 (>= 2.14), dpkg (>= 1.15.4) | install-info"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__hello_traditional,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "dpkg"
+	comparison hasValue ">="
+	version hasValue "1.15.4"
+
+relationInstance depends(P0__hello_traditional,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "install-info"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__hello_traditional,1,DepAtom__2)
+

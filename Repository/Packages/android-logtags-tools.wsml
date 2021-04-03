@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology android_logtags_tools
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__android_logtags_tools memberOf Package
+	package hasValue "android-logtags-tools"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "39"
+	maintainer hasValue "Original-Android Tools Maintainers <android-tools-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1:8.1.0+r23-3ubuntu2"
+	fileName hasValue "pool/universe/a/android-platform-build/android-logtags-tools_8.1.0+r23-3ubuntu2_all.deb"
+	size hasValue "8568"
+	md5sum hasValue "2969d3d4c82a37e908809379ee38532a"
+	sha1 hasValue "08cb62e0c10cbfd7d80e1b80ddccfa55dc48628b"
+	sha256 hasValue "73891780e6377a6d47e8893fac86d07fa1430d0ac00e56cbe0dcb3e684fbceaa"
+	descriptionMd5 hasValue "885533142703981ecd45d4881dca3be5"
+	homepage hasValue "https://android.googlesource.com/platform/build"
+	depends hasValue "python2:any (<< 2.8), python2:any (>= 2.7~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue "<<"
+	version hasValue "2.8"
+
+relationInstance depends(P0__android_logtags_tools,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue ">="
+	version hasValue "2.7~"
+
+relationInstance depends(P0__android_logtags_tools,1,DepAtom__1)
+

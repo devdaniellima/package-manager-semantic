@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology govendor
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__govendor memberOf Package
+	package hasValue "govendor"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "7592"
+	maintainer hasValue "Original-Debian Go Packaging Team <pkg-go-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.9+ds1-1"
+	fileName hasValue "pool/universe/g/govendor/govendor_1.0.9+ds1-1_amd64.deb"
+	size hasValue "2241700"
+	md5sum hasValue "b695e8e58594df2b30e75bc5b7e326ac"
+	sha1 hasValue "9e5b90bbd52ff8ba4f3f7bcfa33ba4ed647fc796"
+	sha256 hasValue "61536c9ce9d9fd7d4f1c62cf1a86ffdfa0b5b90f60780d66b768569f9be6c06b"
+	descriptionMd5 hasValue "c2811216626f5059d4134934c3d7efbe"
+	homepage hasValue "https://github.com/kardianos/govendor"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__govendor,0,DepAtom__0)
+

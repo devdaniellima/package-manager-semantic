@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology freeradius_postgresql
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__freeradius_postgresql memberOf Package
+	package hasValue "freeradius-postgresql"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "82"
+	maintainer hasValue "Original-Debian FreeRADIUS Packaging Team <pkg-freeradius-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.0.20+dfsg-3build1"
+	fileName hasValue "pool/universe/f/freeradius/freeradius-postgresql_3.0.20+dfsg-3build1_amd64.deb"
+	size hasValue "13788"
+	md5sum hasValue "4cc2a0f669bdd3a2759e375fcf642ad2"
+	sha1 hasValue "7a29c2ad79745ebef7197fbfa6c30cb5b56fe781"
+	sha256 hasValue "6f8fccc3fb23ca870cd25aba0ec4a2cd97b91e7e2c5e29d7fc51d3db74330fd6"
+	descriptionMd5 hasValue "21c022ad780dbebcad8db320d076ccd0"
+	homepage hasValue "http://www.freeradius.org/"
+	depends hasValue "freeradius (= 3.0.20+dfsg-3build1), libc6 (>= 2.15), libpq5 (>= 8.4~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "freeradius"
+	comparison hasValue "="
+	version hasValue "3.0.20+dfsg-3build1"
+
+relationInstance depends(P0__freeradius_postgresql,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__freeradius_postgresql,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libpq5"
+	comparison hasValue ">="
+	version hasValue "8.4~"
+
+relationInstance depends(P0__freeradius_postgresql,2,DepAtom__2)
+

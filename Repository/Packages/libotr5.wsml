@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libotr5
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libotr5 memberOf Package
+	package hasValue "libotr5"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "216"
+	maintainer hasValue "Original-Debian Privacy Tools Maintainers <pkg-privacy-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "4.1.1-3ubuntu1"
+	fileName hasValue "pool/universe/libo/libotr/libotr5_4.1.1-3ubuntu1_amd64.deb"
+	size hasValue "75080"
+	md5sum hasValue "06fc69794bdcd5abd70d67428348045d"
+	sha1 hasValue "5799d7137b0a023195684b5cd19d8494e2673b30"
+	sha256 hasValue "162c464dc34f06946f52db0b95a4338c997d62bf7f09614ae07542e35699a765"
+	descriptionMd5 hasValue "cff3e3817189bece0518936b4f3ab901"
+	homepage hasValue "https://otr.cypherpunks.ca/"
+	depends hasValue "libc6 (>= 2.14), libgcrypt20 (>= 1.8.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libotr5,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgcrypt20"
+	comparison hasValue ">="
+	version hasValue "1.8.0"
+
+relationInstance depends(P0__libotr5,1,DepAtom__1)
+

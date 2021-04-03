@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology mecab_naist_jdic
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__mecab_naist_jdic memberOf Package
+	package hasValue "mecab-naist-jdic"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/misc"
+	installedSize hasValue "20"
+	maintainer hasValue "Original-Natural Language Processing (Japanese) <team+pkg-nlp-ja@tracker.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.6.3.b-20111013-11"
+	fileName hasValue "pool/universe/m/mecab-naist-jdic/mecab-naist-jdic_0.6.3.b-20111013-11_all.deb"
+	size hasValue "3220"
+	md5sum hasValue "37683a59b60ea9512299f5bd58cb94c7"
+	sha1 hasValue "941108789eca6f002fbfa88182a1212dbaa4cd30"
+	sha256 hasValue "57c7c9659dcd4a3e0109fbd8b2d33c310bb62ee1ef40aa25eee4986818f165b9"
+	descriptionMd5 hasValue "1b71c3e4fbd42d5da705798b6278835f"
+	homepage hasValue "https://osdn.net/projects/naist-jdic/"
+	depends hasValue "mecab-utils (>= 0.93), mecab-naist-jdic-eucjp (= 0.6.3.b-20111013-11)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "mecab-utils"
+	comparison hasValue ">="
+	version hasValue "0.93"
+
+relationInstance depends(P0__mecab_naist_jdic,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "mecab-naist-jdic-eucjp"
+	comparison hasValue "="
+	version hasValue "0.6.3.b-20111013-11"
+
+relationInstance depends(P0__mecab_naist_jdic,1,DepAtom__1)
+

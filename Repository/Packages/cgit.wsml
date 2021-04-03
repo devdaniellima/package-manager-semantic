@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology cgit
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__cgit memberOf Package
+	package hasValue "cgit"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/net"
+	installedSize hasValue "2034"
+	maintainer hasValue "Original-Debian cgit Maintainers <team+cgit@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.2.3+git2.25.1-1"
+	fileName hasValue "pool/universe/c/cgit/cgit_1.2.3+git2.25.1-1_amd64.deb"
+	size hasValue "838760"
+	md5sum hasValue "9fb75efe99a5e5ddd1a39fbf7a58dd87"
+	sha1 hasValue "d906ca6eb753922702264314630e2c8173e7cb56"
+	sha256 hasValue "15e1869982e019225898a26ee21dab52b284714ed6f1965ddeb28a0a95a5d424"
+	descriptionMd5 hasValue "5e74acb15d1188f3db80ed71f4b7567d"
+	homepage hasValue "https://git.zx2c4.com/cgit/"
+	depends hasValue "libc6 (>= 2.28), liblua5.1-0, zlib1g (>= 1:1.2.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.28"
+
+relationInstance depends(P0__cgit,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "liblua5.1-0"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__cgit,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "zlib1g"
+	comparison hasValue ">="
+	version hasValue "1:1.2.0"
+
+relationInstance depends(P0__cgit,2,DepAtom__2)
+

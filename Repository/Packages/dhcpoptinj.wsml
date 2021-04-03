@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology dhcpoptinj
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__dhcpoptinj memberOf Package
+	package hasValue "dhcpoptinj"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "66"
+	maintainer hasValue "Original-Andreas Misje <amisje@gmail.com>"
+	architecture hasValue "amd64"
+	version hasValue "0.5.3-1"
+	fileName hasValue "pool/universe/d/dhcpoptinj/dhcpoptinj_0.5.3-1_amd64.deb"
+	size hasValue "20988"
+	md5sum hasValue "f12ae1ef54ae47db6a855540e36019f1"
+	sha1 hasValue "47884e9a1ab5b79a6d24626aad6cc01ddfd98682"
+	sha256 hasValue "fa13b0ea4b1f108e44abadeb1474936a7e8a65dccae2c39c8c9e677ba5123f57"
+	descriptionMd5 hasValue "a991876c02d62a7f19cf6c0ab97bfc06"
+	homepage hasValue "https://github.com/misje/dhcpoptinj"
+	depends hasValue "libc6 (>= 2.14), libnetfilter-queue1"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__dhcpoptinj,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libnetfilter-queue1"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__dhcpoptinj,1,DepAtom__1)
+

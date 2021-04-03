@@ -1,0 +1,74 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology slurp
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__slurp memberOf Package
+	package hasValue "slurp"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/x11"
+	installedSize hasValue "52"
+	maintainer hasValue "Original-Birger Schacht <birger@rantanplan.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.2.0-1"
+	fileName hasValue "pool/universe/s/slurp/slurp_1.2.0-1_amd64.deb"
+	size hasValue "12864"
+	md5sum hasValue "a7c68c704839ea44748f55923179a4c4"
+	sha1 hasValue "e91349722569c6d93e45e9bd6483a7e90805c75c"
+	sha256 hasValue "51ebc44d15c704a72d98876097f7006ec004022c0469ca104c95467ef16293e1"
+	descriptionMd5 hasValue "63485d91f64849814a940123e6f90c8a"
+	homepage hasValue "https://wayland.emersion.fr/slurp/"
+	depends hasValue "libc6 (>= 2.10), libcairo2 (>= 1.6.0), libwayland-client0 (>= 1.9.91), libwayland-cursor0 (>= 1.0.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.10"
+
+relationInstance depends(P0__slurp,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libcairo2"
+	comparison hasValue ">="
+	version hasValue "1.6.0"
+
+relationInstance depends(P0__slurp,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libwayland-client0"
+	comparison hasValue ">="
+	version hasValue "1.9.91"
+
+relationInstance depends(P0__slurp,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "libwayland-cursor0"
+	comparison hasValue ">="
+	version hasValue "1.0.2"
+
+relationInstance depends(P0__slurp,3,DepAtom__3)
+

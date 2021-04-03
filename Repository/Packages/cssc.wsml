@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology cssc
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__cssc memberOf Package
+	package hasValue "cssc"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/devel"
+	installedSize hasValue "2006"
+	maintainer hasValue "Original-Yann Dirson <dirson@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.4.1-1build1"
+	fileName hasValue "pool/universe/c/cssc/cssc_1.4.1-1build1_amd64.deb"
+	size hasValue "370516"
+	md5sum hasValue "0008e36f89c48ddf6e145cef051c0686"
+	sha1 hasValue "28c4531b40c7dd9123457d6227d6a4fcf9ec7300"
+	sha256 hasValue "a71ff01d576339fbd8940292b972425ba3bafbf64953bee5644caec4ff561c91"
+	description hasValue "Clone do sistema de controle de revisão SCCS do Unix"
+	descriptionMd5 hasValue "8fafd7279ef2491fe5e9d0eccda8a40a"
+	homepage hasValue "http://www.gnu.org/software/cssc/"
+	depends hasValue "libc6 (>= 2.14), libgcc-s1 (>= 3.0), libstdc++6 (>= 5.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__cssc,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgcc-s1"
+	comparison hasValue ">="
+	version hasValue "3.0"
+
+relationInstance depends(P0__cssc,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "5.2"
+
+relationInstance depends(P0__cssc,2,DepAtom__2)
+

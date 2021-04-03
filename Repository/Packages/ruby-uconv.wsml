@@ -1,0 +1,74 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ruby_uconv
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ruby_uconv memberOf Package
+	package hasValue "ruby-uconv"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/ruby"
+	installedSize hasValue "1374"
+	maintainer hasValue "Original-Debian Ruby Extras Maintainers <pkg-ruby-extras-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.6.1-3build3"
+	fileName hasValue "pool/universe/r/ruby-uconv/ruby-uconv_0.6.1-3build3_amd64.deb"
+	size hasValue "146136"
+	md5sum hasValue "89fe16791888800a9d646c7ebaa2920b"
+	sha1 hasValue "410f3cd16c0d9e24a5472ea0ed5a67d4d48488b4"
+	sha256 hasValue "c196ade1af44e33043479cf8ddc6d88465cb8b7d0c96bccd22e53895de3f83ee"
+	descriptionMd5 hasValue "8dc53f26b6b458567a95791a41c922b0"
+	homepage hasValue "http://www.yoshidam.net/Ruby.html#uconv"
+	depends hasValue "libc6 (>= 2.14), libruby2.7 (>= 2.7.0-4), ruby (>= 1:2.7~0), ruby (<< 1:2.8~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__ruby_uconv,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libruby2.7"
+	comparison hasValue ">="
+	version hasValue "2.7.0-4"
+
+relationInstance depends(P0__ruby_uconv,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "ruby"
+	comparison hasValue ">="
+	version hasValue "1:2.7~0"
+
+relationInstance depends(P0__ruby_uconv,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "ruby"
+	comparison hasValue "<<"
+	version hasValue "1:2.8~"
+
+relationInstance depends(P0__ruby_uconv,3,DepAtom__3)
+

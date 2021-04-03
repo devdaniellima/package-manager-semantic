@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gajim_antispam
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gajim_antispam memberOf Package
+	package hasValue "gajim-antispam"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "39"
+	maintainer hasValue "Original-Debian XMPP Maintainers <pkg-xmpp-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.4.21-2"
+	fileName hasValue "pool/universe/g/gajim-antispam/gajim-antispam_1.4.21-2_all.deb"
+	size hasValue "7456"
+	md5sum hasValue "fcd09bc70635ab64733cc9a3dad838e8"
+	sha1 hasValue "609ef1fb170c1833e63d71db2466669fab744d41"
+	sha256 hasValue "6e843005675b299bf49f79141e9238690f3614b9e4dd5d2ca83e7667696f70ae"
+	descriptionMd5 hasValue "97e6562be1085a4fd444a96fb183e7ad"
+	homepage hasValue "https://dev.gajim.org/gajim/gajim-plugins/wikis/AntiSpamPlugin"
+	depends hasValue "gajim (>= 1.1.0~beta1~), python3-pkg-resources"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "gajim"
+	comparison hasValue ">="
+	version hasValue "1.1.0~beta1~"
+
+relationInstance depends(P0__gajim_antispam,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3-pkg-resources"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__gajim_antispam,1,DepAtom__1)
+

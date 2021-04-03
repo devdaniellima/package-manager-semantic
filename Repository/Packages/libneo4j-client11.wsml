@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libneo4j_client11
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libneo4j_client11 memberOf Package
+	package hasValue "libneo4j-client11"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "205"
+	maintainer hasValue "Original-Chris Leishman <chris@leishman.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.2.0-1build1"
+	provides hasValue "libneo4j-client"
+	fileName hasValue "pool/universe/libn/libneo4j-client/libneo4j-client11_2.2.0-1build1_amd64.deb"
+	size hasValue "70432"
+	md5sum hasValue "0bb94077685c964b3100b0d71c6a1eea"
+	sha1 hasValue "9e49bf100e3636340d69f7ad139afc60eb425f6f"
+	sha256 hasValue "df85594327d0403cb4889c6afbf290794c9fd00675e2be2e3f3f69305e3ae551"
+	descriptionMd5 hasValue "58e5790ad2490a798dd10ff0c2116f69"
+	homepage hasValue "https://neo4j-client.net"
+	depends hasValue "libc6 (>= 2.15), libssl1.1 (>= 1.1.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__libneo4j_client11,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libssl1.1"
+	comparison hasValue ">="
+	version hasValue "1.1.0"
+
+relationInstance depends(P0__libneo4j_client11,1,DepAtom__1)
+

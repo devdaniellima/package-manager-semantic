@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology aumix_common
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__aumix_common memberOf Package
+	package hasValue "aumix-common"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/sound"
+	installedSize hasValue "59"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.9.1-6"
+	replaces hasValue "aumix (<< 2.8-24), aumix-gtk (<< 2.8-24)"
+	fileName hasValue "pool/universe/a/aumix/aumix-common_2.9.1-6_all.deb"
+	size hasValue "21636"
+	md5sum hasValue "96b2404af88c747e72d5862095e35d6e"
+	sha1 hasValue "70608eb382ffd4d205dbb5026c471c73bfb781b1"
+	sha256 hasValue "5fd1c52affd23934f2f46181c992be5d72e3379459b83e11e60b7337ff56c3c1"
+	description hasValue "Simple text-based mixer control program (common files)"
+	descriptionMd5 hasValue "c660bd1ccb789700e0308531d9ce5eaf"
+	homepage hasValue "http://www.jpj.net/~trevor/aumix.html"
+	depends hasValue "oss-compat, lsb-base (>= 3.0-6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "oss-compat"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__aumix_common,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "lsb-base"
+	comparison hasValue ">="
+	version hasValue "3.0-6"
+
+relationInstance depends(P0__aumix_common,1,DepAtom__1)
+

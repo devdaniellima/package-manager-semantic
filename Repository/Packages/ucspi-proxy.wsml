@@ -1,0 +1,59 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ucspi_proxy
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ucspi_proxy memberOf Package
+	package hasValue "ucspi-proxy"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "125"
+	maintainer hasValue "Original-Gerrit Pape <pape@smarden.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.99-1.1"
+	fileName hasValue "pool/universe/u/ucspi-proxy/ucspi-proxy_0.99-1.1_amd64.deb"
+	size hasValue "20548"
+	md5sum hasValue "38fa6268bbe570606dc2ae678efe6288"
+	sha1 hasValue "e84b9d1ba6517d418a21eaac40be5265d9ce92e8"
+	sha256 hasValue "b3e6407d63a094b614aaf4e5ab5c5d0dafd1fe5022057a8ec7906ce5927aab50"
+	descriptionMd5 hasValue "9c5795c81ded8e3566ec2cb846da07be"
+	depends hasValue "libbg2 (>= 2.03), libc6 (>= 2.15)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libbg2"
+	comparison hasValue ">="
+	version hasValue "2.03"
+
+relationInstance depends(P0__ucspi_proxy,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__ucspi_proxy,1,DepAtom__1)
+

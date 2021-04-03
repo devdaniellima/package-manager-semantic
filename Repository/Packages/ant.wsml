@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ant
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ant memberOf Package
+	package hasValue "ant"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/java"
+	installedSize hasValue "2333"
+	maintainer hasValue "Original-Debian Java Maintainers <pkg-java-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.10.7-1"
+	fileName hasValue "pool/universe/a/ant/ant_1.10.7-1_all.deb"
+	size hasValue "2100252"
+	md5sum hasValue "c45dc5430d45fd2b06612baa82fbd8f7"
+	sha1 hasValue "f4b061c71b046bd9b204f730f87591b3e9bb70f2"
+	sha256 hasValue "f84697d0a0a22928bb37976f280807240c7ab771e8d611cfd6bdab2cb247d721"
+	description hasValue "ferramenta de construção baseada em Java similar ao make"
+	descriptionMd5 hasValue "104974004cbbc2340c2f993bcc2ea654"
+	homepage hasValue "http://ant.apache.org"
+	depends hasValue "default-jre-headless (>= 2:1.8) | java8-runtime-headless"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "default-jre-headless"
+	comparison hasValue ">="
+	version hasValue "2:1.8"
+
+relationInstance depends(P0__ant,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "java8-runtime-headless"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ant,0,DepAtom__1)
+

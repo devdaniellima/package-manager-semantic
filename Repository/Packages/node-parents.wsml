@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology node_parents
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__node_parents memberOf Package
+	package hasValue "node-parents"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/web"
+	installedSize hasValue "19"
+	maintainer hasValue "Original-Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.0.1-5"
+	fileName hasValue "pool/universe/n/node-parents/node-parents_1.0.1-5_all.deb"
+	size hasValue "4160"
+	md5sum hasValue "ba0b5eaa898bb56709236dbae4bb831e"
+	sha1 hasValue "694ac69c159693b4b0de0596c1d7336b4942f3c9"
+	sha256 hasValue "bccf052760b919c6dc3fc2936b211fe572e8a3881df0f7621215df36d94854cd"
+	descriptionMd5 hasValue "9164936932a13db2731075eb8491b05f"
+	homepage hasValue "https://github.com/substack/node-parents"
+	depends hasValue "nodejs (>= 10)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "nodejs"
+	comparison hasValue ">="
+	version hasValue "10"
+
+relationInstance depends(P0__node_parents,0,DepAtom__0)
+

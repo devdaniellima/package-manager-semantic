@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology suitename
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__suitename memberOf Package
+	package hasValue "suitename"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/science"
+	installedSize hasValue "79"
+	maintainer hasValue "Original-Debian Med Packaging Team <debian-med-packaging@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.3.070628-2"
+	fileName hasValue "pool/universe/s/suitename/suitename_0.3.070628-2_amd64.deb"
+	size hasValue "23980"
+	md5sum hasValue "3c46789faaa88ba7432cff2981bc43e9"
+	sha1 hasValue "e165bccfe1be1b4b1fc520f6244a5fba7f50b000"
+	sha256 hasValue "6102947c2df4132faf9636e213baaec1ee00441e8eeb8dee0c18c4f7b95ece58"
+	descriptionMd5 hasValue "eb217adf77d55fee64aa956045dd81e8"
+	homepage hasValue "http://kinemage.biochem.duke.edu/software/suitename.php"
+	depends hasValue "libc6 (>= 2.7)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__suitename,0,DepAtom__0)
+

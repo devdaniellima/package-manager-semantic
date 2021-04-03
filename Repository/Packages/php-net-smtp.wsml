@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology php_net_smtp
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__php_net_smtp memberOf Package
+	package hasValue "php-net-smtp"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/web"
+	installedSize hasValue "85"
+	maintainer hasValue "Original-Debian PHP PEAR Maintainers <pkg-php-pear@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.9.0-1"
+	fileName hasValue "pool/universe/p/php-net-smtp/php-net-smtp_1.9.0-1_all.deb"
+	size hasValue "19580"
+	md5sum hasValue "409ab0b4a3c60d75d56669b37f455757"
+	sha1 hasValue "86b47c9c27576ce085ad4e49378b05ced45c24ff"
+	sha256 hasValue "7d273240f1fc68f00ecf479f50f58cc0d9cec6f44c5355df0d14bc5acb11d785"
+	descriptionMd5 hasValue "6680f1b2ea72c9355ca1819f84f15672"
+	homepage hasValue "https://pear.php.net/package/Net_SMTP"
+	depends hasValue "php-common, php-net-socket (>= 1.0.7)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "php-common"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__php_net_smtp,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "php-net-socket"
+	comparison hasValue ">="
+	version hasValue "1.0.7"
+
+relationInstance depends(P0__php_net_smtp,1,DepAtom__1)
+

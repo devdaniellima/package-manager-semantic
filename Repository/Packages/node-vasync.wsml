@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology node_vasync
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__node_vasync memberOf Package
+	package hasValue "node-vasync"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/javascript"
+	installedSize hasValue "58"
+	maintainer hasValue "Original-Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.2.0-2"
+	fileName hasValue "pool/universe/n/node-vasync/node-vasync_2.2.0-2_all.deb"
+	size hasValue "18636"
+	md5sum hasValue "ec953eac003778fbc9c5463a8362aea7"
+	sha1 hasValue "48bb64273e25e12312a3542785516b644060f109"
+	sha256 hasValue "af8fa6cd22512648207f35fdb91b6da7328fe7020cfee175f2bede15b879f2fe"
+	descriptionMd5 hasValue "cfaca806887963aec8cffa2d38e54937"
+	homepage hasValue "https://github.com/davepacheco/node-vasync"
+	depends hasValue "nodejs (>= 6), node-verror"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "nodejs"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__node_vasync,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "node-verror"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__node_vasync,1,DepAtom__1)
+

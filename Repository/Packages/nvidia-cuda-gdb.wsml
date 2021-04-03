@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology nvidia_cuda_gdb
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__nvidia_cuda_gdb memberOf Package
+	package hasValue "nvidia-cuda-gdb"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "multiverse/devel"
+	installedSize hasValue "9344"
+	maintainer hasValue "Original-Debian NVIDIA Maintainers <pkg-nvidia-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "10.1.243-3"
+	fileName hasValue "pool/multiverse/n/nvidia-cuda-toolkit/nvidia-cuda-gdb_10.1.243-3_amd64.deb"
+	size hasValue "2722036"
+	md5sum hasValue "1cb4efc341a4b987c947d46321957a56"
+	sha1 hasValue "d50671d254f6d6d9c390a5fb0626fd724ba63519"
+	sha256 hasValue "2e6940392687bf5ade47b2afbdd36eea276ab99e0b2320d699e58bb5000b2cfd"
+	descriptionMd5 hasValue "03d8613224997399b5d081ffb05a91f3"
+	homepage hasValue "https://developer.nvidia.com/cuda-zone"
+	depends hasValue "libc6 (>= 2.4), libncurses5 (>= 6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__nvidia_cuda_gdb,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libncurses5"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__nvidia_cuda_gdb,1,DepAtom__1)
+

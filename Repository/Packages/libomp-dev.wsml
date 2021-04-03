@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libomp_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libomp_dev memberOf Package
+	package hasValue "libomp-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "14"
+	maintainer hasValue "Original-LLVM Packaging Team <pkg-llvm-team@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:10.0-50~exp1"
+	replaces hasValue "libomp-dev (<< 7)"
+	fileName hasValue "pool/universe/l/llvm-defaults/libomp-dev_10.0-50~exp1_amd64.deb"
+	size hasValue "2824"
+	md5sum hasValue "8c557b8ecfeba75ceff5bb9a13fa4c4b"
+	sha1 hasValue "270307cfd41c0a357741dcede0201803dc8f6514"
+	sha256 hasValue "2265c74147a38369fa793278b231bef0df94e4e1d78a468300e8c909e990e295"
+	descriptionMd5 hasValue "ced9c077d900d44f367cd5d5caa0b9ee"
+	depends hasValue "libomp-10-dev (>= 10~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libomp-10-dev"
+	comparison hasValue ">="
+	version hasValue "10~"
+
+relationInstance depends(P0__libomp_dev,0,DepAtom__0)
+

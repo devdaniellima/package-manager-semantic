@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology diction
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__diction memberOf Package
+	package hasValue "diction"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/text"
+	installedSize hasValue "232"
+	maintainer hasValue "Original-Chris Lawrence <lawrencc@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.11-1build1"
+	fileName hasValue "pool/universe/d/diction/diction_1.11-1build1_amd64.deb"
+	size hasValue "48728"
+	md5sum hasValue "5455c5147e113a2466f53ece7e9155cc"
+	sha1 hasValue "25da5f4bd04122dd4d65c741901e12726877804e"
+	sha256 hasValue "15b038d98ecd35aa4794ccbcb0657f1b8e041631599ea02081c786fd04f2b33a"
+	description hasValue "utilitários de ajudar com \"style\" e \"diction\" (inglês e alemão)"
+	descriptionMd5 hasValue "f553fe24a1a473a59ad69fe5677adc5c"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__diction,0,DepAtom__0)
+

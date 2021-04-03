@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology vitrage_collector
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__vitrage_collector memberOf Package
+	package hasValue "vitrage-collector"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "27"
+	maintainer hasValue "Original-Debian OpenStack <team+openstack@tracker.debian.org>"
+	architecture hasValue "all"
+	version hasValue "6.0.1-0ubuntu1"
+	fileName hasValue "pool/universe/v/vitrage/vitrage-collector_6.0.1-0ubuntu1_all.deb"
+	size hasValue "4856"
+	md5sum hasValue "06551bb0ea05a4b73419ca430b442eef"
+	sha1 hasValue "026e3f46c5c455109910efd76ae6ea569fef3b7c"
+	sha256 hasValue "60fa6f93649d40b768a9ede1bebcd7c58b78dbb556c6e3e68627357c5f8f0cfc"
+	descriptionMd5 hasValue "8cfdeda7d2a18bbb64bec0232f06fbbd"
+	homepage hasValue "https://github.com/openstack/vitrage.git"
+	depends hasValue "adduser, python3-vitrage (= 6.0.1-0ubuntu1), vitrage-common (= 6.0.1-0ubuntu1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "adduser"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__vitrage_collector,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3-vitrage"
+	comparison hasValue "="
+	version hasValue "6.0.1-0ubuntu1"
+
+relationInstance depends(P0__vitrage_collector,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "vitrage-common"
+	comparison hasValue "="
+	version hasValue "6.0.1-0ubuntu1"
+
+relationInstance depends(P0__vitrage_collector,2,DepAtom__2)
+

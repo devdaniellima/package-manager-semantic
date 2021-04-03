@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python_phabricator
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python_phabricator memberOf Package
+	package hasValue "python-phabricator"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/python"
+	installedSize hasValue "90"
+	maintainer hasValue "Original-Héctor Orón Martínez <zumbi@debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.7.0-1ubuntu2"
+	fileName hasValue "pool/universe/p/python-phabricator/python-phabricator_0.7.0-1ubuntu2_all.deb"
+	size hasValue "16180"
+	md5sum hasValue "f7853ef52726bc81cf891795417093da"
+	sha1 hasValue "44a30746ba388a7ad0631d01acecd89a1e0c57ef"
+	sha256 hasValue "1a67fccb0c50f038e1dccb4f221396827951e7d33ecbb2694e0a5d0c999fb9f2"
+	descriptionMd5 hasValue "9977686c64fd2e03b14367aa67e20bd2"
+	homepage hasValue "https://github.com/disqus/python-phabricator"
+	depends hasValue "python2:any (<< 2.8), python2:any (>= 2.7~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue "<<"
+	version hasValue "2.8"
+
+relationInstance depends(P0__python_phabricator,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue ">="
+	version hasValue "2.7~"
+
+relationInstance depends(P0__python_phabricator,1,DepAtom__1)
+

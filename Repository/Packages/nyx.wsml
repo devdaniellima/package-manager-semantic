@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology nyx
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__nyx memberOf Package
+	package hasValue "nyx"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/oldlibs"
+	installedSize hasValue "295"
+	maintainer hasValue "Original-Ulises Vitulli <dererk@debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.1.0-2"
+	fileName hasValue "pool/universe/n/nyx/nyx_2.1.0-2_all.deb"
+	size hasValue "67248"
+	md5sum hasValue "e1cb827413db9ed9778f5c818df62073"
+	sha1 hasValue "d71efacf243425a217e5f1f36ab25b9439d6188a"
+	sha256 hasValue "a92efadf4cd20cf47eea5625eb12b6cbc539c4ec5106123841b5dcebbce394d2"
+	descriptionMd5 hasValue "3c8b3cd86f0f856af5890016f452c920"
+	homepage hasValue "https://nyx.torproject.org"
+	depends hasValue "python3-stem (>= 1.6.0), python3:any (>= 3.6~), python3-pkg-resources"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3-stem"
+	comparison hasValue ">="
+	version hasValue "1.6.0"
+
+relationInstance depends(P0__nyx,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ">="
+	version hasValue "3.6~"
+
+relationInstance depends(P0__nyx,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "python3-pkg-resources"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__nyx,2,DepAtom__2)
+

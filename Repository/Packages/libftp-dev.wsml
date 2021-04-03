@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libftp_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libftp_dev memberOf Package
+	package hasValue "libftp-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "147"
+	maintainer hasValue "Original-Raphaël Hertzog <hertzog@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "4.0-1-4"
+	replaces hasValue "ftplib-dev"
+	provides hasValue "ftplib-dev"
+	fileName hasValue "pool/universe/f/ftplib/libftp-dev_4.0-1-4_amd64.deb"
+	size hasValue "30828"
+	md5sum hasValue "e1de1c7e31ea1867764440158145e1ed"
+	sha1 hasValue "5ef2257d652b3d0e5e475d3c127ff952d2e25942"
+	sha256 hasValue "097965b9c7f9243f1f1886bee0eb9ee155b9d57415f870c7b980bc78970b8a02"
+	descriptionMd5 hasValue "d84ab7eac50b75d619595b72584b5bd9"
+	homepage hasValue "http://nbpfaus.net/~pfau/ftplib/"
+	depends hasValue "libftp4 (= 4.0-1-4), libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libftp4"
+	comparison hasValue "="
+	version hasValue "4.0-1-4"
+
+relationInstance depends(P0__libftp_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libftp_dev,1,DepAtom__1)
+

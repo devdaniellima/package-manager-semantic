@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology odbc_mariadb
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__odbc_mariadb memberOf Package
+	package hasValue "odbc-mariadb"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/database"
+	installedSize hasValue "348"
+	maintainer hasValue "Original-Debian MySQL Maintainers <pkg-mysql-maint@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.1.4-1"
+	fileName hasValue "pool/universe/m/mariadb-connector-odbc/odbc-mariadb_3.1.4-1_amd64.deb"
+	size hasValue "98300"
+	md5sum hasValue "184af4b67ce061bcc50e40d2402558d1"
+	sha1 hasValue "386f77ca9b92a2bcf0a6724296a50e2ec8a14281"
+	sha256 hasValue "2ed697067ce61504b28d0b61f73c9e4c984606d6894ce2971b3a64983a6d4649"
+	descriptionMd5 hasValue "1caed7558e1f2b538fb3bd787b8791c2"
+	homepage hasValue "https://mariadb.com/kb/en/library/mariadb-connector-odbc/"
+	depends hasValue "libc6 (>= 2.29), libmariadb3 (>= 3.0.0), odbcinst1debian2 (>= 2.3.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__odbc_mariadb,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libmariadb3"
+	comparison hasValue ">="
+	version hasValue "3.0.0"
+
+relationInstance depends(P0__odbc_mariadb,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "odbcinst1debian2"
+	comparison hasValue ">="
+	version hasValue "2.3.1"
+
+relationInstance depends(P0__odbc_mariadb,2,DepAtom__2)
+

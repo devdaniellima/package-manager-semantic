@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology nbdkit_plugin_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__nbdkit_plugin_dev memberOf Package
+	package hasValue "nbdkit-plugin-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "138"
+	maintainer hasValue "Original-Hilko Bengen <bengen@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.16.2-1ubuntu3"
+	conflicts hasValue "nbdkit (<< 1.1.5-2~)"
+	fileName hasValue "pool/universe/n/nbdkit/nbdkit-plugin-dev_1.16.2-1ubuntu3_amd64.deb"
+	size hasValue "50780"
+	md5sum hasValue "3a56c28cc2bda0d6bd93931b437e9c68"
+	sha1 hasValue "1a54a7d47dc868473fe73bcff1e263b2065c660f"
+	sha256 hasValue "9b7b20ec9bde8e18551237a39b1b70a178904ec45b6cb0424a2e4a60758746f3"
+	descriptionMd5 hasValue "efdb497b4aefd121118c1547ba408e87"
+	homepage hasValue "https://github.com/libguestfs/nbdkit"
+	depends hasValue "libc6 (>= 2.14), nbdkit"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__nbdkit_plugin_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "nbdkit"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__nbdkit_plugin_dev,1,DepAtom__1)
+

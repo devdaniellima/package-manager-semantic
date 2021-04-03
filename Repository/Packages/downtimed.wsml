@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology downtimed
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__downtimed memberOf Package
+	package hasValue "downtimed"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/admin"
+	installedSize hasValue "93"
+	maintainer hasValue "Original-Jörg Frings-Fürst <debian@jff.email>"
+	architecture hasValue "amd64"
+	version hasValue "1.0-2"
+	fileName hasValue "pool/universe/d/downtimed/downtimed_1.0-2_amd64.deb"
+	size hasValue "23984"
+	md5sum hasValue "5738ebb676a63f828d2113b4b14abf56"
+	sha1 hasValue "68def695f2d40258523e3e0577414e725ba30b76"
+	sha256 hasValue "087e206297f408e28a25c35b50645ce47ed7851d75ac96bf9a299746ebba3eef"
+	descriptionMd5 hasValue "7877e707ca5a56a75af1f3a264a60459"
+	homepage hasValue "http://dist.epipe.com/downtimed/"
+	depends hasValue "libc6 (>= 2.8), lsb-base (>= 3.2-14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.8"
+
+relationInstance depends(P0__downtimed,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "lsb-base"
+	comparison hasValue ">="
+	version hasValue "3.2-14"
+
+relationInstance depends(P0__downtimed,1,DepAtom__1)
+

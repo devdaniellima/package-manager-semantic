@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology utfcheck
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__utfcheck memberOf Package
+	package hasValue "utfcheck"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/text"
+	installedSize hasValue "49"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.2-2"
+	fileName hasValue "pool/universe/u/utfcheck/utfcheck_1.2-2_amd64.deb"
+	size hasValue "15124"
+	md5sum hasValue "0d939bf760104a54d5b7e5fdc3965e04"
+	sha1 hasValue "f2e5c5802e139dd01c412ace9df84d6bae54d01f"
+	sha256 hasValue "baf433d39e33e485a6d3f6f33e6ef23a2bd3f975a8da7f47cee833a2bf2e6ab8"
+	descriptionMd5 hasValue "d2a72bc0ea8160250197f2e7fb95c9e2"
+	homepage hasValue "http://unifoundry.com/utfcheck/"
+	depends hasValue "libc6 (>= 2.3.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.3.4"
+
+relationInstance depends(P0__utfcheck,0,DepAtom__0)
+

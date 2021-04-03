@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology dmarc_cat
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__dmarc_cat memberOf Package
+	package hasValue "dmarc-cat"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "4986"
+	maintainer hasValue "Original-Debian Go Packaging Team <team+pkg-go@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.12.0-1"
+	fileName hasValue "pool/universe/d/dmarc-cat/dmarc-cat_0.12.0-1_amd64.deb"
+	size hasValue "1556544"
+	md5sum hasValue "66b3c756c80f6a995a5ae811870e02b8"
+	sha1 hasValue "51cb0da5a49a5d7b8c00f8facd4743e7ae44e786"
+	sha256 hasValue "8d77fcacd32638c9e845c778b452a4ca148dddf569e99eb8c1efa988baf5cf9d"
+	descriptionMd5 hasValue "d9c96d25e1be67f1569e56b3a3736613"
+	homepage hasValue "https://github.com/keltia/dmarc-cat"
+	depends hasValue "libc6 (>= 2.14), libgpgme11 (>= 1.4.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__dmarc_cat,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgpgme11"
+	comparison hasValue ">="
+	version hasValue "1.4.1"
+
+relationInstance depends(P0__dmarc_cat,1,DepAtom__1)
+

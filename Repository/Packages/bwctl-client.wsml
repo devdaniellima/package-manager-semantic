@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology bwctl_client
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__bwctl_client memberOf Package
+	package hasValue "bwctl-client"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "274"
+	maintainer hasValue "Original-Raoul Gunnar Borenius <borenius@dfn.de>"
+	architecture hasValue "amd64"
+	version hasValue "1.5.4+dfsg1-1build1"
+	fileName hasValue "pool/universe/b/bwctl/bwctl-client_1.5.4+dfsg1-1build1_amd64.deb"
+	size hasValue "98304"
+	md5sum hasValue "ec546121f8cc752217b34504fb973d05"
+	sha1 hasValue "1751440616b57f5f1e2834682a8bcdf96ec6a341"
+	sha256 hasValue "1cc1d084a20f1eb330e0f936338108cab30a61d5b1af33f16d557bdae475a77a"
+	descriptionMd5 hasValue "0369e912f81fa1835ef1cabd2242b4da"
+	homepage hasValue "http://www.internet2.edu/performance/bwctl/"
+	depends hasValue "libc6 (>= 2.15)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__bwctl_client,0,DepAtom__0)
+

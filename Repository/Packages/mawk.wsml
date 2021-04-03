@@ -1,0 +1,55 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology mawk
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__mawk memberOf Package
+	package hasValue "mawk"
+	packageSource hasValue Source__S1
+	priority hasValue "required"
+	section hasValue "utils"
+	installedSize hasValue "233"
+	maintainer hasValue "Original-Boyuan Yang <byang@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.3.4.20200120-2"
+	provides hasValue "awk"
+	fileName hasValue "pool/main/m/mawk/mawk_1.3.4.20200120-2_amd64.deb"
+	size hasValue "95992"
+	md5sum hasValue "12465ae16709de75330b8ff4bac93e90"
+	sha1 hasValue "c7f605db0df62dfec07dcc8e40f8f53b6bd98731"
+	sha256 hasValue "79cb23a9c68a8e84db2788f821f4c85855f5bda8f56cf8d9e64fabe4593daced"
+	description hasValue "Pattern scanning and text processing language"
+	descriptionMd5 hasValue "05965bfcd1a2333e963d9f1945d161fc"
+	homepage hasValue "https://invisible-island.net/mawk/"
+	depends hasValue "libc6 (>= 2.29)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__mawk,0,DepAtom__0)
+

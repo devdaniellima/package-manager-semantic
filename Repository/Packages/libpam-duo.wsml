@@ -1,0 +1,74 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libpam_duo
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libpam_duo memberOf Package
+	package hasValue "libpam-duo"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/libs"
+	installedSize hasValue "65"
+	maintainer hasValue "Original-Kees Cook <kees@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.11.3-1"
+	fileName hasValue "pool/universe/d/duo-unix/libpam-duo_1.11.3-1_amd64.deb"
+	size hasValue "16104"
+	md5sum hasValue "6aaf4b6adb8f3917b1f98c0706208102"
+	sha1 hasValue "3cd4c3bc4ddc939a04fa4d8b39c59ec5be68ff8b"
+	sha256 hasValue "c43093bcb54bc5c266832aafadb3a1659b1b6be2533fce05c84635f49887eae1"
+	descriptionMd5 hasValue "5d0f3e76087d91df8b294245281e2929"
+	homepage hasValue "https://github.com/duosecurity/duo_unix"
+	depends hasValue "libc6 (>= 2.4), libduo3 (= 1.11.3-1), libpam0g (>= 0.99.7.1), libpam-runtime (>= 1.1.1-3~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libpam_duo,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libduo3"
+	comparison hasValue "="
+	version hasValue "1.11.3-1"
+
+relationInstance depends(P0__libpam_duo,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libpam0g"
+	comparison hasValue ">="
+	version hasValue "0.99.7.1"
+
+relationInstance depends(P0__libpam_duo,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "libpam-runtime"
+	comparison hasValue ">="
+	version hasValue "1.1.1-3~"
+
+relationInstance depends(P0__libpam_duo,3,DepAtom__3)
+

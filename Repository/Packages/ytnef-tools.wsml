@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ytnef_tools
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ytnef_tools memberOf Package
+	package hasValue "ytnef-tools"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/utils"
+	installedSize hasValue "64"
+	maintainer hasValue "Original-Ricardo Mones <mones@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.9.3-1"
+	fileName hasValue "pool/universe/liby/libytnef/ytnef-tools_1.9.3-1_amd64.deb"
+	size hasValue "16180"
+	md5sum hasValue "0ebfd2280cf09e3f51f6fbf31277aa7b"
+	sha1 hasValue "59e8304e2db8b3215615b18e494d190c32c2ad73"
+	sha256 hasValue "50942cc6cb379675f571ca046911b30c7c9f68cede06eb854e550d36683a1ff9"
+	descriptionMd5 hasValue "194bf6cc97712208cc44c92a91e15baa"
+	homepage hasValue "https://github.com/Yeraze/ytnef"
+	depends hasValue "libc6 (>= 2.4), libytnef0 (>= 0.0.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__ytnef_tools,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libytnef0"
+	comparison hasValue ">="
+	version hasValue "0.0.0"
+
+relationInstance depends(P0__ytnef_tools,1,DepAtom__1)
+

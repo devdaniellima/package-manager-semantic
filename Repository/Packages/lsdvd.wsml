@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology lsdvd
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__lsdvd memberOf Package
+	package hasValue "lsdvd"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "52"
+	maintainer hasValue "Original-Laszlo Boszormenyi (GCS) <gcs@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.17-1build2"
+	fileName hasValue "pool/universe/l/lsdvd/lsdvd_0.17-1build2_amd64.deb"
+	size hasValue "15232"
+	md5sum hasValue "8258fbc30b4a4624b75c3c436d93aa92"
+	sha1 hasValue "850a12a9353c598be15ef24dca30bb21d3590039"
+	sha256 hasValue "27e13795dc9d9e565e2a06cf38b77475a438337207a7aecc1b0e4dc981f29653"
+	descriptionMd5 hasValue "c9f263736f6ccd41c0223d38bd63a516"
+	homepage hasValue "http://sourceforge.net/projects/lsdvd/"
+	depends hasValue "libc6 (>= 2.4), libdvdread7 (>= 4.1.3)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__lsdvd,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libdvdread7"
+	comparison hasValue ">="
+	version hasValue "4.1.3"
+
+relationInstance depends(P0__lsdvd,1,DepAtom__1)
+

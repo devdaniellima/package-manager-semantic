@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology lib64ncurses6
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__lib64ncurses6 memberOf Package
+	package hasValue "lib64ncurses6"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libs"
+	installedSize hasValue "335"
+	maintainer hasValue "Original-Craig Small <csmall@debian.org>"
+	architecture hasValue "i386"
+	version hasValue "6.2-0ubuntu2"
+	fileName hasValue "pool/main/n/ncurses/lib64ncurses6_6.2-0ubuntu2_i386.deb"
+	size hasValue "100568"
+	md5sum hasValue "d05962f337c5807be229d1b8f3297f0c"
+	sha1 hasValue "0315119fa93384595a6ac33b26f1ec2668d9d618"
+	sha256 hasValue "29c2e4e78e322bbb72ac9e6e8b6e14d549872489a36a5c71d2eee02c038dea87"
+	description hasValue "shared libraries for terminal handling (64-bit)"
+	descriptionMd5 hasValue "b8bc33d7762cd795ba47795e882f7c30"
+	homepage hasValue "https://invisible-island.net/ncurses/"
+	depends hasValue "lib64tinfo6 (= 6.2-0ubuntu2), libc6-amd64 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "lib64tinfo6"
+	comparison hasValue "="
+	version hasValue "6.2-0ubuntu2"
+
+relationInstance depends(P0__lib64ncurses6,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6-amd64"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__lib64ncurses6,1,DepAtom__1)
+

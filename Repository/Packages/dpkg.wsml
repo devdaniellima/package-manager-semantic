@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology dpkg
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__dpkg memberOf Package
+	package hasValue "dpkg"
+	packageSource hasValue Source__S1
+	priority hasValue "required"
+	section hasValue "admin"
+	installedSize hasValue "6740"
+	maintainer hasValue "Original-Dpkg Developers <debian-dpkg@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.19.7ubuntu3"
+	fileName hasValue "pool/main/d/dpkg/dpkg_1.19.7ubuntu3_amd64.deb"
+	size hasValue "1127856"
+	md5sum hasValue "f595c79475d3c2ac808eaac389071c35"
+	sha1 hasValue "b9cb6b292865ec85bca1021085bc0e81e160e676"
+	sha256 hasValue "76132be95c7199f902767fb329e0f33210ac5b5b1816746543bc75f795d9a37c"
+	description hasValue "sistema de gerenciamento de pacotes Debian"
+	descriptionMd5 hasValue "2f156c6a30cc39895ad3487111e8c190"
+	homepage hasValue "https://wiki.debian.org/Teams/Dpkg"
+	depends hasValue "tar (>= 1.28-1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "tar"
+	comparison hasValue ">="
+	version hasValue "1.28-1"
+
+relationInstance depends(P0__dpkg,0,DepAtom__0)
+

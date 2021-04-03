@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology maven_repo_helper
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__maven_repo_helper memberOf Package
+	package hasValue "maven-repo-helper"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/java"
+	installedSize hasValue "337"
+	maintainer hasValue "Original-Debian Java Maintainers <pkg-java-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.9.4"
+	fileName hasValue "pool/universe/m/maven-repo-helper/maven-repo-helper_1.9.4_all.deb"
+	size hasValue "136988"
+	md5sum hasValue "4ac29f48d5b5df03b76bdc45326f5175"
+	sha1 hasValue "523fc21462124a96613c2bc98f9999d70d371633"
+	sha256 hasValue "c351a1ceb58bb84ba0de437d3ecd832ec472cb27e5b7a24cf03034cbf4dae7da"
+	descriptionMd5 hasValue "eb08bec908759f1bd4f918393d802196"
+	homepage hasValue "https://wiki.debian.org/Java/MavenRepoSpec"
+	depends hasValue "default-jre-headless (>= 2:1.7) | java7-runtime-headless"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "default-jre-headless"
+	comparison hasValue ">="
+	version hasValue "2:1.7"
+
+relationInstance depends(P0__maven_repo_helper,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "java7-runtime-headless"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__maven_repo_helper,0,DepAtom__1)
+

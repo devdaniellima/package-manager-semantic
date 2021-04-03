@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology science_simulations
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__science_simulations memberOf Package
+	package hasValue "science-simulations"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/science"
+	installedSize hasValue "40"
+	maintainer hasValue "Original-Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.12ubuntu1"
+	fileName hasValue "pool/universe/d/debian-science/science-simulations_1.12ubuntu1_all.deb"
+	size hasValue "3996"
+	md5sum hasValue "da93f009b0f86e3cacf174f8e37d7458"
+	sha1 hasValue "6edd5cd409a8d3b07bb3ece049c7323516f497c8"
+	sha256 hasValue "c31ceac9ad9b1ab7d4c1b24f3a6bc2e4d355cfccb8c15cad15854c0394374383"
+	descriptionMd5 hasValue "ee41931d9f43bd8f0471aa37d3ef9fae"
+	homepage hasValue "https://wiki.debian.org/DebianScience/"
+	depends hasValue "science-config (= 1.12ubuntu1), science-tasks (= 1.12ubuntu1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "science-config"
+	comparison hasValue "="
+	version hasValue "1.12ubuntu1"
+
+relationInstance depends(P0__science_simulations,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "science-tasks"
+	comparison hasValue "="
+	version hasValue "1.12ubuntu1"
+
+relationInstance depends(P0__science_simulations,1,DepAtom__1)
+

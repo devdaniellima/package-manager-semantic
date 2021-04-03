@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology wput
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__wput memberOf Package
+	package hasValue "wput"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/web"
+	installedSize hasValue "444"
+	maintainer hasValue "Original-Stephen Kitt <skitt@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.6.2+git20130413-8"
+	fileName hasValue "pool/universe/w/wput/wput_0.6.2+git20130413-8_amd64.deb"
+	size hasValue "102712"
+	md5sum hasValue "c7b598300f73e370545bf45daeaea49c"
+	sha1 hasValue "55f08b16e3c48fe1d9c111fc66d2d75ce6a81ad8"
+	sha256 hasValue "c90e6649ee8dcf2888097c6f38d0cd3da14a845f43b4fd334c772fe21cc5009d"
+	description hasValue "tiny wget-like ftp-client for uploading files"
+	descriptionMd5 hasValue "58cff037ee917cdcbfea7f1015b29f8e"
+	homepage hasValue "http://wput.sourceforge.net/"
+	depends hasValue "libc6 (>= 2.15), libgnutls-openssl27 (>= 3.0-0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__wput,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgnutls-openssl27"
+	comparison hasValue ">="
+	version hasValue "3.0-0"
+
+relationInstance depends(P0__wput,1,DepAtom__1)
+

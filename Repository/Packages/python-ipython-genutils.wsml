@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python_ipython_genutils
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python_ipython_genutils memberOf Package
+	package hasValue "python-ipython-genutils"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "84"
+	maintainer hasValue "Original-Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.2.0-1ubuntu1"
+	fileName hasValue "pool/universe/i/ipython-genutils/python-ipython-genutils_0.2.0-1ubuntu1_all.deb"
+	size hasValue "21024"
+	md5sum hasValue "0c14e54f740371870dd84f0dfb4cf1c6"
+	sha1 hasValue "58d86518e62ad95936b557877240f4a98177c6b0"
+	sha256 hasValue "c0412864c80eb2d5d3700955286448db3c1005b2f0dc3dbaf5e967889ee5ae3d"
+	descriptionMd5 hasValue "f99ca97bd94d7cd980cbec88f8f7c547"
+	homepage hasValue "https://github.com/ipython/ipython_genutils"
+	depends hasValue "python2:any (<< 2.8), python2:any (>= 2.7~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue "<<"
+	version hasValue "2.8"
+
+relationInstance depends(P0__python_ipython_genutils,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue ">="
+	version hasValue "2.7~"
+
+relationInstance depends(P0__python_ipython_genutils,1,DepAtom__1)
+

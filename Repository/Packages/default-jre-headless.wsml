@@ -1,0 +1,63 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology default_jre_headless
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__default_jre_headless memberOf Package
+	package hasValue "default-jre-headless"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "interpreters"
+	installedSize hasValue "20"
+	maintainer hasValue "Original-Debian Java Maintainers <pkg-java-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2:1.11-72"
+	replaces hasValue "openjdk-6-jre-headless (<< 6b23~pre8-2~)"
+	provides hasValue "java-runtime-headless, java10-runtime-headless, java11-runtime-headless, java2-runtime-headless, java5-runtime-headless, java6-runtime-headless, java7-runtime-headless, java8-runtime-headless, java9-runtime-headless"
+	fileName hasValue "pool/main/j/java-common/default-jre-headless_1.11-72_amd64.deb"
+	size hasValue "3192"
+	md5sum hasValue "fd5ef627a4897227c5440b57570dfa81"
+	sha1 hasValue "f5e8fe12ee1602489cb42ae8815e92b3090e09ef"
+	sha256 hasValue "78965d3d8a4afd688914124242f6a3d9699fb11cfbe454f0bf7e9ee43af6d210"
+	description hasValue "runtime Java padrão ou compatível com Java (sem interface)"
+	descriptionMd5 hasValue "6a80f216cbac62099ce78c02764c55d1"
+	homepage hasValue "https://wiki.debian.org/Java/"
+	depends hasValue "openjdk-11-jre-headless, java-common"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "openjdk-11-jre-headless"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__default_jre_headless,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "java-common"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__default_jre_headless,1,DepAtom__1)
+

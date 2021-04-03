@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ruby_hamster
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ruby_hamster memberOf Package
+	package hasValue "ruby-hamster"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/ruby"
+	installedSize hasValue "287"
+	maintainer hasValue "Original-Debian Ruby Extras Maintainers <pkg-ruby-extras-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "3.0.0-2"
+	fileName hasValue "pool/universe/r/ruby-hamster/ruby-hamster_3.0.0-2_all.deb"
+	size hasValue "43028"
+	md5sum hasValue "0b05dcd73ec9c58a2beb0b7a7f0bc2cb"
+	sha1 hasValue "361a9c337774c0b5f6e1b9f9a975e22f5df40d9a"
+	sha256 hasValue "623dfc16fb938f639e84eb9ab7413fa0245070e9aaa4ec3e51a3b82670a159fd"
+	descriptionMd5 hasValue "daf46e1412cbab5b80a5a3c9fbb92102"
+	homepage hasValue "https://github.com/hamstergem/hamster"
+	depends hasValue "ruby | ruby-interpreter, ruby-concurrent (>= 1.0.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "ruby"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ruby_hamster,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "ruby-interpreter"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ruby_hamster,0,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "ruby-concurrent"
+	comparison hasValue ">="
+	version hasValue "1.0.0"
+
+relationInstance depends(P0__ruby_hamster,1,DepAtom__2)
+

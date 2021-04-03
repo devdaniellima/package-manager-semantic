@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libaprutil1_dbd_mysql
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libaprutil1_dbd_mysql memberOf Package
+	package hasValue "libaprutil1-dbd-mysql"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "55"
+	maintainer hasValue "Original-Debian Apache Maintainers <debian-apache@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.6.1-4ubuntu2"
+	fileName hasValue "pool/universe/a/apr-util/libaprutil1-dbd-mysql_1.6.1-4ubuntu2_amd64.deb"
+	size hasValue "12544"
+	md5sum hasValue "824a604126379896a5bbf41369644167"
+	sha1 hasValue "b4a3eb18b24a1b07d66787dbaf5ef4b6821883f5"
+	sha256 hasValue "ffa21092267397a4551a6b826760d8e6ae2a4ed47eebcb01cb9ef065bd5582d0"
+	descriptionMd5 hasValue "15a666ed46c11f75bd13c5e02383601c"
+	homepage hasValue "http://apr.apache.org/"
+	depends hasValue "libaprutil1 (= 1.6.1-4ubuntu2), libc6 (>= 2.4), libmysqlclient21 (>= 8.0.11)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libaprutil1"
+	comparison hasValue "="
+	version hasValue "1.6.1-4ubuntu2"
+
+relationInstance depends(P0__libaprutil1_dbd_mysql,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libaprutil1_dbd_mysql,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libmysqlclient21"
+	comparison hasValue ">="
+	version hasValue "8.0.11"
+
+relationInstance depends(P0__libaprutil1_dbd_mysql,2,DepAtom__2)
+

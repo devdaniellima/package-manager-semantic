@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology elpa_git_messenger
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__elpa_git_messenger memberOf Package
+	package hasValue "elpa-git-messenger"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/lisp"
+	installedSize hasValue "47"
+	maintainer hasValue "Original-Debian Emacsen team <debian-emacsen@lists.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.18-4"
+	fileName hasValue "pool/universe/e/emacs-git-messenger/elpa-git-messenger_0.18-4_all.deb"
+	size hasValue "8268"
+	md5sum hasValue "93ba8f86056e55ecc3177f3e384ae259"
+	sha1 hasValue "a74bd4f553e11fde51bfd6bc306b8b1f9c2efd6b"
+	sha256 hasValue "6b7e75adfe97566594af13423c21c8665bc7653da117d80d64d4ddf72a978085"
+	descriptionMd5 hasValue "e23c37da03d31c6339888d5923ba6574"
+	homepage hasValue "https://github.com/syohex/emacs-git-messenger"
+	depends hasValue "elpa-popup (>= 0.5.0), emacsen-common"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "elpa-popup"
+	comparison hasValue ">="
+	version hasValue "0.5.0"
+
+relationInstance depends(P0__elpa_git_messenger,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "emacsen-common"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__elpa_git_messenger,1,DepAtom__1)
+

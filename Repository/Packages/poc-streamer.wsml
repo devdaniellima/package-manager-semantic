@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology poc_streamer
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__poc_streamer memberOf Package
+	package hasValue "poc-streamer"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/sound"
+	installedSize hasValue "493"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.4.2-4build1"
+	fileName hasValue "pool/universe/p/poc-streamer/poc-streamer_0.4.2-4build1_amd64.deb"
+	size hasValue "90756"
+	md5sum hasValue "4b2c0a659b82272b85b0e434c8fb2e3c"
+	sha1 hasValue "d26f6afab8b7eb63d530243224e537c1d6f4a818"
+	sha256 hasValue "31f1d6e463472485f2d3b2c4a73c4b83298aea36cd7c5bdc023a133981553983"
+	descriptionMd5 hasValue "0f2761790204b2a648514c21bbfb9831"
+	homepage hasValue "https://bl0rg.net/software/poc/"
+	depends hasValue "libc6 (>= 2.15)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__poc_streamer,0,DepAtom__0)
+

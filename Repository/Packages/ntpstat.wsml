@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ntpstat
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ntpstat memberOf Package
+	package hasValue "ntpstat"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/web"
+	installedSize hasValue "23"
+	maintainer hasValue "Original-Debian OpenStack <team+openstack@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.0.0.1-2"
+	fileName hasValue "pool/universe/n/ntpstat/ntpstat_0.0.0.1-2_amd64.deb"
+	size hasValue "6200"
+	md5sum hasValue "c75025c0e5357f0b8a09ab89eef92e74"
+	sha1 hasValue "10e9177e6299e68aa8a7800e36929e19631768c2"
+	sha256 hasValue "b7df2c7ae023260b19aaf3ad548a9a2f272226583639a61e856cba58e727f9a0"
+	descriptionMd5 hasValue "124055280a787a3f7b5910300c2e44d8"
+	homepage hasValue "https://github.com/darkhelmet/ntpstat"
+	depends hasValue "libc6 (>= 2.15)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__ntpstat,0,DepAtom__0)
+

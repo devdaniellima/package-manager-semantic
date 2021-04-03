@@ -1,0 +1,69 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology wamerican_large
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__wamerican_large memberOf Package
+	package hasValue "wamerican-large"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/text"
+	installedSize hasValue "1642"
+	maintainer hasValue "Original-Don Armstrong <don@debian.org>"
+	architecture hasValue "all"
+	version hasValue "2018.04.16-1"
+	provides hasValue "wordlist"
+	fileName hasValue "pool/universe/s/scowl/wamerican-large_2018.04.16-1_all.deb"
+	size hasValue "364620"
+	md5sum hasValue "705436e95da124f57ee32328587dce23"
+	sha1 hasValue "ff4d4a0c2dcec9ba5f33de041a32358bbcdedac6"
+	sha256 hasValue "19c60d0a316a892015283a5171503593a1f8eb04faeefa408f85cc1c635fd608"
+	description hasValue "palavras do dicionário de inglês americano para /usr/share/dict"
+	descriptionMd5 hasValue "41b875a0e51934c13cde74f932a1a742"
+	homepage hasValue "http://wordlist.sourceforge.net/"
+	depends hasValue "dictionaries-common (>= 0.20), debconf (>= 0.5) | debconf-2.0"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "dictionaries-common"
+	comparison hasValue ">="
+	version hasValue "0.20"
+
+relationInstance depends(P0__wamerican_large,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "debconf"
+	comparison hasValue ">="
+	version hasValue "0.5"
+
+relationInstance depends(P0__wamerican_large,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "debconf-2.0"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__wamerican_large,1,DepAtom__2)
+

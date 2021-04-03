@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python_zipp
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python_zipp memberOf Package
+	package hasValue "python-zipp"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "25"
+	maintainer hasValue "Original-Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.0.0-1"
+	fileName hasValue "pool/universe/p/python-zipp/python-zipp_1.0.0-1_all.deb"
+	size hasValue "5224"
+	md5sum hasValue "bb3696f352e6c26960dfb1cc997b13a4"
+	sha1 hasValue "0ef0e71e7f9b2ba1994819eaf973b30c9ff4251a"
+	sha256 hasValue "793e1ed8599829d75551ca27f8cc3d21c63ea134ce32427fb1f97c69fe3e8f78"
+	descriptionMd5 hasValue "5e8e9388b6439053cfcef49bee690153"
+	homepage hasValue "https://github.com/jaraco/zipp"
+	depends hasValue "python-more-itertools, python2:any (<< 2.8), python2:any (>= 2.7~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python-more-itertools"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__python_zipp,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue "<<"
+	version hasValue "2.8"
+
+relationInstance depends(P0__python_zipp,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue ">="
+	version hasValue "2.7~"
+
+relationInstance depends(P0__python_zipp,2,DepAtom__2)
+

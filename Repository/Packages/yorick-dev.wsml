@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology yorick_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__yorick_dev memberOf Package
+	package hasValue "yorick-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/math"
+	installedSize hasValue "2749"
+	maintainer hasValue "Original-Debian Science Maintainers <debian-science-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.2.04+dfsg1-10"
+	fileName hasValue "pool/universe/y/yorick/yorick-dev_2.2.04+dfsg1-10_amd64.deb"
+	size hasValue "630352"
+	md5sum hasValue "831734ab7ae427e994faab0f364ee1d7"
+	sha1 hasValue "c1b545d63e51a39d0c5f7c8c1c9c0994c1f424d5"
+	sha256 hasValue "450129336445efac4c0bb6778243f8c799cf8fa0716c2400bf033176119e195e"
+	descriptionMd5 hasValue "47b2cc996f40b628ba977b2a1c16c7d1"
+	homepage hasValue "http://yorick.sourceforge.net"
+	depends hasValue "yorick (= 2.2.04+dfsg1-10), libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "yorick"
+	comparison hasValue "="
+	version hasValue "2.2.04+dfsg1-10"
+
+relationInstance depends(P0__yorick_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__yorick_dev,1,DepAtom__1)
+

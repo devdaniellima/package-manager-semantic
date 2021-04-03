@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ssg_debian
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ssg_debian memberOf Package
+	package hasValue "ssg-debian"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "3534"
+	maintainer hasValue "Original-Debian Security Tools <team+pkg-security@tracker.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.1.39-2"
+	fileName hasValue "pool/universe/s/scap-security-guide/ssg-debian_0.1.39-2_all.deb"
+	size hasValue "149972"
+	md5sum hasValue "482c4e9ebcdee93163b6f49a71187a96"
+	sha1 hasValue "da8b867fd8995a7969f3dd1ea63ed44ae08249ba"
+	sha256 hasValue "96a888b66cc1294b9001fa67cc7dd159ecfbfa9c95fbab2e9a32c2b917491162"
+	descriptionMd5 hasValue "c10b30b8d40a47bc6729e1521d92df14"
+	homepage hasValue "https://www.open-scap.org/security-policies/scap-security-guide"
+	depends hasValue "ssg-base"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "ssg-base"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ssg_debian,0,DepAtom__0)
+

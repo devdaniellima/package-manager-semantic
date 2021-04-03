@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology wadc
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__wadc memberOf Package
+	package hasValue "wadc"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "966"
+	maintainer hasValue "Original-Jonathan Dowland <jmtd@debian.org>"
+	architecture hasValue "all"
+	version hasValue "3.0-1"
+	fileName hasValue "pool/universe/w/wadc/wadc_3.0-1_all.deb"
+	size hasValue "465516"
+	md5sum hasValue "ab5c6242d3d04baaebdd256c04bc729f"
+	sha1 hasValue "03157fa1b7cce2effbba58cd6939ba4f18cfe9b9"
+	sha256 hasValue "110223f1d39ff9eb2a2e4814c8019aacf5b9cdad75f33d70945ad7bfd537c77f"
+	descriptionMd5 hasValue "247a896258b3c81ec00f60a660532a3c"
+	homepage hasValue "https://jmtd.net/wadc/"
+	depends hasValue "default-jre (>= 2:1.8) | java8-runtime, jarwrapper"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "default-jre"
+	comparison hasValue ">="
+	version hasValue "2:1.8"
+
+relationInstance depends(P0__wadc,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "java8-runtime"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__wadc,0,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "jarwrapper"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__wadc,1,DepAtom__2)
+

@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libtasn1_bin
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libtasn1_bin memberOf Package
+	package hasValue "libtasn1-bin"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/devel"
+	installedSize hasValue "80"
+	maintainer hasValue "Original-Debian GnuTLS Maintainers <pkg-gnutls-maint@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "4.16.0-2"
+	replaces hasValue "libtasn1-3-bin"
+	fileName hasValue "pool/universe/libt/libtasn1-6/libtasn1-bin_4.16.0-2_amd64.deb"
+	size hasValue "13136"
+	md5sum hasValue "66500ef728a75ae65a418aa6d6531530"
+	sha1 hasValue "688eb9fec61902e1769c503664c7196fe6661ef2"
+	sha256 hasValue "4f771539c9668c32f1558cac4d3753109e7053202397b0f70e1c613a625bd221"
+	description hasValue "gerencia estruturas ASN.1 (binários)"
+	descriptionMd5 hasValue "732971f746a6a2ec0311889ae799da20"
+	homepage hasValue "https://www.gnu.org/software/libtasn1/"
+	depends hasValue "libc6 (>= 2.17), libtasn1-6 (>= 4.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.17"
+
+relationInstance depends(P0__libtasn1_bin,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libtasn1-6"
+	comparison hasValue ">="
+	version hasValue "4.14"
+
+relationInstance depends(P0__libtasn1_bin,1,DepAtom__1)
+

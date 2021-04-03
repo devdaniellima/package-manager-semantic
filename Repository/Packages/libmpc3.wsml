@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libmpc3
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libmpc3 memberOf Package
+	package hasValue "libmpc3"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "libs"
+	installedSize hasValue "110"
+	maintainer hasValue "Original-Debian GCC Maintainers <debian-gcc@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.1.0-1"
+	fileName hasValue "pool/main/m/mpclib3/libmpc3_1.1.0-1_amd64.deb"
+	size hasValue "40784"
+	md5sum hasValue "904f40b9d70151d42df9b826986a24d8"
+	sha1 hasValue "9f83a5274f9ae89eee2b9e977dcbf368904a9ba9"
+	sha256 hasValue "3c3c45aa50ce1ff753107766c6fea35a82c52ad11afcab0abfd0cd0c76730f87"
+	description hasValue "biblioteca de ponto flutuante complexo de múltipla precisão"
+	descriptionMd5 hasValue "ce4238ae925ae6ad84bc52508aa5e8ae"
+	homepage hasValue "http://www.multiprecision.org/mpc/"
+	depends hasValue "libc6 (>= 2.4), libgmp10, libmpfr6 (>= 4.0.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libmpc3,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgmp10"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libmpc3,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libmpfr6"
+	comparison hasValue ">="
+	version hasValue "4.0.0"
+
+relationInstance depends(P0__libmpc3,2,DepAtom__2)
+

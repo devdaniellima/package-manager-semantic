@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ruby_git
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ruby_git memberOf Package
+	package hasValue "ruby-git"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/ruby"
+	installedSize hasValue "111"
+	maintainer hasValue "Original-Michael Schutte <michi@debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.6.0+0-1"
+	fileName hasValue "pool/universe/r/ruby-git/ruby-git_1.6.0+0-1_all.deb"
+	size hasValue "25952"
+	md5sum hasValue "380a0ac0dbec908655494169e249a64a"
+	sha1 hasValue "3ee54d649c194175c84bc9b9792b474ac157594d"
+	sha256 hasValue "95223e3f30172743d697a3d29f8c858f61d4f2ee0970b71c3ce06362e5fe7077"
+	description hasValue "interface Ruby para o sistema de controle de versões Git"
+	descriptionMd5 hasValue "8d92ce404f5bbcb4919d4faf2921e520"
+	homepage hasValue "https://github.com/ruby-git/ruby-git"
+	depends hasValue "ruby-rchardet (>= 1.8)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "ruby-rchardet"
+	comparison hasValue ">="
+	version hasValue "1.8"
+
+relationInstance depends(P0__ruby_git,0,DepAtom__0)
+

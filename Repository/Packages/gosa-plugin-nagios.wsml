@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gosa_plugin_nagios
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gosa_plugin_nagios memberOf Package
+	package hasValue "gosa-plugin-nagios"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/web"
+	installedSize hasValue "219"
+	maintainer hasValue "Original-Debian Edu Packaging Team <debian-edu-pkg-team@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.7.4+reloaded3-11"
+	fileName hasValue "pool/universe/g/gosa/gosa-plugin-nagios_2.7.4+reloaded3-11_all.deb"
+	size hasValue "33696"
+	md5sum hasValue "e455d0ec41dd60894bd386a8a0f02412"
+	sha1 hasValue "8eaaaafec5a69f3218c3c7427991bd90caf8d311"
+	sha256 hasValue "3c949ebe45b981d1f7dcda042e0d67c21d152408522095e900720ac1a3e2c710"
+	descriptionMd5 hasValue "642081f060481308bd001feb5eb53a32"
+	homepage hasValue "https://github.com/gosa-project"
+	depends hasValue "gosa (= 2.7.4+reloaded3-11), libswitch-perl | perl (<< 5.10.1-13)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "gosa"
+	comparison hasValue "="
+	version hasValue "2.7.4+reloaded3-11"
+
+relationInstance depends(P0__gosa_plugin_nagios,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libswitch-perl"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__gosa_plugin_nagios,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "perl"
+	comparison hasValue "<<"
+	version hasValue "5.10.1-13"
+
+relationInstance depends(P0__gosa_plugin_nagios,1,DepAtom__2)
+

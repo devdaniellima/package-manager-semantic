@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology lltdscan
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__lltdscan memberOf Package
+	package hasValue "lltdscan"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "33"
+	maintainer hasValue "Original-Gürkan Myczko <gurkan@phys.ethz.ch>"
+	architecture hasValue "amd64"
+	version hasValue "0+20180223-1"
+	fileName hasValue "pool/universe/l/lltdscan/lltdscan_0+20180223-1_amd64.deb"
+	size hasValue "9296"
+	md5sum hasValue "7fd8069b7efa0571a3fce52334cc8f6d"
+	sha1 hasValue "67610d555bbeb1a23697a3c9e044de9ef0190235"
+	sha256 hasValue "5aba712f7f4bd8e55f977dc9bdab1d9bdc63446b88ee0a6ff946ca57934aa869"
+	descriptionMd5 hasValue "14ca9e56654222a4f4c46e3c88b4cac9"
+	homepage hasValue "http://zed.0xff.me/lltd"
+	depends hasValue "libc6 (>= 2.14), libnet1 (>= 1.1.2.1), libpcap0.8 (>= 0.9.8)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__lltdscan,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libnet1"
+	comparison hasValue ">="
+	version hasValue "1.1.2.1"
+
+relationInstance depends(P0__lltdscan,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libpcap0.8"
+	comparison hasValue ">="
+	version hasValue "0.9.8"
+
+relationInstance depends(P0__lltdscan,2,DepAtom__2)
+

@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libsigscan1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libsigscan1 memberOf Package
+	package hasValue "libsigscan1"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "908"
+	maintainer hasValue "Original-Debian Security Tools <team+pkg-security@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "20190103-2"
+	fileName hasValue "pool/universe/libs/libsigscan/libsigscan1_20190103-2_amd64.deb"
+	size hasValue "314580"
+	md5sum hasValue "b7f5b2d7d79b45f57a80b08ec06d1d76"
+	sha1 hasValue "d87a28616eb4373ca8a8d455f8bc0143e49045a4"
+	sha256 hasValue "1516c4aad10c428b216522415e5fb351cc814a292846f7dbce9d2259b6d0ceb2"
+	description hasValue "binary signature scanning library"
+	descriptionMd5 hasValue "2ac42ed06538e167efe0ea8718660fc4"
+	homepage hasValue "https://github.com/libyal/libsigscan"
+	depends hasValue "libbfio1 (>= 20120425), libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libbfio1"
+	comparison hasValue ">="
+	version hasValue "20120425"
+
+relationInstance depends(P0__libsigscan1,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libsigscan1,1,DepAtom__1)
+

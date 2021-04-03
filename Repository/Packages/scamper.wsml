@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology scamper
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__scamper memberOf Package
+	package hasValue "scamper"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/admin"
+	installedSize hasValue "1934"
+	maintainer hasValue "Original-Internet Measurement Packaging Team <pkg-netmeasure-discuss@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "20191102-1"
+	fileName hasValue "pool/universe/s/scamper/scamper_20191102-1_amd64.deb"
+	size hasValue "503052"
+	md5sum hasValue "b990e6441d7cf1d143dab28cc30b5d21"
+	sha1 hasValue "f871f5b0afbf4ad6e2b1d22e2e2d5859d6998a3a"
+	sha256 hasValue "8c42f5f0565328f3f0533314074c74549dd6c773bf035e76fd98a530bf85413d"
+	descriptionMd5 hasValue "e135693807d56206a09098977b723260"
+	homepage hasValue "https://www.caida.org/tools/measurement/scamper/"
+	depends hasValue "libc6 (>= 2.15), libscamperfile0 (>= 20191102)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__scamper,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libscamperfile0"
+	comparison hasValue ">="
+	version hasValue "20191102"
+
+relationInstance depends(P0__scamper,1,DepAtom__1)
+

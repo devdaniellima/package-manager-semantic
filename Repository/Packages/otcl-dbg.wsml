@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology otcl_dbg
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__otcl_dbg memberOf Package
+	package hasValue "otcl-dbg"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/debug"
+	installedSize hasValue "181"
+	maintainer hasValue "Original-Debian Network Simulators Team <team+netsim@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.14+dfsg-4"
+	fileName hasValue "pool/universe/o/otcl/otcl-dbg_1.14+dfsg-4_amd64.deb"
+	size hasValue "146144"
+	md5sum hasValue "e19f6d03411e618f3f932f973ec56c91"
+	sha1 hasValue "928cb6e05d2bd61d5bdd8971a61ab47cb69e1b2f"
+	sha256 hasValue "dcc4ceeee7809b550aa4d4be6025585c30a3eaa96d354e11c622c7ed991ff09f"
+	descriptionMd5 hasValue "833142ba61a6baf7479ecdcd9db5e867"
+	homepage hasValue "http://otcl-tclcl.sourceforge.net/otcl/"
+	depends hasValue "libotcl1 (= 1.14+dfsg-4), otcl-shells (= 1.14+dfsg-4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libotcl1"
+	comparison hasValue "="
+	version hasValue "1.14+dfsg-4"
+
+relationInstance depends(P0__otcl_dbg,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "otcl-shells"
+	comparison hasValue "="
+	version hasValue "1.14+dfsg-4"
+
+relationInstance depends(P0__otcl_dbg,1,DepAtom__1)
+

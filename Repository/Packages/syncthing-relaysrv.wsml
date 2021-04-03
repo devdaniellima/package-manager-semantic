@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology syncthing_relaysrv
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__syncthing_relaysrv memberOf Package
+	package hasValue "syncthing-relaysrv"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/utils"
+	installedSize hasValue "11210"
+	maintainer hasValue "Original-Debian Go Packaging Team <pkg-go-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.1.4~ds1-4ubuntu1"
+	fileName hasValue "pool/universe/s/syncthing/syncthing-relaysrv_1.1.4~ds1-4ubuntu1_amd64.deb"
+	size hasValue "3315812"
+	md5sum hasValue "b035a639735ee5347fc0b16a9e0e53b0"
+	sha1 hasValue "b517240f05919f7e16e421093420a401ae312dab"
+	sha256 hasValue "f89f94777176124573883495ac51b175a2da80aa01ffe60e8e4a65dc69818e8d"
+	descriptionMd5 hasValue "f79592a1a4146be7da2786a174d9dd76"
+	homepage hasValue "https://www.syncthing.net/"
+	depends hasValue "libc6 (>= 2.4), adduser"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__syncthing_relaysrv,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "adduser"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__syncthing_relaysrv,1,DepAtom__1)
+

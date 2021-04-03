@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology pacman
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__pacman memberOf Package
+	package hasValue "pacman"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/games"
+	installedSize hasValue "88"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "10-18build1"
+	fileName hasValue "pool/universe/p/pacman/pacman_10-18build1_amd64.deb"
+	size hasValue "22752"
+	md5sum hasValue "5a64a16df33f38cd68461d0fa7f9681a"
+	sha1 hasValue "9c4fa8e445c2924f6641d318dbc3ebf910f577e1"
+	sha256 hasValue "2eec7ce7faf445dfcb57bc5d0174fd5b571727d92a86b97f0f1ea2e9e632773d"
+	description hasValue "Caçe monstros em um labirinto."
+	descriptionMd5 hasValue "e8ad66b84567c64aa92c6c4ab220eefe"
+	depends hasValue "libc6 (>= 2.4), libstdc++6 (>= 5), libx11-6"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__pacman,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "5"
+
+relationInstance depends(P0__pacman,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libx11-6"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__pacman,2,DepAtom__2)
+

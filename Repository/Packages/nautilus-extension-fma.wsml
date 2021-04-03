@@ -1,0 +1,75 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology nautilus_extension_fma
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__nautilus_extension_fma memberOf Package
+	package hasValue "nautilus-extension-fma"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/gnome"
+	installedSize hasValue "92"
+	maintainer hasValue "Original-Carlos Maddela <e7appew@gmail.com>"
+	architecture hasValue "amd64"
+	version hasValue "3.4-2"
+	provides hasValue "filemanager-extension-fma"
+	fileName hasValue "pool/universe/f/filemanager-actions/nautilus-extension-fma_3.4-2_amd64.deb"
+	size hasValue "21124"
+	md5sum hasValue "d54d030e037fd0ebd043a93b0b94c54f"
+	sha1 hasValue "6cc6f701dff3fbea76cf4f8d46a999f47c0ec8aa"
+	sha256 hasValue "465244a381fc0e9ecbab6626930cc152ebf81eb909053000216952f6378d46ff"
+	descriptionMd5 hasValue "6382f5548b863b86fcbd7c7895ed65ce"
+	homepage hasValue "https://gitlab.gnome.org/GNOME/filemanager-actions"
+	depends hasValue "filemanager-actions-libs (= 3.4-2), libc6 (>= 2.4), libglib2.0-0 (>= 2.37.3), libnautilus-extension1a (>= 3.14.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "filemanager-actions-libs"
+	comparison hasValue "="
+	version hasValue "3.4-2"
+
+relationInstance depends(P0__nautilus_extension_fma,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__nautilus_extension_fma,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libglib2.0-0"
+	comparison hasValue ">="
+	version hasValue "2.37.3"
+
+relationInstance depends(P0__nautilus_extension_fma,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "libnautilus-extension1a"
+	comparison hasValue ">="
+	version hasValue "3.14.1"
+
+relationInstance depends(P0__nautilus_extension_fma,3,DepAtom__3)
+

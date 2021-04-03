@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gsound_tools
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gsound_tools memberOf Package
+	package hasValue "gsound-tools"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "30"
+	maintainer hasValue "Original-Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.2-4"
+	replaces hasValue "gsound (<< 1.0.1-3~)"
+	fileName hasValue "pool/universe/g/gsound/gsound-tools_1.0.2-4_amd64.deb"
+	size hasValue "6332"
+	md5sum hasValue "f51f028b744aee0c720c1f0a810d3e29"
+	sha1 hasValue "3f6950cd6e4677e2e93e638f852dec16b55c8486"
+	sha256 hasValue "23080a1cb5fe324deb874c77ac8e9a7e60a6c1af6859c64f397be7eaf9dd1f21"
+	descriptionMd5 hasValue "40d14fa03a51a39917abab325bcc37ae"
+	homepage hasValue "https://wiki.gnome.org/Projects/GSound"
+	depends hasValue "libc6 (>= 2.4), libglib2.0-0 (>= 2.36), libgsound0 (>= 1.0.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__gsound_tools,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libglib2.0-0"
+	comparison hasValue ">="
+	version hasValue "2.36"
+
+relationInstance depends(P0__gsound_tools,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libgsound0"
+	comparison hasValue ">="
+	version hasValue "1.0.1"
+
+relationInstance depends(P0__gsound_tools,2,DepAtom__2)
+

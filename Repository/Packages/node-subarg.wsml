@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology node_subarg
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__node_subarg memberOf Package
+	package hasValue "node-subarg"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/web"
+	installedSize hasValue "19"
+	maintainer hasValue "Original-Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.0.0-2"
+	fileName hasValue "pool/universe/n/node-subarg/node-subarg_1.0.0-2_all.deb"
+	size hasValue "3840"
+	md5sum hasValue "ce140aee48683d02d6297d1790a804b6"
+	sha1 hasValue "ee7934710c5fc168341888f4b2bbcb8c2ba1c3fc"
+	sha256 hasValue "fed8c856795fabab1bc39c383b212e9536904c8492a6bc6067f7ce6d53fcc3d0"
+	descriptionMd5 hasValue "a92d4b700acc6b1c63dea39b1f5b3a43"
+	homepage hasValue "https://github.com/substack/subarg"
+	depends hasValue "nodejs (>= 4), node-minimist (>= 1.1.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "nodejs"
+	comparison hasValue ">="
+	version hasValue "4"
+
+relationInstance depends(P0__node_subarg,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "node-minimist"
+	comparison hasValue ">="
+	version hasValue "1.1.0"
+
+relationInstance depends(P0__node_subarg,1,DepAtom__1)
+

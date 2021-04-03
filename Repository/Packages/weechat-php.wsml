@@ -1,0 +1,74 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology weechat_php
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__weechat_php memberOf Package
+	package hasValue "weechat-php"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "318"
+	maintainer hasValue "Original-Emmanuel Bouthenot <kolter@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.8-1"
+	fileName hasValue "pool/universe/w/weechat/weechat-php_2.8-1_amd64.deb"
+	size hasValue "54104"
+	md5sum hasValue "fac93444f2a6acf4b325de53de94a7ce"
+	sha1 hasValue "295da085ff12027e13975f1e66611dd28a104fc4"
+	sha256 hasValue "64f778cc113744d4b3f0d8084189fab75e047b0cb6b8c01dc851c584ccb26ec9"
+	descriptionMd5 hasValue "8d888f7bafc84b9c9ecabded3c5fe91c"
+	homepage hasValue "https://weechat.org/"
+	depends hasValue "libc6 (>= 2.14), weechat-curses (= 2.8-1) | weechat-headless (= 2.8-1), libphp-embed"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__weechat_php,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "weechat-curses"
+	comparison hasValue "="
+	version hasValue "2.8-1"
+
+relationInstance depends(P0__weechat_php,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "weechat-headless"
+	comparison hasValue "="
+	version hasValue "2.8-1"
+
+relationInstance depends(P0__weechat_php,1,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "libphp-embed"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__weechat_php,2,DepAtom__3)
+

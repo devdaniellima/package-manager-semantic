@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology afuse
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__afuse memberOf Package
+	package hasValue "afuse"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "58"
+	maintainer hasValue "Original-Varun Hiremath <varun@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.4.1-1build1"
+	fileName hasValue "pool/universe/a/afuse/afuse_0.4.1-1build1_amd64.deb"
+	size hasValue "20088"
+	md5sum hasValue "038d009847244ea734360867a7076770"
+	sha1 hasValue "87514cbe6b980af2fcc5c6ff807c4553ebdf21fb"
+	sha256 hasValue "a5b1bd93d20d7b75e6c46ce31f367911b5619869279d8955b6a2bb47ca8ecc7d"
+	description hasValue "sist. de arquiv. auto-montável implement. no espaço de usuário usando FUSE"
+	descriptionMd5 hasValue "602bf8a6925e536531c3f47c66ff31b9"
+	homepage hasValue "https://code.google.com/p/afuse/"
+	depends hasValue "libc6 (>= 2.14), libfuse2 (>= 2.6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__afuse,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libfuse2"
+	comparison hasValue ">="
+	version hasValue "2.6"
+
+relationInstance depends(P0__afuse,1,DepAtom__1)
+

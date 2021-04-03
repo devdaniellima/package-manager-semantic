@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libsynctex2
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libsynctex2 memberOf Package
+	package hasValue "libsynctex2"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libs"
+	installedSize hasValue "189"
+	maintainer hasValue "Original-Debian TeX Maintainers <debian-tex-maint@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2019.20190605.51237-3build2"
+	fileName hasValue "pool/main/t/texlive-bin/libsynctex2_2019.20190605.51237-3build2_amd64.deb"
+	size hasValue "54980"
+	md5sum hasValue "4b85c4baad662d442e04e8a6adefce9c"
+	sha1 hasValue "3c635ced1b52502a81fe0a37d1b3dfa838a2ee90"
+	sha256 hasValue "643ea878f5f5525659deae94bec13d831dcfacf77deb1d6eb9950ffc6a9b4c08"
+	descriptionMd5 hasValue "fcef573239340f1cd5239219e04e7aef"
+	homepage hasValue "https://www.tug.org/texlive/"
+	depends hasValue "libc6 (>= 2.14), zlib1g (>= 1:1.1.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libsynctex2,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "zlib1g"
+	comparison hasValue ">="
+	version hasValue "1:1.1.4"
+
+relationInstance depends(P0__libsynctex2,1,DepAtom__1)
+

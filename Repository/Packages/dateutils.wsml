@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology dateutils
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__dateutils memberOf Package
+	package hasValue "dateutils"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/utils"
+	installedSize hasValue "1591"
+	maintainer hasValue "Original-Thorsten Alteholz <debian@alteholz.de>"
+	architecture hasValue "amd64"
+	version hasValue "0.4.5-1.1"
+	fileName hasValue "pool/universe/d/dateutils/dateutils_0.4.5-1.1_amd64.deb"
+	size hasValue "220928"
+	md5sum hasValue "0a3dc4901fb44ca4b104f4faaaaf3df6"
+	sha1 hasValue "f390b4eb0c84c9ae0016b26584cdaea4f10ed106"
+	sha256 hasValue "fcbdfc97b8a4b5baaef664f451c142759367006a59d096a8661f4af7473a572f"
+	descriptionMd5 hasValue "03fcffc5621e21a84566bae40f1039b4"
+	homepage hasValue "http://www.fresse.org/dateutils"
+	depends hasValue "libc6 (>= 2.14), tzdata"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__dateutils,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "tzdata"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__dateutils,1,DepAtom__1)
+

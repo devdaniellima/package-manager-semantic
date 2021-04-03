@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libcap_ng_utils
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libcap_ng_utils memberOf Package
+	package hasValue "libcap-ng-utils"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "82"
+	maintainer hasValue "Original-Pierre Chifflier <pollux@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.7.9-2.1build1"
+	fileName hasValue "pool/universe/libc/libcap-ng/libcap-ng-utils_0.7.9-2.1build1_amd64.deb"
+	size hasValue "15636"
+	md5sum hasValue "678fd9c1c020026ed48e210418c1cc88"
+	sha1 hasValue "a58c70342d856bb11f46c383d9d0f888f68b37a3"
+	sha256 hasValue "c311147c4ca93995f3f642586e3ff24984266a34da6de36f0648d5b33bc9cf27"
+	descriptionMd5 hasValue "fbe5ccdbf5d2f02cbe089add9ba015da"
+	homepage hasValue "http://people.redhat.com/sgrubb/libcap-ng"
+	depends hasValue "libc6 (>= 2.7), libcap-ng0 (= 0.7.9-2.1build1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__libcap_ng_utils,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libcap-ng0"
+	comparison hasValue "="
+	version hasValue "0.7.9-2.1build1"
+
+relationInstance depends(P0__libcap_ng_utils,1,DepAtom__1)
+

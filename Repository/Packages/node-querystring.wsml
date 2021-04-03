@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology node_querystring
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__node_querystring memberOf Package
+	package hasValue "node-querystring"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/web"
+	installedSize hasValue "23"
+	maintainer hasValue "Original-Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.2.0-4"
+	fileName hasValue "pool/universe/n/node-querystring/node-querystring_0.2.0-4_all.deb"
+	size hasValue "4444"
+	md5sum hasValue "ab8bd28c9cff8e28626f4a05bcd937b3"
+	sha1 hasValue "bfa520beaece09432db195cb538037a7c22bcf55"
+	sha256 hasValue "a2271a3e6bd277bd6ed9d97625cddb2db096361aea4fa7c07b1c4e1e2a894417"
+	descriptionMd5 hasValue "ae1e17dc7c2c4b15ff89582941e0bc37"
+	homepage hasValue "https://github.com/Gozala/querystring"
+	depends hasValue "nodejs (>= 10)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "nodejs"
+	comparison hasValue ">="
+	version hasValue "10"
+
+relationInstance depends(P0__node_querystring,0,DepAtom__0)
+

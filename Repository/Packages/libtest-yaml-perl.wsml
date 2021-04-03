@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libtest_yaml_perl
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libtest_yaml_perl memberOf Package
+	package hasValue "libtest-yaml-perl"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/perl"
+	installedSize hasValue "24"
+	maintainer hasValue "Original-Debian Perl Group <pkg-perl-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.07-1"
+	replaces hasValue "libyaml-perl (<< 1.01-1~)"
+	fileName hasValue "pool/universe/libt/libtest-yaml-perl/libtest-yaml-perl_1.07-1_all.deb"
+	size hasValue "6332"
+	md5sum hasValue "05a8bcde0e274d70bec6acb45855ad4b"
+	sha1 hasValue "b832f43d4c2c0a9e616275750efad99fd3529d49"
+	sha256 hasValue "1b7323c1c364d6726d049cbb7dc7b557471fae3427712f6a8242488baf99b527"
+	descriptionMd5 hasValue "2e5be9c84a50d0622fac09ac59243ff1"
+	homepage hasValue "https://metacpan.org/release/Test-YAML"
+	depends hasValue "perl, libtest-base-perl (>= 0.74)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "perl"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libtest_yaml_perl,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libtest-base-perl"
+	comparison hasValue ">="
+	version hasValue "0.74"
+
+relationInstance depends(P0__libtest_yaml_perl,1,DepAtom__1)
+

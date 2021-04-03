@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology bs2b_ladspa
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__bs2b_ladspa memberOf Package
+	package hasValue "bs2b-ladspa"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/sound"
+	installedSize hasValue "47"
+	maintainer hasValue "Original-Andrew Gainer <gainer.andrew@gmail.com>"
+	architecture hasValue "amd64"
+	version hasValue "0.9.1-3ubuntu1"
+	provides hasValue "ladspa-plugin"
+	fileName hasValue "pool/universe/b/bs2b-ladspa/bs2b-ladspa_0.9.1-3ubuntu1_amd64.deb"
+	size hasValue "6722"
+	md5sum hasValue "c15f156c111ecb500c2a765bd06d8c9d"
+	sha1 hasValue "7a192ee9dc77605fc56d212262ee8090da3afe6e"
+	sha256 hasValue "7bd005e627cd850a77afb44d5f43bd3cb5c4ca3c0935503072134a5a11e801b3"
+	descriptionMd5 hasValue "6df7970911e20f4cb9ebd4f22651f1c0"
+	homepage hasValue "http://bs2b.sourceforge.net/"
+	depends hasValue "libbs2b0, libc6 (>= 2.3.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libbs2b0"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__bs2b_ladspa,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.3.4"
+
+relationInstance depends(P0__bs2b_ladspa,1,DepAtom__1)
+

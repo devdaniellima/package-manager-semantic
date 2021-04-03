@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology blepvco
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__blepvco memberOf Package
+	package hasValue "blepvco"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/sound"
+	installedSize hasValue "109"
+	maintainer hasValue "Original-Debian Multimedia Maintainers <pkg-multimedia-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.1.0-3build1"
+	provides hasValue "ladspa-plugin"
+	fileName hasValue "pool/universe/b/blepvco/blepvco_0.1.0-3build1_amd64.deb"
+	size hasValue "61712"
+	md5sum hasValue "57ed7e8b42c33610434c776aa78f1fc5"
+	sha1 hasValue "bacfc7926a480d410ee726d8e0f74c517c92939a"
+	sha256 hasValue "32cd27919d66415b8cc8509dafe351e7d27c8919abdd42b194f05c6e37113689"
+	description hasValue "extensões de oscilador \"hard-sync-capable\", baseadas em minBLEP com LADSPA"
+	descriptionMd5 hasValue "76cf4a2184ba25ec849f7820953581f9"
+	homepage hasValue "http://www.smbolton.com/linux.html"
+	depends hasValue "libc6 (>= 2.2.5), libstdc++6 (>= 5)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.2.5"
+
+relationInstance depends(P0__blepvco,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "5"
+
+relationInstance depends(P0__blepvco,1,DepAtom__1)
+

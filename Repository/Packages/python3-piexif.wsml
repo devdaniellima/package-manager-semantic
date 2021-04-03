@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python3_piexif
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python3_piexif memberOf Package
+	package hasValue "python3-piexif"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "95"
+	maintainer hasValue "Original-Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.0.13-3"
+	fileName hasValue "pool/universe/p/piexif/python3-piexif_1.0.13-3_all.deb"
+	size hasValue "16308"
+	md5sum hasValue "41759436f3b9690701cd60c5823b168b"
+	sha1 hasValue "f492a8d7527c01b164506aeaf4df946b52e3e717"
+	sha256 hasValue "c94fc48dd1d6206404fda5f79b656273e02dd98fa8881325a4a54991af315a6f"
+	descriptionMd5 hasValue "9624a7a4e5e79ffddbe1103433ff1a7a"
+	homepage hasValue "https://github.com/hMatoba/Piexif"
+	depends hasValue "python3:any, python3-pil (>= 4.2.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__python3_piexif,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3-pil"
+	comparison hasValue ">="
+	version hasValue "4.2.1"
+
+relationInstance depends(P0__python3_piexif,1,DepAtom__1)
+

@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology postgresql_12_omnidb
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__postgresql_12_omnidb memberOf Package
+	package hasValue "postgresql-12-omnidb"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/database"
+	installedSize hasValue "72"
+	maintainer hasValue "Original-Debian PostgreSQL Maintainers <team+postgresql@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.17.0+ds-1"
+	fileName hasValue "pool/universe/o/omnidb/postgresql-12-omnidb_2.17.0+ds-1_amd64.deb"
+	size hasValue "25272"
+	md5sum hasValue "aeaac558b271da38862936c158b40674"
+	sha1 hasValue "4c573a288e2e5c559e7fa5e87d43767d95c7bd55"
+	sha256 hasValue "e50689c89e40859d8e20653437be21e792522c2208705a5e1115e10fa10732d8"
+	descriptionMd5 hasValue "f45190fa7f673304be6e628c997ff34d"
+	homepage hasValue "https://omnidb.org/"
+	depends hasValue "libc6 (>= 2.4), libpq5, postgresql-12"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__postgresql_12_omnidb,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libpq5"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__postgresql_12_omnidb,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "postgresql-12"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__postgresql_12_omnidb,2,DepAtom__2)
+

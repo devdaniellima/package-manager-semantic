@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology node_semver_diff
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__node_semver_diff memberOf Package
+	package hasValue "node-semver-diff"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/web"
+	installedSize hasValue "16"
+	maintainer hasValue "Original-Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.1.0-2"
+	fileName hasValue "pool/universe/n/node-semver-diff/node-semver-diff_2.1.0-2_all.deb"
+	size hasValue "3388"
+	md5sum hasValue "cc894d4fee088d72ff7cab1d52ca5cfa"
+	sha1 hasValue "8c3b838f8a8e25ab9b38f7d4d89627599ee98cfc"
+	sha256 hasValue "2e337145d443d7be1835b5cb6a2afd8ea1be8039eeb8b53e032b87b9bbd51a3e"
+	descriptionMd5 hasValue "396ee79ed8c38cfeeca3bdcf91fbcd99"
+	homepage hasValue "https://github.com/sindresorhus/semver-diff"
+	depends hasValue "nodejs, node-semver (>= 5.0.3)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "nodejs"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__node_semver_diff,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "node-semver"
+	comparison hasValue ">="
+	version hasValue "5.0.3"
+
+relationInstance depends(P0__node_semver_diff,1,DepAtom__1)
+

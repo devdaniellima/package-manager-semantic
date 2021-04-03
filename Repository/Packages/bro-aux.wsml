@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology bro_aux
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__bro_aux memberOf Package
+	package hasValue "bro-aux"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "71"
+	maintainer hasValue "Original-Raúl Benencia <rul@kalgan.cc>"
+	architecture hasValue "amd64"
+	version hasValue "0.42-1"
+	fileName hasValue "pool/universe/b/bro-aux/bro-aux_0.42-1_amd64.deb"
+	size hasValue "17592"
+	md5sum hasValue "5ee3ea88f522e71a9a94f40136a77b45"
+	sha1 hasValue "7709eb8ec9e68cb678d9d336a726bde2e8e10913"
+	sha256 hasValue "0128cd3fe0429295bcf47d48af677946851ffb82b7acc443998320fe7399003b"
+	descriptionMd5 hasValue "f05ed801bd82c75beba2eb3613fe9853"
+	homepage hasValue "https://www.bro.org/sphinx/components/bro-aux/README.html"
+	depends hasValue "libc6 (>= 2.4), libpcap0.8 (>= 0.9.8)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__bro_aux,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libpcap0.8"
+	comparison hasValue ">="
+	version hasValue "0.9.8"
+
+relationInstance depends(P0__bro_aux,1,DepAtom__1)
+

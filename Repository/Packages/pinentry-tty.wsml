@@ -1,0 +1,69 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology pinentry_tty
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__pinentry_tty memberOf Package
+	package hasValue "pinentry-tty"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "89"
+	maintainer hasValue "Original-Debian GnuPG Maintainers <pkg-gnupg-maint@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.1.0-3build1"
+	provides hasValue "pinentry"
+	fileName hasValue "pool/universe/p/pinentry/pinentry-tty_1.1.0-3build1_amd64.deb"
+	size hasValue "32060"
+	md5sum hasValue "f9738554df135b5cae62c62edafd8480"
+	sha1 hasValue "69f69cf21c2f1f765fbbbbc14b102823328f9e15"
+	sha256 hasValue "2b6c5ff7339220faabfdbb6440bb4a5f72aa6d8af44994d423eb7b72d51a0552"
+	description hasValue "minimal dumb-terminal PIN or pass-phrase entry for GnuPG"
+	descriptionMd5 hasValue "fb1b5491849b43150afbc7d00b1d4d4f"
+	homepage hasValue "https://www.gnupg.org/related_software/pinentry/"
+	depends hasValue "libassuan0 (>= 2.1.0), libc6 (>= 2.14), libgpg-error0 (>= 1.16)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libassuan0"
+	comparison hasValue ">="
+	version hasValue "2.1.0"
+
+relationInstance depends(P0__pinentry_tty,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__pinentry_tty,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libgpg-error0"
+	comparison hasValue ">="
+	version hasValue "1.16"
+
+relationInstance depends(P0__pinentry_tty,2,DepAtom__2)
+

@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology btrfsmaintenance
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__btrfsmaintenance memberOf Package
+	package hasValue "btrfsmaintenance"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "75"
+	maintainer hasValue "Original-Nicholas D Steeves <nsteeves@gmail.com>"
+	architecture hasValue "all"
+	version hasValue "0.4.2-1"
+	fileName hasValue "pool/universe/b/btrfsmaintenance/btrfsmaintenance_0.4.2-1_all.deb"
+	size hasValue "17088"
+	md5sum hasValue "9879688837ae83c5c8713b803279453c"
+	sha1 hasValue "a0a7282b27d6c2eb6adf172c2dd9bf344a449fd6"
+	sha256 hasValue "698d2a67579256f46b423806c947492cb0fa0961ac562cce170c31a6c35d2d37"
+	descriptionMd5 hasValue "61f9654a02fcc26347d3a0d9a25a28e5"
+	homepage hasValue "https://github.com/kdave/btrfsmaintenance"
+	depends hasValue "btrfs-progs, systemd | cron"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "btrfs-progs"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__btrfsmaintenance,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "systemd"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__btrfsmaintenance,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "cron"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__btrfsmaintenance,1,DepAtom__2)
+

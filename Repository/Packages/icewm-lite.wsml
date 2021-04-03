@@ -1,0 +1,59 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology icewm_lite
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__icewm_lite memberOf Package
+	package hasValue "icewm-lite"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/x11"
+	installedSize hasValue "22"
+	maintainer hasValue "Original-Eduard Bloch <blade@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.6.4-1"
+	fileName hasValue "pool/universe/i/icewm/icewm-lite_1.6.4-1_amd64.deb"
+	size hasValue "2084"
+	md5sum hasValue "10a01664822dfe7dc1386f5c79609a68"
+	sha1 hasValue "3323dbebe8e0cd94641bcff03c7b215de040cfea"
+	sha256 hasValue "f9b17998b9096adb794eaccb0be43573a1caae455b4f3dafb0e993ccf8877354"
+	descriptionMd5 hasValue "e73cbf6a96471b0ab76f0a9f091e6667"
+	depends hasValue "icewm (= 1.6.4-1), icewm-common (= 1.6.4-1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "icewm"
+	comparison hasValue "="
+	version hasValue "1.6.4-1"
+
+relationInstance depends(P0__icewm_lite,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "icewm-common"
+	comparison hasValue "="
+	version hasValue "1.6.4-1"
+
+relationInstance depends(P0__icewm_lite,1,DepAtom__1)
+

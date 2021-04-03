@@ -1,0 +1,75 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology slashem
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__slashem memberOf Package
+	package hasValue "slashem"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/games"
+	installedSize hasValue "2312"
+	maintainer hasValue "Original-Debian Games Team <pkg-games-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.0.7E7F3-9build1"
+	fileName hasValue "pool/universe/s/slashem/slashem_0.0.7E7F3-9build1_amd64.deb"
+	size hasValue "1011752"
+	md5sum hasValue "7c1f32c409c487a3fbc14c9cab49b8ff"
+	sha1 hasValue "3f7ead8c383ce67231b6c7ed26e90ef113c6efc1"
+	sha256 hasValue "31dfee4d9b41e03a8635bada62aaa10c64d1336b25c2df3e807bdf74dbb96ff6"
+	description hasValue "variante do Nethack"
+	descriptionMd5 hasValue "0b2f5ba3aafeca713b3034e85ca6bc8f"
+	homepage hasValue "http://www.slashem.org/"
+	depends hasValue "slashem-common (= 0.0.7E7F3-9build1), libc6 (>= 2.14), libncurses6 (>= 6), libtinfo6 (>= 6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "slashem-common"
+	comparison hasValue "="
+	version hasValue "0.0.7E7F3-9build1"
+
+relationInstance depends(P0__slashem,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__slashem,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libncurses6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__slashem,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "libtinfo6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__slashem,3,DepAtom__3)
+

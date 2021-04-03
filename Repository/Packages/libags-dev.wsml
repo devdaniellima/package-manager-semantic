@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libags_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libags_dev memberOf Package
+	package hasValue "libags-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "2012"
+	maintainer hasValue "Original-Debian Multimedia Maintainers <debian-multimedia@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.1.3-1"
+	fileName hasValue "pool/universe/g/gsequencer/libags-dev_3.1.3-1_amd64.deb"
+	size hasValue "107716"
+	md5sum hasValue "b55c6eeb882579741acc872c4f1d8b08"
+	sha1 hasValue "0e44d7a52e2413345ed6c87ad539c801dc1200d8"
+	sha256 hasValue "2b4d44ff1c12abc701faff675f9551590415ce75a416b4ff2988aa550de91ee9"
+	descriptionMd5 hasValue "9fe56f0637912d67753c345369f7491d"
+	homepage hasValue "https://nongnu.org/gsequencer"
+	depends hasValue "gir1.2-ags-3.0 (= 3.1.3-1), libags3 (= 3.1.3-1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "gir1.2-ags-3.0"
+	comparison hasValue "="
+	version hasValue "3.1.3-1"
+
+relationInstance depends(P0__libags_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libags3"
+	comparison hasValue "="
+	version hasValue "3.1.3-1"
+
+relationInstance depends(P0__libags_dev,1,DepAtom__1)
+

@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libsm6
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libsm6 memberOf Package
+	package hasValue "libsm6"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libs"
+	installedSize hasValue "55"
+	maintainer hasValue "Original-Debian X Strike Force <debian-x@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2:1.2.3-1"
+	fileName hasValue "pool/main/libs/libsm/libsm6_1.2.3-1_amd64.deb"
+	size hasValue "16144"
+	md5sum hasValue "ba416a48bc14dcecf40aca47a4d911df"
+	sha1 hasValue "d7402d84a04e8044d3b443e9a0f0060071562b7e"
+	sha256 hasValue "2623a68d8c55ceec8bad20483197d39db3cd7a67d730fa464fbc171e72705662"
+	descriptionMd5 hasValue "0a2592842083575ace3df2d6d3e90fe4"
+	homepage hasValue "https://www.x.org"
+	depends hasValue "libc6 (>= 2.14), libice6 (>= 1:1.0.0), libuuid1 (>= 2.16)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libsm6,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libice6"
+	comparison hasValue ">="
+	version hasValue "1:1.0.0"
+
+relationInstance depends(P0__libsm6,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libuuid1"
+	comparison hasValue ">="
+	version hasValue "2.16"
+
+relationInstance depends(P0__libsm6,2,DepAtom__2)
+

@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology cron_apt
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__cron_apt memberOf Package
+	package hasValue "cron-apt"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "89"
+	maintainer hasValue "Original-Ola Lundqvist <opal@debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.13.0"
+	fileName hasValue "pool/universe/c/cron-apt/cron-apt_0.13.0_all.deb"
+	size hasValue "20220"
+	md5sum hasValue "8420b1583087247f07da4f1d5719fde3"
+	sha1 hasValue "4078845c9c5a3787058c68e099b04ef0f2773bf4"
+	sha256 hasValue "a749d37ec55568e2a61ac25a5af73f7058d05065d6ac3c03450a854c6fbd7548"
+	description hasValue "atualizador automático de pacotes usando o apt-get"
+	descriptionMd5 hasValue "2e64c2fc7f0c5ac0fd844be065a8a152"
+	depends hasValue "apt"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "apt"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__cron_apt,0,DepAtom__0)
+

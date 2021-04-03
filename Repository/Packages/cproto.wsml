@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology cproto
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__cproto memberOf Package
+	package hasValue "cproto"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "113"
+	maintainer hasValue "Original-Kenneth J. Pronovici <pronovic@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "4.7o-7"
+	fileName hasValue "pool/universe/c/cproto/cproto_4.7o-7_amd64.deb"
+	size hasValue "43376"
+	md5sum hasValue "8be349e94777b4def91d146e538bea75"
+	sha1 hasValue "05e9b27003d3f81df9e21477bcfd06a46aab8585"
+	sha256 hasValue "5e639bc90a22c49d0546ec04dd301ff5a57b99fef60a821b0958fd66446f9dd2"
+	description hasValue "utilitários para gerar protótipos de funções C a partir de código-fonte C"
+	descriptionMd5 hasValue "fe74472d82a7bc4da41968b3563d1a85"
+	homepage hasValue "https://invisible-island.net/cproto/cproto.html"
+	depends hasValue "libc6 (>= 2.7), gcc"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__cproto,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "gcc"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__cproto,1,DepAtom__1)
+

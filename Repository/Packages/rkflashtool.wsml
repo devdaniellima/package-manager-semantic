@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology rkflashtool
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__rkflashtool memberOf Package
+	package hasValue "rkflashtool"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/embedded"
+	installedSize hasValue "85"
+	maintainer hasValue "Original-Philipp Hug <hug@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0~20160324-2"
+	fileName hasValue "pool/universe/r/rkflashtool/rkflashtool_0~20160324-2_amd64.deb"
+	size hasValue "18640"
+	md5sum hasValue "f66ff1b65c4f9ffc5da2f65d98974fd0"
+	sha1 hasValue "8076eff076682f4142299a4c680260c0ecf85359"
+	sha256 hasValue "d2ec6a9a77459b934276f3138ea264306df649426baf4cc19da8898b3de337cf"
+	descriptionMd5 hasValue "f80a75d625f0b5405f2a37112d11fca1"
+	homepage hasValue "https://github.com/linux-rockchip/rkflashtool"
+	depends hasValue "libc6 (>= 2.4), libusb-1.0-0 (>= 2:1.0.8)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__rkflashtool,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libusb-1.0-0"
+	comparison hasValue ">="
+	version hasValue "2:1.0.8"
+
+relationInstance depends(P0__rkflashtool,1,DepAtom__1)
+

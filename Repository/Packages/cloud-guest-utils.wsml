@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology cloud_guest_utils
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__cloud_guest_utils memberOf Package
+	package hasValue "cloud-guest-utils"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "admin"
+	installedSize hasValue "60"
+	maintainer hasValue "Scott Moser <smoser@ubuntu.com>"
+	architecture hasValue "all"
+	version hasValue "0.31-7-gd99b2d76-0ubuntu1"
+	replaces hasValue "cloud-utils (<< 0.27-0ubuntu3)"
+	fileName hasValue "pool/main/c/cloud-utils/cloud-guest-utils_0.31-7-gd99b2d76-0ubuntu1_all.deb"
+	size hasValue "16216"
+	md5sum hasValue "89dceb8dc5ae13ae58cfe0f7842ac21d"
+	sha1 hasValue "f64f1f4433933db8e65c9369c91ae397dd72e05a"
+	sha256 hasValue "159ea7ccdf1e1f44370ca0afd733faa54a8ff20dfd101039aa487b5639a61ac6"
+	descriptionMd5 hasValue "fda0c5237d2eca0ed770cea9796a01fa"
+	depends hasValue "e2fsprogs (>= 1.4), util-linux (>= 2.17.2), python3:any"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "e2fsprogs"
+	comparison hasValue ">="
+	version hasValue "1.4"
+
+relationInstance depends(P0__cloud_guest_utils,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "util-linux"
+	comparison hasValue ">="
+	version hasValue "2.17.2"
+
+relationInstance depends(P0__cloud_guest_utils,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__cloud_guest_utils,2,DepAtom__2)
+

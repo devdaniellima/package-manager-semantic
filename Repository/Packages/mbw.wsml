@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology mbw
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__mbw memberOf Package
+	package hasValue "mbw"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/utils"
+	installedSize hasValue "23"
+	maintainer hasValue "Original-Emmanuel QUEMENER <emmanuel.quemener@free.fr>"
+	architecture hasValue "amd64"
+	version hasValue "1.2.2-1build1"
+	fileName hasValue "pool/universe/m/mbw/mbw_1.2.2-1build1_amd64.deb"
+	size hasValue "6776"
+	md5sum hasValue "95dc0adad954641318e79fd7fc9a5f12"
+	sha1 hasValue "349c493109c057e783bb70f9f094b502b893bbe3"
+	sha256 hasValue "46687680caa60a33c7405046bfc000f7eeb36f714d7b4a19e6453bb93eafc703"
+	descriptionMd5 hasValue "010a3a6e8e90c50a2349d07f6994ac79"
+	homepage hasValue "http://ahorvath.web.cern.ch/ahorvath/mbw/"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__mbw,0,DepAtom__0)
+

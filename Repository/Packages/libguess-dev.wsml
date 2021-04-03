@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libguess_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libguess_dev memberOf Package
+	package hasValue "libguess-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "34"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.2-4"
+	fileName hasValue "pool/universe/libg/libguess/libguess-dev_1.2-4_amd64.deb"
+	size hasValue "6140"
+	md5sum hasValue "63982b65ec8c7f63bfc450ae6fa47a8b"
+	sha1 hasValue "8b2d1730011da1456276dab1f4760daffe32f3b1"
+	sha256 hasValue "cee38ba7bb8c671581dbaab9552133f8a008598358cf2ae94ce98fb17e4546a8"
+	descriptionMd5 hasValue "3c89cc61606c8c3afc40a0fa6e1edc9a"
+	homepage hasValue "https://github.com/kaniini/libguess"
+	depends hasValue "libguess1 (= 1.2-4), pkgconf | pkg-config"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libguess1"
+	comparison hasValue "="
+	version hasValue "1.2-4"
+
+relationInstance depends(P0__libguess_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "pkgconf"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libguess_dev,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "pkg-config"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libguess_dev,1,DepAtom__2)
+

@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology octave_symbolic
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__octave_symbolic memberOf Package
+	package hasValue "octave-symbolic"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/math"
+	installedSize hasValue "1434"
+	maintainer hasValue "Original-Debian Octave Group <team+pkg-octave-team@tracker.debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.8.0-2"
+	fileName hasValue "pool/universe/o/octave-symbolic/octave-symbolic_2.8.0-2_all.deb"
+	size hasValue "196144"
+	md5sum hasValue "4201da818b60f6ea8c5027e224b37c85"
+	sha1 hasValue "351e6007c5f7460d6af6f7fc7fa3ca9037837a79"
+	sha256 hasValue "1bf8a2ea84ca103cc8a678be57d4b27405580801108665c5ec046129e4f361cd"
+	description hasValue "symbolic package for Octave"
+	descriptionMd5 hasValue "79f50f3adee6962841ce3f86737a2279"
+	homepage hasValue "https://octave.sourceforge.io/symbolic/"
+	depends hasValue "octave (>= 5.2.0), python3-sympy"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "octave"
+	comparison hasValue ">="
+	version hasValue "5.2.0"
+
+relationInstance depends(P0__octave_symbolic,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3-sympy"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__octave_symbolic,1,DepAtom__1)
+

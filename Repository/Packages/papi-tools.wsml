@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology papi_tools
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__papi_tools memberOf Package
+	package hasValue "papi-tools"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/devel"
+	installedSize hasValue "280"
+	maintainer hasValue "Original-Debian HPC Team <debian-hpc@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "5.7.0+dfsg-2"
+	fileName hasValue "pool/universe/p/papi/papi-tools_5.7.0+dfsg-2_amd64.deb"
+	size hasValue "49320"
+	md5sum hasValue "16bbd5e5e9e320ceda6957fd68319704"
+	sha1 hasValue "ba5bc0c3f76b3c7dcfda26c19f813e8bca5d5892"
+	sha256 hasValue "fd79dd5057929c8fb0adbbb1e858e5d43b621f282d3b8a1a08760e926777be64"
+	descriptionMd5 hasValue "9117a66b6f1ada209483a00e0ee7a709"
+	homepage hasValue "https://icl.utk.edu/papi/software/index.html"
+	depends hasValue "libc6 (>= 2.14), libpapi5.7"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__papi_tools,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libpapi5.7"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__papi_tools,1,DepAtom__1)
+

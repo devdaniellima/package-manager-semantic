@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology icmake
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__icmake memberOf Package
+	package hasValue "icmake"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "409"
+	maintainer hasValue "Original-Francesco Paolo Lovergine <frankie@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "9.03.01-1"
+	fileName hasValue "pool/universe/i/icmake/icmake_9.03.01-1_amd64.deb"
+	size hasValue "122028"
+	md5sum hasValue "2d4ad09e71aa4e07d588db256142ba51"
+	sha1 hasValue "888487a1e99b65f6c9d73686f6717149669a584e"
+	sha256 hasValue "fa6c9d63def790250f7649a434b1b629d94f08f25a16edb5d46bb78ac92f2de2"
+	descriptionMd5 hasValue "a550161f00554825a211dc2edc36ee34"
+	homepage hasValue "https://fbb-git.gitlab.io/icmake"
+	depends hasValue "libc6 (>= 2.27)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.27"
+
+relationInstance depends(P0__icmake,0,DepAtom__0)
+

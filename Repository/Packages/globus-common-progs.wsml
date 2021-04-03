@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology globus_common_progs
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__globus_common_progs memberOf Package
+	package hasValue "globus-common-progs"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "123"
+	maintainer hasValue "Original-Mattias Ellert <mattias.ellert@physics.uu.se>"
+	architecture hasValue "amd64"
+	version hasValue "18.5-1"
+	replaces hasValue "grid-packaging-tools (<< 3.4)"
+	fileName hasValue "pool/universe/g/globus-common/globus-common-progs_18.5-1_amd64.deb"
+	size hasValue "25796"
+	md5sum hasValue "c8b13f7082f9fb377be6c5a9dce7ea8c"
+	sha1 hasValue "615489e4887967f535aeb0b16795aca5441c5cc5"
+	sha256 hasValue "0cade5879e4ee248ffabd8de70291faef7a6b18cec46cc14d329a88b4a79c6e8"
+	descriptionMd5 hasValue "3f33c1313556f172f7a3763e260d757f"
+	homepage hasValue "https://github.com/gridcf/gct/"
+	depends hasValue "libglobus-common0 (= 18.5-1), libc6 (>= 2.4), libltdl7 (>= 2.4.6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libglobus-common0"
+	comparison hasValue "="
+	version hasValue "18.5-1"
+
+relationInstance depends(P0__globus_common_progs,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__globus_common_progs,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libltdl7"
+	comparison hasValue ">="
+	version hasValue "2.4.6"
+
+relationInstance depends(P0__globus_common_progs,2,DepAtom__2)
+

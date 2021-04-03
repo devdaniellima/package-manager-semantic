@@ -1,0 +1,52 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology debram
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__debram memberOf Package
+	package hasValue "debram"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/admin"
+	installedSize hasValue "23"
+	maintainer hasValue "Original-Thaddeus H. Black <thb@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.1.0"
+	fileName hasValue "pool/universe/d/debram/debram_2.1.0_amd64.deb"
+	size hasValue "4232"
+	md5sum hasValue "cb53d51c8ce50d512e385bb6000b7dc4"
+	sha1 hasValue "0b3c9f84646a9c9f429769dfaaf7114a62a677bc"
+	sha256 hasValue "02c9d1b80666014dd6a18ce1ab13a48b57d09468481048862089b2ea1e5082bd"
+	descriptionMd5 hasValue "b97b5ccd9aaab52b0007aa5ecb167d12"
+	depends hasValue "debram-data (>= 2.1.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "debram-data"
+	comparison hasValue ">="
+	version hasValue "2.1.0"
+
+relationInstance depends(P0__debram,0,DepAtom__0)
+

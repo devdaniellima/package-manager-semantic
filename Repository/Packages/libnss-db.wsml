@@ -1,0 +1,75 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libnss_db
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libnss_db memberOf Package
+	package hasValue "libnss-db"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "admin"
+	installedSize hasValue "180"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.2.3pre1-6build6"
+	fileName hasValue "pool/main/libn/libnss-db/libnss-db_2.2.3pre1-6build6_amd64.deb"
+	size hasValue "19284"
+	md5sum hasValue "b730fcbdbc6e148d7b0068e5c8be2b18"
+	sha1 hasValue "4738230e89e9c187e8ef28f8cc4fe31deaa3a1a7"
+	sha256 hasValue "b9602571481f3f2c782a552bbc326d1848e2a04cc2ba54c0a6442510817154b0"
+	description hasValue "módulo NSS para usar Bancos de Dados Berkeley como serviço de nomes"
+	descriptionMd5 hasValue "86085c093ffb06245b4f694a84b2427a"
+	homepage hasValue "http://www.gnu.org/software/libc/"
+	depends hasValue "libc6 (>> 2.31), libc6 (<< 2.32), libdb5.3, libselinux1 (>= 1.32)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">>"
+	version hasValue "2.31"
+
+relationInstance depends(P0__libnss_db,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue "<<"
+	version hasValue "2.32"
+
+relationInstance depends(P0__libnss_db,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libdb5.3"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libnss_db,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "libselinux1"
+	comparison hasValue ">="
+	version hasValue "1.32"
+
+relationInstance depends(P0__libnss_db,3,DepAtom__3)
+

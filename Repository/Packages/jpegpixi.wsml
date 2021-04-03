@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology jpegpixi
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__jpegpixi memberOf Package
+	package hasValue "jpegpixi"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/graphics"
+	installedSize hasValue "150"
+	maintainer hasValue "Original-Kevin Coyner <kcoyner@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.1.1-4.1build1"
+	fileName hasValue "pool/universe/j/jpegpixi/jpegpixi_1.1.1-4.1build1_amd64.deb"
+	size hasValue "58408"
+	md5sum hasValue "c9c2ae01494bc0c09a670e9440e82e81"
+	sha1 hasValue "5040cf3956cc99dbc3640d1740c0491a7300c27e"
+	sha256 hasValue "f08651e5b568932aad4b933d72ad9effb767f2b78fdf22fc99223a1eef1d3b7b"
+	descriptionMd5 hasValue "87496cf9310f616d2ff56ef6548573ec"
+	homepage hasValue "http://www.zero-based.org/software/jpegpixi/"
+	depends hasValue "libc6 (>= 2.14), libjpeg8 (>= 8c)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__jpegpixi,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libjpeg8"
+	comparison hasValue ">="
+	version hasValue "8c"
+
+relationInstance depends(P0__jpegpixi,1,DepAtom__1)
+

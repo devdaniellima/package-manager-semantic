@@ -1,0 +1,63 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology myspell_cs
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__myspell_cs memberOf Package
+	package hasValue "myspell-cs"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/text"
+	installedSize hasValue "3795"
+	maintainer hasValue "Original-Petr Čech <cech@debian.org>"
+	architecture hasValue "all"
+	version hasValue "20040229-5.2"
+	replaces hasValue "myspell-cs-cz"
+	provides hasValue "myspell-cs-cz, myspell-dictionary, myspell-dictionary-cs"
+	conflicts hasValue "myspell-cs-cz, openoffice.org (<= 1.0.3-2)"
+	fileName hasValue "pool/universe/i/ispell-czech/myspell-cs_20040229-5.2_all.deb"
+	size hasValue "773344"
+	md5sum hasValue "6e883220ed647a94bb6bd3f37eca72ec"
+	sha1 hasValue "3b3d90908ff1cc83c3c2669c7103fbd6631d0a6b"
+	sha256 hasValue "af6df7ee0a0bdb92586fad031a40e390938ac0e1f38a36745234cc3fd25552ea"
+	description hasValue "dicionário tcheco para o myspell"
+	descriptionMd5 hasValue "c031759b3234764e9db6056495829384"
+	depends hasValue "dictionaries-common (>= 0.10) | openoffice.org-updatedicts"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "dictionaries-common"
+	comparison hasValue ">="
+	version hasValue "0.10"
+
+relationInstance depends(P0__myspell_cs,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "openoffice.org-updatedicts"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__myspell_cs,0,DepAtom__1)
+

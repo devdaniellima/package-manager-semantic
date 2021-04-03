@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libcentreon_clib
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libcentreon_clib memberOf Package
+	package hasValue "libcentreon-clib"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "405"
+	maintainer hasValue "Original-Freexian Packaging Team <team+freexian@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "19.10.0-1build1"
+	fileName hasValue "pool/universe/c/centreon-clib/libcentreon-clib_19.10.0-1build1_amd64.deb"
+	size hasValue "85924"
+	md5sum hasValue "3c2a2770cff9bab477fa28b3f6e609ff"
+	sha1 hasValue "16d5b9d0f461fdae21d45f8bb449d569bc171142"
+	sha256 hasValue "2cc047440cc072d8587006e3c04ca248c0cfe566e631dae1693bd7d59afaa857"
+	descriptionMd5 hasValue "c64bd4844fbeb0b9deeb1176ca2d4d11"
+	homepage hasValue "https://github.com/centreon/centreon-clib"
+	depends hasValue "libc6 (>= 2.17), libgcc-s1 (>= 3.0), libstdc++6 (>= 5.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.17"
+
+relationInstance depends(P0__libcentreon_clib,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgcc-s1"
+	comparison hasValue ">="
+	version hasValue "3.0"
+
+relationInstance depends(P0__libcentreon_clib,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "5.2"
+
+relationInstance depends(P0__libcentreon_clib,2,DepAtom__2)
+

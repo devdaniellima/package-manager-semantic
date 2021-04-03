@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology wireless_tools
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__wireless_tools memberOf Package
+	package hasValue "wireless-tools"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "net"
+	installedSize hasValue "299"
+	maintainer hasValue "Original-Guus Sliepen <guus@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "30~pre9-13ubuntu1"
+	fileName hasValue "pool/main/w/wireless-tools/wireless-tools_30~pre9-13ubuntu1_amd64.deb"
+	size hasValue "108236"
+	md5sum hasValue "ebfe91d9bc4f3eaec990739cbdbe72a1"
+	sha1 hasValue "15cb61b39f335d6d4868239e5d106f809a715995"
+	sha256 hasValue "d3833d586c5340238d8d52725198d8ba65473a4d992bf912f36235c4c56053b3"
+	description hasValue "ferramentas p/ manipular as Extensões Sem-fio do Linux (Linux Wireless Extensions)"
+	descriptionMd5 hasValue "34c7dc532552aa22b7a3e5860d0000e7"
+	homepage hasValue "http://www.hpl.hp.com/personal/Jean_Tourrilhes/Linux/Tools.html"
+	depends hasValue "libc6 (>= 2.15), libiw30 (>= 30~pre1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__wireless_tools,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libiw30"
+	comparison hasValue ">="
+	version hasValue "30~pre1"
+
+relationInstance depends(P0__wireless_tools,1,DepAtom__1)
+

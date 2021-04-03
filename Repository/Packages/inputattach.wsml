@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology inputattach
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__inputattach memberOf Package
+	package hasValue "inputattach"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "utils"
+	installedSize hasValue "72"
+	maintainer hasValue "Original-Stephen Kitt <skitt@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:1.7.0-1"
+	fileName hasValue "pool/main/j/joystick/inputattach_1.7.0-1_amd64.deb"
+	size hasValue "23336"
+	md5sum hasValue "17f1b1e7dcf8b188b7efebb895ece898"
+	sha1 hasValue "00678b5fa804faacb30c901878d3706ba06d153f"
+	sha256 hasValue "07ccc91e49e7f1722ec3aa5572077509dff8624700643e36ecf49324de131d50"
+	descriptionMd5 hasValue "4411fd970af7a25054439075e5312465"
+	homepage hasValue "https://sourceforge.net/projects/linuxconsole/"
+	depends hasValue "libc6 (>= 2.15), libsystemd0"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__inputattach,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libsystemd0"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__inputattach,1,DepAtom__1)
+

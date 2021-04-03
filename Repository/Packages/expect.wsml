@@ -1,0 +1,78 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology expect
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__expect memberOf Package
+	package hasValue "expect"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/interpreters"
+	installedSize hasValue "296"
+	maintainer hasValue "Original-Sergei Golovan <sgolovan@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "5.45.4-2build1"
+	replaces hasValue "expect-dev"
+	provides hasValue "expect-dev"
+	conflicts hasValue "expect-dev"
+	fileName hasValue "pool/universe/e/expect/expect_5.45.4-2build1_amd64.deb"
+	size hasValue "137248"
+	md5sum hasValue "3e9db572437b985e22d0a3c42b542384"
+	sha1 hasValue "225326e2d575450812712295eeb92d54b41db67d"
+	sha256 hasValue "fcd20f5acb446b22ecf93425fb96b5eb005a99159dca8e67113df814ade96dbe"
+	description hasValue "Automates interactive applications"
+	descriptionMd5 hasValue "168e2767f12c89e933bb55f9c42e3ebf"
+	homepage hasValue "https://core.tcl.tk/expect/"
+	depends hasValue "tcl8.6, libc6 (>= 2.4), libtcl8.6 (>= 8.6.0), tcl-expect"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "tcl8.6"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__expect,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__expect,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libtcl8.6"
+	comparison hasValue ">="
+	version hasValue "8.6.0"
+
+relationInstance depends(P0__expect,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "tcl-expect"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__expect,3,DepAtom__3)
+

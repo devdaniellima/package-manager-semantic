@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology silx
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__silx memberOf Package
+	package hasValue "silx"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/science"
+	installedSize hasValue "49"
+	maintainer hasValue "Original-Debian Science Maintainers <debian-science-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.12.0+dfsg-1build1"
+	fileName hasValue "pool/universe/s/silx/silx_0.12.0+dfsg-1build1_all.deb"
+	size hasValue "12700"
+	md5sum hasValue "84f6e92602bb31e738d5d07de70e2840"
+	sha1 hasValue "51276402d023ca086fa8404e68285e55b424d5b5"
+	sha256 hasValue "62e8a42a96e401f78e5cd1734d13bb44deb561c9652ea31b252b96dfc0a6ddb3"
+	descriptionMd5 hasValue "c16a0204a4cf8474a0444208066feb1a"
+	homepage hasValue "https://github.com/silx-kit/silx"
+	depends hasValue "python3-silx (>= 0.12.0+dfsg-1build1), python3-numpy, python3:any"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3-silx"
+	comparison hasValue ">="
+	version hasValue "0.12.0+dfsg-1build1"
+
+relationInstance depends(P0__silx,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3-numpy"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__silx,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__silx,2,DepAtom__2)
+

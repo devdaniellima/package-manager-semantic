@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python3_xarray
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python3_xarray memberOf Package
+	package hasValue "python3-xarray"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "2891"
+	maintainer hasValue "Original-Debian Science Maintainers <debian-science-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.15.0-3ubuntu1"
+	fileName hasValue "pool/universe/p/python-xarray/python3-xarray_0.15.0-3ubuntu1_all.deb"
+	size hasValue "433516"
+	md5sum hasValue "a1272c03e393991c51147281153d0d7a"
+	sha1 hasValue "b62118b095c98a9068f4bbfd371fd7787b4e2b24"
+	sha256 hasValue "cb51dc276c34f96c2ff5e123b8237d6b51d8add2155665e73cf7e0f8edb4346d"
+	descriptionMd5 hasValue "61c5f2b61ddf27daa81c47ccbfa8a651"
+	homepage hasValue "http://xarray.pydata.org/"
+	depends hasValue "python3-numpy, python3-pandas (>= 0.15.0), python3:any"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3-numpy"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__python3_xarray,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3-pandas"
+	comparison hasValue ">="
+	version hasValue "0.15.0"
+
+relationInstance depends(P0__python3_xarray,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__python3_xarray,2,DepAtom__2)
+

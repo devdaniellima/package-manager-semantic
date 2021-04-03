@@ -1,0 +1,71 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology frotz
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__frotz memberOf Package
+	package hasValue "frotz"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/games"
+	installedSize hasValue "160"
+	maintainer hasValue "Original-Robert Lemmen <robertle@semistable.com>"
+	architecture hasValue "amd64"
+	version hasValue "2.44-1"
+	replaces hasValue "zcode-support"
+	provides hasValue "zcode-interpreter"
+	conflicts hasValue "zcode-support"
+	fileName hasValue "pool/universe/f/frotz/frotz_2.44-1_amd64.deb"
+	size hasValue "70368"
+	md5sum hasValue "5620f07b4e6682638cc8738291f02c86"
+	sha1 hasValue "17c444cc5555aafe67add6641f117e7a9eb5feb6"
+	sha256 hasValue "0a5cf570a2c559b9c60d118b50f8744aa2e1e9fdb2e12d1c6eb6abe38baaf517"
+	description hasValue "interpretador de código-Z para story-files"
+	descriptionMd5 hasValue "c334dfec00e6c9946fffab58039f20d2"
+	homepage hasValue "http://frotz.sourceforge.net/"
+	depends hasValue "libc6 (>= 2.14), libncurses6 (>= 6), libtinfo6 (>= 6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__frotz,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libncurses6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__frotz,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libtinfo6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__frotz,2,DepAtom__2)
+

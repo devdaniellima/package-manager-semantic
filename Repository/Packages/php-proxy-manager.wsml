@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology php_proxy_manager
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__php_proxy_manager memberOf Package
+	package hasValue "php-proxy-manager"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/php"
+	installedSize hasValue "407"
+	maintainer hasValue "Original-Debian PHP PEAR Maintainers <pkg-php-pear@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.2.3-2"
+	provides hasValue "php-ocramius-proxy-manager"
+	fileName hasValue "pool/universe/p/php-proxy-manager/php-proxy-manager_2.2.3-2_all.deb"
+	size hasValue "48380"
+	md5sum hasValue "a09909d5b5c98001afe498c76c19fa2e"
+	sha1 hasValue "7ba0badfc5ea0062aeef57291a187ee1cbc672c3"
+	sha256 hasValue "83fe6f48b6c1045f858d4570069b169b3a844e6d588d9548137a7f89368c7d85"
+	descriptionMd5 hasValue "3ded5074384997c0a178f0da0734c93a"
+	homepage hasValue "https://github.com/Ocramius/ProxyManager"
+	depends hasValue "php-common, php-zend-code (>= 3.3.0), php-zend-code (<< 4~~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "php-common"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__php_proxy_manager,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "php-zend-code"
+	comparison hasValue ">="
+	version hasValue "3.3.0"
+
+relationInstance depends(P0__php_proxy_manager,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "php-zend-code"
+	comparison hasValue "<<"
+	version hasValue "4~~"
+
+relationInstance depends(P0__php_proxy_manager,2,DepAtom__2)
+

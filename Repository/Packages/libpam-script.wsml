@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libpam_script
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libpam_script memberOf Package
+	package hasValue "libpam-script"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/admin"
+	installedSize hasValue "57"
+	maintainer hasValue "Original-Martijn van Brummelen <mvb@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.1.9-4"
+	fileName hasValue "pool/universe/libp/libpam-script/libpam-script_1.1.9-4_amd64.deb"
+	size hasValue "16524"
+	md5sum hasValue "fdf3714e65f12f0a06601677e37b16ab"
+	sha1 hasValue "c1b1bf223037cda57f6de8d7fb49e51446ced01e"
+	sha256 hasValue "49ec0fc45813900a326c801c7a6cf5fb5be94b77ee762668a41d6a833c88ff46"
+	descriptionMd5 hasValue "92f94c216214f5e561093f81177e8f47"
+	homepage hasValue "https://github.com/jeroennijhof/pam_script"
+	depends hasValue "libc6 (>= 2.4), libpam0g (>= 0.99.7.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libpam_script,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libpam0g"
+	comparison hasValue ">="
+	version hasValue "0.99.7.1"
+
+relationInstance depends(P0__libpam_script,1,DepAtom__1)
+

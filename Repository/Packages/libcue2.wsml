@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libcue2
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libcue2 memberOf Package
+	package hasValue "libcue2"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libs"
+	installedSize hasValue "65"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.2.1-2"
+	fileName hasValue "pool/main/libc/libcue/libcue2_2.2.1-2_amd64.deb"
+	size hasValue "19752"
+	md5sum hasValue "7c640215d5d158094f1779b742a59329"
+	sha1 hasValue "827057633c4942e2501bc889fa13ae06b66d5d03"
+	sha256 hasValue "b38498fe6e9f891be08032da309f934831ec90b722b4def287b0f3e65f647c9b"
+	descriptionMd5 hasValue "beaf3eb3b6e514ae5070ad46ea313960"
+	homepage hasValue "https://github.com/lipnitsk/libcue"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libcue2,0,DepAtom__0)
+

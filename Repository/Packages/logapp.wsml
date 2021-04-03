@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology logapp
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__logapp memberOf Package
+	package hasValue "logapp"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "95"
+	maintainer hasValue "Original-Kumar Appaiah <akumar@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.16-1"
+	fileName hasValue "pool/universe/l/logapp/logapp_0.16-1_amd64.deb"
+	size hasValue "32372"
+	md5sum hasValue "ad6ccf550d655486b9375441cc8e0e59"
+	sha1 hasValue "bba6549f382e979f3f096229fb67d771d0333932"
+	sha256 hasValue "0f811c6dc33521ecd804a368674e0206e2e9189ff74d6a8570383493f832d6ed"
+	descriptionMd5 hasValue "8ef8269e446e177f01024a7e1c3c4884"
+	homepage hasValue "http://logapp.sourceforge.net/"
+	depends hasValue "libc6 (>= 2.15)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__logapp,0,DepAtom__0)
+

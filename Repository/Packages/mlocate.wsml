@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology mlocate
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__mlocate memberOf Package
+	package hasValue "mlocate"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "utils"
+	installedSize hasValue "252"
+	maintainer hasValue "Original-Tollef Fog Heen <tfheen@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.26-3ubuntu3"
+	conflicts hasValue "findutils (<= 4.2.31-1), slocate (<= 3.1-1.1)"
+	fileName hasValue "pool/main/m/mlocate/mlocate_0.26-3ubuntu3_amd64.deb"
+	size hasValue "50136"
+	md5sum hasValue "5c0d237cc08f914dbb320c684af4369e"
+	sha1 hasValue "b4a84047d616bc8773bd3aaf20e0a56fc10a81f1"
+	sha256 hasValue "3c54f1aca0b4ecb78886aa8d3df78096cef9672cdfda442d85134cf8e8439e5d"
+	description hasValue "rapidamente encontra arquivos no sistema de arquivos com base nos seus nomes"
+	descriptionMd5 hasValue "34e9c00f37885dbcdfb61296f24c84df"
+	homepage hasValue "https://pagure.io/mlocate"
+	depends hasValue "libc6 (>= 2.14), adduser"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__mlocate,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "adduser"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__mlocate,1,DepAtom__1)
+

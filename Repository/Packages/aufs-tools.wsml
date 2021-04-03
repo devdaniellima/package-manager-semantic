@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology aufs_tools
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__aufs_tools memberOf Package
+	package hasValue "aufs-tools"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/kernel"
+	installedSize hasValue "270"
+	maintainer hasValue "Original-Jan Luca Naumann <j.naumann@fu-berlin.de>"
+	architecture hasValue "amd64"
+	version hasValue "1:4.14+20190211-1ubuntu1"
+	fileName hasValue "pool/universe/a/aufs-tools/aufs-tools_4.14+20190211-1ubuntu1_amd64.deb"
+	size hasValue "103540"
+	md5sum hasValue "3b6a9a7a8d96b57d3db83e1b5639071c"
+	sha1 hasValue "919ade542690a43942d060d0a167e02bab90912b"
+	sha256 hasValue "08484effc5fa31aa7e631099d18ef90f241b828a43a6040fbb7611da29cbe85e"
+	descriptionMd5 hasValue "7cf963f9f359909978f61df40c9fc752"
+	homepage hasValue "http://aufs.sourceforge.net/"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__aufs_tools,0,DepAtom__0)
+

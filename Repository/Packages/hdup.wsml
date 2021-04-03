@@ -1,0 +1,74 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology hdup
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__hdup memberOf Package
+	package hasValue "hdup"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "147"
+	maintainer hasValue "Original-Francesco Paolo Lovergine <frankie@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.0.14-5.2"
+	fileName hasValue "pool/universe/h/hdup/hdup_2.0.14-5.2_amd64.deb"
+	size hasValue "50304"
+	md5sum hasValue "0260002c44e49e00e2aa4db67c16b116"
+	sha1 hasValue "1615134ca2a925a5b7638e462b1f87180a6d361f"
+	sha256 hasValue "a87bfa64417beac0e1d37d66e677208e1d8831347fb16f657ee8aa15b92ee620"
+	descriptionMd5 hasValue "cecc1fa2debbb3514609748c3c09c971"
+	homepage hasValue "http://www.miek.nl/projects/hdup/index.html"
+	depends hasValue "libc6 (>= 2.27), libglib2.0-0 (>= 2.12.0), ssh | rsync"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.27"
+
+relationInstance depends(P0__hdup,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libglib2.0-0"
+	comparison hasValue ">="
+	version hasValue "2.12.0"
+
+relationInstance depends(P0__hdup,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "ssh"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__hdup,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "rsync"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__hdup,2,DepAtom__3)
+

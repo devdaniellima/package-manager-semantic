@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libnl_idiag_3_200
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libnl_idiag_3_200 memberOf Package
+	package hasValue "libnl-idiag-3-200"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libs"
+	installedSize hasValue "67"
+	maintainer hasValue "Original-Heiko Stuebner <mmind@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.4.0-1"
+	fileName hasValue "pool/main/libn/libnl3/libnl-idiag-3-200_3.4.0-1_amd64.deb"
+	size hasValue "13244"
+	md5sum hasValue "daf6f16de999cc87332189d071b85d77"
+	sha1 hasValue "dafe1d2f4f609d704cc9b0de22973b1dce4482f7"
+	sha256 hasValue "8aa61dc9c2103453c755faa4f6cc9aaf14b988a1f48afca31c77a5100e7cb5cf"
+	description hasValue "library for dealing with netlink sockets - inetdiag interface"
+	descriptionMd5 hasValue "8d99099c6b643bbb2d951daf968fafff"
+	homepage hasValue "http://www.infradead.org/~tgr/libnl/"
+	depends hasValue "libnl-3-200 (= 3.4.0-1), libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libnl-3-200"
+	comparison hasValue "="
+	version hasValue "3.4.0-1"
+
+relationInstance depends(P0__libnl_idiag_3_200,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libnl_idiag_3_200,1,DepAtom__1)
+

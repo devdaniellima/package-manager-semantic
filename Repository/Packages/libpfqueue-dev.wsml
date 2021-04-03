@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libpfqueue_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libpfqueue_dev memberOf Package
+	package hasValue "libpfqueue-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "123"
+	maintainer hasValue "Original-Martin Zobel-Helas <zobel@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.5.6-9build3"
+	fileName hasValue "pool/universe/p/pfqueue/libpfqueue-dev_0.5.6-9build3_amd64.deb"
+	size hasValue "15884"
+	md5sum hasValue "9bfe65122f175d0495ebba1e1a27ba99"
+	sha1 hasValue "3f09ede0bd91a3b0858f8895e3eae42634d8a937"
+	sha256 hasValue "0f7b99e5e587ec1c8497c7ddcea1fd4a6b8e176bfb2fc5ec97412a59c121a44f"
+	description hasValue "interactive console-based tool to control MTA queues (development)"
+	descriptionMd5 hasValue "951262b723c14a141f2f71824c1ca358"
+	homepage hasValue "http://pfqueue.sourceforge.net/"
+	depends hasValue "libpfqueue0 (= 0.5.6-9build3), libncurses5-dev"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libpfqueue0"
+	comparison hasValue "="
+	version hasValue "0.5.6-9build3"
+
+relationInstance depends(P0__libpfqueue_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libncurses5-dev"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libpfqueue_dev,1,DepAtom__1)
+

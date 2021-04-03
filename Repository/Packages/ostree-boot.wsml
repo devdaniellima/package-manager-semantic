@@ -1,0 +1,83 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ostree_boot
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ostree_boot memberOf Package
+	package hasValue "ostree-boot"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "113"
+	maintainer hasValue "Original-Utopia Maintenance Team <pkg-utopia-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2020.3-1"
+	replaces hasValue "ostree (<< 2020.3-1), ostree-grub2 (<< 2020.3-1)"
+	provides hasValue "ostree-grub2 (= 2020.3-1)"
+	fileName hasValue "pool/universe/o/ostree/ostree-boot_2020.3-1_amd64.deb"
+	size hasValue "14412"
+	md5sum hasValue "e4d641834d52ae1121dc3fe49049827b"
+	sha1 hasValue "263c98ede3467a5f84cf1445bf8c596cafd503ff"
+	sha256 hasValue "54237eac3df91f413c7689af6b42d7ff69f84f1813d9727661e56ae23fdbbbd6"
+	descriptionMd5 hasValue "419ce2b81fe149a7b6112972cafbcbd4"
+	homepage hasValue "https://github.com/ostreedev/ostree/"
+	depends hasValue "ostree (= 2020.3-1), libc6 (>= 2.4), libglib2.0-0 (>= 2.40.0), libostree-1-1 (>= 2016.4), libsystemd0"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "ostree"
+	comparison hasValue "="
+	version hasValue "2020.3-1"
+
+relationInstance depends(P0__ostree_boot,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__ostree_boot,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libglib2.0-0"
+	comparison hasValue ">="
+	version hasValue "2.40.0"
+
+relationInstance depends(P0__ostree_boot,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "libostree-1-1"
+	comparison hasValue ">="
+	version hasValue "2016.4"
+
+relationInstance depends(P0__ostree_boot,3,DepAtom__3)
+
+instance DepAtom__4 memberOf DependencyAtom
+	package hasValue "libsystemd0"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ostree_boot,4,DepAtom__4)
+

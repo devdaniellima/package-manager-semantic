@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology librtlsdr0
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__librtlsdr0 memberOf Package
+	package hasValue "librtlsdr0"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/libs"
+	installedSize hasValue "107"
+	maintainer hasValue "Original-A. Maitland Bottoms <bottoms@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.6.0-3"
+	fileName hasValue "pool/universe/r/rtl-sdr/librtlsdr0_0.6.0-3_amd64.deb"
+	size hasValue "29464"
+	md5sum hasValue "3dba442abbef89c718a7f7acf1f5f7b1"
+	sha1 hasValue "732bcc23203b15b03816346c39ce629454b5a1a8"
+	sha256 hasValue "2c0b6162b97e1ffe2faaa7bebcbe170b63c3dd1606a9c49b5dfc6f42fd12876c"
+	description hasValue "Software defined radio receiver for Realtek RTL2832U (library)"
+	descriptionMd5 hasValue "29f2fdb7d8f0b96a1c1915fd8793a197"
+	homepage hasValue "http://sdr.osmocom.org/trac/wiki/rtl-sdr"
+	depends hasValue "libc6 (>= 2.14), libusb-1.0-0 (>= 2:1.0.21)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__librtlsdr0,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libusb-1.0-0"
+	comparison hasValue ">="
+	version hasValue "2:1.0.21"
+
+relationInstance depends(P0__librtlsdr0,1,DepAtom__1)
+

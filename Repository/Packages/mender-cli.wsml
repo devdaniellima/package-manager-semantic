@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology mender_cli
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__mender_cli memberOf Package
+	package hasValue "mender-cli"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "7210"
+	maintainer hasValue "Original-Debian Go Packaging Team <team+pkg-go@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.2.0-1"
+	fileName hasValue "pool/universe/m/mender-cli/mender-cli_1.2.0-1_amd64.deb"
+	size hasValue "2220968"
+	md5sum hasValue "fef6c569797cb27f61fcbe2b97856531"
+	sha1 hasValue "9d18b41b56d1ef4d5d7d8308ee4c9d2c559e2509"
+	sha256 hasValue "4ed36c8b1b00f379fd32aa63342268e19c972c68868469df8d11c8a4f2528116"
+	descriptionMd5 hasValue "03e9d8b5b19c8d9cb68133a8b8af350a"
+	homepage hasValue "https://github.com/mendersoftware/mender-cli"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__mender_cli,0,DepAtom__0)
+

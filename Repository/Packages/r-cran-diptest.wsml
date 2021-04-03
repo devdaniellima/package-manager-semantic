@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology r_cran_diptest
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__r_cran_diptest memberOf Package
+	package hasValue "r-cran-diptest"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/gnu-r"
+	installedSize hasValue "434"
+	maintainer hasValue "Original-Debian R Packages Maintainers <r-pkg-team@alioth-lists.debian.net>"
+	architecture hasValue "amd64"
+	version hasValue "0.75-7-1"
+	fileName hasValue "pool/universe/r/r-cran-diptest/r-cran-diptest_0.75-7-1_amd64.deb"
+	size hasValue "353984"
+	md5sum hasValue "008e30a88e3fab7469e0cd2311421ac9"
+	sha1 hasValue "eae92bbce53cfc4c4159379a9bf55a32782efc15"
+	sha256 hasValue "8961a627ca8081b0e0cdd805f1fcd10384e5416033bc3a0c878ffdc22f669326"
+	descriptionMd5 hasValue "eada11fa49b08d2a3c66d41f40a8f7fd"
+	homepage hasValue "https://cran.r-project.org/package=diptest"
+	depends hasValue "r-base-core (>= 3.5.1-1build1), r-api-3.5"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "r-base-core"
+	comparison hasValue ">="
+	version hasValue "3.5.1-1build1"
+
+relationInstance depends(P0__r_cran_diptest,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "r-api-3.5"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__r_cran_diptest,1,DepAtom__1)
+

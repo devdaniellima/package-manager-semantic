@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology traceroute
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__traceroute memberOf Package
+	package hasValue "traceroute"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "148"
+	maintainer hasValue "Original-Laszlo Boszormenyi (GCS) <gcs@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:2.1.0-2"
+	fileName hasValue "pool/universe/t/traceroute/traceroute_2.1.0-2_amd64.deb"
+	size hasValue "45386"
+	md5sum hasValue "aaeda2e2d75c065b0c42622a230edb2e"
+	sha1 hasValue "dfa8299bd3f99920d6b8514e1c9b940b8029cb38"
+	sha256 hasValue "f04499e59e7dab53c2ba50da052ca5338cb66da08d93ff8662a11a0a1a904dff"
+	description hasValue "traça a rota tomada por pacotes através de uma rede IPv4/IPv6"
+	descriptionMd5 hasValue "8a3a47eccb961a38576ee994d96f3d2c"
+	homepage hasValue "http://traceroute.sourceforge.net/"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__traceroute,0,DepAtom__0)
+

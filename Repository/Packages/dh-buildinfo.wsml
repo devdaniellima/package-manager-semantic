@@ -1,0 +1,66 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology dh_buildinfo
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__dh_buildinfo memberOf Package
+	package hasValue "dh-buildinfo"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "64"
+	maintainer hasValue "Original-Yann Dirson <dirson@debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.11+nmu2"
+	fileName hasValue "pool/universe/d/dh-buildinfo/dh-buildinfo_0.11+nmu2_all.deb"
+	size hasValue "15976"
+	md5sum hasValue "a438cc8550aa2311e99113f2687230e8"
+	sha1 hasValue "38e4330351b11df9d575621b44b76c3e92f1acc2"
+	sha256 hasValue "1bdb94ba03d9b8a3b8dbb415b2c51d50d9287a0e53955d8ca5a4fe25fca12912"
+	descriptionMd5 hasValue "78727bb9b900caa5668c494ce4bf26b9"
+	depends hasValue "debhelper, perl, build-essential (>= 7)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "debhelper"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__dh_buildinfo,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "perl"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__dh_buildinfo,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "build-essential"
+	comparison hasValue ">="
+	version hasValue "7"
+
+relationInstance depends(P0__dh_buildinfo,2,DepAtom__2)
+

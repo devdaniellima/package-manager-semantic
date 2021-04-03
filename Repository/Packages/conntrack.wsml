@@ -1,0 +1,75 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology conntrack
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__conntrack memberOf Package
+	package hasValue "conntrack"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "net"
+	installedSize hasValue "102"
+	maintainer hasValue "Original-Debian Netfilter Packaging Team <pkg-netfilter-team@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:1.4.5-2"
+	fileName hasValue "pool/main/c/conntrack-tools/conntrack_1.4.5-2_amd64.deb"
+	size hasValue "30308"
+	md5sum hasValue "a90e4279d5021305188bc5c5591d5c92"
+	sha1 hasValue "baa57bb463ab199200236ba154c90a96bf5fb605"
+	sha256 hasValue "e0890d826e3e77706833ec502ac3a305fc1b3718889e081ccf8af9525ef7c836"
+	description hasValue "programa para modificar as tabelas conntrack"
+	descriptionMd5 hasValue "c67acdc90314fa52663a0a06fd01d1b6"
+	homepage hasValue "http://conntrack-tools.netfilter.org/"
+	depends hasValue "libc6 (>= 2.14), libmnl0 (>= 1.0.3-4~), libnetfilter-conntrack3, libnfnetlink0"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__conntrack,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libmnl0"
+	comparison hasValue ">="
+	version hasValue "1.0.3-4~"
+
+relationInstance depends(P0__conntrack,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libnetfilter-conntrack3"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__conntrack,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "libnfnetlink0"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__conntrack,3,DepAtom__3)
+

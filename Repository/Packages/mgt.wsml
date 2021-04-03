@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology mgt
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__mgt memberOf Package
+	package hasValue "mgt"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/games"
+	installedSize hasValue "166"
+	maintainer hasValue "Original-Steve M. Robbins <smr@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.31-7build1"
+	fileName hasValue "pool/universe/m/mgt/mgt_2.31-7build1_amd64.deb"
+	size hasValue "64776"
+	md5sum hasValue "983f8600216d3693ec2ac568b70b0ed1"
+	sha1 hasValue "81b254a548761687ebb55b7d3a9f5a7f89daaa56"
+	sha256 hasValue "225ef62b10bbf05c3c5d37f3dc11b27f6634f174ef94824cf44f2f95d448061c"
+	description hasValue "game record display/editor for the oriental game of go"
+	descriptionMd5 hasValue "472a50a9a7614a1c35bb05bbdf7fa6ca"
+	depends hasValue "libc6 (>= 2.4), libncurses6 (>= 6), libtinfo6 (>= 6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__mgt,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libncurses6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__mgt,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libtinfo6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__mgt,2,DepAtom__2)
+

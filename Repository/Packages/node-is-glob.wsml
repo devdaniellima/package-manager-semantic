@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology node_is_glob
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__node_is_glob memberOf Package
+	package hasValue "node-is-glob"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/web"
+	installedSize hasValue "18"
+	maintainer hasValue "Original-Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "4.0.1-1"
+	fileName hasValue "pool/universe/n/node-is-glob/node-is-glob_4.0.1-1_all.deb"
+	size hasValue "6348"
+	md5sum hasValue "94681517061a94db00f1472315c183e1"
+	sha1 hasValue "92a5bfa2f229991694e91b1e2c1cb45a4817d66c"
+	sha256 hasValue "cc03431a2e9e75d3cbcbc5130f4243249554ead7c056fb807828e334658eaa1c"
+	descriptionMd5 hasValue "c8f3c81c91b33c96bb8b87145e6d76d8"
+	homepage hasValue "https://github.com/jonschlinkert/is-glob"
+	depends hasValue "nodejs, node-is-extglob"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "nodejs"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__node_is_glob,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "node-is-extglob"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__node_is_glob,1,DepAtom__1)
+

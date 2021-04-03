@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology wavtool_pl
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__wavtool_pl memberOf Package
+	package hasValue "wavtool-pl"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/sound"
+	installedSize hasValue "30"
+	maintainer hasValue "Original-Ying-Chun Liu (PaulLiu) <paulliu@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.20150501-1build1"
+	fileName hasValue "pool/universe/w/wavtool-pl/wavtool-pl_0.20150501-1build1_amd64.deb"
+	size hasValue "9704"
+	md5sum hasValue "4c54cfc5330dc31df52b2012d409e89f"
+	sha1 hasValue "825a6cbabee6ced70e4ee094aac973beb79daeb2"
+	sha256 hasValue "1960b1d82a7e5f728f68aaf6c1d5d2bfe10444adbe1e518e74462617bfc8b270"
+	descriptionMd5 hasValue "3a542c47d0a0d09f1a7442fb1988210c"
+	homepage hasValue "http://sourceforge.jp/projects/wavtool-pl/"
+	depends hasValue "libc6 (>= 2.7), libsndfile1 (>= 1.0.20)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__wavtool_pl,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libsndfile1"
+	comparison hasValue ">="
+	version hasValue "1.0.20"
+
+relationInstance depends(P0__wavtool_pl,1,DepAtom__1)
+

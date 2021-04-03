@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology tcl_signal
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__tcl_signal memberOf Package
+	package hasValue "tcl-signal"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/libs"
+	installedSize hasValue "40"
+	maintainer hasValue "Original-Tcl/Tk Debian Packagers <pkg-tcltk-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.4.4-1"
+	fileName hasValue "pool/universe/t/tcl-signal/tcl-signal_1.4.4-1_amd64.deb"
+	size hasValue "10052"
+	md5sum hasValue "32c0989e3e7520633d03883fe8b6e474"
+	sha1 hasValue "c15d75b6eeb7b371d41b43a90ab68c69d888204a"
+	sha256 hasValue "a481a9f4e3f0e01675d1903c9a53753c4f170b7e8e6a96f9e216ea452dae37f6"
+	descriptionMd5 hasValue "7abcb05cafcd2b5bc7494b2efad9e34d"
+	homepage hasValue "https://www.nyx.net/~mschwart/signal_ext.html"
+	depends hasValue "libc6 (>= 2.4), libtcl8.6 (>= 8.6.0-2) | libtcl"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__tcl_signal,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libtcl8.6"
+	comparison hasValue ">="
+	version hasValue "8.6.0-2"
+
+relationInstance depends(P0__tcl_signal,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libtcl"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__tcl_signal,1,DepAtom__2)
+

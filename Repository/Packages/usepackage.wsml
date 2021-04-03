@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology usepackage
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__usepackage memberOf Package
+	package hasValue "usepackage"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "79"
+	maintainer hasValue "Original-Lev Lamberov <dogsleg@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.13-4"
+	fileName hasValue "pool/universe/u/usepackage/usepackage_1.13-4_amd64.deb"
+	size hasValue "28344"
+	md5sum hasValue "e3fb2e16cf84ff5bea035786183eb22c"
+	sha1 hasValue "0090b63b16c8c18490dd1e0585256f3c53db2520"
+	sha256 hasValue "507de796a8bb2b85388fcf9ea6e9fe4e01670e63205ccf209081757eb84cc155"
+	descriptionMd5 hasValue "63cdb8f1562ef24e3f4ee89268f9ff58"
+	homepage hasValue "https://github.com/jonathanhogg/usepackage"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__usepackage,0,DepAtom__0)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology rtmpdump
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__rtmpdump memberOf Package
+	package hasValue "rtmpdump"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/web"
+	installedSize hasValue "156"
+	maintainer hasValue "Original-Debian Multimedia Maintainers <debian-multimedia@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.4+20151223.gitfa8646d.1-2build1"
+	fileName hasValue "pool/universe/r/rtmpdump/rtmpdump_2.4+20151223.gitfa8646d.1-2build1_amd64.deb"
+	size hasValue "44444"
+	md5sum hasValue "ff25cd1a5056e1b307fdb87e104b37e4"
+	sha1 hasValue "3befed03ad186f7a716050f3443ba66a5345b78a"
+	sha256 hasValue "2da84149d5e7e937f4dee0eb5368f2a11c24fef8ee28a10254c2d2d38da1df29"
+	descriptionMd5 hasValue "f70a56cc38df925558fa989416eda37b"
+	homepage hasValue "http://rtmpdump.mplayerhq.hu/"
+	depends hasValue "libc6 (>= 2.15), librtmp1 (>= 2.4+20131018.git79459a2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__rtmpdump,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "librtmp1"
+	comparison hasValue ">="
+	version hasValue "2.4+20131018.git79459a2"
+
+relationInstance depends(P0__rtmpdump,1,DepAtom__1)
+

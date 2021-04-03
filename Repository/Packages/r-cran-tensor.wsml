@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology r_cran_tensor
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__r_cran_tensor memberOf Package
+	package hasValue "r-cran-tensor"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/gnu-r"
+	installedSize hasValue "47"
+	maintainer hasValue "Original-Debian R Packages Maintainers <r-pkg-team@alioth-lists.debian.net>"
+	architecture hasValue "all"
+	version hasValue "1.5-3"
+	fileName hasValue "pool/universe/r/r-cran-tensor/r-cran-tensor_1.5-3_all.deb"
+	size hasValue "15540"
+	md5sum hasValue "0e90292a1555bb455c8dab3043b6eba6"
+	sha1 hasValue "dbe241dbb82bb1594d8dfe892ccffd0a55cfdca4"
+	sha256 hasValue "bb1aa5958ff4e30e68b6bf819c74115663b2d9e64c1684a431a84297cea75213"
+	descriptionMd5 hasValue "1adeb44ba1ae3003860174f806683cd0"
+	homepage hasValue "https://cran.r-project.org/package=tensor"
+	depends hasValue "r-base-core (>= 3.5.0-5), r-api-3.5"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "r-base-core"
+	comparison hasValue ">="
+	version hasValue "3.5.0-5"
+
+relationInstance depends(P0__r_cran_tensor,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "r-api-3.5"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__r_cran_tensor,1,DepAtom__1)
+

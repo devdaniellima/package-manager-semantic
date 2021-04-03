@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology scrypt
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__scrypt memberOf Package
+	package hasValue "scrypt"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "86"
+	maintainer hasValue "Original-Barak A. Pearlmutter <bap@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.3.0-3"
+	fileName hasValue "pool/universe/s/scrypt/scrypt_1.3.0-3_amd64.deb"
+	size hasValue "33532"
+	md5sum hasValue "207378ca4619bf529613dc3179195573"
+	sha1 hasValue "d82159a8b3ef2c23a8ee9304b254c273ef6fbda2"
+	sha256 hasValue "709db44e4f5247eb14f9f2e9f6a0a5e925c4b19bb7b1d4d82649e46a4527c025"
+	descriptionMd5 hasValue "e45f625b05b816725ba30fd9d213b79d"
+	homepage hasValue "https://www.tarsnap.com/scrypt.html"
+	depends hasValue "libc6 (>= 2.17), libssl1.1 (>= 1.1.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.17"
+
+relationInstance depends(P0__scrypt,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libssl1.1"
+	comparison hasValue ">="
+	version hasValue "1.1.0"
+
+relationInstance depends(P0__scrypt,1,DepAtom__1)
+

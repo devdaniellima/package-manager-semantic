@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology vitrage_graph
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__vitrage_graph memberOf Package
+	package hasValue "vitrage-graph"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "27"
+	maintainer hasValue "Original-Debian OpenStack <team+openstack@tracker.debian.org>"
+	architecture hasValue "all"
+	version hasValue "6.0.1-0ubuntu1"
+	fileName hasValue "pool/universe/v/vitrage/vitrage-graph_6.0.1-0ubuntu1_all.deb"
+	size hasValue "4840"
+	md5sum hasValue "898348b57a02239baf660a2339baae1c"
+	sha1 hasValue "7a1ba581becc03d416d08421381a4486d1fecbcc"
+	sha256 hasValue "c4e9e283837cc5e783f1bc86af771374c7a50dee5f7e51bd03458892a678cb00"
+	descriptionMd5 hasValue "bb452c79331a368f46228fefbc357a0a"
+	homepage hasValue "https://github.com/openstack/vitrage.git"
+	depends hasValue "adduser, python3-vitrage (= 6.0.1-0ubuntu1), vitrage-common (= 6.0.1-0ubuntu1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "adduser"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__vitrage_graph,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3-vitrage"
+	comparison hasValue "="
+	version hasValue "6.0.1-0ubuntu1"
+
+relationInstance depends(P0__vitrage_graph,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "vitrage-common"
+	comparison hasValue "="
+	version hasValue "6.0.1-0ubuntu1"
+
+relationInstance depends(P0__vitrage_graph,2,DepAtom__2)
+

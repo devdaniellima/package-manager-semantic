@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology maxima_share
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__maxima_share memberOf Package
+	package hasValue "maxima-share"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/math"
+	installedSize hasValue "29683"
+	maintainer hasValue "Original-Camm Maguire <camm@debian.org>"
+	architecture hasValue "all"
+	version hasValue "5.43.2-3"
+	replaces hasValue "maxima (<< 5.43.2-3)"
+	fileName hasValue "pool/universe/m/maxima/maxima-share_5.43.2-3_all.deb"
+	size hasValue "8975000"
+	md5sum hasValue "78fb59e0c1e688da8d7bf650363e0da1"
+	sha1 hasValue "10d5d2d05a1704b095d9681b3668067344160592"
+	sha256 hasValue "68c3840258c9383a3d44635924f310cdfcb3a85ba3a9803ca060c0d69642618c"
+	descriptionMd5 hasValue "10025b2a7fd84792c7aa21066f9874b0"
+	depends hasValue "maxima (>= 5.43.2-3), tex-common (>= 6.13)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "maxima"
+	comparison hasValue ">="
+	version hasValue "5.43.2-3"
+
+relationInstance depends(P0__maxima_share,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "tex-common"
+	comparison hasValue ">="
+	version hasValue "6.13"
+
+relationInstance depends(P0__maxima_share,1,DepAtom__1)
+

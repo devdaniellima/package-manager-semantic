@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology roundcube_pgsql
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__roundcube_pgsql memberOf Package
+	package hasValue "roundcube-pgsql"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/web"
+	installedSize hasValue "53"
+	maintainer hasValue "Original-Debian Roundcube Maintainers <pkg-roundcube-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.4.3+dfsg.1-1"
+	fileName hasValue "pool/universe/r/roundcube/roundcube-pgsql_1.4.3+dfsg.1-1_all.deb"
+	size hasValue "12688"
+	md5sum hasValue "cbc3ba57685bdd8c26b3d663ec11d6bb"
+	sha1 hasValue "a3475fc8d18e67d81a8c7b1b49b016e8e175511e"
+	sha256 hasValue "22000661440320f9f1a96c683034e47eeaa0d007f926044882929795ea5bf464"
+	descriptionMd5 hasValue "7a8d9c1ae68fcd3b5176a88c3c7750d8"
+	homepage hasValue "https://www.roundcube.net/"
+	depends hasValue "php-pgsql, postgresql-client"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "php-pgsql"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__roundcube_pgsql,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "postgresql-client"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__roundcube_pgsql,1,DepAtom__1)
+

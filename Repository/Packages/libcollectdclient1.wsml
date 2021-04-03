@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libcollectdclient1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libcollectdclient1 memberOf Package
+	package hasValue "libcollectdclient1"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "203"
+	maintainer hasValue "Original-Collectd Packaging Team <team+collectd@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "5.9.2.g-1ubuntu5"
+	fileName hasValue "pool/universe/c/collectd/libcollectdclient1_5.9.2.g-1ubuntu5_amd64.deb"
+	size hasValue "49852"
+	md5sum hasValue "e25d771a6409da66558de84bf2eb9b40"
+	sha1 hasValue "166dc673a10dfebd858495818bdf985fbcae6121"
+	sha256 hasValue "2ed45ea7d21a30f79d57003dc347dc28c33f13ace7becdb2c416d280ce72b1f2"
+	description hasValue "client library for collectd's control interface"
+	descriptionMd5 hasValue "d7728be60ea0a78c5c3ec23914fc235c"
+	homepage hasValue "https://collectd.org/"
+	depends hasValue "libc6 (>= 2.14), libgcrypt20 (>= 1.8.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libcollectdclient1,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgcrypt20"
+	comparison hasValue ">="
+	version hasValue "1.8.0"
+
+relationInstance depends(P0__libcollectdclient1,1,DepAtom__1)
+

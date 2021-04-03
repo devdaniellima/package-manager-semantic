@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libsmraw1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libsmraw1 memberOf Package
+	package hasValue "libsmraw1"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "1189"
+	maintainer hasValue "Original-Debian Security Tools <team+pkg-security@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "20181227-1.1"
+	fileName hasValue "pool/universe/libs/libsmraw/libsmraw1_20181227-1.1_amd64.deb"
+	size hasValue "387424"
+	md5sum hasValue "8e12d30de188bd9523121f63c7037321"
+	sha1 hasValue "2ef30ada747ced345277d6fdce93d2e0f7645ed4"
+	sha256 hasValue "d2d1eb7ad7600a6c5f5e7360244c3ceefb4b54237080387fab188426e4fdf099"
+	description hasValue "split RAW image format access library"
+	descriptionMd5 hasValue "dee097554f2b6d28429406de6f137733"
+	homepage hasValue "https://github.com/libyal/libsmraw"
+	depends hasValue "libbfio1 (>= 20120425), libc6 (>= 2.17)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libbfio1"
+	comparison hasValue ">="
+	version hasValue "20120425"
+
+relationInstance depends(P0__libsmraw1,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.17"
+
+relationInstance depends(P0__libsmraw1,1,DepAtom__1)
+

@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology base_passwd
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__base_passwd memberOf Package
+	package hasValue "base-passwd"
+	packageSource hasValue Source__S1
+	priority hasValue "required"
+	section hasValue "admin"
+	installedSize hasValue "233"
+	maintainer hasValue "Colin Watson <cjwatson@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.5.47"
+	replaces hasValue "base"
+	fileName hasValue "pool/main/b/base-passwd/base-passwd_3.5.47_amd64.deb"
+	size hasValue "47736"
+	md5sum hasValue "2e25a9ee3046baa258f79e3f2fea1db0"
+	sha1 hasValue "b45077d23c4329e1e8f2c6cbce61f5a4c377b78d"
+	sha256 hasValue "96477a0b48c43358a7a2fcc958a4271424c16db6594719b05ae90e89a508772c"
+	description hasValue "Arquivos de grupos e senhas mestras do Sistema Básico Debian"
+	descriptionMd5 hasValue "aad0cc52ee72b2469af5552851e49f03"
+	depends hasValue "libc6 (>= 2.8), libdebconfclient0 (>= 0.145)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.8"
+
+relationInstance depends(P0__base_passwd,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libdebconfclient0"
+	comparison hasValue ">="
+	version hasValue "0.145"
+
+relationInstance depends(P0__base_passwd,1,DepAtom__1)
+

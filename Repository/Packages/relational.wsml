@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology relational
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__relational memberOf Package
+	package hasValue "relational"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "360"
+	maintainer hasValue "Original-Salvo 'LtWorf' Tomaselli <tiposchi@tiscali.it>"
+	architecture hasValue "all"
+	version hasValue "2.5-2"
+	fileName hasValue "pool/universe/r/relational/relational_2.5-2_all.deb"
+	size hasValue "89332"
+	md5sum hasValue "0091a32ed39338cde36bfbc7b92ecaa6"
+	sha1 hasValue "de736bc53dbf4238c3f93e69b32164b019b44b4e"
+	sha256 hasValue "43624fa43260884885c22f30879f68bdab3e70f5469560c8fa38434633bfffa5"
+	description hasValue "Educational tool for relational algebra (graphical user interface)"
+	descriptionMd5 hasValue "93f4c26999e5f549dc3c70e5e1e88924"
+	homepage hasValue "http://ltworf.github.io/relational/"
+	depends hasValue "python3:any (>= 3.4~), python3-relational (>= 2.5-2), python3-pyqt5"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ">="
+	version hasValue "3.4~"
+
+relationInstance depends(P0__relational,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3-relational"
+	comparison hasValue ">="
+	version hasValue "2.5-2"
+
+relationInstance depends(P0__relational,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "python3-pyqt5"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__relational,2,DepAtom__2)
+

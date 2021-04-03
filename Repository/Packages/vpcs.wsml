@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology vpcs
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__vpcs memberOf Package
+	package hasValue "vpcs"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "159"
+	maintainer hasValue "Original-Daniel Lintott <daniel@serverb.co.uk>"
+	architecture hasValue "amd64"
+	version hasValue "0.5b2-2.1"
+	fileName hasValue "pool/universe/v/vpcs/vpcs_0.5b2-2.1_amd64.deb"
+	size hasValue "69760"
+	md5sum hasValue "71cfce7fe461531199e0f84dbd9ec29a"
+	sha1 hasValue "0e90adfe97bd7b2a984af2a79550c9c6555f48f9"
+	sha256 hasValue "094eec3373813ede4029f65bfa6d3a7e6410a8a30972525a2e59e698a47f85c5"
+	descriptionMd5 hasValue "890cc380064ec919ce3685816e6191f1"
+	homepage hasValue "http://sourceforge.net/projects/vpcs/"
+	depends hasValue "libc6 (>= 2.15)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__vpcs,0,DepAtom__0)
+

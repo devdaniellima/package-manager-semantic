@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology wwl
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__wwl memberOf Package
+	package hasValue "wwl"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/hamradio"
+	installedSize hasValue "28"
+	maintainer hasValue "Original-Debian Hamradio Maintainers <debian-hams@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.3+db-2build1"
+	fileName hasValue "pool/universe/w/wwl/wwl_1.3+db-2build1_amd64.deb"
+	size hasValue "7080"
+	md5sum hasValue "cd9f50b61f412c2a316eb12e52d6adac"
+	sha1 hasValue "b2f9bd09003562706106b6c927f68c99eecf47ac"
+	sha256 hasValue "cc24cc89b579cfbe23f6006bde081bafc78affb0f248fb2e583ed0d22cb7b4cf"
+	description hasValue "calcula distância e azimute entre dois localizadores Maidenhead"
+	descriptionMd5 hasValue "f00cf1d72948011411f447c57cc2498d"
+	homepage hasValue "http://www.db.net/downloads/"
+	depends hasValue "libc6 (>= 2.3.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.3.4"
+
+relationInstance depends(P0__wwl,0,DepAtom__0)
+

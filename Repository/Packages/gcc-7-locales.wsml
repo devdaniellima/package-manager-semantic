@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gcc_7_locales
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gcc_7_locales memberOf Package
+	package hasValue "gcc-7-locales"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "10622"
+	maintainer hasValue "Original-Debian GCC Maintainers <debian-gcc@lists.debian.org>"
+	architecture hasValue "all"
+	version hasValue "7.5.0-6ubuntu2"
+	fileName hasValue "pool/universe/g/gcc-7/gcc-7-locales_7.5.0-6ubuntu2_all.deb"
+	size hasValue "1600120"
+	md5sum hasValue "853e9c1869c02e2ccfc62c3bfa734716"
+	sha1 hasValue "ce83ad6117e5960cd4abd563c7826b10bd3508df"
+	sha256 hasValue "da4e1675bf5bd741eadda10c935649866ed8c3f00929d95cff60da52efe050b6"
+	descriptionMd5 hasValue "eb5e72cb380341d4ed2ad2d24c34f31d"
+	homepage hasValue "http://gcc.gnu.org/"
+	depends hasValue "gcc-7-base (>= 7), cpp-7 (>= 7)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "gcc-7-base"
+	comparison hasValue ">="
+	version hasValue "7"
+
+relationInstance depends(P0__gcc_7_locales,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "cpp-7"
+	comparison hasValue ">="
+	version hasValue "7"
+
+relationInstance depends(P0__gcc_7_locales,1,DepAtom__1)
+

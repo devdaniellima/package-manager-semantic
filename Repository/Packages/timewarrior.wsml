@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology timewarrior
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__timewarrior memberOf Package
+	package hasValue "timewarrior"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/utils"
+	installedSize hasValue "966"
+	maintainer hasValue "Original-Debian Tasktools Packaging Team <taskdeb-discuss@nongnu.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.2.0-2"
+	fileName hasValue "pool/universe/t/timew/timewarrior_1.2.0-2_amd64.deb"
+	size hasValue "313064"
+	md5sum hasValue "20e23150d110cc01728f378822750fea"
+	sha1 hasValue "3775c6f1b082faec2f9b646bc639feae4c798bc1"
+	sha256 hasValue "7a2e59369f1cb822a2fdcfee7b7b5050f21e114d76ae304eb29a237a41f0d296"
+	descriptionMd5 hasValue "f62f374907954f49445155c6ef5f8ce7"
+	homepage hasValue "https://timewarrior.net/"
+	depends hasValue "libc6 (>= 2.27), libgcc-s1 (>= 3.0), libstdc++6 (>= 9)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.27"
+
+relationInstance depends(P0__timewarrior,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgcc-s1"
+	comparison hasValue ">="
+	version hasValue "3.0"
+
+relationInstance depends(P0__timewarrior,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "9"
+
+relationInstance depends(P0__timewarrior,2,DepAtom__2)
+

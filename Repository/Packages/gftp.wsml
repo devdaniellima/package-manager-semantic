@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gftp
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gftp memberOf Package
+	package hasValue "gftp"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "16"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.0.19-6"
+	fileName hasValue "pool/universe/g/gftp/gftp_2.0.19-6_all.deb"
+	size hasValue "1916"
+	md5sum hasValue "64d8ba41f4fdb35fa035c1565a5d629f"
+	sha1 hasValue "926e9aac45389cd18a60ff61c1738981e459d3c2"
+	sha256 hasValue "3dace777787eef60c9bd3766f3b7d0807c5df64dfd36e4329d340f58ad4c882b"
+	descriptionMd5 hasValue "f3f8443e8fa994889b0ea7a2ec06e4de"
+	homepage hasValue "http://www.gftp.org/"
+	depends hasValue "gftp-gtk (>= 2.0.19-6), gftp-text (>= 2.0.19-6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "gftp-gtk"
+	comparison hasValue ">="
+	version hasValue "2.0.19-6"
+
+relationInstance depends(P0__gftp,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "gftp-text"
+	comparison hasValue ">="
+	version hasValue "2.0.19-6"
+
+relationInstance depends(P0__gftp,1,DepAtom__1)
+

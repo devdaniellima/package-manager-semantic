@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology snap
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__snap memberOf Package
+	package hasValue "snap"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/science"
+	installedSize hasValue "2650"
+	maintainer hasValue "Original-Debian Med Packaging Team <debian-med-packaging@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2013-11-29-9"
+	fileName hasValue "pool/universe/s/snap/snap_2013-11-29-9_amd64.deb"
+	size hasValue "375656"
+	md5sum hasValue "52c7970442e903b3fd721b1d2e154a3d"
+	sha1 hasValue "85f4a7c28602dcfc265de2c0e1970fc81f55f650"
+	sha256 hasValue "433df7822f1a73e04f81cff19bd906f55ab438274c224ed60b0d8d08351399d2"
+	descriptionMd5 hasValue "6d9a04153222c1b616dbca686c88945d"
+	homepage hasValue "https://www.psc.edu/index.php/user-resources/software/snap"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__snap,0,DepAtom__0)
+

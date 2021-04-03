@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology usbmount
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__usbmount memberOf Package
+	package hasValue "usbmount"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/admin"
+	installedSize hasValue "81"
+	maintainer hasValue "Original-Rogério Brito <rbrito@ime.usp.br>"
+	architecture hasValue "all"
+	version hasValue "0.0.22"
+	fileName hasValue "pool/universe/u/usbmount/usbmount_0.0.22_all.deb"
+	size hasValue "15110"
+	md5sum hasValue "9aca7abdd1029916c854e3731f28eb8a"
+	sha1 hasValue "f2038321fda724e78a5bfbca5af0ebd25071a3b7"
+	sha256 hasValue "d911dd20bb2801248206e353c9c6aa79b5874fc9e594354bbfecbf34b5de589e"
+	description hasValue "monta e desmonta automaticamente dispositivos de armazenagem USB"
+	descriptionMd5 hasValue "665bf065788bff1ada4b796e26321438"
+	homepage hasValue "http://usbmount.alioth.debian.org/"
+	depends hasValue "lockfile-progs, udev, util-linux (>> 2.16)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "lockfile-progs"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__usbmount,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "udev"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__usbmount,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "util-linux"
+	comparison hasValue ">>"
+	version hasValue "2.16"
+
+relationInstance depends(P0__usbmount,2,DepAtom__2)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology xbattbar
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__xbattbar memberOf Package
+	package hasValue "xbattbar"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/x11"
+	installedSize hasValue "65"
+	maintainer hasValue "Original-Dmitry E. Oboukhov <unera@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.4.9-2"
+	fileName hasValue "pool/universe/x/xbattbar/xbattbar_1.4.9-2_amd64.deb"
+	size hasValue "14788"
+	md5sum hasValue "50bd4e4b35c1077ae12e6cc1f875ab30"
+	sha1 hasValue "f37ccc1c8c9d451538c9ad3605c090a9532077f3"
+	sha256 hasValue "ce0efa8cb6c8ad44a59cfc6b8ceafcbb64892a9228ccfbad3a392b35b140a9a5"
+	description hasValue "Exibe status da bateria no X11"
+	descriptionMd5 hasValue "3362d1f69b93496a2d4c53f2af44488b"
+	depends hasValue "libc6 (>= 2.7), libx11-6"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__xbattbar,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libx11-6"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__xbattbar,1,DepAtom__1)
+

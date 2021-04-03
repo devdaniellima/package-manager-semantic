@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology complexity
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__complexity memberOf Package
+	package hasValue "complexity"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "63"
+	maintainer hasValue "Original-Dmitry Bogatov <KAction@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.10+dfsg-3.1"
+	fileName hasValue "pool/universe/c/complexity/complexity_1.10+dfsg-3.1_amd64.deb"
+	size hasValue "22892"
+	md5sum hasValue "ccbde716f1dc1be146ba18bcaef3b4bf"
+	sha1 hasValue "0cfea78377754c4257f52642d5954728a1a7fb1c"
+	sha256 hasValue "2ae9980bb666f898cf3bd16a8e7b1bfeacb90c8037851df665954b1181501c4e"
+	descriptionMd5 hasValue "4b3cc8dd6f6ddb337063927223b3bfa3"
+	homepage hasValue "https://gnu.org/software/complexity"
+	depends hasValue "libc6 (>= 2.14), libopts25 (>= 1:5.18.16)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__complexity,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libopts25"
+	comparison hasValue ">="
+	version hasValue "1:5.18.16"
+
+relationInstance depends(P0__complexity,1,DepAtom__1)
+

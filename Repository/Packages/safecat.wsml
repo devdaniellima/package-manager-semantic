@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology safecat
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__safecat memberOf Package
+	package hasValue "safecat"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "50"
+	maintainer hasValue "Original-Teemu Hukkanen <tjhukkan@iki.fi>"
+	architecture hasValue "amd64"
+	version hasValue "1.13-3"
+	fileName hasValue "pool/universe/s/safecat/safecat_1.13-3_amd64.deb"
+	size hasValue "18622"
+	md5sum hasValue "6ff889ecb922d17185b4be45407e2752"
+	sha1 hasValue "77a16a71b3f3bacf6a63d93f2946364a657e1a9d"
+	sha256 hasValue "beed27e6e39655c6a867bc1fe408f5060667db103e8d0827d699001f7c5855b6"
+	description hasValue "copia de forma segura a entrada padrão (stdin) para um arquivo"
+	descriptionMd5 hasValue "b0c654b7a1347ac7332d0fcce4850a49"
+	homepage hasValue "http://pobox.com/~lbudney/linux/software/safecat.html"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__safecat,0,DepAtom__0)
+

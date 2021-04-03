@@ -1,0 +1,59 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology mirrorkit
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__mirrorkit memberOf Package
+	package hasValue "mirrorkit"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/misc"
+	installedSize hasValue "61"
+	maintainer hasValue "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	architecture hasValue "all"
+	version hasValue "0.2.1"
+	fileName hasValue "pool/universe/m/mirrorkit/mirrorkit_0.2.1_all.deb"
+	size hasValue "7112"
+	md5sum hasValue "bc25cba931a05b1af96f063eee460c7a"
+	sha1 hasValue "d2eeac067342881190cbcef6121e362c9d97a5fa"
+	sha256 hasValue "78bd6f96ffb212a9dc8a3efbf3c824858e9360430e41415d51b22bec2aaaf575"
+	descriptionMd5 hasValue "a41d8292ffef4629b190166fd47ad3ed"
+	depends hasValue "debmirror, python3"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "debmirror"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__mirrorkit,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__mirrorkit,1,DepAtom__1)
+

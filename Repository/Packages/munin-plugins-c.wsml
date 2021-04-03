@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology munin_plugins_c
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__munin_plugins_c memberOf Package
+	package hasValue "munin-plugins-c"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "52"
+	maintainer hasValue "Original-Matthias Schmitz <matthias@sigxcpu.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.0.13-1"
+	fileName hasValue "pool/universe/m/munin-c/munin-plugins-c_0.0.13-1_amd64.deb"
+	size hasValue "16056"
+	md5sum hasValue "48a3fb7c489d6b3f35667d0f6be16c1b"
+	sha1 hasValue "263b68f7b6ba3035cf725372f4c0dcdecc2f21d0"
+	sha256 hasValue "aeb51635ee4b62f8f43c10ed0e1cf2aaec8af99aeed35cccffee0b3ea8cb280c"
+	description hasValue "C rewrite of some Munin plugins"
+	descriptionMd5 hasValue "36a0c8e9e6d6094aa3a6b39d98a828af"
+	homepage hasValue "https://github.com/munin-monitoring/munin-c/"
+	depends hasValue "libc6 (>= 2.7)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__munin_plugins_c,0,DepAtom__0)
+

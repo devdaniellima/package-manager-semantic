@@ -1,0 +1,55 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libnspr4
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libnspr4 memberOf Package
+	package hasValue "libnspr4"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libs"
+	installedSize hasValue "314"
+	maintainer hasValue "Original-Maintainers of Mozilla-related packages <team+pkg-mozilla@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2:4.25-1"
+	conflicts hasValue "libnspr4-0d (<< 2:4.9-2~)"
+	fileName hasValue "pool/main/n/nspr/libnspr4_4.25-1_amd64.deb"
+	size hasValue "107016"
+	md5sum hasValue "fbaf148150c301dd98ea315d6728c89e"
+	sha1 hasValue "bdbb620b1303564f483b77c14ee027cc3888d230"
+	sha256 hasValue "5abf189bedda7dd28313cf7575290fad8b38b28221f9eddc7496653a62d730ed"
+	description hasValue "biblioteca NetScape Portable Runtime"
+	descriptionMd5 hasValue "3e33845d0ce10a75ffbe5d271b638f2f"
+	homepage hasValue "http://www.mozilla.org/projects/nspr/"
+	depends hasValue "libc6 (>= 2.30)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.30"
+
+relationInstance depends(P0__libnspr4,0,DepAtom__0)
+

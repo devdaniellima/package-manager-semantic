@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gobi_loader
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gobi_loader memberOf Package
+	package hasValue "gobi-loader"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "comm"
+	installedSize hasValue "33"
+	maintainer hasValue "Ubuntu Kernel Team <kernel-team@lists.ubuntu.com>"
+	architecture hasValue "amd64"
+	version hasValue "0.7-0ubuntu3"
+	fileName hasValue "pool/main/g/gobi-loader/gobi-loader_0.7-0ubuntu3_amd64.deb"
+	size hasValue "8168"
+	md5sum hasValue "812c74fe09c6f875bed67c436af863f1"
+	sha1 hasValue "aef56a34ddc700de28de72ac228d56ddbb3c42e4"
+	sha256 hasValue "deab54febc0646da53a7abbe6a7760be9c1ed38cbfeee421143cf94fd55fc8f4"
+	descriptionMd5 hasValue "0bc71f740c2e62e89ed4b58d4c0934a2"
+	homepage hasValue "http://www.codon.org.uk/~mjg59/gobi_loader/"
+	depends hasValue "udev, libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "udev"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__gobi_loader,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__gobi_loader,1,DepAtom__1)
+

@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology mpc123
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__mpc123 memberOf Package
+	package hasValue "mpc123"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/sound"
+	installedSize hasValue "51"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.2.4-5"
+	fileName hasValue "pool/universe/m/mpc123/mpc123_0.2.4-5_amd64.deb"
+	size hasValue "17028"
+	md5sum hasValue "9e7297966cf91f163a604a784c41c48d"
+	sha1 hasValue "0e4f32cfa5a8caa9f216113e492fe7e17a41e34c"
+	sha256 hasValue "ac56a7a27d2a4951e63973358ab249721ed9afa9a1ea641f84eddcc02a7e2dcf"
+	descriptionMd5 hasValue "79c847ca11a35297b312b77c0a8e1fe0"
+	homepage hasValue "https://github.com/bucciarati/mpc123"
+	depends hasValue "libao4 (>= 1.1.0), libc6 (>= 2.4), libmpcdec6 (>= 1:0.1~r435)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libao4"
+	comparison hasValue ">="
+	version hasValue "1.1.0"
+
+relationInstance depends(P0__mpc123,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__mpc123,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libmpcdec6"
+	comparison hasValue ">="
+	version hasValue "1:0.1~r435"
+
+relationInstance depends(P0__mpc123,2,DepAtom__2)
+

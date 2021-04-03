@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology r_cran_whisker
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__r_cran_whisker memberOf Package
+	package hasValue "r-cran-whisker"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/gnu-r"
+	installedSize hasValue "211"
+	maintainer hasValue "Original-Debian R Packages Maintainers <r-pkg-team@alioth-lists.debian.net>"
+	architecture hasValue "all"
+	version hasValue "0.4-1"
+	fileName hasValue "pool/universe/r/r-cran-whisker/r-cran-whisker_0.4-1_all.deb"
+	size hasValue "62328"
+	md5sum hasValue "339901a8c165442de30436a7ce11f1d8"
+	sha1 hasValue "556957a477ff4f78762a766a1584287042a886ed"
+	sha256 hasValue "b74c99969be3f00ceea62b04167e22b001d59d0a0039c9b52d1c91ab9f2a70cd"
+	descriptionMd5 hasValue "2c44d401f96603ca6004e85d7277c56e"
+	homepage hasValue "https://cran.r-project.org/package=whisker"
+	depends hasValue "r-base-core (>= 3.6.1-4), r-api-3.5"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "r-base-core"
+	comparison hasValue ">="
+	version hasValue "3.6.1-4"
+
+relationInstance depends(P0__r_cran_whisker,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "r-api-3.5"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__r_cran_whisker,1,DepAtom__1)
+

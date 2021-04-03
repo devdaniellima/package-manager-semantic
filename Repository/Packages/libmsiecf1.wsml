@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libmsiecf1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libmsiecf1 memberOf Package
+	package hasValue "libmsiecf1"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "1103"
+	maintainer hasValue "Original-Debian Security Tools <team+pkg-security@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "20181227-1.1"
+	fileName hasValue "pool/universe/libm/libmsiecf/libmsiecf1_20181227-1.1_amd64.deb"
+	size hasValue "361044"
+	md5sum hasValue "1257ca1d649fb54bd6564e0df0c421e4"
+	sha1 hasValue "a3f2ad3316577c301177ddb48a1ff84fead30785"
+	sha256 hasValue "ce1b4df7fca4d9da0d12dc33569a59387c60a871cfca62f9a54396d5f2e5f85e"
+	description hasValue "Microsoft Internet Explorer Cache File access library"
+	descriptionMd5 hasValue "618c14c263bf713f588eb80e2b1b3176"
+	homepage hasValue "https://github.com/libyal/libmsiecf"
+	depends hasValue "libbfio1 (>= 20120425), libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libbfio1"
+	comparison hasValue ">="
+	version hasValue "20120425"
+
+relationInstance depends(P0__libmsiecf1,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libmsiecf1,1,DepAtom__1)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology android_libunwind
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__android_libunwind memberOf Package
+	package hasValue "android-libunwind"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "152"
+	maintainer hasValue "Original-Android Tools Maintainers <android-tools-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "8.1.0+r23-2"
+	fileName hasValue "pool/universe/a/android-platform-external-libunwind/android-libunwind_8.1.0+r23-2_amd64.deb"
+	size hasValue "50744"
+	md5sum hasValue "802953ff22aadbd046addc37de0ff23e"
+	sha1 hasValue "39a5bad79a300d8e14662b425f2c335f2d681229"
+	sha256 hasValue "d9d8075e5bdbc35e6873d4faae158ed9a3790f7ed8d368de19642f7dc146c223"
+	descriptionMd5 hasValue "369ea6992880b13175955104d66763a6"
+	homepage hasValue "https://android.googlesource.com/platform/external/libunwind"
+	depends hasValue "p7zip-full, libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "p7zip-full"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__android_libunwind,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__android_libunwind,1,DepAtom__1)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology postgresql_12_pg_fact_loader
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__postgresql_12_pg_fact_loader memberOf Package
+	package hasValue "postgresql-12-pg-fact-loader"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/database"
+	installedSize hasValue "451"
+	maintainer hasValue "Original-Jeremy Finzel <jfinzel@enova.com>"
+	architecture hasValue "amd64"
+	version hasValue "1.5.2-2"
+	fileName hasValue "pool/universe/p/pg-fact-loader/postgresql-12-pg-fact-loader_1.5.2-2_amd64.deb"
+	size hasValue "49488"
+	md5sum hasValue "a4a7f91de302941fda26076debf9f2e2"
+	sha1 hasValue "c90f532893347fa5826964ecd11c21f5bee84e1e"
+	sha256 hasValue "e97d0301b40f93f1df4f4443135531c407477ec68ed7c02c98a123176a4715bd"
+	descriptionMd5 hasValue "4f800d74de3cb9e00add864dcc92b701"
+	homepage hasValue "https://github.com/enova/pg_fact_loader"
+	depends hasValue "postgresql-12, libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "postgresql-12"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__postgresql_12_pg_fact_loader,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__postgresql_12_pg_fact_loader,1,DepAtom__1)
+

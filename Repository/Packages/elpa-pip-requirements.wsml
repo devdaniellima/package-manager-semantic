@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology elpa_pip_requirements
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__elpa_pip_requirements memberOf Package
+	package hasValue "elpa-pip-requirements"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/lisp"
+	installedSize hasValue "36"
+	maintainer hasValue "Original-Debian Emacs addons team <pkg-emacsen-addons@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.5-2"
+	fileName hasValue "pool/universe/p/pip-requirements-el/elpa-pip-requirements_0.5-2_all.deb"
+	size hasValue "6148"
+	md5sum hasValue "5d7c192260f03280cb54e6c9e4e5875b"
+	sha1 hasValue "396f60b396c252caf6d104d904be499136ac4d64"
+	sha256 hasValue "e41bf68357a90dde3ca160dfb5731061e5d60effcb97b676831b12963286f7ad"
+	descriptionMd5 hasValue "196ede98365f42043995451991c0f759"
+	homepage hasValue "https://github.com/Wilfred/pip-requirements.el"
+	depends hasValue "elpa-dash (>= 2.8.0), emacsen-common"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "elpa-dash"
+	comparison hasValue ">="
+	version hasValue "2.8.0"
+
+relationInstance depends(P0__elpa_pip_requirements,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "emacsen-common"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__elpa_pip_requirements,1,DepAtom__1)
+

@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology pywps_wsgi
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__pywps_wsgi memberOf Package
+	package hasValue "pywps-wsgi"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/web"
+	installedSize hasValue "34"
+	maintainer hasValue "Original-Debian GIS Project <pkg-grass-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "4.2.4-1"
+	replaces hasValue "pywps (<< 4.0.0-2~)"
+	fileName hasValue "pool/universe/p/pywps/pywps-wsgi_4.2.4-1_all.deb"
+	size hasValue "7684"
+	md5sum hasValue "b6fbbf53f55e26544aa540128a560aa1"
+	sha1 hasValue "a7efde49e91868d8a9648ef0908b9df548f0b62d"
+	sha256 hasValue "fb5431e6d044c37f1105fda4cf61ce8423789ea412d8dc4e710dd446cff7fbc3"
+	descriptionMd5 hasValue "d224b84a7b92be3d05c0266dba419874"
+	homepage hasValue "https://pywps.org"
+	depends hasValue "libapache2-mod-wsgi | httpd-wsgi"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libapache2-mod-wsgi"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__pywps_wsgi,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "httpd-wsgi"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__pywps_wsgi,0,DepAtom__1)
+

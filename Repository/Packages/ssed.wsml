@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ssed
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ssed memberOf Package
+	package hasValue "ssed"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/utils"
+	installedSize hasValue "436"
+	maintainer hasValue "Original-Jose Antonio Quevedo Muñoz <joseantonio.quevedo@gmail.com>"
+	architecture hasValue "amd64"
+	version hasValue "3.62-7build1"
+	fileName hasValue "pool/universe/s/ssed/ssed_3.62-7build1_amd64.deb"
+	size hasValue "138684"
+	md5sum hasValue "f7130950e744a6aa4c41ee110faf04f0"
+	sha1 hasValue "984352dacacf3825bfd22ff0b8e6fc24baec9950"
+	sha256 hasValue "f9a98f1702b62050513a96a0f0d75036f271641ca12a646b0593af0b2fab2b5f"
+	description hasValue "o editor de fluxo super sed"
+	descriptionMd5 hasValue "fd67b88f74a6da4d1c008831af7ab1e8"
+	homepage hasValue "http://sed.sf.net/grabbag/ssed/"
+	depends hasValue "libc6 (>= 2.14), dpkg (>= 1.15.4) | install-info"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__ssed,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "dpkg"
+	comparison hasValue ">="
+	version hasValue "1.15.4"
+
+relationInstance depends(P0__ssed,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "install-info"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ssed,1,DepAtom__2)
+

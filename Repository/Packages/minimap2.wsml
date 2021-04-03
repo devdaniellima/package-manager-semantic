@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology minimap2
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__minimap2 memberOf Package
+	package hasValue "minimap2"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/science"
+	installedSize hasValue "500"
+	maintainer hasValue "Original-Debian Med Packaging Team <debian-med-packaging@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.17+dfsg-2"
+	fileName hasValue "pool/universe/m/minimap2/minimap2_2.17+dfsg-2_amd64.deb"
+	size hasValue "374092"
+	md5sum hasValue "e8cbeb7a3d94a2843335bcdc0555f37a"
+	sha1 hasValue "a9d247b5d57889b58b3556dd619a79b336a42ada"
+	sha256 hasValue "183ebda450d9948e979ac1f8bbf826bc886a3913116410f6f3c6c2ea10e533f8"
+	descriptionMd5 hasValue "f1022cbd2c265b138702b6677abf3e99"
+	homepage hasValue "https://github.com/lh3/minimap2"
+	depends hasValue "libc6 (>= 2.29), zlib1g (>= 1:1.1.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__minimap2,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "zlib1g"
+	comparison hasValue ">="
+	version hasValue "1:1.1.4"
+
+relationInstance depends(P0__minimap2,1,DepAtom__1)
+

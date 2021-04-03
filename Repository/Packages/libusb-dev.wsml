@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libusb_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libusb_dev memberOf Package
+	package hasValue "libusb-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libdevel"
+	installedSize hasValue "230"
+	maintainer hasValue "Original-Aurelien Jarno <aurel32@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2:0.1.12-32"
+	fileName hasValue "pool/main/libu/libusb/libusb-dev_0.1.12-32_amd64.deb"
+	size hasValue "30332"
+	md5sum hasValue "5a3166e0005d833ca6c13e5707bba2f3"
+	sha1 hasValue "96026d96356e7327b784cf1bf667ab4fee4b74e2"
+	sha256 hasValue "bfbe1fafe2d85db02dc4add0ef07fbb8f23dc6caf964c89f6279d91045f864e7"
+	description hasValue "userspace USB programming library development files"
+	descriptionMd5 hasValue "07c28a16589d7bc7f4eda04968bb1f5a"
+	homepage hasValue "http://www.linux-usb.org/"
+	depends hasValue "libusb-0.1-4 (= 2:0.1.12-32), libc6-dev | libc-dev"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libusb-0.1-4"
+	comparison hasValue "="
+	version hasValue "2:0.1.12-32"
+
+relationInstance depends(P0__libusb_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6-dev"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libusb_dev,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libc-dev"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libusb_dev,1,DepAtom__2)
+

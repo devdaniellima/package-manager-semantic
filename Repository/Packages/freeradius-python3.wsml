@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology freeradius_python3
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__freeradius_python3 memberOf Package
+	package hasValue "freeradius-python3"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "83"
+	maintainer hasValue "Original-Debian FreeRADIUS Packaging Team <pkg-freeradius-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.0.20+dfsg-3build1"
+	replaces hasValue "freeradius (<< 3.0.16+dfsg-4~)"
+	fileName hasValue "pool/universe/f/freeradius/freeradius-python3_3.0.20+dfsg-3build1_amd64.deb"
+	size hasValue "15344"
+	md5sum hasValue "b981076d567b295e091113425a89c4fc"
+	sha1 hasValue "642b5f364a35b6b4a3b0b7f034e6f6767dd45556"
+	sha256 hasValue "33817d8bf2fa2fe41beee18d9fd4f92641e23921a2a5345e2c5de353a5b93506"
+	descriptionMd5 hasValue "80f8197fc7d045314f87c86f25224510"
+	homepage hasValue "http://www.freeradius.org/"
+	depends hasValue "freeradius (= 3.0.20+dfsg-3build1), libc6 (>= 2.4), libpython3.8 (>= 3.8.0~a1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "freeradius"
+	comparison hasValue "="
+	version hasValue "3.0.20+dfsg-3build1"
+
+relationInstance depends(P0__freeradius_python3,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__freeradius_python3,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libpython3.8"
+	comparison hasValue ">="
+	version hasValue "3.8.0~a1"
+
+relationInstance depends(P0__freeradius_python3,2,DepAtom__2)
+

@@ -1,0 +1,70 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology nano
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__nano memberOf Package
+	package hasValue "nano"
+	packageSource hasValue Source__S1
+	priority hasValue "standard"
+	section hasValue "editors"
+	installedSize hasValue "848"
+	maintainer hasValue "Original-Jordi Mallach <jordi@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "4.8-1ubuntu1"
+	replaces hasValue "nano-tiny (<< 2.8.6-2), pico"
+	conflicts hasValue "pico"
+	fileName hasValue "pool/main/n/nano/nano_4.8-1ubuntu1_amd64.deb"
+	size hasValue "269332"
+	md5sum hasValue "81d52258c40f1d9bf0c26aa5d86a1e1f"
+	sha1 hasValue "b3b538152fefcf6325935cb84f4ca940dd79c282"
+	sha256 hasValue "230ce60142b4befaadba974a0ea9fa579a62ed71b90d916c19d5939a55a7ddf8"
+	description hasValue "editor de texto amigável e pequeno inspirado no Pico"
+	descriptionMd5 hasValue "af29527665aea4297c3c5acbb24cf1fa"
+	homepage hasValue "https://www.nano-editor.org/"
+	depends hasValue "libc6 (>= 2.27), libncursesw6 (>= 6), libtinfo6 (>= 6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.27"
+
+relationInstance depends(P0__nano,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libncursesw6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__nano,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libtinfo6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__nano,2,DepAtom__2)
+

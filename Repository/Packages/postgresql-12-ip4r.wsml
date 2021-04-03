@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology postgresql_12_ip4r
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__postgresql_12_ip4r memberOf Package
+	package hasValue "postgresql-12-ip4r"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/misc"
+	installedSize hasValue "639"
+	maintainer hasValue "Original-Debian PostgreSQL Maintainers <team+postgresql@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.4.1-2"
+	fileName hasValue "pool/universe/i/ip4r/postgresql-12-ip4r_2.4.1-2_amd64.deb"
+	size hasValue "196424"
+	md5sum hasValue "657940cf4be5b92c34b40f5f143d3b5c"
+	sha1 hasValue "4b588e35b009d23e05c941728fdd01e3485ff3c5"
+	sha256 hasValue "fa1128a52ac4bda9d052aacee7ffec77b9fdc2de4ee194cc5446a91c0ba7ebca"
+	descriptionMd5 hasValue "2a3f1c9fb42ee92afafed3cda95f657b"
+	homepage hasValue "http://pgfoundry.org/projects/ip4r/"
+	depends hasValue "libc6 (>= 2.7), postgresql-12"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__postgresql_12_ip4r,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "postgresql-12"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__postgresql_12_ip4r,1,DepAtom__1)
+

@@ -1,0 +1,59 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology logitech_applet
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__logitech_applet memberOf Package
+	package hasValue "logitech-applet"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/misc"
+	installedSize hasValue "41"
+	maintainer hasValue "Original-Simon Ruggier <Simon80@gmail.com>"
+	architecture hasValue "amd64"
+	version hasValue "0.4~test1-0ubuntu3"
+	fileName hasValue "pool/universe/l/logitech-applet/logitech-applet_0.4~test1-0ubuntu3_amd64.deb"
+	size hasValue "15804"
+	md5sum hasValue "9ed184741aaeca202e7dadcf923582b2"
+	sha1 hasValue "cfe0b012e0864ff525d4891c3ec20baa6567a46f"
+	sha256 hasValue "7b03ff836b2815ae55733fa806f86880d289ad438b07c47594efedcd7101698a"
+	descriptionMd5 hasValue "7ed779adb9c85b0c8585bef25e0e0bfd"
+	depends hasValue "libc6 (>= 2.4), libusb-0.1-4 (>= 2:0.1.12)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__logitech_applet,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libusb-0.1-4"
+	comparison hasValue ">="
+	version hasValue "2:0.1.12"
+
+relationInstance depends(P0__logitech_applet,1,DepAtom__1)
+

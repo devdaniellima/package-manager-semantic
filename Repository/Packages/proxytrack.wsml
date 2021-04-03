@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology proxytrack
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__proxytrack memberOf Package
+	package hasValue "proxytrack"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/web"
+	installedSize hasValue "170"
+	maintainer hasValue "Original-Xavier Roche <roche@httrack.com>"
+	architecture hasValue "amd64"
+	version hasValue "3.49.2-1build1"
+	fileName hasValue "pool/universe/h/httrack/proxytrack_3.49.2-1build1_amd64.deb"
+	size hasValue "58220"
+	md5sum hasValue "beb3d4b9959cd24a1259543d00d4926c"
+	sha1 hasValue "b629ed2544abaaca416090b3c794a47d8eb01443"
+	sha256 hasValue "65361dcf7179d9ba4ce9dbdef8d5ec89b6d48c0dcbaf04c603d9cde3564c8d0b"
+	description hasValue "constrói caches HTTP usando websites arquivados copiados pelo Httrack"
+	descriptionMd5 hasValue "184e6e135b92e971d44cae6217ce752a"
+	homepage hasValue "http://www.httrack.com"
+	depends hasValue "libc6 (>= 2.15), zlib1g (>= 1:1.1.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__proxytrack,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "zlib1g"
+	comparison hasValue ">="
+	version hasValue "1:1.1.4"
+
+relationInstance depends(P0__proxytrack,1,DepAtom__1)
+

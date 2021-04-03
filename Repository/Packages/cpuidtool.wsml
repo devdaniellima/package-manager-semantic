@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology cpuidtool
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__cpuidtool memberOf Package
+	package hasValue "cpuidtool"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/misc"
+	installedSize hasValue "42"
+	maintainer hasValue "Martin Wimpress <martin.wimpress@ubuntu.com>"
+	architecture hasValue "amd64"
+	version hasValue "0.4.1-1.1"
+	fileName hasValue "pool/universe/libc/libcpuid/cpuidtool_0.4.1-1.1_amd64.deb"
+	size hasValue "10956"
+	md5sum hasValue "d04f9fdb61bce67481a64d769d1f4ea1"
+	sha1 hasValue "a422be97cd68db68c8e78b42880cce3f86976d26"
+	sha256 hasValue "3776d22f9861d1d7cdb2fc27341bb10c94b90ccbed55091dc1795499f121b424"
+	descriptionMd5 hasValue "b71ed21f16256b23bc7453cf322339e1"
+	homepage hasValue "https://github.com/anrieff/libcpuid"
+	depends hasValue "libc6 (>= 2.4), libcpuid14 (>= 0.4.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__cpuidtool,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libcpuid14"
+	comparison hasValue ">="
+	version hasValue "0.4.1"
+
+relationInstance depends(P0__cpuidtool,1,DepAtom__1)
+

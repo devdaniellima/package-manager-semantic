@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology hsetroot
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__hsetroot memberOf Package
+	package hasValue "hsetroot"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/x11"
+	installedSize hasValue "35"
+	maintainer hasValue "Original-Alessandro Ghedini <ghedo@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.2-5build1"
+	fileName hasValue "pool/universe/h/hsetroot/hsetroot_1.0.2-5build1_amd64.deb"
+	size hasValue "10356"
+	md5sum hasValue "2dad02fd2e458e440410ab3fc1a66611"
+	sha1 hasValue "d811cd27ab133e7fdd977cc66ab163ab222834dd"
+	sha256 hasValue "55906f10f32a1ad2188136609af4ed4431ec12c7b2d6eaf8e4ca085e36a5e533"
+	descriptionMd5 hasValue "a185532352cef5ac72b72024cd6b48aa"
+	homepage hasValue "http://thegraveyard.org/hsetroot.html"
+	depends hasValue "libc6 (>= 2.7), libimlib2 (>= 1.4.5), libx11-6"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__hsetroot,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libimlib2"
+	comparison hasValue ">="
+	version hasValue "1.4.5"
+
+relationInstance depends(P0__hsetroot,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libx11-6"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__hsetroot,2,DepAtom__2)
+

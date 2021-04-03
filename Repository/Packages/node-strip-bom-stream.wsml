@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology node_strip_bom_stream
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__node_strip_bom_stream memberOf Package
+	package hasValue "node-strip-bom-stream"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/web"
+	installedSize hasValue "26"
+	maintainer hasValue "Original-Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "4.0.0-1"
+	fileName hasValue "pool/universe/n/node-strip-bom-stream/node-strip-bom-stream_4.0.0-1_all.deb"
+	size hasValue "4836"
+	md5sum hasValue "4e552128e635126b7503098a441d77f9"
+	sha1 hasValue "b7c519967bfe03da1f88c4978f4ad92a9bd838c5"
+	sha256 hasValue "112d610434e56c2349c23bc3cfa582119478fbdbbf999b7b030751608ad08d1f"
+	descriptionMd5 hasValue "371627902591301d95935d43a608904e"
+	homepage hasValue "https://github.com/sindresorhus/strip-bom-stream"
+	depends hasValue "nodejs, node-strip-bom, node-first-chunk-stream (>= 4.0.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "nodejs"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__node_strip_bom_stream,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "node-strip-bom"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__node_strip_bom_stream,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "node-first-chunk-stream"
+	comparison hasValue ">="
+	version hasValue "4.0.0"
+
+relationInstance depends(P0__node_strip_bom_stream,2,DepAtom__2)
+

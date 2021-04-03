@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology dhcpdump
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__dhcpdump memberOf Package
+	package hasValue "dhcpdump"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "50"
+	maintainer hasValue "Original-Joey Schulze <joey@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.8-2.2"
+	fileName hasValue "pool/universe/d/dhcpdump/dhcpdump_1.8-2.2_amd64.deb"
+	size hasValue "14850"
+	md5sum hasValue "e8d9b742b3dcdaaea68ceecfbc8f504c"
+	sha1 hasValue "6931154cf65298c76d9d4c13d9fdefc9434ec482"
+	sha256 hasValue "599667f88a2826b00689029a542a9fbebf67fe2e1ea5bdff9f176a014963f9fa"
+	description hasValue "analisa pacotes DHCP a partir do tcpdump"
+	descriptionMd5 hasValue "b4ad9f140ebb9a313823d1234c692b63"
+	depends hasValue "libc6 (>= 2.4), libpcap0.8 (>= 0.9.8), tcpdump"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__dhcpdump,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libpcap0.8"
+	comparison hasValue ">="
+	version hasValue "0.9.8"
+
+relationInstance depends(P0__dhcpdump,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "tcpdump"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__dhcpdump,2,DepAtom__2)
+

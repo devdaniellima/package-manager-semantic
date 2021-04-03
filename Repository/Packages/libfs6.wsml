@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libfs6
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libfs6 memberOf Package
+	package hasValue "libfs6"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libs"
+	installedSize hasValue "86"
+	maintainer hasValue "Original-Debian X Strike Force <debian-x@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2:1.0.7-1"
+	fileName hasValue "pool/main/libf/libfs/libfs6_1.0.7-1_amd64.deb"
+	size hasValue "22464"
+	md5sum hasValue "741174e6f63ec85994c65ab296916f80"
+	sha1 hasValue "d3ffec720aa30109418270ff4bac06c60a5b683f"
+	sha256 hasValue "4c76c58a0a4b3a9b55c1d9a7ac8c791927cd8a7067d3ed90805da9683382855a"
+	description hasValue "X11 Font Services library"
+	descriptionMd5 hasValue "bc296d2b3e22926a5940397b64e85665"
+	depends hasValue "libc6 (>= 2.15)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__libfs6,0,DepAtom__0)
+

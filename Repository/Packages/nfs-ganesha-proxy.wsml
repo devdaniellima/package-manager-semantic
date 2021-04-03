@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology nfs_ganesha_proxy
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__nfs_ganesha_proxy memberOf Package
+	package hasValue "nfs-ganesha-proxy"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "171"
+	maintainer hasValue "Original-Philippe Deniel <philippe.deniel@cea.fr>"
+	architecture hasValue "amd64"
+	version hasValue "3.0.3-0ubuntu3"
+	fileName hasValue "pool/universe/n/nfs-ganesha/nfs-ganesha-proxy_3.0.3-0ubuntu3_amd64.deb"
+	size hasValue "45452"
+	md5sum hasValue "611ac7ec90fdeac721e92b09c632714b"
+	sha1 hasValue "739cf6140e3620799ed419f0329a1e6369714c36"
+	sha256 hasValue "c73c1c0f89b9c89f9f4068b21880410c228f02c71216ded896a17f84dedddd9e"
+	descriptionMd5 hasValue "67927b644c381e4d89fa2337b2cf9a77"
+	homepage hasValue "https://github.com/nfs-ganesha/nfs-ganesha"
+	depends hasValue "libc6 (>= 2.14), libntirpc3.0 (>= 3.0), nfs-ganesha (= 3.0.3-0ubuntu3)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__nfs_ganesha_proxy,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libntirpc3.0"
+	comparison hasValue ">="
+	version hasValue "3.0"
+
+relationInstance depends(P0__nfs_ganesha_proxy,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "nfs-ganesha"
+	comparison hasValue "="
+	version hasValue "3.0.3-0ubuntu3"
+
+relationInstance depends(P0__nfs_ganesha_proxy,2,DepAtom__2)
+

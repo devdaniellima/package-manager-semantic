@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libnova_dev_bin
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libnova_dev_bin memberOf Package
+	package hasValue "libnova-dev-bin"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "28"
+	maintainer hasValue "Original-Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.16-4"
+	replaces hasValue "libnova-dev (<= 0.16-2)"
+	fileName hasValue "pool/universe/libn/libnova/libnova-dev-bin_0.16-4_amd64.deb"
+	size hasValue "4580"
+	md5sum hasValue "d438072b5bdad96dacb0cf4deb8d45fb"
+	sha1 hasValue "2a29f29980de48d8766cd34ba982ba90ebee5836"
+	sha256 hasValue "b7642aacf273dc9e69a75b3b174d73e622a23f79b8192c736c01951764629c32"
+	descriptionMd5 hasValue "95ebada6476550b632ff4735a950fc83"
+	homepage hasValue "http://libnova.sourceforge.net/"
+	depends hasValue "libc6 (>= 2.3.4), libnova-0.16-0"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.3.4"
+
+relationInstance depends(P0__libnova_dev_bin,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libnova-0.16-0"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libnova_dev_bin,1,DepAtom__1)
+

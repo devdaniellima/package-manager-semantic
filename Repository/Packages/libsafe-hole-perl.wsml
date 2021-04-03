@@ -1,0 +1,59 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libsafe_hole_perl
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libsafe_hole_perl memberOf Package
+	package hasValue "libsafe-hole-perl"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/perl"
+	installedSize hasValue "45"
+	maintainer hasValue "Original-Stefan Hornburg (Racke) <racke@linuxia.de>"
+	architecture hasValue "amd64"
+	version hasValue "0.13-1.1build5"
+	fileName hasValue "pool/universe/s/safe-hole-perl/libsafe-hole-perl_0.13-1.1build5_amd64.deb"
+	size hasValue "12924"
+	md5sum hasValue "0ac04c4727d5a8d1a14190d3801be053"
+	sha1 hasValue "ad742c59c818f40ae3c0275b209aea0aefe147a1"
+	sha256 hasValue "f12d693b58f127d0b89fba9f3fa740a980a387cc6ade17f652d33d1c1fd4a487"
+	descriptionMd5 hasValue "9c3ed064de8b5037f2d8439aba3cf79a"
+	depends hasValue "perl (>= 5.30.0-7), perlapi-5.30.0"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "perl"
+	comparison hasValue ">="
+	version hasValue "5.30.0-7"
+
+relationInstance depends(P0__libsafe_hole_perl,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "perlapi-5.30.0"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libsafe_hole_perl,1,DepAtom__1)
+

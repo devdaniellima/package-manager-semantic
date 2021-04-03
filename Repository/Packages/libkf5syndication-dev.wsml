@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libkf5syndication_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libkf5syndication_dev memberOf Package
+	package hasValue "libkf5syndication-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "398"
+	maintainer hasValue "Original-Debian/Kubuntu Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:5.68.0-0ubuntu1"
+	fileName hasValue "pool/universe/s/syndication/libkf5syndication-dev_5.68.0-0ubuntu1_amd64.deb"
+	size hasValue "48308"
+	md5sum hasValue "7a010ddcd5206ddda82d641f1128f39d"
+	sha1 hasValue "02559e565a79767238ef891d8d01b5717d68d612"
+	sha256 hasValue "a675d54f4edfb108d320548656edda9c811686a98ece0f50d4c6fa9f435e663c"
+	description hasValue "parser library for RSS and Atom feeds - development files"
+	descriptionMd5 hasValue "9b8502053d14d77e372319fdf2e46545"
+	homepage hasValue "https://projects.kde.org/projects/frameworks/syndication"
+	depends hasValue "libkf5syndication5abi1 (= 1:5.68.0-0ubuntu1), qtbase5-dev (>= 5.9.1~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libkf5syndication5abi1"
+	comparison hasValue "="
+	version hasValue "1:5.68.0-0ubuntu1"
+
+relationInstance depends(P0__libkf5syndication_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "qtbase5-dev"
+	comparison hasValue ">="
+	version hasValue "5.9.1~"
+
+relationInstance depends(P0__libkf5syndication_dev,1,DepAtom__1)
+

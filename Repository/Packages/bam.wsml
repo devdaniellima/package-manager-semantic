@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology bam
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__bam memberOf Package
+	package hasValue "bam"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "404"
+	maintainer hasValue "Original-Debian Games Team <pkg-games-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.5.1-2"
+	fileName hasValue "pool/universe/b/bam/bam_0.5.1-2_amd64.deb"
+	size hasValue "137580"
+	md5sum hasValue "7cac966b688996f1a78f3810d041debb"
+	sha1 hasValue "b0615b9d2dc135d63691b1766919400c5483233c"
+	sha256 hasValue "e80248d6e8a5120ef07ac38efad0b81ea421bea0b0e9bb86f00a2c4145e103b4"
+	description hasValue "fast and flexible build system"
+	descriptionMd5 hasValue "9207035afd1eefe6b9ff8607600e8a61"
+	homepage hasValue "https://matricks.github.com/bam/"
+	depends hasValue "libc6 (>= 2.29)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__bam,0,DepAtom__0)
+

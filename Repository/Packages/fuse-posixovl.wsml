@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology fuse_posixovl
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__fuse_posixovl memberOf Package
+	package hasValue "fuse-posixovl"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/misc"
+	installedSize hasValue "75"
+	maintainer hasValue "Original-Jari Aalto <jari.aalto@cante.net>"
+	architecture hasValue "amd64"
+	version hasValue "1.2.20120215+gitf5bfe35-1"
+	fileName hasValue "pool/universe/f/fuse-posixovl/fuse-posixovl_1.2.20120215+gitf5bfe35-1_amd64.deb"
+	size hasValue "19498"
+	md5sum hasValue "d99031dcf9e273f8cc6357a947232b61"
+	sha1 hasValue "085d02eaf46d7f7a333a85760f76fc61efa166b5"
+	sha256 hasValue "823df6ba37b6d8213987822a3a894ae02cf9fdaf79b72314074646fe7cce04fa"
+	descriptionMd5 hasValue "8ad2e903e57718ce373f9c4b34d1d2f9"
+	homepage hasValue "http://sourceforge.net/projects/posixovl"
+	depends hasValue "libc6 (>= 2.14), libfuse2 (>= 2.8.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__fuse_posixovl,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libfuse2"
+	comparison hasValue ">="
+	version hasValue "2.8.1"
+
+relationInstance depends(P0__fuse_posixovl,1,DepAtom__1)
+

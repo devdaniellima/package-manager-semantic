@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology dbf2mysql
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__dbf2mysql memberOf Package
+	package hasValue "dbf2mysql"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/misc"
+	installedSize hasValue "87"
+	maintainer hasValue "Original-Francesco Paolo Lovergine <frankie@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.14a-5.1build2"
+	fileName hasValue "pool/universe/d/dbf2mysql/dbf2mysql_1.14a-5.1build2_amd64.deb"
+	size hasValue "23028"
+	md5sum hasValue "65fa7eaa320cf08a3838880bf236704c"
+	sha1 hasValue "c44d9e588b3babc99230b959496963af7808ee1b"
+	sha256 hasValue "00601d9db0889aead4248f4e7c5c44479dc6b778d90e443dca2c70870d171d98"
+	description hasValue "xBase to MySQL or vice versa"
+	descriptionMd5 hasValue "d7957e8343e93322f065e669ed3b7f90"
+	depends hasValue "libc6 (>= 2.7), libmysqlclient21 (>= 8.0.11)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__dbf2mysql,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libmysqlclient21"
+	comparison hasValue ">="
+	version hasValue "8.0.11"
+
+relationInstance depends(P0__dbf2mysql,1,DepAtom__1)
+

@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology bison
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__bison memberOf Package
+	package hasValue "bison"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "devel"
+	installedSize hasValue "1980"
+	maintainer hasValue "Original-Chuan-kai Lin <cklin@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2:3.5.1+dfsg-1"
+	fileName hasValue "pool/main/b/bison/bison_3.5.1+dfsg-1_amd64.deb"
+	size hasValue "656684"
+	md5sum hasValue "bcd41531803fabd44f337570a8014e23"
+	sha1 hasValue "1609115151fa70e06be099997f3a89e3d91bbde8"
+	sha256 hasValue "b7898a7130a1f2f0ef85a43e5b81d977ceb3d9bf5af434eaac5d186b4d87b3f8"
+	description hasValue "gerador de analisador compatível com YACC"
+	descriptionMd5 hasValue "3b8154d16aa228f689bcd81364e7088c"
+	homepage hasValue "https://www.gnu.org/software/bison/"
+	depends hasValue "m4, libc6 (>= 2.17)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "m4"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__bison,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.17"
+
+relationInstance depends(P0__bison,1,DepAtom__1)
+

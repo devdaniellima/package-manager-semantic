@@ -1,0 +1,64 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology make_guile
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__make_guile memberOf Package
+	package hasValue "make-guile"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "388"
+	maintainer hasValue "Original-Manoj Srivastava <srivasta@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "4.2.1-1.2"
+	replaces hasValue "make"
+	provides hasValue "make (= 4.2.1-1.2)"
+	conflicts hasValue "make"
+	fileName hasValue "pool/universe/m/make-dfsg/make-guile_4.2.1-1.2_amd64.deb"
+	size hasValue "163004"
+	md5sum hasValue "569566c276ceffab3a66b0785c30d6f5"
+	sha1 hasValue "6a02850161e982a591b1d058696107018bdfd89e"
+	sha256 hasValue "b1df5a1f8093c7983b7552f205cb9ada3b4e77eb7b3530bfcbf460eae8ab56df"
+	description hasValue "utilitário para direcionar compilação com suporte a guile"
+	descriptionMd5 hasValue "0ed531b8440dd05ef95149eed3050b34"
+	homepage hasValue "https://www.gnu.org/software/make/"
+	depends hasValue "guile-2.0-libs, libc6 (>= 2.27)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "guile-2.0-libs"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__make_guile,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.27"
+
+relationInstance depends(P0__make_guile,1,DepAtom__1)
+

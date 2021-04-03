@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology mender_client
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__mender_client memberOf Package
+	package hasValue "mender-client"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "7522"
+	maintainer hasValue "Original-Debian Go Packaging Team <team+pkg-go@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.1.2-2"
+	fileName hasValue "pool/universe/m/mender-client/mender-client_2.1.2-2_amd64.deb"
+	size hasValue "2319604"
+	md5sum hasValue "9ae91aea62ce2e8fe5991562c8900bc7"
+	sha1 hasValue "847062e85de7d1d6a5ab5f4af1e7443c0bb553fa"
+	sha256 hasValue "dda395a75b9039de04ee9d8fd19c4b4a2e95075e2ede42cda372775a44afca74"
+	descriptionMd5 hasValue "f63cb2510c63afcdfdc6f0f55a578cad"
+	homepage hasValue "https://github.com/mendersoftware/mender"
+	depends hasValue "libc6 (>= 2.14), liblzma5 (>= 5.1.1alpha+20120614)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__mender_client,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "liblzma5"
+	comparison hasValue ">="
+	version hasValue "5.1.1alpha+20120614"
+
+relationInstance depends(P0__mender_client,1,DepAtom__1)
+

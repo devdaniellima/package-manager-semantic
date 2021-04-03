@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology findutils
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__findutils memberOf Package
+	package hasValue "findutils"
+	packageSource hasValue Source__S1
+	priority hasValue "required"
+	section hasValue "utils"
+	installedSize hasValue "668"
+	maintainer hasValue "Original-Andreas Metzler <ametzler@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "4.7.0-1ubuntu1"
+	fileName hasValue "pool/main/f/findutils/findutils_4.7.0-1ubuntu1_amd64.deb"
+	size hasValue "329012"
+	md5sum hasValue "1d8ec27e0c273c1703917a33f7c3c8ba"
+	sha1 hasValue "0d25137fccf972d098f159ff71d7002b94c13afc"
+	sha256 hasValue "f3eccb6088dc4b632e7e9daa2fc36048702fbaef684b9acb1e2317c706c16249"
+	description hasValue "utilitários para encontrar arquivos -- find, xargs"
+	descriptionMd5 hasValue "ad1a783819241ffdf3ff5f37a676af59"
+	homepage hasValue "https://savannah.gnu.org/projects/findutils/"
+	depends hasValue "Pre-libc6 (>= 2.17), libselinux1 (>= 1.32)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "Pre-libc6"
+	comparison hasValue ">="
+	version hasValue "2.17"
+
+relationInstance depends(P0__findutils,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libselinux1"
+	comparison hasValue ">="
+	version hasValue "1.32"
+
+relationInstance depends(P0__findutils,1,DepAtom__1)
+

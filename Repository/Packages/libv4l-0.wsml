@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libv4l_0
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libv4l_0 memberOf Package
+	package hasValue "libv4l-0"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libs"
+	installedSize hasValue "230"
+	maintainer hasValue "Original-Gregor Jasny <gjasny@googlemail.com>"
+	architecture hasValue "amd64"
+	version hasValue "1.18.0-2build1"
+	fileName hasValue "pool/main/v/v4l-utils/libv4l-0_1.18.0-2build1_amd64.deb"
+	size hasValue "41908"
+	md5sum hasValue "3de1fe08dd6000079ec52f5b1f2d8ef3"
+	sha1 hasValue "95521c54f379179fdd32d8cfa67d7f4cc5ea7371"
+	sha256 hasValue "579eef72e6fe375ec4d06ad9e7694d3b878505f8e970972d15a7e34186edf6b7"
+	description hasValue "Collection of video4linux support libraries"
+	descriptionMd5 hasValue "51ed604a5803d8a2ecaa5742927e357e"
+	homepage hasValue "https://linuxtv.org/downloads/v4l-utils/"
+	depends hasValue "libv4lconvert0 (= 1.18.0-2build1), libc6 (>= 2.27)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libv4lconvert0"
+	comparison hasValue "="
+	version hasValue "1.18.0-2build1"
+
+relationInstance depends(P0__libv4l_0,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.27"
+
+relationInstance depends(P0__libv4l_0,1,DepAtom__1)
+

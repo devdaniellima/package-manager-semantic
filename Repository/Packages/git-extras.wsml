@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology git_extras
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__git_extras memberOf Package
+	package hasValue "git-extras"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/vcs"
+	installedSize hasValue "284"
+	maintainer hasValue "Original-Laszlo Boszormenyi (GCS) <gcs@debian.org>"
+	architecture hasValue "all"
+	version hasValue "5.1.0-1"
+	fileName hasValue "pool/universe/g/git-extras/git-extras_5.1.0-1_all.deb"
+	size hasValue "92376"
+	md5sum hasValue "6639c26241c9128dd59d3b132e1bc629"
+	sha1 hasValue "5bc7583e7b7a3a833e1851e25a72c58994af3264"
+	sha256 hasValue "0d2ffa466c25723502277974ad34b8ccbdbff8bb34d4e7840551441558e4519b"
+	description hasValue "comandos extras para o git"
+	descriptionMd5 hasValue "586868900a4b72be0cda7cfc3efa7582"
+	homepage hasValue "https://github.com/tj/git-extras"
+	depends hasValue "git (>= 1.7.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "git"
+	comparison hasValue ">="
+	version hasValue "1.7.0"
+
+relationInstance depends(P0__git_extras,0,DepAtom__0)
+

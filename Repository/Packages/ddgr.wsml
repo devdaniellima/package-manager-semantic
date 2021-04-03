@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ddgr
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ddgr memberOf Package
+	package hasValue "ddgr"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/misc"
+	installedSize hasValue "111"
+	maintainer hasValue "Original-SZ Lin (林上智) <szlin@debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.7+git20190928.bccdc92-2"
+	fileName hasValue "pool/universe/d/ddgr/ddgr_1.7+git20190928.bccdc92-2_all.deb"
+	size hasValue "32048"
+	md5sum hasValue "d0c8a82d8fe2b2d7699bb2fdf6c06d02"
+	sha1 hasValue "6a91495a477e7eefc64d6053cf8ceb5240a0d1a9"
+	sha256 hasValue "482c1750476c83c5a00c5516d5e1f122afca9d6294989271d6fb217f0aef7312"
+	descriptionMd5 hasValue "fbf97be4352d256c7db3959fdb002831"
+	homepage hasValue "https://github.com/jarun/ddgr"
+	depends hasValue "python3:any, python3 (>= 3.5)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ddgr,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3"
+	comparison hasValue ">="
+	version hasValue "3.5"
+
+relationInstance depends(P0__ddgr,1,DepAtom__1)
+

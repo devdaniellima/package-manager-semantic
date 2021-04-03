@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology webhook
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__webhook memberOf Package
+	package hasValue "webhook"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/devel"
+	installedSize hasValue "6170"
+	maintainer hasValue "Original-Debian Go Packaging Team <pkg-go-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.6.9-1"
+	fileName hasValue "pool/universe/w/webhook/webhook_2.6.9-1_amd64.deb"
+	size hasValue "1825424"
+	md5sum hasValue "776a649998258ee440429bd41aa7415d"
+	sha1 hasValue "aeeacd1460b8e32698722b9782974cc63e6687f8"
+	sha256 hasValue "7e47d7f4c19aa4bb698243bef7db05da501a47cf15dbc9493ec3b5a6f3e02f7e"
+	descriptionMd5 hasValue "9d758bbff9a3152bfecbb17464d6fcf0"
+	homepage hasValue "https://github.com/adnanh/webhook"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__webhook,0,DepAtom__0)
+

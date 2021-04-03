@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology exiftags
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__exiftags memberOf Package
+	package hasValue "exiftags"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/graphics"
+	installedSize hasValue "309"
+	maintainer hasValue "Original-Laszlo Boszormenyi (GCS) <gcs@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.01-7"
+	fileName hasValue "pool/universe/e/exiftags/exiftags_1.01-7_amd64.deb"
+	size hasValue "68164"
+	md5sum hasValue "577035a41433184fe9c306d054579736"
+	sha1 hasValue "7057693418c134d5c1296412ff6cb6364b4ca4fa"
+	sha256 hasValue "a2fdf73c542d8a126c4d2538aba9a3e8b89051af808bf3eb2b1e2d289046650b"
+	descriptionMd5 hasValue "f310b9003fc492eef19a7754880dacb8"
+	homepage hasValue "https://johnst.org/sw/exiftags/"
+	depends hasValue "libc6 (>= 2.29)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__exiftags,0,DepAtom__0)
+

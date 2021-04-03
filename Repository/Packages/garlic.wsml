@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology garlic
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__garlic memberOf Package
+	package hasValue "garlic"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/science"
+	installedSize hasValue "832"
+	maintainer hasValue "Original-Debichem Team <debichem-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.6-3"
+	fileName hasValue "pool/universe/g/garlic/garlic_1.6-3_amd64.deb"
+	size hasValue "222948"
+	md5sum hasValue "918d82da2f6b3f63279156bb4256fc7a"
+	sha1 hasValue "e0ed2ad3e2ed5a7fb8fe24aa8a0c51bd633fb10c"
+	sha256 hasValue "ed686b29f3a085ba26e938aaeb2c84dc3a77a603aa2d52f3d55add9a878cf583"
+	description hasValue "visualization program for biomolecules"
+	descriptionMd5 hasValue "9a8e5d3dc375d53b824110c22a526364"
+	homepage hasValue "http://www.zucic.org/garlic/"
+	depends hasValue "libc6 (>= 2.14), libx11-6"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__garlic,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libx11-6"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__garlic,1,DepAtom__1)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libxmlbird1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libxmlbird1 memberOf Package
+	package hasValue "libxmlbird1"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "106"
+	maintainer hasValue "Original-Debian Fonts Task Force <debian-fonts@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.2.11-1"
+	fileName hasValue "pool/universe/libx/libxmlbird/libxmlbird1_1.2.11-1_amd64.deb"
+	size hasValue "24656"
+	md5sum hasValue "e9b2a6bcce0fcb6dd6ce8a5d194f7899"
+	sha1 hasValue "46b9b8119c50e199e72fd4d53e6b25e896850887"
+	sha256 hasValue "26145509e99297efa43fa6e503cd045af6aa49e60f10b950b58effaf5719707c"
+	descriptionMd5 hasValue "7a2b7cbeebd64a232525e73053d3e248"
+	homepage hasValue "https://birdfont.org/xmlbird.php"
+	depends hasValue "libc6 (>= 2.14), libglib2.0-0 (>= 2.37.3)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libxmlbird1,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libglib2.0-0"
+	comparison hasValue ">="
+	version hasValue "2.37.3"
+
+relationInstance depends(P0__libxmlbird1,1,DepAtom__1)
+

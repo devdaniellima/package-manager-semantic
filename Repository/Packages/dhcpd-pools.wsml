@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology dhcpd_pools
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__dhcpd_pools memberOf Package
+	package hasValue "dhcpd-pools"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "110"
+	maintainer hasValue "Original-Martijn van Brummelen <mvb@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.29-1.1"
+	fileName hasValue "pool/universe/d/dhcpd-pools/dhcpd-pools_2.29-1.1_amd64.deb"
+	size hasValue "38740"
+	md5sum hasValue "5341da4eb83b4afc3d78b1ecc1422317"
+	sha1 hasValue "11074600bde744968cba9fd97941a6fd2451d711"
+	sha256 hasValue "a4b829762bf7252b68d62100666e2c5063c0293c0ec57d24e8889318ee32b7ad"
+	descriptionMd5 hasValue "485670c587be92ec9591bd2e01962c7b"
+	homepage hasValue "http://dhcpd-pools.sf.net/"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__dhcpd_pools,0,DepAtom__0)
+

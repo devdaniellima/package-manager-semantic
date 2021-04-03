@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology bear
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__bear memberOf Package
+	package hasValue "bear"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "56"
+	maintainer hasValue "Original-Sebastian Ramacher <sramacher@debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.4.3-1"
+	fileName hasValue "pool/universe/b/bear/bear_2.4.3-1_all.deb"
+	size hasValue "13104"
+	md5sum hasValue "59c1fe9245946c2b7824d585f5bd0a6f"
+	sha1 hasValue "3d68a6464b6d8c2485449ac748cc9c577c3f1dd2"
+	sha256 hasValue "5ecbd25d4224e3d84ea34867980e95194d493797ff3d1e80eca94844116c0ce2"
+	descriptionMd5 hasValue "7181645ef316f8148f4d7cc522b76bf9"
+	homepage hasValue "https://github.com/rizsotto/Bear"
+	depends hasValue "libear (>= 2.4.3-1), libear (<< 2.4.3.0~), python3:any"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libear"
+	comparison hasValue ">="
+	version hasValue "2.4.3-1"
+
+relationInstance depends(P0__bear,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libear"
+	comparison hasValue "<<"
+	version hasValue "2.4.3.0~"
+
+relationInstance depends(P0__bear,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__bear,2,DepAtom__2)
+

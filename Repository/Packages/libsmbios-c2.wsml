@@ -1,0 +1,56 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libsmbios_c2
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libsmbios_c2 memberOf Package
+	package hasValue "libsmbios-c2"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libs"
+	installedSize hasValue "300"
+	maintainer hasValue "Original-Debian UEFI Maintainers <debian-efi@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.4.3-1"
+	replaces hasValue "libsmbios2, libsmbios2v5"
+	provides hasValue "libsmbios2 (= 2.3.1-1), libsmbios2v5 (= 2.3.1-0ubuntu2)"
+	conflicts hasValue "libsmbios2, libsmbios2v5"
+	fileName hasValue "pool/main/libs/libsmbios/libsmbios-c2_2.4.3-1_amd64.deb"
+	size hasValue "73584"
+	md5sum hasValue "eb7bae2cb0f53030be7717decc3024e3"
+	sha1 hasValue "84fb1af69df84d4d0237edcf66c223239b605e9b"
+	sha256 hasValue "c40f36726a421255edd30e582ee7f7729af54fc5d284e1f83a3e7b13f3300fdf"
+	descriptionMd5 hasValue "a9d79a7c8482e4e00073a308b6c8d23a"
+	homepage hasValue "https://github.com/dell/libsmbios/"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libsmbios_c2,0,DepAtom__0)
+

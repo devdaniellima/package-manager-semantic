@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology postgresql_12_plsh
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__postgresql_12_plsh memberOf Package
+	package hasValue "postgresql-12-plsh"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/database"
+	installedSize hasValue "79"
+	maintainer hasValue "Original-Debian PostgreSQL Maintainers <team+postgresql@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.20171014-4"
+	fileName hasValue "pool/universe/p/postgresql-plsh/postgresql-12-plsh_1.20171014-4_amd64.deb"
+	size hasValue "31664"
+	md5sum hasValue "06c57afd23c772136a0c424d6af87ba3"
+	sha1 hasValue "7dbe599102d3e599d20aaff259c51e4f60bab519"
+	sha256 hasValue "831f3586083fdeb0f991596a87c7636a9449eb51fec92448fc65bfeec83d7d50"
+	descriptionMd5 hasValue "bed41377a73e79335876819a7fcbc134"
+	homepage hasValue "http://plsh.projects.postgresql.org/"
+	depends hasValue "libc6 (>= 2.4), postgresql-12"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__postgresql_12_plsh,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "postgresql-12"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__postgresql_12_plsh,1,DepAtom__1)
+

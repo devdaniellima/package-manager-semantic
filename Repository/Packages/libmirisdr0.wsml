@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libmirisdr0
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libmirisdr0 memberOf Package
+	package hasValue "libmirisdr0"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/libs"
+	installedSize hasValue "41"
+	maintainer hasValue "Original-A. Maitland Bottoms <bottoms@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.0.4.59ba37-5"
+	fileName hasValue "pool/universe/libm/libmirisdr/libmirisdr0_0.0.4.59ba37-5_amd64.deb"
+	size hasValue "10584"
+	md5sum hasValue "5bbeced8c67e816bae33d88bb5d729cb"
+	sha1 hasValue "2cd9ba5427f6da03be095eb7eb25781c975a1a80"
+	sha256 hasValue "fead93bdbdb9da837d259fbd2c2e5cd5b2be9c2edc1c7bc7d8aee42d47425051"
+	description hasValue "Software defined radio support for Mirics hardware (library)"
+	descriptionMd5 hasValue "1daf67ef471d1dfebd5e792abc6825a1"
+	homepage hasValue "http://sdr.osmocom.org/trac/"
+	depends hasValue "libc6 (>= 2.4), libusb-1.0-0 (>= 2:1.0.8)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libmirisdr0,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libusb-1.0-0"
+	comparison hasValue ">="
+	version hasValue "2:1.0.8"
+
+relationInstance depends(P0__libmirisdr0,1,DepAtom__1)
+

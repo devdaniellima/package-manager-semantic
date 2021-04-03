@@ -1,0 +1,59 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology bls_standalone
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__bls_standalone memberOf Package
+	package hasValue "bls-standalone"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/devel"
+	installedSize hasValue "146"
+	maintainer hasValue "Original-Bernhard R. Link <brlink@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.20151231"
+	fileName hasValue "pool/universe/b/bls-standalone/bls-standalone_0.20151231_amd64.deb"
+	size hasValue "37278"
+	md5sum hasValue "6d2afff656bfbfae6bd8510613000616"
+	sha1 hasValue "e4f90fa5bea5b0c92c4fcddfd47ccaa1116b6bc5"
+	sha256 hasValue "44c1a3d1c46f7d027a57b395d70745fca88e86ff54adbd363b15d0c910f36385"
+	descriptionMd5 hasValue "38eb0188098db41fc418b4a965fca88b"
+	depends hasValue "python3 (>= 3.2), libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3"
+	comparison hasValue ">="
+	version hasValue "3.2"
+
+relationInstance depends(P0__bls_standalone,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__bls_standalone,1,DepAtom__1)
+

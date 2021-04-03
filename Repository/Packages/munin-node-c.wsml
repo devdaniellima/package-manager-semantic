@@ -1,0 +1,55 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology munin_node_c
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__munin_node_c memberOf Package
+	package hasValue "munin-node-c"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "50"
+	maintainer hasValue "Original-Matthias Schmitz <matthias@sigxcpu.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.0.13-1"
+	conflicts hasValue "munin-node"
+	fileName hasValue "pool/universe/m/munin-c/munin-node-c_0.0.13-1_amd64.deb"
+	size hasValue "11684"
+	md5sum hasValue "e40ed7752c3e28f2da36aa59f847e114"
+	sha1 hasValue "a1e25b5bfd744b4f03382abd292d06675f45897e"
+	sha256 hasValue "6bcd0527cd1a4622db441d0d6c82c0b5ad1b77f16d30a63ff8b019adb5f24bcf"
+	description hasValue "C rewrite of Munin node"
+	descriptionMd5 hasValue "bf31daf9c2160a01349f932189161d2b"
+	homepage hasValue "https://github.com/munin-monitoring/munin-c/"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__munin_node_c,0,DepAtom__0)
+

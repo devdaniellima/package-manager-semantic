@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology lego
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__lego memberOf Package
+	package hasValue "lego"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/devel"
+	installedSize hasValue "19518"
+	maintainer hasValue "Original-Debian Go Packaging Team <pkg-go-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.2.0-1"
+	fileName hasValue "pool/universe/g/golang-github-xenolf-lego/lego_3.2.0-1_amd64.deb"
+	size hasValue "4955876"
+	md5sum hasValue "395f84f9a20eae3a31cca594c4c6df97"
+	sha1 hasValue "ea22ade520f683799021da5f5e021938ba6d304e"
+	sha256 hasValue "c8bcece4276533cfb1ecdf3a8b587f57d1ec1351a0ac05e6c0d74321f8b9641c"
+	descriptionMd5 hasValue "dea7f3bf8cbf9108a480cd924093cdb3"
+	homepage hasValue "https://github.com/go-acme/lego"
+	depends hasValue "libc6 (>= 2.4), ca-certificates"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__lego,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "ca-certificates"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__lego,1,DepAtom__1)
+

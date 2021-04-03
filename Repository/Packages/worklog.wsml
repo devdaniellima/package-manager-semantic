@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology worklog
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__worklog memberOf Package
+	package hasValue "worklog"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/misc"
+	installedSize hasValue "50"
+	maintainer hasValue "Original-Adam Bilbrough <ats@atlas.cz>"
+	architecture hasValue "amd64"
+	version hasValue "2.1-1"
+	fileName hasValue "pool/universe/w/worklog/worklog_2.1-1_amd64.deb"
+	size hasValue "13560"
+	md5sum hasValue "c7b94a25cbdde2438107937135c32ce4"
+	sha1 hasValue "e052ae397b8f751b6060c96f7fae2a4b05d54efb"
+	sha256 hasValue "ebd70e9f9a28d59bba04c854ba583463a50bf713f7f036a5a02d2870e3c50e8e"
+	descriptionMd5 hasValue "a92e116e7d50bd05a26c32146b57de79"
+	homepage hasValue "https://github.com/atsb/worklog"
+	depends hasValue "libc6 (>= 2.7), libncurses6 (>= 6), libtinfo6 (>= 6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__worklog,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libncurses6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__worklog,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libtinfo6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__worklog,2,DepAtom__2)
+

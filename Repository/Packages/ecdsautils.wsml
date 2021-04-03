@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ecdsautils
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ecdsautils memberOf Package
+	package hasValue "ecdsautils"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/utils"
+	installedSize hasValue "68"
+	maintainer hasValue "Original-Steffen Moeller <moeller@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.3.2+git20151018-2build1"
+	fileName hasValue "pool/universe/e/ecdsautils/ecdsautils_0.3.2+git20151018-2build1_amd64.deb"
+	size hasValue "15476"
+	md5sum hasValue "d172602196de6b5d729c80faa61bb6db"
+	sha1 hasValue "1391a3a572b532c3ce81a607029024f5c82a68f1"
+	sha256 hasValue "fe9be165ef6b825bf5e8873a98949dc2a5c79afc630f62e438e381eae6d3c141"
+	descriptionMd5 hasValue "02097782f31afd0a347aac0fa63b9778"
+	homepage hasValue "https://github.com/tcatm/ecdsautils"
+	depends hasValue "libc6 (>= 2.14), libuecc0 (>= 4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__ecdsautils,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libuecc0"
+	comparison hasValue ">="
+	version hasValue "4"
+
+relationInstance depends(P0__ecdsautils,1,DepAtom__1)
+

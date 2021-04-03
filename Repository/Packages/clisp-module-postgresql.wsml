@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology clisp_module_postgresql
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__clisp_module_postgresql memberOf Package
+	package hasValue "clisp-module-postgresql"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/lisp"
+	installedSize hasValue "1219"
+	maintainer hasValue "Original-Debian Common Lisp Team <debian-common-lisp@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:2.49.20180218+really2.49.92-3build3"
+	fileName hasValue "pool/universe/c/clisp/clisp-module-postgresql_2.49.20180218+really2.49.92-3build3_amd64.deb"
+	size hasValue "71468"
+	md5sum hasValue "4173ba17199e0ea51520ded2e993b983"
+	sha1 hasValue "a33ca90275a7d672b03906314339288eeb5486b1"
+	sha256 hasValue "bf752ee0b5dacbc04b24e78f6349db20f06752acdd1e69a4eb0d2178143df41f"
+	descriptionMd5 hasValue "b227c3be5f5023744682e423cfec930e"
+	homepage hasValue "http://www.clisp.org/"
+	depends hasValue "libpq5 (>= 8.4~), clisp (= 1:2.49.20180218+really2.49.92-3build3)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libpq5"
+	comparison hasValue ">="
+	version hasValue "8.4~"
+
+relationInstance depends(P0__clisp_module_postgresql,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "clisp"
+	comparison hasValue "="
+	version hasValue "1:2.49.20180218+really2.49.92-3build3"
+
+relationInstance depends(P0__clisp_module_postgresql,1,DepAtom__1)
+

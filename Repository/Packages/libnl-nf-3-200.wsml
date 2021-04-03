@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libnl_nf_3_200
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libnl_nf_3_200 memberOf Package
+	package hasValue "libnl-nf-3-200"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libs"
+	installedSize hasValue "128"
+	maintainer hasValue "Original-Heiko Stuebner <mmind@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.4.0-1"
+	fileName hasValue "pool/main/libn/libnl3/libnl-nf-3-200_3.4.0-1_amd64.deb"
+	size hasValue "28700"
+	md5sum hasValue "8fdd31fd0c368e1e10375497243630fc"
+	sha1 hasValue "60ebe8fb47b1a0aaacf5b74194d4c2d6a9b5b47e"
+	sha256 hasValue "57d4eb48319d6993dc5b5801d026b553af88dcd6133eb399f46b55e5520c4c9d"
+	description hasValue "library for dealing with netlink sockets - netfilter interface"
+	descriptionMd5 hasValue "bfbd30c6345caeecccdde40477bee940"
+	homepage hasValue "http://www.infradead.org/~tgr/libnl/"
+	depends hasValue "libnl-3-200 (= 3.4.0-1), libnl-route-3-200 (= 3.4.0-1), libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libnl-3-200"
+	comparison hasValue "="
+	version hasValue "3.4.0-1"
+
+relationInstance depends(P0__libnl_nf_3_200,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libnl-route-3-200"
+	comparison hasValue "="
+	version hasValue "3.4.0-1"
+
+relationInstance depends(P0__libnl_nf_3_200,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libnl_nf_3_200,2,DepAtom__2)
+

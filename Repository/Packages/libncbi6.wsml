@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libncbi6
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libncbi6 memberOf Package
+	package hasValue "libncbi6"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "13399"
+	maintainer hasValue "Original-Debian Med Packaging Team <debian-med-packaging@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "6.1.20170106+dfsg1-8"
+	fileName hasValue "pool/universe/n/ncbi-tools6/libncbi6_6.1.20170106+dfsg1-8_amd64.deb"
+	size hasValue "3973156"
+	md5sum hasValue "1f3ef5cbd2d9d30cf0f352bdaaf513a5"
+	sha1 hasValue "f0639772c5d9ed52a911260c30c3a0a3a9991620"
+	sha256 hasValue "1e98db2a562c06fc2705d5157d40077c417cc8430b63d2edd26c632b77582e29"
+	description hasValue "Bibliotecas NCBI para aplicações em biologia."
+	descriptionMd5 hasValue "ee2f5e6d19b749ea798d4e71fc2ea0e6"
+	homepage hasValue "http://www.ncbi.nlm.nih.gov/IEB/ToolBox/"
+	depends hasValue "ncbi-data (= 6.1.20170106+dfsg1-8), libc6 (>= 2.29), libgnutls30 (>= 3.6.6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "ncbi-data"
+	comparison hasValue "="
+	version hasValue "6.1.20170106+dfsg1-8"
+
+relationInstance depends(P0__libncbi6,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__libncbi6,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libgnutls30"
+	comparison hasValue ">="
+	version hasValue "3.6.6"
+
+relationInstance depends(P0__libncbi6,2,DepAtom__2)
+

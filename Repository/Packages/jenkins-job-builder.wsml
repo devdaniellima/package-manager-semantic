@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology jenkins_job_builder
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__jenkins_job_builder memberOf Package
+	package hasValue "jenkins-job-builder"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "179"
+	maintainer hasValue "Original-Debian OpenStack <team+openstack@tracker.debian.org>"
+	architecture hasValue "all"
+	version hasValue "3.2.0-1"
+	replaces hasValue "python3-jenkins-job-builder (<< 2.0.3-3~)"
+	fileName hasValue "pool/universe/j/jenkins-job-builder/jenkins-job-builder_3.2.0-1_all.deb"
+	size hasValue "165572"
+	md5sum hasValue "e2fc273ba45e17f95ba82751cb380ab4"
+	sha1 hasValue "48ab5387eb73756eff9649718834d7551aa61c9a"
+	sha256 hasValue "7c2ccc3614454970b0e3925fc5861976596036fdddde44880bab7c440806c5d3"
+	descriptionMd5 hasValue "bae2e5b5ad5a8f0d738d04258bc63631"
+	homepage hasValue "http://ci.openstack.org/jenkins-job-builder"
+	depends hasValue "python3-jenkins-job-builder (= 3.2.0-1), python3:any"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3-jenkins-job-builder"
+	comparison hasValue "="
+	version hasValue "3.2.0-1"
+
+relationInstance depends(P0__jenkins_job_builder,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__jenkins_job_builder,1,DepAtom__1)
+

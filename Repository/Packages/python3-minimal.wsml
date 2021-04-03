@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python3_minimal
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python3_minimal memberOf Package
+	package hasValue "python3-minimal"
+	packageSource hasValue Source__S1
+	priority hasValue "important"
+	section hasValue "python"
+	installedSize hasValue "120"
+	maintainer hasValue "Original-Matthias Klose <doko@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.8.2-0ubuntu2"
+	fileName hasValue "pool/main/p/python3-defaults/python3-minimal_3.8.2-0ubuntu2_amd64.deb"
+	size hasValue "23560"
+	md5sum hasValue "39d10eb251cec46fd2814264984948d4"
+	sha1 hasValue "266d9f35da987285df7587dacb8900043e3183b6"
+	sha256 hasValue "a5d7a5f8a34faac06706f801ca56f3850454b3f6ebeac9729d0f194763cdb079"
+	description hasValue "subconjunto mínimo da linguagem Python (versão padrão do python3)"
+	descriptionMd5 hasValue "527619e6a01fe650089e0905347b283d"
+	homepage hasValue "https://www.python.org/"
+	depends hasValue "dpkg (>= 1.13.20)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "dpkg"
+	comparison hasValue ">="
+	version hasValue "1.13.20"
+
+relationInstance depends(P0__python3_minimal,0,DepAtom__0)
+

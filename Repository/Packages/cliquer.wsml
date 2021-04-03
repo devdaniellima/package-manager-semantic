@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology cliquer
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__cliquer memberOf Package
+	package hasValue "cliquer"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/math"
+	installedSize hasValue "79"
+	maintainer hasValue "Original-Debian Science Maintainers <debian-science-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.21-2"
+	fileName hasValue "pool/universe/c/cliquer/cliquer_1.21-2_amd64.deb"
+	size hasValue "53488"
+	md5sum hasValue "fc62a3777acc12b4794d17a7bcfd692a"
+	sha1 hasValue "e493e2fb2f649f72f8476bed3cc588258313da32"
+	sha256 hasValue "b2e3972be22233a1c341ae65d401ecd22e48cd73cb477c0419ed7742da2aa4bc"
+	descriptionMd5 hasValue "6430f2982eeea287f1bd7cdc1a178144"
+	homepage hasValue "http://www.tkk.fi/~pat/cliquer.html"
+	depends hasValue "libc6 (>= 2.14), libcliquer1"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__cliquer,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libcliquer1"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__cliquer,1,DepAtom__1)
+

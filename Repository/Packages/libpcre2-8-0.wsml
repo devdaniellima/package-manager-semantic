@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libpcre2_8_0
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libpcre2_8_0 memberOf Package
+	package hasValue "libpcre2-8-0"
+	packageSource hasValue Source__S1
+	priority hasValue "required"
+	section hasValue "libs"
+	installedSize hasValue "592"
+	maintainer hasValue "Original-Matthew Vernon <matthew@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "10.34-7"
+	fileName hasValue "pool/main/p/pcre2/libpcre2-8-0_10.34-7_amd64.deb"
+	size hasValue "197268"
+	md5sum hasValue "b2d747138acd35918b53108a2e0943dd"
+	sha1 hasValue "d3d43748cdf8171284a1c160a961330adc70137b"
+	sha256 hasValue "a6b9aaf8d298da836bae2354a864fe0caba4c1230b3cc9f47b7d56100d7e29d4"
+	descriptionMd5 hasValue "734c95b9f25246dab73666cd44bfe6a7"
+	homepage hasValue "https://pcre.org/"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libpcre2_8_0,0,DepAtom__0)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libodb_sqlite_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libodb_sqlite_dev memberOf Package
+	package hasValue "libodb-sqlite-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "697"
+	maintainer hasValue "Original-Laszlo Boszormenyi (GCS) <gcs@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.4.0-1build2"
+	fileName hasValue "pool/universe/libo/libodb-sqlite/libodb-sqlite-dev_2.4.0-1build2_amd64.deb"
+	size hasValue "92680"
+	md5sum hasValue "09d6a625f86d126205109cf67a605a70"
+	sha1 hasValue "bff10fa0ce85b3d52c5e22f03c9c82390b5a8890"
+	sha256 hasValue "eb5d821076184a762cda755aa2ea93eb5515cf9525c237095e5463cd4ceaeac7"
+	descriptionMd5 hasValue "43c98bfa05488e05d30602971dcbf294"
+	homepage hasValue "http://www.codesynthesis.com/products/odb"
+	depends hasValue "libodb-sqlite-2.4 (= 2.4.0-1build2), libodb-dev (>= 2.4.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libodb-sqlite-2.4"
+	comparison hasValue "="
+	version hasValue "2.4.0-1build2"
+
+relationInstance depends(P0__libodb_sqlite_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libodb-dev"
+	comparison hasValue ">="
+	version hasValue "2.4.0"
+
+relationInstance depends(P0__libodb_sqlite_dev,1,DepAtom__1)
+

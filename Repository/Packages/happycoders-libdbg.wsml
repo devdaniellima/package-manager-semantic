@@ -1,0 +1,59 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology happycoders_libdbg
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__happycoders_libdbg memberOf Package
+	package hasValue "happycoders-libdbg"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "855"
+	maintainer hasValue "Original-Julien LEMOINE <speedblue@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.2-2ubuntu5"
+	fileName hasValue "pool/universe/libd/libdbg/happycoders-libdbg_1.2-2ubuntu5_amd64.deb"
+	size hasValue "133636"
+	md5sum hasValue "fa29b45d4f746597abf868209799a0de"
+	sha1 hasValue "c26b45e5814d39ce06794a7fbfc579be49a7b7ff"
+	sha256 hasValue "db1d9fd12afec25d1a8b1b9cac616dc2293422b5abebb11a301f897a6d3aefc2"
+	descriptionMd5 hasValue "1a16e3e6d2a2070df8f1e78a1ca90b29"
+	depends hasValue "libc6 (>= 2.14), libgcc-s1 (>= 3.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__happycoders_libdbg,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgcc-s1"
+	comparison hasValue ">="
+	version hasValue "3.0"
+
+relationInstance depends(P0__happycoders_libdbg,1,DepAtom__1)
+

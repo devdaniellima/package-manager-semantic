@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python3_examples
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python3_examples memberOf Package
+	package hasValue "python3-examples"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "python"
+	installedSize hasValue "6"
+	maintainer hasValue "Original-Matthias Klose <doko@debian.org>"
+	architecture hasValue "all"
+	version hasValue "3.8.2-0ubuntu2"
+	fileName hasValue "pool/main/p/python3-defaults/python3-examples_3.8.2-0ubuntu2_all.deb"
+	size hasValue "1076"
+	md5sum hasValue "dc7715da99f1714acdc2c2b146de0f6d"
+	sha1 hasValue "466d4e971e2630201be478f5914941bd6d53a79c"
+	sha256 hasValue "f047ebf6ecad05a09407f033adfd9c6f08a7f73b33f62db2ed6a0bc7fcd872f8"
+	descriptionMd5 hasValue "15f6fcf880e04b33e5d8559a22ce25dc"
+	homepage hasValue "https://www.python.org/"
+	depends hasValue "python3 (>= 3.8.2-0ubuntu2), python3.8-examples (>= 3.8.2-1~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3"
+	comparison hasValue ">="
+	version hasValue "3.8.2-0ubuntu2"
+
+relationInstance depends(P0__python3_examples,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3.8-examples"
+	comparison hasValue ">="
+	version hasValue "3.8.2-1~"
+
+relationInstance depends(P0__python3_examples,1,DepAtom__1)
+

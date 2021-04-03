@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology apophenia_bin
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__apophenia_bin memberOf Package
+	package hasValue "apophenia-bin"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/math"
+	installedSize hasValue "68"
+	maintainer hasValue "Original-Debian Science Maintainers <debian-science-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0+ds-8"
+	fileName hasValue "pool/universe/a/apophenia/apophenia-bin_1.0+ds-8_amd64.deb"
+	size hasValue "14104"
+	md5sum hasValue "125dfaf61965256356e0a328bfb6f114"
+	sha1 hasValue "2448a09d0bbd844652038d645ae87a11116d8beb"
+	sha256 hasValue "a9d481b25151c6b2d4fbf5f9d3bae8d751eb60e469627af724aee4cf19fdc24f"
+	descriptionMd5 hasValue "26970e135bf657cd5eb8fa95a3c9aad1"
+	homepage hasValue "http://apophenia.info/"
+	depends hasValue "libapophenia2 (= 1.0+ds-8), libc6 (>= 2.8), libgsl23 (>= 2.5)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libapophenia2"
+	comparison hasValue "="
+	version hasValue "1.0+ds-8"
+
+relationInstance depends(P0__apophenia_bin,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.8"
+
+relationInstance depends(P0__apophenia_bin,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libgsl23"
+	comparison hasValue ">="
+	version hasValue "2.5"
+
+relationInstance depends(P0__apophenia_bin,2,DepAtom__2)
+

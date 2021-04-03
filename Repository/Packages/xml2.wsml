@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology xml2
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__xml2 memberOf Package
+	package hasValue "xml2"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "82"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.5-3"
+	fileName hasValue "pool/universe/x/xml2/xml2_0.5-3_amd64.deb"
+	size hasValue "14768"
+	md5sum hasValue "8110220c4da17906fcba44ef261df907"
+	sha1 hasValue "3e041f99087155e507fc10cfffd4524a8b7771bd"
+	sha256 hasValue "b42d8812e1bcbd8b232a8033fd1abeb29c15ab34a0bf3c32336240eb203018ce"
+	description hasValue "Converte entre XML, HTML, CSV e um formato orientado a linha"
+	descriptionMd5 hasValue "b6310a9821b216ae20d3dd2c6b066327"
+	depends hasValue "libc6 (>= 2.14), libxml2 (>= 2.7.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__xml2,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libxml2"
+	comparison hasValue ">="
+	version hasValue "2.7.4"
+
+relationInstance depends(P0__xml2,1,DepAtom__1)
+

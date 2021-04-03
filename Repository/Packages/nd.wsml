@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology nd
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__nd memberOf Package
+	package hasValue "nd"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "62"
+	maintainer hasValue "Original-Mats Erik Andersson <mats.andersson@gisladisker.se>"
+	architecture hasValue "amd64"
+	version hasValue "0.8.2-8build1"
+	fileName hasValue "pool/universe/n/nd/nd_0.8.2-8build1_amd64.deb"
+	size hasValue "23116"
+	md5sum hasValue "8efa44f0569c77236d9afb6c05e0357a"
+	sha1 hasValue "dd3eef6473d69d286f6146e614d1ac29607b9180"
+	sha256 hasValue "1d5021c489963e504560e554d3792b880485bca536b54b6bb0e5aa5c61e09646"
+	description hasValue "pequena interface em linha de comando para servidores WebDAV"
+	descriptionMd5 hasValue "78877a4b7bd2eebdca50809b26e28b9f"
+	homepage hasValue "http://gohome.org/nd/"
+	depends hasValue "libc6 (>= 2.4), libmhash2, libxml2 (>= 2.7.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__nd,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libmhash2"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__nd,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libxml2"
+	comparison hasValue ">="
+	version hasValue "2.7.4"
+
+relationInstance depends(P0__nd,2,DepAtom__2)
+

@@ -1,0 +1,73 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python3_apsw
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python3_apsw memberOf Package
+	package hasValue "python3-apsw"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "721"
+	maintainer hasValue "Original-Joel Rosdahl <joel@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.28.0-r1-1ubuntu4"
+	fileName hasValue "pool/universe/p/python-apsw/python3-apsw_3.28.0-r1-1ubuntu4_amd64.deb"
+	size hasValue "154040"
+	md5sum hasValue "94b08ad6778232daa6d8474be6bc4543"
+	sha1 hasValue "3d4bd5d5fa83a96e993a77759293e7647ff9cfac"
+	sha256 hasValue "b20a5e7346922393efc8ca171857f791646cb9ab5601e1f20261cf19d9b8be5d"
+	descriptionMd5 hasValue "0ec3e15c2f558557db447883ce427e6e"
+	depends hasValue "libc6 (>= 2.14), libsqlite3-0 (>= 3.24.0), python3 (<< 3.9), python3 (>= 3.8~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__python3_apsw,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libsqlite3-0"
+	comparison hasValue ">="
+	version hasValue "3.24.0"
+
+relationInstance depends(P0__python3_apsw,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "python3"
+	comparison hasValue "<<"
+	version hasValue "3.9"
+
+relationInstance depends(P0__python3_apsw,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "python3"
+	comparison hasValue ">="
+	version hasValue "3.8~"
+
+relationInstance depends(P0__python3_apsw,3,DepAtom__3)
+

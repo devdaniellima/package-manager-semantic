@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ttm
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ttm memberOf Package
+	package hasValue "ttm"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/tex"
+	installedSize hasValue "815"
+	maintainer hasValue "Original-Debian Tex Maintainers <debian-tex-maint@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "4.12+ds-2"
+	fileName hasValue "pool/universe/t/tth/ttm_4.12+ds-2_amd64.deb"
+	size hasValue "246528"
+	md5sum hasValue "08631c9382f47a3e6e7795a8e56f37dc"
+	sha1 hasValue "0d8511e4e9c1d712a412ddb3e99d81641c019796"
+	sha256 hasValue "9f261350b2455f3bf2f79e7a72fd1408329cec4815a825edb97f6b40c5c86a4f"
+	descriptionMd5 hasValue "4331dad29f18c960b58de7e4069755ed"
+	homepage hasValue "http://hutchinson.belmont.ma.us/ttm"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__ttm,0,DepAtom__0)
+

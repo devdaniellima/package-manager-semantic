@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology lua_dbi_mysql
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__lua_dbi_mysql memberOf Package
+	package hasValue "lua-dbi-mysql"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/interpreters"
+	installedSize hasValue "108"
+	maintainer hasValue "Original-Enrico Tassi <gareuselesinge@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.7.2-1ubuntu1"
+	provides hasValue "lua5.1-dbi-mysql, lua5.2-dbi-mysql, lua5.3-dbi-mysql"
+	fileName hasValue "pool/universe/l/lua-dbi/lua-dbi-mysql_0.7.2-1ubuntu1_amd64.deb"
+	size hasValue "11464"
+	md5sum hasValue "40e78accb6f3234b510e099b70a0cd11"
+	sha1 hasValue "70f188ccea79ebf98f2ff33ba6c42e9c88b4aa11"
+	sha256 hasValue "0589b1ca2b8b8b684c40aa363f72f94913308b5fc911123d21fba9c829ab40dd"
+	descriptionMd5 hasValue "18966a711d55306753ffd6a556b55200"
+	homepage hasValue "https://github.com/mwild1/luadbi"
+	depends hasValue "lua-dbi-common, libc6 (>= 2.4), libmysqlclient21 (>= 8.0.11)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "lua-dbi-common"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__lua_dbi_mysql,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__lua_dbi_mysql,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libmysqlclient21"
+	comparison hasValue ">="
+	version hasValue "8.0.11"
+
+relationInstance depends(P0__lua_dbi_mysql,2,DepAtom__2)
+

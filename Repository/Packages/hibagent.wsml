@@ -1,0 +1,59 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology hibagent
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__hibagent memberOf Package
+	package hasValue "hibagent"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "utils"
+	installedSize hasValue "51"
+	maintainer hasValue "Original-Aleksei Besogonov <cyberax@amazon.com>"
+	architecture hasValue "all"
+	version hasValue "1.0.1-0ubuntu1"
+	fileName hasValue "pool/main/h/hibagent/hibagent_1.0.1-0ubuntu1_all.deb"
+	size hasValue "11076"
+	md5sum hasValue "433246a5d9b89e8fb4e6eeb7e9fe4e70"
+	sha1 hasValue "97b8d72137f5a3cc1175935fab6c6bb1d0df30f4"
+	sha256 hasValue "1534457f65e3d25f48936e43ce48d4f17a8674a745826bf6e86cdca5d8d6c41e"
+	descriptionMd5 hasValue "84ed5c1a66133e6abca118d2af16b8c6"
+	depends hasValue "python3:any (>= 3.3~), lsb-base"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ">="
+	version hasValue "3.3~"
+
+relationInstance depends(P0__hibagent,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "lsb-base"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__hibagent,1,DepAtom__1)
+

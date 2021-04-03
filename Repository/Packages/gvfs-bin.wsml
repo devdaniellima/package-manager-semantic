@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gvfs_bin
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gvfs_bin memberOf Package
+	package hasValue "gvfs-bin"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libs"
+	installedSize hasValue "45"
+	maintainer hasValue "Original-Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.44.1-1ubuntu1"
+	fileName hasValue "pool/main/g/gvfs/gvfs-bin_1.44.1-1ubuntu1_amd64.deb"
+	size hasValue "5088"
+	md5sum hasValue "1edbf7ed7cca1393af94f618aefb60fb"
+	sha1 hasValue "ddcef63f30a852d28d1b93fa9bb3ef0c16a66368"
+	sha256 hasValue "9221eed384b14e2ea4e0f1c6a3f8552a2ae1468018ba3444ed9c35ce2eb98555"
+	description hasValue "userspace virtual filesystem - deprecated command-line tools"
+	descriptionMd5 hasValue "cb1a2f401db91243eeddca0c157828dc"
+	homepage hasValue "https://wiki.gnome.org/Projects/gvfs"
+	depends hasValue "gvfs-common (= 1.44.1-1ubuntu1), libglib2.0-bin"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "gvfs-common"
+	comparison hasValue "="
+	version hasValue "1.44.1-1ubuntu1"
+
+relationInstance depends(P0__gvfs_bin,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libglib2.0-bin"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__gvfs_bin,1,DepAtom__1)
+

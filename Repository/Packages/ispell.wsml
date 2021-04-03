@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ispell
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ispell memberOf Package
+	package hasValue "ispell"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/text"
+	installedSize hasValue "383"
+	maintainer hasValue "Original-Robert Luberda <robert@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.4.00-8"
+	fileName hasValue "pool/universe/i/ispell/ispell_3.4.00-8_amd64.deb"
+	size hasValue "128188"
+	md5sum hasValue "5342a34721cee281952572bed1a2962c"
+	sha1 hasValue "e3d5a87d5004f98e339943e75c9a1a60cd5f70ae"
+	sha256 hasValue "8011dc72a682e4d066af6a71685881872c80ff4fee352ee24b9767d326055e5c"
+	description hasValue "ispell internacional (um corretor ortográfico interativo)"
+	descriptionMd5 hasValue "577e95b1fdc6375f1bcda985b53bef21"
+	homepage hasValue "https://www.cs.hmc.edu/~geoff/ispell.html"
+	depends hasValue "libc6 (>= 2.14), libtinfo6 (>= 6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__ispell,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libtinfo6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__ispell,1,DepAtom__1)
+

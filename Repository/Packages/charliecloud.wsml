@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology charliecloud
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__charliecloud memberOf Package
+	package hasValue "charliecloud"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "156"
+	maintainer hasValue "Original-Debian HPC Team <debian-hpc@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.9.10-1"
+	fileName hasValue "pool/universe/c/charliecloud/charliecloud_0.9.10-1_amd64.deb"
+	size hasValue "57364"
+	md5sum hasValue "4b71da6c3a082bd1eff44fddf45989a6"
+	sha1 hasValue "4cae679efe1506c4d3f295b1b0fe36b9f7888775"
+	sha256 hasValue "d8e6019c685d16b402ccb4311a4867478e354c71a4cf1400e3f78cc257bb385e"
+	descriptionMd5 hasValue "e8b0c88a03e40f5fe26037143704e8a3"
+	homepage hasValue "https://hpc.github.io/charliecloud/"
+	depends hasValue "debconf (>= 0.5) | debconf-2.0, libc6 (>= 2.17)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "debconf"
+	comparison hasValue ">="
+	version hasValue "0.5"
+
+relationInstance depends(P0__charliecloud,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "debconf-2.0"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__charliecloud,0,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.17"
+
+relationInstance depends(P0__charliecloud,1,DepAtom__2)
+

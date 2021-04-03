@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology frr_rpki_rtrlib
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__frr_rpki_rtrlib memberOf Package
+	package hasValue "frr-rpki-rtrlib"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "81"
+	maintainer hasValue "Original-David Lamparter <equinox-debian@diac24.net>"
+	architecture hasValue "amd64"
+	version hasValue "7.2.1-1"
+	fileName hasValue "pool/universe/f/frr/frr-rpki-rtrlib_7.2.1-1_amd64.deb"
+	size hasValue "19276"
+	md5sum hasValue "4fceb1cc1a788a0c0209d96d1565f862"
+	sha1 hasValue "6130917866046867901156612d67ce9f019008a1"
+	sha256 hasValue "26fdd17ef9f93451d2f1c65b55830dfc7b48f7e5ac360a8defb1c10a722ba0c0"
+	descriptionMd5 hasValue "30bfd5814687806732d4fe41102d1c00"
+	homepage hasValue "https://www.frrouting.org/"
+	depends hasValue "libc6 (>= 2.4), librtr0 (>= 0.6.0), frr (= 7.2.1-1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__frr_rpki_rtrlib,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "librtr0"
+	comparison hasValue ">="
+	version hasValue "0.6.0"
+
+relationInstance depends(P0__frr_rpki_rtrlib,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "frr"
+	comparison hasValue "="
+	version hasValue "7.2.1-1"
+
+relationInstance depends(P0__frr_rpki_rtrlib,2,DepAtom__2)
+

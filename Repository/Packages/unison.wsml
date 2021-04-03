@@ -1,0 +1,55 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology unison
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__unison memberOf Package
+	package hasValue "unison"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "3949"
+	maintainer hasValue "Original-Debian OCaml Maintainers <debian-ocaml-maint@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.48.4-4ubuntu1"
+	replaces hasValue "unison2.48.4"
+	fileName hasValue "pool/universe/u/unison/unison_2.48.4-4ubuntu1_amd64.deb"
+	size hasValue "1008156"
+	md5sum hasValue "c8e885a3bc40625813a9f1671ea374f2"
+	sha1 hasValue "5c412e38fe514be1525cd8b37aeedf45f0192ab0"
+	sha256 hasValue "da1764ca0093a518d0c9715a3be35cd8f206b9062e0b29a7dd4ea46b87e6057d"
+	description hasValue "file-synchronization tool for Unix and Windows"
+	descriptionMd5 hasValue "f895ae84f8a67077573eb8b814cb7cb9"
+	homepage hasValue "http://www.cis.upenn.edu/~bcpierce/unison/"
+	depends hasValue "libc6 (>= 2.29)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__unison,0,DepAtom__0)
+

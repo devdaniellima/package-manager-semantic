@@ -1,0 +1,82 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology rdiff_backup
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__rdiff_backup memberOf Package
+	package hasValue "rdiff-backup"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "720"
+	maintainer hasValue "Original-Python Applications Packaging Team <python-apps-team@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.0.0-1"
+	fileName hasValue "pool/universe/r/rdiff-backup/rdiff-backup_2.0.0-1_amd64.deb"
+	size hasValue "176020"
+	md5sum hasValue "1329139b249a18e834013a1e4d1a9cb7"
+	sha1 hasValue "25064de39ccc71167516deaf51b458809b6ea713"
+	sha256 hasValue "00ef70940d741872e7b6ba4347aa6640ac64a88e6191bf2b3dc90ee91f7b5ce5"
+	description hasValue "backup incremental remoto"
+	descriptionMd5 hasValue "f0d05d9b77697c469e8b0b53030e2a32"
+	homepage hasValue "https://rdiff-backup.net/"
+	depends hasValue "python3 (<< 3.9), python3 (>= 3.8~), python3:any, libc6 (>= 2.4), librsync2 (>= 1.0.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3"
+	comparison hasValue "<<"
+	version hasValue "3.9"
+
+relationInstance depends(P0__rdiff_backup,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3"
+	comparison hasValue ">="
+	version hasValue "3.8~"
+
+relationInstance depends(P0__rdiff_backup,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__rdiff_backup,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__rdiff_backup,3,DepAtom__3)
+
+instance DepAtom__4 memberOf DependencyAtom
+	package hasValue "librsync2"
+	comparison hasValue ">="
+	version hasValue "1.0.0"
+
+relationInstance depends(P0__rdiff_backup,4,DepAtom__4)
+

@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology pd_zexy
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__pd_zexy memberOf Package
+	package hasValue "pd-zexy"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/sound"
+	installedSize hasValue "554"
+	maintainer hasValue "Original-Debian Multimedia Maintainers <debian-multimedia@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.3.0-3"
+	fileName hasValue "pool/universe/p/pd-zexy/pd-zexy_2.3.0-3_amd64.deb"
+	size hasValue "129868"
+	md5sum hasValue "85d6f70aaa0809e08704f91773dd737a"
+	sha1 hasValue "104833bf7d1724d4f3c2319a43d5230f7289fa7a"
+	sha256 hasValue "47617a8eb5263cec366e0466ac94f420f8f41e96ce818c138d8222c0a1a64cf0"
+	descriptionMd5 hasValue "88d542d2a3d30a56d34baa5b88d80b2c"
+	homepage hasValue "https://download.puredata.info/zexy"
+	depends hasValue "libc6 (>= 2.29), puredata | pd"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__pd_zexy,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "puredata"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__pd_zexy,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "pd"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__pd_zexy,1,DepAtom__2)
+

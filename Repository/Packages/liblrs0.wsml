@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology liblrs0
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__liblrs0 memberOf Package
+	package hasValue "liblrs0"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/math"
+	installedSize hasValue "263"
+	maintainer hasValue "Original-David Bremner <bremner@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.70-3"
+	fileName hasValue "pool/universe/l/lrslib/liblrs0_0.70-3_amd64.deb"
+	size hasValue "87040"
+	md5sum hasValue "e6c795a2db88d576cddc8cc322f54f99"
+	sha1 hasValue "90b6959647baca35f4aa8cf8f8b2b1e4d277a298"
+	sha256 hasValue "f90e3b83fe4d81d6c703a37d06ef7866f86cfe3c9b275a002e97478f94eaa89e"
+	descriptionMd5 hasValue "9920fe6a50b69ee0b84e21fc99b9a2e7"
+	homepage hasValue "http://cgm.cs.mcgill.ca/~avis/C/lrs.html"
+	depends hasValue "libc6 (>= 2.14), libgmp10"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__liblrs0,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgmp10"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__liblrs0,1,DepAtom__1)
+

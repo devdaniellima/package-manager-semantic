@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology nickle
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__nickle memberOf Package
+	package hasValue "nickle"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/interpreters"
+	installedSize hasValue "2424"
+	maintainer hasValue "Original-Keith Packard <keithp@keithp.com>"
+	architecture hasValue "amd64"
+	version hasValue "2.85-1build1"
+	fileName hasValue "pool/universe/n/nickle/nickle_2.85-1build1_amd64.deb"
+	size hasValue "582764"
+	md5sum hasValue "5c2eab467412b1f7f4f99edfd6139ccb"
+	sha1 hasValue "82552c39b516deb8fb7ab1b5706cc9393805c4cc"
+	sha256 hasValue "7ec0ea14ee66879cb7313c1d166460c29f02c366a43366f837763bfa5257fe4d"
+	descriptionMd5 hasValue "e74e3f8e1a10529c636a806fe87cb981"
+	homepage hasValue "https://nickle.org"
+	depends hasValue "libc6 (>= 2.29), libreadline8 (>= 6.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__nickle,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libreadline8"
+	comparison hasValue ">="
+	version hasValue "6.0"
+
+relationInstance depends(P0__nickle,1,DepAtom__1)
+

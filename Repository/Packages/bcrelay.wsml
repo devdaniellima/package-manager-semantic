@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology bcrelay
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__bcrelay memberOf Package
+	package hasValue "bcrelay"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "net"
+	installedSize hasValue "41"
+	maintainer hasValue "Original-Christoph Biedl <debian.axhn@manchmal.in-ulm.de>"
+	architecture hasValue "amd64"
+	version hasValue "1.4.0-11build1"
+	fileName hasValue "pool/main/p/pptpd/bcrelay_1.4.0-11build1_amd64.deb"
+	size hasValue "12004"
+	md5sum hasValue "cce4d5877f94e9fb9d3a679e549bcbca"
+	sha1 hasValue "d1ab58568e9a9beebcb2107baec8076c3882e183"
+	sha256 hasValue "3566c32312d561e272285280b25516d4d011839fc148e67ba51a5a0f155c1210"
+	description hasValue "broadcast relay daemon"
+	descriptionMd5 hasValue "8169550aed31e33592b7b141c95a3b62"
+	homepage hasValue "http://poptop.sourceforge.net/dox/"
+	depends hasValue "libc6 (>= 2.15)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__bcrelay,0,DepAtom__0)
+

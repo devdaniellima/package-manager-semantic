@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology qdbm_cgi
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__qdbm_cgi memberOf Package
+	package hasValue "qdbm-cgi"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/web"
+	installedSize hasValue "134"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.8.78-9build3"
+	fileName hasValue "pool/universe/q/qdbm/qdbm-cgi_1.8.78-9build3_amd64.deb"
+	size hasValue "26340"
+	md5sum hasValue "22fa10c9df9fff590beb5cd13d6965ad"
+	sha1 hasValue "04e7d08b4b8649ddb91788a64a4370027d1676c6"
+	sha256 hasValue "84c90e81321fa0176e88e2dae6d5e64b637b5dadf9b45400f7302af64220e29b"
+	descriptionMd5 hasValue "fea33b721cdef0fe767b8493d5bc4060"
+	homepage hasValue "http://fallabs.com/qdbm/"
+	depends hasValue "libc6 (>= 2.4), libqdbm14 (>= 1.8.74)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__qdbm_cgi,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libqdbm14"
+	comparison hasValue ">="
+	version hasValue "1.8.74"
+
+relationInstance depends(P0__qdbm_cgi,1,DepAtom__1)
+

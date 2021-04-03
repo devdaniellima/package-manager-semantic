@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology postgresql_12_ogr_fdw
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__postgresql_12_ogr_fdw memberOf Package
+	package hasValue "postgresql-12-ogr-fdw"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/database"
+	installedSize hasValue "228"
+	maintainer hasValue "Original-Debian GIS Project <pkg-grass-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.9-1build2"
+	provides hasValue "postgresql-ogr-fdw"
+	fileName hasValue "pool/universe/p/pgsql-ogr-fdw/postgresql-12-ogr-fdw_1.0.9-1build2_amd64.deb"
+	size hasValue "90596"
+	md5sum hasValue "7b9b61cac4a23cb2917c86651528038c"
+	sha1 hasValue "f75aae8780fc1a07da5a0475df45e034d6f7a8e7"
+	sha256 hasValue "937533c576f18f0374c13fb6ba203f57d45cbd7f92a3edafa5a57f5f9579961a"
+	descriptionMd5 hasValue "5f6108f90edfb86f7c870551bc52f9e2"
+	homepage hasValue "https://github.com/pramsey/pgsql-ogr-fdw"
+	depends hasValue "postgresql-12, libc6 (>= 2.14), libgdal26 (>= 2.2.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "postgresql-12"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__postgresql_12_ogr_fdw,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__postgresql_12_ogr_fdw,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libgdal26"
+	comparison hasValue ">="
+	version hasValue "2.2.0"
+
+relationInstance depends(P0__postgresql_12_ogr_fdw,2,DepAtom__2)
+

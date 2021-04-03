@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology texlive_fonts_extra
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__texlive_fonts_extra memberOf Package
+	package hasValue "texlive-fonts-extra"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/tex"
+	installedSize hasValue "1282249"
+	maintainer hasValue "Original-Debian TeX Maintainers <debian-tex-maint@lists.debian.org>"
+	architecture hasValue "all"
+	version hasValue "2019.202000218-1"
+	replaces hasValue "texlive-fonts-extra-links (<< 2019.20190930-3~)"
+	conflicts hasValue "scalable-cyrfonts-tex"
+	fileName hasValue "pool/universe/t/texlive-extra/texlive-fonts-extra_2019.202000218-1_all.deb"
+	size hasValue "459767416"
+	md5sum hasValue "9ea3dd8c42c54968a9f8953e76ebd57b"
+	sha1 hasValue "51197b93db7a37abca5d1062489a5d1df26f1ba8"
+	sha256 hasValue "40860a63ff7dd6c14c44f85e2c11ca67f6e602fa8a9b9441ab523596cccf2b4e"
+	descriptionMd5 hasValue "40517bf78adafa7dc2faf406c637d545"
+	homepage hasValue "http://www.tug.org/texlive/"
+	depends hasValue "tex-common (>= 6.13), texlive-base (>= 2019.20200218)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "tex-common"
+	comparison hasValue ">="
+	version hasValue "6.13"
+
+relationInstance depends(P0__texlive_fonts_extra,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "texlive-base"
+	comparison hasValue ">="
+	version hasValue "2019.20200218"
+
+relationInstance depends(P0__texlive_fonts_extra,1,DepAtom__1)
+

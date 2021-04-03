@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libtogl_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libtogl_dev memberOf Package
+	package hasValue "libtogl-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "34"
+	maintainer hasValue "Original-Debian Science Maintainers <debian-science-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.0-1"
+	fileName hasValue "pool/universe/t/togl/libtogl-dev_2.0-1_all.deb"
+	size hasValue "7620"
+	md5sum hasValue "a90650b7912ef0a938f3c80fdea67072"
+	sha1 hasValue "26c17c80b391534dfab6ace43bbf55ad91a36560"
+	sha256 hasValue "e206e04cd7474965c186581e262124fad61e2a5162c70986f5d0fed1c2f018f5"
+	descriptionMd5 hasValue "859016aa95e250693b9d7dfd1bd118a8"
+	homepage hasValue "http://togl.sourceforge.net/"
+	depends hasValue "libtogl2 (>= 2.0), libtogl2 (<< 2.0+1~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libtogl2"
+	comparison hasValue ">="
+	version hasValue "2.0"
+
+relationInstance depends(P0__libtogl_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libtogl2"
+	comparison hasValue "<<"
+	version hasValue "2.0+1~"
+
+relationInstance depends(P0__libtogl_dev,1,DepAtom__1)
+

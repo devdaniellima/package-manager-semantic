@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libcommons_vfs_java
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libcommons_vfs_java memberOf Package
+	package hasValue "libcommons-vfs-java"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "454"
+	maintainer hasValue "Original-Debian Java Maintainers <pkg-java-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.1-2"
+	fileName hasValue "pool/universe/c/commons-vfs/libcommons-vfs-java_2.1-2_all.deb"
+	size hasValue "371540"
+	md5sum hasValue "b43f19cd0d9f4227098276aa382180f4"
+	sha1 hasValue "37d416f4840f1afd74d82bb045f6a50441722ced"
+	sha256 hasValue "8844fda146ab860ec2ef31b073d3ca5107598bd1a4a84328b3d5bc4f9dd64525"
+	descriptionMd5 hasValue "8f23be4ffb3c69c4e3bb95bf6387e149"
+	homepage hasValue "http://commons.apache.org/vfs/"
+	depends hasValue "libcommons-logging-java (>= 1.2), libcommons-parent-java (>= 43)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libcommons-logging-java"
+	comparison hasValue ">="
+	version hasValue "1.2"
+
+relationInstance depends(P0__libcommons_vfs_java,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libcommons-parent-java"
+	comparison hasValue ">="
+	version hasValue "43"
+
+relationInstance depends(P0__libcommons_vfs_java,1,DepAtom__1)
+

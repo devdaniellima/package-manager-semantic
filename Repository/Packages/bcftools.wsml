@@ -1,0 +1,75 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology bcftools
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__bcftools memberOf Package
+	package hasValue "bcftools"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/science"
+	installedSize hasValue "2182"
+	maintainer hasValue "Original-Debian Med Packaging Team <debian-med-packaging@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.10.2-2"
+	replaces hasValue "samtools (<< 1.0)"
+	fileName hasValue "pool/universe/b/bcftools/bcftools_1.10.2-2_amd64.deb"
+	size hasValue "604428"
+	md5sum hasValue "4c484baf3a2080e2a2ce5ce1238c5624"
+	sha1 hasValue "dedee56acf4f08a296ebe0b5048b6eb90f72c99f"
+	sha256 hasValue "fc69e5407e56f18b9d89a4dce9564d14ddfa2629f2f0188234fac7cde7df498f"
+	descriptionMd5 hasValue "2de6efc9fd60536b3eed1acdf68063bd"
+	homepage hasValue "http://samtools.github.io/bcftools/"
+	depends hasValue "libc6 (>= 2.29), libhts3 (>= 1.10), zlib1g (>= 1:1.1.4), perl:any"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__bcftools,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libhts3"
+	comparison hasValue ">="
+	version hasValue "1.10"
+
+relationInstance depends(P0__bcftools,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "zlib1g"
+	comparison hasValue ">="
+	version hasValue "1:1.1.4"
+
+relationInstance depends(P0__bcftools,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "perl:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__bcftools,3,DepAtom__3)
+

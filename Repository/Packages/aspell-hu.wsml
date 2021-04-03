@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology aspell_hu
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__aspell_hu memberOf Package
+	package hasValue "aspell-hu"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/text"
+	installedSize hasValue "1063"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.99.4.2-0-4"
+	provides hasValue "aspell-dictionary"
+	fileName hasValue "pool/universe/a/aspell-hu/aspell-hu_0.99.4.2-0-4_all.deb"
+	size hasValue "490282"
+	md5sum hasValue "5845540e7ac4ffcfccf013868f43e4af"
+	sha1 hasValue "c923d68167e6aa48eb02a14bc183cd83d5b09662"
+	sha256 hasValue "40d46a4c62912bd616fdb5f406264d5b58009573bc7811ca381f5716eee9c2ce"
+	description hasValue "dicionário húngaro para o aspell"
+	descriptionMd5 hasValue "31c2fc6bfb4afa2c78eca607d0c9c87e"
+	depends hasValue "aspell (>= 0.60.3-3), dictionaries-common (>= 0.9.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "aspell"
+	comparison hasValue ">="
+	version hasValue "0.60.3-3"
+
+relationInstance depends(P0__aspell_hu,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "dictionaries-common"
+	comparison hasValue ">="
+	version hasValue "0.9.1"
+
+relationInstance depends(P0__aspell_hu,1,DepAtom__1)
+

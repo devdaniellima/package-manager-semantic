@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology prov_tools
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__prov_tools memberOf Package
+	package hasValue "prov-tools"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "22"
+	maintainer hasValue "Original-Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.5.2-2"
+	fileName hasValue "pool/universe/p/python-prov/prov-tools_1.5.2-2_all.deb"
+	size hasValue "4344"
+	md5sum hasValue "f4dd14a3783b4068e922045dfbc09a4f"
+	sha1 hasValue "34eba05d054793cd3f78679fe81aed68ceff1631"
+	sha256 hasValue "312c30c5ee172d2f4afb7311128b8de493aa1e45344e9696319a16113e59fe5a"
+	descriptionMd5 hasValue "8de8da81ba4799a685f33d0e133bda31"
+	homepage hasValue "https://github.com/trungdong/prov"
+	depends hasValue "python3:any, python3-prov (= 1.5.2-2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__prov_tools,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3-prov"
+	comparison hasValue "="
+	version hasValue "1.5.2-2"
+
+relationInstance depends(P0__prov_tools,1,DepAtom__1)
+

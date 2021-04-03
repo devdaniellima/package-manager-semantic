@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libpcsclite1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libpcsclite1 memberOf Package
+	package hasValue "libpcsclite1"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libs"
+	installedSize hasValue "76"
+	maintainer hasValue "Original-Ludovic Rousseau <rousseau@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.8.26-3"
+	fileName hasValue "pool/main/p/pcsc-lite/libpcsclite1_1.8.26-3_amd64.deb"
+	size hasValue "22036"
+	md5sum hasValue "f5976509b5057dbd7fa1c72817965dd6"
+	sha1 hasValue "642ddac143b53d9518208da2c1237c58d7180ef6"
+	sha256 hasValue "e52af670b733666a95ffec482aeac25f5b4aaa6a01dd6e23eacc8b8ee2010dc0"
+	description hasValue "software intermediário para acessar um \"smart card\" usando PC/SC (biblioteca)"
+	descriptionMd5 hasValue "75c3114d0742624996e5bf79fc4618e6"
+	homepage hasValue "https://pcsclite.apdu.fr/"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libpcsclite1,0,DepAtom__0)
+

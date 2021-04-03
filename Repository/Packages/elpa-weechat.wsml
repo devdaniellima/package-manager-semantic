@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology elpa_weechat
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__elpa_weechat memberOf Package
+	package hasValue "elpa-weechat"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/lisp"
+	installedSize hasValue "245"
+	maintainer hasValue "Original-Debian Emacs addons team <pkg-emacsen-addons@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.5.0-3"
+	fileName hasValue "pool/universe/w/weechat-el/elpa-weechat_0.5.0-3_all.deb"
+	size hasValue "43608"
+	md5sum hasValue "3a2051e40d7042d538fd298bb5444e3e"
+	sha1 hasValue "e7ad8a871e023ec5c4b09df4a45a1cf6641c7b86"
+	sha256 hasValue "1ba9b6e6b6dcf71006bb8e01a23bd8e513effb69f8e4afeccd8d6ad54722540f"
+	descriptionMd5 hasValue "46493a852b56fe9c4f1ee099b72d2da2"
+	homepage hasValue "https://github.com/the-kenny/weechat.el"
+	depends hasValue "elpa-s (>= 1.3.1), elpa-circe (>= 1.2), emacsen-common (>= 2.0.8)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "elpa-s"
+	comparison hasValue ">="
+	version hasValue "1.3.1"
+
+relationInstance depends(P0__elpa_weechat,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "elpa-circe"
+	comparison hasValue ">="
+	version hasValue "1.2"
+
+relationInstance depends(P0__elpa_weechat,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "emacsen-common"
+	comparison hasValue ">="
+	version hasValue "2.0.8"
+
+relationInstance depends(P0__elpa_weechat,2,DepAtom__2)
+

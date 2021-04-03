@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libjamm_java
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libjamm_java memberOf Package
+	package hasValue "libjamm-java"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/java"
+	installedSize hasValue "46"
+	maintainer hasValue "Original-Debian Java Maintainers <pkg-java-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.3.3-3"
+	fileName hasValue "pool/universe/j/jamm/libjamm-java_0.3.3-3_all.deb"
+	size hasValue "24364"
+	md5sum hasValue "a46dbcb3741738df6e16059ad576d880"
+	sha1 hasValue "6a2ea411d8825556c86687d5dd1a01af54a11df3"
+	sha256 hasValue "f481000d7c8264777216f74cf36e6b940b462d3de4660a6d733275b21cd278e4"
+	descriptionMd5 hasValue "4fdaec6aa0a03e362f9a9558da1639ac"
+	homepage hasValue "https://github.com/jbellis/jamm/"
+	depends hasValue "libmaven-compiler-plugin-java (>= 3.8.1), libmaven-jar-plugin-java (>= 3.1.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libmaven-compiler-plugin-java"
+	comparison hasValue ">="
+	version hasValue "3.8.1"
+
+relationInstance depends(P0__libjamm_java,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libmaven-jar-plugin-java"
+	comparison hasValue ">="
+	version hasValue "3.1.2"
+
+relationInstance depends(P0__libjamm_java,1,DepAtom__1)
+

@@ -1,0 +1,66 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology netpipe_openmpi
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__netpipe_openmpi memberOf Package
+	package hasValue "netpipe-openmpi"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/net"
+	installedSize hasValue "158"
+	maintainer hasValue "Original-Camm Maguire <camm@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.7.2-8"
+	fileName hasValue "pool/universe/n/netpipe/netpipe-openmpi_3.7.2-8_amd64.deb"
+	size hasValue "93292"
+	md5sum hasValue "a559d26bc2d8b9768155bbe32b29f405"
+	sha1 hasValue "36860cb1ae915bbf42b3106b5a1eee4874d94633"
+	sha256 hasValue "b44ff61210266ef245c98e291b7a1537184d5da8ccb5b80a608da7ca842575a6"
+	descriptionMd5 hasValue "88710b47b053b754f0f2f4c5b0fd1980"
+	depends hasValue "openmpi-bin, libc6 (>= 2.4), libopenmpi3"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "openmpi-bin"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__netpipe_openmpi,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__netpipe_openmpi,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libopenmpi3"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__netpipe_openmpi,2,DepAtom__2)
+

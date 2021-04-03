@@ -1,0 +1,83 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libnss_ldapd
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libnss_ldapd memberOf Package
+	package hasValue "libnss-ldapd"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/admin"
+	installedSize hasValue "137"
+	maintainer hasValue "Original-Arthur de Jong <adejong@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.9.11-1"
+	provides hasValue "libnss-ldap"
+	conflicts hasValue "libnss-ldap"
+	fileName hasValue "pool/universe/n/nss-pam-ldapd/libnss-ldapd_0.9.11-1_amd64.deb"
+	size hasValue "27792"
+	md5sum hasValue "c58e6a40013a711be3920aba7fedf501"
+	sha1 hasValue "dcc3d081909144710e21610eb2107d9208d39650"
+	sha256 hasValue "73dccaffe49f19b27e932c3c9ffd44992563beb8c03fe955700dad3b5ef437c3"
+	descriptionMd5 hasValue "e7b7a2438b22672c09b4a1cf9def958e"
+	homepage hasValue "https://arthurdejong.org/nss-pam-ldapd/"
+	depends hasValue "debconf (>= 0.5) | debconf-2.0, libc6 (>= 2.17), nslcd (>= 0.9.0) | nslcd-2"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "debconf"
+	comparison hasValue ">="
+	version hasValue "0.5"
+
+relationInstance depends(P0__libnss_ldapd,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "debconf-2.0"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libnss_ldapd,0,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.17"
+
+relationInstance depends(P0__libnss_ldapd,1,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "nslcd"
+	comparison hasValue ">="
+	version hasValue "0.9.0"
+
+relationInstance depends(P0__libnss_ldapd,2,DepAtom__3)
+
+instance DepAtom__4 memberOf DependencyAtom
+	package hasValue "nslcd-2"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libnss_ldapd,2,DepAtom__4)
+

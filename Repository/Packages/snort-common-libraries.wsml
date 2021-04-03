@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology snort_common_libraries
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__snort_common_libraries memberOf Package
+	package hasValue "snort-common-libraries"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "2368"
+	maintainer hasValue "Original-Javier Fernández-Sanguino Peña <jfs@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.9.7.0-5build1"
+	conflicts hasValue "snort-common (<< 2.7.0-6)"
+	fileName hasValue "pool/universe/s/snort/snort-common-libraries_2.9.7.0-5build1_amd64.deb"
+	size hasValue "413488"
+	md5sum hasValue "236a7a572ac3144964a494bd6c645c64"
+	sha1 hasValue "b2836426e30a14e256e473b2d6a81e1bd9b31ed0"
+	sha256 hasValue "b23d052709423f042312a45065529c473d49433be7bd8f87da1cb046c71b278d"
+	descriptionMd5 hasValue "bed61be07b89beefbd45da6918bcedd8"
+	homepage hasValue "http://www.snort.org/"
+	depends hasValue "libc6 (>= 2.14), zlib1g (>= 1:1.1.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__snort_common_libraries,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "zlib1g"
+	comparison hasValue ">="
+	version hasValue "1:1.1.4"
+
+relationInstance depends(P0__snort_common_libraries,1,DepAtom__1)
+

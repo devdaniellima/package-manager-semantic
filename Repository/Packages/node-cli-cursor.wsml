@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology node_cli_cursor
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__node_cli_cursor memberOf Package
+	package hasValue "node-cli-cursor"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/web"
+	installedSize hasValue "16"
+	maintainer hasValue "Original-Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.1.0-1"
+	fileName hasValue "pool/universe/n/node-cli-cursor/node-cli-cursor_2.1.0-1_all.deb"
+	size hasValue "3672"
+	md5sum hasValue "61567c580a73cef1c9b1a46753d531d3"
+	sha1 hasValue "c0ba5ff4840e6ef6149ab4c87990f4ce3ada1b92"
+	sha256 hasValue "648692b37bd8503ea78829deb26fbb953e6f81fe4da47b07fa6572be4dae3874"
+	descriptionMd5 hasValue "93360cb75114c0175873fab4fac27fce"
+	homepage hasValue "https://github.com/sindresorhus/cli-cursor#readme"
+	depends hasValue "nodejs (>= 4), node-restore-cursor (>= 2.0.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "nodejs"
+	comparison hasValue ">="
+	version hasValue "4"
+
+relationInstance depends(P0__node_cli_cursor,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "node-restore-cursor"
+	comparison hasValue ">="
+	version hasValue "2.0.0"
+
+relationInstance depends(P0__node_cli_cursor,1,DepAtom__1)
+

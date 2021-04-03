@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology acorn_fdisk
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__acorn_fdisk memberOf Package
+	package hasValue "acorn-fdisk"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "86"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.0.6-10"
+	fileName hasValue "pool/universe/a/acorn-fdisk/acorn-fdisk_3.0.6-10_amd64.deb"
+	size hasValue "31792"
+	md5sum hasValue "fd7c854f868ea9bbaf8884d90482ef25"
+	sha1 hasValue "d1c02297a11faf50c49b1b4bc1baa565c5e47ca4"
+	sha256 hasValue "a634a73ab13cb1da8a686bcd8aa88dd89e8f72bfa021231b5b07d2cddfd23a2f"
+	description hasValue "editor de partições para maquinas com SO Acorn/RISC"
+	descriptionMd5 hasValue "9bb94a8ada79548177ccfe57ec6f8b3c"
+	homepage hasValue "http://www.arm.linux.org.uk/machines/riscpc/stage-2/"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__acorn_fdisk,0,DepAtom__0)
+

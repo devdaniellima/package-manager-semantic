@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology db5Dot3_util
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__db5Dot3_util memberOf Package
+	package hasValue "db5.3-util"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "database"
+	installedSize hasValue "291"
+	maintainer hasValue "Original-Debian Berkeley DB Team <team+bdb@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "5.3.28+dfsg1-0.6ubuntu2"
+	fileName hasValue "pool/main/d/db5.3/db5.3-util_5.3.28+dfsg1-0.6ubuntu2_amd64.deb"
+	size hasValue "65276"
+	md5sum hasValue "adff90c0021c633b9bd6d6f35481a534"
+	sha1 hasValue "fa1ccf71e36d3008025c68676983418cb7cde010"
+	sha256 hasValue "db43f85137e038d6db611561bdd252da1cf0fd71cbb59a5914a83da5af63a9b3"
+	descriptionMd5 hasValue "4415a3b6c387cfe327a0d463376221c7"
+	homepage hasValue "http://www.oracle.com/technetwork/database/database-technologies/berkeleydb/overview/index.html"
+	depends hasValue "libc6 (>= 2.14), libdb5.3 (= 5.3.28+dfsg1-0.6ubuntu2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__db5Dot3_util,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libdb5.3"
+	comparison hasValue "="
+	version hasValue "5.3.28+dfsg1-0.6ubuntu2"
+
+relationInstance depends(P0__db5Dot3_util,1,DepAtom__1)
+

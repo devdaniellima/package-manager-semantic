@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libnss_wrapper
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libnss_wrapper memberOf Package
+	package hasValue "libnss-wrapper"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "87"
+	maintainer hasValue "Original-Debian SSSD Team <pkg-sssd-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.1.3-1"
+	fileName hasValue "pool/universe/n/nss-wrapper/libnss-wrapper_1.1.3-1_amd64.deb"
+	size hasValue "26026"
+	md5sum hasValue "3bcfb8994688cf7844a7b0189e4e4d4c"
+	sha1 hasValue "511daad421e85ceabf374f970c7418d64b81199e"
+	sha256 hasValue "c492d774ab7759002c2dbce7be6af6ae754a78b680279554e8a491c0b3c5eef0"
+	descriptionMd5 hasValue "b40c80337d043205218777eaf49b1e6f"
+	homepage hasValue "http://cwrap.org/nss_wrapper.html"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libnss_wrapper,0,DepAtom__0)
+

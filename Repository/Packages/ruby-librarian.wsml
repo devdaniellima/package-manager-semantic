@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ruby_librarian
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ruby_librarian memberOf Package
+	package hasValue "ruby-librarian"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/ruby"
+	installedSize hasValue "189"
+	maintainer hasValue "Original-Debian Ruby Extras Maintainers <pkg-ruby-extras-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.6.4-1"
+	fileName hasValue "pool/universe/r/ruby-librarian/ruby-librarian_0.6.4-1_all.deb"
+	size hasValue "30976"
+	md5sum hasValue "0ad663a180767b48d86a327d81370f8c"
+	sha1 hasValue "838fd44bd46db3ae49f6954ee18ad690472da09d"
+	sha256 hasValue "e3fe85fbe294f16f9bdb14d557454b60c84b11601a37af8759e0b805e08b9215"
+	descriptionMd5 hasValue "1c1eba261ae8944a0cc557bef1da0d8e"
+	homepage hasValue "https://github.com/voxpupuli/librarian"
+	depends hasValue "ruby | ruby-interpreter, ruby-thor (>= 0.15)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "ruby"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ruby_librarian,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "ruby-interpreter"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ruby_librarian,0,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "ruby-thor"
+	comparison hasValue ">="
+	version hasValue "0.15"
+
+relationInstance depends(P0__ruby_librarian,1,DepAtom__2)
+

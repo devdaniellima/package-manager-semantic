@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libcpdb_libs_common1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libcpdb_libs_common1 memberOf Package
+	package hasValue "libcpdb-libs-common1"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "89"
+	maintainer hasValue "Original-Debian Printing Team <debian-printing@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.2.0-0ubuntu7"
+	fileName hasValue "pool/universe/c/cpdb-libs/libcpdb-libs-common1_1.2.0-0ubuntu7_amd64.deb"
+	size hasValue "19856"
+	md5sum hasValue "6b3d936571cccedfdfd3658f669bd015"
+	sha1 hasValue "ce2b5b52653ecbac561d941e873e05a18cdf33cf"
+	sha256 hasValue "65d46ffe5bad72fa09a0dbb9d8a853b2b37848a16f50f417dc169bc71f1c4224"
+	descriptionMd5 hasValue "413483fa13db280b613e61639b34d2cc"
+	homepage hasValue "https://github.com/OpenPrinting/cpdb-libs"
+	depends hasValue "libc6 (>= 2.14), libglib2.0-0 (>= 2.37.3)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libcpdb_libs_common1,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libglib2.0-0"
+	comparison hasValue ">="
+	version hasValue "2.37.3"
+
+relationInstance depends(P0__libcpdb_libs_common1,1,DepAtom__1)
+

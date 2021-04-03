@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology sockperf
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__sockperf memberOf Package
+	package hasValue "sockperf"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "4950"
+	maintainer hasValue "Original-Debian HPC Team <debian-hpc@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.6-2build1"
+	fileName hasValue "pool/universe/s/sockperf/sockperf_3.6-2build1_amd64.deb"
+	size hasValue "683868"
+	md5sum hasValue "44f400675f289f4b796a5e4e0ef014f7"
+	sha1 hasValue "e994a34aa0fda0b1c4b0d92ec9ce01212b16a085"
+	sha256 hasValue "6c4278fe1e9aa65d903627438aea84ad4930f846002d8998f9358dffc88f1f42"
+	descriptionMd5 hasValue "01a13efa52ef75e23cb8932bf8498b26"
+	homepage hasValue "https://github.com/Mellanox/sockperf"
+	depends hasValue "libc6 (>= 2.17), libgcc-s1 (>= 3.0), libstdc++6 (>= 5.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.17"
+
+relationInstance depends(P0__sockperf,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgcc-s1"
+	comparison hasValue ">="
+	version hasValue "3.0"
+
+relationInstance depends(P0__sockperf,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "5.2"
+
+relationInstance depends(P0__sockperf,2,DepAtom__2)
+

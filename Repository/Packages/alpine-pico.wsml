@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology alpine_pico
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__alpine_pico memberOf Package
+	package hasValue "alpine-pico"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/editors"
+	installedSize hasValue "770"
+	maintainer hasValue "Original-Asheesh Laroia <asheesh@asheesh.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.22+dfsg1-1"
+	fileName hasValue "pool/universe/a/alpine/alpine-pico_2.22+dfsg1-1_amd64.deb"
+	size hasValue "312896"
+	md5sum hasValue "09debe5500a5d561544d2b2dcb27c78c"
+	sha1 hasValue "38a4141787124cc6e0a4e41a4dace81bdd03ad8e"
+	sha256 hasValue "15d4b92c7f53a74a4f8967eb305b58034aeb8f79e4175c71b912fd2d262439c5"
+	description hasValue "editor de texto simples do Alpine, um cliente de e-mail em modo texto"
+	descriptionMd5 hasValue "26a939a9b42d10bb338f5e7cb4ba132b"
+	homepage hasValue "http://alpine.x10host.com/alpine/"
+	depends hasValue "libc6 (>= 2.14), libtinfo6 (>= 6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__alpine_pico,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libtinfo6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__alpine_pico,1,DepAtom__1)
+

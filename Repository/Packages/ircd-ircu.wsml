@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ircd_ircu
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ircd_ircu memberOf Package
+	package hasValue "ircd-ircu"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "1226"
+	maintainer hasValue "Original-Martin Gerhard Loschwitz <madkiss@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.10.12.10.dfsg1-3build1"
+	replaces hasValue "ircd (>= 2.10.10.pl18-4), ircd-dalnet"
+	provides hasValue "ircd"
+	conflicts hasValue "ircd-irc2"
+	fileName hasValue "pool/universe/i/ircd-ircu/ircd-ircu_2.10.12.10.dfsg1-3build1_amd64.deb"
+	size hasValue "367304"
+	md5sum hasValue "a8a02a1c599b221208c548065ba81c2b"
+	sha1 hasValue "32d2194369df3ef0d794a627715e6b75cbb8e145"
+	sha256 hasValue "91d643165da9f89e86488f0777790d2db0b95b9a379f6767a182d0a05520eec7"
+	descriptionMd5 hasValue "46649cd4aa0a970dced331baa01922d5"
+	depends hasValue "libc6 (>= 2.14), lsb-base (>= 3.0-6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__ircd_ircu,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "lsb-base"
+	comparison hasValue ">="
+	version hasValue "3.0-6"
+
+relationInstance depends(P0__ircd_ircu,1,DepAtom__1)
+

@@ -1,0 +1,74 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology weechat_ruby
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__weechat_ruby memberOf Package
+	package hasValue "weechat-ruby"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "294"
+	maintainer hasValue "Original-Emmanuel Bouthenot <kolter@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.8-1"
+	fileName hasValue "pool/universe/w/weechat/weechat-ruby_2.8-1_amd64.deb"
+	size hasValue "54160"
+	md5sum hasValue "62f2e69ffc1a1eb6cba83629afa408ac"
+	sha1 hasValue "fd06b6f3063dde60437a523123fca26006333fb4"
+	sha256 hasValue "05c4ac913464033e30d6cd61d3fd6c41d84dbc338d8b125da5f0198c12959f93"
+	descriptionMd5 hasValue "6c3406bb296d1d1b0c1aa1f3baa8429b"
+	homepage hasValue "https://weechat.org/"
+	depends hasValue "libc6 (>= 2.14), libruby2.7 (>= 2.7.0), weechat-curses (= 2.8-1) | weechat-headless (= 2.8-1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__weechat_ruby,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libruby2.7"
+	comparison hasValue ">="
+	version hasValue "2.7.0"
+
+relationInstance depends(P0__weechat_ruby,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "weechat-curses"
+	comparison hasValue "="
+	version hasValue "2.8-1"
+
+relationInstance depends(P0__weechat_ruby,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "weechat-headless"
+	comparison hasValue "="
+	version hasValue "2.8-1"
+
+relationInstance depends(P0__weechat_ruby,2,DepAtom__3)
+

@@ -1,0 +1,76 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology rsh_redone_server
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__rsh_redone_server memberOf Package
+	package hasValue "rsh-redone-server"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "58"
+	maintainer hasValue "Original-Guus Sliepen <guus@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "85-2build1"
+	replaces hasValue "rsh-server"
+	provides hasValue "rsh-server"
+	conflicts hasValue "rsh-server"
+	fileName hasValue "pool/universe/r/rsh-redone/rsh-redone-server_85-2build1_amd64.deb"
+	size hasValue "12004"
+	md5sum hasValue "74133c8449fe38e54f970fea43c85271"
+	sha1 hasValue "59afa67f32d95d882292b8b38323801f09d0895c"
+	sha256 hasValue "bcb50e586223bb246b684d2958a868c60e32be9eb777a7f0d09069ba45583ffd"
+	descriptionMd5 hasValue "98dead85e8cae3cc7878805b04c9dfbd"
+	depends hasValue "libc6 (>= 2.14), libpam0g (>= 0.99.7.1), openbsd-inetd | inet-superserver"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__rsh_redone_server,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libpam0g"
+	comparison hasValue ">="
+	version hasValue "0.99.7.1"
+
+relationInstance depends(P0__rsh_redone_server,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "openbsd-inetd"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__rsh_redone_server,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "inet-superserver"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__rsh_redone_server,2,DepAtom__3)
+

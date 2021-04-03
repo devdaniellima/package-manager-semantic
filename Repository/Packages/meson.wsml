@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology meson
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__meson memberOf Package
+	package hasValue "meson"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "2352"
+	maintainer hasValue "Original-Jussi Pakkanen <jpakkane@gmail.com>"
+	architecture hasValue "all"
+	version hasValue "0.53.2-2ubuntu2"
+	fileName hasValue "pool/universe/m/meson/meson_0.53.2-2ubuntu2_all.deb"
+	size hasValue "375904"
+	md5sum hasValue "224d202401cbd1cece70f3c51f8af32d"
+	sha1 hasValue "ba3e4d569fd97ba3bdf5b29ec0af625b28289e2c"
+	sha256 hasValue "0bdfbb5f0e11048544ba20fc34faf735b634243b9b7ce3b9457175f08175864a"
+	descriptionMd5 hasValue "05e8ad52532257641a3b106a0836e789"
+	homepage hasValue "https://mesonbuild.com"
+	depends hasValue "python3:any (>= 3.7~), ninja-build (>= 1.6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ">="
+	version hasValue "3.7~"
+
+relationInstance depends(P0__meson,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "ninja-build"
+	comparison hasValue ">="
+	version hasValue "1.6"
+
+relationInstance depends(P0__meson,1,DepAtom__1)
+

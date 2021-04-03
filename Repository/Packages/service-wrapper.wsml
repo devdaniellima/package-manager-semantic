@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology service_wrapper
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__service_wrapper memberOf Package
+	package hasValue "service-wrapper"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/java"
+	installedSize hasValue "513"
+	maintainer hasValue "Original-Debian Java Maintainers <pkg-java-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.5.30-1ubuntu1"
+	fileName hasValue "pool/universe/s/service-wrapper-java/service-wrapper_3.5.30-1ubuntu1_amd64.deb"
+	size hasValue "115006"
+	md5sum hasValue "a4b50ce23d12e2451682eee3bb079b25"
+	sha1 hasValue "92682dec503c09d454788d44cb37de338f13e801"
+	sha256 hasValue "50cf10047cad1e477702d9c3a0ec44878f6f83596eae97b8cb559421934f2faa"
+	descriptionMd5 hasValue "55c730f30d08582a332d56d0b541cfcf"
+	homepage hasValue "http://wrapper.tanukisoftware.com"
+	depends hasValue "libc6 (>= 2.14), libservice-wrapper-java (>= 3.5.30-1ubuntu1), libservice-wrapper-jni (>= 3.5.30-1ubuntu1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__service_wrapper,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libservice-wrapper-java"
+	comparison hasValue ">="
+	version hasValue "3.5.30-1ubuntu1"
+
+relationInstance depends(P0__service_wrapper,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libservice-wrapper-jni"
+	comparison hasValue ">="
+	version hasValue "3.5.30-1ubuntu1"
+
+relationInstance depends(P0__service_wrapper,2,DepAtom__2)
+

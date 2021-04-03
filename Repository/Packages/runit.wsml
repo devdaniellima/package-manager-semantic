@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology runit
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__runit memberOf Package
+	package hasValue "runit"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "399"
+	maintainer hasValue "Original-Dmitry Bogatov <KAction@gnu.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.1.2-9.2ubuntu1"
+	replaces hasValue "runit-init"
+	fileName hasValue "pool/universe/r/runit/runit_2.1.2-9.2ubuntu1_amd64.deb"
+	size hasValue "95896"
+	md5sum hasValue "9c8ebfcc5eeb497cc0dc2f9fc9d07e51"
+	sha1 hasValue "c98a49911331224d60fd505480d4e874313ba105"
+	sha256 hasValue "1029370f74fd24e46d6d16d118acdaaf05ee8d77260526f09d45d49402fd9402"
+	descriptionMd5 hasValue "af208d06f3efd0f3daa9baafd0c83ec0"
+	homepage hasValue "http://smarden.org/runit/"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__runit,0,DepAtom__0)
+

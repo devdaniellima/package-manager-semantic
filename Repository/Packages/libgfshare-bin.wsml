@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libgfshare_bin
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libgfshare_bin memberOf Package
+	package hasValue "libgfshare-bin"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "44"
+	maintainer hasValue "Original-Simon McVittie <smcv@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.0.0-4"
+	fileName hasValue "pool/universe/libg/libgfshare/libgfshare-bin_2.0.0-4_amd64.deb"
+	size hasValue "13492"
+	md5sum hasValue "34fa265ac48a7cf79bfbead2e2366207"
+	sha1 hasValue "efe1222004880c40d6b83f1b492e4a07be2f54a7"
+	sha256 hasValue "ff7a3d292b06fa65dabb06ef4c9524f10011e26da9e678304c0cb69cd05ce600"
+	description hasValue "utilitários para compartilhamento secreto multidirecional"
+	descriptionMd5 hasValue "ae4f1a8c46e105b0850d8d826d420e23"
+	homepage hasValue "https://git.gitano.org.uk/libgfshare.git/"
+	depends hasValue "libc6 (>= 2.4), libgfshare2 (>= 2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libgfshare_bin,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgfshare2"
+	comparison hasValue ">="
+	version hasValue "2"
+
+relationInstance depends(P0__libgfshare_bin,1,DepAtom__1)
+

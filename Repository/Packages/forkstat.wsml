@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology forkstat
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__forkstat memberOf Package
+	package hasValue "forkstat"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "55"
+	maintainer hasValue "Colin King <colin.king@canonical.com>"
+	architecture hasValue "amd64"
+	version hasValue "0.02.14-1"
+	fileName hasValue "pool/universe/f/forkstat/forkstat_0.02.14-1_amd64.deb"
+	size hasValue "17260"
+	md5sum hasValue "96e703c17143215a3dada1eb0656ed54"
+	sha1 hasValue "775a48c720e6815f3010e54797426cc76393ea89"
+	sha256 hasValue "1dd265589764ac7b412c339f2b9a59cd8869db38dff821a4a334eb1912169a84"
+	descriptionMd5 hasValue "26dd1065d1b9e5766071fe93d73e1084"
+	homepage hasValue "http://kernel.ubuntu.com/~cking/forkstat"
+	depends hasValue "libc6 (>= 2.7)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__forkstat,0,DepAtom__0)
+

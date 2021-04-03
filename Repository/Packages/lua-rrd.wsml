@@ -1,0 +1,63 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology lua_rrd
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__lua_rrd memberOf Package
+	package hasValue "lua-rrd"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "interpreters"
+	installedSize hasValue "120"
+	maintainer hasValue "Original-Debian RRDtool Team <pkg-rrdtool-maint@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.7.2-3build2"
+	replaces hasValue "liblua5.1-rrd0 (<< 1.5.4-3~)"
+	provides hasValue "liblua5.1-rrd0, lua5.1-rrd, lua5.2-rrd, lua5.3-rrd"
+	fileName hasValue "pool/main/r/rrdtool/lua-rrd_1.7.2-3build2_amd64.deb"
+	size hasValue "11976"
+	md5sum hasValue "f26d552e4501b23143853792c3714e97"
+	sha1 hasValue "17b29c3cd4f557f53eb372cddfcd3f16d9aba08f"
+	sha256 hasValue "0eb8e44d7f573da871fa0efc012eb1ca038a7ad82414eda127679e0f7d2a8efb"
+	description hasValue "time-series data storage and display system (Lua interfaces)"
+	descriptionMd5 hasValue "34e7abe990b5ce5b0bd02deeb2d4b843"
+	homepage hasValue "https://oss.oetiker.ch/rrdtool/"
+	depends hasValue "libc6 (>= 2.4), librrd8 (>= 1.4~rc2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__lua_rrd,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "librrd8"
+	comparison hasValue ">="
+	version hasValue "1.4~rc2"
+
+relationInstance depends(P0__lua_rrd,1,DepAtom__1)
+

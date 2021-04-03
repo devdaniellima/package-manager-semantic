@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gosa_plugin_mailaddress
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gosa_plugin_mailaddress memberOf Package
+	package hasValue "gosa-plugin-mailaddress"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/web"
+	installedSize hasValue "108"
+	maintainer hasValue "Original-Debian Edu Packaging Team <debian-edu-pkg-team@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.99.7-1"
+	conflicts hasValue "gosa-plugin-mail"
+	fileName hasValue "pool/universe/g/gosa-plugin-mailaddress/gosa-plugin-mailaddress_0.99.7-1_all.deb"
+	size hasValue "14564"
+	md5sum hasValue "bdbe01abb993fce3dd717a8348786648"
+	sha1 hasValue "d3527cd31bbef43f83fd7ec1d13d978cdf72838d"
+	sha256 hasValue "f0be605c4c28e874cec3fd8c9c55264774bccd301a334e2aad695e0ca5a70c7d"
+	descriptionMd5 hasValue "c0686a2a7a3a33abe7aea3a9b213255e"
+	homepage hasValue "https://github.com/gosa-project/gosa-plugin-mailaddress"
+	depends hasValue "gosa (>= 2.7.4+reloaded2-12~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "gosa"
+	comparison hasValue ">="
+	version hasValue "2.7.4+reloaded2-12~"
+
+relationInstance depends(P0__gosa_plugin_mailaddress,0,DepAtom__0)
+

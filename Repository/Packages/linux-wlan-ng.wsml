@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology linux_wlan_ng
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__linux_wlan_ng memberOf Package
+	package hasValue "linux-wlan-ng"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/admin"
+	installedSize hasValue "560"
+	maintainer hasValue "Original-Tormod Volden <debian.tormod@gmail.com>"
+	architecture hasValue "amd64"
+	version hasValue "0.2.9+dfsg-6"
+	conflicts hasValue "linux-wlan-ng-0.1.15-modules, linux-wlan-ng-modules"
+	fileName hasValue "pool/universe/l/linux-wlan-ng/linux-wlan-ng_0.2.9+dfsg-6_amd64.deb"
+	size hasValue "72358"
+	md5sum hasValue "8043a2216e8da10a86937e07a2d9c2d8"
+	sha1 hasValue "ca40b56f5f64f8171d2d30bb18ad02e5e20d866a"
+	sha256 hasValue "5869fcbc62864569477044895260346cbcb2cf623ab3b8191007ae351a8cc5d1"
+	descriptionMd5 hasValue "e66774d600b1f0c55dbfd4984d47f146"
+	depends hasValue "libc6 (>= 2.14), wireless-tools, udev (>= 0.140-1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__linux_wlan_ng,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "wireless-tools"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__linux_wlan_ng,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "udev"
+	comparison hasValue ">="
+	version hasValue "0.140-1"
+
+relationInstance depends(P0__linux_wlan_ng,2,DepAtom__2)
+

@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology postgresql_12_repack
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__postgresql_12_repack memberOf Package
+	package hasValue "postgresql-12-repack"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/database"
+	installedSize hasValue "242"
+	maintainer hasValue "Original-Debian PostgreSQL Maintainers <team+postgresql@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.4.5-2"
+	fileName hasValue "pool/universe/p/pg-repack/postgresql-12-repack_1.4.5-2_amd64.deb"
+	size hasValue "101204"
+	md5sum hasValue "53eb87b32e0ed8eb38d717011c3df5eb"
+	sha1 hasValue "b9d521ae1e4424ee741cde978f16235b71b92074"
+	sha256 hasValue "7f616dc0208b8635a9f1c0945d7c11e07feb8eb591c21b765e1d1340a7a5364d"
+	descriptionMd5 hasValue "77f544bcfa5b9ecc32a9acd4a49ee67e"
+	homepage hasValue "https://github.com/reorg/pg_repack"
+	depends hasValue "postgresql-12, libc6 (>= 2.15), libpq5 (>= 8.3~rc1-1~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "postgresql-12"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__postgresql_12_repack,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__postgresql_12_repack,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libpq5"
+	comparison hasValue ">="
+	version hasValue "8.3~rc1-1~"
+
+relationInstance depends(P0__postgresql_12_repack,2,DepAtom__2)
+

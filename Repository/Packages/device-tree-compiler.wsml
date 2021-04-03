@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology device_tree_compiler
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__device_tree_compiler memberOf Package
+	package hasValue "device-tree-compiler"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "devel"
+	installedSize hasValue "487"
+	maintainer hasValue "Original-Héctor Orón Martínez <zumbi@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.5.1-1"
+	fileName hasValue "pool/main/d/device-tree-compiler/device-tree-compiler_1.5.1-1_amd64.deb"
+	size hasValue "246576"
+	md5sum hasValue "c0d3cd7839a0523cfe7d4d8560a2e401"
+	sha1 hasValue "2315fb245a1e8500eab83c3310df929c76329dc4"
+	sha256 hasValue "c9fdcab3a3729ace00c158ce83d563894901f7f82be379eb5280c5d7eb107382"
+	descriptionMd5 hasValue "c14bd2aee94155eab7033dce0d089d26"
+	homepage hasValue "https://git.kernel.org/cgit/utils/dtc/dtc.git"
+	depends hasValue "libc6 (>= 2.14), libfdt1 (>= 1.5.1), libyaml-0-2"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__device_tree_compiler,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libfdt1"
+	comparison hasValue ">="
+	version hasValue "1.5.1"
+
+relationInstance depends(P0__device_tree_compiler,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libyaml-0-2"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__device_tree_compiler,2,DepAtom__2)
+

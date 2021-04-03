@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology r_cran_httpcode
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__r_cran_httpcode memberOf Package
+	package hasValue "r-cran-httpcode"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/gnu-r"
+	installedSize hasValue "60"
+	maintainer hasValue "Original-Debian R Packages Maintainers <r-pkg-team@alioth-lists.debian.net>"
+	architecture hasValue "all"
+	version hasValue "0.2.0-3"
+	fileName hasValue "pool/universe/r/r-cran-httpcode/r-cran-httpcode_0.2.0-3_all.deb"
+	size hasValue "30384"
+	md5sum hasValue "06e2e95a58a94c686faf43a449e86356"
+	sha1 hasValue "631c1b1fd0fe6eee344f00236b459192bc05e00b"
+	sha256 hasValue "a787dd92c2f282273e8a0f577f2bcbe7dae9c3b3935126d87bef87d8ac343332"
+	descriptionMd5 hasValue "c2fc027cffcf757d396ccd853c6a9a5c"
+	homepage hasValue "https://cran.r-project.org/package=httpcode"
+	depends hasValue "r-base-core (>= 3.5.0-3), r-api-3.5"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "r-base-core"
+	comparison hasValue ">="
+	version hasValue "3.5.0-3"
+
+relationInstance depends(P0__r_cran_httpcode,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "r-api-3.5"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__r_cran_httpcode,1,DepAtom__1)
+

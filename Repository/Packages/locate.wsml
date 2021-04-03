@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology locate
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__locate memberOf Package
+	package hasValue "locate"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "259"
+	maintainer hasValue "Original-Andreas Metzler <ametzler@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "4.7.0-1ubuntu1"
+	replaces hasValue "findutils (<< 4.2.31-2)"
+	fileName hasValue "pool/universe/f/findutils/locate_4.7.0-1ubuntu1_amd64.deb"
+	size hasValue "85324"
+	md5sum hasValue "d786b675cacaa836147080461aaa7e99"
+	sha1 hasValue "c9f431e9e830b5ac33814d6b573362fee92a3b10"
+	sha256 hasValue "f226d49bd3d7889fab7c90283b3a21823b3e85249cc4fe69b13cf7f3b1faee55"
+	description hasValue "mantém e consulta um índice de árvore de diretórios"
+	descriptionMd5 hasValue "bff4cb1129be08196a6ed2311b3d1fbc"
+	homepage hasValue "https://savannah.gnu.org/projects/findutils/"
+	depends hasValue "findutils (>> 4.2.31-1), libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "findutils"
+	comparison hasValue ">>"
+	version hasValue "4.2.31-1"
+
+relationInstance depends(P0__locate,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__locate,1,DepAtom__1)
+

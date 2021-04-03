@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology osmo_sdr
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__osmo_sdr memberOf Package
+	package hasValue "osmo-sdr"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/libs"
+	installedSize hasValue "38"
+	maintainer hasValue "Original-A. Maitland Bottoms <bottoms@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.1.8.effcaa7-7"
+	fileName hasValue "pool/universe/libo/libosmosdr/osmo-sdr_0.1.8.effcaa7-7_amd64.deb"
+	size hasValue "11310"
+	md5sum hasValue "f776570b208b2c574e476718a647bdff"
+	sha1 hasValue "4d86c929619b4c8ddd426136741407daef8a98e4"
+	sha256 hasValue "f4c9b7e7dc4afa563ea3c5632e3388ceb03506a360d7e3939b6dd4a0ac3b02fc"
+	descriptionMd5 hasValue "0374a37e5b2691d980daa37e56eaa910"
+	homepage hasValue "http://sdr.osmocom.org/trac/"
+	depends hasValue "libosmosdr0 (= 0.1.8.effcaa7-7), libc6 (>= 2.4), libusb-1.0-0 (>= 2:1.0.8)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libosmosdr0"
+	comparison hasValue "="
+	version hasValue "0.1.8.effcaa7-7"
+
+relationInstance depends(P0__osmo_sdr,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__osmo_sdr,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libusb-1.0-0"
+	comparison hasValue ">="
+	version hasValue "2:1.0.8"
+
+relationInstance depends(P0__osmo_sdr,2,DepAtom__2)
+

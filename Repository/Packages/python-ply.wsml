@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python_ply
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python_ply memberOf Package
+	package hasValue "python-ply"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "250"
+	maintainer hasValue "Original-JCF Ploemen (jcfp) <linux@jcf.pm>"
+	architecture hasValue "all"
+	version hasValue "3.11-3build1"
+	provides hasValue "python-ply-lex-3.10, python-ply-yacc-3.10, python2.7-ply"
+	fileName hasValue "pool/universe/p/ply/python-ply_3.11-3build1_all.deb"
+	size hasValue "46272"
+	md5sum hasValue "fe1a56a4192fd708ea7e25937f320802"
+	sha1 hasValue "57020c079aa810d430fdb62e2414aa4d43cb18b0"
+	sha256 hasValue "41c1bb1913e0c9318f2510994c2518a115005a2249761794f11ebec35d9d6106"
+	descriptionMd5 hasValue "1829572562d81a89af6afe493eddd643"
+	homepage hasValue "https://www.dabeaz.com/ply/"
+	depends hasValue "python2:any (<< 2.8), python2:any (>= 2.7~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue "<<"
+	version hasValue "2.8"
+
+relationInstance depends(P0__python_ply,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue ">="
+	version hasValue "2.7~"
+
+relationInstance depends(P0__python_ply,1,DepAtom__1)
+

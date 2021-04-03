@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology unrar
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__unrar memberOf Package
+	package hasValue "unrar"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "multiverse/utils"
+	installedSize hasValue "396"
+	maintainer hasValue "Original-Martin Meredith <mez@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:5.6.6-2build1"
+	conflicts hasValue "rar (<= 2.60-1)"
+	fileName hasValue "pool/multiverse/u/unrar-nonfree/unrar_5.6.6-2build1_amd64.deb"
+	size hasValue "113316"
+	md5sum hasValue "5ec74cce263430f0bbd9ae43049b8d76"
+	sha1 hasValue "69bd0f63b245f7b7edc5723674ab8cb07e7836f4"
+	sha256 hasValue "31cc5e16f915a29a96d083238f071852adc52a2acacdce57cd8176d7fd1407ef"
+	descriptionMd5 hasValue "363f696bb115028ffafb265ccc9f32fb"
+	homepage hasValue "http://www.rarlabs.com/"
+	depends hasValue "libc6 (>= 2.14), libgcc-s1 (>= 3.0), libstdc++6 (>= 5)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__unrar,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgcc-s1"
+	comparison hasValue ">="
+	version hasValue "3.0"
+
+relationInstance depends(P0__unrar,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "5"
+
+relationInstance depends(P0__unrar,2,DepAtom__2)
+

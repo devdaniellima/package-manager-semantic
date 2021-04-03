@@ -1,0 +1,74 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology srecord
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__srecord memberOf Package
+	package hasValue "srecord"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/utils"
+	installedSize hasValue "240"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.64-1ubuntu2"
+	fileName hasValue "pool/universe/s/srecord/srecord_1.64-1ubuntu2_amd64.deb"
+	size hasValue "158360"
+	md5sum hasValue "98c883817f66323b84d058045996fab4"
+	sha1 hasValue "54a4e03a5f087ff48c22b2b7e773593ef149cc1f"
+	sha256 hasValue "eeda86477878e4a484c95722536310db456cfa1a02c672865b41d1af111d4ce6"
+	descriptionMd5 hasValue "b2a5b2ee7fcec28a9e110286a00474c8"
+	homepage hasValue "http://srecord.sourceforge.net"
+	depends hasValue "libc6 (>= 2.14), libgcc-s1 (>= 3.0), libsrecord0, libstdc++6 (>= 5.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__srecord,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgcc-s1"
+	comparison hasValue ">="
+	version hasValue "3.0"
+
+relationInstance depends(P0__srecord,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libsrecord0"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__srecord,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "5.2"
+
+relationInstance depends(P0__srecord,3,DepAtom__3)
+

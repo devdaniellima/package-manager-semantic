@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology aggregate
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__aggregate memberOf Package
+	package hasValue "aggregate"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "29"
+	maintainer hasValue "Original-Erik Wenzel <erik@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.6-7build1"
+	fileName hasValue "pool/universe/a/aggregate/aggregate_1.6-7build1_amd64.deb"
+	size hasValue "11600"
+	md5sum hasValue "3768f334d983352fbffd78f29edf8c07"
+	sha1 hasValue "bdbb4447fb6af18943d52febaf73ee56901515f9"
+	sha256 hasValue "ebb5d5f7fae94d6afc40bfe647421d4c8b50915ee437ec6e45938e5d8869979d"
+	description hasValue "agregador de prefixo CIDR IPv4"
+	descriptionMd5 hasValue "f997a857d65d21bbf877320588a8a99c"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__aggregate,0,DepAtom__0)
+

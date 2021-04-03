@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology yara
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__yara memberOf Package
+	package hasValue "yara"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "85"
+	maintainer hasValue "Original-Debian Security Tools <team+pkg-security@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.9.0-1"
+	fileName hasValue "pool/universe/y/yara/yara_3.9.0-1_amd64.deb"
+	size hasValue "20428"
+	md5sum hasValue "55e2af05c431cfafe40d51101c1cbf4b"
+	sha1 hasValue "7782cfe41e8005b82370a422428e43fa7bb05359"
+	sha256 hasValue "94e4f128e5d37e8f0323e1309562e238420d2670a9fea03ad937a9ecfea800ae"
+	descriptionMd5 hasValue "5bc661c5fe8f0ebddb9615d71f1eb8e3"
+	homepage hasValue "https://virustotal.github.io/yara/"
+	depends hasValue "libc6 (>= 2.4), libyara3 (>= 3.8.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__yara,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libyara3"
+	comparison hasValue ">="
+	version hasValue "3.8.0"
+
+relationInstance depends(P0__yara,1,DepAtom__1)
+

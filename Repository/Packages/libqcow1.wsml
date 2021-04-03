@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libqcow1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libqcow1 memberOf Package
+	package hasValue "libqcow1"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "1055"
+	maintainer hasValue "Original-Debian Security Tools <team+pkg-security@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "20181227-1.1"
+	fileName hasValue "pool/universe/libq/libqcow/libqcow1_20181227-1.1_amd64.deb"
+	size hasValue "358424"
+	md5sum hasValue "0070ff8b0a7fa7db89035016d4174b98"
+	sha1 hasValue "c74ba29c93c36ea38f8e405bc99b60986ec4d232"
+	sha256 hasValue "286d5e022873e47bdc844b4a8347d012fab8584f0d19140b18aa1b924eadc3b0"
+	description hasValue "QEMU Copy-On-Write image format access library"
+	descriptionMd5 hasValue "ad2e480029d6e2c25ba681d44b0d5b79"
+	homepage hasValue "https://github.com/libyal/libqcow"
+	depends hasValue "libbfio1 (>= 20120425), libc6 (>= 2.17), zlib1g (>= 1:1.1.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libbfio1"
+	comparison hasValue ">="
+	version hasValue "20120425"
+
+relationInstance depends(P0__libqcow1,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.17"
+
+relationInstance depends(P0__libqcow1,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "zlib1g"
+	comparison hasValue ">="
+	version hasValue "1:1.1.4"
+
+relationInstance depends(P0__libqcow1,2,DepAtom__2)
+

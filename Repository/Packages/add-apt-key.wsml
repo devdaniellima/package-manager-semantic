@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology add_apt_key
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__add_apt_key memberOf Package
+	package hasValue "add-apt-key"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "80"
+	maintainer hasValue "Original-Tom Marble <tom.marble@sun.com>"
+	architecture hasValue "all"
+	version hasValue "1.0-0.5"
+	fileName hasValue "pool/universe/a/add-apt-key/add-apt-key_1.0-0.5_all.deb"
+	size hasValue "5314"
+	md5sum hasValue "15a071fa52aa0d32197ef1c4383e088c"
+	sha1 hasValue "a1ed5eda6cfacdce7f6c463357ca3019cb1d2fda"
+	sha256 hasValue "74a9525a2e0ca308e293b3b1e9163c1afc660fed833d6836325fa1a3431d1332"
+	description hasValue "Ferramenta de linha de comando para adicionar chaves GPG ao chaveiro do APT"
+	descriptionMd5 hasValue "2e36413f0fc02b5e59911952d05f29ec"
+	depends hasValue "apt, gnupg"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "apt"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__add_apt_key,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "gnupg"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__add_apt_key,1,DepAtom__1)
+

@@ -1,0 +1,66 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology debaux_debconf
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__debaux_debconf memberOf Package
+	package hasValue "debaux-debconf"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "19"
+	maintainer hasValue "Original-Stefan Hornburg (Racke) <racke@linuxia.de>"
+	architecture hasValue "all"
+	version hasValue "0.1.12-1"
+	fileName hasValue "pool/universe/d/debaux/debaux-debconf_0.1.12-1_all.deb"
+	size hasValue "6092"
+	md5sum hasValue "4f1cc3e64e99efba9a0324846bf47b0c"
+	sha1 hasValue "0cde4de20ff8d6b61d4d18334fb5256f8125b994"
+	sha256 hasValue "a4a11940bb8a285377e365af548c8b9ceb4147f77f34f5f81ebe94bba44411a6"
+	descriptionMd5 hasValue "ad9ae346b301c9a2103970a1f75d5edf"
+	depends hasValue "perl, debconf | debconf-2.0"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "perl"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__debaux_debconf,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "debconf"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__debaux_debconf,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "debconf-2.0"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__debaux_debconf,1,DepAtom__2)
+

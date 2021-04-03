@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology postgresql_12_hll
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__postgresql_12_hll memberOf Package
+	package hasValue "postgresql-12-hll"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/database"
+	installedSize hasValue "251"
+	maintainer hasValue "Original-Debian PostgreSQL Maintainers <team+postgresql@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.14-1"
+	fileName hasValue "pool/universe/p/postgresql-hll/postgresql-12-hll_2.14-1_amd64.deb"
+	size hasValue "80380"
+	md5sum hasValue "5bbeeca0e67eace4fd6cfdd0d5eaa52b"
+	sha1 hasValue "f583b5047b6e8ce54ecb92e8bd285f8ba5385d86"
+	sha256 hasValue "8cdaead6b1432c48041671936e806426f0841f9df22d3e86a6018b791693bf37"
+	descriptionMd5 hasValue "d86a4e66d73c3782c5fcad9d6c1575a2"
+	homepage hasValue "https://github.com/citusdata/postgresql-hll"
+	depends hasValue "libc6 (>= 2.14), postgresql-12"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__postgresql_12_hll,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "postgresql-12"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__postgresql_12_hll,1,DepAtom__1)
+

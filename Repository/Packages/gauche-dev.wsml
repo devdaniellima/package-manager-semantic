@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gauche_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gauche_dev memberOf Package
+	package hasValue "gauche-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "40146"
+	maintainer hasValue "Original-NIIBE Yutaka <gniibe@fsij.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.9.6-10build1"
+	replaces hasValue "gauche (<= 0.9.1-5)"
+	fileName hasValue "pool/universe/g/gauche/gauche-dev_0.9.6-10build1_amd64.deb"
+	size hasValue "4464932"
+	md5sum hasValue "7939fa3bfdb177c793f8e8ffe8fd67ab"
+	sha1 hasValue "6d0657f99cd9b407cfbe88c2b7bb741f375e1ba5"
+	sha256 hasValue "ab5312fce4000b27e355f4dc02f19d13f31a2ec9f6bcbf21225c694f34a63e94"
+	descriptionMd5 hasValue "550e79b47a8b1a9603517de1ec8d8cbf"
+	homepage hasValue "http://practical-scheme.net/gauche/"
+	depends hasValue "gauche (>= 0.9.3-1), libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "gauche"
+	comparison hasValue ">="
+	version hasValue "0.9.3-1"
+
+relationInstance depends(P0__gauche_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__gauche_dev,1,DepAtom__1)
+

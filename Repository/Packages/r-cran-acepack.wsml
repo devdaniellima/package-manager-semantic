@@ -1,0 +1,66 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology r_cran_acepack
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__r_cran_acepack memberOf Package
+	package hasValue "r-cran-acepack"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/gnu-r"
+	installedSize hasValue "191"
+	maintainer hasValue "Original-Dirk Eddelbuettel <edd@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.4.1-2build2"
+	fileName hasValue "pool/universe/a/acepack/r-cran-acepack_1.4.1-2build2_amd64.deb"
+	size hasValue "59596"
+	md5sum hasValue "8f03e360cdb101b5ee8ea0cb60321627"
+	sha1 hasValue "de5db9abba7d3756a9060c543a42f6c461604d2c"
+	sha256 hasValue "61ce81b338715095fe3fb764861c5a8856d11b2d5498a5d10b213ed742f62a4f"
+	descriptionMd5 hasValue "42a6937a3119dab9053a51cd61d34916"
+	depends hasValue "libc6 (>= 2.4), r-base-core (>= 3.5.0-3), r-api-3.5"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__r_cran_acepack,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "r-base-core"
+	comparison hasValue ">="
+	version hasValue "3.5.0-3"
+
+relationInstance depends(P0__r_cran_acepack,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "r-api-3.5"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__r_cran_acepack,2,DepAtom__2)
+

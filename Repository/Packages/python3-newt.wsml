@@ -1,0 +1,82 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python3_newt
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python3_newt memberOf Package
+	package hasValue "python3-newt"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "python"
+	installedSize hasValue "106"
+	maintainer hasValue "Original-Alastair McKinstry <mckinstry@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.52.21-4ubuntu2"
+	provides hasValue "python3.8-newt"
+	fileName hasValue "pool/main/n/newt/python3-newt_0.52.21-4ubuntu2_amd64.deb"
+	size hasValue "19216"
+	md5sum hasValue "fe171f277607249d910f3666279b04e6"
+	sha1 hasValue "8a09365f5f096de3d463e2ec3b6eb5fba635507b"
+	sha256 hasValue "e6e924bed88f23a1491a322954e9017da67d2e01d9a5ad91f46794cf47e1f77c"
+	descriptionMd5 hasValue "ab07f550adcbdc5c4104773a94768660"
+	homepage hasValue "https://pagure.io/newt"
+	depends hasValue "libnewt0.52 (= 0.52.21-4ubuntu2), python3 (<< 3.9), python3 (>= 3.8~), python3:any, libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libnewt0.52"
+	comparison hasValue "="
+	version hasValue "0.52.21-4ubuntu2"
+
+relationInstance depends(P0__python3_newt,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3"
+	comparison hasValue "<<"
+	version hasValue "3.9"
+
+relationInstance depends(P0__python3_newt,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "python3"
+	comparison hasValue ">="
+	version hasValue "3.8~"
+
+relationInstance depends(P0__python3_newt,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__python3_newt,3,DepAtom__3)
+
+instance DepAtom__4 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__python3_newt,4,DepAtom__4)
+

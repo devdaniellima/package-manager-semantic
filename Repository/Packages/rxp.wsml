@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology rxp
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__rxp memberOf Package
+	package hasValue "rxp"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/text"
+	installedSize hasValue "53"
+	maintainer hasValue "Original-NIIBE Yutaka <gniibe@fsij.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.5.0-3"
+	fileName hasValue "pool/universe/r/rxp/rxp_1.5.0-3_amd64.deb"
+	size hasValue "16440"
+	md5sum hasValue "def544af5eaed24dc6d565f6d4d9e645"
+	sha1 hasValue "1c9b3a849916ac20b9ef39afe75db007c5bb0de3"
+	sha256 hasValue "2382689a73c1a6ef9afec1c642c83266af532866e1d645151aaea4514e0e8fd1"
+	description hasValue "Validating XML parser"
+	descriptionMd5 hasValue "b8fb5af411478d2e0659456772b7fcc7"
+	homepage hasValue "http://www.cogsci.ed.ac.uk/~richard/rxp.html"
+	depends hasValue "libc6 (>= 2.4), librxp0 (>= 1.5.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__rxp,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "librxp0"
+	comparison hasValue ">="
+	version hasValue "1.5.0"
+
+relationInstance depends(P0__rxp,1,DepAtom__1)
+

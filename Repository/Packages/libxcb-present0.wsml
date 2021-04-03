@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libxcb_present0
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libxcb_present0 memberOf Package
+	package hasValue "libxcb-present0"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libs"
+	installedSize hasValue "36"
+	maintainer hasValue "Original-Debian X Strike Force <debian-x@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.14-2"
+	fileName hasValue "pool/main/libx/libxcb/libxcb-present0_1.14-2_amd64.deb"
+	size hasValue "* small library and lower memory footprint"
+	md5sum hasValue "36bcb58b4faedf707b556a21f07074a2"
+	sha1 hasValue "b27d1ba21773a9b47bae0dcb5b0382788533f6ac"
+	sha256 hasValue "fb608f5fbdd36ca851118754a990e55309f4cf538db17b7dd91eb117bc06ff5e"
+	description hasValue "X C Binding, present extension"
+	descriptionMd5 hasValue "334193719fba9c74610c458784b19b1b"
+	homepage hasValue "https://xcb.freedesktop.org"
+	depends hasValue "libc6 (>= 2.4), libxcb1"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libxcb_present0,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libxcb1"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libxcb_present0,1,DepAtom__1)
+

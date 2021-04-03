@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ruby_paranoia
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ruby_paranoia memberOf Package
+	package hasValue "ruby-paranoia"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/ruby"
+	installedSize hasValue "40"
+	maintainer hasValue "Original-Debian Ruby Extras Maintainers <pkg-ruby-extras-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.4.1-1"
+	fileName hasValue "pool/universe/r/ruby-paranoia/ruby-paranoia_2.4.1-1_all.deb"
+	size hasValue "10912"
+	md5sum hasValue "d85f130ca8f060b7b79168168d936a44"
+	sha1 hasValue "3e42997a9a78577e9ee3520670b8c4fefac59ba2"
+	sha256 hasValue "086720baa716bea58b7eb8cad5e754536d1b9a32d6d532732ae646e3d8d06efb"
+	descriptionMd5 hasValue "bf3a95406d293ece533a4095e9959445"
+	homepage hasValue "https://rubygems.org/gems/paranoia"
+	depends hasValue "ruby | ruby-interpreter, ruby-activerecord (>= 4.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "ruby"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ruby_paranoia,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "ruby-interpreter"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ruby_paranoia,0,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "ruby-activerecord"
+	comparison hasValue ">="
+	version hasValue "4.0"
+
+relationInstance depends(P0__ruby_paranoia,1,DepAtom__2)
+

@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python3_siphashc
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python3_siphashc memberOf Package
+	package hasValue "python3-siphashc"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "34"
+	maintainer hasValue "Original-Ana Rodríguez López <rodrilopez.ana@gmail.com>"
+	architecture hasValue "amd64"
+	version hasValue "1.2-1build2"
+	fileName hasValue "pool/universe/s/siphashc/python3-siphashc_1.2-1build2_amd64.deb"
+	size hasValue "5924"
+	md5sum hasValue "52c38fc941fda405546bf34419cfcf6f"
+	sha1 hasValue "b37384665f8f5090473d373cd0edf0c793a1f77e"
+	sha256 hasValue "a45e4ad7cf0b42a028bef5b07f827a7ef85b9da3fcaff367429f8ed3842908c1"
+	descriptionMd5 hasValue "8d40dda32f84308d5255bb29deaa1651"
+	homepage hasValue "https://github.com/WeblateOrg/siphashc/"
+	depends hasValue "python3 (<< 3.9), python3 (>= 3.8~), libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3"
+	comparison hasValue "<<"
+	version hasValue "3.9"
+
+relationInstance depends(P0__python3_siphashc,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3"
+	comparison hasValue ">="
+	version hasValue "3.8~"
+
+relationInstance depends(P0__python3_siphashc,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__python3_siphashc,2,DepAtom__2)
+

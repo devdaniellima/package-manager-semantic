@@ -1,0 +1,73 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python3_pacparser
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python3_pacparser memberOf Package
+	package hasValue "python3-pacparser"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/python"
+	installedSize hasValue "1335"
+	maintainer hasValue "Original-Manu Garg <manugarg@gmail.com>"
+	architecture hasValue "amd64"
+	version hasValue "1.3.6-1.2"
+	fileName hasValue "pool/universe/p/pacparser/python3-pacparser_1.3.6-1.2_amd64.deb"
+	size hasValue "327180"
+	md5sum hasValue "37683e3ae46e44dfa59e6ed36dd86218"
+	sha1 hasValue "c97f2ff085d6d44362bc309cfd35d7ee097e0575"
+	sha256 hasValue "4ddae6e5d5ecb0e6de48ddd064f278db17f9f4dd32afecdf652bee1cc72fb92e"
+	descriptionMd5 hasValue "520d0c667be868f4f30eb643bef97dd0"
+	depends hasValue "python3 (<< 3.9), python3 (>= 3.8~), python3:any, libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3"
+	comparison hasValue "<<"
+	version hasValue "3.9"
+
+relationInstance depends(P0__python3_pacparser,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3"
+	comparison hasValue ">="
+	version hasValue "3.8~"
+
+relationInstance depends(P0__python3_pacparser,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__python3_pacparser,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__python3_pacparser,3,DepAtom__3)
+

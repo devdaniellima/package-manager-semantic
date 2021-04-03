@@ -1,0 +1,81 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ruby_selinux
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ruby_selinux memberOf Package
+	package hasValue "ruby-selinux"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/ruby"
+	installedSize hasValue "225"
+	maintainer hasValue "Original-Debian SELinux maintainers <selinux-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.0-1build2"
+	fileName hasValue "pool/universe/libs/libselinux/ruby-selinux_3.0-1build2_amd64.deb"
+	size hasValue "40892"
+	md5sum hasValue "759b885f4ecc464cb8d54f40bf9ff4f7"
+	sha1 hasValue "d1e25efcdf4933311078f26418084aa7275f4f10"
+	sha256 hasValue "f5e6bb4c846cf8118bb6b0cfa490ae752d34cd72d772818a68ecc322f87e37ab"
+	descriptionMd5 hasValue "71f8f453f4c0fbe591180af8da96cd36"
+	homepage hasValue "http://userspace.selinuxproject.org/"
+	depends hasValue "ruby (>= 1:2.7~0), libc6 (>= 2.14), libselinux1 (>= 3.0), libruby2.7 (>= 2.7.0~preview2), ruby (<< 1:2.8~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "ruby"
+	comparison hasValue ">="
+	version hasValue "1:2.7~0"
+
+relationInstance depends(P0__ruby_selinux,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__ruby_selinux,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libselinux1"
+	comparison hasValue ">="
+	version hasValue "3.0"
+
+relationInstance depends(P0__ruby_selinux,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "libruby2.7"
+	comparison hasValue ">="
+	version hasValue "2.7.0~preview2"
+
+relationInstance depends(P0__ruby_selinux,3,DepAtom__3)
+
+instance DepAtom__4 memberOf DependencyAtom
+	package hasValue "ruby"
+	comparison hasValue "<<"
+	version hasValue "1:2.8~"
+
+relationInstance depends(P0__ruby_selinux,4,DepAtom__4)
+

@@ -1,0 +1,74 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libblas_test
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libblas_test memberOf Package
+	package hasValue "libblas-test"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "1983"
+	maintainer hasValue "Original-Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.9.0-1build1"
+	fileName hasValue "pool/universe/l/lapack/libblas-test_3.9.0-1build1_amd64.deb"
+	size hasValue "338288"
+	md5sum hasValue "d259c89d8feb92fb56f79340def12ad8"
+	sha1 hasValue "16099ef56cf78e9b80f83a8697bdfbfdcf2830f1"
+	sha256 hasValue "8c8fe6384e49abff42d0077f790bb88a09696ce1fdfd288c9218c804199f361b"
+	descriptionMd5 hasValue "7e697a3bd80892afd85df0f1b0596433"
+	homepage hasValue "http://www.netlib.org/lapack/"
+	depends hasValue "libblas3 | libblas.so.3, libc6 (>= 2.4), libgfortran5 (>= 8)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libblas3"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libblas_test,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libblas.so.3"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libblas_test,0,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libblas_test,1,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "libgfortran5"
+	comparison hasValue ">="
+	version hasValue "8"
+
+relationInstance depends(P0__libblas_test,2,DepAtom__3)
+

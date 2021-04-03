@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology etsf_io
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__etsf_io memberOf Package
+	package hasValue "etsf-io"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/science"
+	installedSize hasValue "802"
+	maintainer hasValue "Original-Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.4-4build2"
+	fileName hasValue "pool/universe/e/etsf-io/etsf-io_1.0.4-4build2_amd64.deb"
+	size hasValue "136616"
+	md5sum hasValue "a54b1c78ce4eb7acf9564abc9db62b9d"
+	sha1 hasValue "7fb668d147753cad53fdbb391ba3d1f04d4fb7c3"
+	sha256 hasValue "8453eb08b4cbbfac6d9274ca50a440f0ffe40dc4362b9976dea59d51875d0390"
+	descriptionMd5 hasValue "49e8901389cee7ed373476594e1c5869"
+	homepage hasValue "http://www.etsf.eu/resources/software/libraries_and_tools"
+	depends hasValue "libc6 (>= 2.14), libgfortran5 (>= 8), libnetcdff7 (>= 4.1.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__etsf_io,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgfortran5"
+	comparison hasValue ">="
+	version hasValue "8"
+
+relationInstance depends(P0__etsf_io,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libnetcdff7"
+	comparison hasValue ">="
+	version hasValue "4.1.1"
+
+relationInstance depends(P0__etsf_io,2,DepAtom__2)
+

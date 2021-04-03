@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libhtp2
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libhtp2 memberOf Package
+	package hasValue "libhtp2"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/libs"
+	installedSize hasValue "187"
+	maintainer hasValue "Original-Arturo Borrero Gonzalez <arturo@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:0.5.32-1"
+	fileName hasValue "pool/universe/libh/libhtp/libhtp2_0.5.32-1_amd64.deb"
+	size hasValue "63480"
+	md5sum hasValue "904f83de5586702b6e30bc7bd10f16ce"
+	sha1 hasValue "7dab7b25ddaee5f09a72510a18d0b4b2f3585c1c"
+	sha256 hasValue "7a96f3148de7a39a19393c3b1c31e825450385f4ab6a7fd8500c1e03892cb3cc"
+	descriptionMd5 hasValue "81e13c00da67ee5fd708fb19040a04d9"
+	homepage hasValue "http://openinfosecfoundation.org/"
+	depends hasValue "libc6 (>= 2.14), zlib1g (>= 1:1.1.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libhtp2,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "zlib1g"
+	comparison hasValue ">="
+	version hasValue "1:1.1.4"
+
+relationInstance depends(P0__libhtp2,1,DepAtom__1)
+

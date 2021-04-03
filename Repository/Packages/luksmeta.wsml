@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology luksmeta
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__luksmeta memberOf Package
+	package hasValue "luksmeta"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "39"
+	maintainer hasValue "Original-Christoph Biedl <debian.axhn@manchmal.in-ulm.de>"
+	architecture hasValue "amd64"
+	version hasValue "9-3"
+	fileName hasValue "pool/universe/l/luksmeta/luksmeta_9-3_amd64.deb"
+	size hasValue "11876"
+	md5sum hasValue "9c7ed3df80c26cd447d2491c6d433f15"
+	sha1 hasValue "56f4cfbb6893e4d24927c531a94873e9b30157f9"
+	sha256 hasValue "2e6d370bf5968e35bfa3bd0c4ebb9188a2311119e6e194b7e8d382d316a5bd8c"
+	descriptionMd5 hasValue "db8eaf3f8042f64f2c0f3b7a2d56d725"
+	homepage hasValue "https://github.com/latchset/luksmeta"
+	depends hasValue "libc6 (>= 2.7), libcryptsetup12 (>= 2:1.5.1), libluksmeta0 (>= 8)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__luksmeta,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libcryptsetup12"
+	comparison hasValue ">="
+	version hasValue "2:1.5.1"
+
+relationInstance depends(P0__luksmeta,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libluksmeta0"
+	comparison hasValue ">="
+	version hasValue "8"
+
+relationInstance depends(P0__luksmeta,2,DepAtom__2)
+

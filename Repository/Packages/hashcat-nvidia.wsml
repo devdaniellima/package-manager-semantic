@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology hashcat_nvidia
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__hashcat_nvidia memberOf Package
+	package hasValue "hashcat-nvidia"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "multiverse/metapackages"
+	installedSize hasValue "9"
+	maintainer hasValue "Original-Debian Security Tools <team+pkg-security@tracker.debian.org>"
+	architecture hasValue "all"
+	version hasValue "20180828+nmu1"
+	fileName hasValue "pool/multiverse/h/hashcat-meta/hashcat-nvidia_20180828+nmu1_all.deb"
+	size hasValue "2516"
+	md5sum hasValue "6a28c17f0c7e32ed44e814f01c2dc4f7"
+	sha1 hasValue "043e6c772ac9ae37c460dd4c38df9f813504d224"
+	sha256 hasValue "c9c252cdad69fe731c6d0318fddbf59cc92ea2fdb22716dc25a86ff866970896"
+	descriptionMd5 hasValue "730caa533877aab600d795aef8db42c8"
+	homepage hasValue "https://hashcat.net/hashcat/"
+	depends hasValue "hashcat, nvidia-opencl-icd | nvidia-legacy-390xx-opencl-icd"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "hashcat"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__hashcat_nvidia,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "nvidia-opencl-icd"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__hashcat_nvidia,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "nvidia-legacy-390xx-opencl-icd"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__hashcat_nvidia,1,DepAtom__2)
+

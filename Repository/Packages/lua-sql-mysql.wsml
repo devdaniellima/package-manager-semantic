@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology lua_sql_mysql
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__lua_sql_mysql memberOf Package
+	package hasValue "lua-sql-mysql"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/interpreters"
+	installedSize hasValue "96"
+	maintainer hasValue "Original-Enrico Tassi <gareuselesinge@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.3.4-1build2"
+	provides hasValue "lua5.1-sql-mysql, lua5.2-sql-mysql, lua5.3-sql-mysql"
+	fileName hasValue "pool/universe/l/lua-sql/lua-sql-mysql_2.3.4-1build2_amd64.deb"
+	size hasValue "11804"
+	md5sum hasValue "c5716f582e246b95a50acc18d7a6133e"
+	sha1 hasValue "42493b2cdb4aa0249d3df810b8924f811abdb0ee"
+	sha256 hasValue "8f53ab1decbce348b232074b696ffad08c147abcd904b0f5fc7c570e8a8512e8"
+	descriptionMd5 hasValue "fe012a44f9a6436b5745030508a70564"
+	homepage hasValue "https://github.com/keplerproject/luasql"
+	depends hasValue "libc6 (>= 2.4), libmysqlclient21 (>= 8.0.11)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__lua_sql_mysql,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libmysqlclient21"
+	comparison hasValue ">="
+	version hasValue "8.0.11"
+
+relationInstance depends(P0__lua_sql_mysql,1,DepAtom__1)
+

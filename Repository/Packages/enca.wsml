@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology enca
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__enca memberOf Package
+	package hasValue "enca"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/text"
+	installedSize hasValue "137"
+	maintainer hasValue "Original-Michal Čihař <nijel@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.19-1"
+	fileName hasValue "pool/universe/e/enca/enca_1.19-1_amd64.deb"
+	size hasValue "47568"
+	md5sum hasValue "ac8dfb8722d2cb00b8811dc268d34c7e"
+	sha1 hasValue "496d5bf460d2b1c50faa50721dbf7cddc60670d7"
+	sha256 hasValue "8d3695148e8f4cefba7d55c29a8e0dfd9d98cdbc0caabe9a94c7bd6d010022f6"
+	description hasValue "Extremely Naive Charset Analyser - binários"
+	descriptionMd5 hasValue "2f9c7fe9acb67b4a62500c271d337572"
+	homepage hasValue "http://cihar.com/software/enca/"
+	depends hasValue "libc6 (>= 2.4), libenca0 (>= 1.9), librecode0 (>= 3.6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__enca,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libenca0"
+	comparison hasValue ">="
+	version hasValue "1.9"
+
+relationInstance depends(P0__enca,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "librecode0"
+	comparison hasValue ">="
+	version hasValue "3.6"
+
+relationInstance depends(P0__enca,2,DepAtom__2)
+

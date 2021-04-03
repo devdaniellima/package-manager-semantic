@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology aspell_ku
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__aspell_ku memberOf Package
+	package hasValue "aspell-ku"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/text"
+	installedSize hasValue "42"
+	maintainer hasValue "Original-Lior Kaplan <kaplan@debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.20-0-8"
+	provides hasValue "aspell-dictionary"
+	fileName hasValue "pool/universe/a/aspell-ku/aspell-ku_0.20-0-8_all.deb"
+	size hasValue "18984"
+	md5sum hasValue "c92682ab1662ea570dc4d7d1ea0def42"
+	sha1 hasValue "03ed70ea7b1340e07119c295f074e573ffffc12f"
+	sha256 hasValue "5db8b44720b33e52c9a7388cd1fa655439f8a3a095123c8754ee64e098ba4424"
+	description hasValue "dicionário kurdish para o aspell"
+	descriptionMd5 hasValue "b364c258e68043ea5fe908e169f9c3e0"
+	homepage hasValue "https://sourceforge.net/projects/myspellkurdish/"
+	depends hasValue "aspell (>= 0.60.4), dictionaries-common (>= 0.70.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "aspell"
+	comparison hasValue ">="
+	version hasValue "0.60.4"
+
+relationInstance depends(P0__aspell_ku,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "dictionaries-common"
+	comparison hasValue ">="
+	version hasValue "0.70.2"
+
+relationInstance depends(P0__aspell_ku,1,DepAtom__1)
+

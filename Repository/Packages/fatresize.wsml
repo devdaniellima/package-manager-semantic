@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology fatresize
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__fatresize memberOf Package
+	package hasValue "fatresize"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/otherosfs"
+	installedSize hasValue "33"
+	maintainer hasValue "Original-Parted Maintainer Team <parted-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.2-11"
+	fileName hasValue "pool/universe/f/fatresize/fatresize_1.0.2-11_amd64.deb"
+	size hasValue "9848"
+	md5sum hasValue "c509d257ea8ab398e742294173e1fb50"
+	sha1 hasValue "9c470cf885e123dbacabaad68e6c839d3484e8d5"
+	sha256 hasValue "bba22137f98d87225f4029f45a29b5d11233afa1132e1011cc1fb265c83e9db3"
+	descriptionMd5 hasValue "a5f451bc76450c0ab935c4eeafe6f8a6"
+	homepage hasValue "http://sf.net/projects/fatresize"
+	depends hasValue "libc6 (>= 2.4), libparted-fs-resize0 (>= 3.1), libparted2 (>= 3.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__fatresize,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libparted-fs-resize0"
+	comparison hasValue ">="
+	version hasValue "3.1"
+
+relationInstance depends(P0__fatresize,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libparted2"
+	comparison hasValue ">="
+	version hasValue "3.1"
+
+relationInstance depends(P0__fatresize,2,DepAtom__2)
+

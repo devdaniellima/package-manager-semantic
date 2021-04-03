@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libmircore1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libmircore1 memberOf Package
+	package hasValue "libmircore1"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libs"
+	installedSize hasValue "155"
+	maintainer hasValue "Original-Thomas Voß <thomas.voss@canonical.com>"
+	architecture hasValue "amd64"
+	version hasValue "1.7.1-0ubuntu2"
+	fileName hasValue "pool/main/m/mir/libmircore1_1.7.1-0ubuntu2_amd64.deb"
+	size hasValue "24660"
+	md5sum hasValue "02a4fbed154c866b5ad2acdb17f710ec"
+	sha1 hasValue "0c4ad3a88129b8634df70a28f48b4bc1ccd7a1bf"
+	sha256 hasValue "d6b85538e842b53fb43806cad58f5c9a05193c6d33e0a3b109574e2a2dce7a9a"
+	descriptionMd5 hasValue "ba2be24a25184fe491678e4c1dc1740c"
+	homepage hasValue "https://mir-server.io/"
+	depends hasValue "libc6 (>= 2.14), libgcc-s1 (>= 3.3.1), libstdc++6 (>= 5.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libmircore1,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgcc-s1"
+	comparison hasValue ">="
+	version hasValue "3.3.1"
+
+relationInstance depends(P0__libmircore1,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "5.2"
+
+relationInstance depends(P0__libmircore1,2,DepAtom__2)
+

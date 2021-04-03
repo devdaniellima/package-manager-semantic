@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology mcollective
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__mcollective memberOf Package
+	package hasValue "mcollective"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/utils"
+	installedSize hasValue "60"
+	maintainer hasValue "Original-Puppet Package Maintainers <pkg-puppet-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.12.1+dfsg-1"
+	fileName hasValue "pool/universe/m/mcollective/mcollective_2.12.1+dfsg-1_all.deb"
+	size hasValue "6532"
+	md5sum hasValue "8bae7ef25ad7db874106566eda3637db"
+	sha1 hasValue "33490b91af4d8f7d4281d7bcff6b021dcbc32c40"
+	sha256 hasValue "73ea75eb62e1d848af3c4d80f6560e35901303d885afb1748ff1c4bff20a4b71"
+	descriptionMd5 hasValue "fb29a0a9811c66bf56fd9d31a4e30093"
+	homepage hasValue "http://projects.puppetlabs.com/projects/mcollective"
+	depends hasValue "mcollective-common (>= 2.12.1+dfsg-1), ruby | ruby-interpreter"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "mcollective-common"
+	comparison hasValue ">="
+	version hasValue "2.12.1+dfsg-1"
+
+relationInstance depends(P0__mcollective,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "ruby"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__mcollective,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "ruby-interpreter"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__mcollective,1,DepAtom__2)
+

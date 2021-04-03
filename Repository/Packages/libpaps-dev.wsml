@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libpaps_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libpaps_dev memberOf Package
+	package hasValue "libpaps-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "208"
+	maintainer hasValue "Original-Lior Kaplan <kaplan@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.6.8-7.1"
+	fileName hasValue "pool/universe/p/paps/libpaps-dev_0.6.8-7.1_amd64.deb"
+	size hasValue "86906"
+	md5sum hasValue "a3cc2307cf5df01bd93bf9d1544b8cd9"
+	sha1 hasValue "f1b85d5b69683c339df6d17ec6880cdaecb52e3b"
+	sha256 hasValue "848bd2b66cf96dcf03d54800e56b9681539287b6b78e64d11ac08f8065c0c433"
+	description hasValue "Development files for libpaps"
+	descriptionMd5 hasValue "7cdbcedfb93e1f1acb2a762b9401db07"
+	homepage hasValue "http://paps.sourceforge.net/"
+	depends hasValue "libpaps0 (= 0.6.8-7.1), libpango1.0-dev"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libpaps0"
+	comparison hasValue "="
+	version hasValue "0.6.8-7.1"
+
+relationInstance depends(P0__libpaps_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libpango1.0-dev"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libpaps_dev,1,DepAtom__1)
+

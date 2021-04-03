@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology cvs_buildpackage
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__cvs_buildpackage memberOf Package
+	package hasValue "cvs-buildpackage"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "124"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "all"
+	version hasValue "5.26"
+	fileName hasValue "pool/universe/c/cvs-buildpackage/cvs-buildpackage_5.26_all.deb"
+	size hasValue "49118"
+	md5sum hasValue "5604521b6fdb738f90383b1734139359"
+	sha1 hasValue "4e8990ef4519f3981056d46738071ee2e12542e5"
+	sha256 hasValue "96407ae40b3047692c712beeff69da85f399ca27d514e51d21f025b96939af75"
+	description hasValue "set of Debian package scripts for CVS source trees"
+	descriptionMd5 hasValue "91156391ecfea2ae1fa81271aac239e0"
+	depends hasValue "dpkg-dev, cvs"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "dpkg-dev"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__cvs_buildpackage,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "cvs"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__cvs_buildpackage,1,DepAtom__1)
+

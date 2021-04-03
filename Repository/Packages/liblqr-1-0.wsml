@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology liblqr_1_0
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__liblqr_1_0 memberOf Package
+	package hasValue "liblqr-1-0"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "74"
+	maintainer hasValue "Original-Bernd Zeimetz <bzed@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.4.2-2.1"
+	fileName hasValue "pool/universe/libl/liblqr/liblqr-1-0_0.4.2-2.1_amd64.deb"
+	size hasValue "27744"
+	md5sum hasValue "a0595f11490e916ca6175496961356fd"
+	sha1 hasValue "fabd7305ba2414b6785b5b11233d3872f543fc53"
+	sha256 hasValue "500d005dc62e200f09b3ea860aa1175bd0844222ac686e57c9b2d7f9b19f0030"
+	description hasValue "converts plain array images into multi-size representation"
+	descriptionMd5 hasValue "caca505b25486b882b6fcc545521f19e"
+	homepage hasValue "http://liblqr.wikidot.com/"
+	depends hasValue "libc6 (>= 2.2.5), libglib2.0-0 (>= 2.24.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.2.5"
+
+relationInstance depends(P0__liblqr_1_0,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libglib2.0-0"
+	comparison hasValue ">="
+	version hasValue "2.24.0"
+
+relationInstance depends(P0__liblqr_1_0,1,DepAtom__1)
+

@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology am_utils_doc
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__am_utils_doc memberOf Package
+	package hasValue "am-utils-doc"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/doc"
+	installedSize hasValue "1270"
+	maintainer hasValue "Original-Tim Cutts <timc@chiark.greenend.org.uk>"
+	architecture hasValue "all"
+	version hasValue "6.2+rc20110530-3.2ubuntu2"
+	fileName hasValue "pool/universe/a/am-utils/am-utils-doc_6.2+rc20110530-3.2ubuntu2_all.deb"
+	size hasValue "210924"
+	md5sum hasValue "4e0ecc78eecfd72c1db1f616d405ca95"
+	sha1 hasValue "db76a5168af67bb7f5ac255fa4a032475f7eb7ef"
+	sha256 hasValue "0ce3480a0cd2f1f27b7350168fc37a5894ef8f463f7e53f5ed91a55f5f848663"
+	description hasValue "automounter utilities documentation"
+	descriptionMd5 hasValue "00dcda2a707a353d83a758a9f02f55ba"
+	homepage hasValue "http://www.am-utils.org/"
+	depends hasValue "dpkg (>= 1.15.4) | install-info"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "dpkg"
+	comparison hasValue ">="
+	version hasValue "1.15.4"
+
+relationInstance depends(P0__am_utils_doc,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "install-info"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__am_utils_doc,0,DepAtom__1)
+

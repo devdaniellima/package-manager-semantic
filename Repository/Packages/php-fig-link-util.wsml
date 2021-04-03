@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology php_fig_link_util
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__php_fig_link_util memberOf Package
+	package hasValue "php-fig-link-util"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/php"
+	installedSize hasValue "56"
+	maintainer hasValue "Original-Debian PHP PEAR Maintainers <pkg-php-pear@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.1.0-1"
+	provides hasValue "php-psr-link-implementation (= 1.0)"
+	fileName hasValue "pool/universe/p/php-fig-link-util/php-fig-link-util_1.1.0-1_all.deb"
+	size hasValue "11092"
+	md5sum hasValue "4dbda476382092aa7d318dc818efd350"
+	sha1 hasValue "47f5e9eceeda3bc804ef283a4e41d4732b5d9f09"
+	sha256 hasValue "cc997082a061ee9b5800c58e770b9d60efc82abe9d73cddfaac68575193dd2a3"
+	descriptionMd5 hasValue "1fce911e698128e008528ea9400cd745"
+	homepage hasValue "https://www.php-fig.org/psr/psr-13"
+	depends hasValue "php-common, php-psr-link (>= 1.0), php-psr-link (<< 2~~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "php-common"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__php_fig_link_util,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "php-psr-link"
+	comparison hasValue ">="
+	version hasValue "1.0"
+
+relationInstance depends(P0__php_fig_link_util,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "php-psr-link"
+	comparison hasValue "<<"
+	version hasValue "2~~"
+
+relationInstance depends(P0__php_fig_link_util,2,DepAtom__2)
+

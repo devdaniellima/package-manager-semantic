@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology xcape
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__xcape memberOf Package
+	package hasValue "xcape"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/x11"
+	installedSize hasValue "41"
+	maintainer hasValue "Original-Jon Bernard <jbernard@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.2-3"
+	fileName hasValue "pool/universe/x/xcape/xcape_1.2-3_amd64.deb"
+	size hasValue "11288"
+	md5sum hasValue "a63cafe24ead2a1dd210f316c30050c2"
+	sha1 hasValue "fa2b984428f9ea7769ad07876314f1e5e6058efe"
+	sha256 hasValue "5e232c7867276e6f473631a983f8dbf64c2f9f1aeee24eb1e19fb9c7f414fc3f"
+	descriptionMd5 hasValue "bef33c4c8c7ffd6f5edbd32d5f56a3fd"
+	homepage hasValue "https://github.com/alols/xcape"
+	depends hasValue "libc6 (>= 2.4), libx11-6, libxtst6"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__xcape,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libx11-6"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__xcape,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libxtst6"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__xcape,2,DepAtom__2)
+

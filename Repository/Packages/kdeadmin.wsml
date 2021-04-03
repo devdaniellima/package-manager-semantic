@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology kdeadmin
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__kdeadmin memberOf Package
+	package hasValue "kdeadmin"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/metapackages"
+	installedSize hasValue "22"
+	maintainer hasValue "Original-Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "4:17.08.3+5.104ubuntu4"
+	fileName hasValue "pool/universe/m/meta-kde/kdeadmin_17.08.3+5.104ubuntu4_amd64.deb"
+	size hasValue "3540"
+	md5sum hasValue "9c3447a49b02d06ffd3bf79f6e4cdf46"
+	sha1 hasValue "157ce7b5bb358a3f091d30542526dedc19b5d550"
+	sha256 hasValue "fcee61e30ff6e826f49267a8edf17d3caed5bd874348cf913a89b20558e156eb"
+	description hasValue "ferramentas de administração de sistemas do lançamento oficial do KDE"
+	descriptionMd5 hasValue "bdaa2e3ac823ec2a9fdd8f424e8bdc4a"
+	homepage hasValue "http://www.kde.org"
+	depends hasValue "kde-config-cron (>= 4:17.08.3), ksystemlog (>= 4:17.08.3)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "kde-config-cron"
+	comparison hasValue ">="
+	version hasValue "4:17.08.3"
+
+relationInstance depends(P0__kdeadmin,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "ksystemlog"
+	comparison hasValue ">="
+	version hasValue "4:17.08.3"
+
+relationInstance depends(P0__kdeadmin,1,DepAtom__1)
+

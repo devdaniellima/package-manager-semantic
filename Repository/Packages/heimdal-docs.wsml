@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology heimdal_docs
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__heimdal_docs memberOf Package
+	package hasValue "heimdal-docs"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "net"
+	installedSize hasValue "125"
+	maintainer hasValue "Original-Brian May <bam@debian.org>"
+	architecture hasValue "all"
+	version hasValue "7.7.0+dfsg-1ubuntu1"
+	fileName hasValue "pool/main/h/heimdal/heimdal-docs_7.7.0+dfsg-1ubuntu1_all.deb"
+	size hasValue "84704"
+	md5sum hasValue "c155549c756d7f69936bbb3d11ce79f2"
+	sha1 hasValue "1d3fd1bb4e884dd7bf6bbf48d6ee455ac0facb86"
+	sha256 hasValue "eccfc64851b57a4a1e0d716217a09701d875e109521a7fb11ad021ffc86b412e"
+	description hasValue "Heimdal Kerberos - documentation"
+	descriptionMd5 hasValue "8c3b64daa0902eebf8cd924e71d8e102"
+	homepage hasValue "http://www.h5l.org/"
+	depends hasValue "dpkg (>= 1.15.4) | install-info"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "dpkg"
+	comparison hasValue ">="
+	version hasValue "1.15.4"
+
+relationInstance depends(P0__heimdal_docs,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "install-info"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__heimdal_docs,0,DepAtom__1)
+

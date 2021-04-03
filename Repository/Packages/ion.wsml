@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ion
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ion memberOf Package
+	package hasValue "ion"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/net"
+	installedSize hasValue "3481"
+	maintainer hasValue "Leo Iannacone <l3on@ubuntu.com>"
+	architecture hasValue "amd64"
+	version hasValue "3.2.1+dfsg-1.1"
+	fileName hasValue "pool/universe/i/ion/ion_3.2.1+dfsg-1.1_amd64.deb"
+	size hasValue "817066"
+	md5sum hasValue "2f43d0ebdd236fce7011b3547bca8d0d"
+	sha1 hasValue "18ef524c9df88b41ea7b8c074f7778c608b31e6a"
+	sha256 hasValue "fbe38343e2fa72826610962503b8cd02062f5bf3a15ac0443f0ff35a89eb1561"
+	descriptionMd5 hasValue "0e528727e446e9f573264641020d9516"
+	homepage hasValue "https://ion.ocp.ohiou.edu/"
+	depends hasValue "libion0 (= 3.2.1+dfsg-1.1), libc6 (>= 2.22)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libion0"
+	comparison hasValue "="
+	version hasValue "3.2.1+dfsg-1.1"
+
+relationInstance depends(P0__ion,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.22"
+
+relationInstance depends(P0__ion,1,DepAtom__1)
+

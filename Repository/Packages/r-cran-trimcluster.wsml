@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology r_cran_trimcluster
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__r_cran_trimcluster memberOf Package
+	package hasValue "r-cran-trimcluster"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/gnu-r"
+	installedSize hasValue "56"
+	maintainer hasValue "Original-Debian R Packages Maintainers <r-pkg-team@alioth-lists.debian.net>"
+	architecture hasValue "all"
+	version hasValue "0.1-5-1"
+	fileName hasValue "pool/universe/r/r-cran-trimcluster/r-cran-trimcluster_0.1-5-1_all.deb"
+	size hasValue "21856"
+	md5sum hasValue "cb9654216f57c1dd04355d6c139cf3a7"
+	sha1 hasValue "52bf2f4ef234012e3aa389c96a199cfdc2687fc4"
+	sha256 hasValue "b6bf4fcdc31bfe3727e178d5d39736031e4aecca836fe65d75963fcbbba680db"
+	descriptionMd5 hasValue "07d04fa0dcefbfc90fe40c6cf1620a09"
+	homepage hasValue "https://cran.r-project.org/package=trimcluster"
+	depends hasValue "r-base-core (>= 3.6.2-2build1), r-api-3.5"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "r-base-core"
+	comparison hasValue ">="
+	version hasValue "3.6.2-2build1"
+
+relationInstance depends(P0__r_cran_trimcluster,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "r-api-3.5"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__r_cran_trimcluster,1,DepAtom__1)
+

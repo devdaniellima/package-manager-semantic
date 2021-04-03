@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology sg3_utils_udev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__sg3_utils_udev memberOf Package
+	package hasValue "sg3-utils-udev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "admin"
+	installedSize hasValue "31"
+	maintainer hasValue "Original-Ritesh Raj Sarraf <rrs@debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.44-1ubuntu2"
+	fileName hasValue "pool/main/s/sg3-utils/sg3-utils-udev_1.44-1ubuntu2_all.deb"
+	size hasValue "5180"
+	md5sum hasValue "5362790accfb41dc9d1a01193de5bb40"
+	sha1 hasValue "977de5e68a4b27a561716547b3994183649782cd"
+	sha256 hasValue "047745ebdc438341f43cef9b4a3de25dd9a498e8e436a7deab2e1ad3e9aa370f"
+	description hasValue "utilities for devices using the SCSI command set (udev rules)"
+	descriptionMd5 hasValue "87416537455a5a02df1c54118389c5ae"
+	homepage hasValue "http://sg.danny.cz/sg/"
+	depends hasValue "sg3-utils, initramfs-tools"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "sg3-utils"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__sg3_utils_udev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "initramfs-tools"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__sg3_utils_udev,1,DepAtom__1)
+

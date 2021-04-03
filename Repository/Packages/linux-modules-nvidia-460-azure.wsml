@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology linux_modules_nvidia_460_azure
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__linux_modules_nvidia_460_azure memberOf Package
+	package hasValue "linux-modules-nvidia-460-azure"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "restricted/kernel"
+	installedSize hasValue "20"
+	maintainer hasValue "Canonical Kernel Team <kernel-team@lists.ubuntu.com>"
+	architecture hasValue "amd64"
+	version hasValue "5.4.0-1041.43+1"
+	provides hasValue "nvidia-dkms-460 (= 460.39-0ubuntu0.20.04.1), nvidia-prebuilt-kernel"
+	fileName hasValue "pool/restricted/l/linux-restricted-modules-azure/linux-modules-nvidia-460-azure_5.4.0-1041.43+1_amd64.deb"
+	size hasValue "5476"
+	md5sum hasValue "c4c3d753d4be9b468dbbea665497de47"
+	sha1 hasValue "76333bfe4735ab1e6821f7c3da0e339f9c6926dc"
+	sha256 hasValue "6c2121dedea573e8e7eac41ea7ca09684eafcd6c829d37af1e6e0b9d68998a7b"
+	sha512 hasValue "56840f20ae2a6f9a093ecc8049336d9cb19d4677bf4bfc1b726fabdd45defd64928ad79bb80660a7719ab1678cb0c5887706651140bb5725ec450a88509b48a9"
+	descriptionMd5 hasValue "cbe32827a281497198afbac70cb047df"
+	depends hasValue "linux-modules-nvidia-460-5.4.0-1041-azure (= 5.4.0-1041.43+1), nvidia-kernel-common-460 (<= 460.39-1), nvidia-kernel-common-460 (>= 460.39)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "linux-modules-nvidia-460-5.4.0-1041-azure"
+	comparison hasValue "="
+	version hasValue "5.4.0-1041.43+1"
+
+relationInstance depends(P0__linux_modules_nvidia_460_azure,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "nvidia-kernel-common-460"
+	comparison hasValue "<="
+	version hasValue "460.39-1"
+
+relationInstance depends(P0__linux_modules_nvidia_460_azure,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "nvidia-kernel-common-460"
+	comparison hasValue ">="
+	version hasValue "460.39"
+
+relationInstance depends(P0__linux_modules_nvidia_460_azure,2,DepAtom__2)
+

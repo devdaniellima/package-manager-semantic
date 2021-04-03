@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libssm_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libssm_dev memberOf Package
+	package hasValue "libssm-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "78"
+	maintainer hasValue "Original-Debian Science Maintainers <debian-science-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.4.0-1build1"
+	fileName hasValue "pool/universe/s/ssm/libssm-dev_1.4.0-1build1_amd64.deb"
+	size hasValue "13976"
+	md5sum hasValue "b61572dd197a0c36c47077ce73907f15"
+	sha1 hasValue "31337878a2c621e1acf370f30f71a96423ddfe03"
+	sha256 hasValue "cd91ee851125a685bb305a2be45488fa8d10874c3d4661d0fef24fd789e49046"
+	descriptionMd5 hasValue "cbb9b3d1969d4fb8079c03b649cda5ee"
+	homepage hasValue "http://www.ccp4.ac.uk/"
+	depends hasValue "libmmdb2-dev, libssm2 (= 1.4.0-1build1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libmmdb2-dev"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libssm_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libssm2"
+	comparison hasValue "="
+	version hasValue "1.4.0-1build1"
+
+relationInstance depends(P0__libssm_dev,1,DepAtom__1)
+

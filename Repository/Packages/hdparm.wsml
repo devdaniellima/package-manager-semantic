@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology hdparm
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__hdparm memberOf Package
+	package hasValue "hdparm"
+	packageSource hasValue Source__S1
+	priority hasValue "standard"
+	section hasValue "admin"
+	installedSize hasValue "245"
+	maintainer hasValue "Original-Alexandre Mestiashvili <mestia@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "9.58+ds-4"
+	fileName hasValue "pool/main/h/hdparm/hdparm_9.58+ds-4_amd64.deb"
+	size hasValue "94804"
+	md5sum hasValue "d33fde2958494f42d4e919ef1a33d35b"
+	sha1 hasValue "eae24b99c90903bac62a2a145bd9d39b46417338"
+	sha256 hasValue "4cab6d6498368f2447290fab792db29285a1b52a230ecf02e5a1d36911405db1"
+	description hasValue "ajusta parâmetros do disco rígido para alto desempenho"
+	descriptionMd5 hasValue "10cd5d89570f5496e89b163ae03a66e5"
+	homepage hasValue "http://sourceforge.net/projects/hdparm/"
+	depends hasValue "libc6 (>= 2.14), lsb-base"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__hdparm,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "lsb-base"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__hdparm,1,DepAtom__1)
+

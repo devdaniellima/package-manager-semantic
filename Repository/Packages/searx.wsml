@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology searx
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__searx memberOf Package
+	package hasValue "searx"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/web"
+	installedSize hasValue "102"
+	maintainer hasValue "Original-Johannes 'josch' Schauer <josch@debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.16.0+dfsg1-2"
+	fileName hasValue "pool/universe/s/searx/searx_0.16.0+dfsg1-2_all.deb"
+	size hasValue "26476"
+	md5sum hasValue "5b5b70f4e1841000fd66d8d4d275a864"
+	sha1 hasValue "928f490b01184ce63c253cd37d2ed7f9147b380e"
+	sha256 hasValue "42409e9c7e4d8685ef2e02fffbeb312c63679fcb251834a58e1b15773a72b103"
+	descriptionMd5 hasValue "5a8e91a0cd31559271fa7a6166df67ca"
+	homepage hasValue "https://asciimoo.github.io/searx/"
+	depends hasValue "python3-searx (= 0.16.0+dfsg1-2), python3:any"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3-searx"
+	comparison hasValue "="
+	version hasValue "0.16.0+dfsg1-2"
+
+relationInstance depends(P0__searx,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__searx,1,DepAtom__1)
+

@@ -1,0 +1,63 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libgsl_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libgsl_dev memberOf Package
+	package hasValue "libgsl-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "6787"
+	maintainer hasValue "Original-Dirk Eddelbuettel <edd@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.5+dfsg-6build1"
+	replaces hasValue "gsl-dev, libgsl0 (<= 1.9-4), libgsl0-dev (<= 1.16+dfsg-4)"
+	provides hasValue "libgsl0-dev"
+	conflicts hasValue "gsl-dev, libgsl0-dev"
+	fileName hasValue "pool/universe/g/gsl/libgsl-dev_2.5+dfsg-6build1_amd64.deb"
+	size hasValue "1063696"
+	md5sum hasValue "dab4d61579228ab0da343e1ddc562113"
+	sha1 hasValue "6f1554ee21ca01b0531ea5a3d650ccfdb59e4c71"
+	sha256 hasValue "4b85f33a35130ea515947e2931b352aa49157849307e2574b7d39a3ddd0aae18"
+	descriptionMd5 hasValue "9984710152cbbca3caf2c1e4e16ef6db"
+	homepage hasValue "https://www.gnu.org/software/gsl"
+	depends hasValue "libgsl23 (= 2.5+dfsg-6build1), libgslcblas0 (= 2.5+dfsg-6build1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libgsl23"
+	comparison hasValue "="
+	version hasValue "2.5+dfsg-6build1"
+
+relationInstance depends(P0__libgsl_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgslcblas0"
+	comparison hasValue "="
+	version hasValue "2.5+dfsg-6build1"
+
+relationInstance depends(P0__libgsl_dev,1,DepAtom__1)
+

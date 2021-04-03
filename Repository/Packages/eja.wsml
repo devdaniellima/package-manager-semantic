@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology eja
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__eja memberOf Package
+	package hasValue "eja"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/web"
+	installedSize hasValue "125"
+	maintainer hasValue "Original-Ubaldo Porcheddu <ubaldo@eja.it>"
+	architecture hasValue "amd64"
+	version hasValue "9.5.20-1"
+	fileName hasValue "pool/universe/e/eja/eja_9.5.20-1_amd64.deb"
+	size hasValue "30110"
+	md5sum hasValue "3e240407c0a9298dc77898fe8527d9ed"
+	sha1 hasValue "8e8db4561ea6efa46ee561bbaaf60d981fbd50b2"
+	sha256 hasValue "02efb4ea81f910a469007683a173044f888cd463f96d1c8ce2d08e4c5faa1ff5"
+	descriptionMd5 hasValue "e328f0fc24bae17e851566be7ba0613a"
+	homepage hasValue "http://eja.it"
+	depends hasValue "libc6 (>= 2.4), liblua5.2-0"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__eja,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "liblua5.2-0"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__eja,1,DepAtom__1)
+

@@ -1,0 +1,70 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology rdiff_backup_fs
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__rdiff_backup_fs memberOf Package
+	package hasValue "rdiff-backup-fs"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/utils"
+	installedSize hasValue "94"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.0-5"
+	replaces hasValue "archfs"
+	provides hasValue "archfs"
+	conflicts hasValue "archfs"
+	fileName hasValue "pool/universe/r/rdiff-backup-fs/rdiff-backup-fs_1.0.0-5_amd64.deb"
+	size hasValue "33978"
+	md5sum hasValue "f9bb70fc7de94eacd6d699381fed3007"
+	sha1 hasValue "8123b75f41f65ce316e80b6d4c4d5282e24f03f2"
+	sha256 hasValue "3f500e8099469b1eed7921cecba92735989382f94b32462d040a617f28213c94"
+	descriptionMd5 hasValue "e2639206f9baf69d9569e015bdde4b08"
+	homepage hasValue "http://code.google.com/p/rdiff-backup-fs/"
+	depends hasValue "libc6 (>= 2.14), libfuse2 (>= 2.6), zlib1g (>= 1:1.2.3.3)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__rdiff_backup_fs,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libfuse2"
+	comparison hasValue ">="
+	version hasValue "2.6"
+
+relationInstance depends(P0__rdiff_backup_fs,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "zlib1g"
+	comparison hasValue ">="
+	version hasValue "1:1.2.3.3"
+
+relationInstance depends(P0__rdiff_backup_fs,2,DepAtom__2)
+

@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology wham_align
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__wham_align memberOf Package
+	package hasValue "wham-align"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/science"
+	installedSize hasValue "440"
+	maintainer hasValue "Original-Steffen Moeller <moeller@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.1.5-2build1"
+	fileName hasValue "pool/universe/w/wham-align/wham-align_0.1.5-2build1_amd64.deb"
+	size hasValue "125604"
+	md5sum hasValue "0d7ec34e2bb9c03c20f4375f1b6d359d"
+	sha1 hasValue "481befc1d81b9ccfc3371220f0a4ae2555e3ecb7"
+	sha256 hasValue "18364e59167e81172c6388475f44853bf9606afbf7beb0d14468a0e8e71b66af"
+	descriptionMd5 hasValue "a0d56a1c39b574e36bc50ae90974b9a6"
+	homepage hasValue "http://research.cs.wisc.edu/wham"
+	depends hasValue "libc6 (>= 2.29), libgcc-s1 (>= 3.0), libstdc++6 (>= 5.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__wham_align,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgcc-s1"
+	comparison hasValue ">="
+	version hasValue "3.0"
+
+relationInstance depends(P0__wham_align,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "5.2"
+
+relationInstance depends(P0__wham_align,2,DepAtom__2)
+

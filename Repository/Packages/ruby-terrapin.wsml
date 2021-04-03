@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ruby_terrapin
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ruby_terrapin memberOf Package
+	package hasValue "ruby-terrapin"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/ruby"
+	installedSize hasValue "41"
+	maintainer hasValue "Original-Debian Ruby Extras Maintainers <pkg-ruby-extras-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.6.0-2"
+	fileName hasValue "pool/universe/r/ruby-terrapin/ruby-terrapin_0.6.0-2_all.deb"
+	size hasValue "9200"
+	md5sum hasValue "30277a41f52cb024036985cbee2d4d2e"
+	sha1 hasValue "32567795365817fcc3119cf4063d4908bb6926d5"
+	sha256 hasValue "eb560c2197954834375bdd09a05dc8744aec7104aa19e001693aa864b5a796d7"
+	descriptionMd5 hasValue "a0a92d6a47199c9c839dc33011473315"
+	homepage hasValue "https://github.com/thoughtbot/terrapin"
+	depends hasValue "ruby-climate-control (<< 1.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "ruby-climate-control"
+	comparison hasValue "<<"
+	version hasValue "1.0"
+
+relationInstance depends(P0__ruby_terrapin,0,DepAtom__0)
+

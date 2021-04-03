@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology verdigris
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__verdigris memberOf Package
+	package hasValue "verdigris"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "95"
+	maintainer hasValue "Original-Debian Qt extras Maintainers <debian-qt-kde@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0-1"
+	fileName hasValue "pool/universe/v/verdigris/verdigris_1.0-1_amd64.deb"
+	size hasValue "18604"
+	md5sum hasValue "0b07701c1dd421af982af48f6c7ed894"
+	sha1 hasValue "0acf1b823ef303ca202b48c395a45b61030c020c"
+	sha256 hasValue "312ec24be56ca4e8aab7eb6a84f984225a19ca7d546f1dde9101ad2b7892d59d"
+	descriptionMd5 hasValue "3da361f68b620365ac52ce6535a9ca32"
+	homepage hasValue "https://github.com/woboq/verdigris"
+	depends hasValue "qtbase5-dev (>= 5.5)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "qtbase5-dev"
+	comparison hasValue ">="
+	version hasValue "5.5"
+
+relationInstance depends(P0__verdigris,0,DepAtom__0)
+

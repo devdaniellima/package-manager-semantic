@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python3_aiodns
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python3_aiodns memberOf Package
+	package hasValue "python3-aiodns"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "32"
+	maintainer hasValue "Original-Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.0.0-1"
+	fileName hasValue "pool/universe/a/aiodns/python3-aiodns_2.0.0-1_all.deb"
+	size hasValue "6176"
+	md5sum hasValue "49c3f7c7e0ce19001fe9857506856ef1"
+	sha1 hasValue "96511f357e2c43f2a03579cc0202bf5cc65b740a"
+	sha256 hasValue "8504a7d22cefad958e3d31f0e11b7191cc10c510a6f829ceda7a21be7d437d0b"
+	descriptionMd5 hasValue "106dfd7473f99ccc06fc0be369bb3229"
+	homepage hasValue "https://github.com/saghul/aiodns"
+	depends hasValue "python3-pycares (>= 3.0), python3:any"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3-pycares"
+	comparison hasValue ">="
+	version hasValue "3.0"
+
+relationInstance depends(P0__python3_aiodns,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__python3_aiodns,1,DepAtom__1)
+

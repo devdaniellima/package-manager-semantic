@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology pycsw
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__pycsw memberOf Package
+	package hasValue "pycsw"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "multiverse/web"
+	installedSize hasValue "66"
+	maintainer hasValue "Original-Debian GIS Project <pkg-grass-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.4.2+dfsg-1"
+	fileName hasValue "pool/multiverse/p/pycsw/pycsw_2.4.2+dfsg-1_all.deb"
+	size hasValue "18236"
+	md5sum hasValue "e05e50e77e80992d21efd9a7fe893487"
+	sha1 hasValue "6d76cf68b13076a847014bb10726cd4cc12c23d7"
+	sha256 hasValue "d92db1a6bf4b97b34281039ada2a0fc27868f3f74e5f850297d21184a38eab56"
+	descriptionMd5 hasValue "55ccf24415af0cf899eb3bf7b215057d"
+	homepage hasValue "http://pycsw.org"
+	depends hasValue "pycsw-wsgi (= 2.4.2+dfsg-1), python3-pycsw (= 2.4.2+dfsg-1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "pycsw-wsgi"
+	comparison hasValue "="
+	version hasValue "2.4.2+dfsg-1"
+
+relationInstance depends(P0__pycsw,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3-pycsw"
+	comparison hasValue "="
+	version hasValue "2.4.2+dfsg-1"
+
+relationInstance depends(P0__pycsw,1,DepAtom__1)
+

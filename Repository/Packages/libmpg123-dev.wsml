@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libmpg123_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libmpg123_dev memberOf Package
+	package hasValue "libmpg123-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libdevel"
+	installedSize hasValue "161"
+	maintainer hasValue "Original-Debian Multimedia Maintainers <debian-multimedia@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.25.13-1"
+	fileName hasValue "pool/main/m/mpg123/libmpg123-dev_1.25.13-1_amd64.deb"
+	size hasValue "34516"
+	md5sum hasValue "2e5df4604c7869d95b130adf4dd37008"
+	sha1 hasValue "8feb6e4e056ad6f525804f64164cf45806d22fd5"
+	sha256 hasValue "21d0bb6db9b6b5a15fdca83f30febd1d184b62a08789093781dec8ce3afce0ea"
+	descriptionMd5 hasValue "383d3d1a743e161f43281a9f1daec7f7"
+	homepage hasValue "http://mpg123.org/"
+	depends hasValue "libmpg123-0 (= 1.25.13-1), libout123-0 (= 1.25.13-1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libmpg123-0"
+	comparison hasValue "="
+	version hasValue "1.25.13-1"
+
+relationInstance depends(P0__libmpg123_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libout123-0"
+	comparison hasValue "="
+	version hasValue "1.25.13-1"
+
+relationInstance depends(P0__libmpg123_dev,1,DepAtom__1)
+

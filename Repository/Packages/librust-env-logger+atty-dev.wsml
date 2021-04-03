@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology librust_env_loggerPlusatty_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__librust_env_loggerPlusatty_dev memberOf Package
+	package hasValue "librust-env-logger+atty-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/rust"
+	installedSize hasValue "6"
+	maintainer hasValue "Original-Debian Rust Maintainers <pkg-rust-maintainers@alioth-lists.debian.net>"
+	architecture hasValue "amd64"
+	version hasValue "0.6.2-1"
+	provides hasValue "librust-env-logger-0+atty-dev (= 0.6.2-1), librust-env-logger-0.6+atty-dev (= 0.6.2-1), librust-env-logger-0.6.2+atty-dev (= 0.6.2-1)"
+	fileName hasValue "pool/universe/r/rust-env-logger/librust-env-logger+atty-dev_0.6.2-1_amd64.deb"
+	size hasValue "1096"
+	md5sum hasValue "86c97d90c7301431db0570ab93722234"
+	sha1 hasValue "8fcbaf13e4a95feebc64eab7d7c0f449ed7bc745"
+	sha256 hasValue "fa3f12ba798cf9a779a9637c60aa899fb248219a510ca81d17f5e700e39653a8"
+	descriptionMd5 hasValue "fd0039c42aa257a09b9931ed4e8cd97e"
+	depends hasValue "librust-env-logger-dev (= 0.6.2-1), librust-atty-0.2+default-dev (>= 0.2.5-~~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "librust-env-logger-dev"
+	comparison hasValue "="
+	version hasValue "0.6.2-1"
+
+relationInstance depends(P0__librust_env_loggerPlusatty_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "librust-atty-0.2+default-dev"
+	comparison hasValue ">="
+	version hasValue "0.2.5-~~"
+
+relationInstance depends(P0__librust_env_loggerPlusatty_dev,1,DepAtom__1)
+

@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology dmtx_utils
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__dmtx_utils memberOf Package
+	package hasValue "dmtx-utils"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "93"
+	maintainer hasValue "Original-Roberto Lumbreras <rover@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.7.6-1.1build1"
+	fileName hasValue "pool/universe/d/dmtx-utils/dmtx-utils_0.7.6-1.1build1_amd64.deb"
+	size hasValue "26908"
+	md5sum hasValue "74a46d4ea67677ed3f4ae97236812318"
+	sha1 hasValue "9b9555749ff90f2c84c7ae5bc4966cfefda75549"
+	sha256 hasValue "36be52839e1b20797878d956f447f22519e9d18a3d8f2f193847e9bb835e62d2"
+	descriptionMd5 hasValue "b76d6312785a58a476a5eb7b6624d98b"
+	homepage hasValue "http://libdmtx.sourceforge.net"
+	depends hasValue "libc6 (>= 2.4), libdmtx0b (>= 0.7.5), libmagickwand-6.q16-6 (>= 8:6.9.10.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__dmtx_utils,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libdmtx0b"
+	comparison hasValue ">="
+	version hasValue "0.7.5"
+
+relationInstance depends(P0__dmtx_utils,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libmagickwand-6.q16-6"
+	comparison hasValue ">="
+	version hasValue "8:6.9.10.2"
+
+relationInstance depends(P0__dmtx_utils,2,DepAtom__2)
+

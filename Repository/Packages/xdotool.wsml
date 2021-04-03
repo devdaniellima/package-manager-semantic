@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology xdotool
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__xdotool memberOf Package
+	package hasValue "xdotool"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/x11"
+	installedSize hasValue "122"
+	maintainer hasValue "Original-Daniel Kahn Gillmor <dkg@fifthhorseman.net>"
+	architecture hasValue "amd64"
+	version hasValue "1:3.20160805.1-4"
+	fileName hasValue "pool/universe/x/xdotool/xdotool_3.20160805.1-4_amd64.deb"
+	size hasValue "41452"
+	md5sum hasValue "187a87b3ee6de0dd794b408fee0df35f"
+	sha1 hasValue "d8b6f7047a7967cf2cc80ae7d6cbe15d49548480"
+	sha256 hasValue "93198ce669e04f9b9d79f5e5e2d0fcd89fe411e7a7ebc948e9f4cbb563f62967"
+	description hasValue "simula (gera) eventos de entrada de teclado e mouse no X11"
+	descriptionMd5 hasValue "e598dcea54625951b2e5858c18b33f2f"
+	homepage hasValue "https://github.com/jordansissel/xdotool/"
+	depends hasValue "libc6 (>= 2.15), libx11-6, libxdo3 (>= 1:3.20150503.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__xdotool,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libx11-6"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__xdotool,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libxdo3"
+	comparison hasValue ">="
+	version hasValue "1:3.20150503.1"
+
+relationInstance depends(P0__xdotool,2,DepAtom__2)
+

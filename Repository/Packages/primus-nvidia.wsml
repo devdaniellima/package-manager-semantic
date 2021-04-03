@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology primus_nvidia
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__primus_nvidia memberOf Package
+	package hasValue "primus-nvidia"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "11"
+	maintainer hasValue "Original-Debian NVIDIA Maintainers <pkg-nvidia-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0~20150328-10"
+	fileName hasValue "pool/universe/p/primus/primus-nvidia_0~20150328-10_amd64.deb"
+	size hasValue "2264"
+	md5sum hasValue "19339d8fc2eb9051645f1a2940888772"
+	sha1 hasValue "a85183f4abcef711111d3eac53d07c30ceec1cc8"
+	sha256 hasValue "dfff68a7dbe3d520ee1748766c2768c9f768703cf500dcb0898ac77f5cc2c191"
+	descriptionMd5 hasValue "47ebdd2f5f4085bfde25afb56ffc6f5a"
+	homepage hasValue "https://github.com/amonakov/primus"
+	depends hasValue "bumblebee-nvidia, primus"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "bumblebee-nvidia"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__primus_nvidia,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "primus"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__primus_nvidia,1,DepAtom__1)
+

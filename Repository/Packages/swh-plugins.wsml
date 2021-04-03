@@ -1,0 +1,70 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology swh_plugins
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__swh_plugins memberOf Package
+	package hasValue "swh-plugins"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/sound"
+	installedSize hasValue "2063"
+	maintainer hasValue "Original-Debian Multimedia Maintainers <pkg-multimedia-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.4.17-2"
+	replaces hasValue "vocoder-ladspa (<< 1.1.3-3~)"
+	provides hasValue "ladspa-plugin"
+	fileName hasValue "pool/universe/s/swh-plugins/swh-plugins_0.4.17-2_amd64.deb"
+	size hasValue "437872"
+	md5sum hasValue "e88eb9872794e4b5523c46497956c6d2"
+	sha1 hasValue "229b51ff6a7ed0cc0a88bd16fb0cf6dae3ab6ccf"
+	sha256 hasValue "8572e97f4447b07a82481cd51fbe4789bd751781de0e178edc7e7a2bad6484c8"
+	description hasValue "Plugins LADSPA de Steve Harris."
+	descriptionMd5 hasValue "eae8bed900bb978b2c2eeb41c2f8acb9"
+	homepage hasValue "http://plugin.org.uk/"
+	depends hasValue "libc6 (>= 2.22), libfftw3-single3 (>= 3.3.5), libgsm1 (>= 1.0.13)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.22"
+
+relationInstance depends(P0__swh_plugins,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libfftw3-single3"
+	comparison hasValue ">="
+	version hasValue "3.3.5"
+
+relationInstance depends(P0__swh_plugins,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libgsm1"
+	comparison hasValue ">="
+	version hasValue "1.0.13"
+
+relationInstance depends(P0__swh_plugins,2,DepAtom__2)
+

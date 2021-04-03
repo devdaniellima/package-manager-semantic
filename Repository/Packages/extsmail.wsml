@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology extsmail
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__extsmail memberOf Package
+	package hasValue "extsmail"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/mail"
+	installedSize hasValue "110"
+	maintainer hasValue "Original-Olivier Girondel <olivier@biniou.info>"
+	architecture hasValue "amd64"
+	version hasValue "2.4-1"
+	fileName hasValue "pool/universe/e/extsmail/extsmail_2.4-1_amd64.deb"
+	size hasValue "33388"
+	md5sum hasValue "1da768022a66ecbbcecd95b84f682982"
+	sha1 hasValue "b5c356bf47eab6b12fbdbf128d3a1580d2b9bfcf"
+	sha256 hasValue "12b476da5175d7145715cbf95d83a8c3214d7c95cde10e95f9dd51c29721196d"
+	descriptionMd5 hasValue "a8adff67ef2197e743b7a37a9b7d1c07"
+	homepage hasValue "https://tratt.net/laurie/src/extsmail/"
+	depends hasValue "libc6 (>= 2.15)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__extsmail,0,DepAtom__0)
+

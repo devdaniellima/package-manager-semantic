@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology netsed
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__netsed memberOf Package
+	package hasValue "netsed"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "50"
+	maintainer hasValue "Original-Mats Erik Andersson <mats.andersson@gisladisker.se>"
+	architecture hasValue "amd64"
+	version hasValue "1.2-3"
+	fileName hasValue "pool/universe/n/netsed/netsed_1.2-3_amd64.deb"
+	size hasValue "19932"
+	md5sum hasValue "e2ab8af11d9bc43db95f8ba31e78c1fd"
+	sha1 hasValue "f39a14f79ab67ddb60f39638397c6f90e7dd2e84"
+	sha256 hasValue "c237ea9da153e061a2ba40b488611150d70e03b6c0d554c7e4128def0b2bfbb4"
+	descriptionMd5 hasValue "58f6db78c586242cc0ac4b338ebccdd2"
+	homepage hasValue "http://silicone.homelinux.org/projects/netsed/"
+	depends hasValue "libc6 (>= 2.15)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__netsed,0,DepAtom__0)
+

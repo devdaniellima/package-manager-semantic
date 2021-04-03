@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libevemu3
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libevemu3 memberOf Package
+	package hasValue "libevemu3"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "49"
+	maintainer hasValue "Original-Stephen Kitt <skitt@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.7.0-2"
+	fileName hasValue "pool/universe/e/evemu/libevemu3_2.7.0-2_amd64.deb"
+	size hasValue "12544"
+	md5sum hasValue "edec2cc681e2d1c092ef763f3cb3be60"
+	sha1 hasValue "513deadb36c4921b8f67be79e0058d9a9a16df72"
+	sha256 hasValue "1c8e21b89a618d7c9efd2201ca3ac69fefde5f13f257f58d5fe6ae9e7ce31f7b"
+	descriptionMd5 hasValue "4d213d88bce394ec6513cc2991601ddf"
+	homepage hasValue "https://www.freedesktop.org/wiki/Evemu/"
+	depends hasValue "libc6 (>= 2.7), libevdev2 (>= 1.2.99.902)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__libevemu3,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libevdev2"
+	comparison hasValue ">="
+	version hasValue "1.2.99.902"
+
+relationInstance depends(P0__libevemu3,1,DepAtom__1)
+

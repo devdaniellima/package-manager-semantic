@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology powder
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__powder memberOf Package
+	package hasValue "powder"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "multiverse/games"
+	installedSize hasValue "5002"
+	maintainer hasValue "Original-Debian Games Team <pkg-games-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "118+dfsg1-3"
+	fileName hasValue "pool/multiverse/p/powder/powder_118+dfsg1-3_amd64.deb"
+	size hasValue "832072"
+	md5sum hasValue "5d28c0d30cd8caee1c8fcd7c4def9382"
+	sha1 hasValue "e47676db55e83096884c8c57b3a07046537d47f9"
+	sha256 hasValue "f7bbf6b0b391b6f08261f78f806c6675908f9cc9eb386150ea05e9237735f3ed"
+	descriptionMd5 hasValue "e033547e1c2f1ddb020725d21e965c32"
+	homepage hasValue "http://www.zincland.com/powder/"
+	depends hasValue "libc6 (>= 2.14), libsdl1.2debian (>= 1.2.11)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__powder,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libsdl1.2debian"
+	comparison hasValue ">="
+	version hasValue "1.2.11"
+
+relationInstance depends(P0__powder,1,DepAtom__1)
+

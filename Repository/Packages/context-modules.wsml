@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology context_modules
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__context_modules memberOf Package
+	package hasValue "context-modules"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/tex"
+	installedSize hasValue "19821"
+	maintainer hasValue "Original-Debian TeX maintainers <debian-tex-maint@lists.debian.org>"
+	architecture hasValue "all"
+	version hasValue "20190710-1"
+	replaces hasValue "context (<< 2014)"
+	fileName hasValue "pool/universe/c/context-modules/context-modules_20190710-1_all.deb"
+	size hasValue "9030412"
+	md5sum hasValue "c0d6123efa5ffc9a5a5892fc45966301"
+	sha1 hasValue "eb2c9a80dcdab38153faabad3a1e55880c4421af"
+	sha256 hasValue "7559f55256d515a35f8aca9b5ec989be66494d182e0e3914df879824b69cc8c1"
+	description hasValue "additional ConTeXt modules"
+	descriptionMd5 hasValue "e914b98505686833e0d5a4519b4215d3"
+	depends hasValue "context (>= 2018.04), tex-common (>= 6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "context"
+	comparison hasValue ">="
+	version hasValue "2018.04"
+
+relationInstance depends(P0__context_modules,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "tex-common"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__context_modules,1,DepAtom__1)
+

@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology elpa_helm_org
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__elpa_helm_org memberOf Package
+	package hasValue "elpa-helm-org"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/editors"
+	installedSize hasValue "49"
+	maintainer hasValue "Original-Debian Emacsen team <debian-emacsen@lists.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.0-2"
+	fileName hasValue "pool/universe/h/helm-org/elpa-helm-org_1.0-2_all.deb"
+	size hasValue "8652"
+	md5sum hasValue "ad577108bb2f2045faa90368854f88af"
+	sha1 hasValue "bfbd37d2d96a16b36bed1b8686177d53fef54911"
+	sha256 hasValue "530c381336505c21c1aab110b4447fe0036875ff03f30cd7ae14a09cc97ee341"
+	descriptionMd5 hasValue "48994fedd18de577b3d5b7368d8c96c0"
+	homepage hasValue "https://github.com/emacs-helm/helm-org"
+	depends hasValue "elpa-helm (>= 3.3), dh-elpa-helper, emacsen-common"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "elpa-helm"
+	comparison hasValue ">="
+	version hasValue "3.3"
+
+relationInstance depends(P0__elpa_helm_org,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "dh-elpa-helper"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__elpa_helm_org,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "emacsen-common"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__elpa_helm_org,2,DepAtom__2)
+

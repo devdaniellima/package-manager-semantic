@@ -1,0 +1,74 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology oar_node
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__oar_node memberOf Package
+	package hasValue "oar-node"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/science"
+	installedSize hasValue "71"
+	maintainer hasValue "Original-Pierre Neyron <pierre.neyron@free.fr>"
+	architecture hasValue "amd64"
+	version hasValue "2.5.8-2"
+	fileName hasValue "pool/universe/o/oar/oar-node_2.5.8-2_amd64.deb"
+	size hasValue "13968"
+	md5sum hasValue "7f8e98fd0434847d19699056b31082cf"
+	sha1 hasValue "0002833fd3823391579a29ed21a3fa99878bcc74"
+	sha256 hasValue "ecffdb2a02e8e6e548882e805551c3ea81dff2d720f03400308fb7b24292c124"
+	descriptionMd5 hasValue "c435efed22a974bf17afaab5e9f95958"
+	homepage hasValue "http://oar.imag.fr/"
+	depends hasValue "openssh-client, openssh-server, lsb-base (>= 3.0-6), oar-common (= 2.5.8-2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "openssh-client"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__oar_node,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "openssh-server"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__oar_node,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "lsb-base"
+	comparison hasValue ">="
+	version hasValue "3.0-6"
+
+relationInstance depends(P0__oar_node,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "oar-common"
+	comparison hasValue "="
+	version hasValue "2.5.8-2"
+
+relationInstance depends(P0__oar_node,3,DepAtom__3)
+

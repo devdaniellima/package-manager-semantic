@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology profile_sync_daemon
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__profile_sync_daemon memberOf Package
+	package hasValue "profile-sync-daemon"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "95"
+	maintainer hasValue "Original-Jan Luca Naumann <j.naumann@fu-berlin.de>"
+	architecture hasValue "all"
+	version hasValue "6.34-1"
+	fileName hasValue "pool/universe/p/profile-sync-daemon/profile-sync-daemon_6.34-1_all.deb"
+	size hasValue "22120"
+	md5sum hasValue "dee5b4884231004566d53efc5080a0df"
+	sha1 hasValue "3e82e3ce63f39948fc5eb7940612f31f08ef91c4"
+	sha256 hasValue "3a0ea3c8f43ef28fbaf047ce4e493da89fd481a0ba13bc227df4918dff116017"
+	descriptionMd5 hasValue "bf9f50fa1cdaf4d82370e129c3d86fbd"
+	homepage hasValue "https://github.com/graysky2/profile-sync-daemon"
+	depends hasValue "rsync, init-system-helpers (>= 1.52)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "rsync"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__profile_sync_daemon,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "init-system-helpers"
+	comparison hasValue ">="
+	version hasValue "1.52"
+
+relationInstance depends(P0__profile_sync_daemon,1,DepAtom__1)
+

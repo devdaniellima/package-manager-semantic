@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology postgresql_12_pgl_ddl_deploy
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__postgresql_12_pgl_ddl_deploy memberOf Package
+	package hasValue "postgresql-12-pgl-ddl-deploy"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/database"
+	installedSize hasValue "1388"
+	maintainer hasValue "Original-Jeremy Finzel <jfinzel@enova.com>"
+	architecture hasValue "amd64"
+	version hasValue "1.7.0-1"
+	fileName hasValue "pool/universe/p/pgl-ddl-deploy/postgresql-12-pgl-ddl-deploy_1.7.0-1_amd64.deb"
+	size hasValue "47632"
+	md5sum hasValue "d9ee94dc95d6f6c22dd390d3112d1774"
+	sha1 hasValue "decee3a2a132af452fbb32b28c1b8213634eccfb"
+	sha256 hasValue "d941cd23524f7d9849951d3f51d9115017dd77274a40b9bd54d330b764534e18"
+	descriptionMd5 hasValue "049b8978b5c1533df488cc1847509b5f"
+	homepage hasValue "https://github.com/enova/pgl_ddl_deploy"
+	depends hasValue "postgresql-12, postgresql-12-pglogical"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "postgresql-12"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__postgresql_12_pgl_ddl_deploy,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "postgresql-12-pglogical"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__postgresql_12_pgl_ddl_deploy,1,DepAtom__1)
+

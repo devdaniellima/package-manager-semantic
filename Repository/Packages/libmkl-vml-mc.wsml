@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libmkl_vml_mc
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libmkl_vml_mc memberOf Package
+	package hasValue "libmkl-vml-mc"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "multiverse/libs"
+	installedSize hasValue "11184"
+	maintainer hasValue "Original-Debian Science Maintainers <debian-science-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2020.0.166-1"
+	fileName hasValue "pool/multiverse/i/intel-mkl/libmkl-vml-mc_2020.0.166-1_amd64.deb"
+	size hasValue "2714276"
+	md5sum hasValue "f764d74609a6c8db9c3f6e39a3303213"
+	sha1 hasValue "15b78e1be83efc516f2d09e39811382ed97b74d7"
+	sha256 hasValue "9c46d2076c0d8352c17cd751f8574dc2ca8afa2a35b5a7dabaeb8ad1fb46d644"
+	descriptionMd5 hasValue "911d7ea2f4b111febbe8dedcad84891d"
+	homepage hasValue "https://software.intel.com/en-us/mkl"
+	depends hasValue "libc6 (>= 2.2.5), libmkl-locale (= 2020.0.166-1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.2.5"
+
+relationInstance depends(P0__libmkl_vml_mc,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libmkl-locale"
+	comparison hasValue "="
+	version hasValue "2020.0.166-1"
+
+relationInstance depends(P0__libmkl_vml_mc,1,DepAtom__1)
+

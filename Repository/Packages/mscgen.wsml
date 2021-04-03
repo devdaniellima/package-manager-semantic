@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology mscgen
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__mscgen memberOf Package
+	package hasValue "mscgen"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "124"
+	maintainer hasValue "Original-Niels Thykier <niels@thykier.net>"
+	architecture hasValue "amd64"
+	version hasValue "0.20-12"
+	fileName hasValue "pool/universe/m/mscgen/mscgen_0.20-12_amd64.deb"
+	size hasValue "43176"
+	md5sum hasValue "58da50f01f3db6622f0082321f2d3297"
+	sha1 hasValue "ae896f7fd0109984bfa86c84d41d424527ff43a7"
+	sha256 hasValue "b76199dfe5734d284fe408745b71d8501ca1b3b745650c5bdbc2722d0f8bd6bb"
+	descriptionMd5 hasValue "4dc929f8416e54167f92d0de978f7035"
+	homepage hasValue "http://www.mcternan.me.uk/mscgen/"
+	depends hasValue "libc6 (>= 2.14), libgd3 (>= 2.1.0~alpha~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__mscgen,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgd3"
+	comparison hasValue ">="
+	version hasValue "2.1.0~alpha~"
+
+relationInstance depends(P0__mscgen,1,DepAtom__1)
+

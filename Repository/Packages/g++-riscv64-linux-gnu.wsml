@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gPlusPlus_riscv64_linux_gnu
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gPlusPlus_riscv64_linux_gnu memberOf Package
+	package hasValue "g++-riscv64-linux-gnu"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "11"
+	maintainer hasValue "Original-Debian GCC Maintainers <debian-gcc@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "4:9.3.0-1ubuntu2"
+	fileName hasValue "pool/universe/g/gcc-defaults-ports/g++-riscv64-linux-gnu_9.3.0-1ubuntu2_amd64.deb"
+	size hasValue "1128"
+	md5sum hasValue "394bca96759cf4651dadd1580bfe9a1c"
+	sha1 hasValue "3cf86b71688f5525b717fe15bda6d13df816a722"
+	sha256 hasValue "2d9473199f78d295d828363e3d186fa2e87ec7b1612fdb9f654224685b62bb12"
+	description hasValue "GNU C++ compiler for the riscv64 architecture"
+	descriptionMd5 hasValue "ebbf506aca8c79a0d53f2d5b1879a38c"
+	depends hasValue "cpp-riscv64-linux-gnu (= 4:9.3.0-1ubuntu2), gcc-riscv64-linux-gnu (= 4:9.3.0-1ubuntu2), g++-9-riscv64-linux-gnu (>= 9.3.0-3~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "cpp-riscv64-linux-gnu"
+	comparison hasValue "="
+	version hasValue "4:9.3.0-1ubuntu2"
+
+relationInstance depends(P0__gPlusPlus_riscv64_linux_gnu,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "gcc-riscv64-linux-gnu"
+	comparison hasValue "="
+	version hasValue "4:9.3.0-1ubuntu2"
+
+relationInstance depends(P0__gPlusPlus_riscv64_linux_gnu,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "g++-9-riscv64-linux-gnu"
+	comparison hasValue ">="
+	version hasValue "9.3.0-3~"
+
+relationInstance depends(P0__gPlusPlus_riscv64_linux_gnu,2,DepAtom__2)
+

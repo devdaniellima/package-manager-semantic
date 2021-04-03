@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ubumirror
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ubumirror memberOf Package
+	package hasValue "ubumirror"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "63"
+	maintainer hasValue "Original-Christopher Glass (Tribaal) <tribaal@gmail.com>"
+	architecture hasValue "all"
+	version hasValue "0.5"
+	fileName hasValue "pool/universe/u/ubumirror/ubumirror_0.5_all.deb"
+	size hasValue "7900"
+	md5sum hasValue "ef3944efe26725ed6a224401615aac92"
+	sha1 hasValue "50a1eb0bec01cdc03f6c47b08d83e43d68c67451"
+	sha256 hasValue "3fb6ba3fdb62e84780cca9fe4324bac5b1544e483e6bbec8cf7dad08f912647d"
+	descriptionMd5 hasValue "a0036de72b7cf69cb11aa7eb0faa2667"
+	homepage hasValue "https://launchpad.net/ubumirror"
+	depends hasValue "cron, rsync"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "cron"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ubumirror,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "rsync"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ubumirror,1,DepAtom__1)
+

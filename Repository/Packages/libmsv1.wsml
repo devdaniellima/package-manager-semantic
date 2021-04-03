@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libmsv1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libmsv1 memberOf Package
+	package hasValue "libmsv1"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "29"
+	maintainer hasValue "Original-Clint Adams <clint@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.1.1-3"
+	fileName hasValue "pool/universe/libm/libmsv/libmsv1_1.1.1-3_amd64.deb"
+	size hasValue "6548"
+	md5sum hasValue "063332a9df4124c1a821d287e9af3732"
+	sha1 hasValue "082cddf5de1d0abb08d2e30fbc391a7bb787a37c"
+	sha256 hasValue "9a8b7701402e4b02e3448ecdf57b1ce6b866d98a5480487e70f63d62dab4cbd9"
+	descriptionMd5 hasValue "60ea2cac789af91189aec05849c97c54"
+	homepage hasValue "http://floss.scru.org/libmsv/"
+	depends hasValue "libc6 (>= 2.14), libcurl3-nss (>= 7.23.1), libjansson4 (>= 2.0.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libmsv1,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libcurl3-nss"
+	comparison hasValue ">="
+	version hasValue "7.23.1"
+
+relationInstance depends(P0__libmsv1,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libjansson4"
+	comparison hasValue ">="
+	version hasValue "2.0.1"
+
+relationInstance depends(P0__libmsv1,2,DepAtom__2)
+

@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology lighttpd_mod_maxminddb
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__lighttpd_mod_maxminddb memberOf Package
+	package hasValue "lighttpd-mod-maxminddb"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/httpd"
+	installedSize hasValue "23"
+	maintainer hasValue "Original-Debian lighttpd maintainers <team+lighttpd@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.4.55-1ubuntu1"
+	fileName hasValue "pool/universe/l/lighttpd/lighttpd-mod-maxminddb_1.4.55-1ubuntu1_amd64.deb"
+	size hasValue "5240"
+	md5sum hasValue "adedcb804a9790881990ddee28ac16cd"
+	sha1 hasValue "1c0cb7af313fedf6300fb01f7b995ac5488033af"
+	sha256 hasValue "f4d587dc2e451f46479847d5c4335f1835b3fcf46f28f0e59b19ba8554278694"
+	descriptionMd5 hasValue "e58596ceaaa6bedb725a1cd8145719ce"
+	homepage hasValue "https://www.lighttpd.net/"
+	depends hasValue "lighttpd (= 1.4.55-1ubuntu1), libc6 (>= 2.4), libmaxminddb0 (>= 1.0.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "lighttpd"
+	comparison hasValue "="
+	version hasValue "1.4.55-1ubuntu1"
+
+relationInstance depends(P0__lighttpd_mod_maxminddb,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__lighttpd_mod_maxminddb,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libmaxminddb0"
+	comparison hasValue ">="
+	version hasValue "1.0.2"
+
+relationInstance depends(P0__lighttpd_mod_maxminddb,2,DepAtom__2)
+

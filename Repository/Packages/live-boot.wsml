@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology live_boot
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__live_boot memberOf Package
+	package hasValue "live-boot"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/misc"
+	installedSize hasValue "141"
+	maintainer hasValue "Original-Live Systems Maintainers <debian-live@lists.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1:20190614"
+	fileName hasValue "pool/universe/l/live-boot/live-boot_20190614_all.deb"
+	size hasValue "26292"
+	md5sum hasValue "63b1336bb95e9e48d3274b41ea1bd929"
+	sha1 hasValue "8aa178bbe4fcfa125fa22d3d0e31f4e64a7bbd22"
+	sha256 hasValue "8e7371a75ac6a16f142dbeb0e2db8ba2407655929952cdcc0cf0d58f1ffe9f24"
+	descriptionMd5 hasValue "07f52a841c24e20b3bcf40e151f7496c"
+	homepage hasValue "https://wiki.debian.org/DebianLive"
+	depends hasValue "live-boot-initramfs-tools | live-boot-backend"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "live-boot-initramfs-tools"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__live_boot,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "live-boot-backend"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__live_boot,0,DepAtom__1)
+

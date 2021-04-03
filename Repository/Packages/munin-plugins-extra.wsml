@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology munin_plugins_extra
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__munin_plugins_extra memberOf Package
+	package hasValue "munin-plugins-extra"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "401"
+	maintainer hasValue "Original-Munin Debian Maintainers <team+munin@tracker.debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.0.56-1ubuntu1"
+	fileName hasValue "pool/universe/m/munin/munin-plugins-extra_2.0.56-1ubuntu1_all.deb"
+	size hasValue "64284"
+	md5sum hasValue "23a1f33dc27561d9985d3541922f15e0"
+	sha1 hasValue "b04f577895408f269116c56e80dc824c60276c0c"
+	sha256 hasValue "c5e59f9ba1be1a671796992416896ef8cc688292ea5c59a5f68aa54b804ae8c3"
+	description hasValue "network-wide graphing framework (user contributed plugins for node)"
+	descriptionMd5 hasValue "eb78ec531b14cee1d0003a07603bedc8"
+	homepage hasValue "http://munin-monitoring.org"
+	depends hasValue "perl:any, munin-common (>= 2.0.56-1ubuntu1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "perl:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__munin_plugins_extra,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "munin-common"
+	comparison hasValue ">="
+	version hasValue "2.0.56-1ubuntu1"
+
+relationInstance depends(P0__munin_plugins_extra,1,DepAtom__1)
+

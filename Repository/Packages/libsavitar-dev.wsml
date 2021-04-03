@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libsavitar_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libsavitar_dev memberOf Package
+	package hasValue "libsavitar-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "55"
+	maintainer hasValue "Original-Debian 3-D Printing Packages <3dprinter-general@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "4.4.1-2build1"
+	fileName hasValue "pool/universe/libs/libsavitar/libsavitar-dev_4.4.1-2build1_amd64.deb"
+	size hasValue "10512"
+	md5sum hasValue "0716a83af1c7b6b28790e7ddfd92759e"
+	sha1 hasValue "ce7e7a88befae4621eb292eea8a5db789cb07139"
+	sha256 hasValue "b457607b8cc2653813ec1e96fdee2bc370f674f05e5f28341938fa56956f30a4"
+	descriptionMd5 hasValue "0ec341afae2d8bf71a5cccf1a1727ed6"
+	homepage hasValue "https://github.com/Ultimaker/libSavitar"
+	depends hasValue "libsavitar0 (= 4.4.1-2build1), libpugixml-dev (>= 1.7)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libsavitar0"
+	comparison hasValue "="
+	version hasValue "4.4.1-2build1"
+
+relationInstance depends(P0__libsavitar_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libpugixml-dev"
+	comparison hasValue ">="
+	version hasValue "1.7"
+
+relationInstance depends(P0__libsavitar_dev,1,DepAtom__1)
+

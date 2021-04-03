@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology nodejs
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__nodejs memberOf Package
+	package hasValue "nodejs"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/web"
+	installedSize hasValue "154"
+	maintainer hasValue "Original-Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "10.19.0~dfsg-3ubuntu1"
+	replaces hasValue "nodejs-legacy"
+	conflicts hasValue "nodejs-legacy"
+	fileName hasValue "pool/universe/n/nodejs/nodejs_10.19.0~dfsg-3ubuntu1_amd64.deb"
+	size hasValue "61128"
+	md5sum hasValue "e99245e2f78b02e736f6585be7a200f2"
+	sha1 hasValue "8a7f18fc393650d3f0830c6cde0e0bfa7e4afa17"
+	sha256 hasValue "392d4ae36ca956260df71b43f7cd04c1f8928dac5e53f4132d237772b16adf4a"
+	descriptionMd5 hasValue "0d0bbaed314d7d26588d112ee4ede074"
+	homepage hasValue "http://nodejs.org/"
+	depends hasValue "libc6 (>= 2.4), libnode64 (= 10.19.0~dfsg-3ubuntu1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__nodejs,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libnode64"
+	comparison hasValue "="
+	version hasValue "10.19.0~dfsg-3ubuntu1"
+
+relationInstance depends(P0__nodejs,1,DepAtom__1)
+

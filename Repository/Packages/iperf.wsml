@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology iperf
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__iperf memberOf Package
+	package hasValue "iperf"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "208"
+	maintainer hasValue "Original-Roberto Lumbreras <rover@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.0.13+dfsg1-1build1"
+	fileName hasValue "pool/universe/i/iperf/iperf_2.0.13+dfsg1-1build1_amd64.deb"
+	size hasValue "76492"
+	md5sum hasValue "d57fd7c22e85cbb052077e386a13c7ef"
+	sha1 hasValue "7d9c910d711bd790f6ae48e55555eb3b52994125"
+	sha256 hasValue "b634f0f72754cede4eae711f32b7d352ae18af1e92487831695c443427c5b334"
+	descriptionMd5 hasValue "1b25d29ae979d65c1a67cf08177ba875"
+	homepage hasValue "https://sourceforge.net/projects/iperf2/"
+	depends hasValue "libc6 (>= 2.29), libgcc-s1 (>= 3.0), libstdc++6 (>= 5)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__iperf,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgcc-s1"
+	comparison hasValue ">="
+	version hasValue "3.0"
+
+relationInstance depends(P0__iperf,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "5"
+
+relationInstance depends(P0__iperf,2,DepAtom__2)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology elpa_eproject
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__elpa_eproject memberOf Package
+	package hasValue "elpa-eproject"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/editors"
+	installedSize hasValue "114"
+	maintainer hasValue "Original-Debian Emacsen team <debian-emacsen@lists.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.5+git20180312.068218d-2"
+	fileName hasValue "pool/universe/e/eproject-el/elpa-eproject_1.5+git20180312.068218d-2_all.deb"
+	size hasValue "26216"
+	md5sum hasValue "159fb83723ff0673e0e7cc86767573d9"
+	sha1 hasValue "f587eea9b814df6090acb2b00abf1a5391dbf897"
+	sha256 hasValue "c42b55eeeab716ef67013614fa2990b449e4496247ad31b60e975ecf97d3cfa4"
+	descriptionMd5 hasValue "676e9eab8c1d8875a1358876506cfbed"
+	homepage hasValue "https://github.com/jrockway/eproject"
+	depends hasValue "elpa-helm (>= 1.6.4), emacsen-common"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "elpa-helm"
+	comparison hasValue ">="
+	version hasValue "1.6.4"
+
+relationInstance depends(P0__elpa_eproject,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "emacsen-common"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__elpa_eproject,1,DepAtom__1)
+

@@ -1,0 +1,55 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology mydumper_doc
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__mydumper_doc memberOf Package
+	package hasValue "mydumper-doc"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/doc"
+	installedSize hasValue "189"
+	maintainer hasValue "Original-Mateusz Kijowski <mateusz.kijowski@gmail.com>"
+	architecture hasValue "all"
+	version hasValue "0.9.5-1.1"
+	replaces hasValue "mydumper (<< 0.9.1-2)"
+	fileName hasValue "pool/universe/m/mydumper/mydumper-doc_0.9.5-1.1_all.deb"
+	size hasValue "26816"
+	md5sum hasValue "e6b9d64ae74c2526493d4b54bc09936f"
+	sha1 hasValue "73f5328d9a128ad973441d80bc945bd6caed1ffa"
+	sha256 hasValue "81a0046144e006b419b2f8a5ddc92257300650a53553d1742b321d4513ffb748"
+	description hasValue "High-performance MySQL backup tool - documentation"
+	descriptionMd5 hasValue "67cb59319370502fddfd07a71cb12d81"
+	homepage hasValue "https://github.com/maxbube/mydumper"
+	depends hasValue "libjs-sphinxdoc (>= 1.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libjs-sphinxdoc"
+	comparison hasValue ">="
+	version hasValue "1.0"
+
+relationInstance depends(P0__mydumper_doc,0,DepAtom__0)
+

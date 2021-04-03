@@ -1,0 +1,55 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology lacheck
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__lacheck memberOf Package
+	package hasValue "lacheck"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/tex"
+	installedSize hasValue "82"
+	maintainer hasValue "Original-Davide G. M. Salvetti <salve@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.26-17"
+	replaces hasValue "auctex (<< 9.7l-1)"
+	fileName hasValue "pool/universe/l/lacheck/lacheck_1.26-17_amd64.deb"
+	size hasValue "27634"
+	md5sum hasValue "b2490557fa7188216bf2fe42989298e9"
+	sha1 hasValue "aeb9a19dbcd5f7f6565286dde150e7f3f2d4a9bb"
+	sha256 hasValue "10eafef7d5fd2a06a3f5771769071918b891b570a77766671beca19f1e82e6aa"
+	description hasValue "Verificador de sintaxe simples para LaTeX"
+	descriptionMd5 hasValue "f8b4e067ceaf1167420487365338b7eb"
+	homepage hasValue "https://www.ctan.org/tex-archive/support/lacheck/"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__lacheck,0,DepAtom__0)
+

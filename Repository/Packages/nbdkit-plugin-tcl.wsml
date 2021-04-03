@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology nbdkit_plugin_tcl
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__nbdkit_plugin_tcl memberOf Package
+	package hasValue "nbdkit-plugin-tcl"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "42"
+	maintainer hasValue "Original-Hilko Bengen <bengen@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.16.2-1ubuntu3"
+	fileName hasValue "pool/universe/n/nbdkit/nbdkit-plugin-tcl_1.16.2-1ubuntu3_amd64.deb"
+	size hasValue "11832"
+	md5sum hasValue "3f48006e1b6694c4795437594ef794d8"
+	sha1 hasValue "cabfb253bb7bd22dfbd0b23f6d65ca65ee1bb4be"
+	sha256 hasValue "041c96de35504e0494c5c9b1d519452db9e893a14f28cdf93dbe5fabe785305b"
+	descriptionMd5 hasValue "75b0d1292007ca06a6fc37688810a7b5"
+	homepage hasValue "https://github.com/libguestfs/nbdkit"
+	depends hasValue "libc6 (>= 2.14), libtcl8.6 (>= 8.6.0), nbdkit"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__nbdkit_plugin_tcl,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libtcl8.6"
+	comparison hasValue ">="
+	version hasValue "8.6.0"
+
+relationInstance depends(P0__nbdkit_plugin_tcl,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "nbdkit"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__nbdkit_plugin_tcl,2,DepAtom__2)
+

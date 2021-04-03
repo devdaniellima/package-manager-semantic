@@ -1,0 +1,69 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libpgtcl
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libpgtcl memberOf Package
+	package hasValue "libpgtcl"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "120"
+	maintainer hasValue "Original-Mark Hindley <mark@hindley.org.uk>"
+	architecture hasValue "amd64"
+	version hasValue "1:2.6.1-1"
+	replaces hasValue "libpgtcl1.5"
+	conflicts hasValue "libpgtcl1.5, tcl8.5 (<< 8.5.15-3)"
+	fileName hasValue "pool/universe/p/pgtcl/libpgtcl_2.6.1-1_amd64.deb"
+	size hasValue "35720"
+	md5sum hasValue "10fc9e5830d57787dd6ddd6d16fd2799"
+	sha1 hasValue "eb096010dcc3315b1f59492698310f441c333504"
+	sha256 hasValue "0e2fa06e016ba80e47a736a984dc94477ba6935f2eba736bdfe692416ed8fad7"
+	descriptionMd5 hasValue "0a071edc2fb4b55293485317e8770d65"
+	homepage hasValue "http://github.com/flightaware/pgtcl/"
+	depends hasValue "libc6 (>= 2.4), libpq5 (>= 9.2~beta3), tcl (>= 8.6.0-2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libpgtcl,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libpq5"
+	comparison hasValue ">="
+	version hasValue "9.2~beta3"
+
+relationInstance depends(P0__libpgtcl,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "tcl"
+	comparison hasValue ">="
+	version hasValue "8.6.0-2"
+
+relationInstance depends(P0__libpgtcl,2,DepAtom__2)
+

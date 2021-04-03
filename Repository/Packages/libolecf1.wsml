@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libolecf1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libolecf1 memberOf Package
+	package hasValue "libolecf1"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "1150"
+	maintainer hasValue "Original-Debian Security Tools <team+pkg-security@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "20181231-1.1"
+	fileName hasValue "pool/universe/libo/libolecf/libolecf1_20181231-1.1_amd64.deb"
+	size hasValue "372620"
+	md5sum hasValue "2599b8d85faa5eac69f28c542deacf6f"
+	sha1 hasValue "7821bed511b12c6f014519f38aac4910fed311a8"
+	sha256 hasValue "b402b86911f43a4d236a7730141bc161d8d570e31fe5aca849ccf348d7796735"
+	description hasValue "OLE2 Compound File format access library"
+	descriptionMd5 hasValue "a5330b1030a39c8b32613af8d0567b4c"
+	homepage hasValue "https://github.com/libyal/libolecf"
+	depends hasValue "libbfio1 (>= 20120425), libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libbfio1"
+	comparison hasValue ">="
+	version hasValue "20120425"
+
+relationInstance depends(P0__libolecf1,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libolecf1,1,DepAtom__1)
+

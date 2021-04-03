@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology node_klaw
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__node_klaw memberOf Package
+	package hasValue "node-klaw"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/web"
+	installedSize hasValue "18"
+	maintainer hasValue "Original-Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "3.0.0-2"
+	fileName hasValue "pool/universe/n/node-klaw/node-klaw_3.0.0-2_all.deb"
+	size hasValue "6756"
+	md5sum hasValue "838ddd9167f8f78bbf4ab72874bec42e"
+	sha1 hasValue "ea72d2e78cc5e607ad4831d60c47858bdc5396ee"
+	sha256 hasValue "230ca70284961a531efb609b99feae57cd6185d089af64e614aa1cc0df4aa9d9"
+	descriptionMd5 hasValue "f3f91b842339543cb0db99d299906dec"
+	homepage hasValue "https://github.com/jprichardson/node-klaw#readme"
+	depends hasValue "nodejs, node-graceful-fs (>= 4.1.9)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "nodejs"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__node_klaw,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "node-graceful-fs"
+	comparison hasValue ">="
+	version hasValue "4.1.9"
+
+relationInstance depends(P0__node_klaw,1,DepAtom__1)
+

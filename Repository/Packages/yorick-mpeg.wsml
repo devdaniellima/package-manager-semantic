@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology yorick_mpeg
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__yorick_mpeg memberOf Package
+	package hasValue "yorick-mpeg"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/science"
+	installedSize hasValue "155"
+	maintainer hasValue "Original-Debian Science Maintainers <debian-science-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.1-3"
+	fileName hasValue "pool/universe/y/yorick-mpeg/yorick-mpeg_0.1-3_amd64.deb"
+	size hasValue "51822"
+	md5sum hasValue "4c0ed3b48a7767d2a74babe2d94472da"
+	sha1 hasValue "dea8c285d1e7d45f133c4f0276ede26c8b633af7"
+	sha256 hasValue "db5e18ee2f2f6689e050c841f1c20f2fa414e38e94d966b12320b341a167567e"
+	description hasValue "suporte para saída MPEG para a linguagem Yorick"
+	descriptionMd5 hasValue "a1439599badc10bdabb3c2d612cb2199"
+	homepage hasValue "http://github.com/dhmunro/yorick-mpeg"
+	depends hasValue "yorick (>= 1.6.02), libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "yorick"
+	comparison hasValue ">="
+	version hasValue "1.6.02"
+
+relationInstance depends(P0__yorick_mpeg,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__yorick_mpeg,1,DepAtom__1)
+

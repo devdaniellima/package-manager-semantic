@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology wmifs
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__wmifs memberOf Package
+	package hasValue "wmifs"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/x11"
+	installedSize hasValue "59"
+	maintainer hasValue "Original-Debian Window Maker Team <pkg-wmaker-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.9-1"
+	fileName hasValue "pool/universe/w/wmifs/wmifs_1.9-1_amd64.deb"
+	size hasValue "17640"
+	md5sum hasValue "cd9c2a2c424991e84402354b5f30c7f8"
+	sha1 hasValue "bfbc896c150884b34f5c276dd1e62e5ab65c010e"
+	sha256 hasValue "70973fb012ca7effb002da444692e17c98f986f0e5eb24cee94703d7127e4f76"
+	description hasValue "Window Maker dockapp for monitoring network traffic"
+	descriptionMd5 hasValue "850806c5b4f0eb5f3f8b3750cad20d5e"
+	homepage hasValue "https://www.dockapps.net/wmifs"
+	depends hasValue "libc6 (>= 2.4), libdockapp3 (>= 0.7.0), libx11-6"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__wmifs,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libdockapp3"
+	comparison hasValue ">="
+	version hasValue "0.7.0"
+
+relationInstance depends(P0__wmifs,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libx11-6"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__wmifs,2,DepAtom__2)
+

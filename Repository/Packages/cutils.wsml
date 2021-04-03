@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology cutils
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__cutils memberOf Package
+	package hasValue "cutils"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "247"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.6-5"
+	fileName hasValue "pool/universe/c/cutils/cutils_1.6-5_amd64.deb"
+	size hasValue "69448"
+	md5sum hasValue "e0fd873c018c8cfe969c51f075e97836"
+	sha1 hasValue "6d00e41bed4b41dd91731efabd64ddabce8e98e4"
+	sha256 hasValue "dc39905d24e131db21e5b66dbccbf0de8a8f4cfa2cbccdcc82170bf899b46c71"
+	description hasValue "utilitários de código fonte C"
+	descriptionMd5 hasValue "6004a494de2f9be4d6c2de8739225cfb"
+	homepage hasValue "http://www.sigala.it/sandro/software.php#cutils"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__cutils,0,DepAtom__0)
+

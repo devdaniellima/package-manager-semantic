@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology lua_posix
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__lua_posix memberOf Package
+	package hasValue "lua-posix"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/interpreters"
+	installedSize hasValue "436"
+	maintainer hasValue "Original-Enrico Tassi <gareuselesinge@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "33.4.0-3"
+	provides hasValue "lua5.1-posix, lua5.2-posix, lua5.3-posix"
+	fileName hasValue "pool/universe/l/lua-posix/lua-posix_33.4.0-3_amd64.deb"
+	size hasValue "75204"
+	md5sum hasValue "c88295b061008c2123a4c49b51ada8cd"
+	sha1 hasValue "870c24c58461f7f23d6ae695153762eb799658b4"
+	sha256 hasValue "4c8783fc3fcb9a4b9f17557f4b8394bfe1e65713ec0a3e1e3bfb95004f78b47b"
+	descriptionMd5 hasValue "c55d799a13c404ad6e239ba6c922ae56"
+	homepage hasValue "https://github.com/luaposix/luaposix"
+	depends hasValue "libc6 (>= 2.27), lua-bit32"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.27"
+
+relationInstance depends(P0__lua_posix,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "lua-bit32"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__lua_posix,1,DepAtom__1)
+

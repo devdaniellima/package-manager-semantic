@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology fatattr
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__fatattr memberOf Package
+	package hasValue "fatattr"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "25"
+	maintainer hasValue "Original-Filesystems Group <filesystems-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.1-14"
+	fileName hasValue "pool/universe/f/fatattr/fatattr_1.0.1-14_amd64.deb"
+	size hasValue "6716"
+	md5sum hasValue "11c17507ed77f33a5ddfbed4bd6a5d34"
+	sha1 hasValue "7352ed9cd91371c54ab79d36f831ba74e40d5814"
+	sha256 hasValue "c2841aefc0cbcd7555d344f00866f82f43cffc9810a9ba865bf553cb0db3ce1a"
+	description hasValue "utilitário para controlar atributos de sistemas de arquivos FAT"
+	descriptionMd5 hasValue "c5491e9a66f3140ee136aa27550bc1e0"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__fatattr,0,DepAtom__0)
+

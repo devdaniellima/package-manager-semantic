@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ronn
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ronn memberOf Package
+	package hasValue "ronn"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/ruby"
+	installedSize hasValue "21"
+	maintainer hasValue "Original-Debian Ruby Extras Maintainers <pkg-ruby-extras-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.8.0-3"
+	replaces hasValue "ruby-ronn (<< 0.7.3-5.1)"
+	fileName hasValue "pool/universe/r/ruby-ronn/ronn_0.8.0-3_all.deb"
+	size hasValue "8512"
+	md5sum hasValue "be6df0d1372cba49038fc33f9eaf8422"
+	sha1 hasValue "111895d2930917fb09290bdc3c6ed5fb1ea4d203"
+	sha256 hasValue "b72f810b332dea6add2accc963dcb7e916a56775f47e35574bc31e213b70fde0"
+	descriptionMd5 hasValue "2c253bec114012b82b2e53e39aeb42af"
+	homepage hasValue "https://github.com/apjanke/ronn-ng"
+	depends hasValue "ruby | ruby-interpreter, ruby-ronn (= 0.8.0-3)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "ruby"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ronn,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "ruby-interpreter"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ronn,0,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "ruby-ronn"
+	comparison hasValue "="
+	version hasValue "0.8.0-3"
+
+relationInstance depends(P0__ronn,1,DepAtom__2)
+

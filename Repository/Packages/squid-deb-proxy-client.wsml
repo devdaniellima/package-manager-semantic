@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology squid_deb_proxy_client
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__squid_deb_proxy_client memberOf Package
+	package hasValue "squid-deb-proxy-client"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/net"
+	installedSize hasValue "24"
+	maintainer hasValue "Original-Michael Vogt <mvo@debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.8.15"
+	fileName hasValue "pool/universe/s/squid-deb-proxy/squid-deb-proxy-client_0.8.15_all.deb"
+	size hasValue "4740"
+	md5sum hasValue "430242de0732c004e716a33da7c29c86"
+	sha1 hasValue "aa00df8399ba2c23e5cb13d6412e0aed67d26fa0"
+	sha256 hasValue "38d7d620463aead5087aece4fa8d160baf9872e963b6b5854f98c4b4da34486f"
+	descriptionMd5 hasValue "856848851e6fb0024f8c246f90d908b4"
+	homepage hasValue "https://launchpad.net/squid-deb-proxy"
+	depends hasValue "apt (>= 0.7.25.3ubuntu1), avahi-utils, python3"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "apt"
+	comparison hasValue ">="
+	version hasValue "0.7.25.3ubuntu1"
+
+relationInstance depends(P0__squid_deb_proxy_client,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "avahi-utils"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__squid_deb_proxy_client,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "python3"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__squid_deb_proxy_client,2,DepAtom__2)
+

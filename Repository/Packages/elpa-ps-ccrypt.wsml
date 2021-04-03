@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology elpa_ps_ccrypt
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__elpa_ps_ccrypt memberOf Package
+	package hasValue "elpa-ps-ccrypt"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/lisp"
+	installedSize hasValue "65"
+	maintainer hasValue "Original-Debian Security Tools <team+pkg-security@tracker.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.11-1"
+	replaces hasValue "ccrypt (<< 1.10-5)"
+	fileName hasValue "pool/universe/c/ccrypt/elpa-ps-ccrypt_1.11-1_all.deb"
+	size hasValue "13696"
+	md5sum hasValue "7e7a13836a6af70cee70007232fd23e4"
+	sha1 hasValue "0047a4e5f4c5162d10df0581bd9a2c032047e7b7"
+	sha256 hasValue "8d67c823c2dc69a1a3e1b49831daeb3ce623594f16969a8437bc77882bc7a5cf"
+	descriptionMd5 hasValue "7a7dd0e2cfbef0a4bc3d62620ff186f5"
+	homepage hasValue "http://ccrypt.sourceforge.net/"
+	depends hasValue "ccrypt (>= 1.10-5), emacsen-common"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "ccrypt"
+	comparison hasValue ">="
+	version hasValue "1.10-5"
+
+relationInstance depends(P0__elpa_ps_ccrypt,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "emacsen-common"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__elpa_ps_ccrypt,1,DepAtom__1)
+

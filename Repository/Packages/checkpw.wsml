@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology checkpw
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__checkpw memberOf Package
+	package hasValue "checkpw"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/mail"
+	installedSize hasValue "77"
+	maintainer hasValue "Original-Gerrit Pape <pape@smarden.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.02-1.1build1"
+	fileName hasValue "pool/universe/c/checkpw/checkpw_1.02-1.1build1_amd64.deb"
+	size hasValue "17256"
+	md5sum hasValue "e3a92ae6b3cd3e38617e8138b03e1cf8"
+	sha1 hasValue "13fc8f5fdc6169c89e7ea3990551a7649cf270b4"
+	sha256 hasValue "db9b492c3d7b5a6550237c8ed34dc81758023ab0223c9ed1526c6edfc39fd331"
+	description hasValue "verifica senha que é armazenada em ~/Maildir/.password"
+	descriptionMd5 hasValue "31447975786615161e84f9a118474060"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__checkpw,0,DepAtom__0)
+

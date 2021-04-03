@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology latrace
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__latrace memberOf Package
+	package hasValue "latrace"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "284"
+	maintainer hasValue "Original-Riku Voipio <riku.voipio@linaro.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.5.11-1"
+	fileName hasValue "pool/universe/l/latrace/latrace_0.5.11-1_amd64.deb"
+	size hasValue "89916"
+	md5sum hasValue "d4e2f8cf5f4176becfd303f9aaf58d76"
+	sha1 hasValue "f15944a91fb5faf43105abf784feb2a71a3c40de"
+	sha256 hasValue "0fb9069b154f828b080275157ab74b27e26344f20318ace2e128ce396c639a4a"
+	descriptionMd5 hasValue "8d608cbe9fabf2debe6b369a6ba98e84"
+	homepage hasValue "http://people.redhat.com/jolsa/latrace/index.shtml"
+	depends hasValue "libc6 (>= 2.11)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.11"
+
+relationInstance depends(P0__latrace,0,DepAtom__0)
+

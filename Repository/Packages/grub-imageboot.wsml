@@ -1,0 +1,74 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology grub_imageboot
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__grub_imageboot memberOf Package
+	package hasValue "grub-imageboot"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/admin"
+	installedSize hasValue "42"
+	maintainer hasValue "Original-Alexander Wirt <formorer@debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.6"
+	fileName hasValue "pool/universe/g/grub-imageboot/grub-imageboot_0.6_all.deb"
+	size hasValue "4424"
+	md5sum hasValue "bbdd510fad33fa6b017f0dee8f809668"
+	sha1 hasValue "2e02f313466460db4823fe31ad1e37a98a408a4c"
+	sha256 hasValue "1f79e8f749bf69d810055ab7bafcace0fb77b4ae99efa555b08c53cc6e0c93fd"
+	description hasValue "iso de boot, imagens de disquete e disco rígido com grub2 e syslinux memdisk"
+	descriptionMd5 hasValue "a4107cac8a31714bd0d52a3bfce48aa5"
+	depends hasValue "grub-pc | grub-efi-amd64 | grub-efi-ia32, syslinux-common (>= 4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "grub-pc"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__grub_imageboot,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "grub-efi-amd64"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__grub_imageboot,0,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "grub-efi-ia32"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__grub_imageboot,0,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "syslinux-common"
+	comparison hasValue ">="
+	version hasValue "4"
+
+relationInstance depends(P0__grub_imageboot,1,DepAtom__3)
+

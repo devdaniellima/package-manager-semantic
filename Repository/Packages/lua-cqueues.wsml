@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology lua_cqueues
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__lua_cqueues memberOf Package
+	package hasValue "lua-cqueues"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/interpreters"
+	installedSize hasValue "1093"
+	maintainer hasValue "Original-Ondřej Surý <ondrej@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "20190813-1"
+	provides hasValue "lua5.1-cqueues, lua5.2-cqueues, lua5.3-cqueues"
+	fileName hasValue "pool/universe/l/lua-cqueues/lua-cqueues_20190813-1_amd64.deb"
+	size hasValue "186748"
+	md5sum hasValue "ed246721735c81bea866d80cfa7fcf9b"
+	sha1 hasValue "87c3f3ae65a4b0dea4b2a0d695d4d33acc19253a"
+	sha256 hasValue "188988d473963b536058bd211b70c53db5c2bc862ee7e3ec3a76bc064c904e7b"
+	descriptionMd5 hasValue "40258b528b8a0bd5aef71a8dcf48f56a"
+	homepage hasValue "http://www.25thandclement.com/~william/projects/cqueues.html"
+	depends hasValue "libc6 (>= 2.17), libssl1.1 (>= 1.1.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.17"
+
+relationInstance depends(P0__lua_cqueues,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libssl1.1"
+	comparison hasValue ">="
+	version hasValue "1.1.0"
+
+relationInstance depends(P0__lua_cqueues,1,DepAtom__1)
+

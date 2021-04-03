@@ -1,0 +1,59 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology sgrep
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__sgrep memberOf Package
+	package hasValue "sgrep"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/text"
+	installedSize hasValue "207"
+	maintainer hasValue "Original-Uwe Steinmann <steinm@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.94a-4build1"
+	fileName hasValue "pool/universe/s/sgrep/sgrep_1.94a-4build1_amd64.deb"
+	size hasValue "88972"
+	md5sum hasValue "39c4e5c67474622dc2daa94b3bb339d6"
+	sha1 hasValue "479133e7ebfe6fc4be728511c1755c3eb851267c"
+	sha256 hasValue "5026fb4a0ac3e02521421d327ed67ce4d80c006948ea2ea42eb443d2aa1a4421"
+	descriptionMd5 hasValue "4695a84ec199bf6a31f383159933a02e"
+	depends hasValue "libc6 (>= 2.14), m4"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__sgrep,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "m4"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__sgrep,1,DepAtom__1)
+

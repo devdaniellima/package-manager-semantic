@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology linuxlogo
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__linuxlogo memberOf Package
+	package hasValue "linuxlogo"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/misc"
+	installedSize hasValue "257"
+	maintainer hasValue "Original-Dariusz Dwornikowski <darek@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "5.11-9"
+	fileName hasValue "pool/universe/l/linuxlogo/linuxlogo_5.11-9_amd64.deb"
+	size hasValue "57108"
+	md5sum hasValue "2f1203ca4a9a1cd18f4f54f1b812c87a"
+	sha1 hasValue "f8969e278ab0bcc592849ba1acc45f24d42a9bc9"
+	sha256 hasValue "2f5104b8dfe8047db1788a41847e711a3f3fb8fe92dba47862a0343d72a2cda0"
+	description hasValue "logotipo do sistema com cores ANSI"
+	descriptionMd5 hasValue "4ff236e1b90452d1559dc8591bbc187a"
+	homepage hasValue "http://www.deater.net/weave/vmwprod/linux_logo/"
+	depends hasValue "libc6 (>= 2.7), lsb-base"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__linuxlogo,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "lsb-base"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__linuxlogo,1,DepAtom__1)
+

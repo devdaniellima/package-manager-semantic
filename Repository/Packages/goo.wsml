@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology goo
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__goo memberOf Package
+	package hasValue "goo"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "7342"
+	maintainer hasValue "Original-Aaron M. Ucko <ucko@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.155+ds-1"
+	fileName hasValue "pool/universe/g/goo/goo_0.155+ds-1_amd64.deb"
+	size hasValue "1171008"
+	md5sum hasValue "5db9dc53a22215ff0b72a6a78d579ea3"
+	sha1 hasValue "a1a91d3266a28f1dd5bebb676b738014000c505b"
+	sha256 hasValue "228fec9ab61c3281f2cb5184be550cd1fb3dcf181d91b28aa4028ae181f7e1b1"
+	descriptionMd5 hasValue "e2eacda68c7872761c81cf4f8d6babf7"
+	homepage hasValue "https://people.csail.mit.edu/jrb/goo/"
+	depends hasValue "libc6 (>= 2.29), libgc1c2 (>= 1:7.2d), libgmp10"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__goo,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgc1c2"
+	comparison hasValue ">="
+	version hasValue "1:7.2d"
+
+relationInstance depends(P0__goo,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libgmp10"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__goo,2,DepAtom__2)
+

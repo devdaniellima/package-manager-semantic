@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python3_ngs
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python3_ngs memberOf Package
+	package hasValue "python3-ngs"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "136"
+	maintainer hasValue "Original-Debian Med Packaging Team <debian-med-packaging@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.10.2-1"
+	fileName hasValue "pool/universe/n/ngs-sdk/python3-ngs_2.10.2-1_amd64.deb"
+	size hasValue "15752"
+	md5sum hasValue "d21658c7cfa1b961964f9616cb6b33b7"
+	sha1 hasValue "19f6c06e21886678abacbd5e0d729ab9a047e9f9"
+	sha256 hasValue "3053ad0b11237f1e419fb19d0788627fd3af09ffb1e0aa6a6eaeeac85004fd59"
+	descriptionMd5 hasValue "339536e9adbe8549aa1efd268c2ee905"
+	homepage hasValue "https://github.com/ncbi/ngs"
+	depends hasValue "python3:any, libngs-sdk-dev (= 2.10.2-1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__python3_ngs,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libngs-sdk-dev"
+	comparison hasValue "="
+	version hasValue "2.10.2-1"
+
+relationInstance depends(P0__python3_ngs,1,DepAtom__1)
+

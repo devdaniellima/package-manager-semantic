@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libhbalinux2
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libhbalinux2 memberOf Package
+	package hasValue "libhbalinux2"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/libs"
+	installedSize hasValue "55"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.16-2"
+	fileName hasValue "pool/universe/libh/libhbalinux/libhbalinux2_1.0.16-2_amd64.deb"
+	size hasValue "18336"
+	md5sum hasValue "cc29befb23e80a4d645a2bc604b30c52"
+	sha1 hasValue "8dedacbce6fd920394666ad5dd4c42ad4ffd9c63"
+	sha256 hasValue "6f3f69963d6e80f8fa52e19658fb9ca413fd79acfb75b691fcc6f867c09600b4"
+	descriptionMd5 hasValue "fb7898b2cc9086a7edf00cf287bffcef"
+	homepage hasValue "http://www.open-fcoe.org"
+	depends hasValue "libc6 (>= 2.4), libpciaccess0"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libhbalinux2,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libpciaccess0"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libhbalinux2,1,DepAtom__1)
+

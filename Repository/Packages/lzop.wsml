@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology lzop
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__lzop memberOf Package
+	package hasValue "lzop"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "162"
+	maintainer hasValue "Original-Stephen Kitt <skitt@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.04-1"
+	fileName hasValue "pool/universe/l/lzop/lzop_1.04-1_amd64.deb"
+	size hasValue "82820"
+	md5sum hasValue "822c1ffed07a65ccf13419c9f368fc2e"
+	sha1 hasValue "bdb2227959623a0ef9a09e810d2ebc0222f205bc"
+	sha256 hasValue "e7521c4507401f66e38af910c512d1f1b56403c6f1b5955bfd3cdd9e2e9dff48"
+	description hasValue "programa de compressão rápida"
+	descriptionMd5 hasValue "9b7b7921b2459079911e1b404ae54f4d"
+	homepage hasValue "https://www.lzop.org/"
+	depends hasValue "libc6 (>= 2.14), liblzo2-2"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__lzop,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "liblzo2-2"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__lzop,1,DepAtom__1)
+

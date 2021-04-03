@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libspandsp2
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libspandsp2 memberOf Package
+	package hasValue "libspandsp2"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "831"
+	maintainer hasValue "Original-Debian VoIP Team <pkg-voip-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.0.6+dfsg-2"
+	fileName hasValue "pool/universe/s/spandsp/libspandsp2_0.0.6+dfsg-2_amd64.deb"
+	size hasValue "272172"
+	md5sum hasValue "01bf5ff08b5506ee6f97312093879651"
+	sha1 hasValue "a7c696eb5eefc0744a97d94cf09f7219edec2df3"
+	sha256 hasValue "8d4765d10766d9e69bd3459bbe634848b34e51247e8371b9476020d7b9e24dcf"
+	description hasValue "Telephony signal processing library"
+	descriptionMd5 hasValue "acf1c7e090e21e8270204a3eecfaa217"
+	homepage hasValue "https://www.soft-switch.org/installing-spandsp.html"
+	depends hasValue "libc6 (>= 2.15), libtiff5 (>= 4.0.3)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__libspandsp2,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libtiff5"
+	comparison hasValue ">="
+	version hasValue "4.0.3"
+
+relationInstance depends(P0__libspandsp2,1,DepAtom__1)
+

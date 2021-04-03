@@ -1,0 +1,74 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology opencc
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__opencc memberOf Package
+	package hasValue "opencc"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "392"
+	maintainer hasValue "Original-Debian Input Method Team <debian-input-method@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.5+git20190530-1build1"
+	fileName hasValue "pool/universe/o/opencc/opencc_1.0.5+git20190530-1build1_amd64.deb"
+	size hasValue "85440"
+	md5sum hasValue "41fc773cb9673186ca87bf53e1f9e895"
+	sha1 hasValue "5825343507da26b6825a581fd1d2289b896c78ab"
+	sha256 hasValue "e85a586fe3cc01cb58960e8f9025f20ab0d51b43d90737e0f3cc186a3d3dea04"
+	descriptionMd5 hasValue "e1eea6dcca0142c8716dad48b07bb04c"
+	homepage hasValue "https://github.com/BYVoid/OpenCC"
+	depends hasValue "libopencc2 (= 1.0.5+git20190530-1build1), libc6 (>= 2.14), libgcc-s1 (>= 3.0), libstdc++6 (>= 5.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libopencc2"
+	comparison hasValue "="
+	version hasValue "1.0.5+git20190530-1build1"
+
+relationInstance depends(P0__opencc,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__opencc,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libgcc-s1"
+	comparison hasValue ">="
+	version hasValue "3.0"
+
+relationInstance depends(P0__opencc,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "5.2"
+
+relationInstance depends(P0__opencc,3,DepAtom__3)
+

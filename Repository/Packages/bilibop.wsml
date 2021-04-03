@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology bilibop
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__bilibop memberOf Package
+	package hasValue "bilibop"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/metapackages"
+	installedSize hasValue "23"
+	maintainer hasValue "Original-Yann Amar <quidame@poivron.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.6.0"
+	fileName hasValue "pool/universe/b/bilibop/bilibop_0.6.0_amd64.deb"
+	size hasValue "1872"
+	md5sum hasValue "1fb71ea746a63345dd7cb813f47df350"
+	sha1 hasValue "1a5d8aa7f22609f65799947920bf776982db4f13"
+	sha256 hasValue "028876bc3f3746e24de906bde36647448497555a014a73b2b724a842b78de86a"
+	descriptionMd5 hasValue "4606c6d97eba0670aa6464f66ba4ca39"
+	homepage hasValue "https://un.poivron.org/~quidame/wiki/bilibop"
+	depends hasValue "bilibop-lockfs (= 0.6.0), bilibop-rules (= 0.6.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "bilibop-lockfs"
+	comparison hasValue "="
+	version hasValue "0.6.0"
+
+relationInstance depends(P0__bilibop,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "bilibop-rules"
+	comparison hasValue "="
+	version hasValue "0.6.0"
+
+relationInstance depends(P0__bilibop,1,DepAtom__1)
+

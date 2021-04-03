@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ruby_http_parser
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ruby_http_parser memberOf Package
+	package hasValue "ruby-http-parser"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/ruby"
+	installedSize hasValue "92"
+	maintainer hasValue "Original-Debian Ruby Extras Maintainers <pkg-ruby-extras-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.2.1-2"
+	fileName hasValue "pool/universe/r/ruby-http-parser/ruby-http-parser_1.2.1-2_amd64.deb"
+	size hasValue "19816"
+	md5sum hasValue "e334a0e8da6e96a223a8dd9683087a3a"
+	sha1 hasValue "a2db90c7a0c4eb45a2fb64a72ddd110f50a2461e"
+	sha256 hasValue "dfc79c62337461ca763243caa40c804455f32beeece24dfec615e488de291e9a"
+	descriptionMd5 hasValue "812f4c4f7ebca23e031fc1959a3689e1"
+	homepage hasValue "https://github.com/cotag/http-parser"
+	depends hasValue "ruby-ffi-compiler (>= 1.0), ruby-ffi-compiler (<< 2.0), libc6 (>= 2.2.5)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "ruby-ffi-compiler"
+	comparison hasValue ">="
+	version hasValue "1.0"
+
+relationInstance depends(P0__ruby_http_parser,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "ruby-ffi-compiler"
+	comparison hasValue "<<"
+	version hasValue "2.0"
+
+relationInstance depends(P0__ruby_http_parser,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.2.5"
+
+relationInstance depends(P0__ruby_http_parser,2,DepAtom__2)
+

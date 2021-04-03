@@ -1,0 +1,59 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology pwauth
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__pwauth memberOf Package
+	package hasValue "pwauth"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "35"
+	maintainer hasValue "Original-Hai Zaar <haizaar@haizaar.com>"
+	architecture hasValue "amd64"
+	version hasValue "2.3.11-0.2"
+	fileName hasValue "pool/universe/p/pwauth/pwauth_2.3.11-0.2_amd64.deb"
+	size hasValue "8822"
+	md5sum hasValue "e701a79ab1f69b9903d79569073a652f"
+	sha1 hasValue "768221d70ffd0907f8045dce9f6b3cef4c1c520b"
+	sha256 hasValue "4667958c57ca5eb7404ce97a8522c8f840605aea11b18b1c4d536333d79588e6"
+	descriptionMd5 hasValue "b35b5dddb2c3987ab982caee05fbe48c"
+	depends hasValue "libc6 (>= 2.4), libpam0g (>= 0.99.7.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__pwauth,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libpam0g"
+	comparison hasValue ">="
+	version hasValue "0.99.7.1"
+
+relationInstance depends(P0__pwauth,1,DepAtom__1)
+

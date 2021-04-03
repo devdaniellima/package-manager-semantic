@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology anacrolix_dms
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__anacrolix_dms memberOf Package
+	package hasValue "anacrolix-dms"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "10475"
+	maintainer hasValue "Original-Debian Go Packaging Team <team+pkg-go@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.1.0-1"
+	fileName hasValue "pool/universe/g/golang-github-anacrolix-dms/anacrolix-dms_1.1.0-1_amd64.deb"
+	size hasValue "3151560"
+	md5sum hasValue "a3929fcf80788f10a4b6143b24107fb1"
+	sha1 hasValue "7e856eac5bc4ecc045b59eadf2a666fed0d983f8"
+	sha256 hasValue "51f2cf955b65fda70439d84b33222f4e9509be8677ded0bedfdffca7d71273e8"
+	descriptionMd5 hasValue "628caa8af45ef357e25b26252e049608"
+	homepage hasValue "https://github.com/anacrolix/dms"
+	depends hasValue "libc6 (>= 2.4), golang-golang-x-net-dev"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__anacrolix_dms,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "golang-golang-x-net-dev"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__anacrolix_dms,1,DepAtom__1)
+

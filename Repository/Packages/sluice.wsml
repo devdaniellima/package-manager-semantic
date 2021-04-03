@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology sluice
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__sluice memberOf Package
+	package hasValue "sluice"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "58"
+	maintainer hasValue "Colin King <colin.king@canonical.com>"
+	architecture hasValue "amd64"
+	version hasValue "0.02.11-1"
+	fileName hasValue "pool/universe/s/sluice/sluice_0.02.11-1_amd64.deb"
+	size hasValue "18840"
+	md5sum hasValue "31fb2b154c83c0caa1c76b3b70fdcfa6"
+	sha1 hasValue "58dc2e077f97028ea1f625a6e67c95b6e5b27b9b"
+	sha256 hasValue "9bda9bb463592573fc166e6848d5ae289ff746773c5a6d7700cbf79de5878d73"
+	descriptionMd5 hasValue "9b2e355a5fc42f9e9aa69dd43b00216b"
+	homepage hasValue "http://kernel.ubuntu.com/~cking/sluice"
+	depends hasValue "libc6 (>= 2.7)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__sluice,0,DepAtom__0)
+

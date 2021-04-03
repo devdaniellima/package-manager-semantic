@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology science_typesetting
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__science_typesetting memberOf Package
+	package hasValue "science-typesetting"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/misc"
+	installedSize hasValue "40"
+	maintainer hasValue "Original-Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.12ubuntu1"
+	fileName hasValue "pool/universe/d/debian-science/science-typesetting_1.12ubuntu1_all.deb"
+	size hasValue "4192"
+	md5sum hasValue "800f8675875fe8361cba681cf8151adb"
+	sha1 hasValue "2e0404549f98a32deaa0ccb7a4a580fab5352236"
+	sha256 hasValue "f1a7d1c49b75e802fea98bc11950399e3b8134f9de05eb12b4f480d65fa50a95"
+	description hasValue "pacotes de digitação do Debian Science"
+	descriptionMd5 hasValue "6d2d4814e042c2ca9ea683a02d565bff"
+	homepage hasValue "https://wiki.debian.org/DebianScience/"
+	depends hasValue "science-config (= 1.12ubuntu1), science-tasks (= 1.12ubuntu1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "science-config"
+	comparison hasValue "="
+	version hasValue "1.12ubuntu1"
+
+relationInstance depends(P0__science_typesetting,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "science-tasks"
+	comparison hasValue "="
+	version hasValue "1.12ubuntu1"
+
+relationInstance depends(P0__science_typesetting,1,DepAtom__1)
+

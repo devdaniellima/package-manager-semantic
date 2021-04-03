@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology php_net_sieve
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__php_net_sieve memberOf Package
+	package hasValue "php-net-sieve"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/web"
+	installedSize hasValue "83"
+	maintainer hasValue "Original-Debian PHP PEAR Maintainers <pkg-php-pear@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.4.1-1"
+	fileName hasValue "pool/universe/p/php-net-sieve/php-net-sieve_1.4.1-1_all.deb"
+	size hasValue "18400"
+	md5sum hasValue "3cb10b8b78b6e0158a49828355728a31"
+	sha1 hasValue "893a93e96a87dc8af5eabeed5c3b6aef5ea8c4d8"
+	sha256 hasValue "c4f6e5aae65bda906b5f48537614bda56ef4b9c2e1853ba4931823fa8f3d3018"
+	descriptionMd5 hasValue "b32816c7a6d5e3b5c342cfc7e75a4102"
+	homepage hasValue "http://pear.php.net/package/Net_Sieve"
+	depends hasValue "php-common, php-net-socket (>= 1.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "php-common"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__php_net_sieve,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "php-net-socket"
+	comparison hasValue ">="
+	version hasValue "1.0"
+
+relationInstance depends(P0__php_net_sieve,1,DepAtom__1)
+

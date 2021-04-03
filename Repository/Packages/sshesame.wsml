@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology sshesame
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__sshesame memberOf Package
+	package hasValue "sshesame"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "3873"
+	maintainer hasValue "Original-Debian Go Packaging Team <team+pkg-go@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.0~git20161116.b74f93f-2"
+	fileName hasValue "pool/universe/s/sshesame/sshesame_0.0~git20161116.b74f93f-2_amd64.deb"
+	size hasValue "1244372"
+	md5sum hasValue "0156117becd0fb8af66fa8c1fe09839d"
+	sha1 hasValue "57032cc107bacb48aacfffabeed4f5833eaa9981"
+	sha256 hasValue "42a6f878b2ae12749fce6cdd0dd0a2804be2269c512ae56ba3bc514808139a5c"
+	descriptionMd5 hasValue "9556255a8efd844d1e40d324c1fdab9c"
+	homepage hasValue "https://github.com/jaksi/sshesame"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__sshesame,0,DepAtom__0)
+

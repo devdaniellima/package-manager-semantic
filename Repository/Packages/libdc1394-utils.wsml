@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libdc1394_utils
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libdc1394_utils memberOf Package
+	package hasValue "libdc1394-utils"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/libs"
+	installedSize hasValue "33"
+	maintainer hasValue "Original-Guus Sliepen <guus@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.2.6-1"
+	replaces hasValue "libdc1394-examples"
+	conflicts hasValue "libdc1394-examples"
+	fileName hasValue "pool/universe/libd/libdc1394/libdc1394-utils_2.2.6-1_amd64.deb"
+	size hasValue "6544"
+	md5sum hasValue "0100c89cc85610004ca79ad8aae1e916"
+	sha1 hasValue "ba365cacd67300668148d1ddc64e021d3ea460d7"
+	sha256 hasValue "4493c0ab95c53d188dac28c1163f659ba8b257e1c62cc4655273f2d1d099c86b"
+	descriptionMd5 hasValue "8ec9f8cd847132f038c61c56276f9630"
+	homepage hasValue "https://sourceforge.net/projects/libdc1394/"
+	depends hasValue "libc6 (>= 2.4), libdc1394-25 (>= 2.2.6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libdc1394_utils,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libdc1394-25"
+	comparison hasValue ">="
+	version hasValue "2.2.6"
+
+relationInstance depends(P0__libdc1394_utils,1,DepAtom__1)
+

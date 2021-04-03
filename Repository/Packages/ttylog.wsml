@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ttylog
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ttylog memberOf Package
+	package hasValue "ttylog"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/utils"
+	installedSize hasValue "35"
+	maintainer hasValue "Original-Robert James Clay <jame@rocasa.us>"
+	architecture hasValue "amd64"
+	version hasValue "0.31-1"
+	fileName hasValue "pool/universe/t/ttylog/ttylog_0.31-1_amd64.deb"
+	size hasValue "12396"
+	md5sum hasValue "37c8a6c527f5a6fa56094ddc753e3954"
+	sha1 hasValue "63f49c198503072f30852f7bfc284a8fe1cac262"
+	sha256 hasValue "a3fd327168166f9efe526b09f89a852c48acd94bd1e9bd01baa3888aae639575"
+	descriptionMd5 hasValue "336e1c6536c98d0cc17391af03765a56"
+	homepage hasValue "http://ttylog.sourceforge.net"
+	depends hasValue "libc6 (>= 2.15)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__ttylog,0,DepAtom__0)
+

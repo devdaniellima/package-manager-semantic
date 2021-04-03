@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology kerneltop
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__kerneltop memberOf Package
+	package hasValue "kerneltop"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "34"
+	maintainer hasValue "Original-Dariusz Dwornikowski <dariusz.dwornikowski@cs.put.poznan.pl>"
+	architecture hasValue "amd64"
+	version hasValue "0.91-2build1"
+	fileName hasValue "pool/universe/k/kerneltop/kerneltop_0.91-2build1_amd64.deb"
+	size hasValue "11756"
+	md5sum hasValue "b492d348f59be31d98538272d0ce44c6"
+	sha1 hasValue "fa683eec6a4fe59ba36e2f5ec4b678fe5a13c81e"
+	sha256 hasValue "19f5fb6a8260cc294242316c808ebafe47c3dde7ee577af581c336ee8aa179f8"
+	descriptionMd5 hasValue "0fe4a108b4159d3ec18907ae40b72cb7"
+	homepage hasValue "http://www.infradead.org/~rdunlap/src/"
+	depends hasValue "libc6 (>= 2.7)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__kerneltop,0,DepAtom__0)
+

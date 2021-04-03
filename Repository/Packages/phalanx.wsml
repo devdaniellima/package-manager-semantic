@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology phalanx
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__phalanx memberOf Package
+	package hasValue "phalanx"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/games"
+	installedSize hasValue "476"
+	maintainer hasValue "Original-Jose G. López <josgalo@gmail.com>"
+	architecture hasValue "amd64"
+	version hasValue "22+d051004-14"
+	fileName hasValue "pool/universe/p/phalanx/phalanx_22+d051004-14_amd64.deb"
+	size hasValue "281092"
+	md5sum hasValue "e0bcb7c66aa844c85da35a884969eca6"
+	sha1 hasValue "9e65cba2f93e23621e9f0c25c2f9db1335113898"
+	sha256 hasValue "56f9940431c22469ff537d08a12694a898d764450ae4306f15b3183f3d171bdc"
+	descriptionMd5 hasValue "909ed67cb7e8de223d222acf2e98619e"
+	homepage hasValue "https://sourceforge.net/projects/phalanx"
+	depends hasValue "libc6 (>= 2.15), debconf (>= 0.5) | debconf-2.0"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__phalanx,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "debconf"
+	comparison hasValue ">="
+	version hasValue "0.5"
+
+relationInstance depends(P0__phalanx,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "debconf-2.0"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__phalanx,1,DepAtom__2)
+

@@ -1,0 +1,75 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology irussian
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__irussian memberOf Package
+	package hasValue "irussian"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/text"
+	installedSize hasValue "614"
+	maintainer hasValue "Original-Mikhail Gusarov <dottedmag@debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.99g5-23"
+	provides hasValue "ispell-dictionary"
+	fileName hasValue "pool/universe/r/rus-ispell/irussian_0.99g5-23_all.deb"
+	size hasValue "538272"
+	md5sum hasValue "ae6165e384d12ba6b112dd827b994b1c"
+	sha1 hasValue "577dd6ee02a4a789d369b3629097b08cfcf65cc2"
+	sha256 hasValue "12fa09c03ce61040de00ac5a8da944c5e0f924d0e0616dc0b3c6fd4987af1326"
+	description hasValue "dicionário russo para o Ispell"
+	descriptionMd5 hasValue "6a3cbcbf9d5d1bc54115f15fa74d0b26"
+	depends hasValue "debconf (>= 0.5) | debconf-2.0, dictionaries-common (>= 1.23~), ispell"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "debconf"
+	comparison hasValue ">="
+	version hasValue "0.5"
+
+relationInstance depends(P0__irussian,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "debconf-2.0"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__irussian,0,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "dictionaries-common"
+	comparison hasValue ">="
+	version hasValue "1.23~"
+
+relationInstance depends(P0__irussian,1,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "ispell"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__irussian,2,DepAtom__3)
+

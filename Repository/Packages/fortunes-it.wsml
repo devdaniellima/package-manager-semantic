@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology fortunes_it
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__fortunes_it memberOf Package
+	package hasValue "fortunes-it"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/games"
+	installedSize hasValue "1670"
+	maintainer hasValue "Original-Emanuele Rocca <ema@debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.99-4.1"
+	provides hasValue "fortune-cookie-db"
+	fileName hasValue "pool/universe/f/fortunes-it/fortunes-it_1.99-4.1_all.deb"
+	size hasValue "522052"
+	md5sum hasValue "c43a7c4b9e45eb610f4d40f1fb5f789c"
+	sha1 hasValue "20bb948aaffc972c28bcf79ed2916288d7c81b2d"
+	sha256 hasValue "da6ec0bf6e90aac932df883468da042feb99fd3532ef43b2a383b0e83081bcce"
+	description hasValue "arquivos de dados contendo os biscoitos da sorte (fortune) em italiano"
+	descriptionMd5 hasValue "b1a47f72ebb7f5dc6e865d1b591ba9e2"
+	depends hasValue "fortune-mod (>= 9708-12)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "fortune-mod"
+	comparison hasValue ">="
+	version hasValue "9708-12"
+
+relationInstance depends(P0__fortunes_it,0,DepAtom__0)
+

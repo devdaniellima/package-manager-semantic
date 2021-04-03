@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology aha
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__aha memberOf Package
+	package hasValue "aha"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/utils"
+	installedSize hasValue "47"
+	maintainer hasValue "Original-Axel Beckert <abe@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.5-1"
+	fileName hasValue "pool/universe/a/aha/aha_0.5-1_amd64.deb"
+	size hasValue "13200"
+	md5sum hasValue "dbdd6328828c6216e4be29a94229594d"
+	sha1 hasValue "24d299d3296f8d19adca002645e71c0c22956bee"
+	sha256 hasValue "fcb107b4766ff61152a688e87f0bd5db3479cb26c54d3d202bcaa7f24a92c404"
+	descriptionMd5 hasValue "0f17d309f135dcc8d21c8650ac0fb8c6"
+	homepage hasValue "https://github.com/theZiz/aha"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__aha,0,DepAtom__0)
+

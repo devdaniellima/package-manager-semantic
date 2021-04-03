@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology dpkg_repack
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__dpkg_repack memberOf Package
+	package hasValue "dpkg-repack"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "admin"
+	installedSize hasValue "39"
+	maintainer hasValue "Original-Dpkg Developers <debian-dpkg@lists.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.46"
+	fileName hasValue "pool/main/d/dpkg-repack/dpkg-repack_1.46_all.deb"
+	size hasValue "13432"
+	md5sum hasValue "bea3a19df84aba5114dbac69c8562b6a"
+	sha1 hasValue "342620f19456e41d98a04e3cf6c1b96c0ba92b86"
+	sha256 hasValue "f5995de79f505656d444f525859e69f22804aef01a2e5184f931452f255215bf"
+	description hasValue "Debian package archiving tool"
+	descriptionMd5 hasValue "9ad024e47d8adae3ff4150677e33d20e"
+	homepage hasValue "https://wiki.debian.org/Teams/Dpkg"
+	depends hasValue "perl:any, libdpkg-perl"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "perl:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__dpkg_repack,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libdpkg-perl"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__dpkg_repack,1,DepAtom__1)
+

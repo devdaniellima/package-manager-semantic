@@ -1,0 +1,66 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology sreview_master
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__sreview_master memberOf Package
+	package hasValue "sreview-master"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/video"
+	installedSize hasValue "88"
+	maintainer hasValue "Original-Wouter Verhelst <wouter@debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.5.0-1"
+	fileName hasValue "pool/universe/s/sreview/sreview-master_0.5.0-1_all.deb"
+	size hasValue "23704"
+	md5sum hasValue "4521e948c554c9852d0b56f00978b0b9"
+	sha1 hasValue "d4597e181014ba7a2d38159424156d1b60911dd6"
+	sha256 hasValue "c789548fc7efac48150d873a3a5f8bff8433f96ea766710b8d0b045ae9547f0a"
+	descriptionMd5 hasValue "54c4c2418e790861235374cc77dda1e5"
+	depends hasValue "sreview-common, debconf (>= 0.5) | debconf-2.0"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "sreview-common"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__sreview_master,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "debconf"
+	comparison hasValue ">="
+	version hasValue "0.5"
+
+relationInstance depends(P0__sreview_master,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "debconf-2.0"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__sreview_master,1,DepAtom__2)
+

@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libaio1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libaio1 memberOf Package
+	package hasValue "libaio1"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libs"
+	installedSize hasValue "35"
+	maintainer hasValue "Original-Guillem Jover <guillem@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.3.112-5"
+	fileName hasValue "pool/main/liba/libaio/libaio1_0.3.112-5_amd64.deb"
+	size hasValue "7184"
+	md5sum hasValue "2400cb426e1a40602e55579bea033744"
+	sha1 hasValue "e67054349dd1469c3e8b0b886e94b56d7950a303"
+	sha256 hasValue "0e50c3258f03d6eee671d7106120b450a6f3a546fe343d57bbfe33257d4e3b48"
+	description hasValue "Kernel linux biblioteca de acesso AIO - biblioteca compartilhada"
+	descriptionMd5 hasValue "32a717b5777305187d782317bb4d97ed"
+	homepage hasValue "https://pagure.io/libaio"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libaio1,0,DepAtom__0)
+

@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology idlestat
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__idlestat memberOf Package
+	package hasValue "idlestat"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "92"
+	maintainer hasValue "Colin King <colin.king@canonical.com>"
+	architecture hasValue "amd64"
+	version hasValue "0.8-3"
+	fileName hasValue "pool/universe/i/idlestat/idlestat_0.8-3_amd64.deb"
+	size hasValue "33632"
+	md5sum hasValue "d7f9c0b93ce3c9858c9fe9f439095d71"
+	sha1 hasValue "b956013175affff78d65a7ddec68a814b5d03df9"
+	sha256 hasValue "f3c9e2c2ec7e112daf4ea2c05723c81a79d12c9cf7879c8a4a3365bb0db7df44"
+	descriptionMd5 hasValue "77aaa7f95d78cfd1d7c169ddb62108ad"
+	homepage hasValue "https://wiki.linaro.org/WorkingGroups/PowerManagement/Resources/Tools/Idlestat"
+	depends hasValue "libc6 (>= 2.11)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.11"
+
+relationInstance depends(P0__idlestat,0,DepAtom__0)
+

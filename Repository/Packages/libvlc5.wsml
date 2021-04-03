@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libvlc5
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libvlc5 memberOf Package
+	package hasValue "libvlc5"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "343"
+	maintainer hasValue "Original-Debian Multimedia Maintainers <debian-multimedia@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.0.9.2-1"
+	fileName hasValue "pool/universe/v/vlc/libvlc5_3.0.9.2-1_amd64.deb"
+	size hasValue "65804"
+	md5sum hasValue "2e9a78b741ba8ce15672e6529d8f111e"
+	sha1 hasValue "0ec09477619e4ae6ee78294b2af50e4723f8c296"
+	sha256 hasValue "a561a6771e86416064cfc86a01232f3d7391dca9c3072b8ce8cabb04f23e7e68"
+	description hasValue "biblioteca de streamer e reprodutor de multimídia"
+	descriptionMd5 hasValue "aa50eb20ebe126a4c5f468a6be6f8f8d"
+	homepage hasValue "https://www.videolan.org/vlc/"
+	depends hasValue "libc6 (>= 2.14), libvlccore9 (>= 3.0.9.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libvlc5,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libvlccore9"
+	comparison hasValue ">="
+	version hasValue "3.0.9.2"
+
+relationInstance depends(P0__libvlc5,1,DepAtom__1)
+

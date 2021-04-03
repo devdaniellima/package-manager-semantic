@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology prometheus_node_exporter
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__prometheus_node_exporter memberOf Package
+	package hasValue "prometheus-node-exporter"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/net"
+	installedSize hasValue "11991"
+	maintainer hasValue "Original-Debian Go Packaging Team <pkg-go-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.18.1+ds-2"
+	fileName hasValue "pool/universe/p/prometheus-node-exporter/prometheus-node-exporter_0.18.1+ds-2_amd64.deb"
+	size hasValue "3550916"
+	md5sum hasValue "d98b70d66c8908f0418dc47b6dfcc7b9"
+	sha1 hasValue "6871baa64e5177f18a010ac07773212a87abb8f6"
+	sha256 hasValue "f19dc3d13a74b5ddd0c0911bb218dffcb77cce036193e44329ab46e52240a9ac"
+	descriptionMd5 hasValue "9366958e5739169b3c3e951f14e3802f"
+	homepage hasValue "https://github.com/prometheus/node_exporter"
+	depends hasValue "daemon | systemd-sysv, libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "daemon"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__prometheus_node_exporter,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "systemd-sysv"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__prometheus_node_exporter,0,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__prometheus_node_exporter,1,DepAtom__2)
+

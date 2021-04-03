@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python_jinja2
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python_jinja2 memberOf Package
+	package hasValue "python-jinja2"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "476"
+	maintainer hasValue "Original-Piotr Ożarowski <piotr@debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.10.1-2"
+	fileName hasValue "pool/universe/j/jinja2/python-jinja2_2.10.1-2_all.deb"
+	size hasValue "94928"
+	md5sum hasValue "49584f6f51b42a5c2d5e61f0f8c481d6"
+	sha1 hasValue "bb335a7d259a5aca60aca747a1be7eab3e7b0e1d"
+	sha256 hasValue "ba154a4e6bf5fcb3d4a8b5626710022b80a6348b1e57ca95c0642dd2dd42b8ba"
+	descriptionMd5 hasValue "946c5e58f8736a9521b16a6d4c1157e7"
+	homepage hasValue "http://jinja.pocoo.org/"
+	depends hasValue "python-markupsafe, python2:any (<< 2.8), python2:any (>= 2.7~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python-markupsafe"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__python_jinja2,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue "<<"
+	version hasValue "2.8"
+
+relationInstance depends(P0__python_jinja2,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue ">="
+	version hasValue "2.7~"
+
+relationInstance depends(P0__python_jinja2,2,DepAtom__2)
+

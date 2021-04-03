@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology asterisk_ooh323
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__asterisk_ooh323 memberOf Package
+	package hasValue "asterisk-ooh323"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/comm"
+	installedSize hasValue "1455"
+	maintainer hasValue "Original-Debian VoIP Team <pkg-voip-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:16.2.1~dfsg-2ubuntu1"
+	fileName hasValue "pool/universe/a/asterisk/asterisk-ooh323_16.2.1~dfsg-2ubuntu1_amd64.deb"
+	size hasValue "347592"
+	md5sum hasValue "e8c52d488cf077cdf60a5a90978a2301"
+	sha1 hasValue "dd7af16ca7dd6d64b519d30821e5415f13bb70ea"
+	sha256 hasValue "c46715c1c717534f899328dfd7b145b630093f5ef78ec9654a1d8ef4e571346b"
+	description hasValue "H.323 protocol support for the Asterisk PBX - ooH323c"
+	descriptionMd5 hasValue "7df360c08fdc2513fd61374e3b817791"
+	homepage hasValue "http://www.asterisk.org/"
+	depends hasValue "asterisk (= 1:16.2.1~dfsg-2ubuntu1), libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "asterisk"
+	comparison hasValue "="
+	version hasValue "1:16.2.1~dfsg-2ubuntu1"
+
+relationInstance depends(P0__asterisk_ooh323,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__asterisk_ooh323,1,DepAtom__1)
+

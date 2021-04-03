@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology epub_utils
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__epub_utils memberOf Package
+	package hasValue "epub-utils"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/graphics"
+	installedSize hasValue "53"
+	maintainer hasValue "Original-Pino Toscano <pino@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.2.2-4ubuntu2"
+	fileName hasValue "pool/universe/e/ebook-tools/epub-utils_0.2.2-4ubuntu2_amd64.deb"
+	size hasValue "13528"
+	md5sum hasValue "fc0b891ac5fa2f4a3cb7b04034eb23f4"
+	sha1 hasValue "6c4a8807ede341d579a8f1dcb14728d96454e8d8"
+	sha256 hasValue "38077deea0fb940fc1fcfd522351ceb8d57aff632f4c4f106c966697a883f53a"
+	description hasValue "ferramenta para trabalhar com o formato de arquivo EPUB"
+	descriptionMd5 hasValue "cef04f588118936f1c714fcef4664644"
+	homepage hasValue "http://sourceforge.net/projects/ebook-tools"
+	depends hasValue "libc6 (>= 2.3.4), libepub0 (= 0.2.2-4ubuntu2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.3.4"
+
+relationInstance depends(P0__epub_utils,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libepub0"
+	comparison hasValue "="
+	version hasValue "0.2.2-4ubuntu2"
+
+relationInstance depends(P0__epub_utils,1,DepAtom__1)
+

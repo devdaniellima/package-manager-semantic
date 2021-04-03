@@ -1,0 +1,75 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology miscfiles
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__miscfiles memberOf Package
+	package hasValue "miscfiles"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "text"
+	installedSize hasValue "3131"
+	maintainer hasValue "Original-Robert Luberda <robert@debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.5+dfsg-3"
+	provides hasValue "wordlist"
+	fileName hasValue "pool/main/m/miscfiles/miscfiles_1.5+dfsg-3_all.deb"
+	size hasValue "1292992"
+	md5sum hasValue "67574e3d6f7e80057188e1bffca0b4e6"
+	sha1 hasValue "fdbf0ea2d05e364c8e44f409101d8a03aa7843ad"
+	sha256 hasValue "1b36df0f8b8558892249723054a94aea6b3cd7ebeb1783b9acaba3c3ffe075d5"
+	descriptionMd5 hasValue "c14499491490d96255ece227b5e4fb33"
+	homepage hasValue "https://www.gnu.org/software/miscfiles/"
+	depends hasValue "debconf (>= 0.5) | debconf-2.0, perl:any, dictionaries-common (>= 1.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "debconf"
+	comparison hasValue ">="
+	version hasValue "0.5"
+
+relationInstance depends(P0__miscfiles,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "debconf-2.0"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__miscfiles,0,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "perl:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__miscfiles,1,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "dictionaries-common"
+	comparison hasValue ">="
+	version hasValue "1.0"
+
+relationInstance depends(P0__miscfiles,2,DepAtom__3)
+

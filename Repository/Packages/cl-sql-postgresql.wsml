@@ -1,0 +1,69 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology cl_sql_postgresql
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__cl_sql_postgresql memberOf Package
+	package hasValue "cl-sql-postgresql"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/devel"
+	installedSize hasValue "56"
+	maintainer hasValue "Original-Kevin M. Rosenberg <kmr@debian.org>"
+	architecture hasValue "all"
+	version hasValue "6.7.0-1.1build2"
+	provides hasValue "cl-sql-backend"
+	fileName hasValue "pool/universe/c/cl-sql/cl-sql-postgresql_6.7.0-1.1build2_all.deb"
+	size hasValue "8884"
+	md5sum hasValue "3ea1023f7627bcfa65c028465e075463"
+	sha1 hasValue "44c64ae5388541ac494f4fd0e58766adaf2851c2"
+	sha256 hasValue "4b5e30cdce8a019a3d8271898836f7d66c24d47faba041aeabd4143415436663"
+	description hasValue "mecanismo de banco de dados CLSQL, PostgreSQL via biblioteca"
+	descriptionMd5 hasValue "79c554ec7f1bb4e04b6f728ca8577135"
+	homepage hasValue "http://clsql.kpe.io/"
+	depends hasValue "cl-sql (= 6.7.0-1.1build2), libpq-dev, cl-sql-uffi (>= 6.7.0-1.1build2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "cl-sql"
+	comparison hasValue "="
+	version hasValue "6.7.0-1.1build2"
+
+relationInstance depends(P0__cl_sql_postgresql,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libpq-dev"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__cl_sql_postgresql,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "cl-sql-uffi"
+	comparison hasValue ">="
+	version hasValue "6.7.0-1.1build2"
+
+relationInstance depends(P0__cl_sql_postgresql,2,DepAtom__2)
+

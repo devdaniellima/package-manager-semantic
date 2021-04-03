@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libbpp_raa_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libbpp_raa_dev memberOf Package
+	package hasValue "libbpp-raa-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "282"
+	maintainer hasValue "Original-Debian Med Packaging Team <debian-med-packaging@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.4.1-3build1"
+	fileName hasValue "pool/universe/libb/libbpp-raa/libbpp-raa-dev_2.4.1-3build1_amd64.deb"
+	size hasValue "63976"
+	md5sum hasValue "355591bc2d308ac2de68ce189712ac05"
+	sha1 hasValue "a286a598e8004bc323d73668901892329005b6eb"
+	sha256 hasValue "ec56e06b4b317b698ec7233efb8b42550cfb3303e0c94f07d18d6b386a0ec78c"
+	descriptionMd5 hasValue "c34daa6a999130ac182030f9e53a51f3"
+	homepage hasValue "http://biopp.univ-montp2.fr/wiki/index.php/Main_Page"
+	depends hasValue "libbpp-raa4 (= 2.4.1-3build1), libbpp-seq-dev (>= 2.4.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libbpp-raa4"
+	comparison hasValue "="
+	version hasValue "2.4.1-3build1"
+
+relationInstance depends(P0__libbpp_raa_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libbpp-seq-dev"
+	comparison hasValue ">="
+	version hasValue "2.4.1"
+
+relationInstance depends(P0__libbpp_raa_dev,1,DepAtom__1)
+

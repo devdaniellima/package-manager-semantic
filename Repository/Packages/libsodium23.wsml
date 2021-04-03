@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libsodium23
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libsodium23 memberOf Package
+	package hasValue "libsodium23"
+	packageSource hasValue Source__S1
+	priority hasValue "important"
+	section hasValue "libs"
+	installedSize hasValue "402"
+	maintainer hasValue "Original-Laszlo Boszormenyi (GCS) <gcs@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.18-1"
+	fileName hasValue "pool/main/libs/libsodium/libsodium23_1.0.18-1_amd64.deb"
+	size hasValue "150040"
+	md5sum hasValue "bbe0fae0ca1211d93ccdb38f18e3f93a"
+	sha1 hasValue "242fbb15a80859b9c89594dfb52615d2ece90faf"
+	sha256 hasValue "2790af911186c8c8f34270199ac553ee43704f007d6af064205319d03b591f3c"
+	descriptionMd5 hasValue "0affde5b96740664a1c3f33fe4ca7e9f"
+	homepage hasValue "https://www.libsodium.org/"
+	depends hasValue "libc6 (>= 2.25)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.25"
+
+relationInstance depends(P0__libsodium23,0,DepAtom__0)
+

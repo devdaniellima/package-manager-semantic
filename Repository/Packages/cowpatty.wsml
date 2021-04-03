@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology cowpatty
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__cowpatty memberOf Package
+	package hasValue "cowpatty"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "76"
+	maintainer hasValue "Original-Debian Security Tools <team+pkg-security@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "4.8-2"
+	fileName hasValue "pool/universe/c/cowpatty/cowpatty_4.8-2_amd64.deb"
+	size hasValue "22860"
+	md5sum hasValue "2fe683d21ecd9c88957967f85b370e09"
+	sha1 hasValue "9d6147edd0ffc4f3371af23e297e5bcfb938f295"
+	sha256 hasValue "53feb4596809ff90cc6526cf405ef9e448d469d3377295929f2f61feaa28b59f"
+	descriptionMd5 hasValue "3e82bcb92c2aa53c2419032e302ba973"
+	homepage hasValue "http://www.willhackforsushi.com/?page_id=50"
+	depends hasValue "libc6 (>= 2.14), libpcap0.8 (>= 0.9.8), libssl1.1 (>= 1.1.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__cowpatty,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libpcap0.8"
+	comparison hasValue ">="
+	version hasValue "0.9.8"
+
+relationInstance depends(P0__cowpatty,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libssl1.1"
+	comparison hasValue ">="
+	version hasValue "1.1.0"
+
+relationInstance depends(P0__cowpatty,2,DepAtom__2)
+

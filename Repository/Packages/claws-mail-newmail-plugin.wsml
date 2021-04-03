@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology claws_mail_newmail_plugin
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__claws_mail_newmail_plugin memberOf Package
+	package hasValue "claws-mail-newmail-plugin"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/mail"
+	installedSize hasValue "56"
+	maintainer hasValue "Original-Ricardo Mones <mones@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.17.5-2"
+	replaces hasValue "claws-mail-newmail-plugin (<< 3.9.1-1)"
+	fileName hasValue "pool/universe/c/claws-mail/claws-mail-newmail-plugin_3.17.5-2_amd64.deb"
+	size hasValue "9080"
+	md5sum hasValue "f68b31a4c63aca7adfb646b6d3619a72"
+	sha1 hasValue "b5e6909b22d70efb5c8f81ad6cbb25325c9d808b"
+	sha256 hasValue "ec2354e4378a381f7552c1117f869a0e97ad3bdfd54f30d466d128402e17fefc"
+	description hasValue "extensão que registra log de novos e-mails para o Claws Mail"
+	descriptionMd5 hasValue "be9616baf10620781e523d42d04b288b"
+	homepage hasValue "https://www.claws-mail.org"
+	depends hasValue "libc6 (>= 2.3.4), claws-mail (= 3.17.5-2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.3.4"
+
+relationInstance depends(P0__claws_mail_newmail_plugin,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "claws-mail"
+	comparison hasValue "="
+	version hasValue "3.17.5-2"
+
+relationInstance depends(P0__claws_mail_newmail_plugin,1,DepAtom__1)
+

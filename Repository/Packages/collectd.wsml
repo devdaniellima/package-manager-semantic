@@ -1,0 +1,75 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology collectd
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__collectd memberOf Package
+	package hasValue "collectd"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "199"
+	maintainer hasValue "Original-Collectd Packaging Team <team+collectd@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "5.9.2.g-1ubuntu5"
+	fileName hasValue "pool/universe/c/collectd/collectd_5.9.2.g-1ubuntu5_amd64.deb"
+	size hasValue "21172"
+	md5sum hasValue "9875da431aa6a30c2c5ad2ce223a9fdc"
+	sha1 hasValue "e05c8e9a85babf0fdefb5584aea2136cb3c07ce1"
+	sha256 hasValue "765ccff2ded6034b171d3909521263403aebc47ffd9a0512862f97cd8cf80190"
+	description hasValue "daemon de monitoramento e coleta de estatísticas"
+	descriptionMd5 hasValue "4cab05e1aaeb16dba768fed7b2d14922"
+	homepage hasValue "https://collectd.org/"
+	depends hasValue "collectd-core (>= 5.9.2.g-1ubuntu5), collectd-core (<< 5.9.2.g-1ubuntu5.1~), libc6 (>= 2.14), librrd8 (>= 1.3.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "collectd-core"
+	comparison hasValue ">="
+	version hasValue "5.9.2.g-1ubuntu5"
+
+relationInstance depends(P0__collectd,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "collectd-core"
+	comparison hasValue "<<"
+	version hasValue "5.9.2.g-1ubuntu5.1~"
+
+relationInstance depends(P0__collectd,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__collectd,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "librrd8"
+	comparison hasValue ">="
+	version hasValue "1.3.0"
+
+relationInstance depends(P0__collectd,3,DepAtom__3)
+

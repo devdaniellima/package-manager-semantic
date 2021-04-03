@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology aspell_pl
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__aspell_pl memberOf Package
+	package hasValue "aspell-pl"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/text"
+	installedSize hasValue "1003"
+	maintainer hasValue "Original-Krzysztof Krzyżaniak (eloy) <eloy@debian.org>"
+	architecture hasValue "all"
+	version hasValue "20150428-3"
+	provides hasValue "aspell-dictionary"
+	fileName hasValue "pool/universe/a/aspell-pl/aspell-pl_20150428-3_all.deb"
+	size hasValue "735096"
+	md5sum hasValue "4ab715dddf33b3fa1452ccfce9089eeb"
+	sha1 hasValue "37b8c5c8c0fe871a26277469974d9793a83d1361"
+	sha256 hasValue "8a13cbe4d39d52a4d092432d11fb84878e2d231edac8f214a3523b2884aefb4d"
+	description hasValue "dicionário polonês para o aspell"
+	descriptionMd5 hasValue "c7edb0acf12dd06047cc5585f2c31946"
+	depends hasValue "aspell (>= 0.60.3-3), dictionaries-common (>= 1.25.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "aspell"
+	comparison hasValue ">="
+	version hasValue "0.60.3-3"
+
+relationInstance depends(P0__aspell_pl,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "dictionaries-common"
+	comparison hasValue ">="
+	version hasValue "1.25.2"
+
+relationInstance depends(P0__aspell_pl,1,DepAtom__1)
+

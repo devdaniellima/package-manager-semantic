@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology junior_math
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__junior_math memberOf Package
+	package hasValue "junior-math"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/misc"
+	installedSize hasValue "25"
+	maintainer hasValue "Original-Debian Junior <debian-jr@lists.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.29ubuntu1"
+	fileName hasValue "pool/universe/d/debian-junior/junior-math_1.29ubuntu1_all.deb"
+	size hasValue "4044"
+	md5sum hasValue "0820036bccb29e284a213ee7b7d27374"
+	sha1 hasValue "eb506692205e2c0d752572bdd67db9e42212b034"
+	sha256 hasValue "3f4a561a09dc72aee7ce5e15be68fe99759fcfaa1f90e0acd090333640208b06"
+	description hasValue "Matemática educacional do Debian Jr."
+	descriptionMd5 hasValue "2ce8132ee24a1ec0b660f13f2835464f"
+	homepage hasValue "http://blends.debian.org/junior/tasks/"
+	depends hasValue "junior-config (= 1.29ubuntu1), junior-tasks (= 1.29ubuntu1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "junior-config"
+	comparison hasValue "="
+	version hasValue "1.29ubuntu1"
+
+relationInstance depends(P0__junior_math,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "junior-tasks"
+	comparison hasValue "="
+	version hasValue "1.29ubuntu1"
+
+relationInstance depends(P0__junior_math,1,DepAtom__1)
+

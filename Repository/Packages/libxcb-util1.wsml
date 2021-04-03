@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libxcb_util1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libxcb_util1 memberOf Package
+	package hasValue "libxcb-util1"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "libs"
+	installedSize hasValue "56"
+	maintainer hasValue "Original-Debian X Strike Force <debian-x@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.4.0-0ubuntu3"
+	fileName hasValue "pool/main/x/xcb-util/libxcb-util1_0.4.0-0ubuntu3_amd64.deb"
+	size hasValue "11198"
+	md5sum hasValue "b366c76d0f1ef422ecec6e7109093d00"
+	sha1 hasValue "6901d63d054500cdfc397a0e5aa1c11ba429cbb3"
+	sha256 hasValue "83f9a455c8c6e787fcad27a84108704c7aa7669405f2af097cd25cfeeb10d82a"
+	description hasValue "utility libraries for X C Binding -- atom, aux and event"
+	descriptionMd5 hasValue "c4e9b5a7227fc66a9d8bef500363e8a0"
+	homepage hasValue "http://xcb.freedesktop.org"
+	depends hasValue "libc6 (>= 2.8), libxcb1"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.8"
+
+relationInstance depends(P0__libxcb_util1,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libxcb1"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libxcb_util1,1,DepAtom__1)
+

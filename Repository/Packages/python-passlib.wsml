@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python_passlib
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python_passlib memberOf Package
+	package hasValue "python-passlib"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/python"
+	installedSize hasValue "1983"
+	maintainer hasValue "Original-Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.7.2-1"
+	fileName hasValue "pool/universe/p/python-passlib/python-passlib_1.7.2-1_all.deb"
+	size hasValue "354012"
+	md5sum hasValue "0edd083da06780f69a7647d68ce8df98"
+	sha1 hasValue "87b181081d0bf044582faf86f243a485e30982b4"
+	sha256 hasValue "a34cc2bac23b6a2cb2192b3c518f75b108d7df20da462e0416f5a67de2fdac89"
+	descriptionMd5 hasValue "3057a9a06a25d4a19d4c27c4b2072332"
+	homepage hasValue "https://bitbucket.org/ecollins/passlib/wiki/Home"
+	depends hasValue "python2:any (<< 2.8), python2:any (>= 2.7~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue "<<"
+	version hasValue "2.8"
+
+relationInstance depends(P0__python_passlib,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue ">="
+	version hasValue "2.7~"
+
+relationInstance depends(P0__python_passlib,1,DepAtom__1)
+

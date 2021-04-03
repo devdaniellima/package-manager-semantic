@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology uuidcdef
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__uuidcdef memberOf Package
+	package hasValue "uuidcdef"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "58"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.3.13-7"
+	fileName hasValue "pool/universe/x/xplc/uuidcdef_0.3.13-7_amd64.deb"
+	size hasValue "13764"
+	md5sum hasValue "3a9878c2c24aed7bf6aa6f09d0c0b25d"
+	sha1 hasValue "3fe0edf26e14631d551ae5b12bf6f72373c97f78"
+	sha256 hasValue "f5aea86ec9b9857f27664003101d0c8d491fbf3c5a4155230161a682145026ee"
+	descriptionMd5 hasValue "1d910b1ba122bdc21c260082cb676050"
+	homepage hasValue "http://xplc.sourceforge.net/"
+	depends hasValue "libc6 (>= 2.7), libuuid1 (>= 2.16)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__uuidcdef,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libuuid1"
+	comparison hasValue ">="
+	version hasValue "2.16"
+
+relationInstance depends(P0__uuidcdef,1,DepAtom__1)
+

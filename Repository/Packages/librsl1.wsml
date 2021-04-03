@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology librsl1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__librsl1 memberOf Package
+	package hasValue "librsl1"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/science"
+	installedSize hasValue "328"
+	maintainer hasValue "Original-Debian Science Maintainers <debian-science-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.43-1.2build1"
+	fileName hasValue "pool/universe/libr/librsl/librsl1_1.43-1.2build1_amd64.deb"
+	size hasValue "105728"
+	md5sum hasValue "7c6fb3dc89a1eaff0335081564bb126a"
+	sha1 hasValue "f717254e6fa408de4ceb0362b14f6de1be9a2631"
+	sha256 hasValue "941307a1fd14b3eafc9134445d4d18e6618d50dba9e80ae4a728626f98bace78"
+	descriptionMd5 hasValue "a34db17a2f68146b21e66fec20434330"
+	homepage hasValue "http://trmm-fc.gsfc.nasa.gov/trmm_gv/software/rsl/"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__librsl1,0,DepAtom__0)
+

@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology sigrok
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__sigrok memberOf Package
+	package hasValue "sigrok"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/electronics"
+	installedSize hasValue "9"
+	maintainer hasValue "Original-Debian Electronics Packaging Team <pkg-electronics-devel@alioth-lists.debian.net>"
+	architecture hasValue "all"
+	version hasValue "0.2-5"
+	fileName hasValue "pool/universe/s/sigrok/sigrok_0.2-5_all.deb"
+	size hasValue "2268"
+	md5sum hasValue "5f609fad88477385eb6966c42a03939c"
+	sha1 hasValue "7f4cdb6c3e060a20969ed76916df47ac34e20bc8"
+	sha256 hasValue "1ef160f695bf5af2508a692b79d72bee906d8503ea6124386ab9be3fad036a52"
+	descriptionMd5 hasValue "8dd5c146371ccb458f92aea4a6ef3bcf"
+	homepage hasValue "http://sigrok.org"
+	depends hasValue "sigrok-cli (>= 0.7.0), pulseview (>= 0.4.0), sigrok-firmware-fx2lafw (>= 0.1.5)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "sigrok-cli"
+	comparison hasValue ">="
+	version hasValue "0.7.0"
+
+relationInstance depends(P0__sigrok,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "pulseview"
+	comparison hasValue ">="
+	version hasValue "0.4.0"
+
+relationInstance depends(P0__sigrok,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "sigrok-firmware-fx2lafw"
+	comparison hasValue ">="
+	version hasValue "0.1.5"
+
+relationInstance depends(P0__sigrok,2,DepAtom__2)
+

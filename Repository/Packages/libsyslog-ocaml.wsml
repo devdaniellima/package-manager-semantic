@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libsyslog_ocaml
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libsyslog_ocaml memberOf Package
+	package hasValue "libsyslog-ocaml"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "27"
+	maintainer hasValue "Original-Debian OCaml Maintainers <debian-ocaml-maint@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.4-7build1"
+	provides hasValue "libsyslog-ocaml-fn3o8"
+	fileName hasValue "pool/universe/s/syslog-ocaml/libsyslog-ocaml_1.4-7build1_amd64.deb"
+	size hasValue "4544"
+	md5sum hasValue "1c491d3f53ddd57fe4803f77304e480b"
+	sha1 hasValue "96eb8dc3c898e06852773573136cc7ddf024c9be"
+	sha256 hasValue "09099a4e04bcab3025cc09145c3b981dc327d48fb3c2d626b486c7eb2510ac66"
+	descriptionMd5 hasValue "c184c16b5087ad4b4649163cf57c0d22"
+	homepage hasValue "http://homepage.mac.com/letaris"
+	depends hasValue "ocaml-base-nox-4.08.1, libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "ocaml-base-nox-4.08.1"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libsyslog_ocaml,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libsyslog_ocaml,1,DepAtom__1)
+

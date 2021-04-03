@@ -1,0 +1,89 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology cvsd
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__cvsd memberOf Package
+	package hasValue "cvsd"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "293"
+	maintainer hasValue "Original-Arthur de Jong <adejong@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.24"
+	fileName hasValue "pool/universe/c/cvsd/cvsd_1.0.24_amd64.deb"
+	size hasValue "95104"
+	md5sum hasValue "724eef7113d0afd0f6d87970ec941ddf"
+	sha1 hasValue "c868d548ed238def125a11f0aca725b529f2912c"
+	sha256 hasValue "4008a5977ea40751de84aca534f819ce141a69b67534643f344119d9cc2c1e16"
+	description hasValue "invólucro chroot para executar o 'cvs pserver' com mais segurança"
+	descriptionMd5 hasValue "e7db47439c785f41c3ae167bc30095e8"
+	homepage hasValue "http://arthurdejong.org/cvsd/"
+	depends hasValue "libc6 (>= 2.15), debconf (>= 0.5) | debconf-2.0, cvs, adduser, lsb-base (>= 3.0-6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__cvsd,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "debconf"
+	comparison hasValue ">="
+	version hasValue "0.5"
+
+relationInstance depends(P0__cvsd,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "debconf-2.0"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__cvsd,1,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "cvs"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__cvsd,2,DepAtom__3)
+
+instance DepAtom__4 memberOf DependencyAtom
+	package hasValue "adduser"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__cvsd,3,DepAtom__4)
+
+instance DepAtom__5 memberOf DependencyAtom
+	package hasValue "lsb-base"
+	comparison hasValue ">="
+	version hasValue "3.0-6"
+
+relationInstance depends(P0__cvsd,4,DepAtom__5)
+

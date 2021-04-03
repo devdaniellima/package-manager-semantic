@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology xfce4_dev_tools
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__xfce4_dev_tools memberOf Package
+	package hasValue "xfce4-dev-tools"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "85"
+	maintainer hasValue "Original-Debian Xfce Maintainers <debian-xfce@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "4.14.0-1"
+	fileName hasValue "pool/universe/x/xfce4-dev-tools/xfce4-dev-tools_4.14.0-1_amd64.deb"
+	size hasValue "20920"
+	md5sum hasValue "ecbe5b3f95f47a7b077bafd34de11e1c"
+	sha1 hasValue "faf77877b8dfe3b018b75a7776bed0c246f6633e"
+	sha256 hasValue "95e9701d5556dc39ed08ee96573b75ffff4df7668cbf69e74bcf3e269f63766a"
+	descriptionMd5 hasValue "44101e4b71800cae56aa82ffdd7e8589"
+	homepage hasValue "https://www.xfce.org"
+	depends hasValue "libc6 (>= 2.4), libglib2.0-0 (>= 2.12.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__xfce4_dev_tools,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libglib2.0-0"
+	comparison hasValue ">="
+	version hasValue "2.12.0"
+
+relationInstance depends(P0__xfce4_dev_tools,1,DepAtom__1)
+

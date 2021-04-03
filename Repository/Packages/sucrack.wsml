@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology sucrack
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__sucrack memberOf Package
+	package hasValue "sucrack"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/admin"
+	installedSize hasValue "49"
+	maintainer hasValue "Original-Debian Security Tools <team+pkg-security@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.2.3-5"
+	fileName hasValue "pool/universe/s/sucrack/sucrack_1.2.3-5_amd64.deb"
+	size hasValue "17860"
+	md5sum hasValue "fad61513437a172b96f276bdf0e67dd0"
+	sha1 hasValue "87338c61c4915a15cbc304b0098dd413fe8cd59c"
+	sha256 hasValue "a2aae7ba68f8cf01aacc36c8d6482fd777f9d761c5f054ec4c1de635b99cacc0"
+	descriptionMd5 hasValue "b30d0b7d9a695fd752cdb67ebbe87c17"
+	homepage hasValue "https://labs.portcullis.co.uk/tools/sucrack/"
+	depends hasValue "libc6 (>= 2.8)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.8"
+
+relationInstance depends(P0__sucrack,0,DepAtom__0)
+

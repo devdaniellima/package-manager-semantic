@@ -1,0 +1,73 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python3_pam
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python3_pam memberOf Package
+	package hasValue "python3-pam"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "python"
+	installedSize hasValue "44"
+	maintainer hasValue "Original-Dima Barsky <dima@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.4.2-13.2ubuntu8"
+	fileName hasValue "pool/main/p/python-pam/python3-pam_0.4.2-13.2ubuntu8_amd64.deb"
+	size hasValue "9052"
+	md5sum hasValue "5cb4d6ef6d3e3cc2b90b5a9c045cb4cb"
+	sha1 hasValue "0b0fbea472e167885e8166f5ceddcb2fbc002da1"
+	sha256 hasValue "04e67dd04099e2bc59081100d85de33c377aac0a91ec1a58d7e52d30d535834a"
+	descriptionMd5 hasValue "4bae7680ea768021b6726c1ec6ac6cb8"
+	depends hasValue "python3 (<< 3.9), python3 (>= 3.8~), libc6 (>= 2.4), libpam0g (>= 0.99.7.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3"
+	comparison hasValue "<<"
+	version hasValue "3.9"
+
+relationInstance depends(P0__python3_pam,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3"
+	comparison hasValue ">="
+	version hasValue "3.8~"
+
+relationInstance depends(P0__python3_pam,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__python3_pam,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "libpam0g"
+	comparison hasValue ">="
+	version hasValue "0.99.7.1"
+
+relationInstance depends(P0__python3_pam,3,DepAtom__3)
+

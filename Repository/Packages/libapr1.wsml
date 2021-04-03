@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libapr1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libapr1 memberOf Package
+	package hasValue "libapr1"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libs"
+	installedSize hasValue "272"
+	maintainer hasValue "Original-Debian Apache Maintainers <debian-apache@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.6.5-1ubuntu1"
+	conflicts hasValue "libapr1.0"
+	fileName hasValue "pool/main/a/apr/libapr1_1.6.5-1ubuntu1_amd64.deb"
+	size hasValue "91356"
+	md5sum hasValue "ecd9495e9d4e4d8d781acdf0e8232336"
+	sha1 hasValue "4c022c021e88707940a02551df12f09678dfacdd"
+	sha256 hasValue "55a6ca7c5848600a4481c75852f9b1ca10bfd83de148613dd31607a477d7886d"
+	description hasValue "biblioteca em tempo de execução portável do Apache"
+	descriptionMd5 hasValue "daaca3900e2bd4d38f204bf1b0ef044a"
+	homepage hasValue "http://apr.apache.org/"
+	depends hasValue "libc6 (>= 2.15), libuuid1 (>= 2.16)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__libapr1,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libuuid1"
+	comparison hasValue ">="
+	version hasValue "2.16"
+
+relationInstance depends(P0__libapr1,1,DepAtom__1)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libroutino_slim0
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libroutino_slim0 memberOf Package
+	package hasValue "libroutino-slim0"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/libs"
+	installedSize hasValue "267"
+	maintainer hasValue "Original-Debian GIS Project <pkg-grass-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.3.2-1"
+	fileName hasValue "pool/universe/r/routino/libroutino-slim0_3.3.2-1_amd64.deb"
+	size hasValue "83236"
+	md5sum hasValue "a99ca48c98d06ff0d77b1c7903362b4e"
+	sha1 hasValue "7ad7f75bdf12d8c90d4a6def7fe5167b222466c9"
+	sha256 hasValue "5860f8439302a931aef677ba21eb9cf4a0fdac51ff848e16dfb7f709eae4cae1"
+	descriptionMd5 hasValue "aae571993073d113492f8a8df58be59c"
+	homepage hasValue "http://www.routino.org/"
+	depends hasValue "routino-common (= 3.3.2-1), libc6 (>= 2.15)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "routino-common"
+	comparison hasValue "="
+	version hasValue "3.3.2-1"
+
+relationInstance depends(P0__libroutino_slim0,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__libroutino_slim0,1,DepAtom__1)
+

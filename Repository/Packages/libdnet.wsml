@@ -1,0 +1,66 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libdnet
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libdnet memberOf Package
+	package hasValue "libdnet"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/libs"
+	installedSize hasValue "247"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.65build2"
+	fileName hasValue "pool/universe/d/dnprogs/libdnet_2.65build2_amd64.deb"
+	size hasValue "60052"
+	md5sum hasValue "168d9c7d4d1921f2e977a8aa067cd5b2"
+	sha1 hasValue "67a9462891a6de823a903c0c9b05f2390e0d114a"
+	sha256 hasValue "2ae2c1789fa3932074aee76c2edaeba43ff3c6f5fc24ae0d03efef31c6f38460"
+	descriptionMd5 hasValue "44520c0b17ec0bca27fe63ef3411b5d1"
+	depends hasValue "libc6 (>= 2.28), libcrypt1 (>= 1:4.1.0), libstdc++6 (>= 5)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.28"
+
+relationInstance depends(P0__libdnet,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libcrypt1"
+	comparison hasValue ">="
+	version hasValue "1:4.1.0"
+
+relationInstance depends(P0__libdnet,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "5"
+
+relationInstance depends(P0__libdnet,2,DepAtom__2)
+

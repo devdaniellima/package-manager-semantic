@@ -1,0 +1,59 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology microcom
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__microcom memberOf Package
+	package hasValue "microcom"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/comm"
+	installedSize hasValue "50"
+	maintainer hasValue "Original-Uwe Kleine-König <ukleinek@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2017.03.0-2build1"
+	fileName hasValue "pool/universe/m/microcom/microcom_2017.03.0-2build1_amd64.deb"
+	size hasValue "17628"
+	md5sum hasValue "29d60facde17ec299dd43fd0ec998de2"
+	sha1 hasValue "30a28ad707374e1d9968679ce5cbd200ebeafb69"
+	sha256 hasValue "5e46f7dac1ef78b2d4d9000f33d9fc142917753e6d892779b78f6672083649e8"
+	descriptionMd5 hasValue "758d7ccafadf72b5ede7b15d4894282a"
+	depends hasValue "libc6 (>= 2.15), libreadline8 (>= 6.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__microcom,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libreadline8"
+	comparison hasValue ">="
+	version hasValue "6.0"
+
+relationInstance depends(P0__microcom,1,DepAtom__1)
+

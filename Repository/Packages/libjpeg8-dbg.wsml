@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libjpeg8_dbg
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libjpeg8_dbg memberOf Package
+	package hasValue "libjpeg8-dbg"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "debug"
+	installedSize hasValue "26"
+	maintainer hasValue "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	architecture hasValue "amd64"
+	version hasValue "8c-2ubuntu8"
+	provides hasValue "libjpeg-dbg"
+	fileName hasValue "pool/main/libj/libjpeg8-empty/libjpeg8-dbg_8c-2ubuntu8_amd64.deb"
+	size hasValue "1546"
+	md5sum hasValue "1ce9de084496ae79bb75a0a129c5e69c"
+	sha1 hasValue "46cc19afb61a3ceef4ea717161fcd4d61bd53861"
+	sha256 hasValue "da59606ed41f637df747b292ee9b1b3d8927f5768029213ea09f9b2b123062e3"
+	descriptionMd5 hasValue "eae518d4a3f4b4d18474b1fea12b703d"
+	depends hasValue "libjpeg-turbo8-dbg (>= 1.1.90+svn722-1ubuntu6), libjpeg8 (= 8c-2ubuntu8)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libjpeg-turbo8-dbg"
+	comparison hasValue ">="
+	version hasValue "1.1.90+svn722-1ubuntu6"
+
+relationInstance depends(P0__libjpeg8_dbg,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libjpeg8"
+	comparison hasValue "="
+	version hasValue "8c-2ubuntu8"
+
+relationInstance depends(P0__libjpeg8_dbg,1,DepAtom__1)
+

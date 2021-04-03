@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology arp_scan
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__arp_scan memberOf Package
+	package hasValue "arp-scan"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/admin"
+	installedSize hasValue "1069"
+	maintainer hasValue "Original-Debian Security Tools <team+pkg-security@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.9.7-1"
+	fileName hasValue "pool/universe/a/arp-scan/arp-scan_1.9.7-1_amd64.deb"
+	size hasValue "337772"
+	md5sum hasValue "ee7026aa780b5bac69d889e72577a96c"
+	sha1 hasValue "d3a828c4c8de5fdcb6441e988c4699d954b05081"
+	sha256 hasValue "0e9599bc339e7ed34dc656423515fceeb9019069d5e8dd6c5fd3aae2203c2262"
+	description hasValue "ferramenta de identificação e varredura arp"
+	descriptionMd5 hasValue "41fece0fe3a96af889ef6efbd16d29d1"
+	homepage hasValue "https://github.com/royhills/arp-scan"
+	depends hasValue "libc6 (>= 2.15), libpcap0.8 (>= 1.5.1), ieee-data"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__arp_scan,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libpcap0.8"
+	comparison hasValue ">="
+	version hasValue "1.5.1"
+
+relationInstance depends(P0__arp_scan,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "ieee-data"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__arp_scan,2,DepAtom__2)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology redis_server
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__redis_server memberOf Package
+	package hasValue "redis-server"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/misc"
+	installedSize hasValue "164"
+	maintainer hasValue "Original-Chris Lamb <lamby@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "5:5.0.7-2"
+	fileName hasValue "pool/universe/r/redis/redis-server_5.0.7-2_amd64.deb"
+	size hasValue "37328"
+	md5sum hasValue "83b368c7832ae1d9d1b28d89d922ca49"
+	sha1 hasValue "d66731b4eca97bf9fd3a175fc5bd256042c17426"
+	sha256 hasValue "db8107cc849524acd1498c28803bf1957ad2fec45c35b3b4a8c621b386fcdb4c"
+	descriptionMd5 hasValue "9160ed1405585ab844f8750a9305d33f"
+	homepage hasValue "https://redis.io/"
+	depends hasValue "lsb-base (>= 3.2-14), redis-tools (= 5:5.0.7-2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "lsb-base"
+	comparison hasValue ">="
+	version hasValue "3.2-14"
+
+relationInstance depends(P0__redis_server,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "redis-tools"
+	comparison hasValue "="
+	version hasValue "5:5.0.7-2"
+
+relationInstance depends(P0__redis_server,1,DepAtom__1)
+

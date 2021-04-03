@@ -1,0 +1,69 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology jupp
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__jupp memberOf Package
+	package hasValue "jupp"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/editors"
+	installedSize hasValue "624"
+	maintainer hasValue "Original-Thorsten Glaser <tg@mirbsd.de>"
+	architecture hasValue "amd64"
+	version hasValue "3.1.39-1"
+	provides hasValue "editor"
+	fileName hasValue "pool/universe/j/jupp/jupp_3.1.39-1_amd64.deb"
+	size hasValue "222368"
+	md5sum hasValue "c41516818c6763431faacb8bae0088f6"
+	sha1 hasValue "3de9f79e4ace4239252b53281b24ff5f28a38bc7"
+	sha256 hasValue "ac1d86af17f8a185833b4309197539bf93e57c48a66daa53555686a03f001055"
+	description hasValue "Editor de texto em tela cheia amigável ao usuário"
+	descriptionMd5 hasValue "758a80f0d3a3d8d4d242d368cca88861"
+	homepage hasValue "http://www.mirbsd.org/jupp.htm"
+	depends hasValue "libc6 (>= 2.14), libselinux1 (>= 1.32), libtinfo6 (>= 6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__jupp,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libselinux1"
+	comparison hasValue ">="
+	version hasValue "1.32"
+
+relationInstance depends(P0__jupp,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libtinfo6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__jupp,2,DepAtom__2)
+

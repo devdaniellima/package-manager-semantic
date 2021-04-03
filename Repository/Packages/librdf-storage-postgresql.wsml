@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology librdf_storage_postgresql
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__librdf_storage_postgresql memberOf Package
+	package hasValue "librdf-storage-postgresql"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "86"
+	maintainer hasValue "Original-Dave Beckett <dajobe@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.17-1.1ubuntu1"
+	replaces hasValue "librdf0 (<< 1.0.9-3)"
+	fileName hasValue "pool/universe/r/redland/librdf-storage-postgresql_1.0.17-1.1ubuntu1_amd64.deb"
+	size hasValue "17396"
+	md5sum hasValue "91003dc0ca992244240e39a4eda5227b"
+	sha1 hasValue "b68204c337b44d0d4d13a2ad933822058752f390"
+	sha256 hasValue "97ae3f5bcf7a47c666aca12a030f4b870367cecaea54110c1b76e002b1660d16"
+	descriptionMd5 hasValue "58e18e8a427a3c6c6fe6c8734c45a383"
+	homepage hasValue "http://librdf.org/"
+	depends hasValue "libc6 (>= 2.14), libpq5, librdf0 (>= 1.0.17)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__librdf_storage_postgresql,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libpq5"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__librdf_storage_postgresql,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "librdf0"
+	comparison hasValue ">="
+	version hasValue "1.0.17"
+
+relationInstance depends(P0__librdf_storage_postgresql,2,DepAtom__2)
+

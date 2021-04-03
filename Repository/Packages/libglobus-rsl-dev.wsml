@@ -1,0 +1,63 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libglobus_rsl_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libglobus_rsl_dev memberOf Package
+	package hasValue "libglobus-rsl-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "31"
+	maintainer hasValue "Original-Mattias Ellert <mattias.ellert@physics.uu.se>"
+	architecture hasValue "amd64"
+	version hasValue "11.1-2"
+	replaces hasValue "libglobus-rsl-assist-dev (<< 3)"
+	provides hasValue "libglobus-rsl-assist-dev"
+	conflicts hasValue "libglobus-rsl-assist-dev (<< 3)"
+	fileName hasValue "pool/universe/g/globus-rsl/libglobus-rsl-dev_11.1-2_amd64.deb"
+	size hasValue "4572"
+	md5sum hasValue "5808836e12541823338561c419630be8"
+	sha1 hasValue "72ba0f8bf7231f73fb1676d273c423b5f0e50fe4"
+	sha256 hasValue "25ad0ad1f0610dafd183bce8bc4041c4f6e83d143a6aaf81402f9da4315a031d"
+	descriptionMd5 hasValue "a765c4cb2fa7d540a474c98188a8c698"
+	homepage hasValue "https://github.com/gridcf/gct/"
+	depends hasValue "libglobus-rsl2 (= 11.1-2), libglobus-common-dev (>= 15)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libglobus-rsl2"
+	comparison hasValue "="
+	version hasValue "11.1-2"
+
+relationInstance depends(P0__libglobus_rsl_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libglobus-common-dev"
+	comparison hasValue ">="
+	version hasValue "15"
+
+relationInstance depends(P0__libglobus_rsl_dev,1,DepAtom__1)
+

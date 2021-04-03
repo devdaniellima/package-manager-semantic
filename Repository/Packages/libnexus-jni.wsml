@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libnexus_jni
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libnexus_jni memberOf Package
+	package hasValue "libnexus-jni"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/java"
+	installedSize hasValue "69"
+	maintainer hasValue "Original-Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "4.4.3-4"
+	replaces hasValue "libnexus0-java"
+	fileName hasValue "pool/universe/n/nexus/libnexus-jni_4.4.3-4_amd64.deb"
+	size hasValue "14752"
+	md5sum hasValue "beb69ca8b01b7f11a5e47699a443c96c"
+	sha1 hasValue "6fbba38e907f0aa82d5cfa94ea00e15c365fcf65"
+	sha256 hasValue "fa052262a5e0b5149159f76e9d3169fd3281d1130fe3f9118cf8b3a63121eeb9"
+	descriptionMd5 hasValue "e485382d3275cc00bc57a491df3cbb00"
+	homepage hasValue "http://www.nexusformat.org/"
+	depends hasValue "libnexus1 (= 4.4.3-4), libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libnexus1"
+	comparison hasValue "="
+	version hasValue "4.4.3-4"
+
+relationInstance depends(P0__libnexus_jni,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libnexus_jni,1,DepAtom__1)
+

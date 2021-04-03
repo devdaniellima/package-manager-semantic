@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libfabric_bin
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libfabric_bin memberOf Package
+	package hasValue "libfabric-bin"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "102"
+	maintainer hasValue "Original-Debian HPC Team <debian-hpc@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.6.2-3"
+	replaces hasValue "libfabric1 (<< 1.6)"
+	fileName hasValue "pool/universe/libf/libfabric/libfabric-bin_1.6.2-3_amd64.deb"
+	size hasValue "29052"
+	md5sum hasValue "269ede45f2eba591374b48e03dc818cd"
+	sha1 hasValue "a50f0c153f3fa665978b1fc171178dc316f0db9b"
+	sha256 hasValue "3b453f4e8a266572a649bac4a7c14b1decf79481168a9d07043dd183b3388484"
+	descriptionMd5 hasValue "48478daa4ff17d333fa3ce2b380603fe"
+	homepage hasValue "https://ofiwg.github.io/libfabric/"
+	depends hasValue "libc6 (>= 2.14), libfabric1 (>= 1.5.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libfabric_bin,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libfabric1"
+	comparison hasValue ">="
+	version hasValue "1.5.0"
+
+relationInstance depends(P0__libfabric_bin,1,DepAtom__1)
+

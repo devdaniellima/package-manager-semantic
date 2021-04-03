@@ -1,0 +1,71 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology openjdk_14_jdk
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__openjdk_14_jdk memberOf Package
+	package hasValue "openjdk-14-jdk"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/java"
+	installedSize hasValue "5658"
+	maintainer hasValue "OpenJDK Team <openjdk@lists.launchpad.net>"
+	architecture hasValue "amd64"
+	version hasValue "14.0.2+12-1~20.04"
+	replaces hasValue "openjdk-11-jre-headless (<< 11~19-2)"
+	provides hasValue "java-compiler, java-sdk, java10-sdk, java11-sdk, java12-sdk, java13-sdk, java2-sdk, java5-sdk, java6-sdk, java7-sdk, java8-sdk, java9-sdk"
+	conflicts hasValue "openjdk-11-jre-headless (<< 11~19-2)"
+	fileName hasValue "pool/universe/o/openjdk-14/openjdk-14-jdk_14.0.2+12-1~20.04_amd64.deb"
+	size hasValue "5158092"
+	md5sum hasValue "b0378a0aa824d0d286e3054fa08dd75e"
+	sha1 hasValue "c39779b41667951230944796389815632563d089"
+	sha256 hasValue "449a3b52dffcf41130bf56ab4728a57de653a7cc9f96203d5a181041bc197fd8"
+	sha512 hasValue "4e47f2a54b4277b8b020121135c8dde2ad0a21cf915da2d182cd66e8c4e8e3af8524754d4bc345d7392d16b69791f146aba8b81583fa75f23d7ea416e2c30653"
+	descriptionMd5 hasValue "b9e7f4837238c34971e4a8b72ab7d045"
+	homepage hasValue "http://openjdk.java.net/"
+	depends hasValue "openjdk-14-jre (= 14.0.2+12-1~20.04), openjdk-14-jdk-headless (= 14.0.2+12-1~20.04), libc6 (>= 2.2.5)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "openjdk-14-jre"
+	comparison hasValue "="
+	version hasValue "14.0.2+12-1~20.04"
+
+relationInstance depends(P0__openjdk_14_jdk,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "openjdk-14-jdk-headless"
+	comparison hasValue "="
+	version hasValue "14.0.2+12-1~20.04"
+
+relationInstance depends(P0__openjdk_14_jdk,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.2.5"
+
+relationInstance depends(P0__openjdk_14_jdk,2,DepAtom__2)
+

@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libdbd_mysql
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libdbd_mysql memberOf Package
+	package hasValue "libdbd-mysql"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libs"
+	installedSize hasValue "319"
+	maintainer hasValue "Original-Laszlo Boszormenyi (GCS) <gcs@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.9.0-8ubuntu1"
+	fileName hasValue "pool/main/libd/libdbi-drivers/libdbd-mysql_0.9.0-8ubuntu1_amd64.deb"
+	size hasValue "146672"
+	md5sum hasValue "767264d20ae9abada0f48edf67d5d8a4"
+	sha1 hasValue "79e847374435c9556d4d9c38795e1512bd6ae973"
+	sha256 hasValue "f88649820cd1ee26463c19f3d8a74e32b7cec0385786a3faadae764d77fed77f"
+	descriptionMd5 hasValue "2f6453a1b87e77abc15937f5ab7942e2"
+	homepage hasValue "http://libdbi.sourceforge.net/"
+	depends hasValue "libc6 (>= 2.14), libdbi1 (>= 0.8.4), libmysqlclient21 (>= 8.0.11)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libdbd_mysql,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libdbi1"
+	comparison hasValue ">="
+	version hasValue "0.8.4"
+
+relationInstance depends(P0__libdbd_mysql,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libmysqlclient21"
+	comparison hasValue ">="
+	version hasValue "8.0.11"
+
+relationInstance depends(P0__libdbd_mysql,2,DepAtom__2)
+

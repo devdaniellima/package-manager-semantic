@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libfreenect0Dot5
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libfreenect0Dot5 memberOf Package
+	package hasValue "libfreenect0.5"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/libs"
+	installedSize hasValue "146"
+	maintainer hasValue "Original-Nicolas Bourdaud <nicolas.bourdaud@gmail.com>"
+	architecture hasValue "amd64"
+	version hasValue "1:0.5.3-2"
+	conflicts hasValue "libfreenect"
+	fileName hasValue "pool/universe/libf/libfreenect/libfreenect0.5_0.5.3-2_amd64.deb"
+	size hasValue "40484"
+	md5sum hasValue "b77c64dc1ab9306c2f62221398966436"
+	sha1 hasValue "9b5d736b11eff75f7ad9271621c6133ea5d49a4e"
+	sha256 hasValue "4ccdc0ecd83acd7434d044053e1c8aa5088b8bb10b8d624d38b17e11d309fd09"
+	descriptionMd5 hasValue "db274c8805191031a24d8c23ffa01f68"
+	homepage hasValue "http://openkinect.org/"
+	depends hasValue "libc6 (>= 2.14), libusb-1.0-0 (>= 2:1.0.12)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libfreenect0Dot5,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libusb-1.0-0"
+	comparison hasValue ">="
+	version hasValue "2:1.0.12"
+
+relationInstance depends(P0__libfreenect0Dot5,1,DepAtom__1)
+

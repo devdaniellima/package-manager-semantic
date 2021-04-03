@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology uncrustify
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__uncrustify memberOf Package
+	package hasValue "uncrustify"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "1323"
+	maintainer hasValue "Original-Alexander GQ Gerasiov <gq@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.69.0+dfsg1-1build1"
+	fileName hasValue "pool/universe/u/uncrustify/uncrustify_0.69.0+dfsg1-1build1_amd64.deb"
+	size hasValue "447000"
+	md5sum hasValue "3707da15f6e362b7cfd31dc4ed28e056"
+	sha1 hasValue "cb86e922e02f661d05cbb725f5337529473eb17c"
+	sha256 hasValue "50738ba9572553b4108033961fc15de0f9dbb30dd5dc55a05928c74466889459"
+	descriptionMd5 hasValue "70ebfc68c4b2bf4b0ec03f57e51f78ec"
+	homepage hasValue "https://github.com/uncrustify/uncrustify"
+	depends hasValue "libc6 (>= 2.14), libgcc-s1 (>= 3.0), libstdc++6 (>= 5.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__uncrustify,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgcc-s1"
+	comparison hasValue ">="
+	version hasValue "3.0"
+
+relationInstance depends(P0__uncrustify,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "5.2"
+
+relationInstance depends(P0__uncrustify,2,DepAtom__2)
+

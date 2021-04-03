@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology isoqlog
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__isoqlog memberOf Package
+	package hasValue "isoqlog"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/mail"
+	installedSize hasValue "202"
+	maintainer hasValue "Original-Sergiusz Pawlowicz <debian@pawlowicz.name>"
+	architecture hasValue "amd64"
+	version hasValue "2.2.1-9build1"
+	fileName hasValue "pool/universe/i/isoqlog/isoqlog_2.2.1-9build1_amd64.deb"
+	size hasValue "54196"
+	md5sum hasValue "57ab946567b10a687bf5307eded127f1"
+	sha1 hasValue "d31575c9dcbf4dae8f19c326c102aeb08acfbf69"
+	sha256 hasValue "97c4effc79759dd613d471e30c4435628ac1cb46d8474d17a044e880222afbe4"
+	descriptionMd5 hasValue "fc147a7c89b7606ab0458a3d4186e216"
+	homepage hasValue "http://www.enderunix.org/isoqlog/"
+	depends hasValue "libc6 (>= 2.14), debconf (>= 0.5) | debconf-2.0"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__isoqlog,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "debconf"
+	comparison hasValue ">="
+	version hasValue "0.5"
+
+relationInstance depends(P0__isoqlog,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "debconf-2.0"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__isoqlog,1,DepAtom__2)
+

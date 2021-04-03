@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology coq_doc
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__coq_doc memberOf Package
+	package hasValue "coq-doc"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "multiverse/doc"
+	installedSize hasValue "24"
+	maintainer hasValue "Original-Debian OCaml Maintainers <debian-ocaml-maint@lists.debian.org>"
+	architecture hasValue "all"
+	version hasValue "8.6-1"
+	fileName hasValue "pool/multiverse/c/coq-doc/coq-doc_8.6-1_all.deb"
+	size hasValue "4390"
+	md5sum hasValue "650a1102aa9f3ad7a91e70fe62434ca3"
+	sha1 hasValue "4cc470e2b7027af5a9de602ba2b9cbe7b8aa8f6d"
+	sha256 hasValue "c9a219ae44525621a6a8ecd70a27b798fccc565af9d2453c2dafcf27559ade25"
+	description hasValue "documentação para o Coq"
+	descriptionMd5 hasValue "8162cc95ca212365bc0155b6cfef283a"
+	homepage hasValue "http://coq.inria.fr/"
+	depends hasValue "coq-doc-html (>= 8.6-1), coq-doc-pdf (>= 8.6-1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "coq-doc-html"
+	comparison hasValue ">="
+	version hasValue "8.6-1"
+
+relationInstance depends(P0__coq_doc,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "coq-doc-pdf"
+	comparison hasValue ">="
+	version hasValue "8.6-1"
+
+relationInstance depends(P0__coq_doc,1,DepAtom__1)
+

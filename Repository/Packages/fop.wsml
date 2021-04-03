@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology fop
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__fop memberOf Package
+	package hasValue "fop"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/text"
+	installedSize hasValue "291"
+	maintainer hasValue "Original-Debian Java Maintainers <pkg-java-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1:2.4-2"
+	fileName hasValue "pool/universe/f/fop/fop_2.4-2_all.deb"
+	size hasValue "34612"
+	md5sum hasValue "21d381abb272b7ba342ce2ef3d9011b5"
+	sha1 hasValue "03068f1e098c2ee3206fdeccc10d1f4c85599a0f"
+	sha256 hasValue "8d28de5c71a406b59330db4be819a3eaa97121ae2fa83a2c1ca9cbf535dcf8dc"
+	descriptionMd5 hasValue "7c52f7896f03be5c1298e2f10b724c19"
+	homepage hasValue "http://xmlgraphics.apache.org/fop/"
+	depends hasValue "default-jre-headless | java2-runtime-headless, libfop-java (= 1:2.4-2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "default-jre-headless"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__fop,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "java2-runtime-headless"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__fop,0,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libfop-java"
+	comparison hasValue "="
+	version hasValue "1:2.4-2"
+
+relationInstance depends(P0__fop,1,DepAtom__2)
+

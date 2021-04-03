@@ -1,0 +1,63 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology php_apcu
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__php_apcu memberOf Package
+	package hasValue "php-apcu"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/php"
+	installedSize hasValue "181"
+	maintainer hasValue "Original-Debian PHP PECL Maintainers <team+php-pecl@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "5.1.18+4.0.11-1build1"
+	replaces hasValue "php-user-cache"
+	provides hasValue "php-user-cache, php7.4-apcu"
+	conflicts hasValue "php-user-cache, php-xcache, php-yac"
+	fileName hasValue "pool/universe/p/php-apcu/php-apcu_5.1.18+4.0.11-1build1_amd64.deb"
+	size hasValue "41776"
+	md5sum hasValue "3d462e27d17e283a9d0cfc52a1365583"
+	sha1 hasValue "102840095e08cf062e80cbbe965ddf8887012e5a"
+	sha256 hasValue "8fb942069f696d5cf6fc894cb2166ba6195fc614c8e658a229d1785171b1b293"
+	descriptionMd5 hasValue "0d7462c8f566c71b65f0d4bcf7806445"
+	homepage hasValue "https://pecl.php.net/package/APCu"
+	depends hasValue "phpapi-20190902, libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "phpapi-20190902"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__php_apcu,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__php_apcu,1,DepAtom__1)
+

@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ruby_ami
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ruby_ami memberOf Package
+	package hasValue "ruby-ami"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/ruby"
+	installedSize hasValue "52"
+	maintainer hasValue "Original-Debian Ruby Extras Maintainers <pkg-ruby-extras-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.4.0-1"
+	fileName hasValue "pool/universe/r/ruby-ami/ruby-ami_2.4.0-1_all.deb"
+	size hasValue "11292"
+	md5sum hasValue "10a8730eb4f797ceecc1f34ddf5929aa"
+	sha1 hasValue "c987e64905118cba68a228adf4724ac8426fc0f4"
+	sha256 hasValue "d375c40bf543724ac248554396c326f3a194bddd4564d5200adce32de648f4d7"
+	descriptionMd5 hasValue "d3e27c0d034355912ff58e0543b11fa1"
+	homepage hasValue "https://github.com/adhearsion/ruby_ami"
+	depends hasValue "ruby | ruby-interpreter, ruby-celluloid-io (>= 0.13)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "ruby"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ruby_ami,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "ruby-interpreter"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ruby_ami,0,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "ruby-celluloid-io"
+	comparison hasValue ">="
+	version hasValue "0.13"
+
+relationInstance depends(P0__ruby_ami,1,DepAtom__2)
+

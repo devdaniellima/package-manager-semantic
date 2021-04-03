@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology squashfuse
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__squashfuse memberOf Package
+	package hasValue "squashfuse"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "30"
+	maintainer hasValue "Original-Scarlett Moore <sgmoore@kde.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.1.103-2"
+	fileName hasValue "pool/universe/s/squashfuse/squashfuse_0.1.103-2_amd64.deb"
+	size hasValue "7564"
+	md5sum hasValue "c99cfc58c94845cecc0c589baca37bfd"
+	sha1 hasValue "8a53e74ee025d799e852db6824a54bcf946c6cd8"
+	sha256 hasValue "3b51e7b4502876d03a745f017d5910ef43fb367f9f91db8cb517b3f4de84dac7"
+	descriptionMd5 hasValue "0abda75cb957b3b82c5f13bc4875582d"
+	homepage hasValue "https://github.com/vasi/squashfuse"
+	depends hasValue "libsquashfuse0 (= 0.1.103-2), libc6 (>= 2.4), libfuse2 (>= 2.8)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libsquashfuse0"
+	comparison hasValue "="
+	version hasValue "0.1.103-2"
+
+relationInstance depends(P0__squashfuse,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__squashfuse,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libfuse2"
+	comparison hasValue ">="
+	version hasValue "2.8"
+
+relationInstance depends(P0__squashfuse,2,DepAtom__2)
+

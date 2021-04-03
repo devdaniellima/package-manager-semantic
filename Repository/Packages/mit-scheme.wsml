@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology mit_scheme
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__mit_scheme memberOf Package
+	package hasValue "mit-scheme"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "47426"
+	maintainer hasValue "Original-Barak A. Pearlmutter <bap@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "10.1.10-1build1"
+	fileName hasValue "pool/universe/m/mit-scheme/mit-scheme_10.1.10-1build1_amd64.deb"
+	size hasValue "6666792"
+	md5sum hasValue "cc01ad79ad8df4d9ba977576083679d8"
+	sha1 hasValue "d0761fd29ff334f192ee7700a57abd696b75c509"
+	sha256 hasValue "db5292ea1843e0638694d457c5568c39ff7d2bb4b61dd57153491ed1dcbc7f9f"
+	descriptionMd5 hasValue "092cd7e0ce27e329e2f76b047e32adda"
+	homepage hasValue "https://www.gnu.org/software/mit-scheme/"
+	depends hasValue "libc6 (>= 2.29), libtinfo6 (>= 6), libx11-6"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__mit_scheme,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libtinfo6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__mit_scheme,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libx11-6"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__mit_scheme,2,DepAtom__2)
+

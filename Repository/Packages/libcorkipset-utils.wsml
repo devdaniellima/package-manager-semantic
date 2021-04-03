@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libcorkipset_utils
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libcorkipset_utils memberOf Package
+	package hasValue "libcorkipset-utils"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "63"
+	maintainer hasValue "Original-Roger Shimizu <rogershimizu@gmail.com>"
+	architecture hasValue "amd64"
+	version hasValue "1.1.1+20150311-8"
+	fileName hasValue "pool/universe/libc/libcorkipset/libcorkipset-utils_1.1.1+20150311-8_amd64.deb"
+	size hasValue "15344"
+	md5sum hasValue "1e1628dd8c44d7ad6b798683b23c78cb"
+	sha1 hasValue "b7955f0e5b1a2e7d0a23b5ddbc4a94c8ced6a80a"
+	sha256 hasValue "82ba9d4250dab64b3aa4f63003b493a289fe9205b4f832501d8445bf9bcb7c1b"
+	descriptionMd5 hasValue "528e84a5bc3064756c3360d6d8584f06"
+	homepage hasValue "https://github.com/redjack/ipset"
+	depends hasValue "libcorkipset1 (= 1.1.1+20150311-8), libc6 (>= 2.4), libcork16"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libcorkipset1"
+	comparison hasValue "="
+	version hasValue "1.1.1+20150311-8"
+
+relationInstance depends(P0__libcorkipset_utils,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libcorkipset_utils,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libcork16"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libcorkipset_utils,2,DepAtom__2)
+

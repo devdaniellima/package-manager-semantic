@@ -1,0 +1,76 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python3_rrdtool
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python3_rrdtool memberOf Package
+	package hasValue "python3-rrdtool"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "95"
+	maintainer hasValue "Original-Debian RRDtool Team <pkg-rrdtool-maint@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.7.2-3build2"
+	provides hasValue "python3.8-rrdtool"
+	fileName hasValue "pool/universe/r/rrdtool/python3-rrdtool_1.7.2-3build2_amd64.deb"
+	size hasValue "17528"
+	md5sum hasValue "262624c8568a1f746a9f1dac6f2ab49b"
+	sha1 hasValue "a135880d5edee040b29d6cf845716818e3ed11f2"
+	sha256 hasValue "b890b0f34420fbdb9448d5a41aa74acd71a5395e50892a43c9a71c740cb11e5b"
+	description hasValue "time-series data storage and display system (Python3 interface)"
+	descriptionMd5 hasValue "7b82f583bb9c9079fa8796903bd4c210"
+	homepage hasValue "https://oss.oetiker.ch/rrdtool/"
+	depends hasValue "python3 (<< 3.9), python3 (>= 3.8~), libc6 (>= 2.7), librrd8 (>= 1.7.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3"
+	comparison hasValue "<<"
+	version hasValue "3.9"
+
+relationInstance depends(P0__python3_rrdtool,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3"
+	comparison hasValue ">="
+	version hasValue "3.8~"
+
+relationInstance depends(P0__python3_rrdtool,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__python3_rrdtool,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "librrd8"
+	comparison hasValue ">="
+	version hasValue "1.7.0"
+
+relationInstance depends(P0__python3_rrdtool,3,DepAtom__3)
+

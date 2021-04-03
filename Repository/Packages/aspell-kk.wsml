@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology aspell_kk
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__aspell_kk memberOf Package
+	package hasValue "aspell-kk"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/text"
+	installedSize hasValue "244"
+	maintainer hasValue "Original-Timur Birsh <taem@linukz.org>"
+	architecture hasValue "all"
+	version hasValue "0.2-1"
+	provides hasValue "aspell-dictionary"
+	fileName hasValue "pool/universe/a/aspell-kk/aspell-kk_0.2-1_all.deb"
+	size hasValue "119552"
+	md5sum hasValue "9bc55aac3efe085c0acd396925934c3a"
+	sha1 hasValue "4d75f74925823c00b5869e1146851ec9de0be14d"
+	sha256 hasValue "a429f480c3df2cb3c8b4d8413683b6c6cec48dc2f90670f4d6eaa391460558a4"
+	descriptionMd5 hasValue "18d7b9858cc5cf55776acb5372fcef1c"
+	homepage hasValue "http://sourceforge.net/projects/kazlinux/"
+	depends hasValue "aspell (>= 0.60), dictionaries-common (>= 0.9.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "aspell"
+	comparison hasValue ">="
+	version hasValue "0.60"
+
+relationInstance depends(P0__aspell_kk,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "dictionaries-common"
+	comparison hasValue ">="
+	version hasValue "0.9.1"
+
+relationInstance depends(P0__aspell_kk,1,DepAtom__1)
+

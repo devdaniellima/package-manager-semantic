@@ -1,0 +1,70 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology mmh
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__mmh memberOf Package
+	package hasValue "mmh"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/mail"
+	installedSize hasValue "3884"
+	maintainer hasValue "Original-Dmitry Bogatov <KAction@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.4-2"
+	replaces hasValue "mh"
+	provides hasValue "mail-reader, mh"
+	conflicts hasValue "mh"
+	fileName hasValue "pool/universe/m/mmh/mmh_0.4-2_amd64.deb"
+	size hasValue "539892"
+	md5sum hasValue "9283b97d242025db1641e05a487e1d26"
+	sha1 hasValue "168ddff96f9ca1c2953c51c9efe1b2b5c43b4bc9"
+	sha256 hasValue "e10cf9f6329be182da6f7c08bc58cfe517c88056f969ccfb283acd56b1102e41"
+	descriptionMd5 hasValue "6648b3380bdaf69b4d20d0c94a81191f"
+	homepage hasValue "http://marmaro.de/prog/mmh/"
+	depends hasValue "file, libc6 (>= 2.14), libtinfo6 (>= 6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "file"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__mmh,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__mmh,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libtinfo6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__mmh,2,DepAtom__2)
+

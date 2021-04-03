@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology llvm_7_examples
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__llvm_7_examples memberOf Package
+	package hasValue "llvm-7-examples"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/doc"
+	installedSize hasValue "475"
+	maintainer hasValue "Original-LLVM Packaging Team <pkg-llvm-team@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1:7.0.1-12"
+	fileName hasValue "pool/universe/l/llvm-toolchain-7/llvm-7-examples_7.0.1-12_all.deb"
+	size hasValue "230668"
+	md5sum hasValue "ae939c006257660756dac785c459318b"
+	sha1 hasValue "eb4f1dd49f58d31b49d18caeebaab5ec3db0eb56"
+	sha256 hasValue "a9786dcbff0ec4c65c535e7e61f9bd070e083d8372ee2ca6615cb6ca38b6464e"
+	descriptionMd5 hasValue "61fee537b751bf39ce1ac5bf27ca3806"
+	homepage hasValue "https://www.llvm.org/"
+	depends hasValue "llvm-7-dev (>= 1:7.0.1-12), llvm-7-dev (<< 1:7.0.1-12+c~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "llvm-7-dev"
+	comparison hasValue ">="
+	version hasValue "1:7.0.1-12"
+
+relationInstance depends(P0__llvm_7_examples,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "llvm-7-dev"
+	comparison hasValue "<<"
+	version hasValue "1:7.0.1-12+c~"
+
+relationInstance depends(P0__llvm_7_examples,1,DepAtom__1)
+

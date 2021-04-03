@@ -1,0 +1,69 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology pd_iemutils
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__pd_iemutils memberOf Package
+	package hasValue "pd-iemutils"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/sound"
+	installedSize hasValue "1014"
+	maintainer hasValue "Original-Debian Multimedia Maintainers <debian-multimedia@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.0.20181004-1"
+	replaces hasValue "pd-iemtab"
+	provides hasValue "pd-iem-adapfilt, pd-iem-roomsim, pd-iem-spec2, pd-iem-tab, pd-iem16, pd-iemtab"
+	fileName hasValue "pool/universe/p/pd-iemutils/pd-iemutils_0.0.20181004-1_amd64.deb"
+	size hasValue "169820"
+	md5sum hasValue "f853fe7a4905f9b468624d8805b784a1"
+	sha1 hasValue "c8befc376635dbcf511b458a57210ed2aeda4b16"
+	sha256 hasValue "965e92a944413cc3b628d8edc169fc118831be1155dec2dd57502c513f94b1fb"
+	descriptionMd5 hasValue "fa338149d0a0cade85e247fe4d1583e9"
+	homepage hasValue "https://git.iem.at/pd/iem_utils"
+	depends hasValue "libc6 (>= 2.4), puredata | pd"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__pd_iemutils,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "puredata"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__pd_iemutils,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "pd"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__pd_iemutils,1,DepAtom__2)
+

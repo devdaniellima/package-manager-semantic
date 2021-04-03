@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libgtg0
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libgtg0 memberOf Package
+	package hasValue "libgtg0"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/libs"
+	installedSize hasValue "112"
+	maintainer hasValue "Original-Samuel Thibault <sthibault@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.2-2+dfsg-6build1"
+	fileName hasValue "pool/universe/g/gtg-trace/libgtg0_0.2-2+dfsg-6build1_amd64.deb"
+	size hasValue "31740"
+	md5sum hasValue "b5a727c90345ff4bc1c6ca41ef18b097"
+	sha1 hasValue "76d7db113eed68e63e818737aeb849c648d2937d"
+	sha256 hasValue "c46862d7ec9c32ac88fc31bbef5e4b5154118c7e3f91660caaef28cf359192c9"
+	description hasValue "Generic Trace Generator (GTG) - shared library"
+	descriptionMd5 hasValue "ea60e1713b3175548217f54740436f92"
+	homepage hasValue "http://gforge.inria.fr/projects/gtg/"
+	depends hasValue "libc6 (>= 2.14), libgfortran5 (>= 8), libopen-trace-format1"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libgtg0,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgfortran5"
+	comparison hasValue ">="
+	version hasValue "8"
+
+relationInstance depends(P0__libgtg0,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libopen-trace-format1"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libgtg0,2,DepAtom__2)
+

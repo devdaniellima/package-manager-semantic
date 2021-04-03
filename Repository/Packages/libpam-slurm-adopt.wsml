@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libpam_slurm_adopt
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libpam_slurm_adopt memberOf Package
+	package hasValue "libpam-slurm-adopt"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "107"
+	maintainer hasValue "Original-Debian HPC Team <debian-hpc@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "19.05.5-1"
+	fileName hasValue "pool/universe/s/slurm-llnl/libpam-slurm-adopt_19.05.5-1_amd64.deb"
+	size hasValue "19564"
+	md5sum hasValue "cbb3d5f35e07c35030e1dad0f8fcb1c6"
+	sha1 hasValue "b1d4061280f25c6febf9bc5ae3c7bce95c90382b"
+	sha256 hasValue "46f37d81c54fb3d19aff41cce8c923dfa6cc3ad7d4851ae3bb77bce58c2e337b"
+	descriptionMd5 hasValue "858caedf3cfdff46f2cdb5fef75d7dcf"
+	homepage hasValue "http://slurm.schedmd.com"
+	depends hasValue "libc6 (>= 2.4), libslurm34 (>= 19.05.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libpam_slurm_adopt,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libslurm34"
+	comparison hasValue ">="
+	version hasValue "19.05.2"
+
+relationInstance depends(P0__libpam_slurm_adopt,1,DepAtom__1)
+

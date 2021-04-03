@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology thesias
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__thesias memberOf Package
+	package hasValue "thesias"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/science"
+	installedSize hasValue "324"
+	maintainer hasValue "Original-Debian Med Packaging Team <debian-med-packaging@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.1.1-1"
+	fileName hasValue "pool/universe/t/thesias/thesias_3.1.1-1_amd64.deb"
+	size hasValue "173216"
+	md5sum hasValue "b5ac5bb4e29b2b1b655f479b92929a3a"
+	sha1 hasValue "2377190df243c7547ed3f113af7c21bf4311d24d"
+	sha256 hasValue "5e56a10cbc716fb6fb6e7951b9e683f0a2372593ffb7f775e68f8d90a796f6c5"
+	descriptionMd5 hasValue "a4f2cac99b178853c0f33970c1a3c93c"
+	homepage hasValue "https://github.com/daissi/thesias"
+	depends hasValue "libc6 (>= 2.7), default-jre"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__thesias,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "default-jre"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__thesias,1,DepAtom__1)
+

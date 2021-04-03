@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology steam_installer
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__steam_installer memberOf Package
+	package hasValue "steam-installer"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "multiverse/games"
+	installedSize hasValue "67"
+	maintainer hasValue "Original-Debian Games Team <pkg-games-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.0.0.61-2ubuntu3"
+	fileName hasValue "pool/multiverse/s/steam/steam-installer_1.0.0.61-2ubuntu3_all.deb"
+	size hasValue "17464"
+	md5sum hasValue "b66fc70d60e4ccb62091b1139b870a23"
+	sha1 hasValue "50d9a9850aa26bd6a0c10417dc9376a4b1851c22"
+	sha256 hasValue "6d6a19bca0fe9c20ae0d869effd74be5219a4b38e4ea10eda85a92ea22182206"
+	descriptionMd5 hasValue "52e381fbd71a5863cc8fe8ab82b07925"
+	homepage hasValue "https://steamcommunity.com/linux"
+	depends hasValue "steam (= 1:1.0.0.61-2ubuntu3)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "steam"
+	comparison hasValue "="
+	version hasValue "1:1.0.0.61-2ubuntu3"
+
+relationInstance depends(P0__steam_installer,0,DepAtom__0)
+

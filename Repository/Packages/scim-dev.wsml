@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology scim_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__scim_dev memberOf Package
+	package hasValue "scim-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "27"
+	maintainer hasValue "Original-Rolf Leggewie <foss@rolf.leggewie.biz>"
+	architecture hasValue "all"
+	version hasValue "1.4.18-2.2build1"
+	fileName hasValue "pool/universe/s/scim/scim-dev_1.4.18-2.2build1_all.deb"
+	size hasValue "3760"
+	md5sum hasValue "e673593a893d63cf5695255ef034db8f"
+	sha1 hasValue "d641ed67d0eed7fb6343b3a7fb19b26092ebf065"
+	sha256 hasValue "cd746206a7d007fd7c7fbcfd95853c929ebe4b2553e8ba193859a9ed45354785"
+	description hasValue "development files for SCIM platform"
+	descriptionMd5 hasValue "d2c1f13303b65ddee6ba9df222b092b1"
+	homepage hasValue "https://github.com/scim-im/scim"
+	depends hasValue "libscim-dev (>= 1.4.18-2.2build1), scim-dev-doc (= 1.4.18-2.2build1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libscim-dev"
+	comparison hasValue ">="
+	version hasValue "1.4.18-2.2build1"
+
+relationInstance depends(P0__scim_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "scim-dev-doc"
+	comparison hasValue "="
+	version hasValue "1.4.18-2.2build1"
+
+relationInstance depends(P0__scim_dev,1,DepAtom__1)
+

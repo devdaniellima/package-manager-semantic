@@ -1,0 +1,74 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology netdata_apache2
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__netdata_apache2 memberOf Package
+	package hasValue "netdata-apache2"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "47"
+	maintainer hasValue "Original-Lennart Weller <lhw@ring0.de>"
+	architecture hasValue "all"
+	version hasValue "1.19.0-3ubuntu1"
+	fileName hasValue "pool/universe/n/netdata/netdata-apache2_1.19.0-3ubuntu1_all.deb"
+	size hasValue "8544"
+	md5sum hasValue "429b3f5fcaa046fc41d3080fbbe69b6f"
+	sha1 hasValue "2d04ff89ec6b6fea68c50e44929f29dedd84d702"
+	sha256 hasValue "6f2055830705f69fd6c4b37e9b872dffac6eb150ba2d44599b59c44e30b8024f"
+	descriptionMd5 hasValue "7d70bc947ccb62ace14e5e45713da588"
+	homepage hasValue "https://github.com/netdata/netdata"
+	depends hasValue "apache2, netdata-core (>= 1.19.0-3ubuntu1) | netdata-core-no-sse (>= 1.19.0-3ubuntu1), netdata-web (>= 1.19.0-3ubuntu1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "apache2"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__netdata_apache2,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "netdata-core"
+	comparison hasValue ">="
+	version hasValue "1.19.0-3ubuntu1"
+
+relationInstance depends(P0__netdata_apache2,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "netdata-core-no-sse"
+	comparison hasValue ">="
+	version hasValue "1.19.0-3ubuntu1"
+
+relationInstance depends(P0__netdata_apache2,1,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "netdata-web"
+	comparison hasValue ">="
+	version hasValue "1.19.0-3ubuntu1"
+
+relationInstance depends(P0__netdata_apache2,2,DepAtom__3)
+

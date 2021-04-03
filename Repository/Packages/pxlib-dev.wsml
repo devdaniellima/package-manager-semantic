@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology pxlib_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__pxlib_dev memberOf Package
+	package hasValue "pxlib-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "250"
+	maintainer hasValue "Original-Uwe Steinmann <steinm@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.6.8-1"
+	fileName hasValue "pool/universe/p/pxlib/pxlib-dev_0.6.8-1_amd64.deb"
+	size hasValue "86624"
+	md5sum hasValue "9d2aabf5a9c439e68baf9b83bcc2bf65"
+	sha1 hasValue "205656c1a6bf91f52306e4de6a461b5ed13021e1"
+	sha256 hasValue "d7c1ff76b6b6f527b14af4215f772205de9c5eb6b1d41745bb552f62dd0c016d"
+	descriptionMd5 hasValue "1d266ea13b069c1bb5c673ce9046190f"
+	homepage hasValue "http://pxlib.sourceforge.net/"
+	depends hasValue "pxlib1 (= 0.6.8-1), libgsf-1-dev (>= 1.13.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "pxlib1"
+	comparison hasValue "="
+	version hasValue "0.6.8-1"
+
+relationInstance depends(P0__pxlib_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgsf-1-dev"
+	comparison hasValue ">="
+	version hasValue "1.13.2"
+
+relationInstance depends(P0__pxlib_dev,1,DepAtom__1)
+

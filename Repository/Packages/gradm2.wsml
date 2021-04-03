@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gradm2
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gradm2 memberOf Package
+	package hasValue "gradm2"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "2938"
+	maintainer hasValue "Original-Laszlo Boszormenyi (GCS) <gcs@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.1~201709030627-1"
+	fileName hasValue "pool/universe/g/gradm2/gradm2_3.1~201709030627-1_amd64.deb"
+	size hasValue "114280"
+	md5sum hasValue "94164fb25d2196e73c8c9751f8c16217"
+	sha1 hasValue "5540b494e9a05d2814619e6b9a0b3cd3a778ff85"
+	sha256 hasValue "22e4efcde19c019446092e511446f799fed6934787bba072f83ec5bb3659c402"
+	descriptionMd5 hasValue "4d55b6b31cfa23e59323c7fe9b273b95"
+	homepage hasValue "http://www.grsecurity.net/"
+	depends hasValue "libc6 (>= 2.14), libpam0g (>= 0.99.7.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__gradm2,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libpam0g"
+	comparison hasValue ">="
+	version hasValue "0.99.7.1"
+
+relationInstance depends(P0__gradm2,1,DepAtom__1)
+

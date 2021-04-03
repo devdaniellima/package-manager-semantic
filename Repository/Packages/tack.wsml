@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology tack
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__tack memberOf Package
+	package hasValue "tack"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/misc"
+	installedSize hasValue "240"
+	maintainer hasValue "Original-Sven Joachim <svenjoac@gmx.de>"
+	architecture hasValue "amd64"
+	version hasValue "1.08-1build1"
+	fileName hasValue "pool/universe/t/tack/tack_1.08-1build1_amd64.deb"
+	size hasValue "86820"
+	md5sum hasValue "e0d3e5124bd40b3305fe4101c6ea08a4"
+	sha1 hasValue "4ac471c38371e2fe8d8cf9d78184fb3701804273"
+	sha256 hasValue "a96377b8a6cccff214288770933772dde1f265423e0ffb3a9d1585508cd3a2a9"
+	descriptionMd5 hasValue "cf00daedb113ad640f6b8818e8b91c71"
+	homepage hasValue "https://invisible-island.net/ncurses/tack.html"
+	depends hasValue "libc6 (>= 2.15), libtinfo6 (>= 6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__tack,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libtinfo6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__tack,1,DepAtom__1)
+

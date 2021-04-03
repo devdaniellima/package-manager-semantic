@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology levee
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__levee memberOf Package
+	package hasValue "levee"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/editors"
+	installedSize hasValue "103"
+	maintainer hasValue "Original-Jari Aalto <jari.aalto@cante.net>"
+	architecture hasValue "amd64"
+	version hasValue "3.5a-4build1"
+	provides hasValue "editor"
+	fileName hasValue "pool/universe/l/levee/levee_3.5a-4build1_amd64.deb"
+	size hasValue "46136"
+	md5sum hasValue "b199b0eba230c42da56a994292c317d2"
+	sha1 hasValue "4140aa7db3a470254c785699bf493e657ed59835"
+	sha256 hasValue "d1e85b1c4f4a876442231f8bd4d4f1db268bee253fe4ed281e006cef0c3be572"
+	descriptionMd5 hasValue "bef8e9ff400bee62e6b6537466c81c9b"
+	homepage hasValue "https://www.pell.portland.or.us/~orc/Code/levee"
+	depends hasValue "libc6 (>= 2.4), libtinfo6 (>= 6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__levee,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libtinfo6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__levee,1,DepAtom__1)
+

@@ -1,0 +1,66 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology tk_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__tk_dev memberOf Package
+	package hasValue "tk-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "25"
+	maintainer hasValue "Original-Debian Tcl/Tk Packagers <pkg-tcltk-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "8.6.9+1"
+	fileName hasValue "pool/universe/t/tcltk-defaults/tk-dev_8.6.9+1_amd64.deb"
+	size hasValue "3076"
+	md5sum hasValue "9d674cf948e5dd94896c78823f848301"
+	sha1 hasValue "21ebc693568e35f9655482fbaee5853c2031796b"
+	sha256 hasValue "8c50602a555e675e0009d06ba5d35999ec9a0fc99234bb4e9c66b2e871235471"
+	descriptionMd5 hasValue "7e7c3316b08ee6e19b370908f28f78d9"
+	depends hasValue "tk8.6-dev (>= 8.6.9-2), tk, tcl-dev"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "tk8.6-dev"
+	comparison hasValue ">="
+	version hasValue "8.6.9-2"
+
+relationInstance depends(P0__tk_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "tk"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__tk_dev,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "tcl-dev"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__tk_dev,2,DepAtom__2)
+

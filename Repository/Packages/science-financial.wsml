@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology science_financial
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__science_financial memberOf Package
+	package hasValue "science-financial"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/metapackages"
+	installedSize hasValue "40"
+	maintainer hasValue "Original-Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.12ubuntu1"
+	fileName hasValue "pool/universe/d/debian-science/science-financial_1.12ubuntu1_all.deb"
+	size hasValue "3872"
+	md5sum hasValue "951b3947796eaeaac3d67a80a756126d"
+	sha1 hasValue "c776ecc419c2470a7a0eee3bf12cf7447bdcc705"
+	sha256 hasValue "87ace829162077afbe465e0ac9e661825464f7637045e255ac527f6e25264a5a"
+	descriptionMd5 hasValue "701ea5ecbfc92c1a0d6b72b5adff0c9b"
+	homepage hasValue "https://wiki.debian.org/DebianScience/"
+	depends hasValue "science-config (= 1.12ubuntu1), science-tasks (= 1.12ubuntu1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "science-config"
+	comparison hasValue "="
+	version hasValue "1.12ubuntu1"
+
+relationInstance depends(P0__science_financial,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "science-tasks"
+	comparison hasValue "="
+	version hasValue "1.12ubuntu1"
+
+relationInstance depends(P0__science_financial,1,DepAtom__1)
+

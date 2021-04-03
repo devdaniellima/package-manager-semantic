@@ -1,0 +1,74 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology weechat_perl
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__weechat_perl memberOf Package
+	package hasValue "weechat-perl"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "382"
+	maintainer hasValue "Original-Emmanuel Bouthenot <kolter@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.8-1"
+	fileName hasValue "pool/universe/w/weechat/weechat-perl_2.8-1_amd64.deb"
+	size hasValue "72820"
+	md5sum hasValue "15c8bd53f125479ca13405969c696593"
+	sha1 hasValue "581c72b13a57732d948aae50ceb071f8cc3c334a"
+	sha256 hasValue "5fc7d8fc3c386e2dfce3218bcb05a54ef62a2408ec97315babcf0f477c46fadc"
+	descriptionMd5 hasValue "f675770cf2259cecdbf2d754dfad59ff"
+	homepage hasValue "https://weechat.org/"
+	depends hasValue "libc6 (>= 2.14), libperl5.30 (>= 5.30.0), weechat-curses (= 2.8-1) | weechat-headless (= 2.8-1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__weechat_perl,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libperl5.30"
+	comparison hasValue ">="
+	version hasValue "5.30.0"
+
+relationInstance depends(P0__weechat_perl,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "weechat-curses"
+	comparison hasValue "="
+	version hasValue "2.8-1"
+
+relationInstance depends(P0__weechat_perl,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "weechat-headless"
+	comparison hasValue "="
+	version hasValue "2.8-1"
+
+relationInstance depends(P0__weechat_perl,2,DepAtom__3)
+

@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libgeoip1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libgeoip1 memberOf Package
+	package hasValue "libgeoip1"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "272"
+	maintainer hasValue "Original-Patrick Matthäi <pmatthaei@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.6.12-6build1"
+	fileName hasValue "pool/universe/g/geoip/libgeoip1_1.6.12-6build1_amd64.deb"
+	size hasValue "70524"
+	md5sum hasValue "2f42492681bf9e20d642c7576de27a99"
+	sha1 hasValue "204e44ae771496e9c04cce8a5aef96bef04adf95"
+	sha256 hasValue "c3f43ec54e8f8a499c73e2b3c759bde188b1182f3b324b509a0c92ec332f6cf2"
+	description hasValue "non-DNS IP-to-country resolver library"
+	descriptionMd5 hasValue "cc64f48b3eca4b1690c3b7284f2bd5fd"
+	homepage hasValue "https://www.maxmind.com/"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libgeoip1,0,DepAtom__0)
+

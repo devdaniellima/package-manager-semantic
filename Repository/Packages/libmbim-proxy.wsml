@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libmbim_proxy
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libmbim_proxy memberOf Package
+	package hasValue "libmbim-proxy"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "net"
+	installedSize hasValue "29"
+	maintainer hasValue "Mathieu Trudel-Lapierre <cyphermox@ubuntu.com>"
+	architecture hasValue "amd64"
+	version hasValue "1.22.0-2"
+	fileName hasValue "pool/main/libm/libmbim/libmbim-proxy_1.22.0-2_amd64.deb"
+	size hasValue "5908"
+	md5sum hasValue "dfa6cec910c2d5df86e871efae5a87f4"
+	sha1 hasValue "28629e2f6852509fb95322c87b5f720c10ed71d5"
+	sha256 hasValue "cc5a2a9257666ff380a98b57ea06f26982d8fed32fee1a2c4e9e4a574848698b"
+	description hasValue "Proxy to communicate with MBIM ports"
+	descriptionMd5 hasValue "4ba7d98cd0780f7aad0e620ccd309956"
+	homepage hasValue "https://www.freedesktop.org/wiki/Software/libmbim/"
+	depends hasValue "libc6 (>= 2.4), libglib2.0-0 (>= 2.36), libmbim-glib4 (= 1.22.0-2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libmbim_proxy,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libglib2.0-0"
+	comparison hasValue ">="
+	version hasValue "2.36"
+
+relationInstance depends(P0__libmbim_proxy,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libmbim-glib4"
+	comparison hasValue "="
+	version hasValue "1.22.0-2"
+
+relationInstance depends(P0__libmbim_proxy,2,DepAtom__2)
+

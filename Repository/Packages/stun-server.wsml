@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology stun_server
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__stun_server memberOf Package
+	package hasValue "stun-server"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "93"
+	maintainer hasValue "Original-Debian VoIP Team <pkg-voip-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.97~dfsg-2.1build2"
+	replaces hasValue "stun (<< 0.97~dfsg-1)"
+	provides hasValue "stun"
+	fileName hasValue "pool/universe/s/stun/stun-server_0.97~dfsg-2.1build2_amd64.deb"
+	size hasValue "27892"
+	md5sum hasValue "98136f3c86e839f149405aeeb3f7f6ce"
+	sha1 hasValue "010a1d3fb3aac6cf3ad5d4ffb7e223216b397deb"
+	sha256 hasValue "fd5b8bd972fa5d852f441799d27c87939bb0cfe509d96287f2c194cda3d26fa3"
+	descriptionMd5 hasValue "24472f2836639f74795d31181b18434f"
+	homepage hasValue "http://sourceforge.net/projects/stun/"
+	depends hasValue "libc6 (>= 2.15), libstdc++6 (>= 4.4.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__stun_server,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "4.4.0"
+
+relationInstance depends(P0__stun_server,1,DepAtom__1)
+

@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology acpitool
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__acpitool memberOf Package
+	package hasValue "acpitool"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "144"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.5.1-5build1"
+	fileName hasValue "pool/universe/a/acpitool/acpitool_0.5.1-5build1_amd64.deb"
+	size hasValue "44404"
+	md5sum hasValue "60464e41bcc6f47ed809abe66353af9b"
+	sha1 hasValue "ceffa74ef2d9d5244d041caef51cf0d67dccd29f"
+	sha256 hasValue "ddc552c75232f4496a4d41fa2170397b1d18104907b48d443a59adb711475c0b"
+	description hasValue "cliente ACPI de linha de comando"
+	descriptionMd5 hasValue "8bfbe99c5e1bf2100b04aac2628220b1"
+	homepage hasValue "http://sourceforge.net/projects/acpitool/"
+	depends hasValue "libc6 (>= 2.14), libgcc-s1 (>= 3.0), libstdc++6 (>= 5.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__acpitool,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgcc-s1"
+	comparison hasValue ">="
+	version hasValue "3.0"
+
+relationInstance depends(P0__acpitool,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "5.2"
+
+relationInstance depends(P0__acpitool,2,DepAtom__2)
+

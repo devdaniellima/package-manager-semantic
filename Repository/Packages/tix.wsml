@@ -1,0 +1,73 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology tix
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__tix memberOf Package
+	package hasValue "tix"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "1238"
+	maintainer hasValue "Original-Georges Khaznadar <georgesk@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "8.4.3-10"
+	fileName hasValue "pool/universe/t/tix/tix_8.4.3-10_amd64.deb"
+	size hasValue "274054"
+	md5sum hasValue "358bb02fbea6e843030097dcca4d93db"
+	sha1 hasValue "2bb8c5250d118139cf031b40d779b35251e28274"
+	sha256 hasValue "c5d566fb3facda0182d8c5746d2e87b90c75dcd85561eed41fd974a8d415379d"
+	descriptionMd5 hasValue "d9c66d25d6841d663b6f85857fb3d730"
+	depends hasValue "tcl (>= 8.6.0) | tclsh, libc6 (>= 2.4), libx11-6"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "tcl"
+	comparison hasValue ">="
+	version hasValue "8.6.0"
+
+relationInstance depends(P0__tix,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "tclsh"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__tix,0,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__tix,1,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "libx11-6"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__tix,2,DepAtom__3)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology node_is_builtin_module
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__node_is_builtin_module memberOf Package
+	package hasValue "node-is-builtin-module"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/web"
+	installedSize hasValue "15"
+	maintainer hasValue "Original-Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.0.0-1"
+	fileName hasValue "pool/universe/n/node-is-builtin-module/node-is-builtin-module_2.0.0-1_all.deb"
+	size hasValue "3192"
+	md5sum hasValue "ff0fd8d52f4b6500c80c7056fba4d4b6"
+	sha1 hasValue "0b49f9bbb3df896b4926ffffc69957d7d9b1aa0b"
+	sha256 hasValue "9f898ba95db5f2707c0039b7aec670612b7cfddd95b13f829a0ee8b2cc6de3c5"
+	descriptionMd5 hasValue "3ec031e1550ee9c4d8f6f9bfe1eda57d"
+	homepage hasValue "https://github.com/sindresorhus/is-builtin-module"
+	depends hasValue "nodejs, node-builtin-modules (>= 2.0.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "nodejs"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__node_is_builtin_module,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "node-builtin-modules"
+	comparison hasValue ">="
+	version hasValue "2.0.0"
+
+relationInstance depends(P0__node_is_builtin_module,1,DepAtom__1)
+

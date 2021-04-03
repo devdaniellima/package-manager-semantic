@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology weechat_scripts
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__weechat_scripts memberOf Package
+	package hasValue "weechat-scripts"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/net"
+	installedSize hasValue "4450"
+	maintainer hasValue "Original-Emmanuel Bouthenot <kolter@debian.org>"
+	architecture hasValue "all"
+	version hasValue "20191009-1"
+	fileName hasValue "pool/universe/w/weechat-scripts/weechat-scripts_20191009-1_all.deb"
+	size hasValue "765808"
+	md5sum hasValue "31e525e2fa5e002556747200c1a2479e"
+	sha1 hasValue "c0b2e8dbc25e83031466d0827ea18e59ced13e51"
+	sha256 hasValue "d3695335fd3386dffa3ee643f56034ab972e1489741c4de77287cd5319bba9b6"
+	descriptionMd5 hasValue "68496965b29dcfb0d821429e92643bc2"
+	homepage hasValue "https://weechat.org/scripts/"
+	depends hasValue "weechat-plugins (>= 0.3.6), base-files (>= 4.0.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "weechat-plugins"
+	comparison hasValue ">="
+	version hasValue "0.3.6"
+
+relationInstance depends(P0__weechat_scripts,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "base-files"
+	comparison hasValue ">="
+	version hasValue "4.0.1"
+
+relationInstance depends(P0__weechat_scripts,1,DepAtom__1)
+

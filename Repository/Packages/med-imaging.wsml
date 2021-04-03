@@ -1,0 +1,59 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology med_imaging
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__med_imaging memberOf Package
+	package hasValue "med-imaging"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/misc"
+	installedSize hasValue "38"
+	maintainer hasValue "Original-Debian Med Packaging Team <debian-med-packaging@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "3.5.1"
+	fileName hasValue "pool/universe/d/debian-med/med-imaging_3.5.1_all.deb"
+	size hasValue "4216"
+	md5sum hasValue "f60f7ee8d0b8a4f6e3a45a085d995e29"
+	sha1 hasValue "582ac244e12d9110d48553e069bf8ae9aaf5158c"
+	sha256 hasValue "56a383a1e99a062bb6f98817f6a8eb791538ecc63bc207fb796f0e72015d4435"
+	descriptionMd5 hasValue "90e31c95513232eac9ac073ddc3786b4"
+	depends hasValue "med-config (= 3.5.1), med-tasks (= 3.5.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "med-config"
+	comparison hasValue "="
+	version hasValue "3.5.1"
+
+relationInstance depends(P0__med_imaging,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "med-tasks"
+	comparison hasValue "="
+	version hasValue "3.5.1"
+
+relationInstance depends(P0__med_imaging,1,DepAtom__1)
+

@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libsl0_heimdal
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libsl0_heimdal memberOf Package
+	package hasValue "libsl0-heimdal"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "libs"
+	installedSize hasValue "63"
+	maintainer hasValue "Original-Brian May <bam@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "7.7.0+dfsg-1ubuntu1"
+	conflicts hasValue "libsl0-kerberos4kth"
+	fileName hasValue "pool/main/h/heimdal/libsl0-heimdal_7.7.0+dfsg-1ubuntu1_amd64.deb"
+	size hasValue "13460"
+	md5sum hasValue "c0e47b5b52e5261b79012225c5f661d1"
+	sha1 hasValue "768fae82bf63acc96e94e1d8ca72858317197abf"
+	sha256 hasValue "f4fd663b0b6652eef618e16fbd501298f7ca311872cc19c67cb33a9cb7f3e1b1"
+	description hasValue "Heimdal Kerberos - SL support library"
+	descriptionMd5 hasValue "8ffc54745b78f52228abc0c4b0ada710"
+	homepage hasValue "http://www.h5l.org/"
+	depends hasValue "libc6 (>= 2.11), libedit2 (>= 2.11-20080614-0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.11"
+
+relationInstance depends(P0__libsl0_heimdal,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libedit2"
+	comparison hasValue ">="
+	version hasValue "2.11-20080614-0"
+
+relationInstance depends(P0__libsl0_heimdal,1,DepAtom__1)
+

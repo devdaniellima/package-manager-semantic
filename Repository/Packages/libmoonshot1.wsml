@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libmoonshot1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libmoonshot1 memberOf Package
+	package hasValue "libmoonshot1"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "41"
+	maintainer hasValue "Original-Sam Hartman <hartmans@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.1.0+libsecret~2"
+	fileName hasValue "pool/universe/m/moonshot-ui/libmoonshot1_1.1.0+libsecret~2_amd64.deb"
+	size hasValue "9484"
+	md5sum hasValue "fc07c259d97167c67b7d85bf4ebd8009"
+	sha1 hasValue "4361493648ffcfb651b8ad5c4a12b004dfd1ee74"
+	sha256 hasValue "f0b2cab09cdac1ea882f045fc9312e3c73ec0b3ec38af6a60c6ff9a6d9d0c088"
+	descriptionMd5 hasValue "3d8f7a7ba96d5ac27fe1d6b9317944c3"
+	homepage hasValue "http://www.project-moonshot.org/"
+	depends hasValue "libc6 (>= 2.4), libglib2.0-0 (>= 2.31.8)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libmoonshot1,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libglib2.0-0"
+	comparison hasValue ">="
+	version hasValue "2.31.8"
+
+relationInstance depends(P0__libmoonshot1,1,DepAtom__1)
+

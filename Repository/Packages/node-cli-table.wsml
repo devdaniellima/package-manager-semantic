@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology node_cli_table
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__node_cli_table memberOf Package
+	package hasValue "node-cli-table"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/web"
+	installedSize hasValue "61"
+	maintainer hasValue "Original-Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.3.1-1"
+	fileName hasValue "pool/universe/n/node-cli-table/node-cli-table_0.3.1-1_all.deb"
+	size hasValue "8412"
+	md5sum hasValue "09eff398a3cbf555616915c5485b0682"
+	sha1 hasValue "8c711fce67ce4eefca306b305e21d0deaf47d595"
+	sha256 hasValue "2e59a82cec699a38ee51fa1303fbb21cd1b5780476307a9da652d167436e1460"
+	descriptionMd5 hasValue "b29fc54dd7935d88fff9c2776e760715"
+	homepage hasValue "https://github.com/Automattic/cli-table"
+	depends hasValue "nodejs, node-colors (>= 1.0.3)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "nodejs"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__node_cli_table,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "node-colors"
+	comparison hasValue ">="
+	version hasValue "1.0.3"
+
+relationInstance depends(P0__node_cli_table,1,DepAtom__1)
+

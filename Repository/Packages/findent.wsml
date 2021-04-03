@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology findent
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__findent memberOf Package
+	package hasValue "findent"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "523"
+	maintainer hasValue "Original-Willem Vermin <wvermin@gmail.com>"
+	architecture hasValue "amd64"
+	version hasValue "3.1.1-1build1"
+	fileName hasValue "pool/universe/f/findent/findent_3.1.1-1build1_amd64.deb"
+	size hasValue "161796"
+	md5sum hasValue "6564de23284e48ea28b2dc0d91af5559"
+	sha1 hasValue "309d9c1492826c93604d623b14bf03b1aaccd8a4"
+	sha256 hasValue "298c15bd50a55ad73a3bf041262e50a2a86ad75aaaf774c387217bf4adaf864b"
+	descriptionMd5 hasValue "4a9352dede18ce90e2e062f0432df057"
+	homepage hasValue "https://sourceforge.net/projects/findent/"
+	depends hasValue "libc6 (>= 2.14), libgcc-s1 (>= 3.0), libstdc++6 (>= 9)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__findent,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgcc-s1"
+	comparison hasValue ">="
+	version hasValue "3.0"
+
+relationInstance depends(P0__findent,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "9"
+
+relationInstance depends(P0__findent,2,DepAtom__2)
+

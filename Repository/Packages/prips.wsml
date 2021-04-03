@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology prips
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__prips memberOf Package
+	package hasValue "prips"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "57"
+	maintainer hasValue "Original-Peter Pentchev <roam@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.1.1-2"
+	fileName hasValue "pool/universe/p/prips/prips_1.1.1-2_amd64.deb"
+	size hasValue "15412"
+	md5sum hasValue "58e1a9c22ff4c3cea58b07bc436b5ab7"
+	sha1 hasValue "7d7b6d898a3472ebc5a4174521caa7b61ea73526"
+	sha256 hasValue "49b951c557af26c24e9cdcc055888b2172ec6b4ea64686105ded905b3c102f34"
+	descriptionMd5 hasValue "669c81e38e552465af7b8ab25d54fc0a"
+	homepage hasValue "https://devel.ringlet.net/sysutils/prips/"
+	depends hasValue "libc6 (>= 2.10)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.10"
+
+relationInstance depends(P0__prips,0,DepAtom__0)
+

@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology lbzip2
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__lbzip2 memberOf Package
+	package hasValue "lbzip2"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/utils"
+	installedSize hasValue "159"
+	maintainer hasValue "Original-Mikolaj Izdebski <zurgunt@gmail.com>"
+	architecture hasValue "amd64"
+	version hasValue "2.5-2"
+	fileName hasValue "pool/universe/l/lbzip2/lbzip2_2.5-2_amd64.deb"
+	size hasValue "63724"
+	md5sum hasValue "5d26643c7da099a98b76568a84414215"
+	sha1 hasValue "4cf7ad1c41a17ae7036c3f14eb518b5437dbaacc"
+	sha256 hasValue "b86e2a13ff96436df032109735b2f0a9cf29d613a153ce1d3c687cf96d29a2a9"
+	descriptionMd5 hasValue "fc16c4225837402464b76848e5b051f9"
+	homepage hasValue "http://lbzip2.org/"
+	depends hasValue "libc6 (>= 2.17)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.17"
+
+relationInstance depends(P0__lbzip2,0,DepAtom__0)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ruby_listen
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ruby_listen memberOf Package
+	package hasValue "ruby-listen"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/ruby"
+	installedSize hasValue "109"
+	maintainer hasValue "Original-Debian Ruby Extras Maintainers <pkg-ruby-extras-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "3.1.5-2"
+	fileName hasValue "pool/universe/r/ruby-listen/ruby-listen_3.1.5-2_all.deb"
+	size hasValue "26800"
+	md5sum hasValue "291f4a363a4a9602850e2d9c0a25ab4d"
+	sha1 hasValue "13ff40466f3b05490673d7ba3aeaafb69a3cfd7a"
+	sha256 hasValue "c48ce8b4bd59292e9edae7b55b1637ee2faed2af5e5094341e63325021aa696b"
+	descriptionMd5 hasValue "05d88119d5a5ade6eb916b9d6a9949ba"
+	homepage hasValue "https://github.com/guard/listen"
+	depends hasValue "ruby, ruby-rb-inotify (>= 0.9.7)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "ruby"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ruby_listen,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "ruby-rb-inotify"
+	comparison hasValue ">="
+	version hasValue "0.9.7"
+
+relationInstance depends(P0__ruby_listen,1,DepAtom__1)
+

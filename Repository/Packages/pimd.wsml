@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology pimd
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__pimd memberOf Package
+	package hasValue "pimd"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "254"
+	maintainer hasValue "Original-Antonin Kral <A.Kral@sh.cvut.cz>"
+	architecture hasValue "amd64"
+	version hasValue "2.3.2-3"
+	conflicts hasValue "mrouted, smcroute"
+	fileName hasValue "pool/universe/p/pimd/pimd_2.3.2-3_amd64.deb"
+	size hasValue "100856"
+	md5sum hasValue "d9e96912f00b88a0d25f7cb367b7f1b9"
+	sha1 hasValue "125ccb54586bf3b4d8e93757763dff4a771a500a"
+	sha256 hasValue "ebd15a5a18fce802812a25d469e169a83d0001062f221d4ca51f93327f982e35"
+	descriptionMd5 hasValue "6fd27404ba342f18f1d79593fa741628"
+	homepage hasValue "http://github.com/troglobit/pimd"
+	depends hasValue "libc6 (>= 2.15), lsb-base"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__pimd,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "lsb-base"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__pimd,1,DepAtom__1)
+

@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libz3_java
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libz3_java memberOf Package
+	package hasValue "libz3-java"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/java"
+	installedSize hasValue "178"
+	maintainer hasValue "Original-LLVM Packaging Team <pkg-llvm-team@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "4.8.7-4build1"
+	fileName hasValue "pool/universe/z/z3/libz3-java_4.8.7-4build1_amd64.deb"
+	size hasValue "153796"
+	md5sum hasValue "3e24101652d6c49124803cb491ce196b"
+	sha1 hasValue "35f9dbfc7a938d9b1f8b04f476de04133909d869"
+	sha256 hasValue "3034c0f39be4dc036be9ede8d5a7c6b63b48e27633477c4388a24f6155b0a8f9"
+	descriptionMd5 hasValue "44bfca0bbae34bef41c3d87f6522222e"
+	homepage hasValue "https://github.com/Z3Prover/z3"
+	depends hasValue "libz3-jni (>= 4.8.7-4build1), libz3-jni (<< 4.8.7-4build1.1~), libz3-dev"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libz3-jni"
+	comparison hasValue ">="
+	version hasValue "4.8.7-4build1"
+
+relationInstance depends(P0__libz3_java,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libz3-jni"
+	comparison hasValue "<<"
+	version hasValue "4.8.7-4build1.1~"
+
+relationInstance depends(P0__libz3_java,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libz3-dev"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libz3_java,2,DepAtom__2)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology testng
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__testng memberOf Package
+	package hasValue "testng"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "848"
+	maintainer hasValue "Original-Debian Java Maintainers <pkg-java-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "6.9.12-4"
+	fileName hasValue "pool/universe/t/testng/testng_6.9.12-4_all.deb"
+	size hasValue "772520"
+	md5sum hasValue "b166de1abc91a7263d007c20a31fd909"
+	sha1 hasValue "2877a55547053d1569f7c180bd3497bc532ae280"
+	sha256 hasValue "f45dd0293285044cf67d0e2f955b67b6ef8a40b9116794947f2ecbe85845158a"
+	descriptionMd5 hasValue "d2b6208d4934fc7baa97ad9dc66a441f"
+	homepage hasValue "http://testng.org"
+	depends hasValue "libbsh-java (>= 2.0b4), libjcommander-java"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libbsh-java"
+	comparison hasValue ">="
+	version hasValue "2.0b4"
+
+relationInstance depends(P0__testng,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libjcommander-java"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__testng,1,DepAtom__1)
+

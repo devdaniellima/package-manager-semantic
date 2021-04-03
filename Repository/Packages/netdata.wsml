@@ -1,0 +1,74 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology netdata
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__netdata memberOf Package
+	package hasValue "netdata"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "38"
+	maintainer hasValue "Original-Lennart Weller <lhw@ring0.de>"
+	architecture hasValue "all"
+	version hasValue "1.19.0-3ubuntu1"
+	fileName hasValue "pool/universe/n/netdata/netdata_1.19.0-3ubuntu1_all.deb"
+	size hasValue "8156"
+	md5sum hasValue "40b78f7a28659892a3e59db8952c0cb1"
+	sha1 hasValue "c7b91b454fe8b6efa62ff7a4898696b5dffd2ecf"
+	sha256 hasValue "31368bd6bcbe3f2fec34eaedd934dd7374ee009655982edcc9eabf5d9d58f9df"
+	descriptionMd5 hasValue "6843dd310958e94a27dd618821504b8e"
+	homepage hasValue "https://github.com/netdata/netdata"
+	depends hasValue "netdata-core | netdata-core-no-sse, netdata-plugins-bash, netdata-web"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "netdata-core"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__netdata,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "netdata-core-no-sse"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__netdata,0,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "netdata-plugins-bash"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__netdata,1,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "netdata-web"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__netdata,2,DepAtom__3)
+

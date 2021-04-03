@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology passwdqc
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__passwdqc memberOf Package
+	package hasValue "passwdqc"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "48"
+	maintainer hasValue "Jackson Doak <noskcaj@ubuntu.com>"
+	architecture hasValue "amd64"
+	version hasValue "1.3.0-1build1"
+	fileName hasValue "pool/universe/p/passwdqc/passwdqc_1.3.0-1build1_amd64.deb"
+	size hasValue "16404"
+	md5sum hasValue "a5039f13703d5b8da3ab5f2fe47bc99f"
+	sha1 hasValue "31054d3ba3d7ed25fca4f04808dfe3984fee52ef"
+	sha256 hasValue "7d092c693f7f01c19a79c189103589d674f03ecf10363c561ec3d4fe566aa393"
+	descriptionMd5 hasValue "109adb60752f84a6d23aea351683e0e5"
+	homepage hasValue "http://www.openwall.com/passwdqc/"
+	depends hasValue "libc6 (>= 2.4), libpasswdqc0 (>= 1.3.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__passwdqc,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libpasswdqc0"
+	comparison hasValue ">="
+	version hasValue "1.3.0"
+
+relationInstance depends(P0__passwdqc,1,DepAtom__1)
+

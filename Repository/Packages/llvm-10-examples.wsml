@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology llvm_10_examples
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__llvm_10_examples memberOf Package
+	package hasValue "llvm-10-examples"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/doc"
+	installedSize hasValue "51"
+	maintainer hasValue "Original-LLVM Packaging Team <pkg-llvm-team@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1:10.0.0-4ubuntu1"
+	fileName hasValue "pool/universe/l/llvm-toolchain-10/llvm-10-examples_10.0.0-4ubuntu1_all.deb"
+	size hasValue "3712"
+	md5sum hasValue "28a7575cf62c05a15290b224a5e7735f"
+	sha1 hasValue "c9934145d6b6dd9fcaedf66c6554ef4dda1b93b7"
+	sha256 hasValue "cb95f098dacf1c6f53f94016e916a12678d6f045c47e33fe5fbac6e61aef0280"
+	descriptionMd5 hasValue "61fee537b751bf39ce1ac5bf27ca3806"
+	homepage hasValue "https://www.llvm.org/"
+	depends hasValue "llvm-10-dev (>= 1:10.0.0-4ubuntu1), llvm-10-dev (<< 1:10.0.0-4ubuntu1+c~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "llvm-10-dev"
+	comparison hasValue ">="
+	version hasValue "1:10.0.0-4ubuntu1"
+
+relationInstance depends(P0__llvm_10_examples,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "llvm-10-dev"
+	comparison hasValue "<<"
+	version hasValue "1:10.0.0-4ubuntu1+c~"
+
+relationInstance depends(P0__llvm_10_examples,1,DepAtom__1)
+

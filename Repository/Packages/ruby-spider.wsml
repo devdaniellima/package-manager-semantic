@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ruby_spider
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ruby_spider memberOf Package
+	package hasValue "ruby-spider"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/ruby"
+	installedSize hasValue "42"
+	maintainer hasValue "Original-Marc Bigler <marc@towards.ch>"
+	architecture hasValue "all"
+	version hasValue "0.5.0-4"
+	fileName hasValue "pool/universe/r/ruby-spider/ruby-spider_0.5.0-4_all.deb"
+	size hasValue "10148"
+	md5sum hasValue "f52779a648028453f887d2dccbdd03ac"
+	sha1 hasValue "ce5f2a07268f711ad1796552bd042c14dd871979"
+	sha256 hasValue "6339749b39c967c49e72edef7235deb52c53b1bfaa38a9d4a96ad3fe48a80cf7"
+	descriptionMd5 hasValue "4e032bd2747e64dde86284218f90a10c"
+	homepage hasValue "https://github.com/johnnagro/spider"
+	depends hasValue "ruby | ruby-interpreter"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "ruby"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ruby_spider,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "ruby-interpreter"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ruby_spider,0,DepAtom__1)
+

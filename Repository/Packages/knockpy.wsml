@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology knockpy
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__knockpy memberOf Package
+	package hasValue "knockpy"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "65"
+	maintainer hasValue "Original-Gianfranco Costamagna <locutusofborg@debian.org>"
+	architecture hasValue "all"
+	version hasValue "4.1.0-1build1"
+	fileName hasValue "pool/universe/k/knockpy/knockpy_4.1.0-1build1_all.deb"
+	size hasValue "15712"
+	md5sum hasValue "52565f0db99629fece7e72d69ce550aa"
+	sha1 hasValue "37e7bb0d30d1dc160129a7d0111d808569cb35e2"
+	sha256 hasValue "258f86e0ea65096f8f1bfeb982240f01b1745d77379e5cbc5da3a522ae2cd9f7"
+	descriptionMd5 hasValue "36791e181727276620f861d00e071af8"
+	homepage hasValue "https://github.com/guelfoweb/knock"
+	depends hasValue "python-dnspython, python2:any (<< 2.8), python2:any (>= 2.7~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python-dnspython"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__knockpy,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue "<<"
+	version hasValue "2.8"
+
+relationInstance depends(P0__knockpy,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue ">="
+	version hasValue "2.7~"
+
+relationInstance depends(P0__knockpy,2,DepAtom__2)
+

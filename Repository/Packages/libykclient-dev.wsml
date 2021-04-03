@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libykclient_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libykclient_dev memberOf Package
+	package hasValue "libykclient-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "109"
+	maintainer hasValue "Original-Debian Authentication Maintainers <pkg-auth-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.15-2"
+	fileName hasValue "pool/universe/y/ykclient/libykclient-dev_2.15-2_amd64.deb"
+	size hasValue "24848"
+	md5sum hasValue "0b1be207da00f2d7175149c9442a1cce"
+	sha1 hasValue "37b7a6d08015169a5b49237fb5a1aa61e59b127f"
+	sha256 hasValue "9d00c9c621474abc96f94f402defdfce94d9a40de848de3fedb1c55f2b401a17"
+	descriptionMd5 hasValue "712a0c042724b0675b5994249fa4bbfa"
+	homepage hasValue "https://developers.yubico.com/yubico-c-client/"
+	depends hasValue "libykclient3 (= 2.15-2), libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libykclient3"
+	comparison hasValue "="
+	version hasValue "2.15-2"
+
+relationInstance depends(P0__libykclient_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libykclient_dev,1,DepAtom__1)
+

@@ -1,0 +1,74 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology eblook
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__eblook memberOf Package
+	package hasValue "eblook"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/text"
+	installedSize hasValue "114"
+	maintainer hasValue "Original-Tatsuya Kinoshita <tats@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:1.6.1-15"
+	fileName hasValue "pool/universe/e/eblook/eblook_1.6.1-15_amd64.deb"
+	size hasValue "43300"
+	md5sum hasValue "5b19cdccd4583dc54ff655ede23a5fc1"
+	sha1 hasValue "fe584fc583b6f744e36eb5723380df98f7af54d6"
+	sha256 hasValue "df5ee50dbc0b976d1f4dc25313f87ff5d82d7f978e640c3afb65331388f2a858"
+	descriptionMd5 hasValue "f73a22a5618210ba4577fafc26432480"
+	homepage hasValue "http://openlab.jp/edict/eblook/"
+	depends hasValue "libc6 (>= 2.14), libeb16, dpkg (>= 1.15.4) | install-info"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__eblook,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libeb16"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__eblook,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "dpkg"
+	comparison hasValue ">="
+	version hasValue "1.15.4"
+
+relationInstance depends(P0__eblook,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "install-info"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__eblook,2,DepAtom__3)
+

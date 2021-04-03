@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology tmux_plugin_manager
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__tmux_plugin_manager memberOf Package
+	package hasValue "tmux-plugin-manager"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "40"
+	maintainer hasValue "Original-ChangZhuo Chen (陳昌倬) <czchen@debian.org>"
+	architecture hasValue "all"
+	version hasValue "3.0.0-1"
+	fileName hasValue "pool/universe/t/tmux-plugin-manager/tmux-plugin-manager_3.0.0-1_all.deb"
+	size hasValue "7034"
+	md5sum hasValue "125c40f44755a5358991ae7d70da7b0d"
+	sha1 hasValue "813bbafd8c0aa844c11066cd0371a258fc2f540d"
+	sha256 hasValue "c079e3d7f3eb317cffa749e50a1554e87da936ddbb99cbff5c1559b8ffa3a0d4"
+	descriptionMd5 hasValue "8bd916039a54d70fa726959898d718f8"
+	homepage hasValue "https://github.com/tmux-plugins/tpm"
+	depends hasValue "git, tmux (>= 1.9)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "git"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__tmux_plugin_manager,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "tmux"
+	comparison hasValue ">="
+	version hasValue "1.9"
+
+relationInstance depends(P0__tmux_plugin_manager,1,DepAtom__1)
+

@@ -1,0 +1,74 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology mzclient
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__mzclient memberOf Package
+	package hasValue "mzclient"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "27"
+	maintainer hasValue "Original-Debian CLI Libraries Team <pkg-cli-libs-team@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.9.0-6"
+	fileName hasValue "pool/universe/m/mono-zeroconf/mzclient_0.9.0-6_all.deb"
+	size hasValue "7398"
+	md5sum hasValue "257bf2299a12070464fd4ddd8843e406"
+	sha1 hasValue "c2471e82d49d949edaece2d455bdb38bbb3026a8"
+	sha256 hasValue "b0d62b346768ce7b4713565abddcbc7e993471c0cd150f0bf0c93cb1e5184504"
+	descriptionMd5 hasValue "f6f7b6eae52bae25688644f88be96e87"
+	homepage hasValue "http://mono-project.com/Mono_Zeroconf"
+	depends hasValue "mono-runtime (>= 3.0~), libmono-corlib4.5-cil (>= 4.2.0), libmono-system4.0-cil (>= 4.2.0), libmono-zeroconf1.0-cil (= 0.9.0-6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "mono-runtime"
+	comparison hasValue ">="
+	version hasValue "3.0~"
+
+relationInstance depends(P0__mzclient,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libmono-corlib4.5-cil"
+	comparison hasValue ">="
+	version hasValue "4.2.0"
+
+relationInstance depends(P0__mzclient,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libmono-system4.0-cil"
+	comparison hasValue ">="
+	version hasValue "4.2.0"
+
+relationInstance depends(P0__mzclient,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "libmono-zeroconf1.0-cil"
+	comparison hasValue "="
+	version hasValue "0.9.0-6"
+
+relationInstance depends(P0__mzclient,3,DepAtom__3)
+

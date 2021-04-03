@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology acpitail
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__acpitail memberOf Package
+	package hasValue "acpitail"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "29"
+	maintainer hasValue "Original-Debian Acpi Team <pkg-acpi-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.1-4build1"
+	fileName hasValue "pool/universe/a/acpitail/acpitail_0.1-4build1_amd64.deb"
+	size hasValue "8288"
+	md5sum hasValue "c6271360c4f0d0f1ffa25f49962a1026"
+	sha1 hasValue "2906ea1e3d70ad10f89be11d35842e092e844c57"
+	sha256 hasValue "b5f3e1bdac92762b5667bebef6772a7b78a5f4821c1396eee9c0294323faae3b"
+	description hasValue "exibe informações da ACPI em um estilo similar ao \"tail\""
+	descriptionMd5 hasValue "9526bed1a52b5851f7cd0355f406f2c3"
+	homepage hasValue "http://www.vanheusden.com/acpitail/"
+	depends hasValue "libacpi0, libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libacpi0"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__acpitail,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__acpitail,1,DepAtom__1)
+

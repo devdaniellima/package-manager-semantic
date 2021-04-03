@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ruby_otr_activerecord
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ruby_otr_activerecord memberOf Package
+	package hasValue "ruby-otr-activerecord"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/ruby"
+	installedSize hasValue "37"
+	maintainer hasValue "Original-Debian Ruby Extras Maintainers <pkg-ruby-extras-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.4.1-3"
+	fileName hasValue "pool/universe/r/ruby-otr-activerecord/ruby-otr-activerecord_1.4.1-3_all.deb"
+	size hasValue "7296"
+	md5sum hasValue "f42cff47549a2ecb5894ba72e0d7c609"
+	sha1 hasValue "4c96e4ab4aea8a9d61320ffd08882c9b37cd8c9a"
+	sha256 hasValue "1d3639fd3d0d1480de5e6788fd43b3ed6b8ac39afb512199f86744a2580f39a5"
+	descriptionMd5 hasValue "65d4cb8c69928b82191c4886f18c19df"
+	homepage hasValue "https://github.com/jhollinger/otr-activerecord"
+	depends hasValue "ruby-activerecord (<< 2:6.1), ruby-activerecord (>= 2:4.0), ruby-hashie-forbidden-attributes (>= 0.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "ruby-activerecord"
+	comparison hasValue "<<"
+	version hasValue "2:6.1"
+
+relationInstance depends(P0__ruby_otr_activerecord,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "ruby-activerecord"
+	comparison hasValue ">="
+	version hasValue "2:4.0"
+
+relationInstance depends(P0__ruby_otr_activerecord,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "ruby-hashie-forbidden-attributes"
+	comparison hasValue ">="
+	version hasValue "0.1"
+
+relationInstance depends(P0__ruby_otr_activerecord,2,DepAtom__2)
+

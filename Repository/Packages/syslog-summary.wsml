@@ -1,0 +1,52 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology syslog_summary
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__syslog_summary memberOf Package
+	package hasValue "syslog-summary"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "29"
+	maintainer hasValue "Original-David Paleino <dapal@debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.14-2.1ubuntu1"
+	fileName hasValue "pool/universe/s/syslog-summary/syslog-summary_1.14-2.1ubuntu1_all.deb"
+	size hasValue "8896"
+	md5sum hasValue "121f57978bc42731fd0760be32b117d6"
+	sha1 hasValue "e8c03d0391c0e85e415745d0948766da90e05d96"
+	sha256 hasValue "80fd6ad784e562d17cb608b017aa7cd188bd51b16ae555415dcc181f60dd8c64"
+	descriptionMd5 hasValue "3f8fee696c08d1fc790b6611eadfbef1"
+	depends hasValue "python2:any (>= 2.5~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue ">="
+	version hasValue "2.5~"
+
+relationInstance depends(P0__syslog_summary,0,DepAtom__0)
+

@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology wesnoth_1Dot14_thot
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__wesnoth_1Dot14_thot memberOf Package
+	package hasValue "wesnoth-1.14-thot"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/games"
+	installedSize hasValue "8190"
+	maintainer hasValue "Original-Debian Games Team <pkg-games-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1:1.14.9-1ubuntu5"
+	fileName hasValue "pool/universe/w/wesnoth-1.14/wesnoth-1.14-thot_1.14.9-1ubuntu5_all.deb"
+	size hasValue "6084636"
+	md5sum hasValue "fc73efb86be76a47af2cd3a28b48dc71"
+	sha1 hasValue "ae2afebd82cf4fb46096fd73157d813a0d954842"
+	sha256 hasValue "31ba18118939f6cc3e5f3f2a504a148be357deee49d2a6fd7dfc2eb4b351dee2"
+	description hasValue "\"The Hammer of Thursagan\" official campaign for Wesnoth (branch 1.14)"
+	descriptionMd5 hasValue "a07c732b26d84da3b4af41f735de568f"
+	homepage hasValue "http://wesnoth.org/"
+	depends hasValue "wesnoth-1.14-core (>= 1:1.14), wesnoth-1.14-core (<< 1:1.15)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "wesnoth-1.14-core"
+	comparison hasValue ">="
+	version hasValue "1:1.14"
+
+relationInstance depends(P0__wesnoth_1Dot14_thot,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "wesnoth-1.14-core"
+	comparison hasValue "<<"
+	version hasValue "1:1.15"
+
+relationInstance depends(P0__wesnoth_1Dot14_thot,1,DepAtom__1)
+

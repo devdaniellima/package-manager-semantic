@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libavahi_glib1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libavahi_glib1 memberOf Package
+	package hasValue "libavahi-glib1"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libs"
+	installedSize hasValue "74"
+	maintainer hasValue "Original-Utopia Maintenance Team <pkg-utopia-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.7-4ubuntu7"
+	fileName hasValue "pool/main/a/avahi/libavahi-glib1_0.7-4ubuntu7_amd64.deb"
+	size hasValue "7804"
+	md5sum hasValue "1f0bd80b2110c39153cf5326e57edeef"
+	sha1 hasValue "ecc478896f78ff78f8c7f957ab0e56d39336b021"
+	sha256 hasValue "3a3c40f33b4baaa12429f415281b5f544fd8a5b26ed650e3adaa2b5c241711b0"
+	description hasValue "Avahi GLib integration library"
+	descriptionMd5 hasValue "81eecad87a5c1892fe68f50918d70247"
+	homepage hasValue "http://avahi.org/"
+	depends hasValue "libavahi-common3 (>= 0.6.16), libc6 (>= 2.2.5), libglib2.0-0 (>= 2.16.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libavahi-common3"
+	comparison hasValue ">="
+	version hasValue "0.6.16"
+
+relationInstance depends(P0__libavahi_glib1,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.2.5"
+
+relationInstance depends(P0__libavahi_glib1,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libglib2.0-0"
+	comparison hasValue ">="
+	version hasValue "2.16.0"
+
+relationInstance depends(P0__libavahi_glib1,2,DepAtom__2)
+

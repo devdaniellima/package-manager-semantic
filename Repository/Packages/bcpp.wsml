@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology bcpp
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__bcpp memberOf Package
+	package hasValue "bcpp"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "114"
+	maintainer hasValue "Original-Miriam Ruiz <miriam@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.0.20180401-1build1"
+	fileName hasValue "pool/universe/b/bcpp/bcpp_0.0.20180401-1build1_amd64.deb"
+	size hasValue "40000"
+	md5sum hasValue "f436e0d28b340788c2a0f1aeda0140cd"
+	sha1 hasValue "6643294f29b73cfc5458beb920ac975a4eec1134"
+	sha256 hasValue "bb6b4884a2af5b01c453c65554f2c25397840b1d2cac6f53406346822031d24d"
+	description hasValue "embelezador C(++)"
+	descriptionMd5 hasValue "160d489c5cbf0e0f96de606bbd202826"
+	homepage hasValue "http://www.invisible-island.net/bcpp/"
+	depends hasValue "libc6 (>= 2.4), libgcc-s1 (>= 3.0), libstdc++6 (>= 5)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__bcpp,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgcc-s1"
+	comparison hasValue ">="
+	version hasValue "3.0"
+
+relationInstance depends(P0__bcpp,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "5"
+
+relationInstance depends(P0__bcpp,2,DepAtom__2)
+

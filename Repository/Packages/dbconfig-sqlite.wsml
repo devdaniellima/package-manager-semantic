@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology dbconfig_sqlite
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__dbconfig_sqlite memberOf Package
+	package hasValue "dbconfig-sqlite"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "9"
+	maintainer hasValue "Original-Paul Gevers <elbrus@debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.0.13"
+	conflicts hasValue "dbconfig-no-thanks"
+	fileName hasValue "pool/universe/d/dbconfig-common/dbconfig-sqlite_2.0.13_all.deb"
+	size hasValue "1096"
+	md5sum hasValue "3f18a9a0a92fb47c6b2bb99c77cd5e2e"
+	sha1 hasValue "aed52327214c543ec469f1b40b7d36bc9ccd2342"
+	sha256 hasValue "6d4b3617a3969e3d966666e70a6bd564f39b9ea894e92bd5746e4445c2b14fc4"
+	descriptionMd5 hasValue "e85500995459ee42b8c4ee828cb7c31b"
+	depends hasValue "dbconfig-common (= 2.0.13), sqlite"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "dbconfig-common"
+	comparison hasValue "="
+	version hasValue "2.0.13"
+
+relationInstance depends(P0__dbconfig_sqlite,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "sqlite"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__dbconfig_sqlite,1,DepAtom__1)
+

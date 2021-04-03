@@ -1,0 +1,59 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology lwatch
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__lwatch memberOf Package
+	package hasValue "lwatch"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "83"
+	maintainer hasValue "Original-Artur R. Czechowski <arturcz@hell.pl>"
+	architecture hasValue "amd64"
+	version hasValue "0.6.2-1build1"
+	fileName hasValue "pool/universe/l/lwatch/lwatch_0.6.2-1build1_amd64.deb"
+	size hasValue "29856"
+	md5sum hasValue "34da07ebf1a3b416bdad11064b96286e"
+	sha1 hasValue "bcdd24c46d378555fd60233d65cf44ad580267c8"
+	sha256 hasValue "097e10649ef362b7ed56267463077292a00d745d495cc7bd6128f6284a8726cc"
+	descriptionMd5 hasValue "04890a5f0ce01c39f32138321439ac22"
+	depends hasValue "libc6 (>= 2.4), libpcre3"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__lwatch,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libpcre3"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__lwatch,1,DepAtom__1)
+

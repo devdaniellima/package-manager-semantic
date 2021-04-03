@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ziptime
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ziptime memberOf Package
+	package hasValue "ziptime"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "30"
+	maintainer hasValue "Original-Android Tools Maintainers <android-tools-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:8.1.0+r23-3ubuntu2"
+	fileName hasValue "pool/universe/a/android-platform-build/ziptime_8.1.0+r23-3ubuntu2_amd64.deb"
+	size hasValue "7980"
+	md5sum hasValue "b4bdcd782fa0326031c03165a5d33548"
+	sha1 hasValue "0453fb4e1774eabc1c7314d38b5ff5a41c29198b"
+	sha256 hasValue "353150d296504400238b0a66d324b79ee3e29f6ffdd13887d0e43fb26adb2979"
+	descriptionMd5 hasValue "cd5fe196ce520fc753d9117721afac9f"
+	homepage hasValue "https://android.googlesource.com/platform/build"
+	depends hasValue "libc6 (>= 2.7), libgcc-s1 (>= 3.0), libstdc++6 (>= 5)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__ziptime,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgcc-s1"
+	comparison hasValue ">="
+	version hasValue "3.0"
+
+relationInstance depends(P0__ziptime,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "5"
+
+relationInstance depends(P0__ziptime,2,DepAtom__2)
+

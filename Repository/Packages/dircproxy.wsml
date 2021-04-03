@@ -1,0 +1,52 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology dircproxy
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__dircproxy memberOf Package
+	package hasValue "dircproxy"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "222"
+	maintainer hasValue "Original-Alex Pennace <alex@pennace.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.5-6ubuntu2"
+	fileName hasValue "pool/universe/d/dircproxy/dircproxy_1.0.5-6ubuntu2_amd64.deb"
+	size hasValue "90238"
+	md5sum hasValue "ca2c5cd6303aba2de6e4c610c80945a1"
+	sha1 hasValue "94b027f022f7dab9f3fe5481055e27360a31e621"
+	sha256 hasValue "4b97be315604d90d06faa9fb6203fdde073ed9c62b5b41f85e5b6f6d3141dde3"
+	descriptionMd5 hasValue "99e2ee7084f944d20c1556a581047931"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__dircproxy,0,DepAtom__0)
+

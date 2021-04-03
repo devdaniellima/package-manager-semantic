@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ruby_adamantium
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ruby_adamantium memberOf Package
+	package hasValue "ruby-adamantium"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/ruby"
+	installedSize hasValue "45"
+	maintainer hasValue "Original-Debian Ruby Extras Maintainers <pkg-ruby-extras-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.2.0-2"
+	fileName hasValue "pool/universe/r/ruby-adamantium/ruby-adamantium_0.2.0-2_all.deb"
+	size hasValue "8104"
+	md5sum hasValue "6e119860207ca6bede7bc5ed8fb38ea3"
+	sha1 hasValue "1eec162614e25727e8e7a15d33e31fb861d44917"
+	sha256 hasValue "6c82b07932f4351e77d0f0a8f88574540a6a06f7ad53235f90845ce1bf502cc2"
+	descriptionMd5 hasValue "fbb334b7f228ae0b4098f199c86f1f12"
+	homepage hasValue "https://github.com/dkubb/adamantium"
+	depends hasValue "ruby-ice-nine (>= 0.11.0), ruby-memoizable (>= 0.4.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "ruby-ice-nine"
+	comparison hasValue ">="
+	version hasValue "0.11.0"
+
+relationInstance depends(P0__ruby_adamantium,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "ruby-memoizable"
+	comparison hasValue ">="
+	version hasValue "0.4.0"
+
+relationInstance depends(P0__ruby_adamantium,1,DepAtom__1)
+

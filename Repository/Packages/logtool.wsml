@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology logtool
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__logtool memberOf Package
+	package hasValue "logtool"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "183"
+	maintainer hasValue "Original-Wouter Verhelst <wouter@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.2.8-10"
+	fileName hasValue "pool/universe/l/logtool/logtool_1.2.8-10_amd64.deb"
+	size hasValue "52562"
+	md5sum hasValue "fcb8413764936f66cc824ad9a3c49a51"
+	sha1 hasValue "429044a70d9f7800a3f73a55d0156e24d377956c"
+	sha256 hasValue "b0df45c84e9fe6c35d32989e97bf2cfa1260f17a1c98129a79e02302745811ab"
+	description hasValue "Analizador de arquivo log no estilo syslog com muitas opções de saída"
+	descriptionMd5 hasValue "a8fa21804043fe4c63a3192999d5b193"
+	homepage hasValue "http://xjack.org/logtool/"
+	depends hasValue "debconf (>= 0.5.00) | debconf-2.0, libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "debconf"
+	comparison hasValue ">="
+	version hasValue "0.5.00"
+
+relationInstance depends(P0__logtool,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "debconf-2.0"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__logtool,0,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__logtool,1,DepAtom__2)
+

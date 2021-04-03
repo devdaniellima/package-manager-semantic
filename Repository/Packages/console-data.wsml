@@ -1,0 +1,63 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology console_data
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__console_data memberOf Package
+	package hasValue "console-data"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "2251"
+	maintainer hasValue "Original-Alastair McKinstry <mckinstry@debian.org>"
+	architecture hasValue "all"
+	version hasValue "2:1.12-8"
+	replaces hasValue "console-tools-data"
+	provides hasValue "console-keymaps, console-tools-data"
+	conflicts hasValue "console-tools-data, kbd (<= 0.96a-1), kbd-data"
+	fileName hasValue "pool/universe/c/console-data/console-data_1.12-8_all.deb"
+	size hasValue "1036204"
+	md5sum hasValue "20936485c55eecd1a25455d0ff6d52ed"
+	sha1 hasValue "537e700e73a7dfbed2136669c68470a7c9405fd6"
+	sha256 hasValue "784a09a6deb52b0da2688435b271537331c882085c013146cef9de6a58c20363"
+	description hasValue "mapas de teclado, fontes, mapas de charset, tabelas de fallback para 'kbd'"
+	descriptionMd5 hasValue "e4d7a244a5d35aaee203241f2680f695"
+	depends hasValue "debconf (>= 0.5) | debconf-2.0"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "debconf"
+	comparison hasValue ">="
+	version hasValue "0.5"
+
+relationInstance depends(P0__console_data,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "debconf-2.0"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__console_data,0,DepAtom__1)
+

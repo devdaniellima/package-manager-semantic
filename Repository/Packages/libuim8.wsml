@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libuim8
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libuim8 memberOf Package
+	package hasValue "libuim8"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "162"
+	maintainer hasValue "Original-HIGUCHI Daisuke (VDR dai) <dai@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:1.8.8-6.1build2"
+	replaces hasValue "uim-common (<< 1:1.8.6+gh20161003.0.d63dadd-5~)"
+	fileName hasValue "pool/universe/u/uim/libuim8_1.8.8-6.1build2_amd64.deb"
+	size hasValue "34496"
+	md5sum hasValue "0e09cb03e48e78a26750f41dc390a442"
+	sha1 hasValue "9bd1537a10bf85126dc92b46b86d15041dc1430c"
+	sha256 hasValue "3cf0cd73d02c664ec3beae0fe869a165d4eeaabdd315b62dcea4bf3c738ce2ce"
+	descriptionMd5 hasValue "be939239d1627c4303df37c61d2d92f9"
+	homepage hasValue "https://github.com/uim/uim/wiki"
+	depends hasValue "libc6 (>= 2.15), libuim-scm0 (>= 1:1.5.7)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__libuim8,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libuim-scm0"
+	comparison hasValue ">="
+	version hasValue "1:1.5.7"
+
+relationInstance depends(P0__libuim8,1,DepAtom__1)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology acmetool
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__acmetool memberOf Package
+	package hasValue "acmetool"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/web"
+	installedSize hasValue "11233"
+	maintainer hasValue "Original-Debian Let's Encrypt <team+letsencrypt@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.2.1-1"
+	fileName hasValue "pool/universe/a/acmetool/acmetool_0.2.1-1_amd64.deb"
+	size hasValue "3410128"
+	md5sum hasValue "4fb94f01afa3d78b30128be9526d61e3"
+	sha1 hasValue "d765f680aa9e1ee888c5fdb6f77a8fe6202ff0d8"
+	sha256 hasValue "abef4f67b94cddac0c90667011dfa9a2444e7a79bdaccba35fb68cc5ad5a22e1"
+	descriptionMd5 hasValue "3e5e145ae880b97f3b6e825daf35ce32"
+	homepage hasValue "https://hlandau.github.io/acmetool"
+	depends hasValue "libc6 (>= 2.4), libcap2 (>= 1:2.10)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__acmetool,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libcap2"
+	comparison hasValue ">="
+	version hasValue "1:2.10"
+
+relationInstance depends(P0__acmetool,1,DepAtom__1)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology spiped
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__spiped memberOf Package
+	package hasValue "spiped"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "166"
+	maintainer hasValue "Original-Peter Pentchev <roam@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.6.0-5"
+	fileName hasValue "pool/universe/s/spiped/spiped_1.6.0-5_amd64.deb"
+	size hasValue "49296"
+	md5sum hasValue "35742c743b63eb6bb1de00a55cedabcd"
+	sha1 hasValue "535dbb109112a92e6e750290aee7f4705e295be4"
+	sha256 hasValue "0a04a45c7450a743866fba105ffe9260c0c5eb42258afc82747eb358101370c8"
+	descriptionMd5 hasValue "6e2d4a3d6fe7fbc4faac44754e4314ee"
+	homepage hasValue "https://www.tarsnap.com/spiped.html"
+	depends hasValue "libc6 (>= 2.14), libssl1.1 (>= 1.1.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__spiped,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libssl1.1"
+	comparison hasValue ">="
+	version hasValue "1.1.0"
+
+relationInstance depends(P0__spiped,1,DepAtom__1)
+

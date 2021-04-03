@@ -1,0 +1,59 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology remote_tty
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__remote_tty memberOf Package
+	package hasValue "remote-tty"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "97"
+	maintainer hasValue "Original-Jonathan McDowell <noodles@earth.li>"
+	architecture hasValue "amd64"
+	version hasValue "4.0-13build1"
+	fileName hasValue "pool/universe/r/remote-tty/remote-tty_4.0-13build1_amd64.deb"
+	size hasValue "30192"
+	md5sum hasValue "07d3289e8bfebcedafeb3c7922e11651"
+	sha1 hasValue "c80f2915878d9c682518394a389455828e49d735"
+	sha256 hasValue "dd5b251453163bfd87ad9243203c4aacc1b71f15cb0f2e086d74795e07f7c794"
+	descriptionMd5 hasValue "16e2ccc9384491e20fe40f93906cc7f8"
+	depends hasValue "libc6 (>= 2.15), adduser"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__remote_tty,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "adduser"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__remote_tty,1,DepAtom__1)
+

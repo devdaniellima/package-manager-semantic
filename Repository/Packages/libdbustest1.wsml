@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libdbustest1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libdbustest1 memberOf Package
+	package hasValue "libdbustest1"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "133"
+	maintainer hasValue "Ubuntu Desktop Team <ubuntu-desktop@lists.ubuntu.com>"
+	architecture hasValue "amd64"
+	version hasValue "15.04.0+19.04.20190115-0ubuntu1"
+	conflicts hasValue "dbus-test-runner (<< 15.04.0)"
+	fileName hasValue "pool/universe/d/dbus-test-runner/libdbustest1_15.04.0+19.04.20190115-0ubuntu1_amd64.deb"
+	size hasValue "32672"
+	md5sum hasValue "e7eb94ce203d124dec0c652b838f9c62"
+	sha1 hasValue "178d03905a5cd8fe08b5d6c1ce9a1a7ebe76f089"
+	sha256 hasValue "44d05fe8de25cb08eb92414148923a1bd2157e16a7442a680b6b63bcd2f0e85b"
+	description hasValue "Runs tests under a new DBus session"
+	descriptionMd5 hasValue "b819ee72bb8252917f5d12ee31a140ab"
+	homepage hasValue "https://launchpad.net/dbus-test-runner"
+	depends hasValue "libc6 (>= 2.4), libglib2.0-0 (>= 2.38.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libdbustest1,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libglib2.0-0"
+	comparison hasValue ">="
+	version hasValue "2.38.0"
+
+relationInstance depends(P0__libdbustest1,1,DepAtom__1)
+

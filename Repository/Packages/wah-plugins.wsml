@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology wah_plugins
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__wah_plugins memberOf Package
+	package hasValue "wah-plugins"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/sound"
+	installedSize hasValue "29"
+	maintainer hasValue "Original-Debian Multimedia Maintainers <debian-multimedia@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.1.0-5build1"
+	provides hasValue "ladspa-plugin"
+	fileName hasValue "pool/universe/w/wah-plugins/wah-plugins_0.1.0-5build1_amd64.deb"
+	size hasValue "6744"
+	md5sum hasValue "1363e9117dc171f315525f8fe49ef95f"
+	sha1 hasValue "73113972cd0460c7f1cbcdb439d43eed18c08721"
+	sha256 hasValue "72714197a2becc5f74583ec6bc8215727175fa4d94427c1b2e4e4673cd5c0dea"
+	descriptionMd5 hasValue "6aa27c81c80efe7215ac3fe788e8ee50"
+	homepage hasValue "http://kokkinizita.linuxaudio.org/linuxaudio/index.html"
+	depends hasValue "libc6 (>= 2.27), libstdc++6 (>= 5)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.27"
+
+relationInstance depends(P0__wah_plugins,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "5"
+
+relationInstance depends(P0__wah_plugins,1,DepAtom__1)
+

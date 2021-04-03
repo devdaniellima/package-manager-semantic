@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology elpa_assess
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__elpa_assess memberOf Package
+	package hasValue "elpa-assess"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/lisp"
+	installedSize hasValue "78"
+	maintainer hasValue "Original-Debian Emacsen team <debian-emacsen@lists.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.6-1"
+	fileName hasValue "pool/universe/a/assess-el/elpa-assess_0.6-1_all.deb"
+	size hasValue "16844"
+	md5sum hasValue "5997595cbd80dc2c88ff1c6ad5a9c95f"
+	sha1 hasValue "33afd8f12c16fe89991c867ae9c8f3c18684f505"
+	sha256 hasValue "ef952396c6ed538730ebdfcb0a91c7ea62182475e17efa9ddcbba63ae00929a9"
+	descriptionMd5 hasValue "c2f67b900165dd35432a1c69497a0dd4"
+	homepage hasValue "https://github.com/phillord/assess"
+	depends hasValue "elpa-m-buffer (>= 0.15), dh-elpa-helper, emacsen-common"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "elpa-m-buffer"
+	comparison hasValue ">="
+	version hasValue "0.15"
+
+relationInstance depends(P0__elpa_assess,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "dh-elpa-helper"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__elpa_assess,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "emacsen-common"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__elpa_assess,2,DepAtom__2)
+

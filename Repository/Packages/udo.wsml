@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology udo
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__udo memberOf Package
+	package hasValue "udo"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/text"
+	installedSize hasValue "599"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "6.4.1-5"
+	fileName hasValue "pool/universe/u/udo/udo_6.4.1-5_amd64.deb"
+	size hasValue "208268"
+	md5sum hasValue "dfe1fb95aea6deb8a97003f96cfdea88"
+	sha1 hasValue "d54b3893f62d975c0fcf213651516be7e983d160"
+	sha256 hasValue "f535892a007271d3e2caa178d2662c29db41e9b51a105ed16bc3ba8878b5b768"
+	description hasValue "documento universal - utilitário de processamento de texto"
+	descriptionMd5 hasValue "c4fc4bfbffa362a9a4884d8adf5e2608"
+	homepage hasValue "https://www.udo-open-source.org/"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__udo,0,DepAtom__0)
+

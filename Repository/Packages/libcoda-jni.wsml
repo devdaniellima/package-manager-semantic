@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libcoda_jni
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libcoda_jni memberOf Package
+	package hasValue "libcoda-jni"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/java"
+	installedSize hasValue "135"
+	maintainer hasValue "Original-Debian Science Maintainers  <debian-science-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.21-3build1"
+	fileName hasValue "pool/universe/c/coda/libcoda-jni_2.21-3build1_amd64.deb"
+	size hasValue "22948"
+	md5sum hasValue "8bb4a782938f69cbef6a7ea00216d8e1"
+	sha1 hasValue "16d78a1c05d2c72c8589e29f848df7ae8338ba0c"
+	sha256 hasValue "928b83772cb3905ff71920a2b9ef12e981fb4db9527173bb25c897aa7e8e5e68"
+	descriptionMd5 hasValue "5c66b9a622d58240364ec407a544c32d"
+	homepage hasValue "https://github.com/stcorp/coda"
+	depends hasValue "libcoda-dev (= 2.21-3build1), libc6 (>= 2.4), libcoda15 (>= 2.21)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libcoda-dev"
+	comparison hasValue "="
+	version hasValue "2.21-3build1"
+
+relationInstance depends(P0__libcoda_jni,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libcoda_jni,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libcoda15"
+	comparison hasValue ">="
+	version hasValue "2.21"
+
+relationInstance depends(P0__libcoda_jni,2,DepAtom__2)
+

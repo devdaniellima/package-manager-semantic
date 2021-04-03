@@ -1,0 +1,55 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology clzip
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__clzip memberOf Package
+	package hasValue "clzip"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "163"
+	maintainer hasValue "Original-Daniel Baumann <daniel.baumann@progress-linux.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.11-7"
+	provides hasValue "lzip-alternative, lzip-compressor, lzip-decompressor"
+	fileName hasValue "pool/universe/c/clzip/clzip_1.11-7_amd64.deb"
+	size hasValue "73256"
+	md5sum hasValue "9912cc4157c52e53eaa339e71d87bfce"
+	sha1 hasValue "9908c33b8f02d80eaf85d06ec8e34884b0b3d0d8"
+	sha256 hasValue "18a294de3ee2db431951bea3b80227464c7184728c6164dd5a5acd8fb3844f33"
+	description hasValue "Compactador de dados em C sem perdas baseado no algoritmo LZMA"
+	descriptionMd5 hasValue "f4f9082ace3754e4570abdb054e5ccc8"
+	homepage hasValue "http://www.nongnu.org/lzip/clzip.html"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__clzip,0,DepAtom__0)
+

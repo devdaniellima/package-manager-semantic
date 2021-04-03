@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology yara_doc
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__yara_doc memberOf Package
+	package hasValue "yara-doc"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/doc"
+	installedSize hasValue "914"
+	maintainer hasValue "Original-Debian Security Tools <team+pkg-security@tracker.debian.org>"
+	architecture hasValue "all"
+	version hasValue "3.9.0-1"
+	fileName hasValue "pool/universe/y/yara/yara-doc_3.9.0-1_all.deb"
+	size hasValue "115744"
+	md5sum hasValue "8435f5347a58324d2a198150ed1468a6"
+	sha1 hasValue "f5c0443a4a096cac569706434e3b479de25805e7"
+	sha256 hasValue "e86fd2397908f54ae92cef4734e5518ab849b221324724ae495aa6943b961a9e"
+	descriptionMd5 hasValue "3937953e6f6b2875209c12036925a163"
+	homepage hasValue "https://virustotal.github.io/yara/"
+	depends hasValue "libjs-sphinxdoc (>= 1.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libjs-sphinxdoc"
+	comparison hasValue ">="
+	version hasValue "1.0"
+
+relationInstance depends(P0__yara_doc,0,DepAtom__0)
+

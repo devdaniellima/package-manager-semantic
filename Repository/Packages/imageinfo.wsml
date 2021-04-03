@@ -1,0 +1,66 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology imageinfo
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__imageinfo memberOf Package
+	package hasValue "imageinfo"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/graphics"
+	installedSize hasValue "34"
+	maintainer hasValue "Original-Brendt Wohlberg <osspkg@gmail.com>"
+	architecture hasValue "amd64"
+	version hasValue "0.04-0ubuntu12"
+	fileName hasValue "pool/universe/i/imageinfo/imageinfo_0.04-0ubuntu12_amd64.deb"
+	size hasValue "11008"
+	md5sum hasValue "5f4475d1bf0804963e28f0e887bf704a"
+	sha1 hasValue "a54ff820666a5bded634b5e482d28bb491ade88b"
+	sha256 hasValue "c73d89e620fbcd0eb715b32f02ec540d89327e259fee16577c72c7d3a244c588"
+	descriptionMd5 hasValue "ccb85ff7401b60b976a2baf63e617e08"
+	depends hasValue "libc6 (>= 2.14), libmagickcore-6.q16-6 (>= 8:6.9.10.2), libpopt0 (>= 1.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__imageinfo,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libmagickcore-6.q16-6"
+	comparison hasValue ">="
+	version hasValue "8:6.9.10.2"
+
+relationInstance depends(P0__imageinfo,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libpopt0"
+	comparison hasValue ">="
+	version hasValue "1.14"
+
+relationInstance depends(P0__imageinfo,2,DepAtom__2)
+

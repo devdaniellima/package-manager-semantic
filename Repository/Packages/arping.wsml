@@ -1,0 +1,69 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology arping
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__arping memberOf Package
+	package hasValue "arping"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "77"
+	maintainer hasValue "Original-Salvatore Bonaccorso <carnil@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.20-1"
+	conflicts hasValue "iputils-arping"
+	fileName hasValue "pool/universe/a/arping/arping_2.20-1_amd64.deb"
+	size hasValue "28184"
+	md5sum hasValue "fcd6d028d7c7552007635d1e72445cd4"
+	sha1 hasValue "a25a7b0a99598f40ab815454372f287efbb458b0"
+	sha256 hasValue "495c51597d949a44bb87f9a3528c641f8bd2c2c1afdbe21e942db29ecda3c248"
+	description hasValue "envia \"pings\" IP e/ou ARP (para o endereço MAC)"
+	descriptionMd5 hasValue "f9961d479363b72d3c3239629d7637df"
+	homepage hasValue "http://www.habets.pp.se/synscan/programs.php?prog=arping"
+	depends hasValue "libc6 (>= 2.17), libnet1 (>= 1.1.2.1), libpcap0.8 (>= 1.5.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.17"
+
+relationInstance depends(P0__arping,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libnet1"
+	comparison hasValue ">="
+	version hasValue "1.1.2.1"
+
+relationInstance depends(P0__arping,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libpcap0.8"
+	comparison hasValue ">="
+	version hasValue "1.5.1"
+
+relationInstance depends(P0__arping,2,DepAtom__2)
+

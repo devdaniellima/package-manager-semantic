@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology pcp_export_zabbix_agent
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__pcp_export_zabbix_agent memberOf Package
+	package hasValue "pcp-export-zabbix-agent"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/utils"
+	installedSize hasValue "46"
+	maintainer hasValue "Original-PCP Development Team <pcp@groups.io>"
+	architecture hasValue "amd64"
+	version hasValue "5.0.3-1"
+	fileName hasValue "pool/universe/p/pcp/pcp-export-zabbix-agent_5.0.3-1_amd64.deb"
+	size hasValue "9080"
+	md5sum hasValue "1a8e581df511421a2750f64e1e19e178"
+	sha1 hasValue "33332483ae6b0f0465e0efbbfdaae7ffcf73c8d6"
+	sha256 hasValue "01d8ef79e623c5e703153d684a7f67aed3e054f2c4746b004e3a9f3208472456"
+	descriptionMd5 hasValue "2e4ff7e9c18fcf7726a52f8bdede9f8a"
+	homepage hasValue "https://pcp.io"
+	depends hasValue "libc6 (>= 2.14), libpcp3"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__pcp_export_zabbix_agent,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libpcp3"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__pcp_export_zabbix_agent,1,DepAtom__1)
+

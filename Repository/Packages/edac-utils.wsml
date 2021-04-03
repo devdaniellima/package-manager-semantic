@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology edac_utils
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__edac_utils memberOf Package
+	package hasValue "edac-utils"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/admin"
+	installedSize hasValue "83"
+	maintainer hasValue "Original-Yaroslav Halchenko <debian@onerussian.com>"
+	architecture hasValue "amd64"
+	version hasValue "0.18-1build1"
+	fileName hasValue "pool/universe/e/edac-utils/edac-utils_0.18-1build1_amd64.deb"
+	size hasValue "19812"
+	md5sum hasValue "e71309bded14a64c60f0b41a305a73fe"
+	sha1 hasValue "d4f97ff7e403c678c93b3bf443cf82bbaf626dbc"
+	sha256 hasValue "db120c8805f0c9b5fd836e261fcf076fed7ce87f5d29570946ecccf1b04f9d39"
+	descriptionMd5 hasValue "cad75191b26a9862f1cc644be4327cad"
+	homepage hasValue "http://sourceforge.net/projects/edac-utils"
+	depends hasValue "libc6 (>= 2.4), libedac1, lsb-base (>= 3.0-6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__edac_utils,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libedac1"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__edac_utils,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "lsb-base"
+	comparison hasValue ">="
+	version hasValue "3.0-6"
+
+relationInstance depends(P0__edac_utils,2,DepAtom__2)
+

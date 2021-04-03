@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python_ipaddress
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python_ipaddress memberOf Package
+	package hasValue "python-ipaddress"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "101"
+	maintainer hasValue "Original-Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.0.17-1build1"
+	fileName hasValue "pool/universe/p/python-ipaddress/python-ipaddress_1.0.17-1build1_all.deb"
+	size hasValue "18360"
+	md5sum hasValue "cf722823e01007d4d34e1796fa1d2c6a"
+	sha1 hasValue "1b7ea287d892c8b18e2bbb260d8cd7ea486ad9be"
+	sha256 hasValue "6de82f5b5a4ea8b415aaa3494dc50ffc153ba7a7f2c859738eeb8c02a614dfe3"
+	descriptionMd5 hasValue "bf21dde226280fd492d7380eb91edd7b"
+	homepage hasValue "https://github.com/phihag/ipaddress"
+	depends hasValue "python2:any (<< 2.8), python2:any (>= 2.7~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue "<<"
+	version hasValue "2.8"
+
+relationInstance depends(P0__python_ipaddress,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue ">="
+	version hasValue "2.7~"
+
+relationInstance depends(P0__python_ipaddress,1,DepAtom__1)
+

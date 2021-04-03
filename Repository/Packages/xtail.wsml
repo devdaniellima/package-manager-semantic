@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology xtail
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__xtail memberOf Package
+	package hasValue "xtail"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "36"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.1-6"
+	fileName hasValue "pool/universe/x/xtail/xtail_2.1-6_amd64.deb"
+	size hasValue "12042"
+	md5sum hasValue "dd42c66041d77b440f90e3e5b6f0ca7d"
+	sha1 hasValue "28f656ca00943abed9fb015123a84efc50a0985f"
+	sha256 hasValue "f3aa817db0c5aa256895b254536fce5626f0a260700253b0615abd6e7b7165d7"
+	descriptionMd5 hasValue "9aa631c9d9da2fabcc414190df0572f0"
+	homepage hasValue "https://www.unicom.com/sw/xtail"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__xtail,0,DepAtom__0)
+

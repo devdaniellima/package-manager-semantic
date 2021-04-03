@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology r_cran_irace
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__r_cran_irace memberOf Package
+	package hasValue "r-cran-irace"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/gnu-r"
+	installedSize hasValue "1267"
+	maintainer hasValue "Original-Debian R Packages Maintainers <r-pkg-team@alioth-lists.debian.net>"
+	architecture hasValue "all"
+	version hasValue "3.3-1"
+	fileName hasValue "pool/universe/r/r-cran-irace/r-cran-irace_3.3-1_all.deb"
+	size hasValue "940584"
+	md5sum hasValue "1cb41278190c9047aec03e396f513355"
+	sha1 hasValue "6621a3dfb8806bbe491b7afbe4ad4a3fc4abf284"
+	sha256 hasValue "3328c16eed816bc627bd4c4f0a9ca206348cfce5507a0c14db8c2f4c0dc334f0"
+	descriptionMd5 hasValue "a38296b68201bc01dcd4d40cdb04883d"
+	homepage hasValue "https://cran.r-project.org/package=irace"
+	depends hasValue "r-base-core (>= 3.6.1-2), r-api-3.5"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "r-base-core"
+	comparison hasValue ">="
+	version hasValue "3.6.1-2"
+
+relationInstance depends(P0__r_cran_irace,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "r-api-3.5"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__r_cran_irace,1,DepAtom__1)
+

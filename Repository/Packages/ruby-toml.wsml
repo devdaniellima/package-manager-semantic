@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ruby_toml
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ruby_toml memberOf Package
+	package hasValue "ruby-toml"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/ruby"
+	installedSize hasValue "38"
+	maintainer hasValue "Original-Debian Ruby Extras Maintainers <pkg-ruby-extras-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.2.0-3"
+	fileName hasValue "pool/universe/r/ruby-toml/ruby-toml_0.2.0-3_all.deb"
+	size hasValue "8768"
+	md5sum hasValue "6ca5b635f9bc97cb5bf3f7c7bd3e5dcc"
+	sha1 hasValue "3abb31b9e236c6a4f633891b99872e53aedde2ed"
+	sha256 hasValue "77adf546f4d5e46b3942887dabab69e7e263ec0f3e80756210c5e07d30656720"
+	descriptionMd5 hasValue "3b88810080cd9a72700497b2177beec5"
+	homepage hasValue "https://github.com/jm/toml"
+	depends hasValue "ruby | ruby-interpreter, ruby-parslet (>= 1.8.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "ruby"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ruby_toml,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "ruby-interpreter"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ruby_toml,0,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "ruby-parslet"
+	comparison hasValue ">="
+	version hasValue "1.8.0"
+
+relationInstance depends(P0__ruby_toml,1,DepAtom__2)
+

@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology joyent_mdata_client
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__joyent_mdata_client memberOf Package
+	package hasValue "joyent-mdata-client"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "admin"
+	installedSize hasValue "96"
+	maintainer hasValue "Ben Howard <ben.howard@ubuntu.com>"
+	architecture hasValue "amd64"
+	version hasValue "0.0.1-0ubuntu3"
+	fileName hasValue "pool/main/j/joyent-mdata-client/joyent-mdata-client_0.0.1-0ubuntu3_amd64.deb"
+	size hasValue "18726"
+	md5sum hasValue "032aef4b270e649ea3eb5fc558ac79e6"
+	sha1 hasValue "190b563565eab29751f5ec72c3aea51063e41c02"
+	sha256 hasValue "96310abcf94802305f411b963e089ef34a28b68adf10ece0c933b0fd15334260"
+	descriptionMd5 hasValue "78fe19782c892d527d85becaf017e2ba"
+	homepage hasValue "https://github.com/joyent/mdata-client"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__joyent_mdata_client,0,DepAtom__0)
+

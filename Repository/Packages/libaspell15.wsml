@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libaspell15
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libaspell15 memberOf Package
+	package hasValue "libaspell15"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libs"
+	installedSize hasValue "2268"
+	maintainer hasValue "Original-Agustin Martin Domingo <agmartin@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.60.8-1build1"
+	conflicts hasValue "aspell6-dictionary"
+	fileName hasValue "pool/main/a/aspell/libaspell15_0.60.8-1build1_amd64.deb"
+	size hasValue "326808"
+	md5sum hasValue "f59ae1765548fb070fd960d003e74610"
+	sha1 hasValue "41bcd1b55e2cf99e2c28a955f4000578fe41d608"
+	sha256 hasValue "e693bec4fad44a18b9855ee26fc5abbe0df5dabba97fcdd4f2675b5b0ccd3997"
+	description hasValue "biblioteca em tempo de execução do verificador ortográfico GNU Aspell"
+	descriptionMd5 hasValue "6b1b157cf893a6b279b08af6c2efbd71"
+	homepage hasValue "http://aspell.net/"
+	depends hasValue "libc6 (>= 2.29), libstdc++6 (>= 5)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__libaspell15,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "5"
+
+relationInstance depends(P0__libaspell15,1,DepAtom__1)
+

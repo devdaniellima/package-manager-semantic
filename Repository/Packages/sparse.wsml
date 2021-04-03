@@ -1,0 +1,74 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology sparse
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__sparse memberOf Package
+	package hasValue "sparse"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "715"
+	maintainer hasValue "Original-Uwe Kleine-König <ukleinek@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.6.1-2build1"
+	fileName hasValue "pool/universe/s/sparse/sparse_0.6.1-2build1_amd64.deb"
+	size hasValue "182536"
+	md5sum hasValue "4f866747be45f491bef743bfe3eb1cfa"
+	sha1 hasValue "b0a8e4848ff4a44ccc541be0f9c30d529a75a49c"
+	sha256 hasValue "c3ac7486ec60c2d233218d27a3fd3e52049f355325bfaea12586767321d40bad"
+	descriptionMd5 hasValue "da8c616b0e917184b61c1bd49923fb4d"
+	homepage hasValue "https://sparse.wiki.kernel.org/"
+	depends hasValue "libc6 (>= 2.14), libxml2 (>= 2.7.4), perl:any, gcc-9"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__sparse,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libxml2"
+	comparison hasValue ">="
+	version hasValue "2.7.4"
+
+relationInstance depends(P0__sparse,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "perl:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__sparse,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "gcc-9"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__sparse,3,DepAtom__3)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology waffle_utils
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__waffle_utils memberOf Package
+	package hasValue "waffle-utils"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "44"
+	maintainer hasValue "Original-Jordan Justen <jordan.l.justen@intel.com>"
+	architecture hasValue "amd64"
+	version hasValue "1.6.0-3"
+	fileName hasValue "pool/universe/w/waffle/waffle-utils_1.6.0-3_amd64.deb"
+	size hasValue "11708"
+	md5sum hasValue "ca241783af70e486662105169f37ed47"
+	sha1 hasValue "f152d5322dfea994989d1bfc01c99f8d58ea2ba5"
+	sha256 hasValue "48d2ac26bd55e2116417e0a41876e82346999e2b80b13456cb560a35d63fe8d1"
+	descriptionMd5 hasValue "7967386f38817ad1d0637c15cc9308e8"
+	homepage hasValue "http://www.waffle-gl.org"
+	depends hasValue "libwaffle-1-0 (= 1.6.0-3), libc6 (>= 2.7)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libwaffle-1-0"
+	comparison hasValue "="
+	version hasValue "1.6.0-3"
+
+relationInstance depends(P0__waffle_utils,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__waffle_utils,1,DepAtom__1)
+

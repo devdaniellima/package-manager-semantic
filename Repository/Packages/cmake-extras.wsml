@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology cmake_extras
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__cmake_extras memberOf Package
+	package hasValue "cmake-extras"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/libs"
+	installedSize hasValue "289"
+	maintainer hasValue "Original-Mike Gabriel <sunweaver@debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.5-1"
+	fileName hasValue "pool/universe/c/cmake-extras/cmake-extras_1.5-1_all.deb"
+	size hasValue "53208"
+	md5sum hasValue "c786b4ec61d4a3546a2ad163139415ef"
+	sha1 hasValue "44d5a00c66e8856cf6b191c5b1749bf31546da8a"
+	sha256 hasValue "9bd7ce1c3e078e76f9172b2216009487573e1fcef11ee40b21fac733d5c26584"
+	descriptionMd5 hasValue "465a216c1db639cf227162be3f5d25cc"
+	homepage hasValue "https://gitlab.com/ubports/core/cmake-extras/"
+	depends hasValue "cmake (>= 3.1), python3"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "cmake"
+	comparison hasValue ">="
+	version hasValue "3.1"
+
+relationInstance depends(P0__cmake_extras,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__cmake_extras,1,DepAtom__1)
+

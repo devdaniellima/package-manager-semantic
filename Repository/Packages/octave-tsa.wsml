@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology octave_tsa
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__octave_tsa memberOf Package
+	package hasValue "octave-tsa"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/math"
+	installedSize hasValue "319"
+	maintainer hasValue "Original-Debian Octave Group <team+pkg-octave-team@tracker.debian.org>"
+	architecture hasValue "all"
+	version hasValue "4.6.2-1"
+	fileName hasValue "pool/universe/o/octave-tsa/octave-tsa_4.6.2-1_all.deb"
+	size hasValue "56380"
+	md5sum hasValue "1135d39d808dca809703fce3e4bb6702"
+	sha1 hasValue "e22038b7a0cecb41ad525bdb8605cdf84d4912f0"
+	sha256 hasValue "dc1c20151898026b82bb77a685a2d0d3b52e70f9ed8c56a0b892180ea4bf621c"
+	description hasValue "time series analysis in Octave"
+	descriptionMd5 hasValue "564508159dc8968577bbd78123dbfc48"
+	homepage hasValue "https://octave.sourceforge.io/tsa/"
+	depends hasValue "octave (>= 5.1.0), octave-nan (>= 3.0.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "octave"
+	comparison hasValue ">="
+	version hasValue "5.1.0"
+
+relationInstance depends(P0__octave_tsa,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "octave-nan"
+	comparison hasValue ">="
+	version hasValue "3.0.0"
+
+relationInstance depends(P0__octave_tsa,1,DepAtom__1)
+

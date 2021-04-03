@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology tm_align
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__tm_align memberOf Package
+	package hasValue "tm-align"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/science"
+	installedSize hasValue "1342"
+	maintainer hasValue "Original-Debian Med Packaging Team <debian-med-packaging@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "20190822+dfsg-2build1"
+	fileName hasValue "pool/universe/t/tm-align/tm-align_20190822+dfsg-2build1_amd64.deb"
+	size hasValue "863820"
+	md5sum hasValue "6c5c9aa947dac93f6830c7944c27de94"
+	sha1 hasValue "629895e0f9212033e1c25b88f3eb3dae17d4534c"
+	sha256 hasValue "e809ecfe6eaa177dc93a1907af049a80cb8e82cd205f569a5f26489c82f148aa"
+	descriptionMd5 hasValue "667f2046704f2eef863a73792384abed"
+	homepage hasValue "https://zhanglab.ccmb.med.umich.edu/TM-align/"
+	depends hasValue "libc6 (>= 2.27), libgfortran5 (>= 8)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.27"
+
+relationInstance depends(P0__tm_align,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgfortran5"
+	comparison hasValue ">="
+	version hasValue "8"
+
+relationInstance depends(P0__tm_align,1,DepAtom__1)
+

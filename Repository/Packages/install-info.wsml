@@ -1,0 +1,55 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology install_info
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__install_info memberOf Package
+	package hasValue "install-info"
+	packageSource hasValue Source__S1
+	priority hasValue "standard"
+	section hasValue "doc"
+	installedSize hasValue "235"
+	maintainer hasValue "Original-Debian TeX maintainers <debian-tex-maint@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "6.7.0.dfsg.2-5"
+	replaces hasValue "texinfo (<< 4.13a.dfsg.1-2)"
+	fileName hasValue "pool/main/t/texinfo/install-info_6.7.0.dfsg.2-5_amd64.deb"
+	size hasValue "89840"
+	md5sum hasValue "bbb9643765e60849fac155c4c9f72d19"
+	sha1 hasValue "4e6183acb9d156670b684f023e6d3c57268ca0a9"
+	sha256 hasValue "7019227ada3e0928fd97275cc9e48b1a3dea52d8d008c6b89514bfc91dc5c549"
+	description hasValue "gerenciador de documentação instalada em formato info"
+	descriptionMd5 hasValue "1fc51f7aec70d7bdeff2e1bf59b3ebbc"
+	homepage hasValue "https://www.gnu.org/software/texinfo/"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__install_info,0,DepAtom__0)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology snp_sites
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__snp_sites memberOf Package
+	package hasValue "snp-sites"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/science"
+	installedSize hasValue "35"
+	maintainer hasValue "Original-Debian Med Packaging Team <debian-med-packaging@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.5.1-1"
+	fileName hasValue "pool/universe/s/snp-sites/snp-sites_2.5.1-1_amd64.deb"
+	size hasValue "10496"
+	md5sum hasValue "e3ec7128a582abd8d427cc3c1e78a91a"
+	sha1 hasValue "059babb438f417402150300ca1aaaa35183b2471"
+	sha256 hasValue "aa229677886694aeed9df715daf4344fe3e80a6d7500f3b5d67c60d3d4f73a7e"
+	descriptionMd5 hasValue "3d6d30c82729352bdf61e8d907df5811"
+	homepage hasValue "https://github.com/sanger-pathogens/snp-sites"
+	depends hasValue "libc6 (>= 2.4), libsnp-sites1"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__snp_sites,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libsnp-sites1"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__snp_sites,1,DepAtom__1)
+

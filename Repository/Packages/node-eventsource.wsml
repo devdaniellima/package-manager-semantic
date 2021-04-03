@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology node_eventsource
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__node_eventsource memberOf Package
+	package hasValue "node-eventsource"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/web"
+	installedSize hasValue "32"
+	maintainer hasValue "Original-Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.2.1-1"
+	fileName hasValue "pool/universe/n/node-eventsource/node-eventsource_0.2.1-1_all.deb"
+	size hasValue "6668"
+	md5sum hasValue "867c3872910781993b4f5e43e4aade57"
+	sha1 hasValue "ca421a49235461618604efd1ed635d87fb48e615"
+	sha256 hasValue "2d805b7d8bb01595e1f6e7c0561ede11c58aabfeb07ee6fd4031beacc68b90be"
+	descriptionMd5 hasValue "2d9bfa4513c4fdd2f1f472033886876b"
+	homepage hasValue "http://github.com/aslakhellesoy/eventsource-node"
+	depends hasValue "nodejs, node-original (>= 0.0.5)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "nodejs"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__node_eventsource,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "node-original"
+	comparison hasValue ">="
+	version hasValue "0.0.5"
+
+relationInstance depends(P0__node_eventsource,1,DepAtom__1)
+

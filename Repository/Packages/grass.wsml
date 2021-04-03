@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology grass
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__grass memberOf Package
+	package hasValue "grass"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/science"
+	installedSize hasValue "45"
+	maintainer hasValue "Original-Debian GIS Project <pkg-grass-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "7.8.2-1build3"
+	fileName hasValue "pool/universe/g/grass/grass_7.8.2-1build3_all.deb"
+	size hasValue "7704"
+	md5sum hasValue "07e076bf901731f35de35e340d63479c"
+	sha1 hasValue "cf0c48b6ded08c1633acbe54b869346437496d02"
+	sha256 hasValue "e55d76ebdcb39b830678d5c82347040928fcb53c8bbe70114085bc9f03001a52"
+	description hasValue "Sistema de Suporte para Análise de Recursos Geográficos (GRASS GIS)"
+	descriptionMd5 hasValue "927e5df9adc0c220121824a1dcc21063"
+	homepage hasValue "https://grass.osgeo.org/"
+	depends hasValue "grass-core, grass-gui"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "grass-core"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__grass,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "grass-gui"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__grass,1,DepAtom__1)
+

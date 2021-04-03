@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libmaven_deploy_plugin_java
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libmaven_deploy_plugin_java memberOf Package
+	package hasValue "libmaven-deploy-plugin-java"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/java"
+	installedSize hasValue "51"
+	maintainer hasValue "Original-Debian Java Maintainers <pkg-java-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.8.2-3"
+	fileName hasValue "pool/universe/m/maven-deploy-plugin/libmaven-deploy-plugin-java_2.8.2-3_all.deb"
+	size hasValue "31550"
+	md5sum hasValue "0d7f507c4721a84dca2fe22fb179b8fd"
+	sha1 hasValue "2aa064b0da9de80fcb01f144d970b0c49efbd8f3"
+	sha256 hasValue "01f5057f8781820b0e9d37ae2138c9ec369ed9ab0007ef6d8a1c26ed923ae422"
+	descriptionMd5 hasValue "3dda82639aa68826a460f468f824cca8"
+	homepage hasValue "http://maven.apache.org/plugins/maven-deploy-plugin/"
+	depends hasValue "libmaven3-core-java (>= 3.5.0), libplexus-utils-java"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libmaven3-core-java"
+	comparison hasValue ">="
+	version hasValue "3.5.0"
+
+relationInstance depends(P0__libmaven_deploy_plugin_java,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libplexus-utils-java"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libmaven_deploy_plugin_java,1,DepAtom__1)
+

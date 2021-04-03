@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology rabbitvcs_cli
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__rabbitvcs_cli memberOf Package
+	package hasValue "rabbitvcs-cli"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "23"
+	maintainer hasValue "Original-Python Applications Packaging Team <python-apps-team@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.18-1ubuntu1"
+	fileName hasValue "pool/universe/r/rabbitvcs/rabbitvcs-cli_0.18-1ubuntu1_all.deb"
+	size hasValue "4844"
+	md5sum hasValue "e0443226ed3a160389b7e1c43967cc7d"
+	sha1 hasValue "df6c17cf22240be884425c42a7092b00ce376d40"
+	sha256 hasValue "85d0db3be0c1163ae8c6c9196d00006c7dfa1ca5ce2f8093746fec8ca03b3aff"
+	description hasValue "interface em linha de comando para o RabbitVCS"
+	descriptionMd5 hasValue "fbdc07dbc43e7e5f473a0235a97f8600"
+	homepage hasValue "http://www.rabbitvcs.org"
+	depends hasValue "python3:any, rabbitvcs-core (>= 0.15)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__rabbitvcs_cli,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "rabbitvcs-core"
+	comparison hasValue ">="
+	version hasValue "0.15"
+
+relationInstance depends(P0__rabbitvcs_cli,1,DepAtom__1)
+

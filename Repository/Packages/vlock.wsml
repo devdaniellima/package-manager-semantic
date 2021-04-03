@@ -1,0 +1,74 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology vlock
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__vlock memberOf Package
+	package hasValue "vlock"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "116"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.2.2-8"
+	fileName hasValue "pool/universe/v/vlock/vlock_2.2.2-8_amd64.deb"
+	size hasValue "32564"
+	md5sum hasValue "1a1e4434e887d01e157b227db0581709"
+	sha1 hasValue "bc1e901a11894647a2166ec0af7ea1343aebed1e"
+	sha256 hasValue "c9839c31ff4076189ca191fbf4815a18701ba11ee6e26c50b35b32c36ae616ba"
+	description hasValue "programa para travar consoles virtuais"
+	descriptionMd5 hasValue "5b12c8014ccd91f18df2454c332a5e1e"
+	depends hasValue "libc6 (>= 2.15), libpam0g (>= 0.99.7.1), libpam-modules, adduser"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__vlock,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libpam0g"
+	comparison hasValue ">="
+	version hasValue "0.99.7.1"
+
+relationInstance depends(P0__vlock,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libpam-modules"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__vlock,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "adduser"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__vlock,3,DepAtom__3)
+

@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ruby_acme_client
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ruby_acme_client memberOf Package
+	package hasValue "ruby-acme-client"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/ruby"
+	installedSize hasValue "76"
+	maintainer hasValue "Original-Debian Ruby Extras Maintainers <pkg-ruby-extras-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.0.5-1"
+	fileName hasValue "pool/universe/r/ruby-acme-client/ruby-acme-client_2.0.5-1_all.deb"
+	size hasValue "15368"
+	md5sum hasValue "62d508ffda16b8dd7ca9e4a0da1fcbd5"
+	sha1 hasValue "576b75cccfae254bb465d86a4bb4c1afe98332d5"
+	sha256 hasValue "50fc95d9304b2ca9791e4b9a4576d0c9ed5d6c06de9fa70f72f62fa45ac38824"
+	descriptionMd5 hasValue "221dec1d4276ce046b7f4fd501427b6a"
+	homepage hasValue "https://github.com/unixcharles/acme-client"
+	depends hasValue "ruby | ruby-interpreter, ruby-faraday (>= 0.9)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "ruby"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ruby_acme_client,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "ruby-interpreter"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ruby_acme_client,0,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "ruby-faraday"
+	comparison hasValue ">="
+	version hasValue "0.9"
+
+relationInstance depends(P0__ruby_acme_client,1,DepAtom__2)
+

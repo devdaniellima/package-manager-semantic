@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology dumb_init
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__dumb_init memberOf Package
+	package hasValue "dumb-init"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/utils"
+	installedSize hasValue "37"
+	maintainer hasValue "Original-ChangZhuo Chen (陳昌倬) <czchen@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.2.2-1.2"
+	fileName hasValue "pool/universe/d/dumb-init/dumb-init_1.2.2-1.2_amd64.deb"
+	size hasValue "13988"
+	md5sum hasValue "458b82159ed1a5b270c6f06227b7c87a"
+	sha1 hasValue "821a6d1de1584dc38f6e5539aed62b9c702dd912"
+	sha256 hasValue "1ac8624fec36d694b0d171b0d2e72410275da8b6193fe6140e390b9af1db0013"
+	descriptionMd5 hasValue "d6ce0e9df3158136b248ddf33a0d6468"
+	homepage hasValue "https://github.com/Yelp/dumb-init/"
+	depends hasValue "libc6 (>= 2.7)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__dumb_init,0,DepAtom__0)
+

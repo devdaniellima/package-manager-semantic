@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology hey
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__hey memberOf Package
+	package hasValue "hey"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "7266"
+	maintainer hasValue "Original-Debian Go Packaging Team <team+pkg-go@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.1.2-2"
+	fileName hasValue "pool/universe/h/hey/hey_0.1.2-2_amd64.deb"
+	size hasValue "2171380"
+	md5sum hasValue "dc950223116490d2b4ec5a95a5128fe0"
+	sha1 hasValue "f5c51225e3785413f3dc8833ae5d56dafca73805"
+	sha256 hasValue "2ebdec399748255a73334b3be3814b67403e855662df94ccd8e26d1f21bef76c"
+	descriptionMd5 hasValue "6c7cde0adaa5c6af8fdeebf480cdcd19"
+	homepage hasValue "https://github.com/rakyll/hey"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__hey,0,DepAtom__0)
+

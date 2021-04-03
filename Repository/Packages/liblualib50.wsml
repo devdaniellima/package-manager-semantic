@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology liblualib50
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__liblualib50 memberOf Package
+	package hasValue "liblualib50"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "109"
+	maintainer hasValue "Original-Enrico Tassi <gareuselesinge@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "5.0.3-8build1"
+	fileName hasValue "pool/universe/l/lua50/liblualib50_5.0.3-8build1_amd64.deb"
+	size hasValue "29900"
+	md5sum hasValue "cdc6f96ee7c70e53c30ee39cfccb50e0"
+	sha1 hasValue "afdd5108e24f85695c947e1f60b2f1ff36395fb0"
+	sha256 hasValue "128ebb5bd1b959aeb82637a04b5826c62e8ce96a58be5a8ebdbcdc13b594b72e"
+	description hasValue "biblioteca de extensão para a linguagem de programação Lua 5.0"
+	descriptionMd5 hasValue "a9f68e9942e88a3da05b9ebf54d890e0"
+	homepage hasValue "http://www.lua.org"
+	depends hasValue "libc6 (>= 2.14), liblua50 (>= 5.0.3)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__liblualib50,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "liblua50"
+	comparison hasValue ">="
+	version hasValue "5.0.3"
+
+relationInstance depends(P0__liblualib50,1,DepAtom__1)
+

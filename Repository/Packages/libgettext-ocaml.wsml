@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libgettext_ocaml
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libgettext_ocaml memberOf Package
+	package hasValue "libgettext-ocaml"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "30"
+	maintainer hasValue "Original-Debian OCaml Maintainers <debian-ocaml-maint@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.4.1-2build1"
+	provides hasValue "libgettext-ocaml-uta69"
+	fileName hasValue "pool/universe/o/ocaml-gettext/libgettext-ocaml_0.4.1-2build1_amd64.deb"
+	size hasValue "6492"
+	md5sum hasValue "8f7587b642d05b7ef3c79c256de8bf30"
+	sha1 hasValue "5c3db7593e16da9a37807876d25d11f2fa3d30cc"
+	sha256 hasValue "e7eb19f7b9a3025f7a00d550c0d9634c406cee97a151bac03c8e2bfa3bde5745"
+	descriptionMd5 hasValue "f044514345729f9a29d1c28245ed733b"
+	homepage hasValue "http://forge.ocamlcore.org/projects/ocaml-gettext/"
+	depends hasValue "ocaml-base-nox-4.08.1, libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "ocaml-base-nox-4.08.1"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libgettext_ocaml,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libgettext_ocaml,1,DepAtom__1)
+

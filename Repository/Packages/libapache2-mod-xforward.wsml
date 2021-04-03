@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libapache2_mod_xforward
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libapache2_mod_xforward memberOf Package
+	package hasValue "libapache2-mod-xforward"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/httpd"
+	installedSize hasValue "31"
+	maintainer hasValue "Original-Andrew Lee (李健秋) <ajqlee@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.6-1"
+	fileName hasValue "pool/universe/a/apache2-mod-xforward/libapache2-mod-xforward_0.6-1_amd64.deb"
+	size hasValue "5580"
+	md5sum hasValue "94042471e9a763bcaf54feb0905b6e77"
+	sha1 hasValue "e4bacb4a9a16f31e75c5371d53ee190b7d0b599f"
+	sha256 hasValue "722e83a6d096a0af51c314d7caeb43cc7649dd14a3cb880dab42e63912f05901"
+	descriptionMd5 hasValue "9b1293af907e69ff8818cb1424809ac2"
+	homepage hasValue "https://github.com/openSUSE/apache2-mod_xforward"
+	depends hasValue "libc6 (>= 2.4), apache2-api-20120211"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libapache2_mod_xforward,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "apache2-api-20120211"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libapache2_mod_xforward,1,DepAtom__1)
+

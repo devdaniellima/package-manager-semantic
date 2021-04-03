@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology groonga_munin_plugins
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__groonga_munin_plugins memberOf Package
+	package hasValue "groonga-munin-plugins"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "81"
+	maintainer hasValue "Original-Groonga Project <packages@groonga.org>"
+	architecture hasValue "all"
+	version hasValue "9.1.2-1"
+	fileName hasValue "pool/universe/g/groonga/groonga-munin-plugins_9.1.2-1_all.deb"
+	size hasValue "11292"
+	md5sum hasValue "fe57875bc48b7b09d1e11489e4057984"
+	sha1 hasValue "a8ddb3c1a6629e989728a28c316cef1e52d7e9cd"
+	sha256 hasValue "57c6f4e1743acd109f6d87afae493699360ce46eaa880114cc8f22c27bfe0cdd"
+	descriptionMd5 hasValue "d479687a1c5da0f8b360a95dec3411d5"
+	homepage hasValue "http://groonga.org/"
+	depends hasValue "groonga-bin (>= 9.1.2-1), munin-node, ruby"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "groonga-bin"
+	comparison hasValue ">="
+	version hasValue "9.1.2-1"
+
+relationInstance depends(P0__groonga_munin_plugins,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "munin-node"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__groonga_munin_plugins,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "ruby"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__groonga_munin_plugins,2,DepAtom__2)
+

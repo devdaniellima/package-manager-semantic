@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libautounit2
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libautounit2 memberOf Package
+	package hasValue "libautounit2"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "70"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.20.1-5"
+	fileName hasValue "pool/universe/a/autounit/libautounit2_0.20.1-5_amd64.deb"
+	size hasValue "12280"
+	md5sum hasValue "576c95fdd9c99eb12f7444e1de6db54c"
+	sha1 hasValue "26529b479d4b719d7bfe8d7f35d8af92659e80c7"
+	sha256 hasValue "7dcd012c667e33f205a27c0763f7608c7fa778fb9930ccba9aac7805056613e3"
+	descriptionMd5 hasValue "03794191522b127c6c011551739307df"
+	homepage hasValue "http://www.recursism.com/pub/software/testing/gnu-autounit"
+	depends hasValue "libc6 (>= 2.7), libglib2.0-0 (>= 2.12.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__libautounit2,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libglib2.0-0"
+	comparison hasValue ">="
+	version hasValue "2.12.0"
+
+relationInstance depends(P0__libautounit2,1,DepAtom__1)
+

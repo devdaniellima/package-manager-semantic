@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology linux_gke_5Dot4
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__linux_gke_5Dot4 memberOf Package
+	package hasValue "linux-gke-5.4"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "kernel"
+	installedSize hasValue "9"
+	maintainer hasValue "Ubuntu Kernel Team <kernel-team@lists.ubuntu.com>"
+	architecture hasValue "amd64"
+	version hasValue "5.4.0.1037.46"
+	fileName hasValue "pool/main/l/linux-meta-gke/linux-gke-5.4_5.4.0.1037.46_amd64.deb"
+	size hasValue "1880"
+	md5sum hasValue "36d91e62947a3c55e12ab4ffbee7f6d1"
+	sha1 hasValue "57c88a3834f903fdd345357c8e6883bb8ac7a362"
+	sha256 hasValue "d255300d1dd4036496c0975fa41f0cd3f9273e0d928b4aa1d18a361cfcfe89b4"
+	sha512 hasValue "d88a84865a62823442d7952def2cec491dded835d99f5f3841a7a5043f3890471caabef406ed5b0cb044373811c6b70ababb994b4c4e1af43ffa3d2032ac3727"
+	descriptionMd5 hasValue "5369f3a7274b192c6526117074b6f2a1"
+	depends hasValue "linux-image-gke-5.4 (= 5.4.0.1037.46), linux-headers-gke-5.4 (= 5.4.0.1037.46)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "linux-image-gke-5.4"
+	comparison hasValue "="
+	version hasValue "5.4.0.1037.46"
+
+relationInstance depends(P0__linux_gke_5Dot4,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "linux-headers-gke-5.4"
+	comparison hasValue "="
+	version hasValue "5.4.0.1037.46"
+
+relationInstance depends(P0__linux_gke_5Dot4,1,DepAtom__1)
+

@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology postgresql_12_pglogical
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__postgresql_12_pglogical memberOf Package
+	package hasValue "postgresql-12-pglogical"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/database"
+	installedSize hasValue "1110"
+	maintainer hasValue "Original-Debian PostgreSQL Maintainers <team+postgresql@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.3.0-1"
+	fileName hasValue "pool/universe/p/pglogical/postgresql-12-pglogical_2.3.0-1_amd64.deb"
+	size hasValue "434052"
+	md5sum hasValue "3a30859cafc5bda7a1f69f2c1002599e"
+	sha1 hasValue "b160ee64f4a65b2a8487188e46a3742e1536463c"
+	sha256 hasValue "6e847ac2f5fdc588832c33c3e73ebab2b083a4b1bf9574b60b84834b92524d3e"
+	descriptionMd5 hasValue "89747981d1a34b9fdb08e4273681408b"
+	homepage hasValue "https://www.2ndquadrant.com/en/resources/pglogical/"
+	depends hasValue "libc6 (>= 2.7), libpq5 (>= 9.1~), postgresql-12"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__postgresql_12_pglogical,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libpq5"
+	comparison hasValue ">="
+	version hasValue "9.1~"
+
+relationInstance depends(P0__postgresql_12_pglogical,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "postgresql-12"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__postgresql_12_pglogical,2,DepAtom__2)
+

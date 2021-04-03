@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology node_hashish
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__node_hashish memberOf Package
+	package hasValue "node-hashish"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/web"
+	installedSize hasValue "30"
+	maintainer hasValue "Original-Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.0.4+git34dfe43-1"
+	fileName hasValue "pool/universe/n/node-hashish/node-hashish_0.0.4+git34dfe43-1_all.deb"
+	size hasValue "5888"
+	md5sum hasValue "ff52c15435edde3f41fbb4c728b79c3f"
+	sha1 hasValue "045ff7cbfe3e7c22b98b84b306eb3a2c9ac1d682"
+	sha256 hasValue "e3f043669f33e0a4790b800a42edc1303e80f4197b587c5356263770b9c8b76e"
+	descriptionMd5 hasValue "c7bc89b6acc9afa0106e24dc6fec2e01"
+	homepage hasValue "https://github.com/substack/node-hashish/"
+	depends hasValue "nodejs, node-traverse (>= 0.2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "nodejs"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__node_hashish,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "node-traverse"
+	comparison hasValue ">="
+	version hasValue "0.2.4"
+
+relationInstance depends(P0__node_hashish,1,DepAtom__1)
+

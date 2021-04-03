@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libgkl_jni
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libgkl_jni memberOf Package
+	package hasValue "libgkl-jni"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "1094"
+	maintainer hasValue "Original-Debian Java Maintainers <pkg-java-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.8.6+dfsg-1"
+	fileName hasValue "pool/universe/g/gkl/libgkl-jni_0.8.6+dfsg-1_amd64.deb"
+	size hasValue "186984"
+	md5sum hasValue "ad182a1d1a9149c9c3a69e807f505c2b"
+	sha1 hasValue "8d8473c88cb41cf2d8211fd2b358a54ccf064ce2"
+	sha256 hasValue "5fe9cd5d2acfc3d0cfae3c55a796467cd8dc7a6547e80d38bcb589c21b6705c2"
+	descriptionMd5 hasValue "80624f2342c238124cf09bc7d15b1520"
+	homepage hasValue "https://github.com/Intel-HLS/GKL"
+	depends hasValue "libc6 (>= 2.29), libgomp1 (>= 6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__libgkl_jni,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgomp1"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__libgkl_jni,1,DepAtom__1)
+

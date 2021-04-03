@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python_py
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python_py memberOf Package
+	package hasValue "python-py"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "336"
+	maintainer hasValue "Original-Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.8.1-1"
+	fileName hasValue "pool/universe/p/python-py/python-py_1.8.1-1_all.deb"
+	size hasValue "65312"
+	md5sum hasValue "f9f0382a9c38e98d2dfffceebde00d39"
+	sha1 hasValue "f9415051ba5e42dd73c6daba6c713ab58239b41e"
+	sha256 hasValue "2ca3ab80db441e77f6d4f79160a7f354f40021cba4924f8d85711bee7f9e8839"
+	descriptionMd5 hasValue "23ae525bcd8a7343e68f18cd0b6565ae"
+	homepage hasValue "https://github.com/pytest-dev/py"
+	depends hasValue "python2:any (<< 2.8), python2:any (>= 2.7~), python-pkg-resources"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue "<<"
+	version hasValue "2.8"
+
+relationInstance depends(P0__python_py,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue ">="
+	version hasValue "2.7~"
+
+relationInstance depends(P0__python_py,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "python-pkg-resources"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__python_py,2,DepAtom__2)
+

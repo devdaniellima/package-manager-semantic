@@ -1,0 +1,52 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology default_d_compiler
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__default_d_compiler memberOf Package
+	package hasValue "default-d-compiler"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "10"
+	maintainer hasValue "Original-Debian D Language Group <team+d-team@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.6.5build1"
+	fileName hasValue "pool/universe/d/dh-dlang/default-d-compiler_0.6.5build1_amd64.deb"
+	size hasValue "2948"
+	md5sum hasValue "a1d9d50d4b9002c4c265a1fb5179c3f5"
+	sha1 hasValue "71660344eb68dd9b4fc4f847301ef729f61760f5"
+	sha256 hasValue "2f9b9f8d2c12ca28c28992db2bc8947d0b41741e9569c4226411dcad48c1eba3"
+	descriptionMd5 hasValue "bbbd93771830b7fd3186d8c877db5ddf"
+	depends hasValue "ldc (>= 1:1.12)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "ldc"
+	comparison hasValue ">="
+	version hasValue "1:1.12"
+
+relationInstance depends(P0__default_d_compiler,0,DepAtom__0)
+

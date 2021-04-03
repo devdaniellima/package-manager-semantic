@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology paexec
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__paexec memberOf Package
+	package hasValue "paexec"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "214"
+	maintainer hasValue "Original-Alexander Ponyatykh <lazyranma@gmail.com>"
+	architecture hasValue "amd64"
+	version hasValue "1.1.1-1"
+	fileName hasValue "pool/universe/p/paexec/paexec_1.1.1-1_amd64.deb"
+	size hasValue "132280"
+	md5sum hasValue "d96d8d0e90722522da2ed4d2250772dd"
+	sha1 hasValue "a1dda02d1fc99adb5c5619aa9c7a60476bbbcc1c"
+	sha256 hasValue "905bb55da70911c0b87b34908962bf8860581d2db468adbfe99c8cc1bbb351b5"
+	descriptionMd5 hasValue "f5db60b5f571f73ba3094b1bda2b5de4"
+	homepage hasValue "https://sourceforge.net/projects/paexec/"
+	depends hasValue "libc6 (>= 2.15), runawk"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__paexec,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "runawk"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__paexec,1,DepAtom__1)
+

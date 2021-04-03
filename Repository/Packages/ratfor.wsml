@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ratfor
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ratfor memberOf Package
+	package hasValue "ratfor"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "50"
+	maintainer hasValue "Original-Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.04-1"
+	fileName hasValue "pool/universe/r/ratfor/ratfor_1.04-1_amd64.deb"
+	size hasValue "17876"
+	md5sum hasValue "4edf1530d26ca7bfbf92b86fc55454f0"
+	sha1 hasValue "e539d8eea179d1ccd88acd8187ad4f4775381bad"
+	sha256 hasValue "f7d7d87b2a0afc55e0769c14f034a0278b3418964d6615d60d300bcb05501ac6"
+	descriptionMd5 hasValue "da1beceff3344cc56527267cb56c26f9"
+	homepage hasValue "http://www.dgate.org/ratfor/"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__ratfor,0,DepAtom__0)
+

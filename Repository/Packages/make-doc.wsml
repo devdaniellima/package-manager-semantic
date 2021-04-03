@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology make_doc
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__make_doc memberOf Package
+	package hasValue "make-doc"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "doc"
+	installedSize hasValue "3254"
+	maintainer hasValue "Original-Manoj Srivastava <srivasta@debian.org>"
+	architecture hasValue "all"
+	version hasValue "4.2.1-1"
+	replaces hasValue "make (<< 3.80+3.81.rc2-1)"
+	fileName hasValue "pool/main/m/make-doc-non-dfsg/make-doc_4.2.1-1_all.deb"
+	size hasValue "1870076"
+	md5sum hasValue "acbe31aa0d69151cf37fb567de8aa3a9"
+	sha1 hasValue "0383137e8a4e7aa1c46956cd3c199c53dca1b2d1"
+	sha256 hasValue "cb95019640957e27455fd7f435d52cd93f3d9ce4e17148152d1b46961d6a5563"
+	descriptionMd5 hasValue "466b1f60067237843b9950ca1da17b9e"
+	homepage hasValue "http://www.gnu.org/software/make/"
+	depends hasValue "dpkg (>= 1.15.4) | install-info"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "dpkg"
+	comparison hasValue ">="
+	version hasValue "1.15.4"
+
+relationInstance depends(P0__make_doc,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "install-info"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__make_doc,0,DepAtom__1)
+

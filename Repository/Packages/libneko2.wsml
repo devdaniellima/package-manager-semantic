@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libneko2
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libneko2 memberOf Package
+	package hasValue "libneko2"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "129"
+	maintainer hasValue "Original-Andy Li <andy@onthewings.net>"
+	architecture hasValue "amd64"
+	version hasValue "2.3.0-1"
+	conflicts hasValue "neko (<< 1.8.0-2), neko-dev (<< 1.8.1)"
+	fileName hasValue "pool/universe/n/neko/libneko2_2.3.0-1_amd64.deb"
+	size hasValue "44104"
+	md5sum hasValue "f46248765e07c8f8c6c5cb69965b53cc"
+	sha1 hasValue "f4b31b60aebb53d05fc721356d07550687150d82"
+	sha256 hasValue "9908f1232386d69033a1857d3ca23e7c6ab6b4edf4e37e2c5e7491491c938465"
+	descriptionMd5 hasValue "580c9dcbe61899893890543ecf971276"
+	homepage hasValue "https://nekovm.org"
+	depends hasValue "libc6 (>= 2.14), libgc1c2 (>= 1:7.2d)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libneko2,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgc1c2"
+	comparison hasValue ">="
+	version hasValue "1:7.2d"
+
+relationInstance depends(P0__libneko2,1,DepAtom__1)
+

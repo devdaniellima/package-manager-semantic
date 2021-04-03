@@ -1,0 +1,63 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libwayland_server0
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libwayland_server0 memberOf Package
+	package hasValue "libwayland-server0"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libs"
+	installedSize hasValue "106"
+	maintainer hasValue "Original-Debian X Strike Force <debian-x@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.18.0-1"
+	replaces hasValue "libwayland0 (<< 1.1.0-1)"
+	conflicts hasValue "libwayland0 (<< 1.1.0-1)"
+	fileName hasValue "pool/main/w/wayland/libwayland-server0_1.18.0-1_amd64.deb"
+	size hasValue "31576"
+	md5sum hasValue "8e80e228b0119f58efa72fb42ac79ad3"
+	sha1 hasValue "af0199fd50107635b1d922dbbd1877ce0a9a10e8"
+	sha256 hasValue "71f19dd34841cf4e7ba4a0dd6c912147e0c7a2ecb6f429fe4bad6c97fe08b494"
+	description hasValue "wayland compositor infrastructure - server library"
+	descriptionMd5 hasValue "d12a42711d448b23b1fb5d101345af87"
+	homepage hasValue "https://wayland.freedesktop.org/"
+	depends hasValue "libc6 (>= 2.17), libffi7 (>= 3.3~20180313)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.17"
+
+relationInstance depends(P0__libwayland_server0,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libffi7"
+	comparison hasValue ">="
+	version hasValue "3.3~20180313"
+
+relationInstance depends(P0__libwayland_server0,1,DepAtom__1)
+

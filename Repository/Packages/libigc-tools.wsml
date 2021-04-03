@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libigc_tools
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libigc_tools memberOf Package
+	package hasValue "libigc-tools"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/video"
+	installedSize hasValue "8239"
+	maintainer hasValue "Original-Debian OpenCL team <pkg-opencl-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.3627-2"
+	fileName hasValue "pool/universe/i/intel-graphics-compiler/libigc-tools_1.0.3627-2_amd64.deb"
+	size hasValue "1503700"
+	md5sum hasValue "19dfaaf93070fd0dfff87578c56887ba"
+	sha1 hasValue "fa3b404b0d6ee12d0a8fd4dc11456051e96ba5c0"
+	sha256 hasValue "c2f4ecd6a4bdde4ae56aaea32c9365ccde1dbbbecb8d1daab75615161f050de2"
+	descriptionMd5 hasValue "a20f373262ec554f7b5d00781e6746f9"
+	homepage hasValue "https://github.com/intel/intel-graphics-compiler"
+	depends hasValue "libc6 (>= 2.29), libgcc-s1 (>= 3.0), libstdc++6 (>= 9)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__libigc_tools,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgcc-s1"
+	comparison hasValue ">="
+	version hasValue "3.0"
+
+relationInstance depends(P0__libigc_tools,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "9"
+
+relationInstance depends(P0__libigc_tools,2,DepAtom__2)
+

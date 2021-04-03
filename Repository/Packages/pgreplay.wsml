@@ -1,0 +1,59 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology pgreplay
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__pgreplay memberOf Package
+	package hasValue "pgreplay"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "81"
+	maintainer hasValue "Original-Cyril Bouthors <cyb@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.2.0-2ubuntu2"
+	fileName hasValue "pool/universe/p/pgreplay/pgreplay_1.2.0-2ubuntu2_amd64.deb"
+	size hasValue "30564"
+	md5sum hasValue "3a92856d70c3ce2a5b7dae0c527df5bf"
+	sha1 hasValue "cd1e45c061b675649b3f64d85101618eff9fc03e"
+	sha256 hasValue "3b8c7d7405cd7157f7ec4f465f25c4de16a888a50918716261c81b998be32c1b"
+	descriptionMd5 hasValue "07e5d94ae8adeb7a60dc70723a60ce62"
+	depends hasValue "libc6 (>= 2.15), libpq5"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__pgreplay,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libpq5"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__pgreplay,1,DepAtom__1)
+

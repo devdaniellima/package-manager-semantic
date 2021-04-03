@@ -1,0 +1,64 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology nvidia_utils_450
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__nvidia_utils_450 memberOf Package
+	package hasValue "nvidia-utils-450"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "restricted/libs"
+	installedSize hasValue "1139"
+	maintainer hasValue "Ubuntu Core Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	architecture hasValue "amd64"
+	version hasValue "450.102.04-0ubuntu0.20.04.1"
+	replaces hasValue "nvidia-smi, nvidia-utils"
+	provides hasValue "nvidia-smi, nvidia-utils"
+	conflicts hasValue "nvidia-smi, nvidia-utils"
+	fileName hasValue "pool/restricted/n/nvidia-graphics-drivers-450/nvidia-utils-450_450.102.04-0ubuntu0.20.04.1_amd64.deb"
+	size hasValue "365940"
+	md5sum hasValue "05edd22f1415c4287bbf90d52b45aabf"
+	sha1 hasValue "2e5e2b2f1c04bec3e015144cbca7a2d77df92756"
+	sha256 hasValue "ab8da6e255d9863644065fb53e54a4924b8ef10e627cb1630216657dd00eb2e2"
+	sha512 hasValue "bf797b3245a0fe57c09c1b398ccb2266ade01bc4b0296312e632ea6e1b4d2e4a9715576e4aaf996373789da1057f4732c369d544256844bb9adc10679a9dc2ba"
+	descriptionMd5 hasValue "d81f3aa17f8585f803913263abcf99e2"
+	homepage hasValue "http://www.nvidia.com"
+	depends hasValue "libc6 (>= 2.7), libnvidia-compute-450"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__nvidia_utils_450,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libnvidia-compute-450"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__nvidia_utils_450,1,DepAtom__1)
+

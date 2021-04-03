@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology rrep
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__rrep memberOf Package
+	package hasValue "rrep"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "156"
+	maintainer hasValue "Original-Arno Onken <asnelt@asnelt.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.3.6-2"
+	fileName hasValue "pool/universe/r/rrep/rrep_1.3.6-2_amd64.deb"
+	size hasValue "53972"
+	md5sum hasValue "0e920bab223c1f4d0b263fea4b9ab1b2"
+	sha1 hasValue "7e1ed48248c655afbcd9eb0ce1d6783293f365ae"
+	sha256 hasValue "4c99419121a5aaea9586733a99cc2fac686ecce8a0ea43c7d1be962f0f353f22"
+	descriptionMd5 hasValue "bde8e8b5ea0bac44a7b315e1ba98cf59"
+	homepage hasValue "https://sourceforge.net/projects/rrep/"
+	depends hasValue "libacl1 (>= 2.2.23), libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libacl1"
+	comparison hasValue ">="
+	version hasValue "2.2.23"
+
+relationInstance depends(P0__rrep,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__rrep,1,DepAtom__1)
+

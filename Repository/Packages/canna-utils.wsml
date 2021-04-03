@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology canna_utils
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__canna_utils memberOf Package
+	package hasValue "canna-utils"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "217"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.7p3-14"
+	replaces hasValue "canna (<< 3.7p3-10)"
+	fileName hasValue "pool/universe/c/canna/canna-utils_3.7p3-14_amd64.deb"
+	size hasValue "68236"
+	md5sum hasValue "1f832ccae4f1b66d4e1e985259d8a67d"
+	sha1 hasValue "aff000d2e438583217f225eddf57b351a240d36d"
+	sha256 hasValue "1ac57fd105b00cfe746d402386ba1c5cd962e6fa6963220ec4c4ceda0caafc21"
+	description hasValue "input system for Japanese - utilities"
+	descriptionMd5 hasValue "6fec4c938fa2aaabb180151c354a266c"
+	homepage hasValue "http://canna.sourceforge.jp/"
+	depends hasValue "libc6 (>= 2.14), libcanna1g (>= 3.7p3)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__canna_utils,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libcanna1g"
+	comparison hasValue ">="
+	version hasValue "3.7p3"
+
+relationInstance depends(P0__canna_utils,1,DepAtom__1)
+

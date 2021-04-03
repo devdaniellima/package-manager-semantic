@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libncursesw5_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libncursesw5_dev memberOf Package
+	package hasValue "libncursesw5-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libdevel"
+	installedSize hasValue "6"
+	maintainer hasValue "Original-Craig Small <csmall@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "6.2-0ubuntu2"
+	fileName hasValue "pool/main/n/ncurses/libncursesw5-dev_6.2-0ubuntu2_amd64.deb"
+	size hasValue "980"
+	md5sum hasValue "691579ae737e196785b2e75e96be4c32"
+	sha1 hasValue "cce5e35f6bf2850074095c6fc2e41bf0f5442062"
+	sha256 hasValue "cb89c118c789ec239595873fbc349f018779a2843b22dc8348bfb11b77bf4ad7"
+	descriptionMd5 hasValue "ed531f645dd8873ee0c0959611138d19"
+	homepage hasValue "https://invisible-island.net/ncurses/"
+	depends hasValue "libtinfo6 (= 6.2-0ubuntu2), libncurses-dev (= 6.2-0ubuntu2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libtinfo6"
+	comparison hasValue "="
+	version hasValue "6.2-0ubuntu2"
+
+relationInstance depends(P0__libncursesw5_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libncurses-dev"
+	comparison hasValue "="
+	version hasValue "6.2-0ubuntu2"
+
+relationInstance depends(P0__libncursesw5_dev,1,DepAtom__1)
+

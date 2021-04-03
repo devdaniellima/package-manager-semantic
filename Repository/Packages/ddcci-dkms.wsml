@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ddcci_dkms
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ddcci_dkms memberOf Package
+	package hasValue "ddcci-dkms"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "85"
+	maintainer hasValue "Original-Stephen Kitt <skitt@debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.3.3-1"
+	fileName hasValue "pool/universe/d/ddcci-driver-linux/ddcci-dkms_0.3.3-1_all.deb"
+	size hasValue "19868"
+	md5sum hasValue "190c00039a60d3bebd6aa73d04771fcc"
+	sha1 hasValue "cde4c65d4241427de8d6aeccf525c52debfe53eb"
+	sha256 hasValue "81cd0143d959ad39d83d772528b5a921aafc35d5e693c4ea1ad2dd1c2dc53a02"
+	descriptionMd5 hasValue "394917cff687f0556534ade69ee9e94a"
+	homepage hasValue "https://gitlab.com/ddcci-driver-linux/ddcci-driver-linux"
+	depends hasValue "dkms (>= 2.1.0.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "dkms"
+	comparison hasValue ">="
+	version hasValue "2.1.0.0"
+
+relationInstance depends(P0__ddcci_dkms,0,DepAtom__0)
+

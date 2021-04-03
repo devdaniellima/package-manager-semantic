@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology node_lcid
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__node_lcid memberOf Package
+	package hasValue "node-lcid"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/web"
+	installedSize hasValue "19"
+	maintainer hasValue "Original-Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.0.0-1"
+	fileName hasValue "pool/universe/n/node-lcid/node-lcid_1.0.0-1_all.deb"
+	size hasValue "4264"
+	md5sum hasValue "17bb23601ee16570e93b15c7415dad68"
+	sha1 hasValue "e9ef569d8b2653e3934036110e6d4976016792bb"
+	sha256 hasValue "d913a0c8fd2601173fbcac02b2e09c5a167a8152de2f43a65163bb408b7582f4"
+	descriptionMd5 hasValue "41811873087ed8a346f8a68726aef1c9"
+	homepage hasValue "https://github.com/sindresorhus/lcid"
+	depends hasValue "nodejs, node-invert-kv (>= 1.0.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "nodejs"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__node_lcid,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "node-invert-kv"
+	comparison hasValue ">="
+	version hasValue "1.0.0"
+
+relationInstance depends(P0__node_lcid,1,DepAtom__1)
+

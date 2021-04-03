@@ -1,0 +1,52 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology nomarch
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__nomarch memberOf Package
+	package hasValue "nomarch"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "42"
+	maintainer hasValue "Original-Matthew Grant <matthewgrant5@gmail.com>"
+	architecture hasValue "amd64"
+	version hasValue "1.4-3build1"
+	fileName hasValue "pool/universe/n/nomarch/nomarch_1.4-3build1_amd64.deb"
+	size hasValue "15056"
+	md5sum hasValue "8d02b6e19e29933622c4d5ccdf797c6c"
+	sha1 hasValue "a6d3049c76486f5f8e0d14d77cecd6b749103e7e"
+	sha256 hasValue "5568bbda10ce215aecf03967c82d90ac9e6be83a02a17925996174362f580e54"
+	descriptionMd5 hasValue "003b1b0f9f5746ca53e3f1a768fde048"
+	depends hasValue "libc6 (>= 2.7)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__nomarch,0,DepAtom__0)
+

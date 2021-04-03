@@ -1,0 +1,70 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology caca_utils
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__caca_utils memberOf Package
+	package hasValue "caca-utils"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "562"
+	maintainer hasValue "Original-Sam Hocevar <sho@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.99.beta19-2.1ubuntu1"
+	replaces hasValue "libcaca-dev (<= 0.3-1)"
+	conflicts hasValue "libcaca-dev (<= 0.3-1)"
+	fileName hasValue "pool/universe/libc/libcaca/caca-utils_0.99.beta19-2.1ubuntu1_amd64.deb"
+	size hasValue "51504"
+	md5sum hasValue "ca1e4f2e88bb9cfda0c822f7d1b86c06"
+	sha1 hasValue "d1da7f26945b30c1a47d3cf29e1e4da401e67c41"
+	sha256 hasValue "4de1f3e24d51605a9c995a8b9b6c13221da1945b9a79125a71d12ac9500f7e43"
+	description hasValue "utilitários para gráficos em modo texto"
+	descriptionMd5 hasValue "44b5211535e8c3f0c83253e20bd8fb3e"
+	homepage hasValue "http://caca.zoy.org/wiki/libcaca"
+	depends hasValue "libc6 (>= 2.14), libcaca0 (>= 0.99.beta17-1), libimlib2 (>= 1.4.5)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__caca_utils,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libcaca0"
+	comparison hasValue ">="
+	version hasValue "0.99.beta17-1"
+
+relationInstance depends(P0__caca_utils,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libimlib2"
+	comparison hasValue ">="
+	version hasValue "1.4.5"
+
+relationInstance depends(P0__caca_utils,2,DepAtom__2)
+

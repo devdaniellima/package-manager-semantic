@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libplist_utils
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libplist_utils memberOf Package
+	package hasValue "libplist-utils"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "40"
+	maintainer hasValue "Original-gtkpod Maintainers <pkg-gtkpod-devel@alioth-lists.debian.net>"
+	architecture hasValue "amd64"
+	version hasValue "2.1.0-4build2"
+	fileName hasValue "pool/universe/libp/libplist/libplist-utils_2.1.0-4build2_amd64.deb"
+	size hasValue "6644"
+	md5sum hasValue "aeac2d4167d64233d24d32d11dadc236"
+	sha1 hasValue "52fa6d9e53a7303ee8c7a62ad1d4365dc8a53d1f"
+	sha256 hasValue "4a34dad812d03731ddf6ec41138c62b0c90df33079f7cf5645d6b31f96bc1a86"
+	descriptionMd5 hasValue "f3e61dfbb8451db7dc3eae7293afdb7d"
+	homepage hasValue "https://www.libimobiledevice.org/"
+	depends hasValue "libc6 (>= 2.4), libplist3 (>= 1.12+git+1+e37ca00)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libplist_utils,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libplist3"
+	comparison hasValue ">="
+	version hasValue "1.12+git+1+e37ca00"
+
+relationInstance depends(P0__libplist_utils,1,DepAtom__1)
+

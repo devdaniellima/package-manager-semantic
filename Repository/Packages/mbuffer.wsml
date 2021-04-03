@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology mbuffer
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__mbuffer memberOf Package
+	package hasValue "mbuffer"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "169"
+	maintainer hasValue "Original-Peter Pentchev <roam@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "20191016+ds1-1"
+	fileName hasValue "pool/universe/m/mbuffer/mbuffer_20191016+ds1-1_amd64.deb"
+	size hasValue "57400"
+	md5sum hasValue "c1f14baed1a54bc9175924dbb85e234f"
+	sha1 hasValue "fe861f9cb13ecddcbc12057d76a49dcb0cd06351"
+	sha256 hasValue "92c5b9d421fadc9c53056cdd05f30417d173c89f8e6d85a95d21d6f47792f791"
+	descriptionMd5 hasValue "edaadf3b5d829e99b201dd18eb5a3211"
+	homepage hasValue "http://www.maier-komor.de/mbuffer.html"
+	depends hasValue "libc6 (>= 2.28), libgcrypt20"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.28"
+
+relationInstance depends(P0__mbuffer,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgcrypt20"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__mbuffer,1,DepAtom__1)
+

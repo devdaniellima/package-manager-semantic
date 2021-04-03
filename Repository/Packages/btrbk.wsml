@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology btrbk
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__btrbk memberOf Package
+	package hasValue "btrbk"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "323"
+	maintainer hasValue "Original-Axel Burri <axel@tty0.ch>"
+	architecture hasValue "all"
+	version hasValue "0.27.1-1"
+	fileName hasValue "pool/universe/b/btrbk/btrbk_0.27.1-1_all.deb"
+	size hasValue "82332"
+	md5sum hasValue "5d99bf4f6cd6387272b1bd76d2bfe006"
+	sha1 hasValue "b77365a07d7c4c6d580d4f3767181e4014294c3e"
+	sha256 hasValue "05b85588b96fee01b2fce76b7c740e7453654ad369dfff17b0c1666386aefa00"
+	descriptionMd5 hasValue "13434d9f502ec934b9db33ec622b0769"
+	homepage hasValue "https://digint.ch/btrbk/"
+	depends hasValue "perl, btrfs-progs (>= 3.18.2) | btrfs-tools (>= 3.18.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "perl"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__btrbk,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "btrfs-progs"
+	comparison hasValue ">="
+	version hasValue "3.18.2"
+
+relationInstance depends(P0__btrbk,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "btrfs-tools"
+	comparison hasValue ">="
+	version hasValue "3.18.2"
+
+relationInstance depends(P0__btrbk,1,DepAtom__2)
+

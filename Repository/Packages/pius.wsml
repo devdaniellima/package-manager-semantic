@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology pius
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__pius memberOf Package
+	package hasValue "pius"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/python"
+	installedSize hasValue "172"
+	maintainer hasValue "Original-Felix Lechner <felix.lechner@lease-up.com>"
+	architecture hasValue "all"
+	version hasValue "3.0.0-2"
+	fileName hasValue "pool/universe/p/pius/pius_3.0.0-2_all.deb"
+	size hasValue "43988"
+	md5sum hasValue "cd49c4e0327f00f1052ed4d547ad57a9"
+	sha1 hasValue "a35f0cd50543c1e9e5d7febebb019b2da9c5fe81"
+	sha256 hasValue "eb4e518325c46838557510b9a6160a51beae8a41a4cfe8ef13cfb557cc508574"
+	descriptionMd5 hasValue "5ab3db03caa149a498eecd8ec608fe9d"
+	homepage hasValue "http://www.phildev.net/pius/"
+	depends hasValue "gnupg (>= 2), python3:any"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "gnupg"
+	comparison hasValue ">="
+	version hasValue "2"
+
+relationInstance depends(P0__pius,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__pius,1,DepAtom__1)
+

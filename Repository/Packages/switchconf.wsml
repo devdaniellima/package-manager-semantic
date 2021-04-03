@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology switchconf
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__switchconf memberOf Package
+	package hasValue "switchconf"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "58"
+	maintainer hasValue "Original-Jose M Calhariz <calhariz@debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.0.16-1"
+	fileName hasValue "pool/universe/s/switchconf/switchconf_0.0.16-1_all.deb"
+	size hasValue "10156"
+	md5sum hasValue "edd4388fbfc8a60a0ce2e160e0ec3115"
+	sha1 hasValue "f0c37da74c68290f9d4830b1dae0e01022b2b16e"
+	sha256 hasValue "2ea85ed8d1062334226e99c11910326389e99ae2544e029db7d8176d03de7f48"
+	descriptionMd5 hasValue "019cfe233d5295697b9f6aae2a77c49a"
+	homepage hasValue "http://blog.calhariz.com"
+	depends hasValue "lsb-base (>= 3.0-6), liblockfile1"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "lsb-base"
+	comparison hasValue ">="
+	version hasValue "3.0-6"
+
+relationInstance depends(P0__switchconf,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "liblockfile1"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__switchconf,1,DepAtom__1)
+

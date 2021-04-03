@@ -1,0 +1,74 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libapache2_mod_svn
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libapache2_mod_svn memberOf Package
+	package hasValue "libapache2-mod-svn"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/httpd"
+	installedSize hasValue "441"
+	maintainer hasValue "Original-James McCoy <jamessan@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.13.0-3"
+	fileName hasValue "pool/universe/s/subversion/libapache2-mod-svn_1.13.0-3_amd64.deb"
+	size hasValue "87656"
+	md5sum hasValue "bda72ea09d31e392e6c8cc984a57cde4"
+	sha1 hasValue "9b00b16fca36da7711b2cbf024e43a121269032e"
+	sha256 hasValue "8b82e3742cc1c0bbe522c1a165c00d792a725a2e28d3d2d56218f1ca753ec370"
+	descriptionMd5 hasValue "e15ffe075b3a61d7ee31166809f7092c"
+	homepage hasValue "http://subversion.apache.org/"
+	depends hasValue "libsvn1 (= 1.13.0-3), apache2-api-20120211, apache2-bin (>= 2.4.16), libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libsvn1"
+	comparison hasValue "="
+	version hasValue "1.13.0-3"
+
+relationInstance depends(P0__libapache2_mod_svn,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "apache2-api-20120211"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libapache2_mod_svn,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "apache2-bin"
+	comparison hasValue ">="
+	version hasValue "2.4.16"
+
+relationInstance depends(P0__libapache2_mod_svn,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libapache2_mod_svn,3,DepAtom__3)
+

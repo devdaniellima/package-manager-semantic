@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libsuperlu5
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libsuperlu5 memberOf Package
+	package hasValue "libsuperlu5"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "466"
+	maintainer hasValue "Original-Debian Science Maintainers <debian-science-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "5.2.1+dfsg1-4"
+	fileName hasValue "pool/universe/s/superlu/libsuperlu5_5.2.1+dfsg1-4_amd64.deb"
+	size hasValue "158732"
+	md5sum hasValue "881b737301f2bfa094e01cac7dbd3fa7"
+	sha1 hasValue "22b56a145cc0f6d3de38db26a5e2e8b659c8250d"
+	sha256 hasValue "e590778922235cc26923f6110fac39e32b79cac8d605a263e77c14b90d7b69f3"
+	descriptionMd5 hasValue "f5d7ed20001bd6eecdadcded912d1154"
+	homepage hasValue "http://crd-legacy.lbl.gov/~xiaoye/SuperLU/"
+	depends hasValue "libblas3 | libblas.so.3, libc6 (>= 2.7)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libblas3"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libsuperlu5,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libblas.so.3"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libsuperlu5,0,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__libsuperlu5,1,DepAtom__2)
+

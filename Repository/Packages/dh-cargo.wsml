@@ -1,0 +1,73 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology dh_cargo
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__dh_cargo memberOf Package
+	package hasValue "dh-cargo"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "33"
+	maintainer hasValue "Original-Rust Maintainers <pkg-rust-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "23"
+	fileName hasValue "pool/universe/d/dh-cargo/dh-cargo_23_all.deb"
+	size hasValue "8732"
+	md5sum hasValue "87f4d1144e3d3047701b60d643ddb4dd"
+	sha1 hasValue "769ce7213e16383c56eddf21324a52a36bf4442e"
+	sha256 hasValue "fb3463a2c7e68bbae5d6e4a734d3b2de55954fd250cd2bd5536b1ecc33e2fed1"
+	descriptionMd5 hasValue "d99c4af9603905ae591976d80e8da0eb"
+	depends hasValue "debhelper (>= 10), perl:any, cargo (>= 0.40.0-3~~), python3"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "debhelper"
+	comparison hasValue ">="
+	version hasValue "10"
+
+relationInstance depends(P0__dh_cargo,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "perl:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__dh_cargo,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "cargo"
+	comparison hasValue ">="
+	version hasValue "0.40.0-3~~"
+
+relationInstance depends(P0__dh_cargo,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "python3"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__dh_cargo,3,DepAtom__3)
+

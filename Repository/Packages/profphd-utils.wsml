@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology profphd_utils
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__profphd_utils memberOf Package
+	package hasValue "profphd-utils"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/science"
+	installedSize hasValue "1117"
+	maintainer hasValue "Original-Debian Med Packaging Team <debian-med-packaging@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.10-5build1"
+	fileName hasValue "pool/universe/p/profphd-utils/profphd-utils_1.0.10-5build1_amd64.deb"
+	size hasValue "262936"
+	md5sum hasValue "975445a5d7df37fcf0dd544e027ff679"
+	sha1 hasValue "541756dc70f546aaa79409eeb9aa5a4e178aa11f"
+	sha256 hasValue "6bb222bf4229eba910e7259c5f2da3834a7d7be692e8a02433b1467dbddf13a3"
+	descriptionMd5 hasValue "f5774afe907feddbbb9b90da4e3c7d71"
+	homepage hasValue "http://www.rostlab.org/"
+	depends hasValue "libc6 (>= 2.27), libgfortran5 (>= 8)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.27"
+
+relationInstance depends(P0__profphd_utils,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgfortran5"
+	comparison hasValue ">="
+	version hasValue "8"
+
+relationInstance depends(P0__profphd_utils,1,DepAtom__1)
+

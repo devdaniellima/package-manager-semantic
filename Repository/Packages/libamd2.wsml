@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libamd2
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libamd2 memberOf Package
+	package hasValue "libamd2"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libs"
+	installedSize hasValue "77"
+	maintainer hasValue "Original-Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:5.7.1+dfsg-2"
+	fileName hasValue "pool/main/s/suitesparse/libamd2_5.7.1+dfsg-2_amd64.deb"
+	size hasValue "19968"
+	md5sum hasValue "10f456a2b9179c52c1938fc62ae7d641"
+	sha1 hasValue "ba3c47d7d9fc1ca1d7c2948c3e0a3806316c8ddd"
+	sha256 hasValue "b47b52222e32211775c4117ec47133c3bd56a6ad45a49758ea08b805b586e85d"
+	descriptionMd5 hasValue "2d9505165b7b29c0b5677c11d21645cd"
+	homepage hasValue "http://www.suitesparse.com"
+	depends hasValue "libc6 (>= 2.2.5), libsuitesparseconfig5 (>= 1:5.0.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.2.5"
+
+relationInstance depends(P0__libamd2,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libsuitesparseconfig5"
+	comparison hasValue ">="
+	version hasValue "1:5.0.0"
+
+relationInstance depends(P0__libamd2,1,DepAtom__1)
+

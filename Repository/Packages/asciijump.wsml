@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology asciijump
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__asciijump memberOf Package
+	package hasValue "asciijump"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/games"
+	installedSize hasValue "179"
+	maintainer hasValue "Original-Debian Games Team <pkg-games-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.2~beta-10"
+	fileName hasValue "pool/universe/a/asciijump/asciijump_1.0.2~beta-10_amd64.deb"
+	size hasValue "41892"
+	md5sum hasValue "59664fd1b75b8d514f199de8a52df943"
+	sha1 hasValue "7306634a717c26f5f0a953b0f0698c09e45ebb08"
+	sha256 hasValue "63bfc5dc588537f1df62b14aeb75cf59268e4afcbfb389ef8acceffff88972fd"
+	description hasValue "jogo pequeno e engraçado em arte ASCII sobre salto"
+	descriptionMd5 hasValue "abd2c676ba854a9bafea6f52ce0bdafe"
+	homepage hasValue "http://asciijump.prv.pl/"
+	depends hasValue "libc6 (>= 2.4), libslang2 (>= 2.2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__asciijump,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libslang2"
+	comparison hasValue ">="
+	version hasValue "2.2.4"
+
+relationInstance depends(P0__asciijump,1,DepAtom__1)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology jimsh
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__jimsh memberOf Package
+	package hasValue "jimsh"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/devel"
+	installedSize hasValue "479"
+	maintainer hasValue "Original-Didier Raboud <odyx@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.79+dfsg0-2"
+	fileName hasValue "pool/universe/j/jimtcl/jimsh_0.79+dfsg0-2_amd64.deb"
+	size hasValue "151492"
+	md5sum hasValue "2926b5d15e4c449b8a69d273c40fb01c"
+	sha1 hasValue "5fdfdec8cefb67f1998e9a2c64b4d563d33b60c7"
+	sha256 hasValue "6859e77d45399133fc76285e3b239e571b0e41b483a78b148ea9be56c154d977"
+	descriptionMd5 hasValue "6b5a1520e0b66f6d1f9c036b86aab837"
+	homepage hasValue "http://jim.tcl.tk/"
+	depends hasValue "libc6 (>= 2.3.4), libjim0.79 (>= 0.73)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.3.4"
+
+relationInstance depends(P0__jimsh,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libjim0.79"
+	comparison hasValue ">="
+	version hasValue "0.73"
+
+relationInstance depends(P0__jimsh,1,DepAtom__1)
+

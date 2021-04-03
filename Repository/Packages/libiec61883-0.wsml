@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libiec61883_0
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libiec61883_0 memberOf Package
+	package hasValue "libiec61883-0"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libs"
+	installedSize hasValue "74"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.2.0-3"
+	fileName hasValue "pool/main/libi/libiec61883/libiec61883-0_1.2.0-3_amd64.deb"
+	size hasValue "24264"
+	md5sum hasValue "af91f34d00c1dbbe6610c240aec0dfbb"
+	sha1 hasValue "9c3c3027b419f5afc1cadb1836c7267d1fd3fd78"
+	sha256 hasValue "087f7c66ca14a36ce2763acea9b1c4b77a598970a0b09036c027e11e898d7d4a"
+	descriptionMd5 hasValue "92f214f16b3d8eeaadb243da85d4e13c"
+	homepage hasValue "https://ieee1394.wiki.kernel.org/index.php/Main_Page"
+	depends hasValue "libc6 (>= 2.4), libraw1394-11"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libiec61883_0,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libraw1394-11"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libiec61883_0,1,DepAtom__1)
+

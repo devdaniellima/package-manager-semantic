@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology joe
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__joe memberOf Package
+	package hasValue "joe"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/editors"
+	installedSize hasValue "2100"
+	maintainer hasValue "Original-Josip Rodin <joy-packages@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "4.6-1build2"
+	fileName hasValue "pool/universe/j/joe/joe_4.6-1build2_amd64.deb"
+	size hasValue "508604"
+	md5sum hasValue "bfe4eca4794abe26328bf6af874dacf1"
+	sha1 hasValue "5917df9d928f4eb017e7f64b469e8fd7eb0b49b9"
+	sha256 hasValue "bd4465e7e4b133dd82a4e4a8a5e1e559953aa3feb72c676baaca9c76e9a76df1"
+	description hasValue "Editor de texto em tela cheia amigável ao usuário"
+	descriptionMd5 hasValue "4d6bbc0d4cf8b71ec0b3dfa1ffb8ca46"
+	homepage hasValue "http://joe-editor.sourceforge.net/"
+	depends hasValue "libc6 (>= 2.29), libtinfo6 (>= 6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__joe,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libtinfo6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__joe,1,DepAtom__1)
+

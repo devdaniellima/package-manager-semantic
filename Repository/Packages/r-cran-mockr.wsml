@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology r_cran_mockr
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__r_cran_mockr memberOf Package
+	package hasValue "r-cran-mockr"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/gnu-r"
+	installedSize hasValue "59"
+	maintainer hasValue "Original-Debian R Packages Maintainers <r-pkg-team@alioth-lists.debian.net>"
+	architecture hasValue "all"
+	version hasValue "0.1-2"
+	fileName hasValue "pool/universe/r/r-cran-mockr/r-cran-mockr_0.1-2_all.deb"
+	size hasValue "23900"
+	md5sum hasValue "99920fb05bd50628abdb133dcda077d2"
+	sha1 hasValue "863c027a0d677f10244d29a5b082f12ee4dadeb8"
+	sha256 hasValue "c3758ba3095abf0bb5ebd14a702b20e78d31700ef9061bb08c61f1e772a32dee"
+	descriptionMd5 hasValue "b56dec00768576ae647ecbd028ea4892"
+	homepage hasValue "https://cran.r-project.org/package=mockr"
+	depends hasValue "r-base-core (>= 3.5.0-5), r-api-3.5, r-cran-lazyeval"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "r-base-core"
+	comparison hasValue ">="
+	version hasValue "3.5.0-5"
+
+relationInstance depends(P0__r_cran_mockr,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "r-api-3.5"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__r_cran_mockr,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "r-cran-lazyeval"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__r_cran_mockr,2,DepAtom__2)
+

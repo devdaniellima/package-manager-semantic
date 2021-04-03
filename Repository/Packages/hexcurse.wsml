@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology hexcurse
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__hexcurse memberOf Package
+	package hasValue "hexcurse"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "64"
+	maintainer hasValue "Original-Gergely Risko <risko@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.58-1.1build1"
+	fileName hasValue "pool/universe/h/hexcurse/hexcurse_1.58-1.1build1_amd64.deb"
+	size hasValue "23164"
+	md5sum hasValue "b1f7a8e6ed0124d14117f932a1a071a8"
+	sha1 hasValue "bce74213d90c14b5f904fe78952f12149a87929f"
+	sha256 hasValue "56c32d8f5d751b9e589bc4e61fed6d2c079599258df3a1312148d6c139a4059f"
+	description hasValue "Ncurses-based hex editor with many features"
+	descriptionMd5 hasValue "90bac3223ca5fd76a78ba45c2a3d4db9"
+	depends hasValue "libc6 (>= 2.14), libncurses6 (>= 6), libtinfo6 (>= 6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__hexcurse,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libncurses6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__hexcurse,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libtinfo6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__hexcurse,2,DepAtom__2)
+

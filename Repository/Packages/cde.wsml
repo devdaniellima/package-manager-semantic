@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology cde
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__cde memberOf Package
+	package hasValue "cde"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "1601"
+	maintainer hasValue "Original-NeuroDebian Team <team@neuro.debian.net>"
+	architecture hasValue "amd64"
+	version hasValue "0.1+git9-g551e54d-1.1build1"
+	fileName hasValue "pool/universe/c/cde/cde_0.1+git9-g551e54d-1.1build1_amd64.deb"
+	size hasValue "171068"
+	md5sum hasValue "e25823a069937ac0f0187d5528865e2a"
+	sha1 hasValue "fe0b7315e9e3699e8ce29c3733b18047d24acb57"
+	sha256 hasValue "de7404bd1bf6c4ad39a3402ecd3243deae5e00c6c073d367b25a64f6f97b1c44"
+	descriptionMd5 hasValue "888b6c2716e3ae2cbea84c0cc11dc749"
+	homepage hasValue "http://www.pgbovine.net/cde.html"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__cde,0,DepAtom__0)
+

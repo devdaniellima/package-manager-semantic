@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology librtr0
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__librtr0 memberOf Package
+	package hasValue "librtr0"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "105"
+	maintainer hasValue "Original-Debian Security Tools <team+pkg-security@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.6.3-1"
+	fileName hasValue "pool/universe/libr/librtr/librtr0_0.6.3-1_amd64.deb"
+	size hasValue "36368"
+	md5sum hasValue "2b89343a3638352daf028d0ef42b6d8f"
+	sha1 hasValue "bf67093c81cba324eb3e380a2609cc76042f8aed"
+	sha256 hasValue "fa1680b62bdf6849f4e7a89b0197d0935b41454b362cce984a7c8e7f05b6faa0"
+	descriptionMd5 hasValue "829cf840921275cbf36b64005eb2ec95"
+	homepage hasValue "https://rtrlib.realmv6.org/"
+	depends hasValue "libc6 (>= 2.14), libssh-4 (>= 0.8.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__librtr0,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libssh-4"
+	comparison hasValue ">="
+	version hasValue "0.8.0"
+
+relationInstance depends(P0__librtr0,1,DepAtom__1)
+

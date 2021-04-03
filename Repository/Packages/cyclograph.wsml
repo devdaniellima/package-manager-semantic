@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology cyclograph
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__cyclograph memberOf Package
+	package hasValue "cyclograph"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/misc"
+	installedSize hasValue "322"
+	maintainer hasValue "Original-Federico Brega <charon.66@gmail.com>"
+	architecture hasValue "all"
+	version hasValue "1.9.1-1"
+	fileName hasValue "pool/universe/c/cyclograph/cyclograph_1.9.1-1_all.deb"
+	size hasValue "70912"
+	md5sum hasValue "87bf21629482d56ff70fb620bef6ce03"
+	sha1 hasValue "7f555b01aedf2448c82580b819585aee13135df6"
+	sha256 hasValue "3e6db8c1d5bc8fe3b1f47df269b387f7ce4505f45026fb1905bf48366f92cc52"
+	descriptionMd5 hasValue "733a79ea5ebfeb963b975457506d120b"
+	homepage hasValue "http://cyclograph.sourceforge.net"
+	depends hasValue "python3:any (>= 3.4~), libjs-openlayers"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ">="
+	version hasValue "3.4~"
+
+relationInstance depends(P0__cyclograph,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libjs-openlayers"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__cyclograph,1,DepAtom__1)
+

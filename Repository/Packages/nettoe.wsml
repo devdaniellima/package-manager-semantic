@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology nettoe
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__nettoe memberOf Package
+	package hasValue "nettoe"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/games"
+	installedSize hasValue "79"
+	maintainer hasValue "Original-Debian Games Team <pkg-games-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.5.1-2build1"
+	fileName hasValue "pool/universe/n/nettoe/nettoe_1.5.1-2build1_amd64.deb"
+	size hasValue "26096"
+	md5sum hasValue "79a75e9e7286992ac30772adfe77a030"
+	sha1 hasValue "666e901b6c9e84a0ff3da448c7721b528c2e802f"
+	sha256 hasValue "6e193820d0f7d8575a3db41f42b30637e811502071396ae1ddbba8d3f80aff36"
+	description hasValue "versão em rede do jogo da velha (grade 3x3) para o console"
+	descriptionMd5 hasValue "b9fd0a05ae632df2030331502a2fea16"
+	homepage hasValue "http://nettoe.sourceforge.net/"
+	depends hasValue "libc6 (>= 2.7), libtinfo6 (>= 6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__nettoe,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libtinfo6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__nettoe,1,DepAtom__1)
+

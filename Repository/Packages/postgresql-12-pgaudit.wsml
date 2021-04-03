@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology postgresql_12_pgaudit
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__postgresql_12_pgaudit memberOf Package
+	package hasValue "postgresql-12-pgaudit"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/database"
+	installedSize hasValue "101"
+	maintainer hasValue "Original-Debian PostgreSQL Maintainers <team+postgresql@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.4.0-2"
+	fileName hasValue "pool/universe/p/pgaudit/postgresql-12-pgaudit_1.4.0-2_amd64.deb"
+	size hasValue "46616"
+	md5sum hasValue "a48e2df7452921640d991933e6ffa95d"
+	sha1 hasValue "4f03a2a7866459a88f93af83852c5a7d7a68ac84"
+	sha256 hasValue "e74bbfbc021be0f61e8795de599081b1b5fddce68db96caa5b8cdbacfe245097"
+	descriptionMd5 hasValue "68a25f9a2f28cb50daba2805c25fec39"
+	homepage hasValue "http://pgaudit.org/"
+	depends hasValue "libc6 (>= 2.4), postgresql-12"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__postgresql_12_pgaudit,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "postgresql-12"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__postgresql_12_pgaudit,1,DepAtom__1)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology styx
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__styx memberOf Package
+	package hasValue "styx"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "182"
+	maintainer hasValue "Original-Frederik Schüler <fs@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.0.1-1build1"
+	fileName hasValue "pool/universe/s/styx/styx_2.0.1-1build1_amd64.deb"
+	size hasValue "42116"
+	md5sum hasValue "bc4878e0949963e98537c1130ff3256b"
+	sha1 hasValue "230260502920f553d93a32b751be38c1a6b95442"
+	sha256 hasValue "913908ee2d16d7296b50c79e0df7b9b1139c6cb9af34ec3adadbddef82b3ba07"
+	descriptionMd5 hasValue "b68f9a001ad29b268ab8d67c47507631"
+	homepage hasValue "http://speculate.de/styx/"
+	depends hasValue "libc6 (>= 2.4), libstyx2 (>= 2.0.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__styx,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libstyx2"
+	comparison hasValue ">="
+	version hasValue "2.0.1"
+
+relationInstance depends(P0__styx,1,DepAtom__1)
+

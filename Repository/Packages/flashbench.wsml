@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology flashbench
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__flashbench memberOf Package
+	package hasValue "flashbench"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "50"
+	maintainer hasValue "Dmitrijs Ledkovs <dmitrij.ledkov@ubuntu.com>"
+	architecture hasValue "amd64"
+	version hasValue "62-1build1"
+	fileName hasValue "pool/universe/f/flashbench/flashbench_62-1build1_amd64.deb"
+	size hasValue "16596"
+	md5sum hasValue "f42ed6779ad98719b460a36871ae26cf"
+	sha1 hasValue "b2b6e339414143d393103267b43ace69056508f4"
+	sha256 hasValue "ea86e6f69c357cd7ac43cf82e974652355134a91aa1c1599df8f4bafcd9885b8"
+	descriptionMd5 hasValue "05c4cb6af9f3dec8050b74b0ac925300"
+	homepage hasValue "http://git.linaro.org/gitweb?p=people/arnd/flashbench.git;a=summary"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__flashbench,0,DepAtom__0)
+

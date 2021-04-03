@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology git_revise
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__git_revise memberOf Package
+	package hasValue "git-revise"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "103"
+	maintainer hasValue "Original-Nicolas Schier <nicolas@fjasle.eu>"
+	architecture hasValue "all"
+	version hasValue "0.5.1-1"
+	fileName hasValue "pool/universe/g/git-revise/git-revise_0.5.1-1_all.deb"
+	size hasValue "27312"
+	md5sum hasValue "d57a4f11eeed5c840253f6da34856464"
+	sha1 hasValue "29db66b7666453236266597686f5fa33d78fa478"
+	sha256 hasValue "a9b7960082270195465fe477a5249271f779a75661cdc5300c81c17b3d62955c"
+	descriptionMd5 hasValue "4853d9135358657442b5a2e767b8924b"
+	homepage hasValue "https://mystor.github.io/git-revise.html"
+	depends hasValue "python3:any (>= 3.6~), git"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ">="
+	version hasValue "3.6~"
+
+relationInstance depends(P0__git_revise,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "git"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__git_revise,1,DepAtom__1)
+

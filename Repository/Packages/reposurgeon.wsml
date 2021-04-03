@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology reposurgeon
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__reposurgeon memberOf Package
+	package hasValue "reposurgeon"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/vcs"
+	installedSize hasValue "15644"
+	maintainer hasValue "Original-Anthony Fok <foka@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "4.3+git20200214.8d048e1-1"
+	fileName hasValue "pool/universe/r/reposurgeon/reposurgeon_4.3+git20200214.8d048e1-1_amd64.deb"
+	size hasValue "4163328"
+	md5sum hasValue "de68386530da46b3d91f335c79563443"
+	sha1 hasValue "c0c682872e41f1c16d60b5bd98457e38eac6de9a"
+	sha256 hasValue "db86de4dedea6919542021269cdca5454b271ad83ea21f6b37478ca5bc3f4523"
+	descriptionMd5 hasValue "a8314666f689b6a68559123cd1263bfa"
+	homepage hasValue "http://www.catb.org/esr/reposurgeon/"
+	depends hasValue "tzdata, python3:any, libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "tzdata"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__reposurgeon,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__reposurgeon,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__reposurgeon,2,DepAtom__2)
+

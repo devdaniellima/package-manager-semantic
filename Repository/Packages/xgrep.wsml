@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology xgrep
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__xgrep memberOf Package
+	package hasValue "xgrep"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "39"
+	maintainer hasValue "Original-Brendt Wohlberg <osspkg@gmail.com>"
+	architecture hasValue "amd64"
+	version hasValue "0.08-0ubuntu2"
+	fileName hasValue "pool/universe/x/xgrep/xgrep_0.08-0ubuntu2_amd64.deb"
+	size hasValue "13124"
+	md5sum hasValue "d66fcc13834b6d3eb4c135772cfd11c1"
+	sha1 hasValue "8e5765da0eb769d53bc9561be2b1633409a8ecb3"
+	sha256 hasValue "b41cc44f91d8f2205afff5fdbe75ebbde8f9bd43cc4f0a9a72464a2196189053"
+	descriptionMd5 hasValue "7f45b60387394b4f7ed62935ef2db405"
+	homepage hasValue "http://www.wohlberg.net/public/software/xml/xgrep/"
+	depends hasValue "libc6 (>= 2.14), libpcre3, libxml2 (>= 2.7.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__xgrep,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libpcre3"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__xgrep,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libxml2"
+	comparison hasValue ">="
+	version hasValue "2.7.4"
+
+relationInstance depends(P0__xgrep,2,DepAtom__2)
+

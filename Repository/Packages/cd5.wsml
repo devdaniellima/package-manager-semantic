@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology cd5
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__cd5 memberOf Package
+	package hasValue "cd5"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/utils"
+	installedSize hasValue "25"
+	maintainer hasValue "Original-Thorsten Alteholz <debian@alteholz.de>"
+	architecture hasValue "amd64"
+	version hasValue "0.1-4"
+	fileName hasValue "pool/universe/c/cd5/cd5_0.1-4_amd64.deb"
+	size hasValue "7072"
+	md5sum hasValue "caa4a94f8863ee30ac8b9a32afb42ebe"
+	sha1 hasValue "56fd95fc9b71e5f43d70c468e572bf0dc690a81f"
+	sha256 hasValue "f5dbbae0213ec37daf634383dabcd3d675ebe2ee0b998cd24027e011c342e798"
+	description hasValue "calcula o checksum de faixa individual em CD-ROMS"
+	descriptionMd5 hasValue "da571f53de6ee65f3fcdb981203edc75"
+	homepage hasValue "http://projects.meuh.org/cd5/"
+	depends hasValue "libc6 (>= 2.4), libmhash2"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__cd5,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libmhash2"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__cd5,1,DepAtom__1)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libsigrokcxx_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libsigrokcxx_dev memberOf Package
+	package hasValue "libsigrokcxx-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "788"
+	maintainer hasValue "Original-Debian Electronics Packaging Team <pkg-electronics-devel@alioth-lists.debian.net>"
+	architecture hasValue "amd64"
+	version hasValue "0.5.2-2"
+	fileName hasValue "pool/universe/libs/libsigrok/libsigrokcxx-dev_0.5.2-2_amd64.deb"
+	size hasValue "90036"
+	md5sum hasValue "6b20aa2c0885afbb10297c6110c4cd90"
+	sha1 hasValue "79a006891d55f56c5cc21663b599a26bf9871f7d"
+	sha256 hasValue "135fe7dec6defd7ccd20be534abe873e60c6e83fd81572ffd7e723793504f7a0"
+	descriptionMd5 hasValue "05e3b1faeed2cf20d7c0925597d7caf5"
+	homepage hasValue "http://sigrok.org/wiki/Libsigrok"
+	depends hasValue "libsigrokcxx4 (= 0.5.2-2), libsigrok-dev (= 0.5.2-2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libsigrokcxx4"
+	comparison hasValue "="
+	version hasValue "0.5.2-2"
+
+relationInstance depends(P0__libsigrokcxx_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libsigrok-dev"
+	comparison hasValue "="
+	version hasValue "0.5.2-2"
+
+relationInstance depends(P0__libsigrokcxx_dev,1,DepAtom__1)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology node_dtrace_provider
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__node_dtrace_provider memberOf Package
+	package hasValue "node-dtrace-provider"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/javascript"
+	installedSize hasValue "20"
+	maintainer hasValue "Original-Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.8.8-1"
+	fileName hasValue "pool/universe/n/node-dtrace-provider/node-dtrace-provider_0.8.8-1_all.deb"
+	size hasValue "7400"
+	md5sum hasValue "0f8cedf7aba58370e0dba63e43f5266c"
+	sha1 hasValue "fc7f20657d0d77ddec7be1c560039fe3ed79385e"
+	sha256 hasValue "1e8f48c3b871da2c8b3febc2857f20fc69b9b2b56826a04f0e76c75058000e96"
+	descriptionMd5 hasValue "be03de2fef022657fc894f7d43dbc4d9"
+	homepage hasValue "https://github.com/chrisa/node-dtrace-provider#readme"
+	depends hasValue "nodejs (>= 6), node-nan (>= 2.10.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "nodejs"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__node_dtrace_provider,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "node-nan"
+	comparison hasValue ">="
+	version hasValue "2.10.0"
+
+relationInstance depends(P0__node_dtrace_provider,1,DepAtom__1)
+

@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology r_cran_emoa
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__r_cran_emoa memberOf Package
+	package hasValue "r-cran-emoa"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/gnu-r"
+	installedSize hasValue "280"
+	maintainer hasValue "Original-Debian R Packages Maintainers <r-pkg-team@alioth-lists.debian.net>"
+	architecture hasValue "amd64"
+	version hasValue "0.5-0-2"
+	fileName hasValue "pool/universe/r/r-cran-emoa/r-cran-emoa_0.5-0-2_amd64.deb"
+	size hasValue "137764"
+	md5sum hasValue "03962786204ae298842bfd2c531a81ee"
+	sha1 hasValue "a3d4fb8542b52ec1ae988ffe9cf5c9114e645bf6"
+	sha256 hasValue "8475ab4dd2b66a9fc169d530a2e29b6c3a45e4d2df0affba8d5d6069428a2294"
+	descriptionMd5 hasValue "1ce6a40ae8079362cfdccb5dd5604a4c"
+	homepage hasValue "https://cran.r-project.org/package=emoa"
+	depends hasValue "r-base-core (>= 3.5.1-1build1), r-api-3.5, libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "r-base-core"
+	comparison hasValue ">="
+	version hasValue "3.5.1-1build1"
+
+relationInstance depends(P0__r_cran_emoa,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "r-api-3.5"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__r_cran_emoa,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__r_cran_emoa,2,DepAtom__2)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology jester
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__jester memberOf Package
+	package hasValue "jester"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/games"
+	installedSize hasValue "61"
+	maintainer hasValue "Original-Debian Games Team <pkg-games-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0-13"
+	fileName hasValue "pool/universe/j/jester/jester_1.0-13_amd64.deb"
+	size hasValue "21256"
+	md5sum hasValue "5021d41df7164297cac54fa831c6461c"
+	sha1 hasValue "af2d29669d60a40459ed306701ca539012481893"
+	sha256 hasValue "aa9749c13085027575be561cb81981894ea9389d0b3a5c8a3a1dc0d06ff8512f"
+	descriptionMd5 hasValue "5735fdcacc6086eb1786df33c8573259"
+	homepage hasValue "https://wiki.debian.org/Games/Jester"
+	depends hasValue "libc6 (>= 2.14), libx11-6"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__jester,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libx11-6"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__jester,1,DepAtom__1)
+

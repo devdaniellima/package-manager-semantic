@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ucd_generate
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ucd_generate memberOf Package
+	package hasValue "ucd-generate"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "2970"
+	maintainer hasValue "Original-Debian Rust Maintainers <pkg-rust-maintainers@alioth-lists.debian.net>"
+	architecture hasValue "amd64"
+	version hasValue "0.2.3-1build1"
+	fileName hasValue "pool/universe/r/rust-ucd-generate/ucd-generate_0.2.3-1build1_amd64.deb"
+	size hasValue "790612"
+	md5sum hasValue "533defad2c98d66959045cbeb3ff1b9a"
+	sha1 hasValue "9b9bb00b5d91aa90cb8415f6a3e6ea96c292562a"
+	sha256 hasValue "2cb80ba36948c708f2eb0814bd638d8b9e0eae561df5592b387239d696837a6d"
+	descriptionMd5 hasValue "0973add24b5672b41ea37930cfdf544c"
+	homepage hasValue "https://github.com/BurntSushi/ucd-generate"
+	depends hasValue "libc6 (>= 2.18), libgcc-s1 (>= 4.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.18"
+
+relationInstance depends(P0__ucd_generate,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgcc-s1"
+	comparison hasValue ">="
+	version hasValue "4.2"
+
+relationInstance depends(P0__ucd_generate,1,DepAtom__1)
+

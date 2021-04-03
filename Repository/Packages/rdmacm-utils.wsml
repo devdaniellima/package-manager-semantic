@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology rdmacm_utils
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__rdmacm_utils memberOf Package
+	package hasValue "rdmacm-utils"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/net"
+	installedSize hasValue "360"
+	maintainer hasValue "Original-Benjamin Drung <benjamin.drung@cloud.ionos.com>"
+	architecture hasValue "amd64"
+	version hasValue "28.0-1ubuntu1"
+	fileName hasValue "pool/universe/r/rdma-core/rdmacm-utils_28.0-1ubuntu1_amd64.deb"
+	size hasValue "70120"
+	md5sum hasValue "f425077b917f1dadcca5d88650f67653"
+	sha1 hasValue "f8a1ccc8199aef62d91a13c961681087d6b5f1bf"
+	sha256 hasValue "c870d5b21eb4d74a5a6f929feeb701a45b64ab629be1bee2c633d576061561cd"
+	descriptionMd5 hasValue "f54fb199777450b289caf0020383aa7a"
+	homepage hasValue "https://github.com/linux-rdma/rdma-core"
+	depends hasValue "libc6 (>= 2.14), libibverbs1 (>= 1.1.6), librdmacm1 (>= 23)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__rdmacm_utils,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libibverbs1"
+	comparison hasValue ">="
+	version hasValue "1.1.6"
+
+relationInstance depends(P0__rdmacm_utils,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "librdmacm1"
+	comparison hasValue ">="
+	version hasValue "23"
+
+relationInstance depends(P0__rdmacm_utils,2,DepAtom__2)
+

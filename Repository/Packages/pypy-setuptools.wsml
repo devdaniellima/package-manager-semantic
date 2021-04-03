@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology pypy_setuptools
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__pypy_setuptools memberOf Package
+	package hasValue "pypy-setuptools"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "1351"
+	maintainer hasValue "Original-Matthias Klose <doko@debian.org>"
+	architecture hasValue "all"
+	version hasValue "44.0.0-2"
+	fileName hasValue "pool/universe/p/python-setuptools/pypy-setuptools_44.0.0-2_all.deb"
+	size hasValue "257116"
+	md5sum hasValue "d21d355020e6e62f5321bfede59312ce"
+	sha1 hasValue "a5f85addbb3bffa2e41e4d16175baa79726a73f1"
+	sha256 hasValue "9469a28bdc809f6a4e75268336201ee0496e728d058a743469125225ff66e470"
+	description hasValue "PyPy Distutils Enhancements"
+	descriptionMd5 hasValue "40365991112da2290ae1f8e833410360"
+	homepage hasValue "https://pypi.python.org/pypi/setuptools"
+	depends hasValue "pypy-pkg-resources (= 44.0.0-2), pypy"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "pypy-pkg-resources"
+	comparison hasValue "="
+	version hasValue "44.0.0-2"
+
+relationInstance depends(P0__pypy_setuptools,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "pypy"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__pypy_setuptools,1,DepAtom__1)
+

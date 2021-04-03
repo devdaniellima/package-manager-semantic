@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology liblua5Dot3_0
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__liblua5Dot3_0 memberOf Package
+	package hasValue "liblua5.3-0"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libs"
+	installedSize hasValue "478"
+	maintainer hasValue "Original-Enrico Tassi <gareuselesinge@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "5.3.3-1.1ubuntu2"
+	fileName hasValue "pool/main/l/lua5.3/liblua5.3-0_5.3.3-1.1ubuntu2_amd64.deb"
+	size hasValue "116112"
+	md5sum hasValue "7e132e85fd5b2cee9371e5e46379e035"
+	sha1 hasValue "23e486633a8e1b123b9ca3aabd12b170870e9881"
+	sha256 hasValue "c447efed8fab28df9ff703fec40231a0ce377af162a44f0e3394acd3355de801"
+	description hasValue "Shared library for the Lua interpreter version 5.3"
+	descriptionMd5 hasValue "ca24127b6ccd3aae89a4e9de4d35c034"
+	homepage hasValue "http://www.lua.org"
+	depends hasValue "libc6 (>= 2.29), libstdc++6 (>= 4.1.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__liblua5Dot3_0,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "4.1.1"
+
+relationInstance depends(P0__liblua5Dot3_0,1,DepAtom__1)
+

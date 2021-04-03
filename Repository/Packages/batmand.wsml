@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology batmand
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__batmand memberOf Package
+	package hasValue "batmand"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/net"
+	installedSize hasValue "138"
+	maintainer hasValue "Original-Sven Eckelmann <sven@narfation.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.3.2-20"
+	fileName hasValue "pool/universe/b/batmand/batmand_0.3.2-20_amd64.deb"
+	size hasValue "51624"
+	md5sum hasValue "12f47069f1626b21cecfd8c08f17e971"
+	sha1 hasValue "1e730161027ce3e13631f5d126eed2b58d1f2bc8"
+	sha256 hasValue "10b0a3f7c00af4b2d782dc3b2ffe9fb521efde95679601c38f0c732daf7e1fed"
+	description hasValue "abordagem melhor para redes móveis adhoc"
+	descriptionMd5 hasValue "5a3af92b1dac60f36111cea31396f7c1"
+	homepage hasValue "https://www.open-mesh.org/"
+	depends hasValue "sysvinit-utils (>= 2.88dsf-50), libc6 (>= 2.28)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "sysvinit-utils"
+	comparison hasValue ">="
+	version hasValue "2.88dsf-50"
+
+relationInstance depends(P0__batmand,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.28"
+
+relationInstance depends(P0__batmand,1,DepAtom__1)
+

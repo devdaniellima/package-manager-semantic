@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology sipcrack
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__sipcrack memberOf Package
+	package hasValue "sipcrack"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/net"
+	installedSize hasValue "64"
+	maintainer hasValue "Original-Marcio de Souza Oliveira <m.desouza20@gmail.com>"
+	architecture hasValue "amd64"
+	version hasValue "0.2-3"
+	fileName hasValue "pool/universe/s/sipcrack/sipcrack_0.2-3_amd64.deb"
+	size hasValue "17388"
+	md5sum hasValue "2ca14a044fb13dc4b4f3c920021ba31e"
+	sha1 hasValue "8c2cc933982443fddfea166c6c662f498b4dc725"
+	sha256 hasValue "f4a912b02d999c6c64c790c5072400880e237a50a3ada59dfd13e1abb34440b3"
+	descriptionMd5 hasValue "197c4bfc7eead0914cda23ef0e804621"
+	homepage hasValue "http://www.remote-exploit.org/codes_sipcrack.html"
+	depends hasValue "libc6 (>= 2.4), libpcap0.8 (>= 0.9.8), libssl1.1 (>= 1.1.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__sipcrack,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libpcap0.8"
+	comparison hasValue ">="
+	version hasValue "0.9.8"
+
+relationInstance depends(P0__sipcrack,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libssl1.1"
+	comparison hasValue ">="
+	version hasValue "1.1.0"
+
+relationInstance depends(P0__sipcrack,2,DepAtom__2)
+

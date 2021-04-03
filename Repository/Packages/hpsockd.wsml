@@ -1,0 +1,59 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology hpsockd
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__hpsockd memberOf Package
+	package hasValue "hpsockd"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/net"
+	installedSize hasValue "267"
+	maintainer hasValue "Original-LaMont Jones <lamont@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.17build3"
+	fileName hasValue "pool/universe/h/hpsockd/hpsockd_0.17build3_amd64.deb"
+	size hasValue "72440"
+	md5sum hasValue "5e88b90bf2ccca562ea5b0e069ff23ca"
+	sha1 hasValue "e725544d7f6660f95b91b145f5e11aa24ccb911c"
+	sha256 hasValue "8a3f3827b1a923d119ae5b6f1509ecc05ca0a93f0e571c251710deffc3d1ea8e"
+	descriptionMd5 hasValue "544101f70a2e02405d1f66cb684b1e08"
+	depends hasValue "libc6 (>= 2.15), libdb5.3"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__hpsockd,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libdb5.3"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__hpsockd,1,DepAtom__1)
+

@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python_pyinotify
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python_pyinotify memberOf Package
+	package hasValue "python-pyinotify"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "108"
+	maintainer hasValue "Original-Mikhail Gusarov <dottedmag@debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.9.6-1.2ubuntu1"
+	provides hasValue "python2.7-pyinotify"
+	fileName hasValue "pool/universe/p/pyinotify/python-pyinotify_0.9.6-1.2ubuntu1_all.deb"
+	size hasValue "24744"
+	md5sum hasValue "fb716fa5a295f224c9397f300b10c395"
+	sha1 hasValue "d4f2779c54ef8bf41a3aa2956b889382af76832c"
+	sha256 hasValue "31e00bfd6539a1bfe3c0f08c9fda782f0385d4cf8abf264f88be3b1a88a15141"
+	descriptionMd5 hasValue "c2b7fd3e6aeb95e26caf9093a06d13a2"
+	homepage hasValue "https://github.com/seb-m/pyinotify"
+	depends hasValue "python2:any (<< 2.8), python2:any (>= 2.7~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue "<<"
+	version hasValue "2.8"
+
+relationInstance depends(P0__python_pyinotify,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue ">="
+	version hasValue "2.7~"
+
+relationInstance depends(P0__python_pyinotify,1,DepAtom__1)
+

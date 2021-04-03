@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology librust_git2Pluscurl_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__librust_git2Pluscurl_dev memberOf Package
+	package hasValue "librust-git2+curl-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/rust"
+	installedSize hasValue "6"
+	maintainer hasValue "Original-Debian Rust Maintainers <pkg-rust-maintainers@alioth-lists.debian.net>"
+	architecture hasValue "amd64"
+	version hasValue "0.8.0-2"
+	provides hasValue "librust-git2-0+curl-dev (= 0.8.0-2), librust-git2-0.8+curl-dev (= 0.8.0-2), librust-git2-0.8.0+curl-dev (= 0.8.0-2)"
+	fileName hasValue "pool/universe/r/rust-git2/librust-git2+curl-dev_0.8.0-2_amd64.deb"
+	size hasValue "1168"
+	md5sum hasValue "aeaea6d860acb099f1bea63d7c7c0f67"
+	sha1 hasValue "78c96326c62c11c0277751dbb37bb260e464b66f"
+	sha256 hasValue "69b5ef87005df021530a6733ddbfd61b4c0fce81ecb6391dab02549222f60d7a"
+	descriptionMd5 hasValue "4b673936ea9ce13a4d557864d1344879"
+	homepage hasValue "https://github.com/alexcrichton/git2-rs"
+	depends hasValue "librust-git2-dev (= 0.8.0-2), librust-libgit2-sys-0.7+curl-dev (>= 0.7.11-~~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "librust-git2-dev"
+	comparison hasValue "="
+	version hasValue "0.8.0-2"
+
+relationInstance depends(P0__librust_git2Pluscurl_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "librust-libgit2-sys-0.7+curl-dev"
+	comparison hasValue ">="
+	version hasValue "0.7.11-~~"
+
+relationInstance depends(P0__librust_git2Pluscurl_dev,1,DepAtom__1)
+

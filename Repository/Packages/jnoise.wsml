@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology jnoise
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__jnoise memberOf Package
+	package hasValue "jnoise"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/sound"
+	installedSize hasValue "30"
+	maintainer hasValue "Original-Debian Multimedia Maintainers <pkg-multimedia-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.6.0-6build1"
+	fileName hasValue "pool/universe/j/jnoise/jnoise_0.6.0-6build1_amd64.deb"
+	size hasValue "7952"
+	md5sum hasValue "4d4802c5149870a2d331ad2eefea5747"
+	sha1 hasValue "7d7083ff2f4e20a82e5a10eb80565aa053b06b25"
+	sha256 hasValue "c67b874dca382b07688f6aa1730874dfcdabd1f8594cf8bda2a0cb5816760d23"
+	descriptionMd5 hasValue "6695ebe814cc195ce310c387cc316832"
+	homepage hasValue "http://kokkinizita.linuxaudio.org/linuxaudio/index.html"
+	depends hasValue "libc6 (>= 2.29), libjack-jackd2-0 (>= 1.9.10+20150825) | libjack-0.125"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__jnoise,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libjack-jackd2-0"
+	comparison hasValue ">="
+	version hasValue "1.9.10+20150825"
+
+relationInstance depends(P0__jnoise,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libjack-0.125"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__jnoise,1,DepAtom__2)
+

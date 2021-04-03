@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology randtype
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__randtype memberOf Package
+	package hasValue "randtype"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/games"
+	installedSize hasValue "33"
+	maintainer hasValue "Original-Eugene V. Lyubimkin <jackyf@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.13-11build1"
+	fileName hasValue "pool/universe/r/randtype/randtype_1.13-11build1_amd64.deb"
+	size hasValue "11136"
+	md5sum hasValue "128acfff20b0b97d5f4b4469040361ad"
+	sha1 hasValue "1f4ba2dfdfb505d17a8d80a58bcc676627c1bd87"
+	sha256 hasValue "086213e04332d3fd50af72980afa73de7ebea3ef616386b5eeb15bc811ae3440"
+	description hasValue "Escritor de texto semi-randômico."
+	descriptionMd5 hasValue "30fc40e00a9512945970fff46a1cc5d8"
+	homepage hasValue "http://bjk.sourceforge.net/randtype/"
+	depends hasValue "libc6 (>= 2.14), zlib1g (>= 1:1.1.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__randtype,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "zlib1g"
+	comparison hasValue ">="
+	version hasValue "1:1.1.4"
+
+relationInstance depends(P0__randtype,1,DepAtom__1)
+

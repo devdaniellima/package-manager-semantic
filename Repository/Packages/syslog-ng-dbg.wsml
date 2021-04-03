@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology syslog_ng_dbg
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__syslog_ng_dbg memberOf Package
+	package hasValue "syslog-ng-dbg"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/debug"
+	installedSize hasValue "5997"
+	maintainer hasValue "Original-syslog-ng maintainers <syslog-ng-maintainers@alioth-lists.debian.net>"
+	architecture hasValue "amd64"
+	version hasValue "3.25.1-3"
+	fileName hasValue "pool/universe/s/syslog-ng/syslog-ng-dbg_3.25.1-3_amd64.deb"
+	size hasValue "5247552"
+	md5sum hasValue "3ef206a0a0fe319c55f2a0275ede3c13"
+	sha1 hasValue "e11857175cdc9050f833296b279682901e8fa234"
+	sha256 hasValue "fa8582355c0b0aa901074c4189bc255cc74478387a9b79bc58f2b9179b01e767"
+	description hasValue "Enhanced system logging daemon (debug symbols)"
+	descriptionMd5 hasValue "e15d4ad36da40ad276e206fc790be161"
+	homepage hasValue "https://www.syslog-ng.com/"
+	depends hasValue "syslog-ng-core (= 3.25.1-3)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "syslog-ng-core"
+	comparison hasValue "="
+	version hasValue "3.25.1-3"
+
+relationInstance depends(P0__syslog_ng_dbg,0,DepAtom__0)
+

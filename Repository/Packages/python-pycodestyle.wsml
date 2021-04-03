@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python_pycodestyle
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python_pycodestyle memberOf Package
+	package hasValue "python-pycodestyle"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "157"
+	maintainer hasValue "Original-Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.5.0-2"
+	replaces hasValue "pycodestyle (<< 1.6.2-0.1)"
+	fileName hasValue "pool/universe/p/pycodestyle/python-pycodestyle_2.5.0-2_all.deb"
+	size hasValue "36708"
+	md5sum hasValue "705ab176d6a452924cf15f09290cb595"
+	sha1 hasValue "c210fa0982502c09142cda052c5212095ec94532"
+	sha256 hasValue "379a126af8d98421159ea1ec0ce8453ab84c33682a9568726f828ffb8949dd6c"
+	description hasValue "Python style guide checker (formerly called pep8) - Python 2.x"
+	descriptionMd5 hasValue "60e3dea514a42dbfe8a96376a2209a33"
+	homepage hasValue "https://pypi.python.org/pypi/pycodestyle"
+	depends hasValue "python2:any (<< 2.8), python2:any (>= 2.7~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue "<<"
+	version hasValue "2.8"
+
+relationInstance depends(P0__python_pycodestyle,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue ">="
+	version hasValue "2.7~"
+
+relationInstance depends(P0__python_pycodestyle,1,DepAtom__1)
+

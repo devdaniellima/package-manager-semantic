@@ -1,0 +1,74 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ckport
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ckport memberOf Package
+	package hasValue "ckport"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "31"
+	maintainer hasValue "Original-Patrick Matthäi <pmatthaei@debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.1~rc1-8"
+	fileName hasValue "pool/universe/c/ckport/ckport_0.1~rc1-8_all.deb"
+	size hasValue "7780"
+	md5sum hasValue "1d57aa147103db1566aa503bba993724"
+	sha1 hasValue "adc35f8f1bb0976729c658a43d9a40ede2d3bc7f"
+	sha256 hasValue "1deb6c983827eb44a2f14932c2e87aeea234634eb9a424c38b5800654289a902"
+	descriptionMd5 hasValue "b7754b2e5044a59e1da8b0a483a3355a"
+	homepage hasValue "http://software.keep-cool.org/ckport.html"
+	depends hasValue "perl:any, ckport-database (>= 0.1~rc1-8), binutils-multiarch | binutils"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "perl:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ckport,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "ckport-database"
+	comparison hasValue ">="
+	version hasValue "0.1~rc1-8"
+
+relationInstance depends(P0__ckport,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "binutils-multiarch"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ckport,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "binutils"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ckport,2,DepAtom__3)
+

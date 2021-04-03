@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology erlang_bear
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__erlang_bear memberOf Package
+	package hasValue "erlang-bear"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "35"
+	maintainer hasValue "Original-LeoFS maintainers team <team+pkg-leofs-devel@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.8.2+dfsg-2"
+	fileName hasValue "pool/universe/e/erlang-bear/erlang-bear_0.8.2+dfsg-2_amd64.deb"
+	size hasValue "18240"
+	md5sum hasValue "12cb50d6069fb9698751cc209f6c19a2"
+	sha1 hasValue "39d5cc3ad5847da09f87dc1bc43c2f953f621308"
+	sha256 hasValue "4ded73f69b12d5615c2fec439cdb3882a043146321297d9df3de2361049abb42"
+	descriptionMd5 hasValue "f907f5be82e8afd411ef7a5f74b2f8e3"
+	homepage hasValue "https://github.com/boundary/bear"
+	depends hasValue "erlang-base (>= 1:20.2.2+dfsg) | erlang-base-hipe (>= 1:20.2.2+dfsg)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "erlang-base"
+	comparison hasValue ">="
+	version hasValue "1:20.2.2+dfsg"
+
+relationInstance depends(P0__erlang_bear,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "erlang-base-hipe"
+	comparison hasValue ">="
+	version hasValue "1:20.2.2+dfsg"
+
+relationInstance depends(P0__erlang_bear,0,DepAtom__1)
+

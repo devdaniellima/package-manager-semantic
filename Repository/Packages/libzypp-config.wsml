@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libzypp_config
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libzypp_config memberOf Package
+	package hasValue "libzypp-config"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "113"
+	maintainer hasValue "Original-Mike Gabriel <sunweaver@debian.org>"
+	architecture hasValue "all"
+	version hasValue "17.7.0-1"
+	fileName hasValue "pool/universe/libz/libzypp/libzypp-config_17.7.0-1_all.deb"
+	size hasValue "22152"
+	md5sum hasValue "19c6782d1a8c72e85388cc37d534dc12"
+	sha1 hasValue "ca096ed1e6ef492eaaa6de1ef723c82cbb2674b3"
+	sha256 hasValue "ccd56708e39ef3babad336e11205c30c80a73bf2835905e3547b6836a6285f88"
+	descriptionMd5 hasValue "b714dfabf3c26047458336b52a19f8e2"
+	homepage hasValue "https://github.com/openSUSE/libzypp"
+	depends hasValue "libzypp-common (>= 17.7.0-1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libzypp-common"
+	comparison hasValue ">="
+	version hasValue "17.7.0-1"
+
+relationInstance depends(P0__libzypp_config,0,DepAtom__0)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology containers_storage
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__containers_storage memberOf Package
+	package hasValue "containers-storage"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "7777"
+	maintainer hasValue "Original-Debian Go Packaging Team <team+pkg-go@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.15.8+dfsg1-1"
+	fileName hasValue "pool/universe/g/golang-github-containers-storage/containers-storage_1.15.8+dfsg1-1_amd64.deb"
+	size hasValue "2407452"
+	md5sum hasValue "2b86851ba5e79acd6dc8077c0fa902d5"
+	sha1 hasValue "d4b0c20f22c658878ad07af04beb7a0bcd332158"
+	sha256 hasValue "96ce16de3e140f1db1771366cf919f0d73bd329ea6b94d56ac2436d25d6debed"
+	descriptionMd5 hasValue "8636c564b0525a473282c66694950f4e"
+	homepage hasValue "https://github.com/containers/storage"
+	depends hasValue "libc6 (>= 2.8), libdevmapper1.02.1 (>= 2:1.02.97)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.8"
+
+relationInstance depends(P0__containers_storage,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libdevmapper1.02.1"
+	comparison hasValue ">="
+	version hasValue "2:1.02.97"
+
+relationInstance depends(P0__containers_storage,1,DepAtom__1)
+

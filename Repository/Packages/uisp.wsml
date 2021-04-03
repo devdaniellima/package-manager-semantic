@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology uisp
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__uisp memberOf Package
+	package hasValue "uisp"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/electronics"
+	installedSize hasValue "138"
+	maintainer hasValue "Original-Margarita Manterola <marga@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "20050207-4.3ubuntu1"
+	fileName hasValue "pool/universe/u/uisp/uisp_20050207-4.3ubuntu1_amd64.deb"
+	size hasValue "49516"
+	md5sum hasValue "dd78a70494f88a899d37cd86d9b3c4e9"
+	sha1 hasValue "8c10c49cea6dec3b49cb17ee9dd323da3f925ab0"
+	sha256 hasValue "8ab88aea20345e1d954dc6dd2f138c655b8cb211224c6bc041ecf5a99f5488e0"
+	descriptionMd5 hasValue "89aa5e40b09b6b205d587de670e97feb"
+	homepage hasValue "http://www.nongnu.org/uisp/"
+	depends hasValue "libc6 (>= 2.15), libgcc-s1 (>= 3.0), libstdc++6 (>= 5)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__uisp,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgcc-s1"
+	comparison hasValue ">="
+	version hasValue "3.0"
+
+relationInstance depends(P0__uisp,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "5"
+
+relationInstance depends(P0__uisp,2,DepAtom__2)
+

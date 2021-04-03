@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology puf
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__puf memberOf Package
+	package hasValue "puf"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/web"
+	installedSize hasValue "115"
+	maintainer hasValue "Original-Marco Nenciarini <mnencia@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.0-7build1"
+	fileName hasValue "pool/universe/p/puf/puf_1.0.0-7build1_amd64.deb"
+	size hasValue "48196"
+	md5sum hasValue "19636c09f7dcd7840721f55577307721"
+	sha1 hasValue "1247a34a7ae44a62cbb5edf59880e28f5579bb50"
+	sha256 hasValue "a29b6bb876bea1acb486790b4d9b4408b13061e2fb7034b17a0cf9aa86d93409"
+	descriptionMd5 hasValue "4ad3565303016d26bdee9d37b11f5217"
+	homepage hasValue "http://puf.sourceforge.net/"
+	depends hasValue "libc6 (>= 2.15)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__puf,0,DepAtom__0)
+

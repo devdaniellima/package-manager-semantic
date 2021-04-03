@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology lsb
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__lsb memberOf Package
+	package hasValue "lsb"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/misc"
+	installedSize hasValue "32"
+	maintainer hasValue "Original-Debian sysvinit maintainers <debian-init-diversity@chiark.greenend.org.uk>"
+	architecture hasValue "all"
+	version hasValue "11.1.0ubuntu2"
+	fileName hasValue "pool/universe/l/lsb/lsb_11.1.0ubuntu2_all.deb"
+	size hasValue "2860"
+	md5sum hasValue "e3874d8b60e7ab3c52e60a678536d429"
+	sha1 hasValue "6e7a0d94e8a40dea87486724647fb51061403cca"
+	sha256 hasValue "762565e9425e74f9b1e4de00b889626bb682f9e7cab8a3dba6c45dc30ef25af9"
+	descriptionMd5 hasValue "fb857df789d144a7e4b0368f118ccbfb"
+	homepage hasValue "https://wiki.linuxfoundation.org/lsb/start"
+	depends hasValue "lsb-core (>= 11.1.0ubuntu2), lsb-printing (>= 11.1.0ubuntu2), libjpeg62"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "lsb-core"
+	comparison hasValue ">="
+	version hasValue "11.1.0ubuntu2"
+
+relationInstance depends(P0__lsb,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "lsb-printing"
+	comparison hasValue ">="
+	version hasValue "11.1.0ubuntu2"
+
+relationInstance depends(P0__lsb,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libjpeg62"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__lsb,2,DepAtom__2)
+

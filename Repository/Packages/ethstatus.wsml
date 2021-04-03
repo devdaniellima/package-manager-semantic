@@ -1,0 +1,66 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ethstatus
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ethstatus memberOf Package
+	package hasValue "ethstatus"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "39"
+	maintainer hasValue "Original-Marcio de Souza Oliveira <m.desouza20@gmail.com>"
+	architecture hasValue "amd64"
+	version hasValue "0.4.9"
+	fileName hasValue "pool/universe/e/ethstatus/ethstatus_0.4.9_amd64.deb"
+	size hasValue "13448"
+	md5sum hasValue "e6a29781b0a9e72e1eb2557414707c7e"
+	sha1 hasValue "ad2d90e8c72ec93ba26359212add34d033ba1c6e"
+	sha256 hasValue "52a28ec75fd693f72cbc0f165f8c1c7d35c32c09960b094d4575dc02e8548168"
+	descriptionMd5 hasValue "ea71f264ce6a1a28d076dba265b6b669"
+	depends hasValue "libc6 (>= 2.7), libncurses6 (>= 6), libtinfo6 (>= 6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__ethstatus,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libncurses6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__ethstatus,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libtinfo6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__ethstatus,2,DepAtom__2)
+

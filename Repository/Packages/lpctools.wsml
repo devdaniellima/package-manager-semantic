@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology lpctools
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__lpctools memberOf Package
+	package hasValue "lpctools"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/electronics"
+	installedSize hasValue "97"
+	maintainer hasValue "Original-Sophie Brun <sophie@freexian.com>"
+	architecture hasValue "amd64"
+	version hasValue "1.07-1"
+	fileName hasValue "pool/universe/l/lpctools/lpctools_1.07-1_amd64.deb"
+	size hasValue "25972"
+	md5sum hasValue "563cfaf2fbf715e9f12710c9a7636dfd"
+	sha1 hasValue "67245b7a69b422e0a195d56a317d51b5cb332828"
+	sha256 hasValue "1a1b5c2e4a9c278c7e43abdfbd6de1166a9b204ec4b8f496140caadeae191745"
+	descriptionMd5 hasValue "eda4d8c8887efa472921fd80a840ec38"
+	homepage hasValue "http://git.techno-innov.fr/?p=lpctools;a=summary"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__lpctools,0,DepAtom__0)
+

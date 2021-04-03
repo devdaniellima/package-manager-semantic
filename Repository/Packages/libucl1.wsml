@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libucl1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libucl1 memberOf Package
+	package hasValue "libucl1"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "85"
+	maintainer hasValue "Original-Robert Luberda <robert@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.03+repack-5"
+	fileName hasValue "pool/universe/u/ucl/libucl1_1.03+repack-5_amd64.deb"
+	size hasValue "24956"
+	md5sum hasValue "b07efc39d3e6277bc7c185b9354abe52"
+	sha1 hasValue "d4115e481d29334221f963597fa129bed22bd39b"
+	sha256 hasValue "a673794f1245a72e2e92cee233f42072c49f9aa94fcf2a83b0f1319335a0a050"
+	descriptionMd5 hasValue "305d9f4fbeae07df4577e6af524e4d70"
+	homepage hasValue "https://www.oberhumer.com/opensource/ucl/"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libucl1,0,DepAtom__0)
+

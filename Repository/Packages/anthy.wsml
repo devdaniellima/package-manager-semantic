@@ -1,0 +1,75 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology anthy
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__anthy memberOf Package
+	package hasValue "anthy"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "74"
+	maintainer hasValue "Original-Debian Input Method Team <debian-input-method@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:0.4-2"
+	conflicts hasValue "anthy-common (<< 1:0.3-1)"
+	fileName hasValue "pool/universe/a/anthy/anthy_0.4-2_amd64.deb"
+	size hasValue "15660"
+	md5sum hasValue "e460972a25adf059323f0e5047dcf72c"
+	sha1 hasValue "6f2753f8ca642532ba59964d12ee02ed3cc80bb5"
+	sha256 hasValue "61786d7634ccb37f036a8c5d24d724e8c1669591930bf769df665efb95347b8d"
+	descriptionMd5 hasValue "8a00e2c5c0777845b93c9209e9103f5d"
+	homepage hasValue "https://wiki.debian.org/Teams/DebianAnthy"
+	depends hasValue "anthy-common, libanthy1 (= 1:0.4-2), libanthyinput0, libc6 (>= 2.15)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "anthy-common"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__anthy,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libanthy1"
+	comparison hasValue "="
+	version hasValue "1:0.4-2"
+
+relationInstance depends(P0__anthy,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libanthyinput0"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__anthy,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__anthy,3,DepAtom__3)
+

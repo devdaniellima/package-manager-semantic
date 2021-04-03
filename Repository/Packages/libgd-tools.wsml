@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libgd_tools
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libgd_tools memberOf Package
+	package hasValue "libgd-tools"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/graphics"
+	installedSize hasValue "216"
+	maintainer hasValue "Original-GD Team <team+gd@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.2.5-5.2ubuntu2"
+	fileName hasValue "pool/universe/libg/libgd2/libgd-tools_2.2.5-5.2ubuntu2_amd64.deb"
+	size hasValue "18284"
+	md5sum hasValue "c0dec76a626668987adcabc029670a94"
+	sha1 hasValue "69eccae79c25ef036abd8a4d0b59edb22df9ea1a"
+	sha256 hasValue "06ceeacac480d7bafd4ef2214a4f2709c841700170733b901517e8bb16873ee7"
+	descriptionMd5 hasValue "a44edd93634f43d7184a7456c237f804"
+	homepage hasValue "http://www.libgd.org/"
+	depends hasValue "libc6 (>= 2.14), libgd3 (>= 2.1.0~alpha~), perl:any"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libgd_tools,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgd3"
+	comparison hasValue ">="
+	version hasValue "2.1.0~alpha~"
+
+relationInstance depends(P0__libgd_tools,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "perl:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libgd_tools,2,DepAtom__2)
+

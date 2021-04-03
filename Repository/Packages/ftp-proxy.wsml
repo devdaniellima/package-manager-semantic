@@ -1,0 +1,66 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ftp_proxy
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ftp_proxy memberOf Package
+	package hasValue "ftp-proxy"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "151"
+	maintainer hasValue "Original-Roberto Lumbreras <rover@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.9.2.4-10build2"
+	fileName hasValue "pool/universe/p/proxy-suite/ftp-proxy_1.9.2.4-10build2_amd64.deb"
+	size hasValue "60056"
+	md5sum hasValue "e96e032ac9001cce3dbc9690e86e9fcb"
+	sha1 hasValue "f5868c925a3be1419d0b76cbecd2357a4bf4cca0"
+	sha256 hasValue "5db92943c268f37c01e3cb31f06423854411ded92b9b9ea8501b03408d8f6fb8"
+	descriptionMd5 hasValue "62e06e3e66504bb8dcc3df43dd9668ff"
+	depends hasValue "libc6 (>= 2.15), libldap-2.4-2 (>= 2.4.7), libwrap0 (>= 7.6-4~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__ftp_proxy,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libldap-2.4-2"
+	comparison hasValue ">="
+	version hasValue "2.4.7"
+
+relationInstance depends(P0__ftp_proxy,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libwrap0"
+	comparison hasValue ">="
+	version hasValue "7.6-4~"
+
+relationInstance depends(P0__ftp_proxy,2,DepAtom__2)
+

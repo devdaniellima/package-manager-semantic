@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libgnat_7
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libgnat_7 memberOf Package
+	package hasValue "libgnat-7"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "3844"
+	maintainer hasValue "Original-Debian GCC Maintainers <debian-gcc@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "7.5.0-6ubuntu2"
+	fileName hasValue "pool/universe/g/gcc-7/libgnat-7_7.5.0-6ubuntu2_amd64.deb"
+	size hasValue "991252"
+	md5sum hasValue "91cc293ca12438171057b0266228e3da"
+	sha1 hasValue "c81c979325fcde2e6fa799b06cbc3faa6f8c0409"
+	sha256 hasValue "5ef2cf6523c42b89d451a04772dc8c26028349a590d8f7cc9074ed4c87e8b951"
+	descriptionMd5 hasValue "27cdab3b846cfe71a546e1fbdc98570c"
+	homepage hasValue "http://gcc.gnu.org/"
+	depends hasValue "gcc-7-base (= 7.5.0-6ubuntu2), libc6 (>= 2.28), libgcc-s1"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "gcc-7-base"
+	comparison hasValue "="
+	version hasValue "7.5.0-6ubuntu2"
+
+relationInstance depends(P0__libgnat_7,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.28"
+
+relationInstance depends(P0__libgnat_7,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libgcc-s1"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libgnat_7,2,DepAtom__2)
+

@@ -1,0 +1,74 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python_openssl
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python_openssl memberOf Package
+	package hasValue "python-openssl"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "233"
+	maintainer hasValue "Original-Sandro Tosi <morph@debian.org>"
+	architecture hasValue "all"
+	version hasValue "19.0.0-1build1"
+	fileName hasValue "pool/universe/p/pyopenssl/python-openssl_19.0.0-1build1_all.deb"
+	size hasValue "43148"
+	md5sum hasValue "981a53f033da1d9af2f207f07e0a7fdd"
+	sha1 hasValue "75e27f2e306a1e3a0b9804cda1617ffe670812c3"
+	sha256 hasValue "d6dc14cea6a2a3b9fa8561a205340807ed651f439d86af055fd9095447dfda94"
+	descriptionMd5 hasValue "34bf94e85b02caf329c537f92208752f"
+	homepage hasValue "https://pyopenssl.org/"
+	depends hasValue "python-cryptography (>= 2.3), python-six (>= 1.5.2), python2:any (<< 2.8), python2:any (>= 2.7~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python-cryptography"
+	comparison hasValue ">="
+	version hasValue "2.3"
+
+relationInstance depends(P0__python_openssl,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python-six"
+	comparison hasValue ">="
+	version hasValue "1.5.2"
+
+relationInstance depends(P0__python_openssl,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue "<<"
+	version hasValue "2.8"
+
+relationInstance depends(P0__python_openssl,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue ">="
+	version hasValue "2.7~"
+
+relationInstance depends(P0__python_openssl,3,DepAtom__3)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology node_uniqid
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__node_uniqid memberOf Package
+	package hasValue "node-uniqid"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/javascript"
+	installedSize hasValue "20"
+	maintainer hasValue "Original-Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "4.1.1-1"
+	fileName hasValue "pool/universe/n/node-uniqid/node-uniqid_4.1.1-1_all.deb"
+	size hasValue "3996"
+	md5sum hasValue "9d1d9d4de19034afa71f5f7c6d9de355"
+	sha1 hasValue "569c9a19763ad3a16476fd368a62d025ac3a3e46"
+	sha256 hasValue "ab0c5a5719d4ea474f9e5ba23b4621618669e852328b0d49cc9f31d8028355c6"
+	descriptionMd5 hasValue "93248cfc3c1a58f7179b64829d372d3c"
+	homepage hasValue "http://github.com/adamhalasz/diet-uniqid/"
+	depends hasValue "nodejs, node-macaddress (>= 0.2.8)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "nodejs"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__node_uniqid,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "node-macaddress"
+	comparison hasValue ">="
+	version hasValue "0.2.8"
+
+relationInstance depends(P0__node_uniqid,1,DepAtom__1)
+

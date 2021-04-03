@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libswami1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libswami1 memberOf Package
+	package hasValue "libswami1"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "200"
+	maintainer hasValue "Original-Debian Multimedia Maintainers <debian-multimedia@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.2.0-2"
+	fileName hasValue "pool/universe/s/swami/libswami1_2.2.0-2_amd64.deb"
+	size hasValue "59504"
+	md5sum hasValue "13eab2f67c3ebddc84c660daf8a8f40e"
+	sha1 hasValue "f6844d4a90e359d86316569fb397c163c70ab454"
+	sha256 hasValue "bdab41ccc29f39d2e2e6d02fb51d77baff5ab6b72e5bfef9964f077c3814f495"
+	descriptionMd5 hasValue "cb2e5adf36e600769454fa1b3499724b"
+	homepage hasValue "https://github.com/swami/swami"
+	depends hasValue "libc6 (>= 2.4), libglib2.0-0 (>= 2.41.1), libinstpatch-1.0-2 (>= 1.1.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libswami1,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libglib2.0-0"
+	comparison hasValue ">="
+	version hasValue "2.41.1"
+
+relationInstance depends(P0__libswami1,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libinstpatch-1.0-2"
+	comparison hasValue ">="
+	version hasValue "1.1.2"
+
+relationInstance depends(P0__libswami1,2,DepAtom__2)
+

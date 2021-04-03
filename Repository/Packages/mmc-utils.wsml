@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology mmc_utils
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__mmc_utils memberOf Package
+	package hasValue "mmc-utils"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "122"
+	maintainer hasValue "Original-Nobuhiro Iwamatsu <iwamatsu@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0+git20180327.b4fe0c8c-1"
+	fileName hasValue "pool/universe/m/mmc-utils/mmc-utils_0+git20180327.b4fe0c8c-1_amd64.deb"
+	size hasValue "40208"
+	md5sum hasValue "760adbf707122ada3787d90bf374a63e"
+	sha1 hasValue "3f1e602d4d016bf79809c81f65b5ea0e5c8d66c7"
+	sha256 hasValue "65e02b4423c94d26ebf28d88c97da62ddcdd9c680d3bc7943a7a1c0b84e64329"
+	descriptionMd5 hasValue "b80176b534bc6f9de236034d1ac748b4"
+	homepage hasValue "http://git.kernel.org/cgit/linux/kernel/git/cjb/mmc-utils.git"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__mmc_utils,0,DepAtom__0)
+

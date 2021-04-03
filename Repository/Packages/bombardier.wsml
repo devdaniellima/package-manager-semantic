@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology bombardier
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__bombardier memberOf Package
+	package hasValue "bombardier"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/games"
+	installedSize hasValue "55"
+	maintainer hasValue "Original-RISKO Gergely <risko@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.8.3+nmu2"
+	fileName hasValue "pool/universe/b/bombardier/bombardier_0.8.3+nmu2_amd64.deb"
+	size hasValue "15840"
+	md5sum hasValue "00aa55366153c23a9f39a62b17d9dff0"
+	sha1 hasValue "2a1b90e9d56db20150075b83a27b9eea88e627ac"
+	sha256 hasValue "4e375b8559621a7eae299b47b0637dbef5b81fa1ddf7014d65962c45470da65c"
+	description hasValue "utilitário GNU Bombing"
+	descriptionMd5 hasValue "df88a58c5d332d4f3c9c45b50c2a53a6"
+	depends hasValue "libc6 (>= 2.8), libncurses6 (>= 6), libtinfo6 (>= 6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.8"
+
+relationInstance depends(P0__bombardier,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libncurses6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__bombardier,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libtinfo6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__bombardier,2,DepAtom__2)
+

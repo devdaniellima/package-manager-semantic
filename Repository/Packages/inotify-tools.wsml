@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology inotify_tools
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__inotify_tools memberOf Package
+	package hasValue "inotify-tools"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/misc"
+	installedSize hasValue "84"
+	maintainer hasValue "Original-Dmitry Bogatov <KAction@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.14-8"
+	fileName hasValue "pool/universe/i/inotify-tools/inotify-tools_3.14-8_amd64.deb"
+	size hasValue "22808"
+	md5sum hasValue "6dd0d7e23866a6927a83399d55d950f4"
+	sha1 hasValue "35a29edc619b5bb227393f3a18cab6cddd9e5c13"
+	sha256 hasValue "7941f49b55966e886f4085c6eae7f1bbb08a08e5ebe196c9fec16b0ec4e833b7"
+	descriptionMd5 hasValue "75b00fa82511a5bdec777dcd118c2a99"
+	homepage hasValue "https://github.com/rvoicilas/inotify-tools/wiki/"
+	depends hasValue "libc6 (>= 2.14), libinotifytools0 (>= 3.11)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__inotify_tools,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libinotifytools0"
+	comparison hasValue ">="
+	version hasValue "3.11"
+
+relationInstance depends(P0__inotify_tools,1,DepAtom__1)
+

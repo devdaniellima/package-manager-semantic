@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology pgstat
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__pgstat memberOf Package
+	package hasValue "pgstat"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/database"
+	installedSize hasValue "64"
+	maintainer hasValue "Original-Debian PostgreSQL Maintainers <team+postgresql@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.1-1"
+	fileName hasValue "pool/universe/p/pgstat/pgstat_1.0.1-1_amd64.deb"
+	size hasValue "19616"
+	md5sum hasValue "9fbc964fadb5ac4d891289b72f40137e"
+	sha1 hasValue "afaf6a06d78c389fcbff0a1d7c7162a415eae733"
+	sha256 hasValue "9fcf8c34fcc842572a573f470dfb2939c795a51bce3bbc4df5f0f1b2d2435336"
+	descriptionMd5 hasValue "5e531455b6de51a07c0e944602e62b54"
+	homepage hasValue "https://github.com/gleu/pgstats"
+	depends hasValue "libc6 (>= 2.4), libpq5 (>= 9.0~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__pgstat,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libpq5"
+	comparison hasValue ">="
+	version hasValue "9.0~"
+
+relationInstance depends(P0__pgstat,1,DepAtom__1)
+

@@ -1,0 +1,69 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology netrik
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__netrik memberOf Package
+	package hasValue "netrik"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/web"
+	installedSize hasValue "609"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.16.1-2build3"
+	provides hasValue "www-browser"
+	fileName hasValue "pool/universe/n/netrik/netrik_1.16.1-2build3_amd64.deb"
+	size hasValue "240240"
+	md5sum hasValue "879f51dfba737397e4f0c1f3649727a1"
+	sha1 hasValue "dff696529745f2ad67c4eddf9f27d89f01d52ff9"
+	sha256 hasValue "50d8b9a2b5fd42986fb553f08bec1733e7a293ca116674934bc712388b5cce0a"
+	description hasValue "navegador WWW modo texto com atalhos de teclado estilo vi"
+	descriptionMd5 hasValue "c53942cdb83a4f1cf5ef9c47ab208aa8"
+	homepage hasValue "http://netrik.sourceforge.net/"
+	depends hasValue "libc6 (>= 2.14), libncursesw6 (>= 6), libtinfo6 (>= 6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__netrik,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libncursesw6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__netrik,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libtinfo6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__netrik,2,DepAtom__2)
+

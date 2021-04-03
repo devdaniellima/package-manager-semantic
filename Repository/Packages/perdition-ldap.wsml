@@ -1,0 +1,74 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology perdition_ldap
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__perdition_ldap memberOf Package
+	package hasValue "perdition-ldap"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/mail"
+	installedSize hasValue "67"
+	maintainer hasValue "Original-Simon Horman <horms@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.2-3.1"
+	fileName hasValue "pool/universe/p/perdition/perdition-ldap_2.2-3.1_amd64.deb"
+	size hasValue "11372"
+	md5sum hasValue "0dbd5ebb3fb9211557ce1d753b1c104f"
+	sha1 hasValue "4f4aaf35e59655f0a9b18ce8829363b1a56c4b58"
+	sha256 hasValue "978d88c7989e8e0ef949d476226250a138fa5bf61e3444f49d914db18b98a803"
+	descriptionMd5 hasValue "84347dcb38faf3238f989c9bd1d72126"
+	homepage hasValue "http://horms.net/projects/perdition/"
+	depends hasValue "libc6 (>= 2.14), libldap-2.4-2 (>= 2.4.7), libvanessa-logger0 (>= 0.0.6), perdition (= 2.2-3.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__perdition_ldap,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libldap-2.4-2"
+	comparison hasValue ">="
+	version hasValue "2.4.7"
+
+relationInstance depends(P0__perdition_ldap,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libvanessa-logger0"
+	comparison hasValue ">="
+	version hasValue "0.0.6"
+
+relationInstance depends(P0__perdition_ldap,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "perdition"
+	comparison hasValue "="
+	version hasValue "2.2-3.1"
+
+relationInstance depends(P0__perdition_ldap,3,DepAtom__3)
+

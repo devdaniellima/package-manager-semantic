@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libtsk_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libtsk_dev memberOf Package
+	package hasValue "libtsk-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "2005"
+	maintainer hasValue "Original-Debian Security Tools <team+pkg-security@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "4.6.7-1build1"
+	fileName hasValue "pool/universe/s/sleuthkit/libtsk-dev_4.6.7-1build1_amd64.deb"
+	size hasValue "416552"
+	md5sum hasValue "3082e7369253c071a231d54ce36b634b"
+	sha1 hasValue "5ab6c49231b137cc9e33ea50aa3adf49100e1c41"
+	sha256 hasValue "e8de878b956bb0208941f9974182473d81d4134aa0ffdeee85ce8d298045c059"
+	descriptionMd5 hasValue "0b95c9cdb87be6a011ef3c0c84371026"
+	homepage hasValue "http://www.sleuthkit.org/sleuthkit"
+	depends hasValue "libtsk13 (= 4.6.7-1build1), zlib1g-dev"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libtsk13"
+	comparison hasValue "="
+	version hasValue "4.6.7-1build1"
+
+relationInstance depends(P0__libtsk_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "zlib1g-dev"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libtsk_dev,1,DepAtom__1)
+

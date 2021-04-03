@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology avr_libc
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__avr_libc memberOf Package
+	package hasValue "avr-libc"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/otherosfs"
+	installedSize hasValue "42208"
+	maintainer hasValue "Original-Hakan Ardo <hakan@debian.org>"
+	architecture hasValue "all"
+	version hasValue "1:2.0.0+Atmel3.6.1-2"
+	fileName hasValue "pool/universe/a/avr-libc/avr-libc_2.0.0+Atmel3.6.1-2_all.deb"
+	size hasValue "4854240"
+	md5sum hasValue "e7e81148cba2aebcfa253428fc8af5a2"
+	sha1 hasValue "6c1cb50a42860f71dbdb755b91cc7118ea3a41ea"
+	sha256 hasValue "981dd0a6bad1156beccdd80d384c67cd3621cb931f84c8deac26abf33b761153"
+	description hasValue "Biblioteca C padrão para desenvolvimento com Atmel AVR"
+	descriptionMd5 hasValue "f8da43e684408fb968aa4789b21feef2"
+	depends hasValue "gcc-avr (>= 5.4.0+Atmel3.6.1-1), binutils-avr (>= 2.26.20160125+Atmel3.6.1-1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "gcc-avr"
+	comparison hasValue ">="
+	version hasValue "5.4.0+Atmel3.6.1-1"
+
+relationInstance depends(P0__avr_libc,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "binutils-avr"
+	comparison hasValue ">="
+	version hasValue "2.26.20160125+Atmel3.6.1-1"
+
+relationInstance depends(P0__avr_libc,1,DepAtom__1)
+

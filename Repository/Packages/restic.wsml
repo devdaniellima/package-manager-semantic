@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology restic
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__restic memberOf Package
+	package hasValue "restic"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/misc"
+	installedSize hasValue "25113"
+	maintainer hasValue "Original-Debian Go Packaging Team <pkg-go-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.9.6+ds-2"
+	fileName hasValue "pool/universe/r/restic/restic_0.9.6+ds-2_amd64.deb"
+	size hasValue "8523564"
+	md5sum hasValue "2183ca70298644455ebb3f19c808d837"
+	sha1 hasValue "cf48c4804638ee1ad4c0f683657c007358a5cc1c"
+	sha256 hasValue "a895ebf4a225b1f9abdda7d416d185dc5b5195dcf78b0d5822cdfb8c4183503f"
+	descriptionMd5 hasValue "306158c67df1c70aca079d38e0afc1e3"
+	homepage hasValue "https://github.com/restic/restic"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__restic,0,DepAtom__0)
+

@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology knxd_tools
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__knxd_tools memberOf Package
+	package hasValue "knxd-tools"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "240"
+	maintainer hasValue "Original-Matthias Urlichs <matthias@urlichs.de>"
+	architecture hasValue "amd64"
+	version hasValue "0.14.30-1build1"
+	replaces hasValue "eibd-clients, eibd-server, knxd-examples, libeibclient0"
+	conflicts hasValue "eibd-clients, eibd-server, libeibclient0"
+	fileName hasValue "pool/universe/k/knxd/knxd-tools_0.14.30-1build1_amd64.deb"
+	size hasValue "42120"
+	md5sum hasValue "c32a46999fe2cfa8d963e2059fd15ea5"
+	sha1 hasValue "811567e28bb226289f53f7fb4b3e5e07c4821c71"
+	sha256 hasValue "8cb77aa4c12b78fbe252426af61b1e47ecab9d7e88d8fc659133c72984a9e374"
+	descriptionMd5 hasValue "d3051ea1789ad7f1cc6a1f0579c89b02"
+	homepage hasValue "https://github.com/knxd/knxd"
+	depends hasValue "libc6 (>= 2.15), libusb-1.0-0"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__knxd_tools,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libusb-1.0-0"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__knxd_tools,1,DepAtom__1)
+

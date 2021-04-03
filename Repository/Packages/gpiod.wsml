@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gpiod
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gpiod memberOf Package
+	package hasValue "gpiod"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/misc"
+	installedSize hasValue "118"
+	maintainer hasValue "Original-SZ Lin (林上智) <szlin@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.4.1-4"
+	fileName hasValue "pool/universe/libg/libgpiod/gpiod_1.4.1-4_amd64.deb"
+	size hasValue "19912"
+	md5sum hasValue "224e909b7e8f1052159b710d25bf49b9"
+	sha1 hasValue "7b3bbf48d8487dc20e80d7280b6e0e7ae6b6cc97"
+	sha256 hasValue "72c712da75f59bb1d8b6007535794667f7ac3a730d7423c2ddb0dde9ec45d368"
+	descriptionMd5 hasValue "9751b0d5a5fb84b3e5932cd199c5f5be"
+	homepage hasValue "https://git.kernel.org/pub/scm/libs/libgpiod/libgpiod.git"
+	depends hasValue "libc6 (>= 2.16), libgpiod2 (>= 1.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.16"
+
+relationInstance depends(P0__gpiod,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgpiod2"
+	comparison hasValue ">="
+	version hasValue "1.2"
+
+relationInstance depends(P0__gpiod,1,DepAtom__1)
+

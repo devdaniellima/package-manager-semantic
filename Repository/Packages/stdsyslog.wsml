@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology stdsyslog
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__stdsyslog memberOf Package
+	package hasValue "stdsyslog"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "44"
+	maintainer hasValue "Original-Peter Pentchev <roam@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.03.3-3"
+	fileName hasValue "pool/universe/s/stdsyslog/stdsyslog_0.03.3-3_amd64.deb"
+	size hasValue "12220"
+	md5sum hasValue "c1dafc240e765dfd1d78d74d1ef1f8eb"
+	sha1 hasValue "5404859ffaa81ce9efe5c0e1271ad7e5971013a7"
+	sha256 hasValue "d9db61dad01d2ed3ce4963ecf741d2b5bcfcb51939062ed39e9d584d11d204af"
+	descriptionMd5 hasValue "c5bebe63787a080c73ddb683f20065c6"
+	homepage hasValue "https://devel.ringlet.net/sysutils/stdsyslog/"
+	depends hasValue "libc6 (>= 2.15)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__stdsyslog,0,DepAtom__0)
+

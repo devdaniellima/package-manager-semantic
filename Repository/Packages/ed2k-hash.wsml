@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ed2k_hash
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ed2k_hash memberOf Package
+	package hasValue "ed2k-hash"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/utils"
+	installedSize hasValue "47"
+	maintainer hasValue "Original-Debian Security Tools <team+pkg-security@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.4.0+ds-2"
+	fileName hasValue "pool/universe/e/ed2k-hash/ed2k-hash_0.4.0+ds-2_amd64.deb"
+	size hasValue "14108"
+	md5sum hasValue "fe39133a5dd982fcda132694cb569972"
+	sha1 hasValue "473c6b31fc2cd548d71ab873c4897f6b7312bc78"
+	sha256 hasValue "034a2d1bea8f6468b93f6f023f911841b290b07f6da655d81310e3f1a5e176c2"
+	descriptionMd5 hasValue "f471f0b7e185836f13d7709eda354399"
+	homepage hasValue "http://ed2k-tools.sourceforge.net/ed2k_hash.shtml"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__ed2k_hash,0,DepAtom__0)
+

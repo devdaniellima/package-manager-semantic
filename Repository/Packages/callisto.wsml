@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology callisto
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__callisto memberOf Package
+	package hasValue "callisto"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/science"
+	installedSize hasValue "83"
+	maintainer hasValue "Original-Gürkan Myczko <gurkan@phys.ethz.ch>"
+	architecture hasValue "amd64"
+	version hasValue "1.1.0-2"
+	fileName hasValue "pool/universe/c/callisto/callisto_1.1.0-2_amd64.deb"
+	size hasValue "31256"
+	md5sum hasValue "f5447376b85390cdcaa2bf770d814874"
+	sha1 hasValue "4d427ab195d3477ba8b4996b2d14bc0e542442ad"
+	sha256 hasValue "686e0edfaaf40fac6d674568156ef2ea8a10b1881bb788b4a7e7510b864e0825"
+	descriptionMd5 hasValue "bfb74208f5f7ca155449f957360d475c"
+	homepage hasValue "http://www.e-callisto.org/"
+	depends hasValue "libc6 (>= 2.7), libcfitsio8 (>= 3.470~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__callisto,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libcfitsio8"
+	comparison hasValue ">="
+	version hasValue "3.470~"
+
+relationInstance depends(P0__callisto,1,DepAtom__1)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology epstool
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__epstool memberOf Package
+	package hasValue "epstool"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/graphics"
+	installedSize hasValue "273"
+	maintainer hasValue "Original-Philip Rinn <rinni@inventati.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.09-2"
+	fileName hasValue "pool/universe/e/epstool/epstool_3.09-2_amd64.deb"
+	size hasValue "108532"
+	md5sum hasValue "7c46b0b54b70c9f579c63dad24b761e9"
+	sha1 hasValue "281d7ee10118b7ff73f10e036ed12f04a3d8fb8f"
+	sha256 hasValue "107a01de4130e4b6246b852df1e71bbf8edecf0e2560a352bc2e52cc4fdd4fef"
+	descriptionMd5 hasValue "9cc83e3b021bef3e284bf67a67aa1708"
+	homepage hasValue "http://www.ghostgum.com.au/software/epstool.htm"
+	depends hasValue "libc6 (>= 2.14), ghostscript"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__epstool,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "ghostscript"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__epstool,1,DepAtom__1)
+

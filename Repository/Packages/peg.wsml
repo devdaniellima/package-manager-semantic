@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology peg
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__peg memberOf Package
+	package hasValue "peg"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "160"
+	maintainer hasValue "Original-Giulio Paci <giuliopaci@gmail.com>"
+	architecture hasValue "amd64"
+	version hasValue "0.1.18-1"
+	fileName hasValue "pool/universe/p/peg/peg_0.1.18-1_amd64.deb"
+	size hasValue "40856"
+	md5sum hasValue "99ddc093ca363ab464291794ceda2aeb"
+	sha1 hasValue "1263de8a95b074cea0f80ec8573ba1231a1f319b"
+	sha256 hasValue "5f4d58537d620e9bd1fb1bd3d3c121e29646c6fca0a656ce32000e55f45d5ca4"
+	descriptionMd5 hasValue "f666813e4c9b35c72547511e2afc44a0"
+	homepage hasValue "http://piumarta.com/software/peg/"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__peg,0,DepAtom__0)
+

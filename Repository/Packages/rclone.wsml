@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology rclone
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__rclone memberOf Package
+	package hasValue "rclone"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "40218"
+	maintainer hasValue "Original-Debian Go Packaging Team <pkg-go-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.50.2-2"
+	fileName hasValue "pool/universe/r/rclone/rclone_1.50.2-2_amd64.deb"
+	size hasValue "10435860"
+	md5sum hasValue "d38423349805f710456afbf37abe7322"
+	sha1 hasValue "ae0436f85398535318def2ff49bee5279b253946"
+	sha256 hasValue "e8a0b875964893e3e5e321668eab2b877c749e022339de1a3add5f4e25e02f07"
+	descriptionMd5 hasValue "534688973f4bad995c6ec0fd1dced0a0"
+	homepage hasValue "https://github.com/rclone/rclone"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__rclone,0,DepAtom__0)
+

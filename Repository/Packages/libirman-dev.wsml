@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libirman_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libirman_dev memberOf Package
+	package hasValue "libirman-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "232"
+	maintainer hasValue "Original-Debian Lirc Team <team+debian-lirc@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.5.2-5"
+	fileName hasValue "pool/universe/libi/libirman/libirman-dev_0.5.2-5_amd64.deb"
+	size hasValue "29432"
+	md5sum hasValue "721ae4d9143973432997de4773e9ef30"
+	sha1 hasValue "f1063613352673c1ff0ab04fd4a44518374eda27"
+	sha256 hasValue "ad8f3c273e6fb133e4c254e4be35b29990d44255f6d386f294ba1e9cd351b7cd"
+	descriptionMd5 hasValue "698cc891de98120434f671abd372d730"
+	homepage hasValue "https://sourceforge.net/projects/libirman/"
+	depends hasValue "libirman0 (= 0.5.2-5), libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libirman0"
+	comparison hasValue "="
+	version hasValue "0.5.2-5"
+
+relationInstance depends(P0__libirman_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libirman_dev,1,DepAtom__1)
+

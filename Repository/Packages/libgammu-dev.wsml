@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libgammu_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libgammu_dev memberOf Package
+	package hasValue "libgammu-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "521"
+	maintainer hasValue "Original-Michal Čihař <nijel@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.41.0-1"
+	replaces hasValue "libgammu1-dev"
+	conflicts hasValue "libgammu1-dev"
+	fileName hasValue "pool/universe/g/gammu/libgammu-dev_1.41.0-1_amd64.deb"
+	size hasValue "197252"
+	md5sum hasValue "731e4ecb49fe4d6b26eca557193b0c2e"
+	sha1 hasValue "04747dd3f560166ed3857025fd01f85e54000538"
+	sha256 hasValue "b653b25ddf31f8622e23dd617ebacc183b546529413bc0ae7f8ce1c242794049"
+	descriptionMd5 hasValue "edd57e45f8c49e9140d3d02bd2f8a25b"
+	homepage hasValue "https://wammu.eu/gammu/"
+	depends hasValue "libgammu8 (= 1.41.0-1), libgsmsd8 (= 1.41.0-1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libgammu8"
+	comparison hasValue "="
+	version hasValue "1.41.0-1"
+
+relationInstance depends(P0__libgammu_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgsmsd8"
+	comparison hasValue "="
+	version hasValue "1.41.0-1"
+
+relationInstance depends(P0__libgammu_dev,1,DepAtom__1)
+

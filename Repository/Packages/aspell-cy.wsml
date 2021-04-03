@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology aspell_cy
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__aspell_cy memberOf Package
+	package hasValue "aspell-cy"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/text"
+	installedSize hasValue "175"
+	maintainer hasValue "Original-Brian Nelson <pyro@debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.50-3-6.2"
+	provides hasValue "aspell-dictionary"
+	fileName hasValue "pool/universe/a/aspell-cy/aspell-cy_0.50-3-6.2_all.deb"
+	size hasValue "157834"
+	md5sum hasValue "c883bf2af3d4ac06ee5bf36e64dadd88"
+	sha1 hasValue "8dac49c1e9c3970d4e3ac2d236a1625c7da7a0bd"
+	sha256 hasValue "04120ca29e056d980d2577013627a2482441bf2f9306778e312c0ddc5855fe94"
+	description hasValue "dicionário galês para o GNU Aspell"
+	descriptionMd5 hasValue "f5491df5b6bdbf6208c16170e49a9c23"
+	depends hasValue "aspell (>= 0.60.3-2), dictionaries-common (>= 0.49.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "aspell"
+	comparison hasValue ">="
+	version hasValue "0.60.3-2"
+
+relationInstance depends(P0__aspell_cy,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "dictionaries-common"
+	comparison hasValue ">="
+	version hasValue "0.49.2"
+
+relationInstance depends(P0__aspell_cy,1,DepAtom__1)
+

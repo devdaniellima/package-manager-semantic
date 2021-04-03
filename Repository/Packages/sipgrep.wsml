@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology sipgrep
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__sipgrep memberOf Package
+	package hasValue "sipgrep"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "82"
+	maintainer hasValue "Original-Debian VoIP Team <pkg-voip-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.1.0-2build1"
+	fileName hasValue "pool/universe/s/sipgrep/sipgrep_2.1.0-2build1_amd64.deb"
+	size hasValue "31884"
+	md5sum hasValue "4808e091e277b5e632a3d436908a8ffa"
+	sha1 hasValue "36da722cdd09fc9d7e6c04c0617f7a66da1bb311"
+	sha256 hasValue "2d6fcd1a1c72ae4eb07815b568619565d4e7044b764ea4e9e2506b388471168c"
+	descriptionMd5 hasValue "50e026420c49ce6dd40be4d241e523b2"
+	homepage hasValue "https://github.com/sipcapture/sipgrep"
+	depends hasValue "libc6 (>= 2.14), libpcap0.8 (>= 0.9.8), libpcre3"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__sipgrep,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libpcap0.8"
+	comparison hasValue ">="
+	version hasValue "0.9.8"
+
+relationInstance depends(P0__sipgrep,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libpcre3"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__sipgrep,2,DepAtom__2)
+

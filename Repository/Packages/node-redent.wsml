@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology node_redent
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__node_redent memberOf Package
+	package hasValue "node-redent"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/web"
+	installedSize hasValue "15"
+	maintainer hasValue "Original-Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.0.0-1"
+	fileName hasValue "pool/universe/n/node-redent/node-redent_2.0.0-1_all.deb"
+	size hasValue "2964"
+	md5sum hasValue "46e7408e3b325378ac750c338d022a86"
+	sha1 hasValue "a77e1b4e2ddfb5cc0ec997d37cce9e8297010f24"
+	sha256 hasValue "2c468db0c928a7618672bc3a19391aad08a54e9f2445904e898b6bf0cb7342ee"
+	descriptionMd5 hasValue "feb34010e549c5d0ecc0c8de833636b1"
+	homepage hasValue "https://github.com/sindresorhus/redent#readme"
+	depends hasValue "nodejs, node-strip-indent (>= 2.0.0), node-indent-string (>= 3.0.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "nodejs"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__node_redent,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "node-strip-indent"
+	comparison hasValue ">="
+	version hasValue "2.0.0"
+
+relationInstance depends(P0__node_redent,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "node-indent-string"
+	comparison hasValue ">="
+	version hasValue "3.0.0"
+
+relationInstance depends(P0__node_redent,2,DepAtom__2)
+

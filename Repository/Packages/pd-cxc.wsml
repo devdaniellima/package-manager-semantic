@@ -1,0 +1,74 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology pd_cxc
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__pd_cxc memberOf Package
+	package hasValue "pd-cxc"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/sound"
+	installedSize hasValue "361"
+	maintainer hasValue "Original-Debian Multimedia Maintainers <debian-multimedia@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.5.2-2"
+	fileName hasValue "pool/universe/p/pd-cxc/pd-cxc_0.5.2-2_amd64.deb"
+	size hasValue "41264"
+	md5sum hasValue "e956a82e9cc79c42945ad6c26f92bddf"
+	sha1 hasValue "761fd19e548f960a019dcfa766d1b72fac8f902e"
+	sha256 hasValue "2b8a667942f96bde725e55060c1e4413b915662d9dc9b82963e945587c9507c2"
+	descriptionMd5 hasValue "a7338f4d05c27c133e5bc66fbdb1f460"
+	homepage hasValue "https://puredata.info"
+	depends hasValue "libc6 (>= 2.7), puredata-core | pd, pd-libdir"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__pd_cxc,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "puredata-core"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__pd_cxc,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "pd"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__pd_cxc,1,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "pd-libdir"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__pd_cxc,2,DepAtom__3)
+

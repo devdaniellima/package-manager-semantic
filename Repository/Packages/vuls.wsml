@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology vuls
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__vuls memberOf Package
+	package hasValue "vuls"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "18361"
+	maintainer hasValue "Original-Debian Go Packaging Team <pkg-go-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.6.1-1"
+	fileName hasValue "pool/universe/v/vuls/vuls_0.6.1-1_amd64.deb"
+	size hasValue "4540708"
+	md5sum hasValue "5eecdfda0ae6efdcb77bffccbbf91106"
+	sha1 hasValue "55049ce87f7d9bbb9873d2e8abfaf82ae103cd5b"
+	sha256 hasValue "d1e8eb8bee1e2587083988d6cfd0b7c282ee40562609721f0d55a9d662ccd7e3"
+	descriptionMd5 hasValue "2afbe0d54a55f10aa2223efbd68f0938"
+	homepage hasValue "https://github.com/future-architect/vuls"
+	depends hasValue "libc6 (>= 2.4), libsqlite3-0 (>= 3.7.15)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__vuls,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libsqlite3-0"
+	comparison hasValue ">="
+	version hasValue "3.7.15"
+
+relationInstance depends(P0__vuls,1,DepAtom__1)
+

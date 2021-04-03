@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology tuxguitar_alsa
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__tuxguitar_alsa memberOf Package
+	package hasValue "tuxguitar-alsa"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/sound"
+	installedSize hasValue "42"
+	maintainer hasValue "Original-Debian Java Maintainers <pkg-java-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.2-25build1"
+	fileName hasValue "pool/universe/t/tuxguitar/tuxguitar-alsa_1.2-25build1_amd64.deb"
+	size hasValue "10584"
+	md5sum hasValue "5fab05e8ed31075ceb536398526d648d"
+	sha1 hasValue "ccec3ca023620b8e2772313dfff0c2719049ee08"
+	sha256 hasValue "8aee88678a26a788b278d1f5bfc9d7d863e4d307477052783913e7dc284ede38"
+	descriptionMd5 hasValue "adddf5121617ec31d1ae52655055ceff"
+	homepage hasValue "http://www.tuxguitar.com.ar"
+	depends hasValue "tuxguitar (= 1.2-25build1), libasound2 (>= 1.0.16), libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "tuxguitar"
+	comparison hasValue "="
+	version hasValue "1.2-25build1"
+
+relationInstance depends(P0__tuxguitar_alsa,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libasound2"
+	comparison hasValue ">="
+	version hasValue "1.0.16"
+
+relationInstance depends(P0__tuxguitar_alsa,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__tuxguitar_alsa,2,DepAtom__2)
+

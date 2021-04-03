@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology getty_run
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__getty_run memberOf Package
+	package hasValue "getty-run"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "75"
+	maintainer hasValue "Original-Dmitry Bogatov <KAction@gnu.org>"
+	architecture hasValue "all"
+	version hasValue "2.1.2-9.2ubuntu1"
+	fileName hasValue "pool/universe/r/runit/getty-run_2.1.2-9.2ubuntu1_all.deb"
+	size hasValue "3568"
+	md5sum hasValue "23936c04d79d51ef6d8fc382fbe2a34b"
+	sha1 hasValue "f16e99e211c9d2206c4f4f5ff30bf003095f44e5"
+	sha256 hasValue "7fcf7ee7f1471402426d6bbfb493f6804486e18c804cff42640cda1b2373d188"
+	descriptionMd5 hasValue "1aea4fdf45185b585473659872e22b7f"
+	homepage hasValue "http://smarden.org/runit/"
+	depends hasValue "runit (>= 2.1.2-7)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "runit"
+	comparison hasValue ">="
+	version hasValue "2.1.2-7"
+
+relationInstance depends(P0__getty_run,0,DepAtom__0)
+

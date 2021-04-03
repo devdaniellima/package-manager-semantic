@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology memtester
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__memtester memberOf Package
+	package hasValue "memtester"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "45"
+	maintainer hasValue "Original-Laszlo Boszormenyi (GCS) <gcs@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "4.3.0-4"
+	fileName hasValue "pool/universe/m/memtester/memtester_4.3.0-4_amd64.deb"
+	size hasValue "16298"
+	md5sum hasValue "e65841104b4ced1dcc2f8dc3a6eb0948"
+	sha1 hasValue "c1dadc1851bb87848f53e55038c043af12d14fa2"
+	sha256 hasValue "485ef8861c6f6d0487760096fae9ae4e2c5681cfa30522fd259642111797a2e8"
+	description hasValue "utilitário para testar o subsistema de memória"
+	descriptionMd5 hasValue "0d80355e93a9c5d7be1e35f42f6b1e1d"
+	homepage hasValue "http://pyropus.ca/software/memtester/"
+	depends hasValue "libc6 (>= 2.10)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.10"
+
+relationInstance depends(P0__memtester,0,DepAtom__0)
+

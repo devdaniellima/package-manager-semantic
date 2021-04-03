@@ -1,0 +1,59 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gdc_sh4_linux_gnu
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gdc_sh4_linux_gnu memberOf Package
+	package hasValue "gdc-sh4-linux-gnu"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "11"
+	maintainer hasValue "Original-Debian GCC Maintainers <debian-gcc@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "4:10.0-1ubuntu2"
+	fileName hasValue "pool/universe/g/gcc-defaults-ports/gdc-sh4-linux-gnu_10.0-1ubuntu2_amd64.deb"
+	size hasValue "1176"
+	md5sum hasValue "941c0008893f9c71181b089d82284b1d"
+	sha1 hasValue "e29abb8f137af9cbbb5bbdcb19c572502b70c247"
+	sha256 hasValue "cd924b9148f8793582b1b71601067b84aaf3aaa395d90efd249b407bf917578a"
+	descriptionMd5 hasValue "4c94feb4d841cc1173d932ed1d38d103"
+	depends hasValue "cpp-sh4-linux-gnu (>= 4:9.3.0-1ubuntu2), gdc-10-sh4-linux-gnu (>= 10-20200307-0ubuntu1~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "cpp-sh4-linux-gnu"
+	comparison hasValue ">="
+	version hasValue "4:9.3.0-1ubuntu2"
+
+relationInstance depends(P0__gdc_sh4_linux_gnu,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "gdc-10-sh4-linux-gnu"
+	comparison hasValue ">="
+	version hasValue "10-20200307-0ubuntu1~"
+
+relationInstance depends(P0__gdc_sh4_linux_gnu,1,DepAtom__1)
+

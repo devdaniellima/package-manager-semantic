@@ -1,0 +1,75 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology melt
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__melt memberOf Package
+	package hasValue "melt"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "82"
+	maintainer hasValue "Original-Patrick Matthäi <pmatthaei@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "6.20.0-2"
+	fileName hasValue "pool/universe/m/mlt/melt_6.20.0-2_amd64.deb"
+	size hasValue "17872"
+	md5sum hasValue "5cddbd6bc01688ea52b3bf57c21316fd"
+	sha1 hasValue "df98787dcaaaae3db987a35e4911ea8b391d89a6"
+	sha256 hasValue "dfbf2d7eb27b1a12737a9c6a61c95455a37268165a219d5525a77862bc4d6d33"
+	description hasValue "reprodutor de mídia e editor de vídeo em linha de comando"
+	descriptionMd5 hasValue "fd84ce6cabff711518e3c43433757e94"
+	homepage hasValue "https://www.mltframework.org"
+	depends hasValue "libc6 (>= 2.4), libmlt6 (>= 6.20.0), libsdl2-2.0-0 (>= 2.0.10), libmlt-data (>= 6.20.0-2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__melt,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libmlt6"
+	comparison hasValue ">="
+	version hasValue "6.20.0"
+
+relationInstance depends(P0__melt,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libsdl2-2.0-0"
+	comparison hasValue ">="
+	version hasValue "2.0.10"
+
+relationInstance depends(P0__melt,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "libmlt-data"
+	comparison hasValue ">="
+	version hasValue "6.20.0-2"
+
+relationInstance depends(P0__melt,3,DepAtom__3)
+

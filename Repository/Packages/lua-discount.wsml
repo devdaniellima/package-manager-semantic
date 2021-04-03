@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology lua_discount
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__lua_discount memberOf Package
+	package hasValue "lua-discount"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "47"
+	maintainer hasValue "Original-Julian Wollrath <jwollrath@web.de>"
+	architecture hasValue "amd64"
+	version hasValue "2.1.8-3"
+	provides hasValue "lua5.1-discount, lua5.2-discount"
+	fileName hasValue "pool/universe/l/lua-discount/lua-discount_2.1.8-3_amd64.deb"
+	size hasValue "6282"
+	md5sum hasValue "60c68238858860eac7a613aa5979172f"
+	sha1 hasValue "17e9d754479c4fea77a39458ab4aff14cc7a97fa"
+	sha256 hasValue "5a49809df1508d43895b2830202ba303ebd722e503e0deb841f3390909e48deb"
+	descriptionMd5 hasValue "ff7f934164d13a57f63ba7cbd8bf2dfb"
+	homepage hasValue "http://asbradbury.org/projects/lua-discount/"
+	depends hasValue "libc6 (>= 2.4), libmarkdown2 (>= 2.0.6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__lua_discount,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libmarkdown2"
+	comparison hasValue ">="
+	version hasValue "2.0.6"
+
+relationInstance depends(P0__lua_discount,1,DepAtom__1)
+

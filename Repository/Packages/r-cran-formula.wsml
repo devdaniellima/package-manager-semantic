@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology r_cran_formula
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__r_cran_formula memberOf Package
+	package hasValue "r-cran-formula"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/gnu-r"
+	installedSize hasValue "239"
+	maintainer hasValue "Original-Dirk Eddelbuettel <edd@debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.2-3-2"
+	fileName hasValue "pool/universe/r/r-cran-formula/r-cran-formula_1.2-3-2_all.deb"
+	size hasValue "178472"
+	md5sum hasValue "ee0e0d4d79117789571c01315fd7a3e1"
+	sha1 hasValue "c2db55965f32019df8488d3b3f4a5d159e1fe38b"
+	sha256 hasValue "e84dde85c02d4d0f073464d2fa7ba97a7789af9ae37536db9a0d8108600db0c9"
+	descriptionMd5 hasValue "20d1356727c95b843b6f1ff89843b462"
+	homepage hasValue "https://cran.r-project.org/package=Formula"
+	depends hasValue "r-base-core (>= 3.5.0-5), r-api-3.5"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "r-base-core"
+	comparison hasValue ">="
+	version hasValue "3.5.0-5"
+
+relationInstance depends(P0__r_cran_formula,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "r-api-3.5"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__r_cran_formula,1,DepAtom__1)
+

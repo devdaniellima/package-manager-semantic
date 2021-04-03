@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libstonith1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libstonith1 memberOf Package
+	package hasValue "libstonith1"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libs"
+	installedSize hasValue "58"
+	maintainer hasValue "Original-Debian HA Maintainers <debian-ha-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.12-15"
+	fileName hasValue "pool/main/c/cluster-glue/libstonith1_1.0.12-15_amd64.deb"
+	size hasValue "12816"
+	md5sum hasValue "fd690587b259785afb1ddd2f615b35d2"
+	sha1 hasValue "b454521b190b888acd815988b75c8c86dd23a032"
+	sha256 hasValue "f489d1f7d1b579da8b49d826a902504174068d5598b8e505d298c7dd1e44b74c"
+	descriptionMd5 hasValue "c6a08201f9eeb4d81c298311e45ae399"
+	homepage hasValue "https://github.com/ClusterLabs/cluster-glue"
+	depends hasValue "libc6 (>= 2.15), libglib2.0-0 (>= 2.12.0), libpils2"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__libstonith1,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libglib2.0-0"
+	comparison hasValue ">="
+	version hasValue "2.12.0"
+
+relationInstance depends(P0__libstonith1,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libpils2"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libstonith1,2,DepAtom__2)
+

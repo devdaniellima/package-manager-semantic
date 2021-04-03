@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology preload
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__preload memberOf Package
+	package hasValue "preload"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/misc"
+	installedSize hasValue "92"
+	maintainer hasValue "Original-Jonathan Carter <jcc@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.6.4-5"
+	fileName hasValue "pool/universe/p/preload/preload_0.6.4-5_amd64.deb"
+	size hasValue "29464"
+	md5sum hasValue "837eb12099de7a7aa3715e55c5c72332"
+	sha1 hasValue "a7a57be18cb5019d80876402617a2e0018a5e4f0"
+	sha256 hasValue "c9edeb944dd2e9774107f26d51d781120aaf08decbe8c58178f391436d4e539f"
+	descriptionMd5 hasValue "e192f5d7089c86a7332913c20a574513"
+	homepage hasValue "http://sourceforge.net/projects/preload"
+	depends hasValue "libc6 (>= 2.29), libglib2.0-0 (>= 2.16.0), lsb-base"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__preload,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libglib2.0-0"
+	comparison hasValue ">="
+	version hasValue "2.16.0"
+
+relationInstance depends(P0__preload,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "lsb-base"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__preload,2,DepAtom__2)
+

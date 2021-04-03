@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology xmms2_plugin_karaoke
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__xmms2_plugin_karaoke memberOf Package
+	package hasValue "xmms2-plugin-karaoke"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/sound"
+	installedSize hasValue "50"
+	maintainer hasValue "Original-Benjamin Drung <bdrung@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.8+dfsg-18.2ubuntu3"
+	fileName hasValue "pool/universe/x/xmms2/xmms2-plugin-karaoke_0.8+dfsg-18.2ubuntu3_amd64.deb"
+	size hasValue "11064"
+	md5sum hasValue "e0301f5bd2cb3c1bf8482c96ba923739"
+	sha1 hasValue "e46679905c19bed1ba6d1324980202ca298f0ed2"
+	sha256 hasValue "f2f68df965af8f8563cfa932fb99c81536d6850f9e11b830206df82f35f9c3ff"
+	description hasValue "XMMS2 - karaoke plug-in"
+	descriptionMd5 hasValue "120a8a1cb47bd9d0e48537895425000e"
+	homepage hasValue "http://xmms2.org/"
+	depends hasValue "xmms2-core (= 0.8+dfsg-18.2ubuntu3), libc6 (>= 2.29), libglib2.0-0 (>= 2.12.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "xmms2-core"
+	comparison hasValue "="
+	version hasValue "0.8+dfsg-18.2ubuntu3"
+
+relationInstance depends(P0__xmms2_plugin_karaoke,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__xmms2_plugin_karaoke,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libglib2.0-0"
+	comparison hasValue ">="
+	version hasValue "2.12.0"
+
+relationInstance depends(P0__xmms2_plugin_karaoke,2,DepAtom__2)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology mlucas
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__mlucas memberOf Package
+	package hasValue "mlucas"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/math"
+	installedSize hasValue "14297"
+	maintainer hasValue "Original-Alex Vong <alexvong1995@gmail.com>"
+	architecture hasValue "amd64"
+	version hasValue "17.1-3ubuntu2"
+	fileName hasValue "pool/universe/m/mlucas/mlucas_17.1-3ubuntu2_amd64.deb"
+	size hasValue "3342580"
+	md5sum hasValue "37787e4b796a97a799f7051cb437cde6"
+	sha1 hasValue "a22d532e461110f6744c8d63ace0217cedeb0adc"
+	sha256 hasValue "1220a1188aeeae7002671512f036868c9b58116b79e5fe0de3eb2f0117860918"
+	descriptionMd5 hasValue "51541a14bea7c38325b8575c6f8ead30"
+	homepage hasValue "https://www.mersenneforum.org/mayer/README.html"
+	depends hasValue "libc6 (>= 2.29), python2"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__mlucas,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python2"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__mlucas,1,DepAtom__1)
+

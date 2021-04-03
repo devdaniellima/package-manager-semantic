@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology inhomog
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__inhomog memberOf Package
+	package hasValue "inhomog"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/science"
+	installedSize hasValue "38"
+	maintainer hasValue "Original-Debian Astro Team <debian-astro-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.1.9.2-1"
+	fileName hasValue "pool/universe/i/inhomog/inhomog_0.1.9.2-1_amd64.deb"
+	size hasValue "7640"
+	md5sum hasValue "a79713b744a626d1ea82d1fbcbbe46ac"
+	sha1 hasValue "5f5ae24085b7d2bb274a9006fa5a4752ee7f5436"
+	sha256 hasValue "2ad82ed284ea4502cadf804c9f3f4679aa26f8b284b2524882048ec62c4f8561"
+	descriptionMd5 hasValue "d0c93d3e28742f466ea9565d98661f44"
+	homepage hasValue "https://bitbucket.org/broukema/inhomog"
+	depends hasValue "libc6 (>= 2.3.4), libinhomog0 (>= 0.1.5)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.3.4"
+
+relationInstance depends(P0__inhomog,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libinhomog0"
+	comparison hasValue ">="
+	version hasValue "0.1.5"
+
+relationInstance depends(P0__inhomog,1,DepAtom__1)
+

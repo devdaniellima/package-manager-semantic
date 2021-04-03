@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology etqw
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__etqw memberOf Package
+	package hasValue "etqw"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "multiverse/games"
+	installedSize hasValue "113"
+	maintainer hasValue "Original-Debian Games Team <pkg-games-devel@lists.alioth.debian.org>"
+	architecture hasValue "i386"
+	version hasValue "64"
+	fileName hasValue "pool/multiverse/g/game-data-packager/etqw_64_i386.deb"
+	size hasValue "21896"
+	md5sum hasValue "093f6714d432e5c2d0891cb62565a9f3"
+	sha1 hasValue "f6b7cd3af8d11d7e50f03556b4c4d6199d1258be"
+	sha256 hasValue "3af7cb8fe13189d794d091e4af371723b751ac41dadb704e37bb1df75cc897d2"
+	descriptionMd5 hasValue "36f2b3fe69063b347eb3b5d032d815b7"
+	homepage hasValue "https://wiki.debian.org/Games/GameDataPackager"
+	depends hasValue "etqw-bin | game-data-packager (>= 44), game-data-packager-runtime (>= 64)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "etqw-bin"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__etqw,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "game-data-packager"
+	comparison hasValue ">="
+	version hasValue "44"
+
+relationInstance depends(P0__etqw,0,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "game-data-packager-runtime"
+	comparison hasValue ">="
+	version hasValue "64"
+
+relationInstance depends(P0__etqw,1,DepAtom__2)
+

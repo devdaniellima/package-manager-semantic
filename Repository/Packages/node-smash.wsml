@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology node_smash
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__node_smash memberOf Package
+	package hasValue "node-smash"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/web"
+	installedSize hasValue "32"
+	maintainer hasValue "Original-Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.0.15-1"
+	fileName hasValue "pool/universe/s/smash/node-smash_0.0.15-1_all.deb"
+	size hasValue "6804"
+	md5sum hasValue "121ee6d56fd9a1c9cefddf6b50c4c567"
+	sha1 hasValue "37efc79a3d06c37c841b0934a706d8f1275064de"
+	sha256 hasValue "c7ca65c41f9856f1c4c10838bd2bfb5f16a66983932866b54c3688afbf09999c"
+	descriptionMd5 hasValue "aeab4fda84d0b372ed4f1b83e6cd206b"
+	homepage hasValue "https://github.com/mbostock/smash"
+	depends hasValue "nodejs (>= 0.10.0), node-optimist (>= 0.3), node-queue-async (>= 1.0.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "nodejs"
+	comparison hasValue ">="
+	version hasValue "0.10.0"
+
+relationInstance depends(P0__node_smash,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "node-optimist"
+	comparison hasValue ">="
+	version hasValue "0.3"
+
+relationInstance depends(P0__node_smash,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "node-queue-async"
+	comparison hasValue ">="
+	version hasValue "1.0.0"
+
+relationInstance depends(P0__node_smash,2,DepAtom__2)
+

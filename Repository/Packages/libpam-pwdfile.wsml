@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libpam_pwdfile
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libpam_pwdfile memberOf Package
+	package hasValue "libpam-pwdfile"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/admin"
+	installedSize hasValue "37"
+	maintainer hasValue "Original-Timo Weingärtner <timo@tiwe.de>"
+	architecture hasValue "amd64"
+	version hasValue "1.0-1build1"
+	fileName hasValue "pool/universe/libp/libpam-pwdfile/libpam-pwdfile_1.0-1build1_amd64.deb"
+	size hasValue "11788"
+	md5sum hasValue "93efb30cac080af180100db5a862f62d"
+	sha1 hasValue "8d4fc94a92c2939d5a4c04bb60b45eb55208b52a"
+	sha256 hasValue "8b28bcb80be29b5dc3927a91e919865d56b1f7ed96151fc207ea8a043ed923cc"
+	descriptionMd5 hasValue "c94cebb47d115f6cc0afcd7203155a04"
+	homepage hasValue "https://github.com/tiwe-de/libpam-pwdfile"
+	depends hasValue "libc6 (>= 2.4), libpam0g (>= 1.1.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libpam_pwdfile,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libpam0g"
+	comparison hasValue ">="
+	version hasValue "1.1.0"
+
+relationInstance depends(P0__libpam_pwdfile,1,DepAtom__1)
+

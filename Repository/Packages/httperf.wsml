@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology httperf
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__httperf memberOf Package
+	package hasValue "httperf"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/web"
+	installedSize hasValue "139"
+	maintainer hasValue "Original-Thorsten Alteholz <debian@alteholz.de>"
+	architecture hasValue "amd64"
+	version hasValue "0.9.0-9"
+	fileName hasValue "pool/universe/h/httperf/httperf_0.9.0-9_amd64.deb"
+	size hasValue "61500"
+	md5sum hasValue "92f0d6937f8204cd5da43a21c892a2ff"
+	sha1 hasValue "d9e1805ae545e429a0486dbb1c852da2c103276c"
+	sha256 hasValue "4a8c0a6de6fa5c1c77ae2539690b9da77a911d922c05faa08ca8de0a63f4e535"
+	descriptionMd5 hasValue "6a97f96f3303865ca9133e3909fb5fe2"
+	homepage hasValue "https://github.com/httperf/httperf"
+	depends hasValue "libc6 (>= 2.15), libssl1.1 (>= 1.1.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__httperf,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libssl1.1"
+	comparison hasValue ">="
+	version hasValue "1.1.0"
+
+relationInstance depends(P0__httperf,1,DepAtom__1)
+

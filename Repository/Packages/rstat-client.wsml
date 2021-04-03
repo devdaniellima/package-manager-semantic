@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology rstat_client
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__rstat_client memberOf Package
+	package hasValue "rstat-client"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "52"
+	maintainer hasValue "Original-Anibal Monsalve Salazar <anibal@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "4.0.1-9"
+	replaces hasValue "netstd"
+	fileName hasValue "pool/universe/r/rstatd/rstat-client_4.0.1-9_amd64.deb"
+	size hasValue "12828"
+	md5sum hasValue "6fb73b7f0566591ce414a5c303587e9b"
+	sha1 hasValue "96e5a7e85bdd0f8f4f503177eda798c604d41d38"
+	sha256 hasValue "f8e8aed3fee5d64b9741ba5b733bfa7d68de8c81fea7f265c102e907be417e2b"
+	descriptionMd5 hasValue "e990ee2decd660442859182a9fb1669a"
+	homepage hasValue "http://rstatd.sourceforge.net/"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__rstat_client,0,DepAtom__0)
+

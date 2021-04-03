@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology nvidia_cg_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__nvidia_cg_dev memberOf Package
+	package hasValue "nvidia-cg-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "multiverse/libdevel"
+	installedSize hasValue "104"
+	maintainer hasValue "Original-Debian NVIDIA Maintainers <pkg-nvidia-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.1.0013-5"
+	replaces hasValue "nvidia-cg-toolkit (<< 3.1.0013-5)"
+	fileName hasValue "pool/multiverse/n/nvidia-cg-toolkit/nvidia-cg-dev_3.1.0013-5_amd64.deb"
+	size hasValue "14628"
+	md5sum hasValue "203a352bdbfef3598dc023c0963b80a1"
+	sha1 hasValue "a04d9485a400f509dca810bff20d44b34cb699a7"
+	sha256 hasValue "34d0589cb10fa26388ede3cf66915eb8f4ea14b476e67afe00570cd0803dc7db"
+	descriptionMd5 hasValue "3bd7edb6deba63f39dbda782c674cdc8"
+	homepage hasValue "https://developer.nvidia.com/cg-toolkit"
+	depends hasValue "libcg (= 3.1.0013-5), libcggl (= 3.1.0013-5)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libcg"
+	comparison hasValue "="
+	version hasValue "3.1.0013-5"
+
+relationInstance depends(P0__nvidia_cg_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libcggl"
+	comparison hasValue "="
+	version hasValue "3.1.0013-5"
+
+relationInstance depends(P0__nvidia_cg_dev,1,DepAtom__1)
+

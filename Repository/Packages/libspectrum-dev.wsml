@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libspectrum_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libspectrum_dev memberOf Package
+	package hasValue "libspectrum-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "645"
+	maintainer hasValue "Original-Alberto Garcia <berto@igalia.com>"
+	architecture hasValue "amd64"
+	version hasValue "1.4.4-1"
+	fileName hasValue "pool/universe/libs/libspectrum/libspectrum-dev_1.4.4-1_amd64.deb"
+	size hasValue "118760"
+	md5sum hasValue "61d2453c43dd001e3e7e1295e79a3061"
+	sha1 hasValue "b3e95ae8b341ae16f109c714e3dc49f5a0cf9efc"
+	sha256 hasValue "b73c6d9de19d693a2c7b525fb4f82e543ce52db91c7f32f75dddd2d2e7f1603c"
+	description hasValue "ZX Spectrum emulator library - Development files"
+	descriptionMd5 hasValue "8c0165fe0df07cb34ea2b31b7fab0596"
+	homepage hasValue "http://fuse-emulator.sourceforge.net/libspectrum.php"
+	depends hasValue "libspectrum8 (= 1.4.4-1), libgcrypt20-dev"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libspectrum8"
+	comparison hasValue "="
+	version hasValue "1.4.4-1"
+
+relationInstance depends(P0__libspectrum_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgcrypt20-dev"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libspectrum_dev,1,DepAtom__1)
+

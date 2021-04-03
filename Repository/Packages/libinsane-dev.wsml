@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libinsane_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libinsane_dev memberOf Package
+	package hasValue "libinsane-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "151"
+	maintainer hasValue "Original-Thomas Perret <thomas.perret@phyx.fr>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.3-1"
+	fileName hasValue "pool/universe/libi/libinsane/libinsane-dev_1.0.3-1_amd64.deb"
+	size hasValue "21904"
+	md5sum hasValue "d7abbdfa8b9e435bf5cf778345741ad6"
+	sha1 hasValue "65c794ca9ce2ef0f240f43067723aeb046e03563"
+	sha256 hasValue "6fa9088a98b54267615838477491f4b83a0e405cebd6143b779476736de6639f"
+	descriptionMd5 hasValue "0d6ad90ed4a65d99737dbad39956b030"
+	homepage hasValue "https://gitlab.gnome.org/World/OpenPaperwork/libinsane"
+	depends hasValue "libinsane1 (= 1.0.3-1), gir1.2-libinsane-1.0 (= 1.0.3-1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libinsane1"
+	comparison hasValue "="
+	version hasValue "1.0.3-1"
+
+relationInstance depends(P0__libinsane_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "gir1.2-libinsane-1.0"
+	comparison hasValue "="
+	version hasValue "1.0.3-1"
+
+relationInstance depends(P0__libinsane_dev,1,DepAtom__1)
+

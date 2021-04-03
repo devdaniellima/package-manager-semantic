@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology pd_hexloader
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__pd_hexloader memberOf Package
+	package hasValue "pd-hexloader"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/sound"
+	installedSize hasValue "38"
+	maintainer hasValue "Original-Debian Multimedia Maintainers <debian-multimedia@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.7-2"
+	fileName hasValue "pool/universe/p/pd-hexloader/pd-hexloader_1.7-2_amd64.deb"
+	size hasValue "12084"
+	md5sum hasValue "6db6e71e8130d3cf8b000596b705a7cb"
+	sha1 hasValue "8b26ec62de25ff14126666606e946471191528e6"
+	sha256 hasValue "2a1880469947c71bce8196223a1c2cc6875663f1a81eed151c24a0830ef88b66"
+	descriptionMd5 hasValue "c1b6a63301146ad62cb7d9478662e49b"
+	homepage hasValue "https://download.puredata.info/hexloader"
+	depends hasValue "libc6 (>= 2.4), puredata | pd"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__pd_hexloader,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "puredata"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__pd_hexloader,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "pd"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__pd_hexloader,1,DepAtom__2)
+

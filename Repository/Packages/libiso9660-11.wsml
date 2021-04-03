@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libiso9660_11
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libiso9660_11 memberOf Package
+	package hasValue "libiso9660-11"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "204"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.0.0-2"
+	fileName hasValue "pool/universe/libc/libcdio/libiso9660-11_2.0.0-2_amd64.deb"
+	size hasValue "21740"
+	md5sum hasValue "ad059a36097002ff1c3b4d8e5a7a745f"
+	sha1 hasValue "0c39192b37307b41733e74fa1cf25fdd00690c8e"
+	sha256 hasValue "f8b8269f1b045ea9e839a170c6761845e4a0268adb19082f7f39bb7cb2ea2eb9"
+	descriptionMd5 hasValue "57aea526cfae6bd2ad0a8b688de0f4db"
+	homepage hasValue "http://www.gnu.org/software/libcdio/"
+	depends hasValue "libc6 (>= 2.14), libcdio18 (>= 2.0.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libiso9660_11,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libcdio18"
+	comparison hasValue ">="
+	version hasValue "2.0.0"
+
+relationInstance depends(P0__libiso9660_11,1,DepAtom__1)
+

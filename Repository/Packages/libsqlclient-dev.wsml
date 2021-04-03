@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libsqlclient_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libsqlclient_dev memberOf Package
+	package hasValue "libsqlclient-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "445"
+	maintainer hasValue "Original-Debian GNUstep maintainers <pkg-gnustep-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.8.1-3build5"
+	fileName hasValue "pool/universe/g/gnustep-sqlclient/libsqlclient-dev_1.8.1-3build5_amd64.deb"
+	size hasValue "45220"
+	md5sum hasValue "f81a12b3adb433aee47e106a6bdf1a68"
+	sha1 hasValue "f264e4c0d8cfe4fcbb6d7ebd361fb0891105e20d"
+	sha256 hasValue "9adc7f1e7cba19e4723130a300b6ad0d81feb32135d7ece152fcd74f207f89c3"
+	descriptionMd5 hasValue "20dc98222e76383718b2f93e2d5a637b"
+	homepage hasValue "http://gnustep.org"
+	depends hasValue "libsqlclient1.8 (= 1.8.1-3build5), libgnustep-base-dev"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libsqlclient1.8"
+	comparison hasValue "="
+	version hasValue "1.8.1-3build5"
+
+relationInstance depends(P0__libsqlclient_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgnustep-base-dev"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libsqlclient_dev,1,DepAtom__1)
+

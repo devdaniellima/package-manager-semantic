@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology bzr_git
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__bzr_git memberOf Package
+	package hasValue "bzr-git"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/vcs"
+	installedSize hasValue "11"
+	maintainer hasValue "Original-Debian Bazaar Maintainers <pkg-bazaar-maint@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.6.13+bzr1650+brz2"
+	conflicts hasValue "bzr (<< 2.7.0+bzr6622+brz)"
+	fileName hasValue "pool/universe/b/bzr-git/bzr-git_0.6.13+bzr1650+brz2_all.deb"
+	size hasValue "2776"
+	md5sum hasValue "13b7a7dd84fef1d8f55ffd4fb755b100"
+	sha1 hasValue "19e689bd248d7e85d175a3ae3e05e9e87e6e9a96"
+	sha256 hasValue "9d58cc8a6e12109c67f22b606b7d1ad68d3370918569aef26198a6aeed970973"
+	description hasValue "pacote fictício (\"dummy\") de transição"
+	descriptionMd5 hasValue "223565a8f6e3bf09cb273f5c36e49fa4"
+	homepage hasValue "http://bazaar-vcs.org/BzrForeignBranches/Git"
+	depends hasValue "brz, python3-dulwich"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "brz"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__bzr_git,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3-dulwich"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__bzr_git,1,DepAtom__1)
+

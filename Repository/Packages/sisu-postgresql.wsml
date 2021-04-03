@@ -1,0 +1,81 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology sisu_postgresql
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__sisu_postgresql memberOf Package
+	package hasValue "sisu-postgresql"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/text"
+	installedSize hasValue "96"
+	maintainer hasValue "Original-SiSU Project <sisu@lists.sisudoc.org>"
+	architecture hasValue "all"
+	version hasValue "7.2.0-1"
+	fileName hasValue "pool/universe/s/sisu/sisu-postgresql_7.2.0-1_all.deb"
+	size hasValue "4184"
+	md5sum hasValue "e245cba63ca4d961431eb46c33f1d71b"
+	sha1 hasValue "858fc0659a510b88c1b15000acb03d2679fd3fef"
+	sha256 hasValue "f92c044c1c8fbb594d2102df18c9fc5e78f900c14307f3037013ba3cbb20bc9b"
+	descriptionMd5 hasValue "7a6674bc4b84f5d1c6713c76af86e4a4"
+	homepage hasValue "http://www.sisudoc.org/"
+	depends hasValue "postgresql, ruby | ruby-interpreter, ruby-pg, sisu (= 7.2.0-1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "postgresql"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__sisu_postgresql,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "ruby"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__sisu_postgresql,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "ruby-interpreter"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__sisu_postgresql,1,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "ruby-pg"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__sisu_postgresql,2,DepAtom__3)
+
+instance DepAtom__4 memberOf DependencyAtom
+	package hasValue "sisu"
+	comparison hasValue "="
+	version hasValue "7.2.0-1"
+
+relationInstance depends(P0__sisu_postgresql,3,DepAtom__4)
+

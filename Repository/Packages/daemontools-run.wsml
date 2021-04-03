@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology daemontools_run
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__daemontools_run memberOf Package
+	package hasValue "daemontools-run"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "39"
+	maintainer hasValue "Original-Gerrit Pape <pape@smarden.org>"
+	architecture hasValue "all"
+	version hasValue "1:0.76-7"
+	conflicts hasValue "runit"
+	fileName hasValue "pool/universe/d/daemontools/daemontools-run_0.76-7_all.deb"
+	size hasValue "6144"
+	md5sum hasValue "b2c67d024c951e0adf9eb5e7a675bb42"
+	sha1 hasValue "1376cfe081f23b588fb2935bd9f90386050a2d58"
+	sha256 hasValue "a02944fb14393c2f326e8b7053426ef3087a4d7a5b240ca2751b26377a1235d1"
+	description hasValue "supervisor de serviços Daemontools"
+	descriptionMd5 hasValue "f5516980fc0d550aab9df706d83da11b"
+	depends hasValue "daemontools (>> 1:0.76)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "daemontools"
+	comparison hasValue ">>"
+	version hasValue "1:0.76"
+
+relationInstance depends(P0__daemontools_run,0,DepAtom__0)
+

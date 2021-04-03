@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology shush
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__shush memberOf Package
+	package hasValue "shush"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/admin"
+	installedSize hasValue "117"
+	maintainer hasValue "Original-Dario Minnucci <midget@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.2.3-5"
+	fileName hasValue "pool/universe/s/shush/shush_1.2.3-5_amd64.deb"
+	size hasValue "47856"
+	md5sum hasValue "c4835d8eac8fd3bfe3894c87984b0d29"
+	sha1 hasValue "d8acd971818a67e732e193ac2685c6074e59f385"
+	sha256 hasValue "19f3f5475f2a2c2b2ba00266caf38fb7c615f9c6c2e78e5da5159eaa11300203"
+	descriptionMd5 hasValue "07f83147e8da5456419a57f2ccbc2767"
+	homepage hasValue "http://web.taranis.org/shush/"
+	depends hasValue "libc6 (>= 2.14), libpcre3"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__shush,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libpcre3"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__shush,1,DepAtom__1)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology runoverssh
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__runoverssh memberOf Package
+	package hasValue "runoverssh"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "26"
+	maintainer hasValue "Original-YuLun Shih <shih@yulun.me>"
+	architecture hasValue "all"
+	version hasValue "3.0.3-1"
+	fileName hasValue "pool/universe/r/runoverssh/runoverssh_3.0.3-1_all.deb"
+	size hasValue "6352"
+	md5sum hasValue "05d1204bbcebbafdbb7910d17e9c2c71"
+	sha1 hasValue "368999bb5d02585b5e52604bc04b0a6daaec09af"
+	sha256 hasValue "a3225521dd81baedbbbbb20175ed71dc475b17cb036ae6d40098cdbf0ae5b1ce"
+	descriptionMd5 hasValue "92fd331aa465c8657242d92203974732"
+	homepage hasValue "https://github.com/yuriescl/runoverssh"
+	depends hasValue "bash (>= 4), ssh"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "bash"
+	comparison hasValue ">="
+	version hasValue "4"
+
+relationInstance depends(P0__runoverssh,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "ssh"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__runoverssh,1,DepAtom__1)
+

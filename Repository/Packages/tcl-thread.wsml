@@ -1,0 +1,63 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology tcl_thread
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__tcl_thread memberOf Package
+	package hasValue "tcl-thread"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/interpreters"
+	installedSize hasValue "222"
+	maintainer hasValue "Original-Sergei Golovan <sgolovan@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:2.8.5-1"
+	replaces hasValue "tclthread"
+	provides hasValue "tclthread"
+	conflicts hasValue "tclthread"
+	fileName hasValue "pool/universe/t/tclthread/tcl-thread_2.8.5-1_amd64.deb"
+	size hasValue "83084"
+	md5sum hasValue "f7b100054e3b4f9421a8f045c2d5ea49"
+	sha1 hasValue "e1a9dc2f3e2c4cc09d88e5df7ed7c891c5c45800"
+	sha256 hasValue "a99b4b80cb16ef15ab4c7494046b625dc22ae8cc13aaba5fa12341c03e121552"
+	descriptionMd5 hasValue "0980999f856ce1483e3a3fea8b41a9ac"
+	homepage hasValue "http://tcl.sourceforge.net/"
+	depends hasValue "libc6 (>= 2.14), tcl (>= 8.6.0-2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__tcl_thread,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "tcl"
+	comparison hasValue ">="
+	version hasValue "8.6.0-2"
+
+relationInstance depends(P0__tcl_thread,1,DepAtom__1)
+

@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology cl_sql_oracle
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__cl_sql_oracle memberOf Package
+	package hasValue "cl-sql-oracle"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "multiverse/devel"
+	installedSize hasValue "121"
+	maintainer hasValue "Original-Kevin M. Rosenberg <kmr@debian.org>"
+	architecture hasValue "all"
+	version hasValue "6.7.0-1.1build2"
+	provides hasValue "cl-sql-backend"
+	fileName hasValue "pool/multiverse/c/cl-sql/cl-sql-oracle_6.7.0-1.1build2_all.deb"
+	size hasValue "23808"
+	md5sum hasValue "0fe128d020afe94cf60b435e62b8faf3"
+	sha1 hasValue "725a4e8a5ef77c49821394625e7a1e3b2d66b384"
+	sha256 hasValue "6e9978fd3a7ec38e2a33bb3843b9a8135359cd7555c755aea70b5e6edc05b026"
+	description hasValue "mecanismo de banco de dados CLSQL, Oracle"
+	descriptionMd5 hasValue "e2fa54c009744a1533f5486a15f863e6"
+	homepage hasValue "http://clsql.kpe.io/"
+	depends hasValue "cl-sql (= 6.7.0-1.1build2), cl-sql-uffi (>= 6.7.0-1.1build2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "cl-sql"
+	comparison hasValue "="
+	version hasValue "6.7.0-1.1build2"
+
+relationInstance depends(P0__cl_sql_oracle,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "cl-sql-uffi"
+	comparison hasValue ">="
+	version hasValue "6.7.0-1.1build2"
+
+relationInstance depends(P0__cl_sql_oracle,1,DepAtom__1)
+

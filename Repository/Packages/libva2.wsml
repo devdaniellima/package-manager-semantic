@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libva2
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libva2 memberOf Package
+	package hasValue "libva2"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "190"
+	maintainer hasValue "Original-Debian Multimedia Maintainers <debian-multimedia@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.7.0-2"
+	provides hasValue "libva-driver-abi-1.0, libva-driver-abi-1.1, libva-driver-abi-1.2, libva-driver-abi-1.3, libva-driver-abi-1.4, libva-driver-abi-1.5, libva-driver-abi-1.6, libva-driver-abi-1.7"
+	fileName hasValue "pool/universe/libv/libva/libva2_2.7.0-2_amd64.deb"
+	size hasValue "53532"
+	md5sum hasValue "a604eb8550c8a927823b8b558ffd5d3c"
+	sha1 hasValue "e96e732e1e1e240921c00ba0e39b62097364681d"
+	sha256 hasValue "3fb6c7ca117cc4889215769001e512cb839971498dae06ef1ac3769815d304d3"
+	descriptionMd5 hasValue "20074d33b9248804eb2fa6108a8c34c8"
+	homepage hasValue "https://01.org/linuxmedia/vaapi"
+	depends hasValue "libc6 (>= 2.7)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__libva2,0,DepAtom__0)
+

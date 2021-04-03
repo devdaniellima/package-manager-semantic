@@ -1,0 +1,75 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology jed
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__jed memberOf Package
+	package hasValue "jed"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/editors"
+	installedSize hasValue "361"
+	maintainer hasValue "Original-Wookey <wookey@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:0.99.19-7build1"
+	provides hasValue "editor, info-browser, mail-reader"
+	fileName hasValue "pool/universe/j/jed/jed_0.99.19-7build1_amd64.deb"
+	size hasValue "131508"
+	md5sum hasValue "dbe15785e618bfdb7e7104c01120fb37"
+	sha1 hasValue "ee484916fdc51615e65c47486888f14c17f27f14"
+	sha256 hasValue "3a41a0a2ba71fce3ce5ce2567884d033c2164f13029539814c99f2486fd2154b"
+	descriptionMd5 hasValue "0817fb02c803282d7aef2e219c951fa9"
+	homepage hasValue "http://www.jedsoft.org/jed/"
+	depends hasValue "libc6 (>= 2.27), libgpm2 (>= 1.20.7), libslang2 (>= 2.2.4), jed-common (= 1:0.99.19-7build1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.27"
+
+relationInstance depends(P0__jed,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgpm2"
+	comparison hasValue ">="
+	version hasValue "1.20.7"
+
+relationInstance depends(P0__jed,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libslang2"
+	comparison hasValue ">="
+	version hasValue "2.2.4"
+
+relationInstance depends(P0__jed,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "jed-common"
+	comparison hasValue "="
+	version hasValue "1:0.99.19-7build1"
+
+relationInstance depends(P0__jed,3,DepAtom__3)
+

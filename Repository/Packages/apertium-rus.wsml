@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology apertium_rus
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__apertium_rus memberOf Package
+	package hasValue "apertium-rus"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/science"
+	installedSize hasValue "26882"
+	maintainer hasValue "Original-Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.2.0~r82706-1"
+	fileName hasValue "pool/universe/a/apertium-rus/apertium-rus_0.2.0~r82706-1_all.deb"
+	size hasValue "4977044"
+	md5sum hasValue "f34b66df1ab5192f7da78fdfdb8bcb91"
+	sha1 hasValue "6e079b2d19fdbf564f76ccaa032dd42c33f0abea"
+	sha256 hasValue "d495685387ec1a1817aebbb3a4be01bd2ea799688552202b4efc82c274520a7c"
+	descriptionMd5 hasValue "6189392198b4a80b2cb352c4ff9de28b"
+	homepage hasValue "https://apertium.org/"
+	depends hasValue "apertium (>= 3.4), cg3"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "apertium"
+	comparison hasValue ">="
+	version hasValue "3.4"
+
+relationInstance depends(P0__apertium_rus,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "cg3"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__apertium_rus,1,DepAtom__1)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology astyle
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__astyle memberOf Package
+	package hasValue "astyle"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "768"
+	maintainer hasValue "Original-Matteo Cypriani <mcy@lm7.fr>"
+	architecture hasValue "amd64"
+	version hasValue "3.1-2build1"
+	fileName hasValue "pool/universe/a/astyle/astyle_3.1-2build1_amd64.deb"
+	size hasValue "201236"
+	md5sum hasValue "d33298052c94727f2fe04fe2aad03772"
+	sha1 hasValue "b264ff67250978ca3786829e877bc11213e2a14e"
+	sha256 hasValue "8de009c706fe7ebb3c23a286ece10c4bb74692a445cedf4c013cce463c8a77ce"
+	descriptionMd5 hasValue "8df5aba4629c6ca17e967f878cb634ad"
+	homepage hasValue "http://astyle.sourceforge.net/"
+	depends hasValue "libc6 (>= 2.14), libstdc++6 (>= 9)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__astyle,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "9"
+
+relationInstance depends(P0__astyle,1,DepAtom__1)
+

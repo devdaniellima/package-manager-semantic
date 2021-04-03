@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology wesnoth_1Dot14_did
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__wesnoth_1Dot14_did memberOf Package
+	package hasValue "wesnoth-1.14-did"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/games"
+	installedSize hasValue "6524"
+	maintainer hasValue "Original-Debian Games Team <pkg-games-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1:1.14.9-1ubuntu5"
+	fileName hasValue "pool/universe/w/wesnoth-1.14/wesnoth-1.14-did_1.14.9-1ubuntu5_all.deb"
+	size hasValue "4607876"
+	md5sum hasValue "90ce3fbe1bac4753f5c1cb05c667061a"
+	sha1 hasValue "2315c012690cc0a8496b72805f5f293178bd4d04"
+	sha256 hasValue "4810687fb5b77d0ee367fe85551627e536c02f8c08ac46db9578ecc928dadf20"
+	description hasValue "\"Descent Into Darkness\" official campaign for Wesnoth (branch 1.14)"
+	descriptionMd5 hasValue "8f60caa63deed4cf63809a491d4fe0f9"
+	homepage hasValue "http://wesnoth.org/"
+	depends hasValue "wesnoth-1.14-core (>= 1:1.14), wesnoth-1.14-core (<< 1:1.15)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "wesnoth-1.14-core"
+	comparison hasValue ">="
+	version hasValue "1:1.14"
+
+relationInstance depends(P0__wesnoth_1Dot14_did,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "wesnoth-1.14-core"
+	comparison hasValue "<<"
+	version hasValue "1:1.15"
+
+relationInstance depends(P0__wesnoth_1Dot14_did,1,DepAtom__1)
+

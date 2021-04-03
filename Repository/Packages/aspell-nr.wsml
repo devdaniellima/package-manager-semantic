@@ -1,0 +1,59 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology aspell_nr
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__aspell_nr memberOf Package
+	package hasValue "aspell-nr"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/text"
+	installedSize hasValue "63"
+	maintainer hasValue "Matthias Klose <doko@ubuntu.com>"
+	architecture hasValue "all"
+	version hasValue "20070206-4ubuntu3"
+	fileName hasValue "pool/universe/d/dict-nr/aspell-nr_20070206-4ubuntu3_all.deb"
+	size hasValue "41856"
+	md5sum hasValue "01497c8a6bfac1f345e6c965f91645d9"
+	sha1 hasValue "26473bbb9a17045cf5c502a5b89b0359a7d4b303"
+	sha256 hasValue "66fad6b137d9223f16b7d6799a9cb99b56712c6e0c51e234229a3d9bf621a4e8"
+	descriptionMd5 hasValue "190f6e331cbfa65a5ca22e4f749eb52e"
+	depends hasValue "aspell (>= 0.60.3-3), dictionaries-common (>= 0.49.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "aspell"
+	comparison hasValue ">="
+	version hasValue "0.60.3-3"
+
+relationInstance depends(P0__aspell_nr,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "dictionaries-common"
+	comparison hasValue ">="
+	version hasValue "0.49.2"
+
+relationInstance depends(P0__aspell_nr,1,DepAtom__1)
+

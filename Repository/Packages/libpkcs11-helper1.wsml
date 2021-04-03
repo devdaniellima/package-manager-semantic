@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libpkcs11_helper1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libpkcs11_helper1 memberOf Package
+	package hasValue "libpkcs11-helper1"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libs"
+	installedSize hasValue "152"
+	maintainer hasValue "Original-Debian OpenSC Maintainers <pkg-opensc-maint@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.26-1"
+	fileName hasValue "pool/main/p/pkcs11-helper/libpkcs11-helper1_1.26-1_amd64.deb"
+	size hasValue "44272"
+	md5sum hasValue "58dfa64c8ffb707649bb335a397d9564"
+	sha1 hasValue "b0f95f8eeaae2a96f27c779397566b663aa0ae6b"
+	sha256 hasValue "e15cc5189a3c3436d4a0613b35c40277f4aad5ff65fd0f4fefeb658bf533db58"
+	description hasValue "Biblioteca que simplifica a interação com o PKCS#11"
+	descriptionMd5 hasValue "884da81648ff96b4214f90a93ca61a83"
+	homepage hasValue "https://github.com/OpenSC/pkcs11-helper"
+	depends hasValue "libc6 (>= 2.7), libssl1.1 (>= 1.1.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__libpkcs11_helper1,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libssl1.1"
+	comparison hasValue ">="
+	version hasValue "1.1.0"
+
+relationInstance depends(P0__libpkcs11_helper1,1,DepAtom__1)
+

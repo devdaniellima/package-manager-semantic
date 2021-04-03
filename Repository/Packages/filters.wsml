@@ -1,0 +1,56 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology filters
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__filters memberOf Package
+	package hasValue "filters"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/games"
+	installedSize hasValue "445"
+	maintainer hasValue "Original-Marius Gavrilescu <marius@ieval.ro>"
+	architecture hasValue "amd64"
+	version hasValue "2.55-3build1"
+	replaces hasValue "filters-nonfree"
+	conflicts hasValue "filters-nonfree"
+	fileName hasValue "pool/universe/f/filters/filters_2.55-3build1_amd64.deb"
+	size hasValue "121844"
+	md5sum hasValue "1867aeed3bc66c746299735d4d8d124b"
+	sha1 hasValue "4d8b9207615bb0024592654a9c052bccaf63ffba"
+	sha256 hasValue "9e87741d0ea894df06ea8a176cd91ce7d617189079be1896730b93d6fabc6123"
+	description hasValue "collected filters, including B1FF and the Swedish Chef"
+	descriptionMd5 hasValue "19e1e21ae9762fb7f799265d97a1bd0c"
+	homepage hasValue "http://joeyh.name/code/filters/"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__filters,0,DepAtom__0)
+

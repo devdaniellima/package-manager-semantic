@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python3_pytestqt
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python3_pytestqt memberOf Package
+	package hasValue "python3-pytestqt"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "151"
+	maintainer hasValue "Original-Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "3.2.2-1ubuntu1"
+	fileName hasValue "pool/universe/p/pytest-qt/python3-pytestqt_3.2.2-1ubuntu1_all.deb"
+	size hasValue "31236"
+	md5sum hasValue "82b15437a420583c55874fdc21fa9c58"
+	sha1 hasValue "daa46a1cd1a76044eabcb548f96fb395165e25e1"
+	sha256 hasValue "59737634846d960143b346acb8f62cf57ebd7d988c605c7dc595453c4ed6894e"
+	descriptionMd5 hasValue "a478c40a60749b4bd37ea666938e02f8"
+	homepage hasValue "https://github.com/pytest-dev/pytest-qt"
+	depends hasValue "python3-pytest (>= 2.7.0), python3:any"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3-pytest"
+	comparison hasValue ">="
+	version hasValue "2.7.0"
+
+relationInstance depends(P0__python3_pytestqt,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__python3_pytestqt,1,DepAtom__1)
+

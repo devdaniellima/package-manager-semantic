@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libsnmpkit_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libsnmpkit_dev memberOf Package
+	package hasValue "libsnmpkit-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "562"
+	maintainer hasValue "Original-A Mennucc1 <mennucc1@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.9-16ubuntu2"
+	fileName hasValue "pool/universe/s/snmpkit/libsnmpkit-dev_0.9-16ubuntu2_amd64.deb"
+	size hasValue "85132"
+	md5sum hasValue "43d1786bd85fede9eb2051ff02b79195"
+	sha1 hasValue "4c7a215abd299c8538d9b8a110b0510977bcd1b7"
+	sha256 hasValue "89ae6423ff9c3ae6170033f0a5bb4093dbef5586c32f1f7f9c7123fd18abc60c"
+	description hasValue "biblioteca de conexão SNMP multithread"
+	descriptionMd5 hasValue "1062e6285974866cb732d9af3b219491"
+	depends hasValue "libsnmpkit2v5 (= 0.9-16ubuntu2), libc6-dev"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libsnmpkit2v5"
+	comparison hasValue "="
+	version hasValue "0.9-16ubuntu2"
+
+relationInstance depends(P0__libsnmpkit_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6-dev"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libsnmpkit_dev,1,DepAtom__1)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology dvdbackup
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__dvdbackup memberOf Package
+	package hasValue "dvdbackup"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "242"
+	maintainer hasValue "Original-Stephen Gran <sgran@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.4.2-4build2"
+	fileName hasValue "pool/universe/d/dvdbackup/dvdbackup_0.4.2-4build2_amd64.deb"
+	size hasValue "42044"
+	md5sum hasValue "d117a6d951c007af5d49e6d1b4973c79"
+	sha1 hasValue "fe9a6671872b830a8e3a951a930188b51e2522e1"
+	sha256 hasValue "8068992de1a3010b46ab10b8149622e77a04683a056dc22972e2aca2b8c24f92"
+	descriptionMd5 hasValue "b4879cb8d0f49e81b7b69c9613032cb1"
+	homepage hasValue "http://dvdbackup.sourceforge.net"
+	depends hasValue "libc6 (>= 2.4), libdvdread7 (>= 4.1.3-4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__dvdbackup,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libdvdread7"
+	comparison hasValue ">="
+	version hasValue "4.1.3-4"
+
+relationInstance depends(P0__dvdbackup,1,DepAtom__1)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology apt_venv
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__apt_venv memberOf Package
+	package hasValue "apt-venv"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "41"
+	maintainer hasValue "Leo Iannacone <l3on@ubuntu.com>"
+	architecture hasValue "all"
+	version hasValue "1.0.0-2"
+	fileName hasValue "pool/universe/a/apt-venv/apt-venv_1.0.0-2_all.deb"
+	size hasValue "7572"
+	md5sum hasValue "e33782a82f1a3b8f2577aead673d7cb3"
+	sha1 hasValue "51c816ba49891360f48e157af2714ab3b0d867f0"
+	sha256 hasValue "3a28b64a960ba861c85809c9469c58e87e75b6b9d07c09b288a933aefce13750"
+	descriptionMd5 hasValue "998def5b4f6b78bf45ded0d7b7dbad36"
+	homepage hasValue "https://github.com/LeoIannacone/apt-venv"
+	depends hasValue "python3-xdg, python3:any (>= 3.3.2-2~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3-xdg"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__apt_venv,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ">="
+	version hasValue "3.3.2-2~"
+
+relationInstance depends(P0__apt_venv,1,DepAtom__1)
+

@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology lua_rex_pcre
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__lua_rex_pcre memberOf Package
+	package hasValue "lua-rex-pcre"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/interpreters"
+	installedSize hasValue "95"
+	maintainer hasValue "Original-Enrico Tassi <gareuselesinge@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.7.2-4build2"
+	provides hasValue "lua5.1-rex-pcre, lua5.2-rex-pcre"
+	fileName hasValue "pool/universe/l/lua-rexlib/lua-rex-pcre_2.7.2-4build2_amd64.deb"
+	size hasValue "18000"
+	md5sum hasValue "4bb6253e5d9f32d1cefb72a234fde40f"
+	sha1 hasValue "d6bb2dd18037073182b97f36e2bdc88e1a764e53"
+	sha256 hasValue "f4ee2b247b2be0cb23a72e95cd666f7ca530760e3a751fd1dd76aeef76166297"
+	descriptionMd5 hasValue "8a5222caa42784792e7bd7950ed63c55"
+	homepage hasValue "http://lrexlib.luaforge.net/"
+	depends hasValue "libc6 (>= 2.14), libpcre3"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__lua_rex_pcre,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libpcre3"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__lua_rex_pcre,1,DepAtom__1)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ruby_pastel
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ruby_pastel memberOf Package
+	package hasValue "ruby-pastel"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/ruby"
+	installedSize hasValue "50"
+	maintainer hasValue "Original-Debian Ruby Extras Maintainers <pkg-ruby-extras-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.7.3-2"
+	fileName hasValue "pool/universe/r/ruby-pastel/ruby-pastel_0.7.3-2_all.deb"
+	size hasValue "13316"
+	md5sum hasValue "e9fc628f9685ebb39114b6225ea179c6"
+	sha1 hasValue "8c5cf1e888681eb2a00cd1337ad0d2b6b13b3736"
+	sha256 hasValue "221a6c8ca07d8e52d86a85fc5ab18abada4f3b8406bdb9c7b9d440633598efff"
+	descriptionMd5 hasValue "01d2ad6d66def9085ad03cbfff447b78"
+	homepage hasValue "https://piotrmurach.github.io/tty/"
+	depends hasValue "ruby-equatable (>= 0.6), ruby-tty-color (>= 0.5)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "ruby-equatable"
+	comparison hasValue ">="
+	version hasValue "0.6"
+
+relationInstance depends(P0__ruby_pastel,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "ruby-tty-color"
+	comparison hasValue ">="
+	version hasValue "0.5"
+
+relationInstance depends(P0__ruby_pastel,1,DepAtom__1)
+

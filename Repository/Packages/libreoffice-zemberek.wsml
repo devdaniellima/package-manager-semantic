@@ -1,0 +1,76 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libreoffice_zemberek
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libreoffice_zemberek memberOf Package
+	package hasValue "libreoffice-zemberek"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/text"
+	installedSize hasValue "86"
+	maintainer hasValue "Original-Rail Aliev <rail@i-rs.ru>"
+	architecture hasValue "all"
+	version hasValue "1.0~rc2-10.4"
+	provides hasValue "libreoffice-hyphenation-tr, libreoffice-spellcheck-tr"
+	conflicts hasValue "libreoffice-core (<< 1:3.0.0~)"
+	fileName hasValue "pool/universe/z/zemberek-ooo/libreoffice-zemberek_1.0~rc2-10.4_all.deb"
+	size hasValue "24372"
+	md5sum hasValue "eb0b2fdf3749646cccf3633cd0b5c9be"
+	sha1 hasValue "b768db320d2c93e443902d0c09838f9d62e13282"
+	sha256 hasValue "ac811cf24842089429df0252b08043d3d3891b103f2453ae641ea592592da094"
+	descriptionMd5 hasValue "6609beab52ffc09d95070076e6b1fb65"
+	homepage hasValue "http://code.google.com/p/zemberek/"
+	depends hasValue "libreoffice-core (>= 2.3), libreoffice-java-common (>= 2.3), libzemberek-java, libzemberek-tr-java"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libreoffice-core"
+	comparison hasValue ">="
+	version hasValue "2.3"
+
+relationInstance depends(P0__libreoffice_zemberek,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libreoffice-java-common"
+	comparison hasValue ">="
+	version hasValue "2.3"
+
+relationInstance depends(P0__libreoffice_zemberek,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libzemberek-java"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libreoffice_zemberek,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "libzemberek-tr-java"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libreoffice_zemberek,3,DepAtom__3)
+

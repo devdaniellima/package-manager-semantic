@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology yorick_yeti
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__yorick_yeti memberOf Package
+	package hasValue "yorick-yeti"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/math"
+	installedSize hasValue "404"
+	maintainer hasValue "Original-Debian Science Maintainers <debian-science-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "6.4.0-1"
+	fileName hasValue "pool/universe/y/yorick-yeti/yorick-yeti_6.4.0-1_amd64.deb"
+	size hasValue "127616"
+	md5sum hasValue "f1034514db75c713ee1a3c583f54a7ed"
+	sha1 hasValue "fa4a17a7b3d364b616406d6dd4f0af27bbccecd0"
+	sha256 hasValue "275da56e15d91d78bd3f657bce16bf6aee17282aa0828afc721967e1654fc567"
+	descriptionMd5 hasValue "7991d30503524de8a5c88a020ca795a3"
+	homepage hasValue "https://cral.univ-lyon1.fr/labo/perso/eric.thiebaut/?Software/Yeti"
+	depends hasValue "yorick (>= 2.1.06), libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "yorick"
+	comparison hasValue ">="
+	version hasValue "2.1.06"
+
+relationInstance depends(P0__yorick_yeti,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__yorick_yeti,1,DepAtom__1)
+

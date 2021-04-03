@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libcdaudio_dbg
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libcdaudio_dbg memberOf Package
+	package hasValue "libcdaudio-dbg"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/devel"
+	installedSize hasValue "94"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.99.12p2-14"
+	fileName hasValue "pool/universe/libc/libcdaudio/libcdaudio-dbg_0.99.12p2-14_amd64.deb"
+	size hasValue "72110"
+	md5sum hasValue "5923dd604a3f76a20ac9a8106c83e370"
+	sha1 hasValue "1d777b3a6ee1283a2e37d8b106cb43b24a7b3acc"
+	sha256 hasValue "d568031c1457db4b90e40d1e030b27a4831d134905fefd18df19afd8d7c6555f"
+	description hasValue "library for controlling a CD-ROM when playing audio CDs (debug)"
+	descriptionMd5 hasValue "990c4d101f84dfcd8587f69add2ae30a"
+	homepage hasValue "http://libcdaudio.sourceforge.net/"
+	depends hasValue "libcdaudio-dev (= 0.99.12p2-14), libcdaudio1 (= 0.99.12p2-14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libcdaudio-dev"
+	comparison hasValue "="
+	version hasValue "0.99.12p2-14"
+
+relationInstance depends(P0__libcdaudio_dbg,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libcdaudio1"
+	comparison hasValue "="
+	version hasValue "0.99.12p2-14"
+
+relationInstance depends(P0__libcdaudio_dbg,1,DepAtom__1)
+

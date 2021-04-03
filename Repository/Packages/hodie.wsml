@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology hodie
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__hodie memberOf Package
+	package hasValue "hodie"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/science"
+	installedSize hasValue "60"
+	maintainer hasValue "Original-Christian T. Steigies <cts@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.5.0-1"
+	fileName hasValue "pool/universe/h/hodie/hodie_1.5.0-1_amd64.deb"
+	size hasValue "16912"
+	md5sum hasValue "627569ca0bc7b6ddef3deac18e017755"
+	sha1 hasValue "fbd782b85db51ef719266e5ff21fbdfd0eb065ba"
+	sha256 hasValue "ffea61948f82d05dc719c2b29741c763ba699ac21094b07b49485cbd41c69354"
+	descriptionMd5 hasValue "e300479a03383e2068c1db8d7020015b"
+	homepage hasValue "https://github.com/michiexile/hodie/"
+	depends hasValue "libc6 (>= 2.7)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__hodie,0,DepAtom__0)
+

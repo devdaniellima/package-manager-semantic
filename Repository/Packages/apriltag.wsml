@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology apriltag
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__apriltag memberOf Package
+	package hasValue "apriltag"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "34"
+	maintainer hasValue "Original-Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.10.0-6build1"
+	fileName hasValue "pool/universe/a/apriltag/apriltag_0.10.0-6build1_amd64.deb"
+	size hasValue "7756"
+	md5sum hasValue "464f4f86ba32dae1641742dd4b0325ba"
+	sha1 hasValue "47ef4e519ade1ead77dcdf329a621a7d8bfacf15"
+	sha256 hasValue "0169afde974262eb364e11a5f89c77b1cb254c0d20de4882f60ea71bab402213"
+	descriptionMd5 hasValue "b4695a58506d4b4e758c51e8acc5986b"
+	homepage hasValue "https://april.eecs.umich.edu/software/apriltag.html"
+	depends hasValue "libapriltag1 (= 0.10.0-6build1), libc6 (>= 2.4), libfreeimage3"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libapriltag1"
+	comparison hasValue "="
+	version hasValue "0.10.0-6build1"
+
+relationInstance depends(P0__apriltag,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__apriltag,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libfreeimage3"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__apriltag,2,DepAtom__2)
+

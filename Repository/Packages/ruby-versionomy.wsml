@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ruby_versionomy
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ruby_versionomy memberOf Package
+	package hasValue "ruby-versionomy"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/ruby"
+	installedSize hasValue "215"
+	maintainer hasValue "Original-Debian Ruby Extras Maintainers <pkg-ruby-extras-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.5.0-2"
+	fileName hasValue "pool/universe/r/ruby-versionomy/ruby-versionomy_0.5.0-2_all.deb"
+	size hasValue "39954"
+	md5sum hasValue "f839b7780cb9777cf8c1df39583769de"
+	sha1 hasValue "372addc61c4aa5709b96332b8ec03fff290e72be"
+	sha256 hasValue "ed384cef01185786bd323e29ee51f853bee163f8b76e1cf68cd7fee8e0177304"
+	descriptionMd5 hasValue "579d0c8a56089e738bc04dbdd477bf1c"
+	homepage hasValue "http://dazuma.github.com/versionomy"
+	depends hasValue "ruby | ruby-interpreter, ruby-blockenspiel (>= 0.5)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "ruby"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ruby_versionomy,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "ruby-interpreter"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ruby_versionomy,0,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "ruby-blockenspiel"
+	comparison hasValue ">="
+	version hasValue "0.5"
+
+relationInstance depends(P0__ruby_versionomy,1,DepAtom__2)
+

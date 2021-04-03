@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology garmin_forerunner_tools
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__garmin_forerunner_tools memberOf Package
+	package hasValue "garmin-forerunner-tools"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/utils"
+	installedSize hasValue "653"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.10repacked-11"
+	fileName hasValue "pool/universe/g/garmin-forerunner-tools/garmin-forerunner-tools_0.10repacked-11_amd64.deb"
+	size hasValue "99524"
+	md5sum hasValue "aca15edf5af34cdc2f3ddd7babed447f"
+	sha1 hasValue "e7c30543f455b0ad7c553c004129f7778b49372e"
+	sha256 hasValue "2a6ebf578c9a8bcb425e973fcac86b91396c071546ac2278cf9dc1fe6e155ca8"
+	descriptionMd5 hasValue "d8bacd2a04be1f86793bf0d2b78db39d"
+	homepage hasValue "http://garmintools.googlecode.com"
+	depends hasValue "libc6 (>= 2.14), libusb-1.0-0 (>= 2:1.0.8), libusb-1.0-0-dev"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__garmin_forerunner_tools,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libusb-1.0-0"
+	comparison hasValue ">="
+	version hasValue "2:1.0.8"
+
+relationInstance depends(P0__garmin_forerunner_tools,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libusb-1.0-0-dev"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__garmin_forerunner_tools,2,DepAtom__2)
+

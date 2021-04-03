@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology node_ci_info
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__node_ci_info memberOf Package
+	package hasValue "node-ci-info"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/javascript"
+	installedSize hasValue "19"
+	maintainer hasValue "Original-Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.0.0-1"
+	fileName hasValue "pool/universe/n/node-ci-info/node-ci-info_2.0.0-1_all.deb"
+	size hasValue "6452"
+	md5sum hasValue "5e1c506799be7715b68fc4992189937c"
+	sha1 hasValue "b3559ccb4e84cbebdf7893ff38683f2f207a1066"
+	sha256 hasValue "d5ab321a2c9f264944299cfca8528ffbb3db845ba6aeb4b9f18356baf1486c9b"
+	descriptionMd5 hasValue "1e108dc8d3ea57789b98231b15db1d59"
+	homepage hasValue "https://github.com/watson/ci-info"
+	depends hasValue "nodejs (>= 10)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "nodejs"
+	comparison hasValue ">="
+	version hasValue "10"
+
+relationInstance depends(P0__node_ci_info,0,DepAtom__0)
+

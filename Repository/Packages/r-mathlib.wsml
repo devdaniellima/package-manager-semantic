@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology r_mathlib
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__r_mathlib memberOf Package
+	package hasValue "r-mathlib"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/math"
+	installedSize hasValue "2664"
+	maintainer hasValue "Original-Dirk Eddelbuettel <edd@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.6.3-2"
+	fileName hasValue "pool/universe/r/r-base/r-mathlib_3.6.3-2_amd64.deb"
+	size hasValue "1855936"
+	md5sum hasValue "37021c32aba1184ac6a849e04f70fd8d"
+	sha1 hasValue "4e3621f2fc4d7571dd5e81cd3413e0f285ccf2af"
+	sha256 hasValue "084f6c8106f5703da58db3477f0e09a2d058c247c0bcbd8746656d119ce0e722"
+	descriptionMd5 hasValue "fda173ca22c9952d304064d107a71c22"
+	homepage hasValue "http://www.r-project.org/"
+	depends hasValue "libc6 (>= 2.29)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__r_mathlib,0,DepAtom__0)
+

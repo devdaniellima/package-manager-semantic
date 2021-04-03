@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology med_physics
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__med_physics memberOf Package
+	package hasValue "med-physics"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/misc"
+	installedSize hasValue "42"
+	maintainer hasValue "Original-Debian Med Packaging Team <debian-med-packaging@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "3.5.1"
+	fileName hasValue "pool/universe/d/debian-med/med-physics_3.5.1_all.deb"
+	size hasValue "3596"
+	md5sum hasValue "0708fd73f10726b6bed1710f99dcbf4f"
+	sha1 hasValue "5fc21216294519da48cfa9d458b2fc8a788ac996"
+	sha256 hasValue "00d05e2ad04a161387c6bcaa37055455a4a06867d54b7fcac2c835d329c6c22b"
+	description hasValue "pacotes Debian Med para médicos"
+	descriptionMd5 hasValue "003114348b0e7da001da82d84afb76b7"
+	depends hasValue "med-config (= 3.5.1), med-tasks (= 3.5.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "med-config"
+	comparison hasValue "="
+	version hasValue "3.5.1"
+
+relationInstance depends(P0__med_physics,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "med-tasks"
+	comparison hasValue "="
+	version hasValue "3.5.1"
+
+relationInstance depends(P0__med_physics,1,DepAtom__1)
+

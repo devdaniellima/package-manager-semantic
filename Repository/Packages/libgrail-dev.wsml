@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libgrail_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libgrail_dev memberOf Package
+	package hasValue "libgrail-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "38"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.1.1-2build1"
+	fileName hasValue "pool/universe/g/grail/libgrail-dev_3.1.1-2build1_amd64.deb"
+	size hasValue "6700"
+	md5sum hasValue "7ab2321e21abc4b775d8588361e998c9"
+	sha1 hasValue "34f34a9b3eeaf155ef374abd843f2597b15408a4"
+	sha256 hasValue "f16e7fa193d92d5db2a3b2195d504063251e5283ffa543c23c32960126d8aaa4"
+	descriptionMd5 hasValue "aaa7fea4cee4953a0ab1a52e4a02990c"
+	homepage hasValue "https://launchpad.net/grail"
+	depends hasValue "libframe-dev, libgrail6 (= 3.1.1-2build1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libframe-dev"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libgrail_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgrail6"
+	comparison hasValue "="
+	version hasValue "3.1.1-2build1"
+
+relationInstance depends(P0__libgrail_dev,1,DepAtom__1)
+

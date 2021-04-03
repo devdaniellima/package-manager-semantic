@@ -1,0 +1,69 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology psmisc
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__psmisc memberOf Package
+	package hasValue "psmisc"
+	packageSource hasValue Source__S1
+	priority hasValue "standard"
+	section hasValue "admin"
+	installedSize hasValue "284"
+	maintainer hasValue "Original-Craig Small <csmall@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "23.3-1"
+	replaces hasValue "procps (<< 1:1.2)"
+	fileName hasValue "pool/main/p/psmisc/psmisc_23.3-1_amd64.deb"
+	size hasValue "53300"
+	md5sum hasValue "68d326b3135e63f520b73f6dd26974b9"
+	sha1 hasValue "e652c08402cd9bbd7feb9ee669fd35a7f2c4c241"
+	sha256 hasValue "72c43a4bf46c4aeee5fdab5af47b7c2bbfdb5be1b8388e90b864e5c0c4a8d3f6"
+	description hasValue "utilitários que usam o sistema de arquivos proc"
+	descriptionMd5 hasValue "f223601d881677b6b3cc176c4915b053"
+	homepage hasValue "http://psmisc.sf.net/"
+	depends hasValue "libc6 (>= 2.14), libselinux1 (>= 1.32), libtinfo6 (>= 6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__psmisc,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libselinux1"
+	comparison hasValue ">="
+	version hasValue "1.32"
+
+relationInstance depends(P0__psmisc,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libtinfo6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__psmisc,2,DepAtom__2)
+

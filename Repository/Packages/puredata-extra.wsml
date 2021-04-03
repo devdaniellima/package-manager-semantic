@@ -1,0 +1,69 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology puredata_extra
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__puredata_extra memberOf Package
+	package hasValue "puredata-extra"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/sound"
+	installedSize hasValue "412"
+	maintainer hasValue "Original-Debian Multimedia Maintainers <debian-multimedia@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.50.2-3"
+	replaces hasValue "puredata (<< 0.43)"
+	fileName hasValue "pool/universe/p/puredata/puredata-extra_0.50.2-3_amd64.deb"
+	size hasValue "97696"
+	md5sum hasValue "9577e42da712d369389da69f6e015845"
+	sha1 hasValue "55a401b020872f0260ad2d930d7312932e7409fb"
+	sha256 hasValue "ed8aec7278eb84d27556dfb392b21d6039b8cdecf4b0ccadf16d0a3bccf06297"
+	description hasValue "realtime computer music and graphics system - extra files"
+	descriptionMd5 hasValue "cfd2137b07d9db2a81f24f68a06c88e5"
+	homepage hasValue "https://puredata.info"
+	depends hasValue "libc6 (>= 2.14), puredata-core (>= 0.50.2-3), puredata-core (<< 0.50.2+1~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__puredata_extra,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "puredata-core"
+	comparison hasValue ">="
+	version hasValue "0.50.2-3"
+
+relationInstance depends(P0__puredata_extra,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "puredata-core"
+	comparison hasValue "<<"
+	version hasValue "0.50.2+1~"
+
+relationInstance depends(P0__puredata_extra,2,DepAtom__2)
+

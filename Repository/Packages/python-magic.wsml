@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python_magic
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python_magic memberOf Package
+	package hasValue "python-magic"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/python"
+	installedSize hasValue "42"
+	maintainer hasValue "Original-Christoph Biedl <debian.axhn@manchmal.in-ulm.de>"
+	architecture hasValue "all"
+	version hasValue "Python-2.7"
+	provides hasValue "python2.7-magic"
+	fileName hasValue "pool/universe/p/python-magic/python-magic_0.4.15-3_all.deb"
+	size hasValue "9308"
+	md5sum hasValue "9f3019568d9dd20f808b729592c21ad0"
+	sha1 hasValue "38b5f2e3e11a9e0c5fc62b1698b4d5f37ee52564"
+	sha256 hasValue "51344cb3a668a9d6035164687161d971f10bac84994b27e40dd1f73b9af863f9"
+	descriptionMd5 hasValue "41d722658abf09c7e84323e9cf21538a"
+	homepage hasValue "https://github.com/ahupp/python-magic/"
+	depends hasValue "python2:any (<< 2.8), python2:any (>= 2.7~), libmagic1"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue "<<"
+	version hasValue "2.8"
+
+relationInstance depends(P0__python_magic,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue ">="
+	version hasValue "2.7~"
+
+relationInstance depends(P0__python_magic,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libmagic1"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__python_magic,2,DepAtom__2)
+

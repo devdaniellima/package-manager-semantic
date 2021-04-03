@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libp11_3
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libp11_3 memberOf Package
+	package hasValue "libp11-3"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libs"
+	installedSize hasValue "94"
+	maintainer hasValue "Original-Debian OpenSC Maintainers <pkg-opensc-maint@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.4.10-1"
+	replaces hasValue "libp11-2"
+	fileName hasValue "pool/main/libp/libp11/libp11-3_0.4.10-1_amd64.deb"
+	size hasValue "25448"
+	md5sum hasValue "6420bc2f87c96eb9d2aee58b02e6d4c7"
+	sha1 hasValue "d3e9a33767752e05d4bb4cbb53d827f856ef1a75"
+	sha256 hasValue "c52c35c9cb2b53e5891d1f79dda3d10d57e62c87fe8e9c70d450fa24a41c9051"
+	descriptionMd5 hasValue "c1bc0ac5ee7b3b8ed3f9341c5678a0cb"
+	homepage hasValue "https://github.com/OpenSC/libp11"
+	depends hasValue "libc6 (>= 2.14), libssl1.1 (>= 1.1.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libp11_3,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libssl1.1"
+	comparison hasValue ">="
+	version hasValue "1.1.1"
+
+relationInstance depends(P0__libp11_3,1,DepAtom__1)
+

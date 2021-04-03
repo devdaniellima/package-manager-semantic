@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology mpack
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__mpack memberOf Package
+	package hasValue "mpack"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/mail"
+	installedSize hasValue "94"
+	maintainer hasValue "Original-Anibal Monsalve Salazar <anibal@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.6-8.2"
+	fileName hasValue "pool/universe/m/mpack/mpack_1.6-8.2_amd64.deb"
+	size hasValue "35452"
+	md5sum hasValue "24f9ad455e0340d684968d78b8d08e61"
+	sha1 hasValue "e57ae8ce6c848c049129c1d2a25ae1fffd356250"
+	sha256 hasValue "52c3c6f3bc8339ce46d7e3d3ff1fc54746d1ec4a0bb851733b75b51f198b0f5c"
+	description hasValue "ferramentas para codificar/decodificar mensagens MIME"
+	descriptionMd5 hasValue "6101ce5c05ff67298326006e9ef48dc9"
+	homepage hasValue "ftp://ftp.andrew.cmu.edu/pub/mpack/"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__mpack,0,DepAtom__0)
+

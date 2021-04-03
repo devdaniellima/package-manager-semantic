@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology librdf_storage_mysql
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__librdf_storage_mysql memberOf Package
+	package hasValue "librdf-storage-mysql"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "99"
+	maintainer hasValue "Original-Dave Beckett <dajobe@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.17-1.1ubuntu1"
+	replaces hasValue "librdf0 (<< 1.0.9-3)"
+	fileName hasValue "pool/universe/r/redland/librdf-storage-mysql_1.0.17-1.1ubuntu1_amd64.deb"
+	size hasValue "19004"
+	md5sum hasValue "eb7cdb8c6e9f2d850bdc4a30ba01f220"
+	sha1 hasValue "a1ed47b5543e6c19b2a19e8215ae8462dc01fec9"
+	sha256 hasValue "740792135b09753e72c1306c50d7c294383bbf1351043f41ad4c70c6184dc74f"
+	descriptionMd5 hasValue "9e7a87dd310e5dc60d6b8be80c6fead7"
+	homepage hasValue "http://librdf.org/"
+	depends hasValue "libc6 (>= 2.14), libmysqlclient21 (>= 8.0.11), librdf0 (>= 1.0.17)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__librdf_storage_mysql,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libmysqlclient21"
+	comparison hasValue ">="
+	version hasValue "8.0.11"
+
+relationInstance depends(P0__librdf_storage_mysql,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "librdf0"
+	comparison hasValue ">="
+	version hasValue "1.0.17"
+
+relationInstance depends(P0__librdf_storage_mysql,2,DepAtom__2)
+

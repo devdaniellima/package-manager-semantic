@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libmbedx509_0
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libmbedx509_0 memberOf Package
+	package hasValue "libmbedx509-0"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "155"
+	maintainer hasValue "Original-James Cowgill <jcowgill@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.16.4-1ubuntu2"
+	fileName hasValue "pool/universe/m/mbedtls/libmbedx509-0_2.16.4-1ubuntu2_amd64.deb"
+	size hasValue "42256"
+	md5sum hasValue "bb2ec0ad5a5c82c60a656ca3110980c1"
+	sha1 hasValue "b55f471b9fd3e0b8eec54ee82defc7b6785518ab"
+	sha256 hasValue "7e48586a98bf2e4e0e70dccdf6d19acc3827566e4238922befdf456afd0e3475"
+	descriptionMd5 hasValue "e9e538e6b46c494f6f91769598986fce"
+	homepage hasValue "https://tls.mbed.org/"
+	depends hasValue "libc6 (>= 2.14), libmbedcrypto3 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libmbedx509_0,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libmbedcrypto3"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libmbedx509_0,1,DepAtom__1)
+

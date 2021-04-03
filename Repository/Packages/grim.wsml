@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology grim
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__grim memberOf Package
+	package hasValue "grim"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/x11"
+	installedSize hasValue "48"
+	maintainer hasValue "Original-Sway and related packages team <team+swaywm@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.3.0+ds-1"
+	fileName hasValue "pool/universe/g/grim/grim_1.3.0+ds-1_amd64.deb"
+	size hasValue "13056"
+	md5sum hasValue "ce0a0d7a4f461f828150554fb5ee14ec"
+	sha1 hasValue "7c988e9470d1637e434dc2bbc7b0ff7edaefb722"
+	sha256 hasValue "edebf3e27b0c9bcf7a1ba4bbf35152f0d28eefdef880f7f79e0a0596a4c25e2f"
+	descriptionMd5 hasValue "58ff81024c1e940fd1ba2e303bfc9286"
+	homepage hasValue "https://wayland.emersion.fr/grim/"
+	depends hasValue "libc6 (>= 2.17), libcairo2 (>= 1.2.4), libwayland-client0 (>= 1.9.91)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.17"
+
+relationInstance depends(P0__grim,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libcairo2"
+	comparison hasValue ">="
+	version hasValue "1.2.4"
+
+relationInstance depends(P0__grim,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libwayland-client0"
+	comparison hasValue ">="
+	version hasValue "1.9.91"
+
+relationInstance depends(P0__grim,2,DepAtom__2)
+

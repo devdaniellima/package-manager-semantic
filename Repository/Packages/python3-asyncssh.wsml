@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python3_asyncssh
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python3_asyncssh memberOf Package
+	package hasValue "python3-asyncssh"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "1065"
+	maintainer hasValue "Original-Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.12.2-1"
+	fileName hasValue "pool/universe/p/python-asyncssh/python3-asyncssh_1.12.2-1_all.deb"
+	size hasValue "152324"
+	md5sum hasValue "3b027c58e55f04ebc961444a881d266b"
+	sha1 hasValue "599bfb1b6732cde8510a9de1a8d4108781397c3c"
+	sha256 hasValue "e7a9d5ea55c0f4a009752a475ef00d194d1489b5cc29c032f3d4f6cb36bbe0d4"
+	descriptionMd5 hasValue "ea709ca614c3167bf115b4408f4f223d"
+	homepage hasValue "https://github.com/ronf/asyncssh"
+	depends hasValue "python3-cryptography (>= 1.5), python3:any (>= 3.3.2-2~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3-cryptography"
+	comparison hasValue ">="
+	version hasValue "1.5"
+
+relationInstance depends(P0__python3_asyncssh,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ">="
+	version hasValue "3.3.2-2~"
+
+relationInstance depends(P0__python3_asyncssh,1,DepAtom__1)
+

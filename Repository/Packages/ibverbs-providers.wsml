@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ibverbs_providers
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ibverbs_providers memberOf Package
+	package hasValue "ibverbs-providers"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "net"
+	installedSize hasValue "889"
+	maintainer hasValue "Original-Benjamin Drung <benjamin.drung@cloud.ionos.com>"
+	architecture hasValue "amd64"
+	version hasValue "28.0-1ubuntu1"
+	replaces hasValue "libipathverbs1 (<< 15), libmlx4-1 (<< 15), libmlx5-1 (<< 15), libmthca1 (<< 15)"
+	provides hasValue "libefa1, libipathverbs1, libmlx4-1, libmlx5-1, libmthca1"
+	fileName hasValue "pool/main/r/rdma-core/ibverbs-providers_28.0-1ubuntu1_amd64.deb"
+	size hasValue "232488"
+	md5sum hasValue "60767d1fb12066de804772ff2b995e02"
+	sha1 hasValue "4624689436fc5b3d83ca107cebebca97c7667af0"
+	sha256 hasValue "df4907eee048b15c2816ad72262a3867fe89810e1d0353410243ccb07d989c55"
+	descriptionMd5 hasValue "9721015313d569f3a2a4e5be9c7c4152"
+	homepage hasValue "https://github.com/linux-rdma/rdma-core"
+	depends hasValue "libc6 (>= 2.14), libibverbs1 (>= 25)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__ibverbs_providers,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libibverbs1"
+	comparison hasValue ">="
+	version hasValue "25"
+
+relationInstance depends(P0__ibverbs_providers,1,DepAtom__1)
+

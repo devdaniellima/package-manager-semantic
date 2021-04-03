@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology abootimg
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__abootimg memberOf Package
+	package hasValue "abootimg"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/admin"
+	installedSize hasValue "42"
+	maintainer hasValue "Original-Heiko Stuebner <mmind@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.6-1build1"
+	fileName hasValue "pool/universe/a/abootimg/abootimg_0.6-1build1_amd64.deb"
+	size hasValue "14152"
+	md5sum hasValue "4d270beffa7786141a5f24dc6e773bc1"
+	sha1 hasValue "cea2e8814802b203ed61f701082336eb26f72d63"
+	sha256 hasValue "5c911099aa61771fee5b6a51c978cdcd8582cc624a7c1c8f6be487ac31897b80"
+	descriptionMd5 hasValue "44be41a806690df16e9af0e9fe965a7a"
+	homepage hasValue "http://gitorious.org/ac100/abootimg"
+	depends hasValue "libc6 (>= 2.22)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.22"
+
+relationInstance depends(P0__abootimg,0,DepAtom__0)
+

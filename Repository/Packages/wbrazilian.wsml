@@ -1,0 +1,69 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology wbrazilian
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__wbrazilian memberOf Package
+	package hasValue "wbrazilian"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "text"
+	installedSize hasValue "3033"
+	maintainer hasValue "Original-Agustin Martin Domingo <agmartin@debian.org>"
+	architecture hasValue "all"
+	version hasValue "3.0~beta4-22"
+	provides hasValue "wordlist"
+	fileName hasValue "pool/main/b/br.ispell/wbrazilian_3.0~beta4-22_all.deb"
+	size hasValue "457816"
+	md5sum hasValue "0ef86afe82d1fed15f475815f0225c8b"
+	sha1 hasValue "f649f732718b132459bcc068c3a4856651fb2042"
+	sha256 hasValue "fe5e3cf734a1be1bb8035681eec56e3e2cdd5cde8c5800e810deeaa84043b531"
+	description hasValue "lista de palavras em português do Brasil"
+	descriptionMd5 hasValue "97bc43f03ee25fe7a6834ff99e6b46fd"
+	homepage hasValue "http://www.ime.usp.br/~ueda/br.ispell/"
+	depends hasValue "debconf (>= 0.5) | debconf-2.0, dictionaries-common (>= 1.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "debconf"
+	comparison hasValue ">="
+	version hasValue "0.5"
+
+relationInstance depends(P0__wbrazilian,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "debconf-2.0"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__wbrazilian,0,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "dictionaries-common"
+	comparison hasValue ">="
+	version hasValue "1.0"
+
+relationInstance depends(P0__wbrazilian,1,DepAtom__2)
+

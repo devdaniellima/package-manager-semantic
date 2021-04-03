@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology smalt
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__smalt memberOf Package
+	package hasValue "smalt"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/science"
+	installedSize hasValue "311"
+	maintainer hasValue "Original-Debian Med Packaging Team <debian-med-packaging@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.7.6-9"
+	fileName hasValue "pool/universe/s/smalt/smalt_0.7.6-9_amd64.deb"
+	size hasValue "113728"
+	md5sum hasValue "aead9464819ec2f6790fb777541867aa"
+	sha1 hasValue "ab28b6b00f5660147d64f2dc6b9422cc5d0da743"
+	sha256 hasValue "e74125c02aede1bc4df27843f33deca3e7b2d6cadec09499630685eb3fe22d43"
+	descriptionMd5 hasValue "da0bc05ee32e6ad65fb07ec4330d5b6d"
+	homepage hasValue "https://www.sanger.ac.uk/science/tools/smalt-0"
+	depends hasValue "libbambamc0, libc6 (>= 2.29), zlib1g (>= 1:1.2.0.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libbambamc0"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__smalt,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__smalt,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "zlib1g"
+	comparison hasValue ">="
+	version hasValue "1:1.2.0.2"
+
+relationInstance depends(P0__smalt,2,DepAtom__2)
+

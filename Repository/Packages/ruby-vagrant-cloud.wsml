@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ruby_vagrant_cloud
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ruby_vagrant_cloud memberOf Package
+	package hasValue "ruby-vagrant-cloud"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/ruby"
+	installedSize hasValue "51"
+	maintainer hasValue "Original-Debian Ruby Extras Maintainers <pkg-ruby-extras-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.0.3-1"
+	fileName hasValue "pool/universe/r/ruby-vagrant-cloud/ruby-vagrant-cloud_2.0.3-1_all.deb"
+	size hasValue "9228"
+	md5sum hasValue "4b9f2829dc14f397b06275f6d814311c"
+	sha1 hasValue "38c96c6bb6620f0db832751ba29bc3ef84004580"
+	sha256 hasValue "200aee829fb9334d94d3c7a6b4117d3386c6a7f6e2a136c6acee22ab447b243e"
+	descriptionMd5 hasValue "7471799ffef80ac99196c093654860d4"
+	homepage hasValue "https://github.com/hashicorp/vagrant_cloud"
+	depends hasValue "ruby | ruby-interpreter, ruby-rest-client (>= 2.0.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "ruby"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ruby_vagrant_cloud,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "ruby-interpreter"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ruby_vagrant_cloud,0,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "ruby-rest-client"
+	comparison hasValue ">="
+	version hasValue "2.0.2"
+
+relationInstance depends(P0__ruby_vagrant_cloud,1,DepAtom__2)
+

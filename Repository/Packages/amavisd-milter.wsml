@@ -1,0 +1,70 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology amavisd_milter
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__amavisd_milter memberOf Package
+	package hasValue "amavisd-milter"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/mail"
+	installedSize hasValue "110"
+	maintainer hasValue "Original-Harald Jenny <harald@a-little-linux-box.at>"
+	architecture hasValue "amd64"
+	version hasValue "1.5.0-5"
+	replaces hasValue "amavisd-new-milter (<= 1:2.6.4-2)"
+	provides hasValue "amavisd-new-milter"
+	fileName hasValue "pool/universe/a/amavisd-milter/amavisd-milter_1.5.0-5_amd64.deb"
+	size hasValue "32072"
+	md5sum hasValue "6bd02a33c9cb849de186ad9e9cb225dd"
+	sha1 hasValue "1513e59a5d03b437a5ab3bbfddfba884635d82b5"
+	sha256 hasValue "d9c3214828c97bbd62b6fd1b7fdb8ad219a297cf7dbfeb00a957b485a5336668"
+	description hasValue "interface amavisd-new para MTAs com recurso milter"
+	descriptionMd5 hasValue "5aa8c00571da46088afa733d6b6dc007"
+	homepage hasValue "http://amavisd-milter.sourceforge.net/"
+	depends hasValue "libc6 (>= 2.15), libmilter1.0.1 (>= 8.14.3-9.5), amavisd-new"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__amavisd_milter,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libmilter1.0.1"
+	comparison hasValue ">="
+	version hasValue "8.14.3-9.5"
+
+relationInstance depends(P0__amavisd_milter,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "amavisd-new"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__amavisd_milter,2,DepAtom__2)
+

@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology lua_rex_posix
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__lua_rex_posix memberOf Package
+	package hasValue "lua-rex-posix"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/interpreters"
+	installedSize hasValue "75"
+	maintainer hasValue "Original-Enrico Tassi <gareuselesinge@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.7.2-4build2"
+	provides hasValue "lua5.1-rex-posix, lua5.2-rex-posix"
+	fileName hasValue "pool/universe/l/lua-rexlib/lua-rex-posix_2.7.2-4build2_amd64.deb"
+	size hasValue "14404"
+	md5sum hasValue "02e425e81c52f67aa10dae1253eff588"
+	sha1 hasValue "ec61edf438b4bdccc73a49ea56c6cda58ab2dce0"
+	sha256 hasValue "15d94cc8ea617cb1ef229735f4df5e3f95263679f6ed8cd27ad2ff3c1a2a0daf"
+	descriptionMd5 hasValue "f05db483a2b452fa9c196b1dbfaecfac"
+	homepage hasValue "http://lrexlib.luaforge.net/"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__lua_rex_posix,0,DepAtom__0)
+

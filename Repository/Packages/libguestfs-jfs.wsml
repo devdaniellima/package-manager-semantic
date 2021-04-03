@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libguestfs_jfs
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libguestfs_jfs memberOf Package
+	package hasValue "libguestfs-jfs"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/libs"
+	installedSize hasValue "29"
+	maintainer hasValue "Original-Debian Libvirt Maintainers <pkg-libvirt-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:1.40.2-7ubuntu5"
+	fileName hasValue "pool/universe/libg/libguestfs/libguestfs-jfs_1.40.2-7ubuntu5_amd64.deb"
+	size hasValue "1768"
+	md5sum hasValue "8acc8d5f0d562db7af98641bcea40c83"
+	sha1 hasValue "807ff834e4f88cf88d64210617b8250ffcd9abb6"
+	sha256 hasValue "b6da80dbaeba756620adff1beaf6a28a568a8f4daf21453ce83453342fa33b4f"
+	description hasValue "guest disk image management system - JFS support"
+	descriptionMd5 hasValue "2cf12cd0b9c814fb6d57655217a75732"
+	homepage hasValue "http://libguestfs.org"
+	depends hasValue "libguestfs0 (= 1:1.40.2-7ubuntu5), jfsutils"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libguestfs0"
+	comparison hasValue "="
+	version hasValue "1:1.40.2-7ubuntu5"
+
+relationInstance depends(P0__libguestfs_jfs,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "jfsutils"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libguestfs_jfs,1,DepAtom__1)
+

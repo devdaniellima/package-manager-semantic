@@ -1,0 +1,75 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ecb
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ecb memberOf Package
+	package hasValue "ecb"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "3785"
+	maintainer hasValue "Balint Reczey <rbalint@ubuntu.com>"
+	architecture hasValue "all"
+	version hasValue "2.50+git20170628-1"
+	conflicts hasValue "cedet, cedet-common, cogre"
+	fileName hasValue "pool/universe/e/ecb/ecb_2.50+git20170628-1_all.deb"
+	size hasValue "607964"
+	md5sum hasValue "57588078851a6ca69c5fd02ce03c83ab"
+	sha1 hasValue "cbd86d4ab8d96e9bd5fd314ce34d68343e64f300"
+	sha256 hasValue "542a6b04dad56d24fc1e29c4efed087cd48a07d28f0a75ea0c636be81153702a"
+	descriptionMd5 hasValue "eb01e05dbb8fd69368b80ec471810c0c"
+	homepage hasValue "http://ecb.sourceforge.net"
+	depends hasValue "emacs | emacsen, dpkg (>= 1.15.4) | install-info"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "emacs"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ecb,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "emacsen"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ecb,0,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "dpkg"
+	comparison hasValue ">="
+	version hasValue "1.15.4"
+
+relationInstance depends(P0__ecb,1,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "install-info"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ecb,1,DepAtom__3)
+

@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libosp5
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libosp5 memberOf Package
+	package hasValue "libosp5"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "2367"
+	maintainer hasValue "Original-Neil Roeth <neil@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.5.2-13ubuntu3"
+	fileName hasValue "pool/universe/o/opensp/libosp5_1.5.2-13ubuntu3_amd64.deb"
+	size hasValue "652364"
+	md5sum hasValue "b55203c4b52f675a9c55d98fdadeb1a7"
+	sha1 hasValue "46bddfea73fe623c6227008d6c791524cc952d62"
+	sha256 hasValue "c9c91d308e83bcd261481a8c3bc5322776a2ce281dd4d7247a800e42a05f87e8"
+	description hasValue "biblioteca em tempo de execução para a suite SP do grupo OpenJade"
+	descriptionMd5 hasValue "3ba5bab58b5ec24657f78e068cf12ad2"
+	depends hasValue "libc6 (>= 2.14), libgcc-s1 (>= 3.0), libstdc++6 (>= 5)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libosp5,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgcc-s1"
+	comparison hasValue ">="
+	version hasValue "3.0"
+
+relationInstance depends(P0__libosp5,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "5"
+
+relationInstance depends(P0__libosp5,2,DepAtom__2)
+

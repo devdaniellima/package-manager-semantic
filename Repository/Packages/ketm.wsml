@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ketm
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ketm memberOf Package
+	package hasValue "ketm"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/games"
+	installedSize hasValue "192"
+	maintainer hasValue "Original-Debian Games Team <pkg-games-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.0.6-24"
+	fileName hasValue "pool/universe/k/ketm/ketm_0.0.6-24_amd64.deb"
+	size hasValue "77692"
+	md5sum hasValue "6d9507bbd2ccdb695d875835e15660f6"
+	sha1 hasValue "f74d4d96bcbb36f756f012f5aa3ffeab1137ca53"
+	sha256 hasValue "b4fed2cf70703bc76f8ad87cbe6f5403969f206f07bbb4d90444374d95809670"
+	description hasValue "atirador rolável 2D da velha guarda"
+	descriptionMd5 hasValue "a6dd792c82fedff6d6f75a7bd2b958eb"
+	homepage hasValue "http://sourceforge.net/projects/ketm-gg"
+	depends hasValue "ketm-data (= 0.0.6-24), libc6 (>= 2.7), libsdl1.2debian (>= 1.2.11)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "ketm-data"
+	comparison hasValue "="
+	version hasValue "0.0.6-24"
+
+relationInstance depends(P0__ketm,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__ketm,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libsdl1.2debian"
+	comparison hasValue ">="
+	version hasValue "1.2.11"
+
+relationInstance depends(P0__ketm,2,DepAtom__2)
+

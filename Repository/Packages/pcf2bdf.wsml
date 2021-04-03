@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology pcf2bdf
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__pcf2bdf memberOf Package
+	package hasValue "pcf2bdf"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/x11"
+	installedSize hasValue "46"
+	maintainer hasValue "Original-Jonas Smedegaard <dr@jones.dk>"
+	architecture hasValue "amd64"
+	version hasValue "1.05-1build2"
+	fileName hasValue "pool/universe/p/pcf2bdf/pcf2bdf_1.05-1build2_amd64.deb"
+	size hasValue "13340"
+	md5sum hasValue "adcf63a587199ef670be511691c62a5e"
+	sha1 hasValue "9abc01ef8567bca4a2cdc0a66e5ca4da37ef7cea"
+	sha256 hasValue "b0d968001a36e9fb8ea7ce6188ecc686db58af64031cae37620c03cf0a6c07b0"
+	description hasValue "converte fonte X11 do formato PCF para o BDF"
+	descriptionMd5 hasValue "c12f958eea214c2b213330674fb91549"
+	homepage hasValue "https://github.com/ganaware/pcf2bdf"
+	depends hasValue "libc6 (>= 2.4), libstdc++6 (>= 4.9)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__pcf2bdf,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "4.9"
+
+relationInstance depends(P0__pcf2bdf,1,DepAtom__1)
+

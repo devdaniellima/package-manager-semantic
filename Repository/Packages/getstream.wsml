@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology getstream
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__getstream memberOf Package
+	package hasValue "getstream"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/net"
+	installedSize hasValue "120"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "20100616-1build2"
+	fileName hasValue "pool/universe/g/getstream/getstream_20100616-1build2_amd64.deb"
+	size hasValue "36104"
+	md5sum hasValue "309b9d1154e024f2bb0a0c8d48eb27ff"
+	sha1 hasValue "27908f9e803e9ab7335bef8eff1bb075d03cfe04"
+	sha256 hasValue "5d2a28a77d8c7148b2a9b092abfa3b4de7da2d367ec6c36afb5df9d35b176934"
+	descriptionMd5 hasValue "870f28d960d09c9377bec095b8a75b6f"
+	homepage hasValue "http://silicon-verl.de/home/flo/projects/streaming/"
+	depends hasValue "libc6 (>= 2.14), libevent-2.1-7 (>= 2.1.8-stable), libglib2.0-0 (>= 2.24.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__getstream,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libevent-2.1-7"
+	comparison hasValue ">="
+	version hasValue "2.1.8-stable"
+
+relationInstance depends(P0__getstream,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libglib2.0-0"
+	comparison hasValue ">="
+	version hasValue "2.24.0"
+
+relationInstance depends(P0__getstream,2,DepAtom__2)
+

@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology pd_mediasettings
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__pd_mediasettings memberOf Package
+	package hasValue "pd-mediasettings"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/sound"
+	installedSize hasValue "96"
+	maintainer hasValue "Original-Debian Multimedia Maintainers <debian-multimedia@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.1.1-5"
+	fileName hasValue "pool/universe/p/pd-mediasettings/pd-mediasettings_0.1.1-5_amd64.deb"
+	size hasValue "23440"
+	md5sum hasValue "11df41040473cf6aaab581e31aed2e47"
+	sha1 hasValue "191146ab4e4317e82f52fa166be48fa783efc785"
+	sha256 hasValue "ddf49eedcd5a75c8c2da89a2f18dafeedf314c75ffedb91f5e46c6f14f93e588"
+	descriptionMd5 hasValue "2a57dbf8e9a33cb307e5049d9e216e12"
+	homepage hasValue "https://git.iem.at/pd/mediasettings"
+	depends hasValue "libc6 (>= 2.7), puredata | pd"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__pd_mediasettings,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "puredata"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__pd_mediasettings,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "pd"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__pd_mediasettings,1,DepAtom__2)
+

@@ -1,0 +1,76 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology pixelmed_apps
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__pixelmed_apps memberOf Package
+	package hasValue "pixelmed-apps"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "42"
+	maintainer hasValue "Original-Debian Med Packaging Team <debian-med-packaging@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "20150917+git20151209.36f3174+dfsg-2"
+	replaces hasValue "pixelmed-java"
+	conflicts hasValue "pixelmed-java"
+	fileName hasValue "pool/universe/p/pixelmed/pixelmed-apps_20150917+git20151209.36f3174+dfsg-2_all.deb"
+	size hasValue "8612"
+	md5sum hasValue "732ab98811f970ae778de00968ea3d6b"
+	sha1 hasValue "d93e091cdac3f3060aa25ac33d5bd26bd8f650c3"
+	sha256 hasValue "4a7fbb2bb7863560d48f6b36d0d844a8761805709ae85a564a1a10c0deb5832d"
+	descriptionMd5 hasValue "947dc7a62e621e67e8bc373b7d6b9ba1"
+	homepage hasValue "http://www.pixelmed.com"
+	depends hasValue "default-jre-headless (>= 2:1.7) | java7-runtime-headless, libpixelmed-java (= 20150917+git20151209.36f3174+dfsg-2), java-wrappers"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "default-jre-headless"
+	comparison hasValue ">="
+	version hasValue "2:1.7"
+
+relationInstance depends(P0__pixelmed_apps,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "java7-runtime-headless"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__pixelmed_apps,0,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libpixelmed-java"
+	comparison hasValue "="
+	version hasValue "20150917+git20151209.36f3174+dfsg-2"
+
+relationInstance depends(P0__pixelmed_apps,1,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "java-wrappers"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__pixelmed_apps,2,DepAtom__3)
+

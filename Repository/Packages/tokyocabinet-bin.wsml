@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology tokyocabinet_bin
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__tokyocabinet_bin memberOf Package
+	package hasValue "tokyocabinet-bin"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "867"
+	maintainer hasValue "Original-Tobias Frost <tobi@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.4.48-12"
+	fileName hasValue "pool/universe/t/tokyocabinet/tokyocabinet-bin_1.4.48-12_amd64.deb"
+	size hasValue "243672"
+	md5sum hasValue "270f126d98244d1ffe5e98e26d3d76d1"
+	sha1 hasValue "b19add07ab8dc4455198a0ca6beacd5ac030b945"
+	sha256 hasValue "ac82eadb1c76f1a7a1f8e47376d4988058a70cfd4a2986ffb13e00b8ffd58262"
+	description hasValue "Tokyo Cabinet Database Utilities"
+	descriptionMd5 hasValue "5277f13dbb27e7fa4cdb2a0108a5da93"
+	homepage hasValue "http://fallabs.com/tokyocabinet/"
+	depends hasValue "libc6 (>= 2.14), libtokyocabinet9 (>= 1.4.47)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__tokyocabinet_bin,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libtokyocabinet9"
+	comparison hasValue ">="
+	version hasValue "1.4.47"
+
+relationInstance depends(P0__tokyocabinet_bin,1,DepAtom__1)
+

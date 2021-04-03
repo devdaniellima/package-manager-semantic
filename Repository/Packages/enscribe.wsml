@@ -1,0 +1,66 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology enscribe
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__enscribe memberOf Package
+	package hasValue "enscribe"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/sound"
+	installedSize hasValue "52"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.1.0-3"
+	fileName hasValue "pool/universe/e/enscribe/enscribe_0.1.0-3_amd64.deb"
+	size hasValue "19028"
+	md5sum hasValue "0f301927acaee75c0b979e6a6b25b70b"
+	sha1 hasValue "550ee3df93021807e00c37ec76802cf1f65efdac"
+	sha256 hasValue "453a92d8cfcd19568ad89787e187528d88b53e764fdab35beb1999d8766a9dfc"
+	descriptionMd5 hasValue "8e61f7223a2ea3fceffe624c791dc967"
+	depends hasValue "libc6 (>= 2.4), libgd3 (>= 2.1.0~alpha~), libsndfile1 (>= 1.0.20)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__enscribe,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgd3"
+	comparison hasValue ">="
+	version hasValue "2.1.0~alpha~"
+
+relationInstance depends(P0__enscribe,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libsndfile1"
+	comparison hasValue ">="
+	version hasValue "1.0.20"
+
+relationInstance depends(P0__enscribe,2,DepAtom__2)
+

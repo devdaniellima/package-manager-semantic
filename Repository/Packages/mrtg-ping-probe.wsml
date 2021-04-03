@@ -1,0 +1,73 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology mrtg_ping_probe
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__mrtg_ping_probe memberOf Package
+	package hasValue "mrtg-ping-probe"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "48"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.2.0-2"
+	fileName hasValue "pool/universe/m/mrtg-ping-probe/mrtg-ping-probe_2.2.0-2_all.deb"
+	size hasValue "23144"
+	md5sum hasValue "46a730f92a582d87e276c2c312b9e165"
+	sha1 hasValue "c1fa6ac96485828c2e2cf1814091dfe15d19b62e"
+	sha256 hasValue "512053f1f0426464d0b29df321996d6382f6d1a84391e64cc6e2f2a4a9bd54ab"
+	descriptionMd5 hasValue "d9eb87ed0e6ffbc24bfba93fd2831d48"
+	depends hasValue "perl, iputils-ping | ping, mrtg (>= 2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "perl"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__mrtg_ping_probe,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "iputils-ping"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__mrtg_ping_probe,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "ping"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__mrtg_ping_probe,1,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "mrtg"
+	comparison hasValue ">="
+	version hasValue "2"
+
+relationInstance depends(P0__mrtg_ping_probe,2,DepAtom__3)
+

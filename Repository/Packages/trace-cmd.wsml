@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology trace_cmd
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__trace_cmd memberOf Package
+	package hasValue "trace-cmd"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "629"
+	maintainer hasValue "Original-Sudip Mukherjee <sudipm.mukherjee@gmail.com>"
+	architecture hasValue "amd64"
+	version hasValue "2.8.3-4build1"
+	fileName hasValue "pool/universe/t/trace-cmd/trace-cmd_2.8.3-4build1_amd64.deb"
+	size hasValue "213152"
+	md5sum hasValue "8bfbfb24c72f8c4f2ce9f6a280a1aa4a"
+	sha1 hasValue "3265b6195af0b044dea5267eed21c99217c5f29b"
+	sha256 hasValue "62fc290c0728764729bc1e6b60e133bcffd9f4c16f75952568c6c70318dcdef5"
+	descriptionMd5 hasValue "8fcc173a1e8a14c086b27ed1798fb104"
+	homepage hasValue "http://kernelshark.org/"
+	depends hasValue "libc6 (>= 2.27)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.27"
+
+relationInstance depends(P0__trace_cmd,0,DepAtom__0)
+

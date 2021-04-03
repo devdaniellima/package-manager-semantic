@@ -1,0 +1,59 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libavl_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libavl_dev memberOf Package
+	package hasValue "libavl-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "23"
+	maintainer hasValue "Original-Guus Sliepen <guus@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.3.5-4"
+	fileName hasValue "pool/universe/liba/libavl/libavl-dev_0.3.5-4_amd64.deb"
+	size hasValue "4970"
+	md5sum hasValue "ceee832f0d99fa9382e60c74fa306fcd"
+	sha1 hasValue "b2587c1c39b4924e3b5a7008cbc54cc1e014eb4b"
+	sha256 hasValue "d7a0dc8211e1dca2c76e3f9c9958bb4e1866d83e353caa1a63bb66432e8ab96b"
+	descriptionMd5 hasValue "bf8775a607f5f885f9037fdae2cee40f"
+	depends hasValue "libavl1 (= 0.3.5-4), libc6-dev"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libavl1"
+	comparison hasValue "="
+	version hasValue "0.3.5-4"
+
+relationInstance depends(P0__libavl_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6-dev"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libavl_dev,1,DepAtom__1)
+

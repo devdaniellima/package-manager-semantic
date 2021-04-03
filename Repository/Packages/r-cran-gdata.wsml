@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology r_cran_gdata
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__r_cran_gdata memberOf Package
+	package hasValue "r-cran-gdata"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/math"
+	installedSize hasValue "2668"
+	maintainer hasValue "Original-Dirk Eddelbuettel <edd@debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.18.0-2"
+	replaces hasValue "r-cran-gregmisc (<= 2.0.7-1)"
+	fileName hasValue "pool/universe/g/gdata/r-cran-gdata_2.18.0-2_all.deb"
+	size hasValue "1013468"
+	md5sum hasValue "e89a426e2ea8a81ef076d1e5c5a1df2b"
+	sha1 hasValue "47cd0bda2e1104e7ac4def2aef201bec299a671a"
+	sha256 hasValue "b939c6c311c033a6bf8610bb4c5abe7240bc21339878356964f34a3d91977434"
+	descriptionMd5 hasValue "c1ea5b7115f7ea4c6daa4e77ba752973"
+	homepage hasValue "https://cran.r-project.org/package=gdata"
+	depends hasValue "r-base-core (>= 3.5.0-5), r-api-3.5, r-cran-gtools"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "r-base-core"
+	comparison hasValue ">="
+	version hasValue "3.5.0-5"
+
+relationInstance depends(P0__r_cran_gdata,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "r-api-3.5"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__r_cran_gdata,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "r-cran-gtools"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__r_cran_gdata,2,DepAtom__2)
+

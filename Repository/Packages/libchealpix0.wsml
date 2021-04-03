@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libchealpix0
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libchealpix0 memberOf Package
+	package hasValue "libchealpix0"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "49"
+	maintainer hasValue "Original-Debian Astro Team <debian-astro-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.30.0-8"
+	fileName hasValue "pool/universe/c/chealpix/libchealpix0_3.30.0-8_amd64.deb"
+	size hasValue "14596"
+	md5sum hasValue "f909c67b8b8b4c883ce3ffc937629030"
+	sha1 hasValue "69a75bfa064d888102ce422e68638c05080a3313"
+	sha256 hasValue "7791917086733838244de29f6e9259c65eb5c97aabe112604c9e050df3377a1d"
+	descriptionMd5 hasValue "37fdcdd8b722c832b3ade44144b43203"
+	homepage hasValue "http://healpix.sourceforge.net"
+	depends hasValue "libc6 (>= 2.4), libcfitsio8 (>= 3.470~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libchealpix0,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libcfitsio8"
+	comparison hasValue ">="
+	version hasValue "3.470~"
+
+relationInstance depends(P0__libchealpix0,1,DepAtom__1)
+

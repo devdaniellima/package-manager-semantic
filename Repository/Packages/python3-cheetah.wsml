@@ -1,0 +1,75 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python3_cheetah
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python3_cheetah memberOf Package
+	package hasValue "python3-cheetah"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "759"
+	maintainer hasValue "Original-JCF Ploemen (jcfp) <linux@jcf.pm>"
+	architecture hasValue "amd64"
+	version hasValue "3.2.4-1ubuntu1"
+	fileName hasValue "pool/universe/c/cheetah/python3-cheetah_3.2.4-1ubuntu1_amd64.deb"
+	size hasValue "139860"
+	md5sum hasValue "b621618adb63ae7cd969a5325eeaa6dd"
+	sha1 hasValue "4addaa3f7073ba2c511dc748ace7176cdcf51213"
+	sha256 hasValue "d22033c1e0ffe471cb7ecbe9a12d6875a8ceafbfc31f1a13c4ce9ab653de6912"
+	description hasValue "text-based template engine and Python code generator (Python 3)"
+	descriptionMd5 hasValue "49c433731a658f96b853af8aec82296b"
+	homepage hasValue "http://www.cheetahtemplate.org/"
+	depends hasValue "python3 (<< 3.9), python3 (>= 3.8~), python3:any, libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3"
+	comparison hasValue "<<"
+	version hasValue "3.9"
+
+relationInstance depends(P0__python3_cheetah,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3"
+	comparison hasValue ">="
+	version hasValue "3.8~"
+
+relationInstance depends(P0__python3_cheetah,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__python3_cheetah,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__python3_cheetah,3,DepAtom__3)
+

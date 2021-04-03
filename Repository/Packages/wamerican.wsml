@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology wamerican
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__wamerican memberOf Package
+	package hasValue "wamerican"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "text"
+	installedSize hasValue "991"
+	maintainer hasValue "Original-Don Armstrong <don@debian.org>"
+	architecture hasValue "all"
+	version hasValue "2018.04.16-1"
+	provides hasValue "wordlist"
+	fileName hasValue "pool/main/s/scowl/wamerican_2018.04.16-1_all.deb"
+	size hasValue "210048"
+	md5sum hasValue "423a44bad68fd102659e0fefd45e5ae1"
+	sha1 hasValue "56a95ba943374c45f321d1755ed83e0b3bd8b04d"
+	sha256 hasValue "4dbf907bba0573215ba3df8069d0d71dbfafcb570aba94c8707ce729336b0123"
+	description hasValue "palavras do dicionário de inglês americano para /usr/share/dict"
+	descriptionMd5 hasValue "ea52704df710a9095c3201e3426ac6ff"
+	homepage hasValue "http://wordlist.sourceforge.net/"
+	depends hasValue "debconf (>= 0.5) | debconf-2.0"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "debconf"
+	comparison hasValue ">="
+	version hasValue "0.5"
+
+relationInstance depends(P0__wamerican,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "debconf-2.0"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__wamerican,0,DepAtom__1)
+

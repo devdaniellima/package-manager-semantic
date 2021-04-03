@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology uec_provisioning_dhcpd
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__uec_provisioning_dhcpd memberOf Package
+	package hasValue "uec-provisioning-dhcpd"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "10"
+	maintainer hasValue "Ubuntu Server Team <ubuntu-server@lists.ubuntu.com>"
+	architecture hasValue "all"
+	version hasValue "0.5.1ubuntu1"
+	fileName hasValue "pool/universe/u/uec-provisioning/uec-provisioning-dhcpd_0.5.1ubuntu1_all.deb"
+	size hasValue "1756"
+	md5sum hasValue "154184972d0da7cbc40e67025755331c"
+	sha1 hasValue "dc2ceaf840db9b9f2858635630daf4f1440ed968"
+	sha256 hasValue "101eed9758d844a2549c014dd78d5024ec5a97f351f44763452815877d13e04d"
+	descriptionMd5 hasValue "b4e2baa6bd354f4edb14d963bbe6fa26"
+	homepage hasValue "http://launchpad.net/uec-provisioning"
+	depends hasValue "isc-dhcp-server, uec-provisioning-common"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "isc-dhcp-server"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__uec_provisioning_dhcpd,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "uec-provisioning-common"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__uec_provisioning_dhcpd,1,DepAtom__1)
+

@@ -1,0 +1,55 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology guile_2Dot2
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__guile_2Dot2 memberOf Package
+	package hasValue "guile-2.2"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "lisp"
+	installedSize hasValue "42"
+	maintainer hasValue "Original-Rob Browning <rlb@defaultvalue.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.2.7+1-4"
+	provides hasValue "guile"
+	fileName hasValue "pool/main/g/guile-2.2/guile-2.2_2.2.7+1-4_amd64.deb"
+	size hasValue "7444"
+	md5sum hasValue "c484d1be98d26bf348fcd4fa2bf37c67"
+	sha1 hasValue "b4873761bdcfe0c5686c6420a13843c75b64802e"
+	sha256 hasValue "1ebb25f9ed6bd9953359a6cc5dc93d2612049890d7736ba02bda2dd87d1ddd5f"
+	description hasValue "GNU extension language and Scheme interpreter"
+	descriptionMd5 hasValue "92e64a8da1c1f586d1a7fc7b1ad1ec5d"
+	homepage hasValue "http://www.gnu.org/software/guile/"
+	depends hasValue "guile-2.2-libs (= 2.2.7+1-4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "guile-2.2-libs"
+	comparison hasValue "="
+	version hasValue "2.2.7+1-4"
+
+relationInstance depends(P0__guile_2Dot2,0,DepAtom__0)
+

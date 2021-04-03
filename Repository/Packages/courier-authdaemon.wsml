@@ -1,0 +1,75 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology courier_authdaemon
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__courier_authdaemon memberOf Package
+	package hasValue "courier-authdaemon"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/mail"
+	installedSize hasValue "41"
+	maintainer hasValue "Original-Markus Wanner <markus@bluegap.ch>"
+	architecture hasValue "amd64"
+	version hasValue "0.69.0-2build3"
+	fileName hasValue "pool/universe/c/courier-authlib/courier-authdaemon_0.69.0-2build3_amd64.deb"
+	size hasValue "5700"
+	md5sum hasValue "99c8b29f3cb5c19c9bd753d5f52a7371"
+	sha1 hasValue "0940adbb813b7c05e187cabc244adae1dfbdd364"
+	sha256 hasValue "51259c2df4de622d6387e5f5f35b2eccbc446806348c6b15bd9e9aa8984f584f"
+	description hasValue "daemon de autenticação Courier"
+	descriptionMd5 hasValue "48c71af6b56ddad7d969cb6a2ff8a060"
+	homepage hasValue "https://www.courier-mta.org/"
+	depends hasValue "courier-authlib (>= 0.69.0-2build3), lsb-base (>= 3.0-10), sysvinit-utils (>= 2.88dsf-50) | init-d-script"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "courier-authlib"
+	comparison hasValue ">="
+	version hasValue "0.69.0-2build3"
+
+relationInstance depends(P0__courier_authdaemon,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "lsb-base"
+	comparison hasValue ">="
+	version hasValue "3.0-10"
+
+relationInstance depends(P0__courier_authdaemon,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "sysvinit-utils"
+	comparison hasValue ">="
+	version hasValue "2.88dsf-50"
+
+relationInstance depends(P0__courier_authdaemon,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "init-d-script"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__courier_authdaemon,2,DepAtom__3)
+

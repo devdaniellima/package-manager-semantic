@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology eom_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__eom_dev memberOf Package
+	package hasValue "eom-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "357"
+	maintainer hasValue "Original-Debian+Ubuntu MATE Packaging Team <debian-mate@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.24.0-1"
+	replaces hasValue "gir1.2-eom (<< 1.18.3-2~), mate-image-viewer (<= 1.0.0-1)"
+	fileName hasValue "pool/universe/e/eom/eom-dev_1.24.0-1_amd64.deb"
+	size hasValue "31752"
+	md5sum hasValue "32b1ba06d541deb35361c8f83e9ade7a"
+	sha1 hasValue "1f0d181e69bd90a67085a1363db9530120bcfea0"
+	sha256 hasValue "153d7ce0d1301fa415511a1fed5f1feb00607536d3102626911728f5ed348399"
+	descriptionMd5 hasValue "cd39d555efe9cb812e957c07940d14ec"
+	homepage hasValue "http://www.mate-desktop.org/"
+	depends hasValue "eom (= 1.24.0-1), gir1.2-eom-1.0 (= 1.24.0-1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "eom"
+	comparison hasValue "="
+	version hasValue "1.24.0-1"
+
+relationInstance depends(P0__eom_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "gir1.2-eom-1.0"
+	comparison hasValue "="
+	version hasValue "1.24.0-1"
+
+relationInstance depends(P0__eom_dev,1,DepAtom__1)
+

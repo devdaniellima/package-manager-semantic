@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology pd_comport
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__pd_comport memberOf Package
+	package hasValue "pd-comport"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/sound"
+	installedSize hasValue "50"
+	maintainer hasValue "Original-Debian Multimedia Maintainers <debian-multimedia@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.2-3"
+	fileName hasValue "pool/universe/p/pd-comport/pd-comport_0.2-3_amd64.deb"
+	size hasValue "13896"
+	md5sum hasValue "67113cf8712a8d620868c629ce9e7f29"
+	sha1 hasValue "0596784102b4cfcc58f606895b8e2e5220f4e323"
+	sha256 hasValue "c808711c8fa681ec3f531fd95312ba6605c27a6fa8b806f4784fd01e1076c1e1"
+	descriptionMd5 hasValue "92a79ed4bda714893ae7a579c969fd8f"
+	homepage hasValue "https://puredata.info"
+	depends hasValue "libc6 (>= 2.15), puredata-core | pd"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__pd_comport,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "puredata-core"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__pd_comport,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "pd"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__pd_comport,1,DepAtom__2)
+

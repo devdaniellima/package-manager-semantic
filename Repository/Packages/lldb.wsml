@@ -1,0 +1,52 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology lldb
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__lldb memberOf Package
+	package hasValue "lldb"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "23"
+	maintainer hasValue "Original-LLVM Packaging Team <pkg-llvm-team@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:10.0-50~exp1"
+	fileName hasValue "pool/universe/l/llvm-defaults/lldb_10.0-50~exp1_amd64.deb"
+	size hasValue "2992"
+	md5sum hasValue "ceb113e600e69de33d248ac6f5f53e46"
+	sha1 hasValue "5b133b4fcdbf99ce271274f1461890871e244234"
+	sha256 hasValue "b42de392ac6574873ae89b012e2f1b73d078ee022b17823b132e325410196f02"
+	descriptionMd5 hasValue "ead6eb91f74bd6143cb488df627284c1"
+	depends hasValue "lldb-10 (>= 10~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "lldb-10"
+	comparison hasValue ">="
+	version hasValue "10~"
+
+relationInstance depends(P0__lldb,0,DepAtom__0)
+

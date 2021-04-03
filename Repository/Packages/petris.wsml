@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology petris
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__petris memberOf Package
+	package hasValue "petris"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/games"
+	installedSize hasValue "58"
+	maintainer hasValue "Original-Andree Leidenfrost <andree@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.1-10build1"
+	fileName hasValue "pool/universe/p/petris/petris_1.0.1-10build1_amd64.deb"
+	size hasValue "16976"
+	md5sum hasValue "7c64466feacd1cc95b2217ca2feb5cf2"
+	sha1 hasValue "369c60ae7702469937b1c00b9c63c5737018b531"
+	sha256 hasValue "0ef76e100aa4185f506405f645cd5442134cff9472b4d2490ce6d461bb5354e9"
+	description hasValue "Peter's Tetris - um clone do Tetris(TM)"
+	descriptionMd5 hasValue "755b90a1c6cb995f33491236ced71085"
+	depends hasValue "libc6 (>= 2.14), libncurses6 (>= 6), libtinfo6 (>= 6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__petris,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libncurses6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__petris,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libtinfo6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__petris,2,DepAtom__2)
+

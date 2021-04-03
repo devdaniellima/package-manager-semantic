@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology cvsgraph
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__cvsgraph memberOf Package
+	package hasValue "cvsgraph"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "288"
+	maintainer hasValue "Original-Mark Brown <broonie@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.7.0-5"
+	fileName hasValue "pool/universe/c/cvsgraph/cvsgraph_1.7.0-5_amd64.deb"
+	size hasValue "70796"
+	md5sum hasValue "e88ad8987b7396516d3d6c28382c82ae"
+	sha1 hasValue "04e7eb71d69c2597d6aeefb44952d50cb9d05e0e"
+	sha256 hasValue "d34744b2d762af699f6024db8d04366a228124f1fe859f2f25cd8616a61f0bbe"
+	description hasValue "cria uma árvore de revisões/ramificações a partir de um arquivo CVS/RCS"
+	descriptionMd5 hasValue "f3e12a3077b81094f9d950a90947819b"
+	depends hasValue "libc6 (>= 2.14), libgd3 (>= 2.1.0~alpha~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__cvsgraph,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgd3"
+	comparison hasValue ">="
+	version hasValue "2.1.0~alpha~"
+
+relationInstance depends(P0__cvsgraph,1,DepAtom__1)
+

@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology frr_snmp
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__frr_snmp memberOf Package
+	package hasValue "frr-snmp"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "514"
+	maintainer hasValue "Original-David Lamparter <equinox-debian@diac24.net>"
+	architecture hasValue "amd64"
+	version hasValue "7.2.1-1"
+	fileName hasValue "pool/universe/f/frr/frr-snmp_7.2.1-1_amd64.deb"
+	size hasValue "36004"
+	md5sum hasValue "85a4bb046f1327b4d0f31bc9a72cec1d"
+	sha1 hasValue "1e1317c24153377ba2f3ee183c7fecf534795a52"
+	sha256 hasValue "b185e9aa9ca2886a36d2c1b34af19f63f0456069493dd02a9969c4472d6c67bb"
+	descriptionMd5 hasValue "d919226aa0a132d34a50839afe24cfa6"
+	homepage hasValue "https://www.frrouting.org/"
+	depends hasValue "libc6 (>= 2.15), libsnmp35 (>= 5.8+dfsg), frr (= 7.2.1-1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__frr_snmp,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libsnmp35"
+	comparison hasValue ">="
+	version hasValue "5.8+dfsg"
+
+relationInstance depends(P0__frr_snmp,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "frr"
+	comparison hasValue "="
+	version hasValue "7.2.1-1"
+
+relationInstance depends(P0__frr_snmp,2,DepAtom__2)
+

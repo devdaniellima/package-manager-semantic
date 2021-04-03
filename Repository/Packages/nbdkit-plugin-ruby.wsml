@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology nbdkit_plugin_ruby
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__nbdkit_plugin_ruby memberOf Package
+	package hasValue "nbdkit-plugin-ruby"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "42"
+	maintainer hasValue "Original-Hilko Bengen <bengen@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.16.2-1ubuntu3"
+	conflicts hasValue "nbdkit (<< 1.1.5-2~)"
+	fileName hasValue "pool/universe/n/nbdkit/nbdkit-plugin-ruby_1.16.2-1ubuntu3_amd64.deb"
+	size hasValue "12372"
+	md5sum hasValue "3b3c9dbbb81e7b5c90f50268ddaf7ba7"
+	sha1 hasValue "2b7906a80782a63c7893bd1fd40aa74d04d606bc"
+	sha256 hasValue "7667007d086fad399e94a8c628453c257b933b28044db2e998655f7106d70a2a"
+	descriptionMd5 hasValue "ecf5b86d5c4d70bb7d76fcaa816564d5"
+	homepage hasValue "https://github.com/libguestfs/nbdkit"
+	depends hasValue "libc6 (>= 2.14), libruby2.7 (>= 2.7.0-4), nbdkit"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__nbdkit_plugin_ruby,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libruby2.7"
+	comparison hasValue ">="
+	version hasValue "2.7.0-4"
+
+relationInstance depends(P0__nbdkit_plugin_ruby,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "nbdkit"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__nbdkit_plugin_ruby,2,DepAtom__2)
+

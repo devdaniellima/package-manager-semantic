@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology tl_parser
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__tl_parser memberOf Package
+	package hasValue "tl-parser"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "99"
+	maintainer hasValue "Original-Ying-Chun Liu (PaulLiu) <paulliu@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.0.0+git20180215.f49077de-4"
+	fileName hasValue "pool/universe/t/tl-parser/tl-parser_0.0.0+git20180215.f49077de-4_amd64.deb"
+	size hasValue "33232"
+	md5sum hasValue "34c9754d222a700e505243762f53f69f"
+	sha1 hasValue "fddccab13116541d2f47c2ffff657925cfff3fd0"
+	sha256 hasValue "49c7c341bc1d529f17d432b40b5f306d49f1be19f58bdc34c2d975e45f8a4003"
+	descriptionMd5 hasValue "12504d602862940e78093283cf22a429"
+	homepage hasValue "https://github.com/vysheng/tl-parser"
+	depends hasValue "libc6 (>= 2.14), zlib1g (>= 1:1.1.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__tl_parser,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "zlib1g"
+	comparison hasValue ">="
+	version hasValue "1:1.1.4"
+
+relationInstance depends(P0__tl_parser,1,DepAtom__1)
+

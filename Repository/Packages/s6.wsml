@@ -1,0 +1,75 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology s6
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__s6 memberOf Package
+	package hasValue "s6"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "964"
+	maintainer hasValue "Original-Shengjing Zhu <zhsj@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.9.0.1-2"
+	replaces hasValue "libs6-2.7"
+	fileName hasValue "pool/universe/s/s6/s6_2.9.0.1-2_amd64.deb"
+	size hasValue "103184"
+	md5sum hasValue "1da811b0a55c0f7e062459cd2d28a18e"
+	sha1 hasValue "8d3d51bc6f9742028e9c6c12f5986911cf3cba25"
+	sha256 hasValue "52ca97f632e24479ca1d5cad820f8cf7944b53098be24384ded2ffa3725412cb"
+	descriptionMd5 hasValue "005ed5247266a36af749449d63966a42"
+	homepage hasValue "https://skarnet.org/software/s6/"
+	depends hasValue "libc6 (>= 2.14), libexecline2.5 (>= 2.5.0.1), libs6-2.9 (>= 2.7.2.0), libskarnet2.9 (>= 2.9.0.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__s6,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libexecline2.5"
+	comparison hasValue ">="
+	version hasValue "2.5.0.1"
+
+relationInstance depends(P0__s6,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libs6-2.9"
+	comparison hasValue ">="
+	version hasValue "2.7.2.0"
+
+relationInstance depends(P0__s6,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "libskarnet2.9"
+	comparison hasValue ">="
+	version hasValue "2.9.0.0"
+
+relationInstance depends(P0__s6,3,DepAtom__3)
+

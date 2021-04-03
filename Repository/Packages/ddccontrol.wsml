@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ddccontrol
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ddccontrol memberOf Package
+	package hasValue "ddccontrol"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "405"
+	maintainer hasValue "Original-Miroslav Kravec <kravec.miroslav@gmail.com>"
+	architecture hasValue "amd64"
+	version hasValue "0.4.4-1"
+	fileName hasValue "pool/universe/d/ddccontrol/ddccontrol_0.4.4-1_amd64.deb"
+	size hasValue "63904"
+	md5sum hasValue "44eb97ed591cc477db1f396ea4385bca"
+	sha1 hasValue "488184a90ff717259f5db407e8267ab0fc6bcee6"
+	sha256 hasValue "f810dc3f49768626a809bab5851c0fb690cc912cc76ff1f5002cff60c68842d9"
+	description hasValue "program to control monitor parameters"
+	descriptionMd5 hasValue "73e807fcbf61795d84a52bb8883e6296"
+	homepage hasValue "https://github.com/ddccontrol/ddccontrol"
+	depends hasValue "ddccontrol-db (>= 20060308), libc6 (>= 2.14), libddccontrol0 (>= 0.4.3-2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "ddccontrol-db"
+	comparison hasValue ">="
+	version hasValue "20060308"
+
+relationInstance depends(P0__ddccontrol,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__ddccontrol,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libddccontrol0"
+	comparison hasValue ">="
+	version hasValue "0.4.3-2"
+
+relationInstance depends(P0__ddccontrol,2,DepAtom__2)
+

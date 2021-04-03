@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ryu_bin
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ryu_bin memberOf Package
+	package hasValue "ryu-bin"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "86"
+	maintainer hasValue "Original-Debian OpenStack <team+openstack@tracker.debian.org>"
+	architecture hasValue "all"
+	version hasValue "4.30+ds1-2"
+	fileName hasValue "pool/universe/r/ryu/ryu-bin_4.30+ds1-2_all.deb"
+	size hasValue "18444"
+	md5sum hasValue "9ddb0569900f10388bc9335f83d7a6d9"
+	sha1 hasValue "9611cd03b22dffeb47fb35a20ce9d0b0730905a1"
+	sha256 hasValue "5b4e209a8988e4b15d9a6d3ea248ad060c93c802e5c66a51037bd24c9987febe"
+	descriptionMd5 hasValue "564143cbb2ecac8ca783c5eb9808c827"
+	homepage hasValue "http://osrg.github.io/ryu/"
+	depends hasValue "adduser, python3-ryu (= 4.30+ds1-2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "adduser"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ryu_bin,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3-ryu"
+	comparison hasValue "="
+	version hasValue "4.30+ds1-2"
+
+relationInstance depends(P0__ryu_bin,1,DepAtom__1)
+

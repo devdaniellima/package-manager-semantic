@@ -1,0 +1,55 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gnome_keyring_pkcs11
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gnome_keyring_pkcs11 memberOf Package
+	package hasValue "gnome-keyring-pkcs11"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libs"
+	installedSize hasValue "125"
+	maintainer hasValue "Original-Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.36.0-1ubuntu1"
+	replaces hasValue "gnome-keyring (<< 3.20.1-3)"
+	fileName hasValue "pool/main/g/gnome-keyring/gnome-keyring-pkcs11_3.36.0-1ubuntu1_amd64.deb"
+	size hasValue "28048"
+	md5sum hasValue "f6afb34549aa8f0babdd3f6d4a6ebf37"
+	sha1 hasValue "152e258532ec89878b6983ce608083f2a3a64b58"
+	sha256 hasValue "d48fb727fe5120493ee670b95727a8cd27c9427a9d9a98096e320aa39e98f941"
+	description hasValue "GNOME keyring module for the PKCS#11 module loading library"
+	descriptionMd5 hasValue "152920d93477b7997fe4b21917dba91f"
+	homepage hasValue "https://wiki.gnome.org/GnomeKeyring"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__gnome_keyring_pkcs11,0,DepAtom__0)
+

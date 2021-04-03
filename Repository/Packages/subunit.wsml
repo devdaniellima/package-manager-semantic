@@ -1,0 +1,74 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology subunit
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__subunit memberOf Package
+	package hasValue "subunit"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "58"
+	maintainer hasValue "Original-Debian OpenStack <team+openstack@tracker.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.4.0-0ubuntu1"
+	fileName hasValue "pool/universe/s/subunit/subunit_1.4.0-0ubuntu1_all.deb"
+	size hasValue "9328"
+	md5sum hasValue "5b37008bcdf26b751ee4be78ed511bde"
+	sha1 hasValue "a52267dc6fe708c94b89f0598e13615ef372941e"
+	sha256 hasValue "a7dab6748ba50cfa0c80a913b196d40b72c3217a9fe901d871064bde33eaddb4"
+	descriptionMd5 hasValue "c4f3b986477aba30324b421056a528f1"
+	homepage hasValue "http://code.launchpad.net/subunit"
+	depends hasValue "libsubunit-perl (>= 1.4.0-0ubuntu1), python3-subunit (>= 1.4.0-0ubuntu1), perl:any, python3:any"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libsubunit-perl"
+	comparison hasValue ">="
+	version hasValue "1.4.0-0ubuntu1"
+
+relationInstance depends(P0__subunit,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3-subunit"
+	comparison hasValue ">="
+	version hasValue "1.4.0-0ubuntu1"
+
+relationInstance depends(P0__subunit,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "perl:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__subunit,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__subunit,3,DepAtom__3)
+

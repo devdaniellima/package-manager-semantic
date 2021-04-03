@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology pacman4console
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__pacman4console memberOf Package
+	package hasValue "pacman4console"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/games"
+	installedSize hasValue "87"
+	maintainer hasValue "Original-Alexandre Dantas <eu@alexdantas.net>"
+	architecture hasValue "amd64"
+	version hasValue "1.3-1build3"
+	fileName hasValue "pool/universe/p/pacman4console/pacman4console_1.3-1build3_amd64.deb"
+	size hasValue "19808"
+	md5sum hasValue "3b59fa19650ccd68212f34689fca6237"
+	sha1 hasValue "05e667760fa7e13544142d83960af2a62df714f7"
+	sha256 hasValue "9b7977881b20967ffb50bb5e1199eed0322ce304061fc4f6cff4ffa1f0455fb3"
+	descriptionMd5 hasValue "41c96ef1617cdff6eac3342f18dceca3"
+	homepage hasValue "https://sites.google.com/site/doctormike/pacman.html"
+	depends hasValue "libc6 (>= 2.7), libncurses6 (>= 6), libtinfo6 (>= 6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__pacman4console,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libncurses6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__pacman4console,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libtinfo6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__pacman4console,2,DepAtom__2)
+

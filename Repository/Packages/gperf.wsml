@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gperf
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gperf memberOf Package
+	package hasValue "gperf"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "264"
+	maintainer hasValue "Original-Hilko Bengen <bengen@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.1-1build1"
+	replaces hasValue "libg++27-dev, libg++272-dev"
+	fileName hasValue "pool/universe/g/gperf/gperf_3.1-1build1_amd64.deb"
+	size hasValue "103172"
+	md5sum hasValue "7fb5a4909859db336043bbe04b0facb4"
+	sha1 hasValue "32bb0517c8db664408bfdddfd604c1c29fb62b27"
+	sha256 hasValue "f6701027304592fe819d219a5ee00d8b56ba4b2a05a7623dd923f1884d595042"
+	descriptionMd5 hasValue "100d8b95fd17c0a38c7613dd1af69b60"
+	homepage hasValue "http://www.gnu.org/software/gperf/"
+	depends hasValue "libc6 (>= 2.29), libgcc-s1 (>= 3.0), libstdc++6 (>= 5)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__gperf,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgcc-s1"
+	comparison hasValue ">="
+	version hasValue "3.0"
+
+relationInstance depends(P0__gperf,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "5"
+
+relationInstance depends(P0__gperf,2,DepAtom__2)
+

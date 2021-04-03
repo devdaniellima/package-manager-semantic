@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology hcloud_cli
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__hcloud_cli memberOf Package
+	package hasValue "hcloud-cli"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "8981"
+	maintainer hasValue "Original-Debian Go Packaging Team <team+pkg-go@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.13.0-2"
+	fileName hasValue "pool/universe/h/hcloud-cli/hcloud-cli_1.13.0-2_amd64.deb"
+	size hasValue "2673648"
+	md5sum hasValue "11ff4de9ff450c7bf1ef89f2083e0f20"
+	sha1 hasValue "7161223028f2a325bf3fb93753ffd2d32dbd109b"
+	sha256 hasValue "a47b637800ef10a07f13d499057ad6d70cf2b4a48db3c17435bea934aa77e9bf"
+	descriptionMd5 hasValue "cd7a91725ec15931b7a3b5a9a767f895"
+	homepage hasValue "https://github.com/hetznercloud/cli"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__hcloud_cli,0,DepAtom__0)
+

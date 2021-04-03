@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ufiformat
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ufiformat memberOf Package
+	package hasValue "ufiformat"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "40"
+	maintainer hasValue "Original-David Given <dg@cowlark.com>"
+	architecture hasValue "amd64"
+	version hasValue "0.9.9-1build1"
+	fileName hasValue "pool/universe/u/ufiformat/ufiformat_0.9.9-1build1_amd64.deb"
+	size hasValue "13288"
+	md5sum hasValue "2907a5f4f4d9ea459b6fb07c81d08bda"
+	sha1 hasValue "66cf3f01f10a07aa88e9a79b40455adef98a6c6a"
+	sha256 hasValue "59abd93bb1fdac21f8f8fa816272d3401c30387824b2c81d02a40960e7d0302b"
+	description hasValue "formatador de disco para drives de disquete USB"
+	descriptionMd5 hasValue "993a03a3c3f3d798203ce74d0b65292d"
+	homepage hasValue "http://www.geocities.jp/tedi_world/format_usbfdd_e.html"
+	depends hasValue "libc6 (>= 2.14), libext2fs2 (>= 1.37)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__ufiformat,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libext2fs2"
+	comparison hasValue ">="
+	version hasValue "1.37"
+
+relationInstance depends(P0__ufiformat,1,DepAtom__1)
+

@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology dhex
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__dhex memberOf Package
+	package hasValue "dhex"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/editors"
+	installedSize hasValue "126"
+	maintainer hasValue "Original-Jonathan McCrohan <jmccrohan@gmail.com>"
+	architecture hasValue "amd64"
+	version hasValue "0.69-1"
+	fileName hasValue "pool/universe/d/dhex/dhex_0.69-1_amd64.deb"
+	size hasValue "47356"
+	md5sum hasValue "5687fd75a0d826a10e345bccc990e3c1"
+	sha1 hasValue "002ac8e6e20708a7a0aa2030c2aca2ef326cff44"
+	sha256 hasValue "ecc38a711c20f5d7059c4e723483ab5c74f7efd7f94d35cae348ea091c69c965"
+	descriptionMd5 hasValue "eeb2f932a3a457dadbdbce4de7103655"
+	homepage hasValue "http://www.dettus.net/dhex/"
+	depends hasValue "libc6 (>= 2.14), libncurses6 (>= 6), libtinfo6 (>= 6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__dhex,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libncurses6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__dhex,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libtinfo6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__dhex,2,DepAtom__2)
+

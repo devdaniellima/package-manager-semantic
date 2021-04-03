@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libsam_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libsam_dev memberOf Package
+	package hasValue "libsam-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libdevel"
+	installedSize hasValue "73"
+	maintainer hasValue "Original-Debian HA Maintainers <debian-ha-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.0.3-2ubuntu2"
+	fileName hasValue "pool/main/c/corosync/libsam-dev_3.0.3-2ubuntu2_amd64.deb"
+	size hasValue "30232"
+	md5sum hasValue "20d9e2d226012c5036c2df5a18baf168"
+	sha1 hasValue "b53b6910c18f87dc1ffb3b5911a3cc83c2767df0"
+	sha256 hasValue "1c4b3df8182bbb8128918f97b902d881eeeb88bd2be9a729086089927131d834"
+	descriptionMd5 hasValue "bd55388001ddd39b9a21717ed5bec96f"
+	homepage hasValue "https://corosync.github.io/corosync/"
+	depends hasValue "libcorosync-common-dev (= 3.0.3-2ubuntu2), libsam4 (= 3.0.3-2ubuntu2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libcorosync-common-dev"
+	comparison hasValue "="
+	version hasValue "3.0.3-2ubuntu2"
+
+relationInstance depends(P0__libsam_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libsam4"
+	comparison hasValue "="
+	version hasValue "3.0.3-2ubuntu2"
+
+relationInstance depends(P0__libsam_dev,1,DepAtom__1)
+

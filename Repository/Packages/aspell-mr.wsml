@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology aspell_mr
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__aspell_mr memberOf Package
+	package hasValue "aspell-mr"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/text"
+	installedSize hasValue "205"
+	maintainer hasValue "Original-Debian-IN Team <debian-in-workers@alioth-lists.debian.net>"
+	architecture hasValue "all"
+	version hasValue "0.10-10"
+	fileName hasValue "pool/universe/a/aspell-mr/aspell-mr_0.10-10_all.deb"
+	size hasValue "188560"
+	md5sum hasValue "d4b8a533b5e3ca2a6fb1b89270e2445d"
+	sha1 hasValue "71e1fec0b4259250cad8d6bb82b000a74a1562b3"
+	sha256 hasValue "85cc4562dd8bbc97110a84c19ba263c05354ad106715e81cd3d998a5dedd0c24"
+	description hasValue "dicionário marati (mr) para o GNU aspell"
+	descriptionMd5 hasValue "c55f5b9f8bf485d3fa7cd398be4aea86"
+	depends hasValue "aspell (>= 0.60.4-2), dictionaries-common (>= 1.23~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "aspell"
+	comparison hasValue ">="
+	version hasValue "0.60.4-2"
+
+relationInstance depends(P0__aspell_mr,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "dictionaries-common"
+	comparison hasValue ">="
+	version hasValue "1.23~"
+
+relationInstance depends(P0__aspell_mr,1,DepAtom__1)
+

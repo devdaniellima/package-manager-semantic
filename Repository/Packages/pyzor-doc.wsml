@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology pyzor_doc
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__pyzor_doc memberOf Package
+	package hasValue "pyzor-doc"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/doc"
+	installedSize hasValue "1157"
+	maintainer hasValue "Original-Python Applications Packaging Team <python-apps-team@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1:1.0.0-3"
+	fileName hasValue "pool/universe/p/pyzor/pyzor-doc_1.0.0-3_all.deb"
+	size hasValue "101588"
+	md5sum hasValue "d72fc4cf9857ffabd860db287ca5f268"
+	sha1 hasValue "33935b9d7b776a114629f0b928eba9bf4e5dcd60"
+	sha256 hasValue "4e059cee948a6c6f846884e6e37ec443c3fabca227ea60e9c50dae45644f1e7a"
+	descriptionMd5 hasValue "afdfcfafcd504ca4f6ddb9fe01cc83d8"
+	homepage hasValue "https://github.com/SpamExperts/pyzor"
+	depends hasValue "libjs-sphinxdoc (>= 1.0), libjs-mathjax"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libjs-sphinxdoc"
+	comparison hasValue ">="
+	version hasValue "1.0"
+
+relationInstance depends(P0__pyzor_doc,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libjs-mathjax"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__pyzor_doc,1,DepAtom__1)
+

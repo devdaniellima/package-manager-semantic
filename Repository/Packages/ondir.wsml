@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ondir
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ondir memberOf Package
+	package hasValue "ondir"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "42"
+	maintainer hasValue "Original-Christian Seiler <christian@iwakd.de>"
+	architecture hasValue "amd64"
+	version hasValue "0.2.3+git0.55279f03-1"
+	fileName hasValue "pool/universe/o/ondir/ondir_0.2.3+git0.55279f03-1_amd64.deb"
+	size hasValue "12232"
+	md5sum hasValue "ac195180cdeddf3574fa0a59941a3021"
+	sha1 hasValue "a685a9f1d68b3fb44a0b1ed3597c0075999a01c6"
+	sha256 hasValue "86e27a0238df42121e88fe23de07ff286a33c84a4ca3076959cf7d7c2dee7d07"
+	descriptionMd5 hasValue "c44736d3d1db1af49364e423866e2ba3"
+	homepage hasValue "http://swapoff.org/ondir.html"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__ondir,0,DepAtom__0)
+

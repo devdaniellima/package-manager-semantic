@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gitlab_workhorse
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gitlab_workhorse memberOf Package
+	package hasValue "gitlab-workhorse"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/httpd"
+	installedSize hasValue "33744"
+	maintainer hasValue "Original-Debian Go Packaging Team <pkg-go-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "Git client -> NGINX -> gitlab-workhorse (makes auth request to"
+	version hasValue "8.18.0+debian-1"
+	fileName hasValue "pool/universe/g/gitlab-workhorse/gitlab-workhorse_8.18.0+debian-1_amd64.deb"
+	size hasValue "8402040"
+	md5sum hasValue "6ee8a0f39d83a5957dc5f33b2dc84e04"
+	sha1 hasValue "723006c081b84d56be95da6312ea9a8cf85b6274"
+	sha256 hasValue "3e6de6b8289243ba7dac367f81d2dfc27cd0e242b3be4afc3cd339928cb5e727"
+	descriptionMd5 hasValue "2bb8cd8fdf5f9d70e359dc6e41cbadae"
+	homepage hasValue "https://gitlab.com/gitlab-org/gitlab-workhorse/"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__gitlab_workhorse,0,DepAtom__0)
+

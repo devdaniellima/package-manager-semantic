@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libice6
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libice6 memberOf Package
+	package hasValue "libice6"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libs"
+	installedSize hasValue "120"
+	maintainer hasValue "Original-Debian X Strike Force <debian-x@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2:1.0.10-0ubuntu1"
+	fileName hasValue "pool/main/libi/libice/libice6_1.0.10-0ubuntu1_amd64.deb"
+	size hasValue "40976"
+	md5sum hasValue "534370d45cf18414b2d01cb9146cbedd"
+	sha1 hasValue "d9b03e5028e9ae4a98f86730eb740927020e6e21"
+	sha256 hasValue "fb58c7715d4b208f65837f36d1ac4b505a98269772d9a899e155ac123eca2c43"
+	description hasValue "X11 Inter-Client Exchange library"
+	descriptionMd5 hasValue "ded12730167b4fabe6c8013534c7804a"
+	depends hasValue "libbsd0 (>= 0.2.0), libc6 (>= 2.14), x11-common"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libbsd0"
+	comparison hasValue ">="
+	version hasValue "0.2.0"
+
+relationInstance depends(P0__libice6,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libice6,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "x11-common"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libice6,2,DepAtom__2)
+

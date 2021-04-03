@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology tableau_parm
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__tableau_parm memberOf Package
+	package hasValue "tableau-parm"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "37"
+	maintainer hasValue "Original-Debian Security Tools <team+pkg-security@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.2.0-5"
+	fileName hasValue "pool/universe/t/tableau-parm/tableau-parm_0.2.0-5_amd64.deb"
+	size hasValue "11368"
+	md5sum hasValue "1038bc01d706aa172f9f799a4aa64b63"
+	sha1 hasValue "b5e0b6cdbb48f82f92f3e99de6797a39887ea667"
+	sha256 hasValue "a03986709c93e17009744d97e742bc16f4fdb8e0911a2bcde2b819efb091cef8"
+	descriptionMd5 hasValue "b9efceaec4e76d9763adfe99e4d23b23"
+	homepage hasValue "http://projects.sentinelchicken.org/tableau-parm/"
+	depends hasValue "libc6 (>= 2.4), libsgutils2-2 (>= 1.27)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__tableau_parm,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libsgutils2-2"
+	comparison hasValue ">="
+	version hasValue "1.27"
+
+relationInstance depends(P0__tableau_parm,1,DepAtom__1)
+

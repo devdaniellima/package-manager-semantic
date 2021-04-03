@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ecj
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ecj memberOf Package
+	package hasValue "ecj"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "40"
+	maintainer hasValue "Original-Debian Java Maintainers <pkg-java-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "3.16.0-1"
+	fileName hasValue "pool/universe/e/ecj/ecj_3.16.0-1_all.deb"
+	size hasValue "14120"
+	md5sum hasValue "4de310cbc836658d27349cc12676fdd1"
+	sha1 hasValue "d175990cd69995b6feaa82ed19ef9c20a13517fe"
+	sha256 hasValue "eec9068a676c0afb3c54c56401ccec5e561f422a60665b4488927240154716e5"
+	descriptionMd5 hasValue "ba0a97001b627dcefb46737dc340ede6"
+	homepage hasValue "http://www.eclipse.org/jdt/core/index.php"
+	depends hasValue "default-jre-headless (>= 2:1.8) | java8-runtime-headless, libecj-java (>= 3.16.0-1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "default-jre-headless"
+	comparison hasValue ">="
+	version hasValue "2:1.8"
+
+relationInstance depends(P0__ecj,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "java8-runtime-headless"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ecj,0,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libecj-java"
+	comparison hasValue ">="
+	version hasValue "3.16.0-1"
+
+relationInstance depends(P0__ecj,1,DepAtom__2)
+

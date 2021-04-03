@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology mdetect
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__mdetect memberOf Package
+	package hasValue "mdetect"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "51"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.5.2.4"
+	fileName hasValue "pool/universe/m/mdetect/mdetect_0.5.2.4_amd64.deb"
+	size hasValue "17132"
+	md5sum hasValue "ee0802fac08656f5c5bf20358c8e851e"
+	sha1 hasValue "1567db9f48f01bd2831e797d321412f671c0eaad"
+	sha256 hasValue "77f7286f0ebd2cdb106cfb2faa4c7d9d2c9d9751f9fa45821fd0bb9ded07506b"
+	description hasValue "ferramenta de autodetecção de dispositivo mouse"
+	descriptionMd5 hasValue "afc175d11efde40a5bc0f530a6de68ef"
+	depends hasValue "libc6 (>= 2.15)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__mdetect,0,DepAtom__0)
+

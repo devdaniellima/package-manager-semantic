@@ -1,0 +1,83 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ruby_guestfs
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ruby_guestfs memberOf Package
+	package hasValue "ruby-guestfs"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/ruby"
+	installedSize hasValue "432"
+	maintainer hasValue "Original-Debian Libvirt Maintainers <pkg-libvirt-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:1.40.2-7ubuntu5"
+	conflicts hasValue "libguestfs-dev (<< 1:1.15.15-1~)"
+	fileName hasValue "pool/universe/libg/libguestfs/ruby-guestfs_1.40.2-7ubuntu5_amd64.deb"
+	size hasValue "93520"
+	md5sum hasValue "3f5bd738391e0e9400459201687694ae"
+	sha1 hasValue "8454294bd13dd4b9ef10deecfa16040b4fd3fcdb"
+	sha256 hasValue "cb86e418802b0a722b5c8704aa22033c2aef7709b296831f38b85ea17457d257"
+	description hasValue "guest disk image management system - Ruby bindings"
+	descriptionMd5 hasValue "a3ff7f50a8fc85b30508a57e199b0912"
+	homepage hasValue "http://libguestfs.org"
+	depends hasValue "libc6 (>= 2.4), libguestfs0 (>= 1:1.39.8), libruby2.7 (>= 2.7.0), ruby (>= 1:2.7~0), ruby (<< 1:2.8~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__ruby_guestfs,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libguestfs0"
+	comparison hasValue ">="
+	version hasValue "1:1.39.8"
+
+relationInstance depends(P0__ruby_guestfs,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libruby2.7"
+	comparison hasValue ">="
+	version hasValue "2.7.0"
+
+relationInstance depends(P0__ruby_guestfs,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "ruby"
+	comparison hasValue ">="
+	version hasValue "1:2.7~0"
+
+relationInstance depends(P0__ruby_guestfs,3,DepAtom__3)
+
+instance DepAtom__4 memberOf DependencyAtom
+	package hasValue "ruby"
+	comparison hasValue "<<"
+	version hasValue "1:2.8~"
+
+relationInstance depends(P0__ruby_guestfs,4,DepAtom__4)
+

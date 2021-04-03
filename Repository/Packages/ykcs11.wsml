@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ykcs11
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ykcs11 memberOf Package
+	package hasValue "ykcs11"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/libs"
+	installedSize hasValue "127"
+	maintainer hasValue "Original-Debian Authentication Maintainers <pkg-auth-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.0.0-2"
+	fileName hasValue "pool/universe/y/yubico-piv-tool/ykcs11_2.0.0-2_amd64.deb"
+	size hasValue "32552"
+	md5sum hasValue "af21146237a6d2540a87843b751ecab0"
+	sha1 hasValue "fd826b504b1a670684c201401dc7276167eadb60"
+	sha256 hasValue "fc45d2db3a2d3bbb326ea256352e1565785e68bb80b4870e508a93d81c24a804"
+	descriptionMd5 hasValue "43f810075d14298f1df001888b3b8b46"
+	homepage hasValue "https://developers.yubico.com/yubico-piv-tool/"
+	depends hasValue "libc6 (>= 2.14), libssl1.1 (>= 1.1.1), libykpiv1 (= 2.0.0-2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__ykcs11,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libssl1.1"
+	comparison hasValue ">="
+	version hasValue "1.1.1"
+
+relationInstance depends(P0__ykcs11,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libykpiv1"
+	comparison hasValue "="
+	version hasValue "2.0.0-2"
+
+relationInstance depends(P0__ykcs11,2,DepAtom__2)
+

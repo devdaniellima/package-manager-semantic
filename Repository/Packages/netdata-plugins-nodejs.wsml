@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology netdata_plugins_nodejs
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__netdata_plugins_nodejs memberOf Package
+	package hasValue "netdata-plugins-nodejs"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "248"
+	maintainer hasValue "Original-Lennart Weller <lhw@ring0.de>"
+	architecture hasValue "all"
+	version hasValue "1.19.0-3ubuntu1"
+	provides hasValue "netdata-plugins"
+	fileName hasValue "pool/universe/n/netdata/netdata-plugins-nodejs_1.19.0-3ubuntu1_all.deb"
+	size hasValue "40120"
+	md5sum hasValue "ef89752e6fe5fbedcbbcbde35ed9bc64"
+	sha1 hasValue "d1945f7c571594e7ef913b564a5f74ee17464721"
+	sha256 hasValue "79aca43beb23f2c022a203cae6effaf059eb956e07f6d63538962e9b2866941e"
+	descriptionMd5 hasValue "2c69ef8a37324f1b6e80af5ab3b17f20"
+	homepage hasValue "https://github.com/netdata/netdata"
+	depends hasValue "netdata-core (>= 1.19.0-3ubuntu1) | netdata-core-no-sse (>= 1.19.0-3ubuntu1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "netdata-core"
+	comparison hasValue ">="
+	version hasValue "1.19.0-3ubuntu1"
+
+relationInstance depends(P0__netdata_plugins_nodejs,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "netdata-core-no-sse"
+	comparison hasValue ">="
+	version hasValue "1.19.0-3ubuntu1"
+
+relationInstance depends(P0__netdata_plugins_nodejs,0,DepAtom__1)
+

@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libpam_shield
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libpam_shield memberOf Package
+	package hasValue "libpam-shield"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "113"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.9.6-1.3build2"
+	fileName hasValue "pool/universe/p/pam-shield/libpam-shield_0.9.6-1.3build2_amd64.deb"
+	size hasValue "29168"
+	md5sum hasValue "70328ce40126b0df2951a15e35150a88"
+	sha1 hasValue "f9b82eca5c94639a65486b241ece475f0cfe5e3a"
+	sha256 hasValue "bb11c1da7697ef60b781fdd46c4d594bc597d0539a2600547074512d1fc64107"
+	descriptionMd5 hasValue "ceb6233bee814077977c82cd88d94313"
+	homepage hasValue "http://github.com/jtniehof/pam_shield"
+	depends hasValue "libc6 (>= 2.14), libgdbm6 (>= 1.16), libpam0g (>= 0.99.7.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libpam_shield,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgdbm6"
+	comparison hasValue ">="
+	version hasValue "1.16"
+
+relationInstance depends(P0__libpam_shield,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libpam0g"
+	comparison hasValue ">="
+	version hasValue "0.99.7.1"
+
+relationInstance depends(P0__libpam_shield,2,DepAtom__2)
+

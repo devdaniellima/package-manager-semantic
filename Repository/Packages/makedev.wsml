@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology makedev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__makedev memberOf Package
+	package hasValue "makedev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "97"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.3.1-94"
+	conflicts hasValue "udev (<= 0.024-7)"
+	fileName hasValue "pool/universe/m/makedev/makedev_2.3.1-94_all.deb"
+	size hasValue "25124"
+	md5sum hasValue "136c3b28e97ba767d142bc4831e88085"
+	sha1 hasValue "e2db42acd1a5644171906c9c997476c58a90d505"
+	sha256 hasValue "6d0a183b3eb6119036cd448381252e75e450296dff2642f2b72b46436aca4a09"
+	description hasValue "cria arquivos de dispositivo no /dev"
+	descriptionMd5 hasValue "0d90ffc36746b1d25c5b125ef2221357"
+	depends hasValue "base-passwd (>= 3.0.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "base-passwd"
+	comparison hasValue ">="
+	version hasValue "3.0.4"
+
+relationInstance depends(P0__makedev,0,DepAtom__0)
+

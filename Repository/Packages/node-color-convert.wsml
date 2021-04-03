@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology node_color_convert
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__node_color_convert memberOf Package
+	package hasValue "node-color-convert"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/web"
+	installedSize hasValue "37"
+	maintainer hasValue "Original-Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.9.3-1"
+	fileName hasValue "pool/universe/n/node-color-convert/node-color-convert_1.9.3-1_all.deb"
+	size hasValue "9680"
+	md5sum hasValue "050b1f1404e191de89cbcffd258f70c3"
+	sha1 hasValue "c7e83395a2a862f5be4cc85802c4ed5aeb75723c"
+	sha256 hasValue "81a744b59f6f2326cda24c37f9461223c1fcca1c5a4372109c9eb60e90b16d02"
+	descriptionMd5 hasValue "f3900926d9f98371cc6832c64a3d3f78"
+	homepage hasValue "https://github.com/qix-/color-convert#readme"
+	depends hasValue "nodejs (>= 6.11~), node-color-name (>= 1.1.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "nodejs"
+	comparison hasValue ">="
+	version hasValue "6.11~"
+
+relationInstance depends(P0__node_color_convert,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "node-color-name"
+	comparison hasValue ">="
+	version hasValue "1.1.1"
+
+relationInstance depends(P0__node_color_convert,1,DepAtom__1)
+

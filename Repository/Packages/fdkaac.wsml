@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology fdkaac
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__fdkaac memberOf Package
+	package hasValue "fdkaac"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "multiverse/sound"
+	installedSize hasValue "104"
+	maintainer hasValue "Original-Marius Gavrilescu <marius@ieval.ro>"
+	architecture hasValue "amd64"
+	version hasValue "0.6.3-1"
+	fileName hasValue "pool/multiverse/f/fdkaac/fdkaac_0.6.3-1_amd64.deb"
+	size hasValue "39154"
+	md5sum hasValue "c821013f26def4ac39175e9321c9e3ce"
+	sha1 hasValue "197bdd79ea24d11620a29a83251549fd0c4e2482"
+	sha256 hasValue "8d222c8047b3c13d7f37b8610787156f5f7cd58d490cdae6e720131d0d8f35b2"
+	descriptionMd5 hasValue "fcbe7317aa8b9e391239fe1281b1c42a"
+	homepage hasValue "https://github.com/nu774/fdkaac"
+	depends hasValue "libc6 (>= 2.14), libfdk-aac1 (>= 0.1.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__fdkaac,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libfdk-aac1"
+	comparison hasValue ">="
+	version hasValue "0.1.4"
+
+relationInstance depends(P0__fdkaac,1,DepAtom__1)
+

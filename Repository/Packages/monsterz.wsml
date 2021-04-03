@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology monsterz
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__monsterz memberOf Package
+	package hasValue "monsterz"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/games"
+	installedSize hasValue "41"
+	maintainer hasValue "Original-Debian Games Team <pkg-games-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.7.1-11build1"
+	fileName hasValue "pool/universe/m/monsterz/monsterz_0.7.1-11build1_amd64.deb"
+	size hasValue "8852"
+	md5sum hasValue "8a0bae08551cfe4785892b9464bfcd9b"
+	sha1 hasValue "e1b2c530a6552a037b614728b4ddf0844810e111"
+	sha256 hasValue "d6f08be31eaca24c18d2c30385d25b66a83db50f1a7e4128445e4846fb0dbefc"
+	description hasValue "jogo de raciocínio estilo fliperama"
+	descriptionMd5 hasValue "700248a49145f9632dd5a45854b9ccfe"
+	homepage hasValue "http://sam.zoy.org/monsterz/"
+	depends hasValue "monsterz-data (>= 0.7.1-11build1), libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "monsterz-data"
+	comparison hasValue ">="
+	version hasValue "0.7.1-11build1"
+
+relationInstance depends(P0__monsterz,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__monsterz,1,DepAtom__1)
+

@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ksmtuned
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ksmtuned memberOf Package
+	package hasValue "ksmtuned"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/kernel"
+	installedSize hasValue "38"
+	maintainer hasValue "Original-Bernd Zeimetz <bzed@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "4.20150325build1"
+	fileName hasValue "pool/universe/k/ksmtuned/ksmtuned_4.20150325build1_amd64.deb"
+	size hasValue "7320"
+	md5sum hasValue "5f8c198c23fa0b3dfa389552c0bd2b41"
+	sha1 hasValue "bd66ab46aa447a61dd001441a79cad80e77dbf7a"
+	sha256 hasValue "41949e649a69e9ec8ed34bfd0e99f16c2056898d02a1759acf43b732f5c01918"
+	descriptionMd5 hasValue "cee1adf287c9c4d1367b2f4deb20fdf0"
+	homepage hasValue "https://git.centos.org/summary/rpms!qemu-kvm"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__ksmtuned,0,DepAtom__0)
+

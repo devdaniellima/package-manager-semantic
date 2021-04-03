@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology beav
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__beav memberOf Package
+	package hasValue "beav"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/editors"
+	installedSize hasValue "136"
+	maintainer hasValue "Original-Sam Hocevar (Debian packages) <sam+deb@zoy.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:1.40-18build3"
+	fileName hasValue "pool/universe/b/beav/beav_1.40-18build3_amd64.deb"
+	size hasValue "66340"
+	md5sum hasValue "cda434b796a3712a746e5b92b45a15ca"
+	sha1 hasValue "2da2bc159db22f330d3372542f25f2e7b565fffb"
+	sha256 hasValue "f4e2741f069d007d540000c59e44c9089c840908eb43e3d8cb7495b2b0ebde32"
+	description hasValue "visualizador e editor binário"
+	descriptionMd5 hasValue "ece1300d8cfcc58cec962e14bb855ada"
+	depends hasValue "libc6 (>= 2.7), libtinfo6 (>= 6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__beav,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libtinfo6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__beav,1,DepAtom__1)
+

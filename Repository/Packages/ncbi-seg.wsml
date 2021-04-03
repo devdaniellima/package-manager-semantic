@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ncbi_seg
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ncbi_seg memberOf Package
+	package hasValue "ncbi-seg"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/science"
+	installedSize hasValue "134"
+	maintainer hasValue "Original-Debian Med Packaging Team <debian-med-packaging@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.0.20000620-5"
+	fileName hasValue "pool/universe/n/ncbi-seg/ncbi-seg_0.0.20000620-5_amd64.deb"
+	size hasValue "78276"
+	md5sum hasValue "d1a09930edb1c46a0e53267699a62e07"
+	sha1 hasValue "8d55b7014878684230ba144bae3fc1e11d5eec78"
+	sha256 hasValue "e6e894989b387fc686c16ae4af6a0998b9b27ccbc10ae2da65a8f698fb843599"
+	descriptionMd5 hasValue "acdbf2f23ef3ef6e08403f8efc2dbc65"
+	homepage hasValue "ftp://ftp.ncbi.nih.gov/pub/seg/seg/"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__ncbi_seg,0,DepAtom__0)
+

@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology asterisk_mobile
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__asterisk_mobile memberOf Package
+	package hasValue "asterisk-mobile"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/comm"
+	installedSize hasValue "186"
+	maintainer hasValue "Original-Debian VoIP Team <pkg-voip-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:16.2.1~dfsg-2ubuntu1"
+	fileName hasValue "pool/universe/a/asterisk/asterisk-mobile_16.2.1~dfsg-2ubuntu1_amd64.deb"
+	size hasValue "45444"
+	md5sum hasValue "6fb1dc7751a124903177c7ee837fc90c"
+	sha1 hasValue "0d0cd05473447341f6d9eb58803abc248ef3bc1d"
+	sha256 hasValue "33052a2193b6101df1a3d8fb4fba229c28a4c9cecdc4b1f8b8b95f6a8ccef4a5"
+	description hasValue "Bluetooth phone support for the Asterisk PBX"
+	descriptionMd5 hasValue "512eb7fdf39ee482ff4d9d46b2d19e9e"
+	homepage hasValue "http://www.asterisk.org/"
+	depends hasValue "asterisk (= 1:16.2.1~dfsg-2ubuntu1), libbluetooth3 (>= 4.91), libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "asterisk"
+	comparison hasValue "="
+	version hasValue "1:16.2.1~dfsg-2ubuntu1"
+
+relationInstance depends(P0__asterisk_mobile,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libbluetooth3"
+	comparison hasValue ">="
+	version hasValue "4.91"
+
+relationInstance depends(P0__asterisk_mobile,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__asterisk_mobile,2,DepAtom__2)
+

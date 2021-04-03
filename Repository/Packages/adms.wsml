@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology adms
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__adms memberOf Package
+	package hasValue "adms"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/science"
+	installedSize hasValue "155"
+	maintainer hasValue "Original-Debian Science Maintainers <debian-science-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.3.6-2"
+	fileName hasValue "pool/universe/a/adms/adms_2.3.6-2_amd64.deb"
+	size hasValue "36916"
+	md5sum hasValue "a140bfb91607bd669c73f3f71a77fba2"
+	sha1 hasValue "c1014148c5e3e0c76071df345b97d1fd09eabd2e"
+	sha256 hasValue "b6e5f86abd266b36d59c40111e39a563ba06ad556a69b1d357832b08a089567d"
+	descriptionMd5 hasValue "8f9db430be778b8114776101e3401067"
+	homepage hasValue "https://github.com/Qucs/ADMS"
+	depends hasValue "libadms0 (= 2.3.6-2), libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libadms0"
+	comparison hasValue "="
+	version hasValue "2.3.6-2"
+
+relationInstance depends(P0__adms,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__adms,1,DepAtom__1)
+

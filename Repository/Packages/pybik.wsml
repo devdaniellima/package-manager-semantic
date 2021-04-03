@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology pybik
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__pybik memberOf Package
+	package hasValue "pybik"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/games"
+	installedSize hasValue "30563"
+	maintainer hasValue "Original-Python Applications Packaging Team <python-apps-team@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "3.0-3build3"
+	fileName hasValue "pool/universe/p/pybik/pybik_3.0-3build3_all.deb"
+	size hasValue "11387360"
+	md5sum hasValue "b985075311ba5f915999fa824ca1ba22"
+	sha1 hasValue "e1540a8599daa500703f00a67805b7a07a12c089"
+	sha256 hasValue "53dbeec975bfb9d25a60bde351a7200b09016510cc812fe7e8b87c01df4bb14f"
+	descriptionMd5 hasValue "43809c8f4bcfd8ff58484565bd69d07f"
+	homepage hasValue "https://launchpad.net/pybik/"
+	depends hasValue "python3:any, pybik-bin (>= 3.0-3build3), pybik-bin (<< 3.0-3build3.1~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__pybik,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "pybik-bin"
+	comparison hasValue ">="
+	version hasValue "3.0-3build3"
+
+relationInstance depends(P0__pybik,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "pybik-bin"
+	comparison hasValue "<<"
+	version hasValue "3.0-3build3.1~"
+
+relationInstance depends(P0__pybik,2,DepAtom__2)
+

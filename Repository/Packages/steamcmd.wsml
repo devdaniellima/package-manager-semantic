@@ -1,0 +1,74 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology steamcmd
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__steamcmd memberOf Package
+	package hasValue "steamcmd"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "multiverse/games"
+	installedSize hasValue "4235"
+	maintainer hasValue "Original-Debian Games Team <pkg-games-devel@lists.alioth.debian.org>"
+	architecture hasValue "i386"
+	version hasValue "0~20180105-3"
+	fileName hasValue "pool/multiverse/s/steamcmd/steamcmd_0~20180105-3_i386.deb"
+	size hasValue "1364384"
+	md5sum hasValue "2408f17f871d9a7072b3053e0a9970f5"
+	sha1 hasValue "c693976b6f5a96c94d82230ec47869cb4a777ce0"
+	sha256 hasValue "0528dea95fed7e12cb913d891dd49636f806073e045c7ecce37f424fcec59e26"
+	descriptionMd5 hasValue "b07248086cabb08bc2914064e12c69a2"
+	homepage hasValue "https://developer.valvesoftware.com/wiki/SteamCMD"
+	depends hasValue "libc6 (>= 2.12), debconf (>= 0.5) | debconf-2.0, libstdc++6"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.12"
+
+relationInstance depends(P0__steamcmd,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "debconf"
+	comparison hasValue ">="
+	version hasValue "0.5"
+
+relationInstance depends(P0__steamcmd,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "debconf-2.0"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__steamcmd,1,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__steamcmd,2,DepAtom__3)
+

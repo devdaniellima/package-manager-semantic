@@ -1,0 +1,76 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology liblapack64_3
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__liblapack64_3 memberOf Package
+	package hasValue "liblapack64-3"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libs"
+	installedSize hasValue "6746"
+	maintainer hasValue "Original-Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.9.0-1build1"
+	provides hasValue "liblapack64.so.3"
+	fileName hasValue "pool/main/l/lapack/liblapack64-3_3.9.0-1build1_amd64.deb"
+	size hasValue "2002212"
+	md5sum hasValue "f625271a99c66b72006737d3caad3d90"
+	sha1 hasValue "f2bc06e7eb52da211b449e782139454d2e2d5913"
+	sha256 hasValue "5ae90acadf74816e03285f7b26c0edda689f3abc82e57111a01cea11d4049358"
+	description hasValue "Library of linear algebra routines 3 - shared version (64bit-index)"
+	descriptionMd5 hasValue "993440214b6e3a05ccc94c23656cb9a7"
+	homepage hasValue "http://www.netlib.org/lapack/"
+	depends hasValue "libblas64-3 | libblas64.so.3, libc6 (>= 2.29), libgfortran5 (>= 8)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libblas64-3"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__liblapack64_3,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libblas64.so.3"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__liblapack64_3,0,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__liblapack64_3,1,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "libgfortran5"
+	comparison hasValue ">="
+	version hasValue "8"
+
+relationInstance depends(P0__liblapack64_3,2,DepAtom__3)
+

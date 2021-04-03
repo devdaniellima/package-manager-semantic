@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology nbdkit_plugin_libvirt
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__nbdkit_plugin_libvirt memberOf Package
+	package hasValue "nbdkit-plugin-libvirt"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "36"
+	maintainer hasValue "Original-Hilko Bengen <bengen@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.16.2-1ubuntu3"
+	conflicts hasValue "nbdkit (<< 1.1.5-2~)"
+	fileName hasValue "pool/universe/n/nbdkit/nbdkit-plugin-libvirt_1.16.2-1ubuntu3_amd64.deb"
+	size hasValue "7552"
+	md5sum hasValue "8aeac4f0613f6a6fc3495c15516e5906"
+	sha1 hasValue "ca94065005264a3b6340381e0cdb1203bce5b61d"
+	sha256 hasValue "355912c79627873afaf46b3114b6748544bfb0030f789f3bc36a34b8bd5e51af"
+	descriptionMd5 hasValue "3b2a2204007d5f9a3d880dd605227de7"
+	homepage hasValue "https://github.com/libguestfs/nbdkit"
+	depends hasValue "libc6 (>= 2.4), libvirt0 (>= 0.8.1), nbdkit"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__nbdkit_plugin_libvirt,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libvirt0"
+	comparison hasValue ">="
+	version hasValue "0.8.1"
+
+relationInstance depends(P0__nbdkit_plugin_libvirt,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "nbdkit"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__nbdkit_plugin_libvirt,2,DepAtom__2)
+

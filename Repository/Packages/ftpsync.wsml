@@ -1,0 +1,66 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ftpsync
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ftpsync memberOf Package
+	package hasValue "ftpsync"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "115"
+	maintainer hasValue "Original-Debian Mirror Team <mirrors@debian.org>"
+	architecture hasValue "all"
+	version hasValue "20180513"
+	fileName hasValue "pool/universe/a/archvsync/ftpsync_20180513_all.deb"
+	size hasValue "33576"
+	md5sum hasValue "4a0c6d0b0cbf757d2b466b121a3609a4"
+	sha1 hasValue "0872afee7e2065f9df071b571a49d42cae26162b"
+	sha256 hasValue "01028c3ce0d89fa3941134c52fa7505454672d15b9e027f9006cbb3711f5ee58"
+	descriptionMd5 hasValue "c2cc501db526c4228da93531dee4bb26"
+	depends hasValue "default-mta | mail-transport-agent, rsync"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "default-mta"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ftpsync,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "mail-transport-agent"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ftpsync,0,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "rsync"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ftpsync,1,DepAtom__2)
+

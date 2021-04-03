@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology prometheus_bind_exporter
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__prometheus_bind_exporter memberOf Package
+	package hasValue "prometheus-bind-exporter"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/net"
+	installedSize hasValue "9946"
+	maintainer hasValue "Original-Debian Go Packaging Team <pkg-go-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.3.0+ds-1"
+	fileName hasValue "pool/universe/p/prometheus-bind-exporter/prometheus-bind-exporter_0.3.0+ds-1_amd64.deb"
+	size hasValue "3014604"
+	md5sum hasValue "a965307e91785ab58542afe7d218d002"
+	sha1 hasValue "34c09b828da3c00b1128447ea86e352531421ad2"
+	sha256 hasValue "a2c0d4e0b2dfe43e44f05ff472920ddb5e9c7e73b7dd2502a6b4467dcb57aae5"
+	descriptionMd5 hasValue "155215321c427005af6565a163d33c9a"
+	homepage hasValue "https://github.com/prometheus-community/bind_exporter/"
+	depends hasValue "daemon | systemd-sysv, libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "daemon"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__prometheus_bind_exporter,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "systemd-sysv"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__prometheus_bind_exporter,0,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__prometheus_bind_exporter,1,DepAtom__2)
+

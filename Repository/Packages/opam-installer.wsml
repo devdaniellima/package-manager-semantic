@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology opam_installer
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__opam_installer memberOf Package
+	package hasValue "opam-installer"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/ocaml"
+	installedSize hasValue "4596"
+	maintainer hasValue "Original-Debian OCaml Maintainers <debian-ocaml-maint@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.0.5-1ubuntu1"
+	replaces hasValue "opam (<< 2.0.0-1), opam-docs (<< 2.0.0-1)"
+	fileName hasValue "pool/universe/o/opam/opam-installer_2.0.5-1ubuntu1_amd64.deb"
+	size hasValue "1043116"
+	md5sum hasValue "0c580e3acd47156d0ee888f73a29d360"
+	sha1 hasValue "93b03bbedfcdfed13b5b28aeefaeb830ffc4b490"
+	sha256 hasValue "e3d23fff96a7ab76a964a0c32050807199165ecea6e4b64b0c3352f7e3ffb121"
+	descriptionMd5 hasValue "b6569f2595a8ac200a695f8aaa08a8fc"
+	homepage hasValue "https://opam.ocaml.org"
+	depends hasValue "libc6 (>= 2.29)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__opam_installer,0,DepAtom__0)
+

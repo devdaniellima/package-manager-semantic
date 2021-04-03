@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology cpuset
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__cpuset memberOf Package
+	package hasValue "cpuset"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "258"
+	maintainer hasValue "Original-Roberto C. Sanchez <roberto@connexer.com>"
+	architecture hasValue "all"
+	version hasValue "1.6-3.1"
+	fileName hasValue "pool/universe/c/cpuset/cpuset_1.6-3.1_all.deb"
+	size hasValue "71488"
+	md5sum hasValue "1753fa86be3356f960bbd10430dd7905"
+	sha1 hasValue "b8474852216b22ac03a1cd5881ab9357964245ce"
+	sha256 hasValue "981b28f4aea1be34c58ed2b29334799f7dcaf5d6e689f7154b20f2af6480b7cf"
+	description hasValue "permite a manipulação de cpusets e fornece diversão de alto nível"
+	descriptionMd5 hasValue "803e1d2a3801ed71edeca2d58ce08bde"
+	homepage hasValue "https://github.com/lpechacek/cpuset"
+	depends hasValue "python3-cpuset (= 1.6-3.1), python3:any"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3-cpuset"
+	comparison hasValue "="
+	version hasValue "1.6-3.1"
+
+relationInstance depends(P0__cpuset,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__cpuset,1,DepAtom__1)
+

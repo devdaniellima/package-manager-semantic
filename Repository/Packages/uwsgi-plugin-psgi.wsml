@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology uwsgi_plugin_psgi
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__uwsgi_plugin_psgi memberOf Package
+	package hasValue "uwsgi-plugin-psgi"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/web"
+	installedSize hasValue "200"
+	maintainer hasValue "Original-uWSGI packaging team <pkg-uwsgi-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.0.18-11ubuntu1"
+	fileName hasValue "pool/universe/u/uwsgi/uwsgi-plugin-psgi_2.0.18-11ubuntu1_amd64.deb"
+	size hasValue "53204"
+	md5sum hasValue "dad98712265c694f16f9e43e1c0913e4"
+	sha1 hasValue "06e7d43560120823509313b51133eca287006b25"
+	sha256 hasValue "02b3da7cca4419751c2662e63e796c8a9fe20d40b1c1a5b6f26a31fa8343436c"
+	descriptionMd5 hasValue "828d6498efae772fa540e29787676fbe"
+	homepage hasValue "http://projects.unbit.it/uwsgi/"
+	depends hasValue "uwsgi-core (= 2.0.18-11ubuntu1), libc6 (>= 2.14), libperl5.30 (>= 5.30.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "uwsgi-core"
+	comparison hasValue "="
+	version hasValue "2.0.18-11ubuntu1"
+
+relationInstance depends(P0__uwsgi_plugin_psgi,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__uwsgi_plugin_psgi,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libperl5.30"
+	comparison hasValue ">="
+	version hasValue "5.30.0"
+
+relationInstance depends(P0__uwsgi_plugin_psgi,2,DepAtom__2)
+

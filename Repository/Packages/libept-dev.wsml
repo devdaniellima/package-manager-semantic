@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libept_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libept_dev memberOf Package
+	package hasValue "libept-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "4090"
+	maintainer hasValue "Original-Enrico Zini <enrico@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.1+nmu3ubuntu3"
+	fileName hasValue "pool/universe/libe/libept/libept-dev_1.1+nmu3ubuntu3_amd64.deb"
+	size hasValue "356796"
+	md5sum hasValue "cbb8f5b4d45c0b4d7fa7ba944113d1e4"
+	sha1 hasValue "e3a6a92aef38fffab3b45ae87503515df5bae8fd"
+	sha256 hasValue "80bd217716379f47dc7728c6776736b71bbf118c5aad58ee5ce794eb83660291"
+	description hasValue "biblioteca de alto nível para gerenciar informações de pacotes Debian"
+	descriptionMd5 hasValue "db1ebb07da1715a36bf605f6d6b727d2"
+	depends hasValue "libept1.6.0 (= 1.1+nmu3ubuntu3), libapt-pkg-dev (>= 1.0.10), libxapian-dev (>= 1.2.21-1.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libept1.6.0"
+	comparison hasValue "="
+	version hasValue "1.1+nmu3ubuntu3"
+
+relationInstance depends(P0__libept_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libapt-pkg-dev"
+	comparison hasValue ">="
+	version hasValue "1.0.10"
+
+relationInstance depends(P0__libept_dev,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libxapian-dev"
+	comparison hasValue ">="
+	version hasValue "1.2.21-1.2"
+
+relationInstance depends(P0__libept_dev,2,DepAtom__2)
+

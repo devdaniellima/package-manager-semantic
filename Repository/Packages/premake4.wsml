@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology premake4
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__premake4 memberOf Package
+	package hasValue "premake4"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/devel"
+	installedSize hasValue "202"
+	maintainer hasValue "Original-Cameron Hart <cam@bitshifter.net.nz>"
+	architecture hasValue "amd64"
+	version hasValue "4.3+repack1-2build1"
+	fileName hasValue "pool/universe/p/premake4/premake4_4.3+repack1-2build1_amd64.deb"
+	size hasValue "39868"
+	md5sum hasValue "5842906d83d83002997444da46a5f815"
+	sha1 hasValue "74b69f4d2bda825e0941633b98b049ba853f18ac"
+	sha256 hasValue "4ab4c29269bac330cf35bc2fe013eef78f35ac9b54e584e337a4fc14736d9d1b"
+	descriptionMd5 hasValue "3bde662ce6d312c79376254eb7d78a8c"
+	homepage hasValue "http://industriousone.com/premake"
+	depends hasValue "libc6 (>= 2.4), liblua5.1-0"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__premake4,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "liblua5.1-0"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__premake4,1,DepAtom__1)
+

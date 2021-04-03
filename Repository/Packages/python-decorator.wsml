@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python_decorator
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python_decorator memberOf Package
+	package hasValue "python-decorator"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "43"
+	maintainer hasValue "Original-Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "4.4.2-0ubuntu1"
+	fileName hasValue "pool/universe/p/python-decorator/python-decorator_4.4.2-0ubuntu1_all.deb"
+	size hasValue "10256"
+	md5sum hasValue "3c5dd4eb68962aeab13569e8aaa5201e"
+	sha1 hasValue "858d4b7e7c3ea3639965dfdb18a393a7d0529b9b"
+	sha256 hasValue "05f986622c8ccf4e3b3d9e2293f81d484b4c92fc5f1ef53c2b3aa1c6223a2e4c"
+	descriptionMd5 hasValue "09bcb708a2302a7d9046e3a7b8bdcbef"
+	homepage hasValue "https://pypi.python.org/pypi/decorator"
+	depends hasValue "python2:any (<< 2.8), python2:any (>= 2.7~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue "<<"
+	version hasValue "2.8"
+
+relationInstance depends(P0__python_decorator,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue ">="
+	version hasValue "2.7~"
+
+relationInstance depends(P0__python_decorator,1,DepAtom__1)
+

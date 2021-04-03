@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology vco_plugins
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__vco_plugins memberOf Package
+	package hasValue "vco-plugins"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/sound"
+	installedSize hasValue "71"
+	maintainer hasValue "Original-Debian Multimedia Maintainers <pkg-multimedia-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.3.0-5build1"
+	provides hasValue "ladspa-plugin"
+	fileName hasValue "pool/universe/v/vco-plugins/vco-plugins_0.3.0-5build1_amd64.deb"
+	size hasValue "11236"
+	md5sum hasValue "fd6865bfb6b517ef9633ef966780e553"
+	sha1 hasValue "2042bd33eb0ad66ce9c3af9f4c9bd8a83871d7a8"
+	sha256 hasValue "cfd4334921b459c86337ef795fda321a909bcb94a4c872937e6cd57bb3618dab"
+	descriptionMd5 hasValue "e1468a87da43cbcd24bb73290b14e56e"
+	homepage hasValue "http://kokkinizita.linuxaudio.org/linuxaudio/index.html"
+	depends hasValue "libc6 (>= 2.2.5), libstdc++6 (>= 5)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.2.5"
+
+relationInstance depends(P0__vco_plugins,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "5"
+
+relationInstance depends(P0__vco_plugins,1,DepAtom__1)
+

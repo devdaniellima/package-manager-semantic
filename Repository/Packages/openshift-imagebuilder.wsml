@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology openshift_imagebuilder
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__openshift_imagebuilder memberOf Package
+	package hasValue "openshift-imagebuilder"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "10639"
+	maintainer hasValue "Original-Debian Go Packaging Team <team+pkg-go@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.1.0-2"
+	fileName hasValue "pool/universe/g/golang-github-openshift-imagebuilder/openshift-imagebuilder_1.1.0-2_amd64.deb"
+	size hasValue "3042100"
+	md5sum hasValue "f512fd71ea44024b59ee4078d76a9c8f"
+	sha1 hasValue "bf6d5cb12a3d9c661e95295b06e92fdcebdca368"
+	sha256 hasValue "0b62fc6bc0746747149b696950a5542774ad94d51ecb844977b1bc6db2c0725c"
+	descriptionMd5 hasValue "9316ebf92cfcd89c2ac6d7170c242e8e"
+	homepage hasValue "https://github.com/openshift/imagebuilder"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__openshift_imagebuilder,0,DepAtom__0)
+

@@ -1,0 +1,75 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology transmission
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__transmission memberOf Package
+	package hasValue "transmission"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "9"
+	maintainer hasValue "Original-Sandro Tosi <morph@debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.94-2ubuntu3"
+	fileName hasValue "pool/universe/t/transmission/transmission_2.94-2ubuntu3_all.deb"
+	size hasValue "1292"
+	md5sum hasValue "2f5438e27eddc870055d5423974e2b16"
+	sha1 hasValue "d92599a4bb5bae655d1fb7c56e39d4b34ae5d0fa"
+	sha256 hasValue "9ecc49295942cd6dd9f7a5c699ed7976f6f648b9767ee8adff1ff34384947b25"
+	description hasValue "cliente leve BitTorrent"
+	descriptionMd5 hasValue "ad4c3a4546931273694cb4f642f5341d"
+	homepage hasValue "https://transmissionbt.com/"
+	depends hasValue "transmission-common (>= 2.94-2ubuntu3), transmission-gtk (>= 2.94-2ubuntu3) | transmission-qt (>= 2.94-2ubuntu3) | transmission-cli (>= 2.94-2ubuntu3)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "transmission-common"
+	comparison hasValue ">="
+	version hasValue "2.94-2ubuntu3"
+
+relationInstance depends(P0__transmission,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "transmission-gtk"
+	comparison hasValue ">="
+	version hasValue "2.94-2ubuntu3"
+
+relationInstance depends(P0__transmission,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "transmission-qt"
+	comparison hasValue ">="
+	version hasValue "2.94-2ubuntu3"
+
+relationInstance depends(P0__transmission,1,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "transmission-cli"
+	comparison hasValue ">="
+	version hasValue "2.94-2ubuntu3"
+
+relationInstance depends(P0__transmission,1,DepAtom__3)
+

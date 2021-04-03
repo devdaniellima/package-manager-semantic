@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gap_guava
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gap_guava memberOf Package
+	package hasValue "gap-guava"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/math"
+	installedSize hasValue "5526"
+	maintainer hasValue "Original-Debian Science Maintainers <debian-science-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "3.15+ds-1"
+	provides hasValue "gap-pkg-guava"
+	fileName hasValue "pool/universe/g/gap-guava/gap-guava_3.15+ds-1_all.deb"
+	size hasValue "1402388"
+	md5sum hasValue "e1c4859fbac340f55f23da003229b17c"
+	sha1 hasValue "1041cf361c990ef9b60adff770b4c38ff398440b"
+	sha256 hasValue "6e9766cfc7804513672f0756c63200b5d81335b6fc943d76b80b59f2b28d82a9"
+	descriptionMd5 hasValue "ceb439f8b673e1389bd13bb8900cf658"
+	homepage hasValue "https://www.gap-system.org/Packages/guava.html"
+	depends hasValue "gap-guava-bin (>= 3.15+ds-1), gap (>= 4r10p2-1~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "gap-guava-bin"
+	comparison hasValue ">="
+	version hasValue "3.15+ds-1"
+
+relationInstance depends(P0__gap_guava,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "gap"
+	comparison hasValue ">="
+	version hasValue "4r10p2-1~"
+
+relationInstance depends(P0__gap_guava,1,DepAtom__1)
+

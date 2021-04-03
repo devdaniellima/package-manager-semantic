@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology r_cran_pkgkitten
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__r_cran_pkgkitten memberOf Package
+	package hasValue "r-cran-pkgkitten"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/gnu-r"
+	installedSize hasValue "62"
+	maintainer hasValue "Original-Dirk Eddelbuettel <edd@debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.1.5-1"
+	fileName hasValue "pool/universe/r/r-cran-pkgkitten/r-cran-pkgkitten_0.1.5-1_all.deb"
+	size hasValue "22596"
+	md5sum hasValue "967821c51ebf554f4e40ad6eab961259"
+	sha1 hasValue "ffc3c4d5f56893879be07d435838fd0fe5d70578"
+	sha256 hasValue "bc51d17d1220e65da34b2192764a849656b8cfb9cc21dc9bcedf5b386f1ad5e1"
+	descriptionMd5 hasValue "01f14b1dac3955f107b2861c4fc20647"
+	homepage hasValue "https://cran.r-project.org/package=pkgKitten"
+	depends hasValue "r-base-core (>= 3.6.1-4), r-api-3.5"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "r-base-core"
+	comparison hasValue ">="
+	version hasValue "3.6.1-4"
+
+relationInstance depends(P0__r_cran_pkgkitten,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "r-api-3.5"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__r_cran_pkgkitten,1,DepAtom__1)
+

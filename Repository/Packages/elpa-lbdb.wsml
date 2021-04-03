@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology elpa_lbdb
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__elpa_lbdb memberOf Package
+	package hasValue "elpa-lbdb"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/lisp"
+	installedSize hasValue "60"
+	maintainer hasValue "Original-Roland Rosenfeld <roland@debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.48.1"
+	replaces hasValue "lbdb (<< 0.45.2)"
+	fileName hasValue "pool/universe/l/lbdb/elpa-lbdb_0.48.1_all.deb"
+	size hasValue "8648"
+	md5sum hasValue "1abe2a7ff009866520e3886d258793e1"
+	sha1 hasValue "2548dd12ea226b3abdef9c312c6702df56e2dd78"
+	sha256 hasValue "da92f9267092fba879fc9c422a4f6b844df8dc29452642f63fa7f2b83d855470"
+	descriptionMd5 hasValue "c13e47ac6d806bb155a7b77d17830059"
+	homepage hasValue "https://www.spinnaker.de/lbdb/"
+	depends hasValue "bbdb, emacsen-common (>= 2.0.8), lbdb"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "bbdb"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__elpa_lbdb,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "emacsen-common"
+	comparison hasValue ">="
+	version hasValue "2.0.8"
+
+relationInstance depends(P0__elpa_lbdb,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "lbdb"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__elpa_lbdb,2,DepAtom__2)
+

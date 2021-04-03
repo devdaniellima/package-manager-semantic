@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology node_fragment_cache
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__node_fragment_cache memberOf Package
+	package hasValue "node-fragment-cache"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/web"
+	installedSize hasValue "20"
+	maintainer hasValue "Original-Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.2.1-1"
+	fileName hasValue "pool/universe/n/node-fragment-cache/node-fragment-cache_0.2.1-1_all.deb"
+	size hasValue "5520"
+	md5sum hasValue "24b457e4bfbb840cf3d642bdb3b178df"
+	sha1 hasValue "c1ee7adc5c3667e83356746cbbdcfa98ab27ee68"
+	sha256 hasValue "92aa86cca8689c945e4f50ae85f9bf96f27135e9274852c62dc9104c17a864c3"
+	descriptionMd5 hasValue "9667e4f015aa8410c0bb292e17406cb3"
+	homepage hasValue "https://github.com/jonschlinkert/fragment-cache"
+	depends hasValue "nodejs, node-map-cache (>= 0.2.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "nodejs"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__node_fragment_cache,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "node-map-cache"
+	comparison hasValue ">="
+	version hasValue "0.2.2"
+
+relationInstance depends(P0__node_fragment_cache,1,DepAtom__1)
+

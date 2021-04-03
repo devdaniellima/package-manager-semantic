@@ -1,0 +1,74 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology puppet_module_oslo
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__puppet_module_oslo memberOf Package
+	package hasValue "puppet-module-oslo"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/admin"
+	installedSize hasValue "188"
+	maintainer hasValue "Original-Debian OpenStack <team+openstack@tracker.debian.org>"
+	architecture hasValue "all"
+	version hasValue "15.4.0-2"
+	fileName hasValue "pool/universe/p/puppet-module-oslo/puppet-module-oslo_15.4.0-2_all.deb"
+	size hasValue "23992"
+	md5sum hasValue "6f6d56db2ecdd309c89475cb70aac38a"
+	sha1 hasValue "1147b97eee296add7102b7632ff164b84bb0b35e"
+	sha256 hasValue "5a1e2735ef70a7d8353f5ba390b521bd96e31e6b6034f36ce763b4c3eb698fc7"
+	descriptionMd5 hasValue "8bb458e37b2bfa1c6244105a6e2d51d0"
+	homepage hasValue "https://github.com/openstack/puppet-oslo"
+	depends hasValue "puppet-common, puppet-module-openstacklib (>= 15.4.0), puppet-module-puppetlabs-inifile, puppet-module-puppetlabs-stdlib"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "puppet-common"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__puppet_module_oslo,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "puppet-module-openstacklib"
+	comparison hasValue ">="
+	version hasValue "15.4.0"
+
+relationInstance depends(P0__puppet_module_oslo,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "puppet-module-puppetlabs-inifile"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__puppet_module_oslo,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "puppet-module-puppetlabs-stdlib"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__puppet_module_oslo,3,DepAtom__3)
+

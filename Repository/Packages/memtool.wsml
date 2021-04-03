@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology memtool
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__memtool memberOf Package
+	package hasValue "memtool"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/devel"
+	installedSize hasValue "32"
+	maintainer hasValue "Original-Uwe Kleine-König <ukleinek@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2018.03.0-1"
+	fileName hasValue "pool/universe/m/memtool/memtool_2018.03.0-1_amd64.deb"
+	size hasValue "10084"
+	md5sum hasValue "474b2fcbf1c4d3f820e4ef321e328019"
+	sha1 hasValue "5a6a40a5a3e9a640fd81b505852c79acadceda6c"
+	sha256 hasValue "72358dbd133a827dcbaf86abe1675d69739dcf74fe6970d89a6bfa4effa670d2"
+	descriptionMd5 hasValue "0b36cca17a5125d222f764398818ee8a"
+	homepage hasValue "http://www.pengutronix.de/software/memtool/index_en.html"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__memtool,0,DepAtom__0)
+

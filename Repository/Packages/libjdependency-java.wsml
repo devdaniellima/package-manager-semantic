@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libjdependency_java
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libjdependency_java memberOf Package
+	package hasValue "libjdependency-java"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/java"
+	installedSize hasValue "47"
+	maintainer hasValue "Original-Debian Java Maintainers <pkg-java-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.4-1"
+	fileName hasValue "pool/universe/j/jdependency/libjdependency-java_1.4-1_all.deb"
+	size hasValue "21088"
+	md5sum hasValue "2ce0b057f5b4ac000935a37cdfbc08dd"
+	sha1 hasValue "fe0b88d001c9b6045cfdc7a491115823368163ee"
+	sha256 hasValue "176ed5d07e1af1ec8320e685be609b8af5e87b02ff1a7475c62b2a7903b36984"
+	descriptionMd5 hasValue "a494eed4475bf9e64d9a172ef1f95456"
+	homepage hasValue "https://github.com/tcurdt/jdependency"
+	depends hasValue "libasm-java (>= 6.0), libcommons-io-java (>= 2.6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libasm-java"
+	comparison hasValue ">="
+	version hasValue "6.0"
+
+relationInstance depends(P0__libjdependency_java,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libcommons-io-java"
+	comparison hasValue ">="
+	version hasValue "2.6"
+
+relationInstance depends(P0__libjdependency_java,1,DepAtom__1)
+

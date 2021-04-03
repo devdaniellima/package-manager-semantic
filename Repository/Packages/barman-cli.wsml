@@ -1,0 +1,74 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology barman_cli
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__barman_cli memberOf Package
+	package hasValue "barman-cli"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/database"
+	installedSize hasValue "25"
+	maintainer hasValue "Original-Marco Nenciarini <mnencia@debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.10-2"
+	fileName hasValue "pool/universe/b/barman/barman-cli_2.10-2_all.deb"
+	size hasValue "8388"
+	md5sum hasValue "88cde8ac4f9373cbe7153c208c703e19"
+	sha1 hasValue "430bcf7af4dbc425302b44b9aae7af7792b55580"
+	sha256 hasValue "0265a3c3a8a87249d3d2b8fcf4e603593d9c61756de91bb1cbb637ab51fb0a20"
+	descriptionMd5 hasValue "f22f9aa161d868fbe8ef2396df144cc8"
+	homepage hasValue "http://www.pgbarman.org"
+	depends hasValue "python3-barman (= 2.10-2), python3-pkg-resources, rsync (>= 3.0.4~), python3:any"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3-barman"
+	comparison hasValue "="
+	version hasValue "2.10-2"
+
+relationInstance depends(P0__barman_cli,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3-pkg-resources"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__barman_cli,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "rsync"
+	comparison hasValue ">="
+	version hasValue "3.0.4~"
+
+relationInstance depends(P0__barman_cli,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__barman_cli,3,DepAtom__3)
+

@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gap_grape
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gap_grape memberOf Package
+	package hasValue "gap-grape"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/math"
+	installedSize hasValue "707"
+	maintainer hasValue "Original-Debian Science Maintainers <debian-science-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "4.8.3+ds-1"
+	provides hasValue "gap-pkg-grape"
+	fileName hasValue "pool/universe/g/gap-grape/gap-grape_4.8.3+ds-1_all.deb"
+	size hasValue "333784"
+	md5sum hasValue "2d483823e8a12b7062ff24c0e425a0fe"
+	sha1 hasValue "0621c761bc839310fb210687696a5029cc956515"
+	sha256 hasValue "0e80eb71559db1f87aca67200aa914889bc05f8d2940bc73255821de75a66755"
+	descriptionMd5 hasValue "701b210ec4d52136ba2de99550b30d51"
+	homepage hasValue "https://www.gap-system.org/Packages/grape.html"
+	depends hasValue "gap (>= 4r9p3), gap-primgrp, nauty"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "gap"
+	comparison hasValue ">="
+	version hasValue "4r9p3"
+
+relationInstance depends(P0__gap_grape,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "gap-primgrp"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__gap_grape,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "nauty"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__gap_grape,2,DepAtom__2)
+

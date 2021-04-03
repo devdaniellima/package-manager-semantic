@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libldap_java
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libldap_java memberOf Package
+	package hasValue "libldap-java"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/java"
+	installedSize hasValue "355"
+	maintainer hasValue "Original-Debian FreeIPA Team <pkg-freeipa-devel@alioth-lists.debian.net>"
+	architecture hasValue "all"
+	version hasValue "4.21.0+dfsg1-1"
+	fileName hasValue "pool/universe/l/ldapjdk/libldap-java_4.21.0+dfsg1-1_all.deb"
+	size hasValue "320764"
+	md5sum hasValue "ce187005614a973137b96df44e652eb4"
+	sha1 hasValue "094de90cd558d2980ac6cd611382132985787c2b"
+	sha256 hasValue "7719509313c1f8c1ee521469449a441d8d660fada22c11608142769070c5e322"
+	descriptionMd5 hasValue "97b31ec31aedff167c52eb2eb556e08c"
+	homepage hasValue "http://www.mozilla.org/directory/javasdk.html"
+	depends hasValue "libjss-java (>= 4.5.0~), libslf4j-java"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libjss-java"
+	comparison hasValue ">="
+	version hasValue "4.5.0~"
+
+relationInstance depends(P0__libldap_java,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libslf4j-java"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libldap_java,1,DepAtom__1)
+

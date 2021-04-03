@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libpmi0_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libpmi0_dev memberOf Package
+	package hasValue "libpmi0-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "134"
+	maintainer hasValue "Original-Debian HPC Team <debian-hpc@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "19.05.5-1"
+	fileName hasValue "pool/universe/s/slurm-llnl/libpmi0-dev_19.05.5-1_amd64.deb"
+	size hasValue "25496"
+	md5sum hasValue "6055ca87fd33b3ed132c22cd41d46928"
+	sha1 hasValue "ff1fdb30f700e746de5157b32fe71a5ae695cc5a"
+	sha256 hasValue "7c01b15f36febe3d019f13cda03b0c1f16a36d1ca9f76b8387c50a06b9d54356"
+	descriptionMd5 hasValue "38f1932e49c1075b303cbbf3d85deab5"
+	homepage hasValue "http://slurm.schedmd.com"
+	depends hasValue "libpmi0 (= 19.05.5-1), libslurm34 (= 19.05.5-1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libpmi0"
+	comparison hasValue "="
+	version hasValue "19.05.5-1"
+
+relationInstance depends(P0__libpmi0_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libslurm34"
+	comparison hasValue "="
+	version hasValue "19.05.5-1"
+
+relationInstance depends(P0__libpmi0_dev,1,DepAtom__1)
+

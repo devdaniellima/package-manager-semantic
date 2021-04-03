@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology pmars
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__pmars memberOf Package
+	package hasValue "pmars"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/games"
+	installedSize hasValue "173"
+	maintainer hasValue "Original-Debian Games Team <pkg-games-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.9.2-1"
+	fileName hasValue "pool/universe/p/pmars/pmars_0.9.2-1_amd64.deb"
+	size hasValue "74756"
+	md5sum hasValue "35de50312923c48f902d109f7d5847f6"
+	sha1 hasValue "ef36fa468649e747282dc520189c583ccca171a8"
+	sha256 hasValue "975ae758f8dc9f3aeed5e7fc4c0bd721aefd91e42d536eee6cf321904cca07d9"
+	descriptionMd5 hasValue "9eb6cce6ab4a629fb413a88536e1f4d3"
+	homepage hasValue "http://www.koth.org/pmars"
+	depends hasValue "libc6 (>= 2.7), libx11-6"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__pmars,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libx11-6"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__pmars,1,DepAtom__1)
+

@@ -1,0 +1,63 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology dput_ng
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__dput_ng memberOf Package
+	package hasValue "dput-ng"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/devel"
+	installedSize hasValue "160"
+	maintainer hasValue "Original-dput-ng Maintainers <dput-ng@packages.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.29"
+	replaces hasValue "dput"
+	provides hasValue "dput"
+	conflicts hasValue "dput"
+	fileName hasValue "pool/universe/d/dput-ng/dput-ng_1.29_all.deb"
+	size hasValue "32676"
+	md5sum hasValue "060c9c63a769a8cc2327025fff01f950"
+	sha1 hasValue "6a963c8cca9b8fd96d7e5b12c624e2dffb09ac5e"
+	sha256 hasValue "2cabc26052b6c6d2a6222778b2c500dcb3b49b64d25dd9704f96f92aa0642e0e"
+	descriptionMd5 hasValue "4ead401f9d1d7fdfcc1c998a89cce39e"
+	homepage hasValue "https://debian.pages.debian.net/dput-ng"
+	depends hasValue "python3-dput (= 1.29), python3:any"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3-dput"
+	comparison hasValue "="
+	version hasValue "1.29"
+
+relationInstance depends(P0__dput_ng,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__dput_ng,1,DepAtom__1)
+

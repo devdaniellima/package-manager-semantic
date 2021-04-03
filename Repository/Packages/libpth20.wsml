@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libpth20
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libpth20 memberOf Package
+	package hasValue "libpth20"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "128"
+	maintainer hasValue "Original-NIIBE Yutaka <gniibe@fsij.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.0.7-22"
+	fileName hasValue "pool/universe/p/pth/libpth20_2.0.7-22_amd64.deb"
+	size hasValue "44320"
+	md5sum hasValue "eab577d0f02e80b60e956bacf5cd9b35"
+	sha1 hasValue "4660a235698bf17cc599806e5ca0518ab2131b30"
+	sha256 hasValue "1264eee64f39afb724932109683c0086a7189d5ba0e1c22153d957fe196a67ee"
+	descriptionMd5 hasValue "c8182a448d26aa385dbac4690d17b2c0"
+	homepage hasValue "https://www.gnu.org/software/pth/"
+	depends hasValue "libc6 (>= 2.15)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__libpth20,0,DepAtom__0)
+

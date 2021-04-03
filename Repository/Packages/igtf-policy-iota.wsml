@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology igtf_policy_iota
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__igtf_policy_iota memberOf Package
+	package hasValue "igtf-policy-iota"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/misc"
+	installedSize hasValue "141"
+	maintainer hasValue "Original-Dennis van Dok <dennisvd@nikhef.nl>"
+	architecture hasValue "all"
+	version hasValue "1.104-1"
+	fileName hasValue "pool/universe/i/igtf-policy-bundle/igtf-policy-iota_1.104-1_all.deb"
+	size hasValue "32616"
+	md5sum hasValue "ea7a47c02faa2d56de69faa2b502d96e"
+	sha1 hasValue "9a9f2ca2737a28c0c220244e32f62b805bf150e2"
+	sha256 hasValue "e55fd7fa02c4847cc5238a7da5950d42b7b64ccd28c141da0f1afdef1057c01f"
+	descriptionMd5 hasValue "704194d97e71e19cf95ef84a9a52f6f4"
+	homepage hasValue "http://www.igtf.net/"
+	depends hasValue "debconf (>= 0.5) | debconf-2.0"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "debconf"
+	comparison hasValue ">="
+	version hasValue "0.5"
+
+relationInstance depends(P0__igtf_policy_iota,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "debconf-2.0"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__igtf_policy_iota,0,DepAtom__1)
+

@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology asciidoctor
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__asciidoctor memberOf Package
+	package hasValue "asciidoctor"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/ruby"
+	installedSize hasValue "344"
+	maintainer hasValue "Original-Debian Ruby Extras Maintainers <pkg-ruby-extras-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.0.10-2"
+	fileName hasValue "pool/universe/a/asciidoctor/asciidoctor_2.0.10-2_all.deb"
+	size hasValue "40292"
+	md5sum hasValue "855ab23a74b164e7aea00be5ff8e2a21"
+	sha1 hasValue "04f919123f2c0663a409e722f512e66a7487ea70"
+	sha256 hasValue "9a64ff2e08a24eff58a9b68a94b721788c40b2d3b048d395d90ee67386d8a8a3"
+	descriptionMd5 hasValue "12d0cefa9d5d385422cc8c36ee28ad6a"
+	homepage hasValue "http://asciidoctor.org"
+	depends hasValue "ruby | ruby-interpreter, ruby-asciidoctor (>= 2.0.10-2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "ruby"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__asciidoctor,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "ruby-interpreter"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__asciidoctor,0,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "ruby-asciidoctor"
+	comparison hasValue ">="
+	version hasValue "2.0.10-2"
+
+relationInstance depends(P0__asciidoctor,1,DepAtom__2)
+

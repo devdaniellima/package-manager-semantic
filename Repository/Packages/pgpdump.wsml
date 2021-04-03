@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology pgpdump
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__pgpdump memberOf Package
+	package hasValue "pgpdump"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "63"
+	maintainer hasValue "Original-Debian GnuPG Maintainers <pkg-gnupg-maint@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.33-2"
+	fileName hasValue "pool/universe/p/pgpdump/pgpdump_0.33-2_amd64.deb"
+	size hasValue "19040"
+	md5sum hasValue "74c7dc12d6d03b665918a4aeb82b76f0"
+	sha1 hasValue "0e1726126d091be39af1cfb082dedd4d4dd1629b"
+	sha256 hasValue "4bc6ef2005dbcef45320dc046850b27ee60a287d52e3f13486af8dcd567d558c"
+	descriptionMd5 hasValue "39148b4f72637f69982d6426857cf7e9"
+	homepage hasValue "https://www.mew.org/~kazu/proj/pgpdump/en/"
+	depends hasValue "libbz2-1.0, libc6 (>= 2.4), zlib1g (>= 1:1.1.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libbz2-1.0"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__pgpdump,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__pgpdump,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "zlib1g"
+	comparison hasValue ">="
+	version hasValue "1:1.1.4"
+
+relationInstance depends(P0__pgpdump,2,DepAtom__2)
+

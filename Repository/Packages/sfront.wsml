@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology sfront
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__sfront memberOf Package
+	package hasValue "sfront"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/sound"
+	installedSize hasValue "3419"
+	maintainer hasValue "Original-Santiago Vila <sanvila@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.99-2"
+	fileName hasValue "pool/universe/s/sfront/sfront_0.99-2_amd64.deb"
+	size hasValue "830922"
+	md5sum hasValue "5b78a274835693e2082c723f139e45a1"
+	sha1 hasValue "32d0aac9906c26655f58fc12951ff8d0311216bf"
+	sha256 hasValue "2640f25d767380535ae5e7ab35db45460bee9bf3eccbeb89caa21208a998429f"
+	descriptionMd5 hasValue "866ac3c4808d6c84bdc2c0884c652034"
+	homepage hasValue "http://www.cs.berkeley.edu/~lazzaro/sa/"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__sfront,0,DepAtom__0)
+

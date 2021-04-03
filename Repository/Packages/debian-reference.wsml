@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology debian_reference
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__debian_reference memberOf Package
+	package hasValue "debian-reference"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/doc"
+	installedSize hasValue "29"
+	maintainer hasValue "Original-Osamu Aoki <osamu@debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.76ubuntu1"
+	fileName hasValue "pool/universe/d/debian-reference/debian-reference_2.76ubuntu1_all.deb"
+	size hasValue "2524"
+	md5sum hasValue "737f9d990f9d8185aad8724fa4421edb"
+	sha1 hasValue "21b4dbcfaef7e0b0f0d0d2ee8456248223031c11"
+	sha256 hasValue "fb66459fc880abdd4d6c7fbcde9e3b8564214ad07e557d8685f82d9475330e95"
+	description hasValue "metapackage to install (all) translations of Debian Reference"
+	descriptionMd5 hasValue "e702bcb166c66b0e2476c35f9dfd9742"
+	homepage hasValue "https://www.debian.org/doc/user-manuals#quick-reference"
+	depends hasValue "debian-reference-en"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "debian-reference-en"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__debian_reference,0,DepAtom__0)
+

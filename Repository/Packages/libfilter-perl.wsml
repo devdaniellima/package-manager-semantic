@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libfilter_perl
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libfilter_perl memberOf Package
+	package hasValue "libfilter-perl"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/perl"
+	installedSize hasValue "205"
+	maintainer hasValue "Colin Watson <cjwatson@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.59-2build1"
+	fileName hasValue "pool/universe/libf/libfilter-perl/libfilter-perl_1.59-2build1_amd64.deb"
+	size hasValue "60628"
+	md5sum hasValue "2bd600ed695510fab3af22347b81595f"
+	sha1 hasValue "f0e37441e45d0b3cc875e0797268a312b14ffc43"
+	sha256 hasValue "fc16db9339832afa72105ef58d7ae58329696396daf556c21ae5073b71e8ca40"
+	descriptionMd5 hasValue "38caf6fcb80a9bbde6027cdd774d0222"
+	homepage hasValue "https://metacpan.org/release/Filter/"
+	depends hasValue "libc6 (>= 2.28), perl (>= 5.30.0-7), perlapi-5.30.0"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.28"
+
+relationInstance depends(P0__libfilter_perl,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "perl"
+	comparison hasValue ">="
+	version hasValue "5.30.0-7"
+
+relationInstance depends(P0__libfilter_perl,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "perlapi-5.30.0"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libfilter_perl,2,DepAtom__2)
+

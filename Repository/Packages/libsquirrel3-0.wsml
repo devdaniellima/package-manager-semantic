@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libsquirrel3_0
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libsquirrel3_0 memberOf Package
+	package hasValue "libsquirrel3-0"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/libs"
+	installedSize hasValue "404"
+	maintainer hasValue "Original-Fabian Wolff <fabi.wolff@arcor.de>"
+	architecture hasValue "amd64"
+	version hasValue "3.1-8build1"
+	fileName hasValue "pool/universe/s/squirrel3/libsquirrel3-0_3.1-8build1_amd64.deb"
+	size hasValue "127568"
+	md5sum hasValue "a724f8bc17f084846a67ad01a4b4aa2d"
+	sha1 hasValue "e62fa3e6d50745801637e5581c425b3a40583a27"
+	sha256 hasValue "ce095e505fcd139508b18ceada5ae269da2e56d1ae4cd0483fd47404df1cfffb"
+	descriptionMd5 hasValue "b74313f1d82226bde4489dc0b0a5f9d7"
+	homepage hasValue "http://squirrel-lang.org/"
+	depends hasValue "libc6 (>= 2.27), libstdc++6 (>= 4.1.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.27"
+
+relationInstance depends(P0__libsquirrel3_0,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "4.1.1"
+
+relationInstance depends(P0__libsquirrel3_0,1,DepAtom__1)
+

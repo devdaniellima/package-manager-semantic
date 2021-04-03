@@ -1,0 +1,66 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology openjdk_16_jre_zero
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S2 memberOf Source
+	uri hasValue "http://ppa.launchpad.net/openjdk-r/ppa/ubuntu"
+
+// Packages instances
+
+instance P0__openjdk_16_jre_zero memberOf Package
+	package hasValue "openjdk-16-jre-zero"
+	packageSource hasValue Source__S2
+	priority hasValue "optional"
+	section hasValue "java"
+	installedSize hasValue "7669"
+	maintainer hasValue "OpenJDK Team <openjdk-16@packages.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "16+36-3~20.04"
+	fileName hasValue "pool/main/o/openjdk-16/openjdk-16-jre-zero_16+36-3~20.04_amd64.deb"
+	size hasValue "2288736"
+	md5sum hasValue "3c35d0648aa15bf4e8c8c3348499daf4"
+	sha1 hasValue "a8e3abaea7e734916aaee640252932101d692fd7"
+	sha256 hasValue "61c0ffd7b8b302ea7189e7616d71e8b7a84b9c9bd72ab7230ead8722def730fc"
+	descriptionMd5 hasValue "c714861c802c9808def07d5329c6ed78"
+	depends hasValue "openjdk-16-jre-headless (= 16+36-3~20.04), libc6 (>= 2.29), libstdc++6 (>= 4.1.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "openjdk-16-jre-headless"
+	comparison hasValue "="
+	version hasValue "16+36-3~20.04"
+
+relationInstance depends(P0__openjdk_16_jre_zero,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__openjdk_16_jre_zero,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "4.1.1"
+
+relationInstance depends(P0__openjdk_16_jre_zero,2,DepAtom__2)
+

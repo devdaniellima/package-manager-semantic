@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libdbd_sqlite3
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libdbd_sqlite3 memberOf Package
+	package hasValue "libdbd-sqlite3"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libs"
+	installedSize hasValue "334"
+	maintainer hasValue "Original-Laszlo Boszormenyi (GCS) <gcs@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.9.0-8ubuntu1"
+	fileName hasValue "pool/main/libd/libdbi-drivers/libdbd-sqlite3_0.9.0-8ubuntu1_amd64.deb"
+	size hasValue "175100"
+	md5sum hasValue "e1665462ecc73b18dd359e88f3f803c8"
+	sha1 hasValue "4b8750cefe93265cb9c944c1e66bdc028d5cb8d0"
+	sha256 hasValue "a7eb3f94ae7c21e09aade7a7e18f13d1f05782dc45cfd7c75905ce361996f035"
+	descriptionMd5 hasValue "bbac5c425b82d758def37597a82c7afd"
+	homepage hasValue "http://libdbi.sourceforge.net/"
+	depends hasValue "libc6 (>= 2.8), libdbi1 (>= 0.9.0), libsqlite3-0 (>= 3.5.9)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.8"
+
+relationInstance depends(P0__libdbd_sqlite3,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libdbi1"
+	comparison hasValue ">="
+	version hasValue "0.9.0"
+
+relationInstance depends(P0__libdbd_sqlite3,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libsqlite3-0"
+	comparison hasValue ">="
+	version hasValue "3.5.9"
+
+relationInstance depends(P0__libdbd_sqlite3,2,DepAtom__2)
+

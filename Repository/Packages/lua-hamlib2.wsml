@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology lua_hamlib2
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__lua_hamlib2 memberOf Package
+	package hasValue "lua-hamlib2"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/interpreters"
+	installedSize hasValue "1547"
+	maintainer hasValue "Original-Debian Hamradio Maintainers <debian-hams@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.3-10build1"
+	provides hasValue "lua5.2-hamlib2, lua5.3-hamlib2"
+	fileName hasValue "pool/universe/h/hamlib/lua-hamlib2_3.3-10build1_amd64.deb"
+	size hasValue "202068"
+	md5sum hasValue "7de95c8a875be6d1eb9094fc642c5b0c"
+	sha1 hasValue "223ce411717be76023bc4d5c01cfbcbff5f063d8"
+	sha256 hasValue "5a0972f83fedd85ecdfa235e09f731d7870103cf7c94d5c05b005bce05c34557"
+	descriptionMd5 hasValue "40fba0740af5fb55f64a82ca18f8dccb"
+	homepage hasValue "https://sourceforge.net/projects/hamlib/"
+	depends hasValue "libc6 (>= 2.14), libhamlib2 (>= 3.3)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__lua_hamlib2,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libhamlib2"
+	comparison hasValue ">="
+	version hasValue "3.3"
+
+relationInstance depends(P0__lua_hamlib2,1,DepAtom__1)
+

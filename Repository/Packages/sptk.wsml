@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology sptk
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__sptk memberOf Package
+	package hasValue "sptk"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/sound"
+	installedSize hasValue "2395"
+	maintainer hasValue "Original-Giulio Paci <giuliopaci@gmail.com>"
+	architecture hasValue "amd64"
+	version hasValue "3.9-2"
+	fileName hasValue "pool/universe/s/sptk/sptk_3.9-2_amd64.deb"
+	size hasValue "384436"
+	md5sum hasValue "71083c1eec7cc54f8536f1dab4bcc698"
+	sha1 hasValue "06688394141498728b0277241b242f7752daa13a"
+	sha256 hasValue "20837b1359d02889e1cdc739f6059c4ad777dd3fd5b95308d943afa886b3aa7a"
+	descriptionMd5 hasValue "f1739d13be5369d3ef007a2521108886"
+	homepage hasValue "http://sp-tk.sourceforge.net/"
+	depends hasValue "libc6 (>= 2.14), libx11-6"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__sptk,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libx11-6"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__sptk,1,DepAtom__1)
+

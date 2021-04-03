@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology unadf
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__unadf memberOf Package
+	package hasValue "unadf"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "223"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.7.11a-4"
+	fileName hasValue "pool/universe/u/unadf/unadf_0.7.11a-4_amd64.deb"
+	size hasValue "109390"
+	md5sum hasValue "7153c5fbebe2ad85109a73948f3d6a87"
+	sha1 hasValue "bb47a30cb4afa6ee5cf36de535758dc9aba7d104"
+	sha256 hasValue "772e297eb75186bb4cafbc52dcca6625d542fa6d5448ddd5af4bbd5fe3806d62"
+	descriptionMd5 hasValue "a342fa0c4d9aa888a7a5bef6b677fa2a"
+	homepage hasValue "http://lclevy.free.fr/adflib/unadf.html"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__unadf,0,DepAtom__0)
+

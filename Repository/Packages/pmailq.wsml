@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology pmailq
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__pmailq memberOf Package
+	package hasValue "pmailq"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/admin"
+	installedSize hasValue "30"
+	maintainer hasValue "Original-Emmanuel Bouthenot <kolter@debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.7-1"
+	fileName hasValue "pool/universe/p/pmailq/pmailq_0.7-1_all.deb"
+	size hasValue "9340"
+	md5sum hasValue "8d7408dc34437e6ad3464424a9468eeb"
+	sha1 hasValue "b910c3b10fa72b162aab029a5e2895f3bb33f4ba"
+	sha256 hasValue "f0ad1e2e5c2681160ad4b11a573502f50d3d46f75fa8d1a2cc6405f12376764e"
+	descriptionMd5 hasValue "0da7aa03cc3cbf8a8396878a1888383f"
+	homepage hasValue "https://github.com/k0lter/pmailq"
+	depends hasValue "python3 (>= 3.4), postfix"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3"
+	comparison hasValue ">="
+	version hasValue "3.4"
+
+relationInstance depends(P0__pmailq,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "postfix"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__pmailq,1,DepAtom__1)
+

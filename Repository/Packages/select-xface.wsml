@@ -1,0 +1,74 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology select_xface
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__select_xface memberOf Package
+	package hasValue "select-xface"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/mail"
+	installedSize hasValue "59"
+	maintainer hasValue "Original-Tatsuya Kinoshita <tats@debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.15-11"
+	fileName hasValue "pool/universe/s/select-xface/select-xface_0.15-11_all.deb"
+	size hasValue "13304"
+	md5sum hasValue "8ecddbcff71e567d38fcf2f81dedc633"
+	sha1 hasValue "8a18179216d957141048df35e798757239dacbd3"
+	sha256 hasValue "9f030db7f2259826ebc2f850c1000462afeecc4ac966ec7357e28ec16b186c6e"
+	descriptionMd5 hasValue "229e47eff6f71dc0f4766563975cde5c"
+	homepage hasValue "http://www.jpl.org/ftp/pub/elisp/"
+	depends hasValue "emacsen-common (>= 2.0.8), emacs-nox | emacs | emacsen"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "emacsen-common"
+	comparison hasValue ">="
+	version hasValue "2.0.8"
+
+relationInstance depends(P0__select_xface,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "emacs-nox"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__select_xface,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "emacs"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__select_xface,1,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "emacsen"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__select_xface,1,DepAtom__3)
+

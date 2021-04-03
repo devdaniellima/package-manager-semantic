@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology liblaszip_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__liblaszip_dev memberOf Package
+	package hasValue "liblaszip-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "44"
+	maintainer hasValue "Original-Debian GIS Project <pkg-grass-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.4.3-1build1"
+	fileName hasValue "pool/universe/l/laszip/liblaszip-dev_3.4.3-1build1_amd64.deb"
+	size hasValue "7316"
+	md5sum hasValue "458bace92d6d7b8f481e8eb37ee672e3"
+	sha1 hasValue "fe7ed9a92162148f332de29fe90ff8312eb862ee"
+	sha256 hasValue "e66a1d4fa36ffe1bac477f364bba5e4ae65b9fecc362801809c5c3e9a44f1d42"
+	descriptionMd5 hasValue "3f58330744e1fd56b8fcd67b62d07e5c"
+	homepage hasValue "https://laszip.org/"
+	depends hasValue "liblaszip8 (= 3.4.3-1build1), liblaszip-api8 (= 3.4.3-1build1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "liblaszip8"
+	comparison hasValue "="
+	version hasValue "3.4.3-1build1"
+
+relationInstance depends(P0__liblaszip_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "liblaszip-api8"
+	comparison hasValue "="
+	version hasValue "3.4.3-1build1"
+
+relationInstance depends(P0__liblaszip_dev,1,DepAtom__1)
+

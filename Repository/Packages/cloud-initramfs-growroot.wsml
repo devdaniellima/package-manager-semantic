@@ -1,0 +1,74 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology cloud_initramfs_growroot
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__cloud_initramfs_growroot memberOf Package
+	package hasValue "cloud-initramfs-growroot"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/admin"
+	installedSize hasValue "24"
+	maintainer hasValue "Scott Moser <smoser@ubuntu.com>"
+	architecture hasValue "all"
+	version hasValue "0.45ubuntu1"
+	fileName hasValue "pool/universe/c/cloud-initramfs-tools/cloud-initramfs-growroot_0.45ubuntu1_all.deb"
+	size hasValue "5212"
+	md5sum hasValue "1d8d1d524a283b6995f13d45f47add44"
+	sha1 hasValue "5f12e6cc10e0d4af4549b166acd42f06d1c5a48e"
+	sha256 hasValue "8c024eccfd29081b2c51e9627af97f58e9b57784bf12b1de3df0fec3e427c1b4"
+	descriptionMd5 hasValue "2a0d4bed7bada9873cf69d658abe0c23"
+	homepage hasValue "http://launchpad.net/cloud-initramfs-tools"
+	depends hasValue "cloud-utils (>= 0.21ubuntu1) | cloud-guest-utils, initramfs-tools, util-linux (>= 2.17.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "cloud-utils"
+	comparison hasValue ">="
+	version hasValue "0.21ubuntu1"
+
+relationInstance depends(P0__cloud_initramfs_growroot,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "cloud-guest-utils"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__cloud_initramfs_growroot,0,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "initramfs-tools"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__cloud_initramfs_growroot,1,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "util-linux"
+	comparison hasValue ">="
+	version hasValue "2.17.2"
+
+relationInstance depends(P0__cloud_initramfs_growroot,2,DepAtom__3)
+

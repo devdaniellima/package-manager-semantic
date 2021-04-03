@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libiptcdata_bin
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libiptcdata_bin memberOf Package
+	package hasValue "libiptcdata-bin"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/graphics"
+	installedSize hasValue "57"
+	maintainer hasValue "Original-Ian Wienand <ianw@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.5-2.1ubuntu4"
+	fileName hasValue "pool/universe/libi/libiptcdata/libiptcdata-bin_1.0.5-2.1ubuntu4_amd64.deb"
+	size hasValue "15792"
+	md5sum hasValue "4a06299f1d1157c9acb8f7d73eaf6c66"
+	sha1 hasValue "8007db9b588c869f877a78ee971d4c492c5750ef"
+	sha256 hasValue "56c088c9e3fb36d116bdc143120e6576d4484e98d7e859d64994f45e29394927"
+	description hasValue "Library to parse IPTC metadata (programs)"
+	descriptionMd5 hasValue "830662c59118e488ec0d41af00f9a952"
+	homepage hasValue "https://github.com/ianw/libiptcdata"
+	depends hasValue "libiptcdata0 (= 1.0.5-2.1ubuntu4), libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libiptcdata0"
+	comparison hasValue "="
+	version hasValue "1.0.5-2.1ubuntu4"
+
+relationInstance depends(P0__libiptcdata_bin,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libiptcdata_bin,1,DepAtom__1)
+

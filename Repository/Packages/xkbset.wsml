@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology xkbset
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__xkbset memberOf Package
+	package hasValue "xkbset"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/x11"
+	installedSize hasValue "68"
+	maintainer hasValue "Original-Debian Accessibility Team <pkg-a11y-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.5-7.1"
+	fileName hasValue "pool/universe/x/xkbset/xkbset_0.5-7.1_amd64.deb"
+	size hasValue "20276"
+	md5sum hasValue "0573d52c6d325b45fe751fe7704b3a60"
+	sha1 hasValue "10edb02088fe9c4a59f155f1c97e7cdc87840b54"
+	sha256 hasValue "7ef3d977fcc1bf70d238f244e8b8014fb13dcb1167fb9e67bd7d3e0472af1d91"
+	descriptionMd5 hasValue "58510602441a9f4fdf59f88f82bfac31"
+	homepage hasValue "https://faculty.missouri.edu/~stephen/software"
+	depends hasValue "libc6 (>= 2.4), libx11-6"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__xkbset,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libx11-6"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__xkbset,1,DepAtom__1)
+

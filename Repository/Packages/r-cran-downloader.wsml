@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology r_cran_downloader
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__r_cran_downloader memberOf Package
+	package hasValue "r-cran-downloader"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/gnu-r"
+	installedSize hasValue "64"
+	maintainer hasValue "Original-Debian R Packages Maintainers <r-pkg-team@alioth-lists.debian.net>"
+	architecture hasValue "all"
+	version hasValue "0.4-3"
+	fileName hasValue "pool/universe/r/r-cran-downloader/r-cran-downloader_0.4-3_all.deb"
+	size hasValue "23988"
+	md5sum hasValue "5b90bc3906700da700af37787cd21829"
+	sha1 hasValue "85c0694b9d6bc728fb7d84413c05708b4a7fc8a2"
+	sha256 hasValue "d5d58b3e9f1f43513e9b06cf8a31fce44887dec989c3dd5a04ff2470aacadd45"
+	descriptionMd5 hasValue "42d35f629d19fc1f72fb17bd2f3a74a0"
+	homepage hasValue "https://cran.r-project.org/package=downloader"
+	depends hasValue "r-base-core (>= 3.5.0-5), r-api-3.5, r-cran-digest"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "r-base-core"
+	comparison hasValue ">="
+	version hasValue "3.5.0-5"
+
+relationInstance depends(P0__r_cran_downloader,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "r-api-3.5"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__r_cran_downloader,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "r-cran-digest"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__r_cran_downloader,2,DepAtom__2)
+

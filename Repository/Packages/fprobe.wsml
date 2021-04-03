@@ -1,0 +1,81 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology fprobe
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__fprobe memberOf Package
+	package hasValue "fprobe"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "76"
+	maintainer hasValue "Original-Bernhard Schmidt <berni@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.1-8"
+	fileName hasValue "pool/universe/f/fprobe/fprobe_1.1-8_amd64.deb"
+	size hasValue "26208"
+	md5sum hasValue "9f09c87bab7717e8afd886b57670abc8"
+	sha1 hasValue "f7db746c3ce9eee882694f7f7f8f7d5a309794e8"
+	sha256 hasValue "daa44f1ecbb02ce85cbbfc6466c65489bffe8e71d642d0f01adec9205d9a48d7"
+	descriptionMd5 hasValue "1ce21ac0268ad425b991cbf6d2f12148"
+	homepage hasValue "fprobe.sourceforge.net"
+	depends hasValue "debconf (>= 0.5) | debconf-2.0, libc6 (>= 2.7), libpcap0.8 (>= 0.9.8), lsb-base (>= 3.0-6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "debconf"
+	comparison hasValue ">="
+	version hasValue "0.5"
+
+relationInstance depends(P0__fprobe,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "debconf-2.0"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__fprobe,0,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__fprobe,1,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "libpcap0.8"
+	comparison hasValue ">="
+	version hasValue "0.9.8"
+
+relationInstance depends(P0__fprobe,2,DepAtom__3)
+
+instance DepAtom__4 memberOf DependencyAtom
+	package hasValue "lsb-base"
+	comparison hasValue ">="
+	version hasValue "3.0-6"
+
+relationInstance depends(P0__fprobe,3,DepAtom__4)
+

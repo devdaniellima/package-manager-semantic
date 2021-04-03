@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology elpa_bug_hunter
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__elpa_bug_hunter memberOf Package
+	package hasValue "elpa-bug-hunter"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/lisp"
+	installedSize hasValue "56"
+	maintainer hasValue "Original-Debian Emacs addons team <pkg-emacsen-addons@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.3.1+repack-4"
+	fileName hasValue "pool/universe/e/elisp-bug-hunter/elpa-bug-hunter_1.3.1+repack-4_all.deb"
+	size hasValue "11756"
+	md5sum hasValue "7265b0aae642dbff19a3610f03448721"
+	sha1 hasValue "5a2f0abdf5d1c6f0115da6d42a224c73d8c75eac"
+	sha256 hasValue "51739b4630582bbf684c2c99910e449e2c2f5a28d965c7f4e1e6fbe2c3345a2e"
+	descriptionMd5 hasValue "18caba3a144bb367f46e3915ee11ce46"
+	homepage hasValue "https://elpa.gnu.org/packages/bug-hunter.html"
+	depends hasValue "elpa-seq (>= 1.3), emacsen-common (>= 2.0.8)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "elpa-seq"
+	comparison hasValue ">="
+	version hasValue "1.3"
+
+relationInstance depends(P0__elpa_bug_hunter,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "emacsen-common"
+	comparison hasValue ">="
+	version hasValue "2.0.8"
+
+relationInstance depends(P0__elpa_bug_hunter,1,DepAtom__1)
+

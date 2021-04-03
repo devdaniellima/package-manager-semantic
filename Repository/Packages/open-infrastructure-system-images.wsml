@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology open_infrastructure_system_images
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__open_infrastructure_system_images memberOf Package
+	package hasValue "open-infrastructure-system-images"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "638"
+	maintainer hasValue "Original-Daniel Baumann <daniel.baumann@progress-linux.org>"
+	architecture hasValue "all"
+	version hasValue "20190301-lts1-2"
+	provides hasValue "system-images"
+	fileName hasValue "pool/universe/o/open-infrastructure-system-tools/open-infrastructure-system-images_20190301-lts1-2_all.deb"
+	size hasValue "45460"
+	md5sum hasValue "5a92725d766c8b968afba06f715f63ab"
+	sha1 hasValue "9b1ccaae3b342c2bd17def28735ede1aca7c621a"
+	sha256 hasValue "8bc52ad160ce6c6a50b0cef99ea074fb42a355be5168bb4fa3c6fc5e5158febe"
+	descriptionMd5 hasValue "56db09f3ea145ee6f3f7612483a50ba8"
+	homepage hasValue "https://open-infrastructure.net/software/system-tools"
+	depends hasValue "open-infrastructure-system-build (>= 20161115)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "open-infrastructure-system-build"
+	comparison hasValue ">="
+	version hasValue "20161115"
+
+relationInstance depends(P0__open_infrastructure_system_images,0,DepAtom__0)
+

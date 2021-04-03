@@ -1,0 +1,70 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libcPlusPlus1_9
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libcPlusPlus1_9 memberOf Package
+	package hasValue "libc++1-9"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "841"
+	maintainer hasValue "Original-LLVM Packaging Team <pkg-llvm-team@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:9.0.1-12"
+	replaces hasValue "libc++-x.y"
+	provides hasValue "libc++-x.y"
+	conflicts hasValue "libc++-x.y"
+	fileName hasValue "pool/universe/l/llvm-toolchain-9/libc++1-9_9.0.1-12_amd64.deb"
+	size hasValue "202036"
+	md5sum hasValue "a2792fe9312cfd1cc75f0855e6bc4999"
+	sha1 hasValue "9e58b7ba42e4aeda680c965716bc7ea281750afa"
+	sha256 hasValue "65b01337051a9c97546b2a0fb123fc7bce3e1eeacd2c1cdc385897b5bce781ab"
+	descriptionMd5 hasValue "3e11b80d657dd5ed05ee027e3cba65ca"
+	homepage hasValue "https://www.llvm.org/"
+	depends hasValue "libc++abi1-9, libc6 (>= 2.17), libgcc-s1 (>= 3.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc++abi1-9"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libcPlusPlus1_9,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.17"
+
+relationInstance depends(P0__libcPlusPlus1_9,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libgcc-s1"
+	comparison hasValue ">="
+	version hasValue "3.0"
+
+relationInstance depends(P0__libcPlusPlus1_9,2,DepAtom__2)
+

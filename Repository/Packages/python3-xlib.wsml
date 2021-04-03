@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python3_xlib
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python3_xlib memberOf Package
+	package hasValue "python3-xlib"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/python"
+	installedSize hasValue "758"
+	maintainer hasValue "Original-Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.23-2build1"
+	fileName hasValue "pool/universe/p/python-xlib/python3-xlib_0.23-2build1_all.deb"
+	size hasValue "112208"
+	md5sum hasValue "5d877fbdc08154143c4dd6ad31b11dff"
+	sha1 hasValue "4ca6e4f047cc04cbc35d522c3591527bba851a7a"
+	sha256 hasValue "8b3d8174ce492707928f84d8f3fa412214e137bc0cfb35b56741d302a9729d7d"
+	descriptionMd5 hasValue "03a78a17731b5e43be920fc40f04f937"
+	homepage hasValue "https://github.com/python-xlib/python-xlib"
+	depends hasValue "python3-six (>= 1.10.0), python3:any (>= 3.1~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3-six"
+	comparison hasValue ">="
+	version hasValue "1.10.0"
+
+relationInstance depends(P0__python3_xlib,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ">="
+	version hasValue "3.1~"
+
+relationInstance depends(P0__python3_xlib,1,DepAtom__1)
+

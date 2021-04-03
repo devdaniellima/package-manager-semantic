@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python3_mockupdb
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python3_mockupdb memberOf Package
+	package hasValue "python3-mockupdb"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "99"
+	maintainer hasValue "Original-Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.7.0-3"
+	fileName hasValue "pool/universe/p/python-mockupdb/python3-mockupdb_1.7.0-3_all.deb"
+	size hasValue "27060"
+	md5sum hasValue "60ebd37ba3aa4251ba6fa8ef852670d7"
+	sha1 hasValue "e9b34daafbd1c382d41246c161fe4c67a4d8dc6b"
+	sha256 hasValue "4d4b3be76ad156f90d8fe295542dc02f65799295f2085e6eba85be7b2995c45d"
+	description hasValue "MongoDB Wire Protocol server library - Python 3.x"
+	descriptionMd5 hasValue "d4170f6b4b78335e6a365885c179023c"
+	homepage hasValue "https://github.com/ajdavis/mongo-mockup-db"
+	depends hasValue "python3-pymongo (>= 3), python3:any"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3-pymongo"
+	comparison hasValue ">="
+	version hasValue "3"
+
+relationInstance depends(P0__python3_mockupdb,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__python3_mockupdb,1,DepAtom__1)
+

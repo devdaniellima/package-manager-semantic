@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libipt2
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libipt2 memberOf Package
+	package hasValue "libipt2"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "135"
+	maintainer hasValue "Original-Victor Seva <vseva@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.0.1-1"
+	fileName hasValue "pool/universe/i/intel-processor-trace/libipt2_2.0.1-1_amd64.deb"
+	size hasValue "42808"
+	md5sum hasValue "ea00fb0baeb38ef706ef188b8e0bfbd8"
+	sha1 hasValue "5fe6d37daa9ab5bff6e16cee6301ad8e9866520a"
+	sha256 hasValue "541c1b3a8cb01ba3e2c13eecc27a4d78b0cff76b6c2f0334fe26dbb8206d7dcb"
+	descriptionMd5 hasValue "be94fb3c503ad758b721a8937c8157ef"
+	homepage hasValue "https://github.com/intel/libipt"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libipt2,0,DepAtom__0)
+

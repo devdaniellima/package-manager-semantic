@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology missfits
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__missfits memberOf Package
+	package hasValue "missfits"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/science"
+	installedSize hasValue "284"
+	maintainer hasValue "Original-Debian Astronomy Maintainers <debian-astro-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.8.0-2"
+	fileName hasValue "pool/universe/m/missfits/missfits_2.8.0-2_amd64.deb"
+	size hasValue "100484"
+	md5sum hasValue "3ca3f6d956446721e27b2b7153734d95"
+	sha1 hasValue "9cf4a8ec2ea512e56092ed0413ed29de6a406d61"
+	sha256 hasValue "7fa55df344664db3317d3259f36924fd722a8776d073072a6cf1c6af9168995f"
+	descriptionMd5 hasValue "f44371b1b93e61eb1232539e251d562d"
+	homepage hasValue "https://www.astromatic.net/software/missfits"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__missfits,0,DepAtom__0)
+

@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology liburl_dispatcher1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__liburl_dispatcher1 memberOf Package
+	package hasValue "liburl-dispatcher1"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "28"
+	maintainer hasValue "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	architecture hasValue "amd64"
+	version hasValue "0.1+17.04.20170328-0ubuntu4"
+	fileName hasValue "pool/universe/u/url-dispatcher/liburl-dispatcher1_0.1+17.04.20170328-0ubuntu4_amd64.deb"
+	size hasValue "5940"
+	md5sum hasValue "3634a38671ccdb51b6f9f358d239b82a"
+	sha1 hasValue "b88da1f8ed9c2b3125052fa75b6f0a80b711b102"
+	sha256 hasValue "12c4b99af66429f55d218393beb13cc8627d44102730dd4cbc6da2ab2c3bf5eb"
+	description hasValue "library for sending requests to the url dispatcher"
+	descriptionMd5 hasValue "85121071bb37a2b7f8b23299a0b2c9c8"
+	homepage hasValue "http://launchpad.net/url-dispatcher"
+	depends hasValue "libc6 (>= 2.4), libglib2.0-0 (>= 2.26.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__liburl_dispatcher1,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libglib2.0-0"
+	comparison hasValue ">="
+	version hasValue "2.26.0"
+
+relationInstance depends(P0__liburl_dispatcher1,1,DepAtom__1)
+

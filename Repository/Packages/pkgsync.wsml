@@ -1,0 +1,52 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology pkgsync
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__pkgsync memberOf Package
+	package hasValue "pkgsync"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "39"
+	maintainer hasValue "Original-Steinar H. Gunderson <sesse@debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.27"
+	fileName hasValue "pool/universe/p/pkgsync/pkgsync_1.27_all.deb"
+	size hasValue "10892"
+	md5sum hasValue "406628a968910364272c3cc4a2136b70"
+	sha1 hasValue "e23c89e2584d1e9128814fd51fabfa8422039aee"
+	sha256 hasValue "1e8884b2621405465bd8bdbf2318c1ffdc2de8a6545e6990eda3303579d786a8"
+	descriptionMd5 hasValue "845dd00e142dcfdcf8a3483a14c8997f"
+	depends hasValue "aptitude (>= 0.6.1.4-1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "aptitude"
+	comparison hasValue ">="
+	version hasValue "0.6.1.4-1"
+
+relationInstance depends(P0__pkgsync,0,DepAtom__0)
+

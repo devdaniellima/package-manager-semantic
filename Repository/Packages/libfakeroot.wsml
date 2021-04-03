@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libfakeroot
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libfakeroot memberOf Package
+	package hasValue "libfakeroot"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "utils"
+	installedSize hasValue "157"
+	maintainer hasValue "Original-Clint Adams <clint@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.24-1"
+	replaces hasValue "fakeroot (<< 1.20-2~)"
+	fileName hasValue "pool/main/f/fakeroot/libfakeroot_1.24-1_amd64.deb"
+	size hasValue "25720"
+	md5sum hasValue "cbcc9385d810aab2333674993348240f"
+	sha1 hasValue "643e16b13608873b1b44b1498737cc67a761dc01"
+	sha256 hasValue "e542e0c0543be5b02d59306d3747a527e054225816465a2c3e4c97c6e7439222"
+	description hasValue "tool for simulating superuser privileges - shared libraries"
+	descriptionMd5 hasValue "22ea5d7d46de1e430af3ef824ed6d524"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libfakeroot,0,DepAtom__0)
+

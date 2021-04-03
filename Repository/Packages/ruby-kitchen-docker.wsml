@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ruby_kitchen_docker
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ruby_kitchen_docker memberOf Package
+	package hasValue "ruby-kitchen-docker"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/ruby"
+	installedSize hasValue "47"
+	maintainer hasValue "Original-Debian Ruby Extras Maintainers <pkg-ruby-extras-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.7.0-1"
+	fileName hasValue "pool/universe/r/ruby-kitchen-docker/ruby-kitchen-docker_2.7.0-1_all.deb"
+	size hasValue "11620"
+	md5sum hasValue "8ed5d2cebb908709e827db6bdce84cdc"
+	sha1 hasValue "3181ae86393a5498144b0db63fa5e7e58fa9f5bc"
+	sha256 hasValue "ec445b80ce3476023557f8e52cc3306cf9a9817557460ef380680c4485350017"
+	descriptionMd5 hasValue "7c3a74aac3923015b38d9849be02489a"
+	homepage hasValue "https://github.com/portertech/kitchen-docker"
+	depends hasValue "ruby | ruby-interpreter, test-kitchen (>= 1.0.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "ruby"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ruby_kitchen_docker,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "ruby-interpreter"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ruby_kitchen_docker,0,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "test-kitchen"
+	comparison hasValue ">="
+	version hasValue "1.0.0"
+
+relationInstance depends(P0__ruby_kitchen_docker,1,DepAtom__2)
+

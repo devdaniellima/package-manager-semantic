@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology talk
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__talk memberOf Package
+	package hasValue "talk"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "55"
+	maintainer hasValue "Original-Alberto Gonzalez Iniesta <agi@inittab.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.17-16"
+	replaces hasValue "netstd"
+	fileName hasValue "pool/universe/n/netkit-ntalk/talk_0.17-16_amd64.deb"
+	size hasValue "19164"
+	md5sum hasValue "75253d3874f7476df8a0eb7f64948576"
+	sha1 hasValue "6b92f60356475c99d14bdd30009543aee416d468"
+	sha256 hasValue "f5a06b728ec503643299407f13287c71c8b1c853ded19b092aae927a918e1073"
+	descriptionMd5 hasValue "3312a1f61eab4169a2566a6a3f5788c0"
+	depends hasValue "libc6 (>= 2.15), libncurses6 (>= 6), libtinfo6 (>= 6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__talk,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libncurses6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__talk,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libtinfo6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__talk,2,DepAtom__2)
+

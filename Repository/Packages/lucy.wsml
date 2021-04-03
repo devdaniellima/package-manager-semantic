@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology lucy
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__lucy memberOf Package
+	package hasValue "lucy"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/science"
+	installedSize hasValue "81"
+	maintainer hasValue "Original-Debian Med Packaging Team <debian-med-packaging@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.20-1"
+	fileName hasValue "pool/universe/l/lucy/lucy_1.20-1_amd64.deb"
+	size hasValue "41576"
+	md5sum hasValue "dc959697f67ff68551642daeb4fc8d40"
+	sha1 hasValue "687085251b5c126da220b9aef7e55158b100ad1a"
+	sha256 hasValue "29720d98041c04b35e2e3f24ea40ac154a01a4ba9d08a0913f2546e2d7ae0a32"
+	descriptionMd5 hasValue "52f9053f485f5ef7f40fe8fe9da31713"
+	homepage hasValue "https://lucy.sourceforge.net"
+	depends hasValue "libc6 (>= 2.7)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__lucy,0,DepAtom__0)
+

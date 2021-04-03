@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology r_cran_mnormt
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__r_cran_mnormt memberOf Package
+	package hasValue "r-cran-mnormt"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/math"
+	installedSize hasValue "140"
+	maintainer hasValue "Original-Dirk Eddelbuettel <edd@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.5-6-1"
+	fileName hasValue "pool/universe/m/mnormt/r-cran-mnormt_1.5-6-1_amd64.deb"
+	size hasValue "75184"
+	md5sum hasValue "3d0dd8e52e3647ca4bdd8d126e8ae5a3"
+	sha1 hasValue "3fcf158c7b906e053dfe024292618b64a89d8893"
+	sha256 hasValue "fc5ed47db3a33f6a6565db76501f627b551a0d38f48817778f4d3d76ab5cf98d"
+	descriptionMd5 hasValue "c0d2846468a0445f50a1460824961619"
+	homepage hasValue "https://cran.r-project.org/package=mnormt"
+	depends hasValue "libc6 (>= 2.29), r-base-core (>= 3.6.2-2), r-api-3.5"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__r_cran_mnormt,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "r-base-core"
+	comparison hasValue ">="
+	version hasValue "3.6.2-2"
+
+relationInstance depends(P0__r_cran_mnormt,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "r-api-3.5"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__r_cran_mnormt,2,DepAtom__2)
+

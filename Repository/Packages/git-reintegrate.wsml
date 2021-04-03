@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology git_reintegrate
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__git_reintegrate memberOf Package
+	package hasValue "git-reintegrate"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/vcs"
+	installedSize hasValue "38"
+	maintainer hasValue "Original-Yann Dirson <dirson@debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.4-1"
+	fileName hasValue "pool/universe/g/git-reintegrate/git-reintegrate_0.4-1_all.deb"
+	size hasValue "10772"
+	md5sum hasValue "ca712a4683b0e85d16e8d4ced073a169"
+	sha1 hasValue "5848f0be955cd81499e0ba8624bd0798df92c55b"
+	sha256 hasValue "c6f6dcd390f1319aec63f320a90464c052d5962892217ffff0ab9cfd521aa4ca"
+	descriptionMd5 hasValue "f4c76c0e9b91f34ac7abcd52e52858b0"
+	homepage hasValue "https://github.com/felipec/git-reintegrate"
+	depends hasValue "git, ruby (>= 1.9.3)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "git"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__git_reintegrate,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "ruby"
+	comparison hasValue ">="
+	version hasValue "1.9.3"
+
+relationInstance depends(P0__git_reintegrate,1,DepAtom__1)
+

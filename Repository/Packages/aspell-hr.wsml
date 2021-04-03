@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology aspell_hr
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__aspell_hr memberOf Package
+	package hasValue "aspell-hr"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/text"
+	installedSize hasValue "376"
+	maintainer hasValue "Original-Vedran Furač <vedranf@riteh.hr>"
+	architecture hasValue "all"
+	version hasValue "0.51-4"
+	provides hasValue "aspell-dictionary"
+	fileName hasValue "pool/universe/a/aspell-hr/aspell-hr_0.51-4_all.deb"
+	size hasValue "282316"
+	md5sum hasValue "6ffa98d611565bbdb596f94ecf1a79f6"
+	sha1 hasValue "ebd2d5ecff6647baf24d7e2bd71a41754b973dbc"
+	sha256 hasValue "10529d3a997c1ac29a7c3b2408c4f5a192c9778affb52cbfecacb28db4dc362d"
+	description hasValue "o dicionário croata para o GNU Aspell"
+	descriptionMd5 hasValue "dd71d8327ff9d0ab0412b5fa4e610dc1"
+	depends hasValue "aspell (>= 0.60.3-3), dictionaries-common (>= 0.49.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "aspell"
+	comparison hasValue ">="
+	version hasValue "0.60.3-3"
+
+relationInstance depends(P0__aspell_hr,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "dictionaries-common"
+	comparison hasValue ">="
+	version hasValue "0.49.2"
+
+relationInstance depends(P0__aspell_hr,1,DepAtom__1)
+

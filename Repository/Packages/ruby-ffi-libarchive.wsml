@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ruby_ffi_libarchive
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ruby_ffi_libarchive memberOf Package
+	package hasValue "ruby-ffi-libarchive"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/ruby"
+	installedSize hasValue "60"
+	maintainer hasValue "Original-Debian Ruby Extras Maintainers <pkg-ruby-extras-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.0.0+-2"
+	fileName hasValue "pool/universe/r/ruby-ffi-libarchive/ruby-ffi-libarchive_1.0.0+-2_all.deb"
+	size hasValue "9372"
+	md5sum hasValue "906ee0dbb099ec91855dcead50426135"
+	sha1 hasValue "b684554507d83039c013a0214ecd0887246cce9c"
+	sha256 hasValue "a4128ba5668ac8df1b779dd6eda6663f2965584b922561e93922d1fb250e5998"
+	descriptionMd5 hasValue "2e84641c9dd802d00201f686209a3af8"
+	homepage hasValue "https://github.com/chef/ffi-libarchive"
+	depends hasValue "ruby-ffi (>= 1.0), libarchive13"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "ruby-ffi"
+	comparison hasValue ">="
+	version hasValue "1.0"
+
+relationInstance depends(P0__ruby_ffi_libarchive,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libarchive13"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ruby_ffi_libarchive,1,DepAtom__1)
+

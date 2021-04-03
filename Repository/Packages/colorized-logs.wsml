@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology colorized_logs
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__colorized_logs memberOf Package
+	package hasValue "colorized-logs"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/text"
+	installedSize hasValue "87"
+	maintainer hasValue "Original-Adam Borowski <kilobyte@angband.pl>"
+	architecture hasValue "amd64"
+	version hasValue "2.5-1"
+	replaces hasValue "kbtin (<< 1.0.18)"
+	fileName hasValue "pool/universe/c/colorized-logs/colorized-logs_2.5-1_amd64.deb"
+	size hasValue "15776"
+	md5sum hasValue "818bed8940d5e0cfd80222213c0590fd"
+	sha1 hasValue "6dcbf19c5a26113305989c6dc05676eeffc2056d"
+	sha256 hasValue "679f69e9da9d3c403f712ab7a73171ca8143fad34fd237515113af0c7c86c460"
+	descriptionMd5 hasValue "c2ca1e752a67b97d30757e6dd9b48346"
+	homepage hasValue "https://github.com/kilobyte/colorized-logs"
+	depends hasValue "libc6 (>= 2.7), less"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__colorized_logs,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "less"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__colorized_logs,1,DepAtom__1)
+

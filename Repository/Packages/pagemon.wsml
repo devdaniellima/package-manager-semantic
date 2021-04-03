@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology pagemon
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__pagemon memberOf Package
+	package hasValue "pagemon"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "59"
+	maintainer hasValue "Colin King <colin.king@canonical.com>"
+	architecture hasValue "amd64"
+	version hasValue "0.01.19-1"
+	fileName hasValue "pool/universe/p/pagemon/pagemon_0.01.19-1_amd64.deb"
+	size hasValue "17580"
+	md5sum hasValue "adda22739e42b4fe9d2b38d3ab3c4359"
+	sha1 hasValue "92dc084104bff6d52919c0f77ff6ce36ce9171d0"
+	sha256 hasValue "33cb95203e02dabb136dffae9af3060ef45c4151a7e8ff0516a99d6dc950f7f8"
+	descriptionMd5 hasValue "afa2c2a415ee499b4baf05d9fad3d1fd"
+	homepage hasValue "http://kernel.ubuntu.com/~cking/pagemon"
+	depends hasValue "libc6 (>= 2.11), libncurses6 (>= 6), libtinfo6 (>= 6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.11"
+
+relationInstance depends(P0__pagemon,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libncurses6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__pagemon,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libtinfo6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__pagemon,2,DepAtom__2)
+

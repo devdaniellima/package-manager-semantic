@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology jhead
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__jhead memberOf Package
+	package hasValue "jhead"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/graphics"
+	installedSize hasValue "104"
+	maintainer hasValue "Original-Ludovic Rousseau <rousseau@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:3.04-1"
+	fileName hasValue "pool/universe/j/jhead/jhead_3.04-1_amd64.deb"
+	size hasValue "41056"
+	md5sum hasValue "19f8ecd79a6ff8dc347135d7c4faf746"
+	sha1 hasValue "69e57550f2722c55ef15136f552c199261dff85c"
+	sha256 hasValue "656f8e3e4bb77140f6d68fff020dd4907b9e3cbc8bc92d9edb01e531746b62ea"
+	descriptionMd5 hasValue "a9af64e20d34dfdad7586faac789117a"
+	homepage hasValue "http://www.sentex.net/~mwandel/jhead/"
+	depends hasValue "libc6 (>= 2.29), libjpeg-turbo-progs"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__jhead,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libjpeg-turbo-progs"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__jhead,1,DepAtom__1)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology omnidb_server
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__omnidb_server memberOf Package
+	package hasValue "omnidb-server"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/database"
+	installedSize hasValue "34"
+	maintainer hasValue "Original-Debian PostgreSQL Maintainers <team+postgresql@tracker.debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.17.0+ds-1"
+	fileName hasValue "pool/universe/o/omnidb/omnidb-server_2.17.0+ds-1_all.deb"
+	size hasValue "7396"
+	md5sum hasValue "2926c39ff108e8d3632a72a43a8153f7"
+	sha1 hasValue "b341c6080a2ae557df78e918cfe776dd9cdd77f7"
+	sha256 hasValue "ac46a0de964d80e1ffa5a43bf637473a064772605cc83f5ac0265cf11b40dd8f"
+	descriptionMd5 hasValue "ad2452a6726d9a6c07832081d3698404"
+	homepage hasValue "https://omnidb.org/"
+	depends hasValue "adduser, omnidb-common (= 2.17.0+ds-1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "adduser"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__omnidb_server,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "omnidb-common"
+	comparison hasValue "="
+	version hasValue "2.17.0+ds-1"
+
+relationInstance depends(P0__omnidb_server,1,DepAtom__1)
+

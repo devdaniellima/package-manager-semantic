@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology wordpress_shibboleth
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__wordpress_shibboleth memberOf Package
+	package hasValue "wordpress-shibboleth"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/php"
+	installedSize hasValue "72"
+	maintainer hasValue "Original-Dominic Hargreaves <dom@earth.li>"
+	architecture hasValue "all"
+	version hasValue "1.8-1"
+	fileName hasValue "pool/universe/w/wordpress-shibboleth/wordpress-shibboleth_1.8-1_all.deb"
+	size hasValue "21492"
+	md5sum hasValue "76bb1ec7692cf24c576bd8dd4dbc5cbc"
+	sha1 hasValue "9804f0b8863caaeeed94e3681f6683b9c3601bbd"
+	sha256 hasValue "0dfee42d462b9a595c9e4d6379824df48bb8ced5b28d59ffda79f128681468de"
+	descriptionMd5 hasValue "3fa0375bc92730a73ad684b68f0d327b"
+	homepage hasValue "https://wordpress.org/extend/plugins/shibboleth/"
+	depends hasValue "wordpress, libapache2-mod-shib2"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "wordpress"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__wordpress_shibboleth,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libapache2-mod-shib2"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__wordpress_shibboleth,1,DepAtom__1)
+

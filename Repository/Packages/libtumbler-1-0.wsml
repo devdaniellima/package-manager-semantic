@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libtumbler_1_0
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libtumbler_1_0 memberOf Package
+	package hasValue "libtumbler-1-0"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/xfce"
+	installedSize hasValue "82"
+	maintainer hasValue "Original-Debian Xfce Maintainers <debian-xfce@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.2.8-1"
+	fileName hasValue "pool/universe/t/tumbler/libtumbler-1-0_0.2.8-1_amd64.deb"
+	size hasValue "20160"
+	md5sum hasValue "0a05d55b25c9562fc60adc29724d22ad"
+	sha1 hasValue "c8672564ce4c7c19c3f6dfd00bd8282d4ac2831b"
+	sha256 hasValue "93e1e8fcf87087e994865a899a78b816cfd9c30b3247fef94a7aaa6990f50d48"
+	description hasValue "library for tumbler, a D-Bus thumbnailing service"
+	descriptionMd5 hasValue "4323f73e4ec816c00add5357207eae1b"
+	homepage hasValue "https://docs.xfce.org/xfce/thunar/tumbler"
+	depends hasValue "libc6 (>= 2.4), libglib2.0-0 (>= 2.37.3)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libtumbler_1_0,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libglib2.0-0"
+	comparison hasValue ">="
+	version hasValue "2.37.3"
+
+relationInstance depends(P0__libtumbler_1_0,1,DepAtom__1)
+

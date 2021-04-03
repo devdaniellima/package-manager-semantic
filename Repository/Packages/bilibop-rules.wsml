@@ -1,0 +1,76 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology bilibop_rules
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__bilibop_rules memberOf Package
+	package hasValue "bilibop-rules"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "203"
+	maintainer hasValue "Original-Yann Amar <quidame@poivron.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.6.0"
+	provides hasValue "bilibop-device-policy"
+	conflicts hasValue "bilibop-udev"
+	fileName hasValue "pool/universe/b/bilibop/bilibop-rules_0.6.0_amd64.deb"
+	size hasValue "49596"
+	md5sum hasValue "d5f3adf6ccf06a9460ffa9672e26fe27"
+	sha1 hasValue "be5d2a222f5cc9393f35f8e140204532d4b6ead3"
+	sha256 hasValue "3a8216317cc025339a14f4100f85a70744b6f92074cc21c47e6bc9981f675065"
+	descriptionMd5 hasValue "cfe08d416c4c1b4f05f9b5152a6086c2"
+	homepage hasValue "https://un.poivron.org/~quidame/wiki/bilibop"
+	depends hasValue "bilibop-common (= 0.6.0), udev (>= 242-6), debconf (>= 0.5) | debconf-2.0"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "bilibop-common"
+	comparison hasValue "="
+	version hasValue "0.6.0"
+
+relationInstance depends(P0__bilibop_rules,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "udev"
+	comparison hasValue ">="
+	version hasValue "242-6"
+
+relationInstance depends(P0__bilibop_rules,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "debconf"
+	comparison hasValue ">="
+	version hasValue "0.5"
+
+relationInstance depends(P0__bilibop_rules,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "debconf-2.0"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__bilibop_rules,2,DepAtom__3)
+

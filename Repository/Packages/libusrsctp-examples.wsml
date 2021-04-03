@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libusrsctp_examples
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libusrsctp_examples memberOf Package
+	package hasValue "libusrsctp-examples"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "515"
+	maintainer hasValue "Original-Debian VoIP Team <pkg-voip-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.9.3.0+20190901-1"
+	fileName hasValue "pool/universe/libu/libusrsctp/libusrsctp-examples_0.9.3.0+20190901-1_amd64.deb"
+	size hasValue "52012"
+	md5sum hasValue "c53be3eccc342f04f3d7e55c2d0d0390"
+	sha1 hasValue "0c57b0e4a55b0c38bfe0b0ea0d1958fbe093449f"
+	sha256 hasValue "1f439506bea2b3ca5ee731a3d015562f2c4cad39d9fdfa7cd3e2a5f7364f221d"
+	descriptionMd5 hasValue "d1f37b650ebecf53b5d67b4c95e2fe4d"
+	homepage hasValue "https://github.com/sctplab/usrsctp"
+	depends hasValue "libusrsctp1 (= 0.9.3.0+20190901-1), libc6 (>= 2.7)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libusrsctp1"
+	comparison hasValue "="
+	version hasValue "0.9.3.0+20190901-1"
+
+relationInstance depends(P0__libusrsctp_examples,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__libusrsctp_examples,1,DepAtom__1)
+

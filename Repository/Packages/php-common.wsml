@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology php_common
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__php_common memberOf Package
+	package hasValue "php-common"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "php"
+	installedSize hasValue "73"
+	maintainer hasValue "Original-Debian PHP Maintainers <team+pkg-php@tracker.debian.org>"
+	architecture hasValue "all"
+	version hasValue "2:75"
+	fileName hasValue "pool/main/p/php-defaults/php-common_75_all.deb"
+	size hasValue "11948"
+	md5sum hasValue "c6054836005eb7b0f42436e5799079b4"
+	sha1 hasValue "9dab8a532eb3e3df42a6395aa67475d760020179"
+	sha256 hasValue "bbac6f060d1de7cc56a0d4c0e37469a7932533d963b459444eb9282493b74b00"
+	description hasValue "Common files for PHP packages"
+	descriptionMd5 hasValue "d3dbac8bcc4b5fda4235137f8b9f3ade"
+	depends hasValue "psmisc (>= 22.15-1~), sed (>= 4.1.1-1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "psmisc"
+	comparison hasValue ">="
+	version hasValue "22.15-1~"
+
+relationInstance depends(P0__php_common,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "sed"
+	comparison hasValue ">="
+	version hasValue "4.1.1-1"
+
+relationInstance depends(P0__php_common,1,DepAtom__1)
+

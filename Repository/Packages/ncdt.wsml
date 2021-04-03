@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ncdt
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ncdt memberOf Package
+	package hasValue "ncdt"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "30"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.1-4"
+	fileName hasValue "pool/universe/n/ncdt/ncdt_2.1-4_amd64.deb"
+	size hasValue "9764"
+	md5sum hasValue "c04a9459f6c2be78850b1005b1570546"
+	sha1 hasValue "bacb0c34298a4d15d0bb730fb70d61dc387c63a6"
+	sha256 hasValue "4c68862b06bc461d8ab6b27e80fd103301a6039c1774905278ace7dbfdb48213"
+	description hasValue "Exibe a árvore do diretório."
+	descriptionMd5 hasValue "78deba6dd910c63e3e413540c99ce23c"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__ncdt,0,DepAtom__0)
+

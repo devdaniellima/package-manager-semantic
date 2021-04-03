@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology liblcm_java
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__liblcm_java memberOf Package
+	package hasValue "liblcm-java"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "169"
+	maintainer hasValue "Original-Dima Kogan <dkogan@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.3.1+repack1-2.3"
+	fileName hasValue "pool/universe/l/lcm/liblcm-java_1.3.1+repack1-2.3_amd64.deb"
+	size hasValue "145988"
+	md5sum hasValue "1247fd138b489420528353fc54e9ea90"
+	sha1 hasValue "561c41b4c2dc68690138d8386debd3e9bf8843e4"
+	sha256 hasValue "413f0ce36859c52c317cb2bdcd7dd702a616af54fdc69519e3d8382c2a060dcb"
+	descriptionMd5 hasValue "108dd2e7ef9ac0a35e1670fa8e0b01bd"
+	homepage hasValue "http://lcm-proj.github.io/"
+	depends hasValue "liblcm1 (= 1.3.1+repack1-2.3), liblcm-bin"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "liblcm1"
+	comparison hasValue "="
+	version hasValue "1.3.1+repack1-2.3"
+
+relationInstance depends(P0__liblcm_java,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "liblcm-bin"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__liblcm_java,1,DepAtom__1)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libatasmart_bin
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libatasmart_bin memberOf Package
+	package hasValue "libatasmart-bin"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "39"
+	maintainer hasValue "Original-Utopia Maintenance Team <pkg-utopia-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.19-5"
+	fileName hasValue "pool/universe/liba/libatasmart/libatasmart-bin_0.19-5_amd64.deb"
+	size hasValue "6924"
+	md5sum hasValue "b1ae031e2a5b6464a1801d0d7d3cbcd2"
+	sha1 hasValue "e4f2b0edde1c160f826a14aee06b46ba59c242fc"
+	sha256 hasValue "165067bcb07d1d89316a723ee6fd8cc8f646c22a9f89602382af9130ef58c801"
+	descriptionMd5 hasValue "4efc8a0c734c991fb6f560d6f0c09aff"
+	homepage hasValue "http://0pointer.de/blog/projects/being-smart.html"
+	depends hasValue "libatasmart4 (>= 0.13), libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libatasmart4"
+	comparison hasValue ">="
+	version hasValue "0.13"
+
+relationInstance depends(P0__libatasmart_bin,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libatasmart_bin,1,DepAtom__1)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology node_rechoir
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__node_rechoir memberOf Package
+	package hasValue "node-rechoir"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/web"
+	installedSize hasValue "22"
+	maintainer hasValue "Original-Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.6.2-1"
+	fileName hasValue "pool/universe/n/node-rechoir/node-rechoir_0.6.2-1_all.deb"
+	size hasValue "4444"
+	md5sum hasValue "b2aa057d1b4d6c010cee069314c49ce5"
+	sha1 hasValue "0d579f1bd607b49d86e6ebec385e936b5ea5207c"
+	sha256 hasValue "a5f545e5f415c52193d6f9e313e928bd85880110e78d73170f036be4a7744f96"
+	descriptionMd5 hasValue "a0239d19106c000177617591cd0a0750"
+	homepage hasValue "https://github.com/tkellen/node-rechoir"
+	depends hasValue "nodejs, node-resolve (>= 1.1.6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "nodejs"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__node_rechoir,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "node-resolve"
+	comparison hasValue ">="
+	version hasValue "1.1.6"
+
+relationInstance depends(P0__node_rechoir,1,DepAtom__1)
+

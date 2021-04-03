@@ -1,0 +1,55 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libfl2
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libfl2 memberOf Package
+	package hasValue "libfl2"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libs"
+	installedSize hasValue "76"
+	maintainer hasValue "Original-Manoj Srivastava <srivasta@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.6.4-6.2"
+	replaces hasValue "flex (<< 2.5.39), libfl-dev (<= 2.6.4-4)"
+	fileName hasValue "pool/main/f/flex/libfl2_2.6.4-6.2_amd64.deb"
+	size hasValue "11452"
+	md5sum hasValue "b1368f6c3f10328bcf9a432618ecbbb8"
+	sha1 hasValue "d9b284701f598c0ca526fa73f71999e1f4fdb97e"
+	sha256 hasValue "de6c0f0afce0a1df7e3834c2e65a46d69b419eb9c6943914949b950cf4003fd4"
+	description hasValue "SHARED library for flex (a fast lexical analyzer generator)"
+	descriptionMd5 hasValue "a7ee854b071e7f88dab94db684eef08c"
+	homepage hasValue "https://github.com/westes/flex"
+	depends hasValue "libc6 (>= 2.2.5)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.2.5"
+
+relationInstance depends(P0__libfl2,0,DepAtom__0)
+

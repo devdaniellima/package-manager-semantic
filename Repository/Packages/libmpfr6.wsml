@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libmpfr6
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libmpfr6 memberOf Package
+	package hasValue "libmpfr6"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libs"
+	installedSize hasValue "1096"
+	maintainer hasValue "Original-Debian GCC Maintainers <debian-gcc@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "4.0.2-1"
+	fileName hasValue "pool/main/m/mpfr4/libmpfr6_4.0.2-1_amd64.deb"
+	size hasValue "240292"
+	md5sum hasValue "9e91ab64ac113ea6c06d45d5ffe09fc6"
+	sha1 hasValue "dec05d4a292b652692c78741ada82e3f47d8e210"
+	sha256 hasValue "d098b67c3e1492a1c21a6a0d9befc88344e59a0d0eb6109384f85d8524a608cb"
+	description hasValue "computação de ponto flutuante de precisão múltipla"
+	descriptionMd5 hasValue "97d2af3ed9ac83dc3fdaf77a6b27a294"
+	homepage hasValue "http://www.mpfr.org/"
+	depends hasValue "libc6 (>= 2.14), libgmp10"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libmpfr6,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgmp10"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libmpfr6,1,DepAtom__1)
+

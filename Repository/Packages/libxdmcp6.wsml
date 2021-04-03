@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libxdmcp6
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libxdmcp6 memberOf Package
+	package hasValue "libxdmcp6"
+	packageSource hasValue Source__S1
+	priority hasValue "standard"
+	section hasValue "libs"
+	installedSize hasValue "43"
+	maintainer hasValue "Original-Debian X Strike Force <debian-x@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:1.1.3-0ubuntu1"
+	fileName hasValue "pool/main/libx/libxdmcp/libxdmcp6_1.1.3-0ubuntu1_amd64.deb"
+	size hasValue "10580"
+	md5sum hasValue "075dabff271d9366d4ce55448869f12b"
+	sha1 hasValue "2be7004fdf4796f3975157890b8de29553392f6f"
+	sha256 hasValue "8a612b0fb60a41b92698f87258bc5ec6467da88e38d3de79411e02921c42af87"
+	description hasValue "X11 Display Manager Control Protocol library"
+	descriptionMd5 hasValue "79e282811de3a2440672d104fd07bead"
+	depends hasValue "libbsd0 (>= 0.2.0), libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libbsd0"
+	comparison hasValue ">="
+	version hasValue "0.2.0"
+
+relationInstance depends(P0__libxdmcp6,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libxdmcp6,1,DepAtom__1)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python_docopt
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python_docopt memberOf Package
+	package hasValue "python-docopt"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "93"
+	maintainer hasValue "Original-Agustin Henze <tin@debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.6.2-2.2ubuntu1"
+	fileName hasValue "pool/universe/d/docopt/python-docopt_0.6.2-2.2ubuntu1_all.deb"
+	size hasValue "25908"
+	md5sum hasValue "7be8969073ac00de956ed0dbbfbbed79"
+	sha1 hasValue "fd5504f99954a5b02e1cace7a59766a6f3051eff"
+	sha256 hasValue "23fee5bb2c88e2a4bf1924b2b08cc769858c8d0263a8de92f4c130f0cd7ca018"
+	descriptionMd5 hasValue "220b0deeb742606edfd06e02c27558f6"
+	homepage hasValue "http://docopt.org"
+	depends hasValue "python2:any (<< 2.8), python2:any (>= 2.7~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue "<<"
+	version hasValue "2.8"
+
+relationInstance depends(P0__python_docopt,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue ">="
+	version hasValue "2.7~"
+
+relationInstance depends(P0__python_docopt,1,DepAtom__1)
+

@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libdbi_test_perl
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libdbi_test_perl memberOf Package
+	package hasValue "libdbi-test-perl"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/perl"
+	installedSize hasValue "162"
+	maintainer hasValue "Original-Debian Perl Group <pkg-perl-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.001-1"
+	fileName hasValue "pool/universe/libd/libdbi-test-perl/libdbi-test-perl_0.001-1_all.deb"
+	size hasValue "41060"
+	md5sum hasValue "b4792af3f55a16e79c6fd629d1a80781"
+	sha1 hasValue "0ffd020653d46255200acab522a144a482a3ae90"
+	sha256 hasValue "25953062899b3a248e3894f6da8a2606c7deee0fcd502efb207435247981938c"
+	descriptionMd5 hasValue "46d2c176a521fea69620ba220e62eb50"
+	homepage hasValue "https://metacpan.org/release/DBI-Test"
+	depends hasValue "perl, libmodule-pluggable-perl | perl (<< 5.17.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "perl"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libdbi_test_perl,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libmodule-pluggable-perl"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libdbi_test_perl,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "perl"
+	comparison hasValue "<<"
+	version hasValue "5.17.0"
+
+relationInstance depends(P0__libdbi_test_perl,1,DepAtom__2)
+

@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology galleta
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__galleta memberOf Package
+	package hasValue "galleta"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "29"
+	maintainer hasValue "Original-Debian Security Tools <team+pkg-security@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0+20040505-10"
+	fileName hasValue "pool/universe/g/galleta/galleta_1.0+20040505-10_amd64.deb"
+	size hasValue "8352"
+	md5sum hasValue "700ef19763b59f477271915689948450"
+	sha1 hasValue "bdec467f93d696f499d852982bde9e34bb4596b6"
+	sha256 hasValue "410371859a420fce8b8b267e5cff171dae00cacab6f1e4fa54c5f8c27cec8e70"
+	descriptionMd5 hasValue "268afe709e5163f5f9705e3402ee1c8e"
+	homepage hasValue "http://odessa.sourceforge.net/"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__galleta,0,DepAtom__0)
+

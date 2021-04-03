@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libsepol1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libsepol1 memberOf Package
+	package hasValue "libsepol1"
+	packageSource hasValue Source__S1
+	priority hasValue "required"
+	section hasValue "libs"
+	installedSize hasValue "738"
+	maintainer hasValue "Original-Debian SELinux maintainers <selinux-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.0-1"
+	fileName hasValue "pool/main/libs/libsepol/libsepol1_3.0-1_amd64.deb"
+	size hasValue "252020"
+	md5sum hasValue "a5229f98d96d5b15c9d529bb4506de07"
+	sha1 hasValue "2ce4c8af94a4e9d716208df3f9b430fea59b46d3"
+	sha256 hasValue "7cf76ac410c96372bea5c0801fd8c471bcf3bf6e2146df4466567e5e81b1b2b8"
+	description hasValue "biblioteca SELinux para manipular políticas de segurança binárias"
+	descriptionMd5 hasValue "d569fae7efa3328b3d40879b104d9a63"
+	homepage hasValue "http://userspace.selinuxproject.org/"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libsepol1,0,DepAtom__0)
+

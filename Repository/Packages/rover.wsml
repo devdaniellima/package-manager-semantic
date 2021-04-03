@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology rover
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__rover memberOf Package
+	package hasValue "rover"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "36"
+	maintainer hasValue "Original-Mo Zhou <cdluminate@gmail.com>"
+	architecture hasValue "all"
+	version hasValue "0.76.1"
+	fileName hasValue "pool/universe/r/rover/rover_0.76.1_all.deb"
+	size hasValue "8476"
+	md5sum hasValue "9b69847bd3c080a0338bca2be78d1e2a"
+	sha1 hasValue "f09bd738869dfb6336d03234e2be486e4dbc8647"
+	sha256 hasValue "fd747e543a9c7bebd69351f5bcef1e88bce83d49c6e0834a4c140077d1a0dfdc"
+	descriptionMd5 hasValue "04d0813215e008ca52b0709dd11bc9c9"
+	homepage hasValue "https://salsa.debian.org/debian/rover"
+	depends hasValue "python3-termbox, python3 (>= 3.6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3-termbox"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__rover,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3"
+	comparison hasValue ">="
+	version hasValue "3.6"
+
+relationInstance depends(P0__rover,1,DepAtom__1)
+

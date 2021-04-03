@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology mhddfs
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__mhddfs memberOf Package
+	package hasValue "mhddfs"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/utils"
+	installedSize hasValue "68"
+	maintainer hasValue "Original-Dmitry E. Oboukhov <unera@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.1.39+nmu1ubuntu2"
+	fileName hasValue "pool/universe/m/mhddfs/mhddfs_0.1.39+nmu1ubuntu2_amd64.deb"
+	size hasValue "23032"
+	md5sum hasValue "106a3b6d029a7b1d4a6de4e86d8df626"
+	sha1 hasValue "1d5ed2767361803e920a11a5332358e11f91e8f5"
+	sha256 hasValue "5ffe9f8ed1082cfafe61226d14afbeacc0ff512145e41699f5771861ea3eb099"
+	description hasValue "sistema de arquivos para unificar vários pontos de montagem em um"
+	descriptionMd5 hasValue "5173a140c60439c79480665a321bf081"
+	homepage hasValue "http://mhddfs.uvw.ru"
+	depends hasValue "libc6 (>= 2.14), libfuse2 (>= 2.8), fuse"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__mhddfs,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libfuse2"
+	comparison hasValue ">="
+	version hasValue "2.8"
+
+relationInstance depends(P0__mhddfs,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "fuse"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__mhddfs,2,DepAtom__2)
+

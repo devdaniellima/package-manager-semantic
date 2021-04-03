@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology jpegjudge
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__jpegjudge memberOf Package
+	package hasValue "jpegjudge"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/graphics"
+	installedSize hasValue "44"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.0.2-4"
+	fileName hasValue "pool/universe/j/jpegjudge/jpegjudge_0.0.2-4_amd64.deb"
+	size hasValue "19076"
+	md5sum hasValue "ef459c2dcffce729d69e66ce02d1bbfb"
+	sha1 hasValue "d06263f4319806189c14f304a1896f543abda6d5"
+	sha256 hasValue "37773ace89424904b08c0c9a094346ea5211966c09dcfa9fdca50306310b79a3"
+	descriptionMd5 hasValue "831a7bfad2d20ee6a016b229989f93eb"
+	homepage hasValue "https://oldhome.schmorp.de/marc/judge.html"
+	depends hasValue "libc6 (>= 2.4), libjpeg8 (>= 8c)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__jpegjudge,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libjpeg8"
+	comparison hasValue ">="
+	version hasValue "8c"
+
+relationInstance depends(P0__jpegjudge,1,DepAtom__1)
+

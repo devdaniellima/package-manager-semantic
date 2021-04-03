@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology node_icss_utils
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__node_icss_utils memberOf Package
+	package hasValue "node-icss-utils"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/javascript"
+	installedSize hasValue "25"
+	maintainer hasValue "Original-Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "3.0.1-1"
+	fileName hasValue "pool/universe/n/node-icss-utils/node-icss-utils_3.0.1-1_all.deb"
+	size hasValue "5056"
+	md5sum hasValue "44bb385fa9b8e43ca1baf32a87cf7dff"
+	sha1 hasValue "6a5505974945b7b32da0d12f2bae06eb6dacedfa"
+	sha256 hasValue "2b076644d06812aa6620903cd1900dc9a2964c1e74a4b082776168cea06001d3"
+	descriptionMd5 hasValue "70934d8ca749b8d450a4ab05fe976658"
+	homepage hasValue "https://github.com/css-modules/icss-utils#readme"
+	depends hasValue "nodejs, node-postcss (>= 6.0.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "nodejs"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__node_icss_utils,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "node-postcss"
+	comparison hasValue ">="
+	version hasValue "6.0.2"
+
+relationInstance depends(P0__node_icss_utils,1,DepAtom__1)
+

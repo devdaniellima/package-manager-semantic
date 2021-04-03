@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libhugs_quickcheck_bundled
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libhugs_quickcheck_bundled memberOf Package
+	package hasValue "libhugs-quickcheck-bundled"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "52"
+	maintainer hasValue "Original-Isaac Jones <ijones@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "98.200609.21-5.4build2"
+	provides hasValue "libhugs-quickcheck"
+	conflicts hasValue "libhugs-quickcheck"
+	fileName hasValue "pool/universe/h/hugs98/libhugs-quickcheck-bundled_98.200609.21-5.4build2_amd64.deb"
+	size hasValue "8964"
+	md5sum hasValue "2ed8f0d65136a4025f481f4f15f66595"
+	sha1 hasValue "2852e529ef4b1ea4de1f02b575991c84bb4937e6"
+	sha256 hasValue "1a9ccd69af2a2c4802a3aa21e117c1745dc84b0164052661035385c82d38a6c8"
+	descriptionMd5 hasValue "06c3870ee504ffdd86ff01916eb4d69a"
+	depends hasValue "hugs (= 98.200609.21-5.4build2), libhugs-base"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "hugs"
+	comparison hasValue "="
+	version hasValue "98.200609.21-5.4build2"
+
+relationInstance depends(P0__libhugs_quickcheck_bundled,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libhugs-base"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libhugs_quickcheck_bundled,1,DepAtom__1)
+

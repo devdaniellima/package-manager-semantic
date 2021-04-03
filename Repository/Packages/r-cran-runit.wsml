@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology r_cran_runit
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__r_cran_runit memberOf Package
+	package hasValue "r-cran-runit"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/math"
+	installedSize hasValue "398"
+	maintainer hasValue "Original-Dirk Eddelbuettel <edd@debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.4.32-2"
+	fileName hasValue "pool/universe/r/r-cran-runit/r-cran-runit_0.4.32-2_all.deb"
+	size hasValue "281820"
+	md5sum hasValue "ccc06ee2e4c1621b0c1da1f1fa38c1c4"
+	sha1 hasValue "bae6b35a0a3ef2e8b378a8b2ece74c921a05e18b"
+	sha256 hasValue "dedb16fbefc1413f9d2e9fd5ee7b823487d6d9b70d4f5239f9bc45f1e339d2ba"
+	descriptionMd5 hasValue "f1990b43bc087fd33fb44a46dbcb2c77"
+	homepage hasValue "https://cran.r-project.org/package=RUnit"
+	depends hasValue "r-base-core (>= 3.5.0-5), r-api-3.5"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "r-base-core"
+	comparison hasValue ">="
+	version hasValue "3.5.0-5"
+
+relationInstance depends(P0__r_cran_runit,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "r-api-3.5"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__r_cran_runit,1,DepAtom__1)
+

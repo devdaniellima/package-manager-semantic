@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology cntlm
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__cntlm memberOf Package
+	package hasValue "cntlm"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "151"
+	maintainer hasValue "Original-David Watson <dwatson@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.92.3-1ubuntu2"
+	replaces hasValue "ntlmaps"
+	fileName hasValue "pool/universe/c/cntlm/cntlm_0.92.3-1ubuntu2_amd64.deb"
+	size hasValue "65812"
+	md5sum hasValue "343df799f6368acd965fb35259319b7c"
+	sha1 hasValue "e40ab0ed8c433ff46b2939e0624495abdfd257ef"
+	sha256 hasValue "2fc87ca5e0c239eedd3bb226ca32e4a4eb383ec85c578eea2f2f5fc646f64aed"
+	description hasValue "proxy com tunelamento e autenticação NTLM rápida"
+	descriptionMd5 hasValue "a09ce14efcc2b3cdd95e19cd49ef5d70"
+	homepage hasValue "http://cntlm.sourceforge.net/"
+	depends hasValue "adduser, libc6 (>= 2.15)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "adduser"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__cntlm,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__cntlm,1,DepAtom__1)
+

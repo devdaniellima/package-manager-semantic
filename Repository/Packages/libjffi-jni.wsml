@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libjffi_jni
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libjffi_jni memberOf Package
+	package hasValue "libjffi-jni"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/java"
+	installedSize hasValue "100"
+	maintainer hasValue "Original-Debian Java Maintainers <pkg-java-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.2.7-11build2"
+	fileName hasValue "pool/universe/j/jffi/libjffi-jni_1.2.7-11build2_amd64.deb"
+	size hasValue "25168"
+	md5sum hasValue "b60ed81f59948dbe67be6ac3fbd09c50"
+	sha1 hasValue "71bce9498ac6545119741b8943b9ec2ae789ffec"
+	sha256 hasValue "592a42a3754b505270b1336a70440aeaaccac0d8be6d4c5dd36dbadd30527c28"
+	descriptionMd5 hasValue "167efe5b7c239fa9bf9bed0a40f1d058"
+	homepage hasValue "https://github.com/jnr/jffi"
+	depends hasValue "libc6 (>= 2.14), libffi7 (>= 3.3~20180313)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libjffi_jni,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libffi7"
+	comparison hasValue ">="
+	version hasValue "3.3~20180313"
+
+relationInstance depends(P0__libjffi_jni,1,DepAtom__1)
+

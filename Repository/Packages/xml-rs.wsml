@@ -1,0 +1,59 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology xml_rs
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__xml_rs memberOf Package
+	package hasValue "xml-rs"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "362"
+	maintainer hasValue "Original-Debian Rust Maintainers <pkg-rust-maintainers@alioth-lists.debian.net>"
+	architecture hasValue "amd64"
+	version hasValue "0.8.0-1build1"
+	fileName hasValue "pool/universe/r/rust-xml-rs/xml-rs_0.8.0-1build1_amd64.deb"
+	size hasValue "130824"
+	md5sum hasValue "d43bc61c4d899c723aea7a1e00e7d038"
+	sha1 hasValue "76e03ee8dbd3b1728b186a9aaab3e471a30ed9ad"
+	sha256 hasValue "a4fb61739e118fd9c12ce7d8cf3dacfdbd04396df8742188515a00eb9b1d282f"
+	descriptionMd5 hasValue "691154ac4c1d89a56e45267660192938"
+	depends hasValue "libc6 (>= 2.18), libgcc-s1 (>= 4.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.18"
+
+relationInstance depends(P0__xml_rs,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgcc-s1"
+	comparison hasValue ">="
+	version hasValue "4.2"
+
+relationInstance depends(P0__xml_rs,1,DepAtom__1)
+

@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libsox_fmt_pulse
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libsox_fmt_pulse memberOf Package
+	package hasValue "libsox-fmt-pulse"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/sound"
+	installedSize hasValue "53"
+	maintainer hasValue "Original-Debian Multimedia Maintainers <debian-multimedia@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "14.4.2+git20190427-2"
+	fileName hasValue "pool/universe/s/sox/libsox-fmt-pulse_14.4.2+git20190427-2_amd64.deb"
+	size hasValue "7376"
+	md5sum hasValue "71e6e26a113d2965e8dfdffaf850a882"
+	sha1 hasValue "3927fcb3d3aa2575495ceb9f32735b4958c4a223"
+	sha256 hasValue "9ca2fbeea88c49ef8d48355fec298b7c63ef5d1ed381f2d16e10b56c2b216065"
+	description hasValue "SoX PulseAudio format I/O library"
+	descriptionMd5 hasValue "3f3a17c292ca5183b4b986a5bd679f73"
+	homepage hasValue "https://sox.sourceforge.io/"
+	depends hasValue "libpulse0 (>= 0.99.1), libsox3 (>= 14.4.2~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libpulse0"
+	comparison hasValue ">="
+	version hasValue "0.99.1"
+
+relationInstance depends(P0__libsox_fmt_pulse,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libsox3"
+	comparison hasValue ">="
+	version hasValue "14.4.2~"
+
+relationInstance depends(P0__libsox_fmt_pulse,1,DepAtom__1)
+

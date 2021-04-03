@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology dbconfig_pgsql
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__dbconfig_pgsql memberOf Package
+	package hasValue "dbconfig-pgsql"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "9"
+	maintainer hasValue "Original-Paul Gevers <elbrus@debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.0.13"
+	conflicts hasValue "dbconfig-no-thanks"
+	fileName hasValue "pool/universe/d/dbconfig-common/dbconfig-pgsql_2.0.13_all.deb"
+	size hasValue "1112"
+	md5sum hasValue "689aaabe73214ad4b3c01076fd81413e"
+	sha1 hasValue "84ad833ec777b22547198afbe34e591a3c418669"
+	sha256 hasValue "8b6d6d3103685e19e290d1752a37846769acf4e240e491e2206b868789f1f262"
+	descriptionMd5 hasValue "8ab237833cee3357a80a6dbde600134a"
+	depends hasValue "dbconfig-common (= 2.0.13), postgresql-client"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "dbconfig-common"
+	comparison hasValue "="
+	version hasValue "2.0.13"
+
+relationInstance depends(P0__dbconfig_pgsql,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "postgresql-client"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__dbconfig_pgsql,1,DepAtom__1)
+

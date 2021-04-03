@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology donkey
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__donkey memberOf Package
+	package hasValue "donkey"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/net"
+	installedSize hasValue "55"
+	maintainer hasValue "Original-Peter Pentchev <roam@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.2.0-4"
+	fileName hasValue "pool/universe/d/donkey/donkey_1.2.0-4_amd64.deb"
+	size hasValue "17640"
+	md5sum hasValue "88b7c1c40c452bfc489a14420f29c1e8"
+	sha1 hasValue "9106f924d56445d6c8ce5b0ec62a450a219cc490"
+	sha256 hasValue "52b2b8324a6bb696641fb45da12ed9825458b8452f2a7431b06cdb5ee0088df1"
+	description hasValue "Calculadora de senha de uso único (OTP – \"One-time password\")"
+	descriptionMd5 hasValue "f8c66e1943ef8169f9166a9faf4e69eb"
+	homepage hasValue "https://devel.ringlet.net/security/donkey/"
+	depends hasValue "libc6 (>= 2.14), libmd0 (>= 0.0.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__donkey,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libmd0"
+	comparison hasValue ">="
+	version hasValue "0.0.0"
+
+relationInstance depends(P0__donkey,1,DepAtom__1)
+

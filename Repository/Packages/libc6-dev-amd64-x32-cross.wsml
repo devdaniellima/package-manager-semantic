@@ -1,0 +1,59 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libc6_dev_amd64_x32_cross
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libc6_dev_amd64_x32_cross memberOf Package
+	package hasValue "libc6-dev-amd64-x32-cross"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libdevel"
+	maintainer hasValue "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	architecture hasValue "all"
+	version hasValue "2.31-0ubuntu7cross1"
+	provides hasValue "lib64c-dev-x32-cross, libc6-dev-amd64-x32-dcv1"
+	fileName hasValue "pool/universe/c/cross-toolchain-base-ports/libc6-dev-amd64-x32-cross_2.31-0ubuntu7cross1_all.deb"
+	size hasValue "2023128"
+	md5sum hasValue "fa312013081447ec1a4d3edfcc476cb6"
+	sha1 hasValue "c2696618a7b654a0811a87f729237b5b4e65d1f8"
+	sha256 hasValue "ed7983aab2a78dc292a2820cefbfb4126377696e69a318807d03ac90eb46a521"
+	descriptionMd5 hasValue "539c1605208f0bf01da31ad6bd971c23"
+	depends hasValue "libc6-amd64-x32-cross (= 2.31-0ubuntu7cross1), libc6-dev-x32-cross (= 2.31-0ubuntu7cross1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6-amd64-x32-cross"
+	comparison hasValue "="
+	version hasValue "2.31-0ubuntu7cross1"
+
+relationInstance depends(P0__libc6_dev_amd64_x32_cross,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6-dev-x32-cross"
+	comparison hasValue "="
+	version hasValue "2.31-0ubuntu7cross1"
+
+relationInstance depends(P0__libc6_dev_amd64_x32_cross,1,DepAtom__1)
+

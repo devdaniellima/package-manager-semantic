@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libcpg4
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libcpg4 memberOf Package
+	package hasValue "libcpg4"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libs"
+	installedSize hasValue "58"
+	maintainer hasValue "Original-Debian HA Maintainers <debian-ha-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.0.3-2ubuntu2"
+	fileName hasValue "pool/main/c/corosync/libcpg4_3.0.3-2ubuntu2_amd64.deb"
+	size hasValue "11764"
+	md5sum hasValue "e87402497dc4335fa385167bb1e25b29"
+	sha1 hasValue "b43765002b2ddcae6ee95b38205fc33ea091853d"
+	sha256 hasValue "0acbc1c238b503ea1003234981676e0c03d8dcdc15860800f4814a18e0669b7f"
+	descriptionMd5 hasValue "6eeb162ab30ad3185c7bc13c1787ce68"
+	homepage hasValue "https://corosync.github.io/corosync/"
+	depends hasValue "libc6 (>= 2.14), libcorosync-common4 (>= 1.99.9), libqb0 (>= 1.0.3)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libcpg4,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libcorosync-common4"
+	comparison hasValue ">="
+	version hasValue "1.99.9"
+
+relationInstance depends(P0__libcpg4,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libqb0"
+	comparison hasValue ">="
+	version hasValue "1.0.3"
+
+relationInstance depends(P0__libcpg4,2,DepAtom__2)
+

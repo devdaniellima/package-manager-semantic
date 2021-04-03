@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libcaf_openmpi_3
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libcaf_openmpi_3 memberOf Package
+	package hasValue "libcaf-openmpi-3"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "102"
+	maintainer hasValue "Original-Alastair McKinstry <mckinstry@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.8.0-1"
+	replaces hasValue "libcoarrays0d (<< 1.8.10)"
+	fileName hasValue "pool/universe/o/open-coarrays/libcaf-openmpi-3_2.8.0-1_amd64.deb"
+	size hasValue "35540"
+	md5sum hasValue "4ac22ffc97296ef48b3b6d7b0b35d18c"
+	sha1 hasValue "fc56420094743ee116ddd7d4bb24322779a76c88"
+	sha256 hasValue "f81f10b0eea74e74f4442f83bd18289cfff181940f77c0c6ee57af8cd53ddbdd"
+	descriptionMd5 hasValue "fb98a199d40670e2d06b868ea80280ff"
+	homepage hasValue "https://www.opencoarrays.org/"
+	depends hasValue "libc6 (>= 2.14), libopenmpi3"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libcaf_openmpi_3,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libopenmpi3"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libcaf_openmpi_3,1,DepAtom__1)
+

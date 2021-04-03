@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gnome_desktop_testing
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gnome_desktop_testing memberOf Package
+	package hasValue "gnome-desktop-testing"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/gnome"
+	installedSize hasValue "47"
+	maintainer hasValue "Original-Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2018.1-3"
+	fileName hasValue "pool/universe/g/gnome-desktop-testing/gnome-desktop-testing_2018.1-3_amd64.deb"
+	size hasValue "13520"
+	md5sum hasValue "1d125928e182da04ce6ed811903fac94"
+	sha1 hasValue "04e0fb4177910bcefd8e837264cea03e8bbcb8d3"
+	sha256 hasValue "c1e7c99f2e7f44b9b7adbe4a829ae42844e35acac34259a0773e192de95d84cf"
+	description hasValue "executador para testes instalados do GNOME"
+	descriptionMd5 hasValue "5d4e60a125fb25e6989d99556dd65c84"
+	homepage hasValue "https://wiki.gnome.org/Initiatives/GnomeGoals/InstalledTests"
+	depends hasValue "libc6 (>= 2.4), libglib2.0-0 (>= 2.49.3), libsystemd0"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__gnome_desktop_testing,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libglib2.0-0"
+	comparison hasValue ">="
+	version hasValue "2.49.3"
+
+relationInstance depends(P0__gnome_desktop_testing,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libsystemd0"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__gnome_desktop_testing,2,DepAtom__2)
+

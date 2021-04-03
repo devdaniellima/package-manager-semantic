@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology postgresql_12_prioritize
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__postgresql_12_prioritize memberOf Package
+	package hasValue "postgresql-12-prioritize"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/database"
+	installedSize hasValue "56"
+	maintainer hasValue "Original-Debian PostgreSQL Maintainers <team+postgresql@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.4-6"
+	fileName hasValue "pool/universe/p/postgresql-prioritize/postgresql-12-prioritize_1.0.4-6_amd64.deb"
+	size hasValue "12704"
+	md5sum hasValue "7f5c7f2414898bcbdcd165a15312f6a1"
+	sha1 hasValue "93acff3592337f2f25643254ab8a6383df4d616e"
+	sha256 hasValue "9975f6de093207b07c1303e755ce837ab4c7c56c38e2e075a4e48c083eefe7fa"
+	descriptionMd5 hasValue "68c40bc61c85e2dd2ec3063f8f1aeace"
+	homepage hasValue "http://pgxn.org/dist/prioritize/"
+	depends hasValue "libc6 (>= 2.2.5), postgresql-12"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.2.5"
+
+relationInstance depends(P0__postgresql_12_prioritize,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "postgresql-12"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__postgresql_12_prioritize,1,DepAtom__1)
+

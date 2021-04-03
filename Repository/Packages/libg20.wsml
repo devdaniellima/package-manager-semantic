@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libg20
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libg20 memberOf Package
+	package hasValue "libg20"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "127"
+	maintainer hasValue "Original-Debian Med Packaging Team <debian-med-packaging@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.72-9"
+	fileName hasValue "pool/universe/g/g2/libg20_0.72-9_amd64.deb"
+	size hasValue "39864"
+	md5sum hasValue "6de2b65adf7e7d4b157d80e0b5246b5d"
+	sha1 hasValue "4ac33f7618ef563fa505be413f9ebc8c309f4aea"
+	sha256 hasValue "169585e67825cfc6a8ef665aa043f19d55c074411ac9fbb26adcd9c8948ed402"
+	descriptionMd5 hasValue "5cc4d72d0df4f199b87ac5a67938bc31"
+	homepage hasValue "https://github.com/danielrmeyer/g2/"
+	depends hasValue "libc6 (>= 2.4), libgd3 (>= 2.1.0~alpha~), libx11-6"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libg20,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgd3"
+	comparison hasValue ">="
+	version hasValue "2.1.0~alpha~"
+
+relationInstance depends(P0__libg20,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libx11-6"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libg20,2,DepAtom__2)
+

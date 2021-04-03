@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology dmidecode
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__dmidecode memberOf Package
+	package hasValue "dmidecode"
+	packageSource hasValue Source__S1
+	priority hasValue "standard"
+	section hasValue "utils"
+	installedSize hasValue "214"
+	maintainer hasValue "Original-Jörg Frings-Fürst <debian@jff.email>"
+	architecture hasValue "amd64"
+	version hasValue "3.2-3"
+	fileName hasValue "pool/main/d/dmidecode/dmidecode_3.2-3_amd64.deb"
+	size hasValue "59512"
+	md5sum hasValue "53953573516d9a7c03c3cf0804669a4a"
+	sha1 hasValue "beed6353377ed9a316355297c8f9ca8061238bd4"
+	sha256 hasValue "264d25853f28daa39f2067a93057dad9160aeca0a993b264c4850d7a6780c510"
+	description hasValue "decodificador de tabela SMBIOS/DMI"
+	descriptionMd5 hasValue "266176aa2231f4b521210b81955e4d36"
+	homepage hasValue "https://nongnu.org/dmidecode/"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__dmidecode,0,DepAtom__0)
+

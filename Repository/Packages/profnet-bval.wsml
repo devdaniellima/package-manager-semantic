@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology profnet_bval
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__profnet_bval memberOf Package
+	package hasValue "profnet-bval"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/science"
+	installedSize hasValue "125"
+	maintainer hasValue "Original-Debian Med Packaging Team <debian-med-packaging@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.22-6build1"
+	fileName hasValue "pool/universe/p/profnet/profnet-bval_1.0.22-6build1_amd64.deb"
+	size hasValue "43524"
+	md5sum hasValue "7db0bb2e53a7f571230a1deb0a96a551"
+	sha1 hasValue "5d8d350ff5566c0cde8c3bfc3f36918df613cad2"
+	sha256 hasValue "ec2b34ba8423d6b8a6eb9b3cb81f1adaf2d8a44c48e14180d591897d2d8ce2dc"
+	descriptionMd5 hasValue "ca0ed7b177934f382705f2d7475a8e90"
+	homepage hasValue "http://www.predictprotein.org/"
+	depends hasValue "libc6 (>= 2.27), libgfortran5 (>= 8)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.27"
+
+relationInstance depends(P0__profnet_bval,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgfortran5"
+	comparison hasValue ">="
+	version hasValue "8"
+
+relationInstance depends(P0__profnet_bval,1,DepAtom__1)
+

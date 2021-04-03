@@ -1,0 +1,52 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology sysrqd
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__sysrqd memberOf Package
+	package hasValue "sysrqd"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "30"
+	maintainer hasValue "Original-Julien Danjou <acid@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "14-1build1"
+	fileName hasValue "pool/universe/s/sysrqd/sysrqd_14-1build1_amd64.deb"
+	size hasValue "7672"
+	md5sum hasValue "a2c0510fea054236520016cb038adb36"
+	sha1 hasValue "f67da58d1d3f28e12d1c69ea519465267f2fef19"
+	sha256 hasValue "e325b4be5f1c72b031675493c4b8e1255d5f0205d9dd0d6ebdddb9362ea97fd1"
+	descriptionMd5 hasValue "4315934805063646d2f44b304b9cbef5"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__sysrqd,0,DepAtom__0)
+

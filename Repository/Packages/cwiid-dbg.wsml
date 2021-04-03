@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology cwiid_dbg
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__cwiid_dbg memberOf Package
+	package hasValue "cwiid-dbg"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/debug"
+	installedSize hasValue "99"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.6.00+svn201-5"
+	fileName hasValue "pool/universe/c/cwiid/cwiid-dbg_0.6.00+svn201-5_amd64.deb"
+	size hasValue "22580"
+	md5sum hasValue "00bacf709bb05dfd9e15e4b7665609c4"
+	sha1 hasValue "78075acdb6a5d5be52cd7e756abf83b4c005696e"
+	sha256 hasValue "441f9c7260d6a363c3fe09d351e35e7e137299df17c070a2245f5f2d6cfd0b6b"
+	description hasValue "biblioteca para interfacear com o wiimote -- arquivos de depuração"
+	descriptionMd5 hasValue "999f957c56a4753cc79d56541f4f8f22"
+	homepage hasValue "http://abstrakraft.org/cwiid/"
+	depends hasValue "lswm (= 0.6.00+svn201-5), libcwiid1 (= 0.6.00+svn201-5)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "lswm"
+	comparison hasValue "="
+	version hasValue "0.6.00+svn201-5"
+
+relationInstance depends(P0__cwiid_dbg,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libcwiid1"
+	comparison hasValue "="
+	version hasValue "0.6.00+svn201-5"
+
+relationInstance depends(P0__cwiid_dbg,1,DepAtom__1)
+

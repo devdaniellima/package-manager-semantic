@@ -1,0 +1,69 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology avahi_autoipd
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__avahi_autoipd memberOf Package
+	package hasValue "avahi-autoipd"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "net"
+	installedSize hasValue "120"
+	maintainer hasValue "Original-Utopia Maintenance Team <pkg-utopia-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.7-4ubuntu7"
+	conflicts hasValue "zeroconf"
+	fileName hasValue "pool/main/a/avahi/avahi-autoipd_0.7-4ubuntu7_amd64.deb"
+	size hasValue "37700"
+	md5sum hasValue "be38e91de3878c92d432077e8d3f48ca"
+	sha1 hasValue "6fd096463ce5cd3d36a38d492b469725fcd0e3e0"
+	sha256 hasValue "015312eabb3f4985a363119bdb5d71987e059b6c36d72fe7f4945471b9af6d76"
+	description hasValue "daemon de configuração de endereço de rede Avahi IPv4LL"
+	descriptionMd5 hasValue "acd046468650e18ecf72b9fbe41992f1"
+	homepage hasValue "http://avahi.org/"
+	depends hasValue "libc6 (>= 2.14), libdaemon0 (>= 0.14), adduser"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__avahi_autoipd,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libdaemon0"
+	comparison hasValue ">="
+	version hasValue "0.14"
+
+relationInstance depends(P0__avahi_autoipd,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "adduser"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__avahi_autoipd,2,DepAtom__2)
+

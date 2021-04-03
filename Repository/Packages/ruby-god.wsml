@@ -1,0 +1,77 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ruby_god
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ruby_god memberOf Package
+	package hasValue "ruby-god"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/ruby"
+	installedSize hasValue "249"
+	maintainer hasValue "Original-Sebastien Delafond <seb@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.13.7-3build1"
+	replaces hasValue "god (<< 0.13.2-3)"
+	provides hasValue "god"
+	fileName hasValue "pool/universe/r/ruby-god/ruby-god_0.13.7-3build1_amd64.deb"
+	size hasValue "45884"
+	md5sum hasValue "f467f8cbe4091f750072681c962d3fc1"
+	sha1 hasValue "463e4739c06d02c0fe20fb1712f2e0a21265446d"
+	sha256 hasValue "a908c6b3903c4e101533e6e06315d017590baf2f372a5730264fbe8275e97a22"
+	description hasValue "monitoramento configurável de processos"
+	descriptionMd5 hasValue "e507e6d9d0acf312b7c0025c14164de2"
+	homepage hasValue "https://github.com/mojombo/god"
+	depends hasValue "libc6 (>= 2.4), libruby2.7 (>= 2.7.0~preview1), ruby (>= 1:2.7~0), ruby (<< 1:2.8~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__ruby_god,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libruby2.7"
+	comparison hasValue ">="
+	version hasValue "2.7.0~preview1"
+
+relationInstance depends(P0__ruby_god,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "ruby"
+	comparison hasValue ">="
+	version hasValue "1:2.7~0"
+
+relationInstance depends(P0__ruby_god,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "ruby"
+	comparison hasValue "<<"
+	version hasValue "1:2.8~"
+
+relationInstance depends(P0__ruby_god,3,DepAtom__3)
+

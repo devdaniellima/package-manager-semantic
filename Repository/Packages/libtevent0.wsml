@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libtevent0
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libtevent0 memberOf Package
+	package hasValue "libtevent0"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libs"
+	installedSize hasValue "117"
+	maintainer hasValue "Original-Debian Samba Maintainers <pkg-samba-maint@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.10.1-4"
+	fileName hasValue "pool/main/t/tevent/libtevent0_0.10.1-4_amd64.deb"
+	size hasValue "35492"
+	md5sum hasValue "5d74158b79227dc3fd05771336f75ab5"
+	sha1 hasValue "cbadff48132a1390463654bd22017fe286282bfa"
+	sha256 hasValue "6d9cc790f77220dc0e2bea32cfbec2299e65d434192e6303dab6fe66b2beaf56"
+	description hasValue "Biblioteca de laços de eventos baseados em talloc - biblioteca compartilhada"
+	descriptionMd5 hasValue "3fbaa50e60efe0bf58f77af5c4759188"
+	homepage hasValue "https://tevent.samba.org/"
+	depends hasValue "libc6 (>= 2.28), libtalloc2 (>= 2.3.0~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.28"
+
+relationInstance depends(P0__libtevent0,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libtalloc2"
+	comparison hasValue ">="
+	version hasValue "2.3.0~"
+
+relationInstance depends(P0__libtevent0,1,DepAtom__1)
+

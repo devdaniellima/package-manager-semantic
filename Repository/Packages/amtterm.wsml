@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology amtterm
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__amtterm memberOf Package
+	package hasValue "amtterm"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/net"
+	installedSize hasValue "58"
+	maintainer hasValue "Original-Reinhard Tartler <siretart@tauware.de>"
+	architecture hasValue "amd64"
+	version hasValue "1.4-2"
+	fileName hasValue "pool/universe/a/amtterm/amtterm_1.4-2_amd64.deb"
+	size hasValue "20094"
+	md5sum hasValue "2a27bc6b7ef6f35c60619cc6c10fd65f"
+	sha1 hasValue "780a8b0f3b834112a94ac91c2af46edf8c82b2c0"
+	sha256 hasValue "616ec31512e53d8af2450b2dfe204270309ea8ba80e10652d681cd88d23ea99a"
+	description hasValue "cliente serial-over-lan (sol) para Intel AMT, versão console"
+	descriptionMd5 hasValue "d08844c4e2da635676b54112db66d60e"
+	homepage hasValue "https://www.kraxel.org/blog/linux/amtterm/"
+	depends hasValue "libc6 (>= 2.15), xdg-utils"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__amtterm,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "xdg-utils"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__amtterm,1,DepAtom__1)
+

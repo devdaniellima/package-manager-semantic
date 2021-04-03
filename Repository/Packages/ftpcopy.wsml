@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ftpcopy
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ftpcopy memberOf Package
+	package hasValue "ftpcopy"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/web"
+	installedSize hasValue "271"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.6.7-5"
+	fileName hasValue "pool/universe/f/ftpcopy/ftpcopy_0.6.7-5_amd64.deb"
+	size hasValue "85600"
+	md5sum hasValue "f7c452d2ad922bc76a3d5a087ab71695"
+	sha1 hasValue "b95f1114e4870200a276b3bd09c205fc7e9abfb3"
+	sha256 hasValue "0580c0e28c7d1707c1258d0858c631e74a4b01739948833877434beb9ab9700c"
+	description hasValue "coleção de clientes FTP"
+	descriptionMd5 hasValue "d08a536f7e94fc6c8e51d60ba074a4e2"
+	homepage hasValue "https://www.ohse.de/uwe/ftpcopy.html"
+	depends hasValue "libc6 (>= 2.15)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__ftpcopy,0,DepAtom__0)
+

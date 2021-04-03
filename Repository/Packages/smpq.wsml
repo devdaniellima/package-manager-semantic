@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology smpq
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__smpq memberOf Package
+	package hasValue "smpq"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "52"
+	maintainer hasValue "Original-Pali Rohár <pali.rohar@gmail.com>"
+	architecture hasValue "amd64"
+	version hasValue "1.6-2"
+	fileName hasValue "pool/universe/s/smpq/smpq_1.6-2_amd64.deb"
+	size hasValue "17176"
+	md5sum hasValue "bd6ca779c13946c115647faa4aed2143"
+	sha1 hasValue "18f443870b15da7ed836d3e11ab1c5e53b15108f"
+	sha256 hasValue "38dda4bc08a6710009936d2f584cbbff5a5958a4b9897a202a6840c72177844d"
+	descriptionMd5 hasValue "35ebe0488f410a0172631e4b1c9c5eb8"
+	homepage hasValue "https://launchpad.net/smpq"
+	depends hasValue "libc6 (>= 2.4), libstorm9 (>= 9.20)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__smpq,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libstorm9"
+	comparison hasValue ">="
+	version hasValue "9.20"
+
+relationInstance depends(P0__smpq,1,DepAtom__1)
+

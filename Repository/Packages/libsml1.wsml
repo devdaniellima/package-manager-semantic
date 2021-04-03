@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libsml1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libsml1 memberOf Package
+	package hasValue "libsml1"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "70"
+	maintainer hasValue "Original-Andreas Moog <andreas.moog@warperbbs.de>"
+	architecture hasValue "amd64"
+	version hasValue "0.1.1+git20180125-1"
+	fileName hasValue "pool/universe/libs/libsml/libsml1_0.1.1+git20180125-1_amd64.deb"
+	size hasValue "20540"
+	md5sum hasValue "34a78bc2294eb5f86a6aa4794ca64f20"
+	sha1 hasValue "3158944dd0c2346ad5dc297f880e690ddd457e9b"
+	sha256 hasValue "1a685e78f20b9b262a4d8c21494b15bd08086a0096f1aecda2657c55762d1679"
+	descriptionMd5 hasValue "0d7f8d99d5aa1e753f0bac919253dacb"
+	homepage hasValue "https://github.com/dailab/libsml"
+	depends hasValue "libc6 (>= 2.15), libuuid1 (>= 2.16)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__libsml1,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libuuid1"
+	comparison hasValue ">="
+	version hasValue "2.16"
+
+relationInstance depends(P0__libsml1,1,DepAtom__1)
+

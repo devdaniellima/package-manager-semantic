@@ -1,0 +1,74 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ruby_jaro_winkler
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ruby_jaro_winkler memberOf Package
+	package hasValue "ruby-jaro-winkler"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/ruby"
+	installedSize hasValue "58"
+	maintainer hasValue "Original-Debian Ruby Extras Maintainers <pkg-ruby-extras-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.5.4-2build1"
+	fileName hasValue "pool/universe/r/ruby-jaro-winkler/ruby-jaro-winkler_1.5.4-2build1_amd64.deb"
+	size hasValue "14020"
+	md5sum hasValue "532da4767397aec8c6626bc8d41c69b4"
+	sha1 hasValue "17d272e2d99a8d686d97e1442c0107f00430e752"
+	sha256 hasValue "2397f0d279c06e4d390b602f228bf126d3bbcc671a2ff443fd592a5af9d25c3a"
+	descriptionMd5 hasValue "e1e9fa23ee1405356006e90c0da7781c"
+	homepage hasValue "https://github.com/tonytonyjan/jaro_winkler"
+	depends hasValue "libc6 (>= 2.4), libruby2.7 (>= 2.7.0~preview2), ruby (>= 1:2.7~0), ruby (<< 1:2.8~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__ruby_jaro_winkler,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libruby2.7"
+	comparison hasValue ">="
+	version hasValue "2.7.0~preview2"
+
+relationInstance depends(P0__ruby_jaro_winkler,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "ruby"
+	comparison hasValue ">="
+	version hasValue "1:2.7~0"
+
+relationInstance depends(P0__ruby_jaro_winkler,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "ruby"
+	comparison hasValue "<<"
+	version hasValue "1:2.8~"
+
+relationInstance depends(P0__ruby_jaro_winkler,3,DepAtom__3)
+

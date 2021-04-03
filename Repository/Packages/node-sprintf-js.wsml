@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology node_sprintf_js
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__node_sprintf_js memberOf Package
+	package hasValue "node-sprintf-js"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/web"
+	installedSize hasValue "19"
+	maintainer hasValue "Original-Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.1.2+ds1-1"
+	fileName hasValue "pool/universe/n/node-sprintf-js/node-sprintf-js_1.1.2+ds1-1_all.deb"
+	size hasValue "2080"
+	md5sum hasValue "e35592f6b703939d23cd6d8281a317a7"
+	sha1 hasValue "301bcd7171f7b4c583fcc7c55b600fcc51a4737d"
+	sha256 hasValue "0b5612bf8209fbffc972e6b4b542fdbfb9ffca2f1a58cb8943daea1b8a2e4f85"
+	descriptionMd5 hasValue "bc879538044b43a289060ed84ffc9908"
+	homepage hasValue "https://github.com/alexei/sprintf.js#readme"
+	depends hasValue "libjs-sprintf-js (= 1.1.2+ds1-1), nodejs (>= 6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libjs-sprintf-js"
+	comparison hasValue "="
+	version hasValue "1.1.2+ds1-1"
+
+relationInstance depends(P0__node_sprintf_js,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "nodejs"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__node_sprintf_js,1,DepAtom__1)
+

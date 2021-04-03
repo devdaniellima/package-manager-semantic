@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology android_libcutils
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__android_libcutils memberOf Package
+	package hasValue "android-libcutils"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/libs"
+	installedSize hasValue "91"
+	maintainer hasValue "Original-Android Tools Maintainers <android-tools-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:8.1.0+r23-5ubuntu2"
+	fileName hasValue "pool/universe/a/android-platform-system-core/android-libcutils_8.1.0+r23-5ubuntu2_amd64.deb"
+	size hasValue "22468"
+	md5sum hasValue "c36d81cbbc1af11933a0a77e50b2cc51"
+	sha1 hasValue "048303e071cdc9b7ed04bafcaeb812f0c1415558"
+	sha256 hasValue "fba402e1ed34e15d9acb40ac2eaf8a76ec91a48baccc8fc939800d91f6b29f7f"
+	descriptionMd5 hasValue "fd1d222be998cc5b11ef894b0dccf4b2"
+	homepage hasValue "https://android.googlesource.com/platform/system/core"
+	depends hasValue "android-liblog (= 1:8.1.0+r23-5ubuntu2), libbsd0, libc6 (>= 2.15)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "android-liblog"
+	comparison hasValue "="
+	version hasValue "1:8.1.0+r23-5ubuntu2"
+
+relationInstance depends(P0__android_libcutils,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libbsd0"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__android_libcutils,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__android_libcutils,2,DepAtom__2)
+

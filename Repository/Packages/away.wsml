@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology away
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__away memberOf Package
+	package hasValue "away"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "54"
+	maintainer hasValue "Original-Rene Engelhard <rene@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.9.5+ds-0+nmu2build1"
+	fileName hasValue "pool/universe/a/away/away_0.9.5+ds-0+nmu2build1_amd64.deb"
+	size hasValue "17704"
+	md5sum hasValue "ded8f184e8d46fc10943533015bb3a0d"
+	sha1 hasValue "383404aee08b69c87a74f58d3891145f3b1105f9"
+	sha256 hasValue "61e29c7ca0c5b2669320a6b3605b97ccc5540137bbdfae3986d2d616daaeafa1"
+	description hasValue "Terminal locking program"
+	descriptionMd5 hasValue "70a325e436fbdf1c902fbc67b949d259"
+	depends hasValue "libc6 (>= 2.14), libpam0g (>= 0.99.7.1), libpam-modules"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__away,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libpam0g"
+	comparison hasValue ">="
+	version hasValue "0.99.7.1"
+
+relationInstance depends(P0__away,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libpam-modules"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__away,2,DepAtom__2)
+

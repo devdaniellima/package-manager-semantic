@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology r_cran_plogr
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__r_cran_plogr memberOf Package
+	package hasValue "r-cran-plogr"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/gnu-r"
+	installedSize hasValue "68"
+	maintainer hasValue "Original-Debian R Packages Maintainers <r-pkg-team@alioth-lists.debian.net>"
+	architecture hasValue "all"
+	version hasValue "0.2.0-2"
+	fileName hasValue "pool/universe/r/r-cran-plogr/r-cran-plogr_0.2.0-2_all.deb"
+	size hasValue "14716"
+	md5sum hasValue "2805f073ab47b01a8f223902fd64e87f"
+	sha1 hasValue "29ac30154ed2bf22664381052c0d70a9399b9a32"
+	sha256 hasValue "e7c5dba83c21fc8b130b13a5ffd93ca7f99e08ba527d6f7b001b7f295c1fc090"
+	descriptionMd5 hasValue "1bf2966d550582efda38db8452ba2162"
+	homepage hasValue "https://cran.r-project.org/package=plogr"
+	depends hasValue "r-base-core (>= 3.5.0-4), r-api-3.5"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "r-base-core"
+	comparison hasValue ">="
+	version hasValue "3.5.0-4"
+
+relationInstance depends(P0__r_cran_plogr,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "r-api-3.5"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__r_cran_plogr,1,DepAtom__1)
+

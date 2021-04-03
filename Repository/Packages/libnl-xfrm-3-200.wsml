@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libnl_xfrm_3_200
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libnl_xfrm_3_200 memberOf Package
+	package hasValue "libnl-xfrm-3-200"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libs"
+	installedSize hasValue "116"
+	maintainer hasValue "Original-Heiko Stuebner <mmind@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.4.0-1"
+	fileName hasValue "pool/main/libn/libnl3/libnl-xfrm-3-200_3.4.0-1_amd64.deb"
+	size hasValue "28088"
+	md5sum hasValue "70d3a60c0d390e71a4af5fb400a0b787"
+	sha1 hasValue "f585f6a11050bae608e31a06d0ed1989fe23454f"
+	sha256 hasValue "fd8a26144349dd9a60c55e093690c010c3d4509fc2cd273efb29f15a92d4c2b8"
+	description hasValue "library for dealing with netlink sockets - package transformations"
+	descriptionMd5 hasValue "973415f166195a4850f50bbb8eed8f5c"
+	homepage hasValue "http://www.infradead.org/~tgr/libnl/"
+	depends hasValue "libnl-3-200 (= 3.4.0-1), libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libnl-3-200"
+	comparison hasValue "="
+	version hasValue "3.4.0-1"
+
+relationInstance depends(P0__libnl_xfrm_3_200,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libnl_xfrm_3_200,1,DepAtom__1)
+

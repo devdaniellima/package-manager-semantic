@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology socklog_run
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__socklog_run memberOf Package
+	package hasValue "socklog-run"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "50"
+	maintainer hasValue "Original-Gerrit Pape <pape@smarden.org>"
+	architecture hasValue "all"
+	version hasValue "2.1.0-8.1build1"
+	provides hasValue "linux-kernel-log-daemon, system-log-daemon"
+	conflicts hasValue "linux-kernel-log-daemon, system-log-daemon"
+	fileName hasValue "pool/universe/s/socklog/socklog-run_2.1.0-8.1build1_all.deb"
+	size hasValue "6432"
+	md5sum hasValue "18a09428bf2fb32e72fef1b4c61fc14a"
+	sha1 hasValue "992f0cd1906949e63bd83bb4bd039385b45f969b"
+	sha256 hasValue "3feb2297c8884d633c794a4fb553113ce143df25de2de605560e0f5a8dc09fa1"
+	descriptionMd5 hasValue "ced75e34e37948fec8c7457bcb8f0968"
+	homepage hasValue "http://smarden.org/socklog"
+	depends hasValue "socklog, runit (>= 1.8.0-2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "socklog"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__socklog_run,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "runit"
+	comparison hasValue ">="
+	version hasValue "1.8.0-2"
+
+relationInstance depends(P0__socklog_run,1,DepAtom__1)
+

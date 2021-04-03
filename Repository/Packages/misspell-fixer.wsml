@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology misspell_fixer
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__misspell_fixer memberOf Package
+	package hasValue "misspell-fixer"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "591"
+	maintainer hasValue "Original-Lajos Veres <vlajos+debian@gmail.com>"
+	architecture hasValue "all"
+	version hasValue "0.3-1"
+	fileName hasValue "pool/universe/m/misspell-fixer/misspell-fixer_0.3-1_all.deb"
+	size hasValue "111136"
+	md5sum hasValue "4b86516844672e483d47f645c2d87455"
+	sha1 hasValue "c71c8383d6d7a1123256198ab8bfa4423de719d4"
+	sha256 hasValue "97e175487a65985a99dbafe316cbb1bf2762ca4b6c417e339dbd477baa1a1d4f"
+	descriptionMd5 hasValue "b0a0f3f36a6f77cc94b21257219b18ea"
+	homepage hasValue "https://github.com/vlajos/misspell-fixer"
+	depends hasValue "grep (>= 2.28)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "grep"
+	comparison hasValue ">="
+	version hasValue "2.28"
+
+relationInstance depends(P0__misspell_fixer,0,DepAtom__0)
+

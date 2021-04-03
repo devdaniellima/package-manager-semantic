@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology solr_tomcat
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__solr_tomcat memberOf Package
+	package hasValue "solr-tomcat"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/java"
+	installedSize hasValue "45"
+	maintainer hasValue "Original-Debian Java Maintainers <pkg-java-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "3.6.2+dfsg-22"
+	conflicts hasValue "solr-jetty, solr-tomcat6"
+	fileName hasValue "pool/universe/l/lucene-solr/solr-tomcat_3.6.2+dfsg-22_all.deb"
+	size hasValue "7504"
+	md5sum hasValue "39209ac70a780115426774a15f7f9067"
+	sha1 hasValue "f676033f8bc5a69c46f569c83d9d94f1c2b6e387"
+	sha256 hasValue "1609771c26a2f282575697f9734a0297d9e20f900f43d2baee8a31d5e3452238"
+	descriptionMd5 hasValue "eb7b14f88e5e0facbf4429a2f496d47f"
+	homepage hasValue "http://lucene.apache.org"
+	depends hasValue "solr-common (= 3.6.2+dfsg-22), tomcat9 | tomcat9-user"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "solr-common"
+	comparison hasValue "="
+	version hasValue "3.6.2+dfsg-22"
+
+relationInstance depends(P0__solr_tomcat,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "tomcat9"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__solr_tomcat,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "tomcat9-user"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__solr_tomcat,1,DepAtom__2)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gcc_mips_linux_gnu
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gcc_mips_linux_gnu memberOf Package
+	package hasValue "gcc-mips-linux-gnu"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "25"
+	maintainer hasValue "Original-Debian GCC Maintainers <debian-gcc@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "4:9.2.1-4.1"
+	fileName hasValue "pool/universe/g/gcc-defaults-mipsen/gcc-mips-linux-gnu_9.2.1-4.1_amd64.deb"
+	size hasValue "1408"
+	md5sum hasValue "a605741e9dc95854ff51bd25a39983d3"
+	sha1 hasValue "b26cff3ac53d7301b685015db1a5888bfb3d9edf"
+	sha256 hasValue "fd540fa09474aa48193f5cfdb7dfd54f13b25b18fc5907eb990b6055fda00277"
+	description hasValue "GNU C compiler for the mips architecture"
+	descriptionMd5 hasValue "c1649e66b611f7e490e4187f67900cf1"
+	depends hasValue "cpp-mips-linux-gnu (= 4:9.2.1-4.1), gcc-9-mips-linux-gnu (>= 9.2.1-1~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "cpp-mips-linux-gnu"
+	comparison hasValue "="
+	version hasValue "4:9.2.1-4.1"
+
+relationInstance depends(P0__gcc_mips_linux_gnu,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "gcc-9-mips-linux-gnu"
+	comparison hasValue ">="
+	version hasValue "9.2.1-1~"
+
+relationInstance depends(P0__gcc_mips_linux_gnu,1,DepAtom__1)
+

@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology haveged
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__haveged memberOf Package
+	package hasValue "haveged"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/misc"
+	installedSize hasValue "77"
+	maintainer hasValue "Original-Jérémy Bobbio <lunar@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.9.1-6ubuntu1"
+	fileName hasValue "pool/universe/h/haveged/haveged_1.9.1-6ubuntu1_amd64.deb"
+	size hasValue "28380"
+	md5sum hasValue "7c8d5a612fba2483de6cf11c0ce77028"
+	sha1 hasValue "b35083424398c020f20df63eff90568d952f4f1d"
+	sha256 hasValue "3526952885ee343a4874a4426fabafd203ee890167ae46a3ca506829250178a7"
+	descriptionMd5 hasValue "e29e090ec35dfe759c8580ce04904d0c"
+	homepage hasValue "http://issihosts.com/haveged/"
+	depends hasValue "lsb-base (>= 3.2-14), libc6 (>= 2.15), libhavege1 (>= 1.9.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "lsb-base"
+	comparison hasValue ">="
+	version hasValue "3.2-14"
+
+relationInstance depends(P0__haveged,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__haveged,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libhavege1"
+	comparison hasValue ">="
+	version hasValue "1.9.0"
+
+relationInstance depends(P0__haveged,2,DepAtom__2)
+

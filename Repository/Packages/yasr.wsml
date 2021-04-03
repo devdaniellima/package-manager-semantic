@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology yasr
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__yasr memberOf Package
+	package hasValue "yasr"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/admin"
+	installedSize hasValue "130"
+	maintainer hasValue "Original-Debian Accessibility Team <pkg-a11y-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.6.9-9"
+	fileName hasValue "pool/universe/y/yasr/yasr_0.6.9-9_amd64.deb"
+	size hasValue "52764"
+	md5sum hasValue "a5a61518c0278f5159fbedc0bda57891"
+	sha1 hasValue "2a8a309209c10ae48b2d4d85cc47258b97e83408"
+	sha256 hasValue "643f944adddf3638c2637c8d82fc60ab861be586e8080c6cd93614927289edc4"
+	descriptionMd5 hasValue "3b4652578ae3938f89acb5fcc29ac84c"
+	homepage hasValue "http://yasr.sourceforge.net/"
+	depends hasValue "libc6 (>= 2.15)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__yasr,0,DepAtom__0)
+

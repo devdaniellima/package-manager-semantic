@@ -1,0 +1,66 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology vmfs_tools
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__vmfs_tools memberOf Package
+	package hasValue "vmfs-tools"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/otherosfs"
+	installedSize hasValue "253"
+	maintainer hasValue "Original-Mike Hommey <glandium@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.2.5-1build1"
+	fileName hasValue "pool/universe/v/vmfs-tools/vmfs-tools_0.2.5-1build1_amd64.deb"
+	size hasValue "54260"
+	md5sum hasValue "3aa671da9de6e274ead312c69e3d175d"
+	sha1 hasValue "396d22da90927a436c3e1cf8fe153aa479f290b7"
+	sha256 hasValue "8f9f7a2aebd496f24f5e13b31eb58cdc1740785b93b12492775250d3aa97d647"
+	descriptionMd5 hasValue "0cdea504f6c5a9da0070eeda2f011352"
+	depends hasValue "libc6 (>= 2.14), libfuse2 (>= 2.6), libuuid1 (>= 2.16)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__vmfs_tools,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libfuse2"
+	comparison hasValue ">="
+	version hasValue "2.6"
+
+relationInstance depends(P0__vmfs_tools,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libuuid1"
+	comparison hasValue ">="
+	version hasValue "2.16"
+
+relationInstance depends(P0__vmfs_tools,2,DepAtom__2)
+

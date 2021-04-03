@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology uvccapture
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__uvccapture memberOf Package
+	package hasValue "uvccapture"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/graphics"
+	installedSize hasValue "43"
+	maintainer hasValue "Original-Barak A. Pearlmutter <bap@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.5-5"
+	fileName hasValue "pool/universe/u/uvccapture/uvccapture_0.5-5_amd64.deb"
+	size hasValue "13232"
+	md5sum hasValue "f08aaa4a4293507d929bc529301017b2"
+	sha1 hasValue "12c815b717d76054b15142de12f9207f2cfc5dac"
+	sha256 hasValue "9ecfd2ba012408c57aa6f7f25088775098dd5624d6143e079242b18aad5b6b7d"
+	descriptionMd5 hasValue "5ce732363508c4becc6126cd1480d39d"
+	homepage hasValue "http://linux-uvc.berlios.de/"
+	depends hasValue "libc6 (>= 2.14), libjpeg8 (>= 8c)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__uvccapture,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libjpeg8"
+	comparison hasValue ">="
+	version hasValue "8c"
+
+relationInstance depends(P0__uvccapture,1,DepAtom__1)
+

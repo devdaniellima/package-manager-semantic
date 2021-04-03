@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology appmenu_registrar
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__appmenu_registrar memberOf Package
+	package hasValue "appmenu-registrar"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/x11"
+	installedSize hasValue "43"
+	maintainer hasValue "Original-Ayatana Packagers <pkg-ayatana-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.7.3-2"
+	replaces hasValue "vala-panel-appmenu-registrar (<< 0.7.1)"
+	fileName hasValue "pool/universe/a/appmenu-registrar/appmenu-registrar_0.7.3-2_amd64.deb"
+	size hasValue "10800"
+	md5sum hasValue "8cb7a1b636ff4e06bc3cce0c29bcc2ec"
+	sha1 hasValue "8f7f43e83727cc5a6d5e5b8ad515071a1c73e3ed"
+	sha256 hasValue "5630a63db97267380578d02f5d46475507b35ee4d9f7ebd07d347d0d4183162c"
+	descriptionMd5 hasValue "978ba616a5ee0827a9f786e33e110e1c"
+	homepage hasValue "https://gitlab.com/vala-panel-project/vala-panel-appmenu"
+	depends hasValue "libc6 (>= 2.4), libglib2.0-0 (>= 2.39.90)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__appmenu_registrar,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libglib2.0-0"
+	comparison hasValue ">="
+	version hasValue "2.39.90"
+
+relationInstance depends(P0__appmenu_registrar,1,DepAtom__1)
+

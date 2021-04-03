@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ffe
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ffe memberOf Package
+	package hasValue "ffe"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/text"
+	installedSize hasValue "211"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.3.9-1"
+	fileName hasValue "pool/universe/f/ffe/ffe_0.3.9-1_amd64.deb"
+	size hasValue "80344"
+	md5sum hasValue "6c4d14d8d624128f240a0fb071a2936c"
+	sha1 hasValue "1ca21bfc4002e3d764d30628e16724cca78964e6"
+	sha256 hasValue "9372264242638fc522129354af364a8c81680d932796a40776800096346a73bc"
+	descriptionMd5 hasValue "faabf178f5f43000ca3bf7e588ca76e2"
+	homepage hasValue "http://ff-extractor.sourceforge.net/"
+	depends hasValue "libc6 (>= 2.14), libgcrypt20 (>= 1.8.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__ffe,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgcrypt20"
+	comparison hasValue ">="
+	version hasValue "1.8.0"
+
+relationInstance depends(P0__ffe,1,DepAtom__1)
+

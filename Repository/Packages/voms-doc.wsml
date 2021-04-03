@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology voms_doc
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__voms_doc memberOf Package
+	package hasValue "voms-doc"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/doc"
+	installedSize hasValue "1614"
+	maintainer hasValue "Original-Mattias Ellert <mattias.ellert@physics.uu.se>"
+	architecture hasValue "all"
+	version hasValue "2.1.0~rc0-6build2"
+	fileName hasValue "pool/universe/v/voms/voms-doc_2.1.0~rc0-6build2_all.deb"
+	size hasValue "134728"
+	md5sum hasValue "5f98bdd9bf4866bbdd8356324c44ffa5"
+	sha1 hasValue "e164b39d776432bd002a77c68e9ca605209ac644"
+	sha256 hasValue "8aada882b84b29f8e9a3050ecc323bb6ae897f1f731e42ddf8be3c9bfea6d095"
+	descriptionMd5 hasValue "1d6cfb79ce5b7ed54f329eaebe3ae4eb"
+	homepage hasValue "https://wiki.italiangrid.it/VOMS"
+	depends hasValue "Pre-dpkg (>= 1.17.5)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "Pre-dpkg"
+	comparison hasValue ">="
+	version hasValue "1.17.5"
+
+relationInstance depends(P0__voms_doc,0,DepAtom__0)
+

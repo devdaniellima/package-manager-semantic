@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology bmf
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__bmf memberOf Package
+	package hasValue "bmf"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/mail"
+	installedSize hasValue "86"
+	maintainer hasValue "Original-Jari Aalto <jari.aalto@cante.net>"
+	architecture hasValue "amd64"
+	version hasValue "0.9.4-10"
+	fileName hasValue "pool/universe/b/bmf/bmf_0.9.4-10_amd64.deb"
+	size hasValue "25794"
+	md5sum hasValue "48b71fc935d2bc52065a666c46c80ac4"
+	sha1 hasValue "1b9e71dce0c852200264a0d3169739ec2bc7c7d4"
+	sha256 hasValue "ed8da20bb3dce5ad756fd7df205ffc564fc3b7b8948549e4987fe2f1d53725a7"
+	description hasValue "e-mail filter for spam that learns"
+	descriptionMd5 hasValue "9929dee4a5839d950a09d0bc7414eb1d"
+	homepage hasValue "http://sourceforge.net/projects/bmf"
+	depends hasValue "libc6 (>= 2.14), libdb5.3"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__bmf,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libdb5.3"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__bmf,1,DepAtom__1)
+

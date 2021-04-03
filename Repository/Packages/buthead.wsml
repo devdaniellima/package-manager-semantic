@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology buthead
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__buthead memberOf Package
+	package hasValue "buthead"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/text"
+	installedSize hasValue "30"
+	maintainer hasValue "Original-Barak A. Pearlmutter <bap@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.1-5"
+	fileName hasValue "pool/universe/b/buthead/buthead_1.1-5_amd64.deb"
+	size hasValue "5160"
+	md5sum hasValue "f1196f9bfb1bf5840851e21b93b285ce"
+	sha1 hasValue "bfbd72f46ad6d63b35f675b63af20a106197fe71"
+	sha256 hasValue "1f1f806bb38a18181d1dfa3f9ce504f38eb09e13d2be0e1d76941566fd94ec2c"
+	description hasValue "copia tudo exceto as primeiras linhas"
+	descriptionMd5 hasValue "11db99ac17c8a30fb67f300463378eec"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__buthead,0,DepAtom__0)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python3_nftables
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python3_nftables memberOf Package
+	package hasValue "python3-nftables"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "58"
+	maintainer hasValue "Original-Debian Netfilter Packaging Team <pkg-netfilter-team@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.9.3-2"
+	fileName hasValue "pool/universe/n/nftables/python3-nftables_0.9.3-2_amd64.deb"
+	size hasValue "11488"
+	md5sum hasValue "568e4db733a7bee6fdf8570e40cc7a02"
+	sha1 hasValue "d36a5311eed4adec3e7dbdee764a1483006f94f3"
+	sha256 hasValue "e09f5cda7e11dd110ebc1c49ac9fe51ab42ac532bdd79e0a8b9633abf2e78b56"
+	descriptionMd5 hasValue "163efcd8a2defdfa0f6887c346e8955d"
+	homepage hasValue "https://www.netfilter.org/"
+	depends hasValue "libnftables1 (= 0.9.3-2), python3:any"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libnftables1"
+	comparison hasValue "="
+	version hasValue "0.9.3-2"
+
+relationInstance depends(P0__python3_nftables,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__python3_nftables,1,DepAtom__1)
+

@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology rolldice
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__rolldice memberOf Package
+	package hasValue "rolldice"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/games"
+	installedSize hasValue "31"
+	maintainer hasValue "Original-Thomas Ross <thomasross@thomasross.io>"
+	architecture hasValue "amd64"
+	version hasValue "1.16-1build1"
+	fileName hasValue "pool/universe/r/rolldice/rolldice_1.16-1build1_amd64.deb"
+	size hasValue "9628"
+	md5sum hasValue "af6390bf2d5d5b4710d308ac06d4913a"
+	sha1 hasValue "1d87ccac5b20f4e2a217a0e058408f46cfe5caff"
+	sha256 hasValue "2e076006200057da0be52060e3cc2f4fc7c51212867173e727590bd7603a0337"
+	description hasValue "virtual dice roller"
+	descriptionMd5 hasValue "fc24e9e12c794a8f92ab0ca6e1058501"
+	homepage hasValue "https://github.com/sstrickl/rolldice"
+	depends hasValue "libc6 (>= 2.7), libreadline8 (>= 6.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__rolldice,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libreadline8"
+	comparison hasValue ">="
+	version hasValue "6.0"
+
+relationInstance depends(P0__rolldice,1,DepAtom__1)
+

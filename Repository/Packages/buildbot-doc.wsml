@@ -1,0 +1,55 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology buildbot_doc
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__buildbot_doc memberOf Package
+	package hasValue "buildbot-doc"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/doc"
+	installedSize hasValue "12500"
+	maintainer hasValue "Original-Python Applications Packaging Team <python-apps-team@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.6.0-1"
+	replaces hasValue "buildbot (<< 1.0), python3-buildbot-doc (<< 1.7.0)"
+	fileName hasValue "pool/universe/b/buildbot/buildbot-doc_2.6.0-1_all.deb"
+	size hasValue "1371568"
+	md5sum hasValue "87380b44ebd89ed1414d7341a9c1e4bc"
+	sha1 hasValue "9095df41f41e6c2f6a32f60521c4811212eed358"
+	sha256 hasValue "126793209b2075c6e67430019a1bf01769fb9b9e84812aa322b1a53046c21aef"
+	description hasValue "System to automate the compile/test cycle (documentation)"
+	descriptionMd5 hasValue "81f4d95edef816fd80347110f9593a5d"
+	homepage hasValue "https://buildbot.net"
+	depends hasValue "libjs-sphinxdoc (>= 1.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libjs-sphinxdoc"
+	comparison hasValue ">="
+	version hasValue "1.0"
+
+relationInstance depends(P0__buildbot_doc,0,DepAtom__0)
+

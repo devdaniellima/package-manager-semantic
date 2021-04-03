@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libfile_share_perl
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libfile_share_perl memberOf Package
+	package hasValue "libfile-share-perl"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/perl"
+	installedSize hasValue "49"
+	maintainer hasValue "Original-Debian Perl Group <pkg-perl-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.25-1"
+	fileName hasValue "pool/universe/libf/libfile-share-perl/libfile-share-perl_0.25-1_all.deb"
+	size hasValue "7574"
+	md5sum hasValue "2e80b122ebd4ce277f57425ef2ce2002"
+	sha1 hasValue "6c820cce78a82e7016523c0df61b56a45addf601"
+	sha256 hasValue "d111ebdbd6e58824aa3ca845f635d990babebff902a9b808867138bf5b5fcfa0"
+	descriptionMd5 hasValue "72c88305822c5e9fbb3c81e786e52213"
+	homepage hasValue "http://metacpan.org/release/File-Share"
+	depends hasValue "perl, libfile-sharedir-perl (>= 1.03)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "perl"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libfile_share_perl,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libfile-sharedir-perl"
+	comparison hasValue ">="
+	version hasValue "1.03"
+
+relationInstance depends(P0__libfile_share_perl,1,DepAtom__1)
+

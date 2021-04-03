@@ -1,0 +1,64 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology nvidia_kernel_common_450
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__nvidia_kernel_common_450 memberOf Package
+	package hasValue "nvidia-kernel-common-450"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "restricted/libs"
+	installedSize hasValue "74"
+	maintainer hasValue "Ubuntu Core Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	architecture hasValue "amd64"
+	version hasValue "450.102.04-0ubuntu0.20.04.1"
+	replaces hasValue "nvidia-dkms-450 (<< 390.48-0ubuntu3~), nvidia-kernel-common"
+	provides hasValue "nvidia-kernel-common"
+	conflicts hasValue "nvidia-kernel-common"
+	fileName hasValue "pool/restricted/n/nvidia-graphics-drivers-450/nvidia-kernel-common-450_450.102.04-0ubuntu0.20.04.1_amd64.deb"
+	size hasValue "19744"
+	md5sum hasValue "e8fa034512e3ff83549e8be88fcd4fae"
+	sha1 hasValue "fc3f1ae226d9e518b33dfdd063a5375f53d6ebcf"
+	sha256 hasValue "e944517c25df5b8b3f6f4240620f32d18e8c47012e840a8c93d80daa01257bfd"
+	sha512 hasValue "f73ac9f552fabe452e96ff62ba96b96d4dbbc1a74072ee2b3e07762ccfe05ba8ab71b0c74b4c878ffd9aeaccf801441a3f8a16b02fabe24ce08102615df04b6d"
+	descriptionMd5 hasValue "caa64a2a10d329a0475baf9ebcdb40d5"
+	homepage hasValue "http://www.nvidia.com"
+	depends hasValue "libc6 (>= 2.7), libpciaccess0 (>= 0.10.7)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__nvidia_kernel_common_450,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libpciaccess0"
+	comparison hasValue ">="
+	version hasValue "0.10.7"
+
+relationInstance depends(P0__nvidia_kernel_common_450,1,DepAtom__1)
+

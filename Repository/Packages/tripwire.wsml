@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology tripwire
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__tripwire memberOf Package
+	package hasValue "tripwire"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "12938"
+	maintainer hasValue "Original-Alberto Gonzalez Iniesta <agi@inittab.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.4.3.7-1"
+	fileName hasValue "pool/universe/t/tripwire/tripwire_2.4.3.7-1_amd64.deb"
+	size hasValue "1685640"
+	md5sum hasValue "ff5c1d60e7e449093cf7ebe40e3ab4ed"
+	sha1 hasValue "a872b7278c0d61068a95081323a05b1e27a0847f"
+	sha256 hasValue "eda8cd3a9ae36584424bd6c8210023cada3b05324a5328602499c0a316b52742"
+	description hasValue "verificador de integridade de arquivo e diretório"
+	descriptionMd5 hasValue "bccf840623e14c4e29080900b721cf83"
+	homepage hasValue "https://github.com/Tripwire/tripwire-open-source"
+	depends hasValue "postfix | mail-transport-agent"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "postfix"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__tripwire,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "mail-transport-agent"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__tripwire,0,DepAtom__1)
+

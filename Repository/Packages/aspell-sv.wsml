@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology aspell_sv
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__aspell_sv memberOf Package
+	package hasValue "aspell-sv"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/text"
+	installedSize hasValue "168"
+	maintainer hasValue "Original-Magnus Holmgren <holmgren@debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.51-0-3"
+	provides hasValue "aspell-dictionary"
+	fileName hasValue "pool/universe/a/aspell-sv/aspell-sv_0.51-0-3_all.deb"
+	size hasValue "111448"
+	md5sum hasValue "84ed2e7dae1b1e8083932f8c41001cdb"
+	sha1 hasValue "5399fa810d3c543275ed430f29a4b1a2be777c25"
+	sha256 hasValue "f17d499e624a5633d2b79784bfcb9f2cf8afe28d1589a6c7b9fadcc96298b1f6"
+	description hasValue "Swedish dictionary for GNU aspell"
+	descriptionMd5 hasValue "6f4d41b7918c88c9bcd9204bd025a8d9"
+	homepage hasValue "http://aspell.net/"
+	depends hasValue "aspell (>= 0.60.3-3), dictionaries-common (>= 0.49.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "aspell"
+	comparison hasValue ">="
+	version hasValue "0.60.3-3"
+
+relationInstance depends(P0__aspell_sv,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "dictionaries-common"
+	comparison hasValue ">="
+	version hasValue "0.49.2"
+
+relationInstance depends(P0__aspell_sv,1,DepAtom__1)
+

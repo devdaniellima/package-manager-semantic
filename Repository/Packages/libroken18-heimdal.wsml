@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libroken18_heimdal
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libroken18_heimdal memberOf Package
+	package hasValue "libroken18-heimdal"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libs"
+	installedSize hasValue "144"
+	maintainer hasValue "Original-Brian May <bam@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "7.7.0+dfsg-1ubuntu1"
+	fileName hasValue "pool/main/h/heimdal/libroken18-heimdal_7.7.0+dfsg-1ubuntu1_amd64.deb"
+	size hasValue "41848"
+	md5sum hasValue "88ff377373362fe5939dc0fd0fb5f432"
+	sha1 hasValue "c2a86201eb46418607b8c80c814e2bd9e1ace8b8"
+	sha256 hasValue "7a8efaa9b9e1ad5f3b32c10c30f67a21ebe128637a214f32968fe58657718b1e"
+	description hasValue "Heimdal Kerberos - roken support library"
+	descriptionMd5 hasValue "09767e23fe6e020c9a8665bbe1cfa203"
+	homepage hasValue "http://www.h5l.org/"
+	depends hasValue "libc6 (>= 2.16), libcrypt1 (>= 1:4.1.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.16"
+
+relationInstance depends(P0__libroken18_heimdal,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libcrypt1"
+	comparison hasValue ">="
+	version hasValue "1:4.1.0"
+
+relationInstance depends(P0__libroken18_heimdal,1,DepAtom__1)
+

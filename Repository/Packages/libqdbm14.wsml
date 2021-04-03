@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libqdbm14
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libqdbm14 memberOf Package
+	package hasValue "libqdbm14"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "309"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.8.78-9build3"
+	fileName hasValue "pool/universe/q/qdbm/libqdbm14_1.8.78-9build3_amd64.deb"
+	size hasValue "93304"
+	md5sum hasValue "c1da5eadc66a24d4da87ca328665f4dd"
+	sha1 hasValue "a936b401244a08bb2f0b72525393ef6394999890"
+	sha256 hasValue "3c2ce0a0204b5c7e815c6e66650119b8c08f090a625d620013fcd7f588926e3d"
+	description hasValue "bibliotecas de banco de dados QDBM sem o envoltório GDBM [tempo de execução]"
+	descriptionMd5 hasValue "cef087cddd2fc9d696ab1c958efb7619"
+	homepage hasValue "http://fallabs.com/qdbm/"
+	depends hasValue "libc6 (>= 2.14), zlib1g (>= 1:1.1.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libqdbm14,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "zlib1g"
+	comparison hasValue ">="
+	version hasValue "1:1.1.4"
+
+relationInstance depends(P0__libqdbm14,1,DepAtom__1)
+

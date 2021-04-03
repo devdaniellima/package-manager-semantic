@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology hunt
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__hunt memberOf Package
+	package hasValue "hunt"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "180"
+	maintainer hasValue "Original-Angel Ramos <seamus@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.5-6.1build1"
+	fileName hasValue "pool/universe/h/hunt/hunt_1.5-6.1build1_amd64.deb"
+	size hasValue "84188"
+	md5sum hasValue "0fbff6a9844580fcdc7cdb898155a657"
+	sha1 hasValue "aeda187c2f381549ce3d16bfef562c19a62a95b0"
+	sha256 hasValue "c1c9e7c25d26d1ed365d87f5c80f76489d30a02bb4135241ab4172b188fe85f8"
+	description hasValue "sniffer de pacotes e intrusão de conexão avançados"
+	descriptionMd5 hasValue "9c7e9f0b4f1d0eda85455deadab35262"
+	depends hasValue "libc6 (>= 2.15)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__hunt,0,DepAtom__0)
+

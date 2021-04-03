@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology wcslib_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__wcslib_dev memberOf Package
+	package hasValue "wcslib-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "2594"
+	maintainer hasValue "Original-Debian Astronomy Team <debian-astro-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "7.1+ds-2"
+	replaces hasValue "libpgsbox-dev (<< 5.15-2~)"
+	fileName hasValue "pool/universe/w/wcslib/wcslib-dev_7.1+ds-2_amd64.deb"
+	size hasValue "349092"
+	md5sum hasValue "d482003364bf39a827140aae46f469e6"
+	sha1 hasValue "6ec32a357c7a49b29bdb7385606a7c3ebac71fdb"
+	sha256 hasValue "5c4f7b30ce6da268cdffa518cb01cf99f51cfc739d59e11cc5f7a9e523a42ffd"
+	descriptionMd5 hasValue "1cd21a072f3048eec0af049ea3483691"
+	homepage hasValue "https://www.atnf.csiro.au/people/mcalabre/WCS/"
+	depends hasValue "libpgsbox7 (= 7.1+ds-2), libwcs7 (= 7.1+ds-2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libpgsbox7"
+	comparison hasValue "="
+	version hasValue "7.1+ds-2"
+
+relationInstance depends(P0__wcslib_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libwcs7"
+	comparison hasValue "="
+	version hasValue "7.1+ds-2"
+
+relationInstance depends(P0__wcslib_dev,1,DepAtom__1)
+

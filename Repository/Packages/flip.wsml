@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology flip
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__flip memberOf Package
+	package hasValue "flip"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/text"
+	installedSize hasValue "45"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.20-4"
+	fileName hasValue "pool/universe/f/flip/flip_1.20-4_amd64.deb"
+	size hasValue "12600"
+	md5sum hasValue "c226a75885b60d4f2e4790396fc456b5"
+	sha1 hasValue "8d21030ff9c567ebe361dd499ea61228def064be"
+	sha256 hasValue "4ac37c31be5bab02b5d4ac5b41a6b71dbe21a14760f7aa6c01520af1577156d0"
+	description hasValue "Converte finais de linha de texto entre formatos Unix e DOS."
+	descriptionMd5 hasValue "19225a6e9a1cb16f5cb17b93aab4311c"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__flip,0,DepAtom__0)
+

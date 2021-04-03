@@ -1,0 +1,69 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology caps
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__caps memberOf Package
+	package hasValue "caps"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/sound"
+	installedSize hasValue "534"
+	maintainer hasValue "Original-Debian Multimedia Maintainers <debian-multimedia@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.9.26-1build1"
+	provides hasValue "ladspa-plugin"
+	fileName hasValue "pool/universe/c/caps/caps_0.9.26-1build1_amd64.deb"
+	size hasValue "205432"
+	md5sum hasValue "321c0a301f170b01d67db2d2f1a811f5"
+	sha1 hasValue "6e2142a38b9baf56f275e5850d151d4cbd2d8f84"
+	sha256 hasValue "824edfc9b45d57274126e2342b8b2136f565811b25470fe01cb6a1a7e5974561"
+	description hasValue "conjunto de extensões de áudio em C*"
+	descriptionMd5 hasValue "ddb688967998d935b755c502de987778"
+	homepage hasValue "http://quitte.de/dsp/caps.html"
+	depends hasValue "libc6 (>= 2.29), libgcc-s1 (>= 3.0), libstdc++6 (>= 5)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__caps,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgcc-s1"
+	comparison hasValue ">="
+	version hasValue "3.0"
+
+relationInstance depends(P0__caps,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "5"
+
+relationInstance depends(P0__caps,2,DepAtom__2)
+

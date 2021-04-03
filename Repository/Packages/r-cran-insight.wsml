@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology r_cran_insight
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__r_cran_insight memberOf Package
+	package hasValue "r-cran-insight"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/gnu-r"
+	installedSize hasValue "1535"
+	maintainer hasValue "Original-Debian R Packages Maintainers <r-pkg-team@alioth-lists.debian.net>"
+	architecture hasValue "all"
+	version hasValue "0.8.1-1"
+	fileName hasValue "pool/universe/r/r-cran-insight/r-cran-insight_0.8.1-1_all.deb"
+	size hasValue "968316"
+	md5sum hasValue "bc12e94da881fdc4530426a1e14b4693"
+	sha1 hasValue "fe0a68d93121264595e360d6621223c67c4da68b"
+	sha256 hasValue "57188e09d8f7df81c39dd19d37a52d210eab39fe822e5754743ce8b2846199c7"
+	descriptionMd5 hasValue "2de42e0b2c26c7d0ef71bea9204cd565"
+	homepage hasValue "https://cran.r-project.org/package=insight"
+	depends hasValue "r-base-core (>= 3.6.2-2), r-api-3.5"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "r-base-core"
+	comparison hasValue ">="
+	version hasValue "3.6.2-2"
+
+relationInstance depends(P0__r_cran_insight,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "r-api-3.5"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__r_cran_insight,1,DepAtom__1)
+

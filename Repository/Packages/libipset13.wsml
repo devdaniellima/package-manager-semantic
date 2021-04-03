@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libipset13
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libipset13 memberOf Package
+	package hasValue "libipset13"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libs"
+	installedSize hasValue "229"
+	maintainer hasValue "Original-Debian Netfilter Packaging Team <pkg-netfilter-team@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "7.5-1~exp1"
+	fileName hasValue "pool/main/i/ipset/libipset13_7.5-1~exp1_amd64.deb"
+	size hasValue "53352"
+	md5sum hasValue "a273e31b9db095d0bcea2a537915025e"
+	sha1 hasValue "61a6e4d550b818a03fd1a9acb22e130199d1e8ec"
+	sha256 hasValue "f373445a4687665287f4ebb1b26247c498c77520b63c40ba3c806bb5228372be"
+	descriptionMd5 hasValue "decc9bd1823657b3f27fdfbd857b8759"
+	homepage hasValue "http://ipset.netfilter.org/"
+	depends hasValue "libc6 (>= 2.11), libmnl0 (>= 1.0.3-4~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.11"
+
+relationInstance depends(P0__libipset13,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libmnl0"
+	comparison hasValue ">="
+	version hasValue "1.0.3-4~"
+
+relationInstance depends(P0__libipset13,1,DepAtom__1)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology upgrade_system
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__upgrade_system memberOf Package
+	package hasValue "upgrade-system"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "45"
+	maintainer hasValue "Original-Martin-Éric Racine <martin-eric.racine@iki.fi>"
+	architecture hasValue "all"
+	version hasValue "1.7.3.1"
+	fileName hasValue "pool/universe/u/upgrade-system/upgrade-system_1.7.3.1_all.deb"
+	size hasValue "9656"
+	md5sum hasValue "36a5f9d3f30f4c92ec633e58865dc270"
+	sha1 hasValue "3344d6b3bba12e75f4e444b00d4adc910fd5ab9a"
+	sha256 hasValue "4307fca69c6ff37a7da0ee1f605b1d17b464d41bee9aa60bfb7b393c7567ec72"
+	descriptionMd5 hasValue "962e2d91ed40f3ed6f9cdfc21aa9b6a8"
+	homepage hasValue "http://q-funk.iki.fi/debian"
+	depends hasValue "apt (>= 0.7.0), deborphan (>= 1.7)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "apt"
+	comparison hasValue ">="
+	version hasValue "0.7.0"
+
+relationInstance depends(P0__upgrade_system,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "deborphan"
+	comparison hasValue ">="
+	version hasValue "1.7"
+
+relationInstance depends(P0__upgrade_system,1,DepAtom__1)
+

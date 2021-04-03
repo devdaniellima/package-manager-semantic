@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology node_lie
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__node_lie memberOf Package
+	package hasValue "node-lie"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/web"
+	installedSize hasValue "33"
+	maintainer hasValue "Original-Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "3.1.1+dfsg-1"
+	fileName hasValue "pool/universe/n/node-lie/node-lie_3.1.1+dfsg-1_all.deb"
+	size hasValue "5752"
+	md5sum hasValue "bfeebdd32e971b5a0a4683280eca558c"
+	sha1 hasValue "cf9f8b372170d1a04b15b087b5a6b09c0df52559"
+	sha256 hasValue "152b8df7fddf9da06d830d0613626c8420a4b88f30e01f9b583a9a4c14444111"
+	descriptionMd5 hasValue "cb744c5200a2a168dfe0979cb8a5b049"
+	homepage hasValue "https://github.com/calvinmetcalf/lie#readme"
+	depends hasValue "nodejs, node-immediate (>= 3.0.5)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "nodejs"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__node_lie,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "node-immediate"
+	comparison hasValue ">="
+	version hasValue "3.0.5"
+
+relationInstance depends(P0__node_lie,1,DepAtom__1)
+

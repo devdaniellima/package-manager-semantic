@@ -1,0 +1,69 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology qt5_default
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__qt5_default memberOf Package
+	package hasValue "qt5-default"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "166"
+	maintainer hasValue "Original-Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "5.12.8+dfsg-0ubuntu1"
+	conflicts hasValue "qt4-default"
+	fileName hasValue "pool/universe/q/qtbase-opensource-src/qt5-default_5.12.8+dfsg-0ubuntu1_amd64.deb"
+	size hasValue "24428"
+	md5sum hasValue "2a243fce729b3760c92f584eaeb61a91"
+	sha1 hasValue "38b320cad003ceb88ae24dd8d276f4265fe458a0"
+	sha256 hasValue "a81555901c3582fc90d0e7774353868660bffc107793c1559079328a714c0202"
+	description hasValue "Qt 5 development defaults package"
+	descriptionMd5 hasValue "27d5fbaad192927906a3f115bb55e3b4"
+	homepage hasValue "https://www.qt.io/developers/"
+	depends hasValue "qtbase5-dev (= 5.12.8+dfsg-0ubuntu1) | qtbase5-gles-dev (>= 5.12.8+dfsg), qtchooser (>= 55-gc9562a1-1~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "qtbase5-dev"
+	comparison hasValue "="
+	version hasValue "5.12.8+dfsg-0ubuntu1"
+
+relationInstance depends(P0__qt5_default,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "qtbase5-gles-dev"
+	comparison hasValue ">="
+	version hasValue "5.12.8+dfsg"
+
+relationInstance depends(P0__qt5_default,0,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "qtchooser"
+	comparison hasValue ">="
+	version hasValue "55-gc9562a1-1~"
+
+relationInstance depends(P0__qt5_default,1,DepAtom__2)
+

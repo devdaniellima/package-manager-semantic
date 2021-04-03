@@ -1,0 +1,59 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology tcpslice
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__tcpslice memberOf Package
+	package hasValue "tcpslice"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "41"
+	maintainer hasValue "Original-Jochen Friedrich <jochen@scram.de>"
+	architecture hasValue "amd64"
+	version hasValue "1.2a3-4build1"
+	fileName hasValue "pool/universe/t/tcpslice/tcpslice_1.2a3-4build1_amd64.deb"
+	size hasValue "17748"
+	md5sum hasValue "fb60499a826d21cef4fb1787a0a0739c"
+	sha1 hasValue "807fd9d4272059d1c79eb3918ddb9f6fb5773cfd"
+	sha256 hasValue "5f7afbb6d12fec29fdff8bc6a0394e5fe02f09f304fd5f87a1f384657971c7ac"
+	descriptionMd5 hasValue "1b64d462ce6032fa71ef2a2c4fb53eb8"
+	depends hasValue "libc6 (>= 2.14), libpcap0.8 (>= 0.9.8)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__tcpslice,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libpcap0.8"
+	comparison hasValue ">="
+	version hasValue "0.9.8"
+
+relationInstance depends(P0__tcpslice,1,DepAtom__1)
+

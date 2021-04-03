@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libpam_fscrypt
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libpam_fscrypt memberOf Package
+	package hasValue "libpam-fscrypt"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/misc"
+	installedSize hasValue "5696"
+	maintainer hasValue "Original-Debian Go Packaging Team <team+pkg-go@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.2.5-2"
+	fileName hasValue "pool/universe/f/fscrypt/libpam-fscrypt_0.2.5-2_amd64.deb"
+	size hasValue "1423064"
+	md5sum hasValue "71fc94bdd00dd7d03143b8a0bc14cd77"
+	sha1 hasValue "8a46c81f3ec6462cc424441f8c6dfa8e03e14e0b"
+	sha256 hasValue "3e28e809e318d27fa23adb71b2425ec120bbda05608444e70eb305533c314743"
+	descriptionMd5 hasValue "421164b2c9097f303ec36802927e6dea"
+	homepage hasValue "https://github.com/google/fscrypt"
+	depends hasValue "libc6 (>= 2.14), libpam0g (>= 0.99.7.1), fscrypt"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libpam_fscrypt,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libpam0g"
+	comparison hasValue ">="
+	version hasValue "0.99.7.1"
+
+relationInstance depends(P0__libpam_fscrypt,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "fscrypt"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libpam_fscrypt,2,DepAtom__2)
+

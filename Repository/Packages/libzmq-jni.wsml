@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libzmq_jni
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libzmq_jni memberOf Package
+	package hasValue "libzmq-jni"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/java"
+	installedSize hasValue "47"
+	maintainer hasValue "Original-Jan Niehusmann <jan@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.1.0-14build1"
+	fileName hasValue "pool/universe/j/jzmq/libzmq-jni_3.1.0-14build1_amd64.deb"
+	size hasValue "11640"
+	md5sum hasValue "356a784dd491f10996e06a6bc6210357"
+	sha1 hasValue "a1e1f1c85636d453bd583efda7d65b0971588381"
+	sha256 hasValue "1df67dd6d2677ff6c4d4f7ba7446562ebe8474b7e4c49b664701e11a1d6bc972"
+	descriptionMd5 hasValue "5b62ef8e7a9b0cb4a31024fb11bcd6c6"
+	homepage hasValue "https://github.com/zeromq/jzmq"
+	depends hasValue "libc6 (>= 2.14), libstdc++6 (>= 5), libzmq5 (>= 3.2.3+dfsg)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libzmq_jni,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "5"
+
+relationInstance depends(P0__libzmq_jni,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libzmq5"
+	comparison hasValue ">="
+	version hasValue "3.2.3+dfsg"
+
+relationInstance depends(P0__libzmq_jni,2,DepAtom__2)
+

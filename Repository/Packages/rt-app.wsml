@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology rt_app
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__rt_app memberOf Package
+	package hasValue "rt-app"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/misc"
+	installedSize hasValue "124"
+	maintainer hasValue "Original-Linaro Packagers <linaro-pkg@lists.launchpad.net>"
+	architecture hasValue "amd64"
+	version hasValue "0.3-2ubuntu3"
+	fileName hasValue "pool/universe/r/rt-app/rt-app_0.3-2ubuntu3_amd64.deb"
+	size hasValue "37324"
+	md5sum hasValue "514df7f3f7b8ede7c8ced993202a89a9"
+	sha1 hasValue "581c6b198928ea399f61e66c70284c8a4f2cd584"
+	sha256 hasValue "1b37575c72113c115b7a4c8b841c4555fce272880dde1a31d06bfed5aec5192c"
+	descriptionMd5 hasValue "ba2c49858874d8cd6596321e18fc9953"
+	homepage hasValue "https://github.com/gbagnoli/rt-app"
+	depends hasValue "libc6 (>= 2.17), libjson-c4 (>= 0.13.1), python2:any"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.17"
+
+relationInstance depends(P0__rt_app,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libjson-c4"
+	comparison hasValue ">="
+	version hasValue "0.13.1"
+
+relationInstance depends(P0__rt_app,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__rt_app,2,DepAtom__2)
+

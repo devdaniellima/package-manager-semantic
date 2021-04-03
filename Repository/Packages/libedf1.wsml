@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libedf1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libedf1 memberOf Package
+	package hasValue "libedf1"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "77"
+	maintainer hasValue "Original-Debian Med Packaging Team <debian-med-packaging@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.16-1"
+	fileName hasValue "pool/universe/e/edflib/libedf1_1.16-1_amd64.deb"
+	size hasValue "28100"
+	md5sum hasValue "5e82f4897ce63462911575eb8284cedc"
+	sha1 hasValue "27f796ded0f8e7ea84afc6bf52699dcf5dde3805"
+	sha256 hasValue "7aa52539c0572d766bc12ed52440eead732d844c8c959258898e1ed161a9268a"
+	descriptionMd5 hasValue "11c7bc5dc9fb1ef6aeacae9f6ed701eb"
+	homepage hasValue "https://www.teuniz.net/edflib/"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libedf1,0,DepAtom__0)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology liblz4_jni
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__liblz4_jni memberOf Package
+	package hasValue "liblz4-jni"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/java"
+	installedSize hasValue "25"
+	maintainer hasValue "Original-Debian Java Maintainers <pkg-java-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.5.1-2"
+	fileName hasValue "pool/universe/l/lz4-java/liblz4-jni_1.5.1-2_amd64.deb"
+	size hasValue "5188"
+	md5sum hasValue "2e67d723b38e921dc480537e7580a68e"
+	sha1 hasValue "da02cb2b909eccac429e8b1d754164f2224410be"
+	sha256 hasValue "33eaf6c1e9f9940159b300b95dcec5c785f39041bf84ead2cc04763f5cf16a6c"
+	descriptionMd5 hasValue "a1165aeca6f2023e021458f249310dad"
+	homepage hasValue "https://github.com/lz4/lz4-java"
+	depends hasValue "liblz4-1 (>= 0.0~r130), libxxhash0 (>= 0.6.5)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "liblz4-1"
+	comparison hasValue ">="
+	version hasValue "0.0~r130"
+
+relationInstance depends(P0__liblz4_jni,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libxxhash0"
+	comparison hasValue ">="
+	version hasValue "0.6.5"
+
+relationInstance depends(P0__liblz4_jni,1,DepAtom__1)
+

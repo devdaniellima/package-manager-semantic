@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology deal
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__deal memberOf Package
+	package hasValue "deal"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/games"
+	installedSize hasValue "658"
+	maintainer hasValue "Original-Christoph Berg <myon@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.1.9-12"
+	fileName hasValue "pool/universe/d/deal/deal_3.1.9-12_amd64.deb"
+	size hasValue "181892"
+	md5sum hasValue "01d2269b2b75e7d7a5f9ee01e87692ba"
+	sha1 hasValue "4199ff5f44fb6348a02578831388127a87462da1"
+	sha256 hasValue "80834280ed9e2ff7697ecf2d21f0bb675decdfb736c11ef0d7049efbe2e57f5f"
+	description hasValue "gerador de mãos de bridge"
+	descriptionMd5 hasValue "badbe098a18bf4b52b30482dca327a72"
+	homepage hasValue "https://bridge.thomasoandrews.com/deal/"
+	depends hasValue "libc6 (>= 2.7), libstdc++6 (>= 4.1.1), libtcl8.6 (>= 8.6.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__deal,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "4.1.1"
+
+relationInstance depends(P0__deal,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libtcl8.6"
+	comparison hasValue ">="
+	version hasValue "8.6.0"
+
+relationInstance depends(P0__deal,2,DepAtom__2)
+

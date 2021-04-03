@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libcap2_bin
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libcap2_bin memberOf Package
+	package hasValue "libcap2-bin"
+	packageSource hasValue Source__S1
+	priority hasValue "important"
+	section hasValue "utils"
+	installedSize hasValue "116"
+	maintainer hasValue "Original-Christian Kastner <ckk@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:2.32-1"
+	replaces hasValue "libcap-bin"
+	fileName hasValue "pool/main/libc/libcap2/libcap2-bin_2.32-1_amd64.deb"
+	size hasValue "26176"
+	md5sum hasValue "f7d9ecdc3f104f8710e9881567868ed1"
+	sha1 hasValue "f0ad466fb0c38bc459cfd002b7e7471dc891c0c5"
+	sha256 hasValue "113b20090784acc56e687f1c5eacf4025107ff965b23439e6de622d5632b7444"
+	description hasValue "POSIX 1003.1e capabilities (utilities)"
+	descriptionMd5 hasValue "f223f06c6e812dc45d4b21cbd8163d36"
+	homepage hasValue "https://sites.google.com/site/fullycapable/"
+	depends hasValue "libc6 (>= 2.14), libcap2 (>= 1:2.31)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libcap2_bin,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libcap2"
+	comparison hasValue ">="
+	version hasValue "1:2.31"
+
+relationInstance depends(P0__libcap2_bin,1,DepAtom__1)
+

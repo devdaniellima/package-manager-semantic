@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libmirrenderer_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libmirrenderer_dev memberOf Package
+	package hasValue "libmirrenderer-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libdevel"
+	installedSize hasValue "104"
+	maintainer hasValue "Original-Thomas Voß <thomas.voss@canonical.com>"
+	architecture hasValue "amd64"
+	version hasValue "1.7.1-0ubuntu2"
+	fileName hasValue "pool/main/m/mir/libmirrenderer-dev_1.7.1-0ubuntu2_amd64.deb"
+	size hasValue "8268"
+	md5sum hasValue "b31ecbd42584c7e08148cc475bcf2352"
+	sha1 hasValue "1cb1de1f869bcf1c960b77f7def81df955360772"
+	sha256 hasValue "c9639b1ddb984660fdad635112005982c4160f7a3009275a8911b18508e41e96"
+	descriptionMd5 hasValue "43ce74069c698f363f0b7c1c332400ea"
+	homepage hasValue "https://mir-server.io/"
+	depends hasValue "libmircommon-dev (= 1.7.1-0ubuntu2), libmirplatform-dev (= 1.7.1-0ubuntu2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libmircommon-dev"
+	comparison hasValue "="
+	version hasValue "1.7.1-0ubuntu2"
+
+relationInstance depends(P0__libmirrenderer_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libmirplatform-dev"
+	comparison hasValue "="
+	version hasValue "1.7.1-0ubuntu2"
+
+relationInstance depends(P0__libmirrenderer_dev,1,DepAtom__1)
+

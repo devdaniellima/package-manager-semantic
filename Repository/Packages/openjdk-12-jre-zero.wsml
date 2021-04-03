@@ -1,0 +1,66 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology openjdk_12_jre_zero
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S2 memberOf Source
+	uri hasValue "http://ppa.launchpad.net/openjdk-r/ppa/ubuntu"
+
+// Packages instances
+
+instance P0__openjdk_12_jre_zero memberOf Package
+	package hasValue "openjdk-12-jre-zero"
+	packageSource hasValue Source__S2
+	priority hasValue "optional"
+	section hasValue "java"
+	installedSize hasValue "6090"
+	maintainer hasValue "OpenJDK Team <openjdk@lists.launchpad.net>"
+	architecture hasValue "amd64"
+	version hasValue "12.0.2+9-2ubuntu2"
+	fileName hasValue "pool/main/o/openjdk-12/openjdk-12-jre-zero_12.0.2+9-2ubuntu2_amd64.deb"
+	size hasValue "1903880"
+	md5sum hasValue "47fbf7d0535bfff6d86ffe85415019fb"
+	sha1 hasValue "df6fe58ad91713ff84aca6b32eb3e646c4b3e6ce"
+	sha256 hasValue "6de54365bdc9ebbc385617d48b46973d0c3e7bbb684cde43446989c23b664736"
+	descriptionMd5 hasValue "c714861c802c9808def07d5329c6ed78"
+	depends hasValue "openjdk-12-jre-headless (= 12.0.2+9-2ubuntu2), libc6 (>= 2.29), libstdc++6 (>= 4.1.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "openjdk-12-jre-headless"
+	comparison hasValue "="
+	version hasValue "12.0.2+9-2ubuntu2"
+
+relationInstance depends(P0__openjdk_12_jre_zero,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__openjdk_12_jre_zero,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "4.1.1"
+
+relationInstance depends(P0__openjdk_12_jre_zero,2,DepAtom__2)
+

@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology syslog_ng
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__syslog_ng memberOf Package
+	package hasValue "syslog-ng"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/admin"
+	installedSize hasValue "44"
+	maintainer hasValue "Original-syslog-ng maintainers <syslog-ng-maintainers@alioth-lists.debian.net>"
+	architecture hasValue "all"
+	version hasValue "3.25.1-3"
+	fileName hasValue "pool/universe/s/syslog-ng/syslog-ng_3.25.1-3_all.deb"
+	size hasValue "5380"
+	md5sum hasValue "eac5cd7ea23187013e5aec979f34cf4a"
+	sha1 hasValue "6b82caa7bb390ce0542182495584be9f2a5b6443"
+	sha256 hasValue "26ab3d38578a9dd062b00f7361c3061c342a1b5ae29c829321056b9eb796b3f2"
+	description hasValue "daemon de log de sistema melhorado (metapacote)"
+	descriptionMd5 hasValue "2498a80b4edf9c00bf85d5db8c845d60"
+	homepage hasValue "https://www.syslog-ng.com/"
+	depends hasValue "syslog-ng-core (>= 3.25.1), syslog-ng-mod-sql, syslog-ng-mod-mongodb"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "syslog-ng-core"
+	comparison hasValue ">="
+	version hasValue "3.25.1"
+
+relationInstance depends(P0__syslog_ng,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "syslog-ng-mod-sql"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__syslog_ng,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "syslog-ng-mod-mongodb"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__syslog_ng,2,DepAtom__2)
+

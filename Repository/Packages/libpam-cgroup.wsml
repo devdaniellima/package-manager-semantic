@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libpam_cgroup
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libpam_cgroup memberOf Package
+	package hasValue "libpam-cgroup"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/admin"
+	installedSize hasValue "33"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.41-10"
+	fileName hasValue "pool/universe/libc/libcgroup/libpam-cgroup_0.41-10_amd64.deb"
+	size hasValue "4940"
+	md5sum hasValue "e0f4b2efcf8ef996bd01f52870e849f7"
+	sha1 hasValue "7578ba4740f17798fe5443e033863d90a79a1cbd"
+	sha256 hasValue "9c58a1bb4f3cfd549b61cf5e29bc8497f7c95b68ef80ddd33745ab665f1c9193"
+	descriptionMd5 hasValue "44304588c16a37916a9622e84c7443f2"
+	homepage hasValue "http://libcg.sourceforge.net/"
+	depends hasValue "libc6 (>= 2.4), libcgroup1 (>= 0.36.2), libpam0g (>= 0.99.7.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libpam_cgroup,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libcgroup1"
+	comparison hasValue ">="
+	version hasValue "0.36.2"
+
+relationInstance depends(P0__libpam_cgroup,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libpam0g"
+	comparison hasValue ">="
+	version hasValue "0.99.7.1"
+
+relationInstance depends(P0__libpam_cgroup,2,DepAtom__2)
+

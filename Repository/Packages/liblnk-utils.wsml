@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology liblnk_utils
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__liblnk_utils memberOf Package
+	package hasValue "liblnk-utils"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/otherosfs"
+	installedSize hasValue "809"
+	maintainer hasValue "Original-Debian Security Tools <team+pkg-security@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "20181227-1.1"
+	fileName hasValue "pool/universe/libl/liblnk/liblnk-utils_20181227-1.1_amd64.deb"
+	size hasValue "270044"
+	md5sum hasValue "1141415a1c3102d4ddea0deb6d5872d0"
+	sha1 hasValue "010616f61b30387b3ca1a6ea2f39f8b97a43f95d"
+	sha256 hasValue "7b249aae1aab01155ee338e2f29dadb6201e667d6d66a679fca4c1792dd32d9f"
+	descriptionMd5 hasValue "a606a52dd4d1d78f88f780a92454d505"
+	homepage hasValue "https://github.com/libyal/liblnk"
+	depends hasValue "libc6 (>= 2.14), liblnk1 (>= 20170111)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__liblnk_utils,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "liblnk1"
+	comparison hasValue ">="
+	version hasValue "20170111"
+
+relationInstance depends(P0__liblnk_utils,1,DepAtom__1)
+

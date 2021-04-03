@@ -1,0 +1,55 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology debconf_utils
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__debconf_utils memberOf Package
+	package hasValue "debconf-utils"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "105"
+	maintainer hasValue "Original-Debconf Developers <debconf-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.5.73"
+	replaces hasValue "debconf (<< 0.1.0)"
+	conflicts hasValue "debconf (<< 0.1.0)"
+	fileName hasValue "pool/universe/d/debconf/debconf-utils_1.5.73_all.deb"
+	size hasValue "57212"
+	md5sum hasValue "1c51da4e11eea9f6bcbc5ffd0756b6a3"
+	sha1 hasValue "980fdb118fba717a0c247f279f5b58decc8d6532"
+	sha256 hasValue "16b626967095fc48e88f83d9d7d49d5233f770101381ea75fec7cb739d2647a6"
+	description hasValue "utilitários debconf"
+	descriptionMd5 hasValue "6ee047164ccc84b6b919790585947b39"
+	depends hasValue "debconf (= 1.5.73)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "debconf"
+	comparison hasValue "="
+	version hasValue "1.5.73"
+
+relationInstance depends(P0__debconf_utils,0,DepAtom__0)
+

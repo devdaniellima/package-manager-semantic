@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology iprange
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__iprange memberOf Package
+	package hasValue "iprange"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "98"
+	maintainer hasValue "Original-Jerome Benoit <calculus@rezozer.net>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.4+ds-2"
+	fileName hasValue "pool/universe/i/iprange/iprange_1.0.4+ds-2_amd64.deb"
+	size hasValue "32976"
+	md5sum hasValue "3162517beda97a65f740095a66f2f916"
+	sha1 hasValue "a15ff7fa7339850b84c9dc8a6bbe302fbda06b33"
+	sha256 hasValue "5868af1bc306ec2c9422a64486d58376a4fe1570350ee225d54432e73d5b7c21"
+	descriptionMd5 hasValue "11c20817e7dddec24f0e6088dfe90486"
+	homepage hasValue "https://firehol.org"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__iprange,0,DepAtom__0)
+

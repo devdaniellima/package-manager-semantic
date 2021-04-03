@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology udftools
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__udftools memberOf Package
+	package hasValue "udftools"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/otherosfs"
+	installedSize hasValue "411"
+	maintainer hasValue "Original-Pali Rohár <pali.rohar@gmail.com>"
+	architecture hasValue "amd64"
+	version hasValue "2.2-1"
+	fileName hasValue "pool/universe/u/udftools/udftools_2.2-1_amd64.deb"
+	size hasValue "113308"
+	md5sum hasValue "06518a78536b5cc4b82bdd80c7fbe035"
+	sha1 hasValue "4c05371a8479a9aeae57691d7201661934f52193"
+	sha256 hasValue "9e38ef86416f14baba3fe032913929803761ac74aae0f7ff48e9e6cbb4f3d667"
+	descriptionMd5 hasValue "da8b93d75b25a1fdfa162eeeec523800"
+	homepage hasValue "https://github.com/pali/udftools"
+	depends hasValue "libc6 (>= 2.14), libreadline8 (>= 6.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__udftools,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libreadline8"
+	comparison hasValue ">="
+	version hasValue "6.0"
+
+relationInstance depends(P0__udftools,1,DepAtom__1)
+

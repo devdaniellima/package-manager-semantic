@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libaudclient_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libaudclient_dev memberOf Package
+	package hasValue "libaudclient-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "30"
+	maintainer hasValue "Original-Debian Multimedia Maintainers <pkg-multimedia-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.5~rc2-1build1"
+	fileName hasValue "pool/universe/liba/libaudclient/libaudclient-dev_3.5~rc2-1build1_amd64.deb"
+	size hasValue "3608"
+	md5sum hasValue "65e0e76dd6d5d20be792f7dd7d13fd85"
+	sha1 hasValue "afda6ff71333ce17855d9dafc07e92e81bab208c"
+	sha256 hasValue "0cb7b07025b68e76a4c626ec51971c8fa0c51d1ef9b53bb6983c107880f04484"
+	description hasValue "audacious D-Bus remote control library (development files)"
+	descriptionMd5 hasValue "211a21010813b8a6cbf8c90ece170759"
+	homepage hasValue "http://www.audacious-media-player.org/"
+	depends hasValue "libaudclient2 (= 3.5~rc2-1build1), audacious-dev (>= 3.5)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libaudclient2"
+	comparison hasValue "="
+	version hasValue "3.5~rc2-1build1"
+
+relationInstance depends(P0__libaudclient_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "audacious-dev"
+	comparison hasValue ">="
+	version hasValue "3.5"
+
+relationInstance depends(P0__libaudclient_dev,1,DepAtom__1)
+

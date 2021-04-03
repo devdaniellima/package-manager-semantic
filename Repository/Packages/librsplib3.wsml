@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology librsplib3
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__librsplib3 memberOf Package
+	package hasValue "librsplib3"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "709"
+	maintainer hasValue "Original-Thomas Dreibholz <dreibh@iem.uni-due.de>"
+	architecture hasValue "amd64"
+	version hasValue "3.2.4-0ubuntu2"
+	fileName hasValue "pool/universe/r/rsplib/librsplib3_3.2.4-0ubuntu2_amd64.deb"
+	size hasValue "146296"
+	md5sum hasValue "b328fce8495e21d10eed2f2a49bb9ee4"
+	sha1 hasValue "d73a91fbfde4f005f5cbb66c119ea8d771e1e797"
+	sha256 hasValue "c0e8130c204d6f10d95ee68195ffd698813a9fba9d8586cc9c9af6eb9d8e8cb6"
+	descriptionMd5 hasValue "221bc248b57314a4222bf063e3c5f73b"
+	homepage hasValue "https://www.uni-due.de/~be0001/rserpool/"
+	depends hasValue "libc6 (>= 2.29), libsctp1 (>= 1.0.12+dfsg)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__librsplib3,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libsctp1"
+	comparison hasValue ">="
+	version hasValue "1.0.12+dfsg"
+
+relationInstance depends(P0__librsplib3,1,DepAtom__1)
+

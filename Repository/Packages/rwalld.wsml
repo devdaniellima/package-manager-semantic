@@ -1,0 +1,80 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology rwalld
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__rwalld memberOf Package
+	package hasValue "rwalld"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "34"
+	maintainer hasValue "Original-Alberto Gonzalez Iniesta <agi@inittab.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.17-8"
+	fileName hasValue "pool/universe/n/netkit-rwall/rwalld_0.17-8_amd64.deb"
+	size hasValue "8808"
+	md5sum hasValue "de24d1aab97d909f38592079e82d6676"
+	sha1 hasValue "34a0e9674b644a94f778466559196c01fd038c98"
+	sha256 hasValue "7f71a1aeba579214a762e018d7ebbbde0b0002884ed6ba9b45c584c023948927"
+	descriptionMd5 hasValue "63dfc399f6fd87d26d689a76bdb5040f"
+	depends hasValue "rpcbind | portmap, openbsd-inetd | inet-superserver, libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "rpcbind"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__rwalld,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "portmap"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__rwalld,0,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "openbsd-inetd"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__rwalld,1,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "inet-superserver"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__rwalld,1,DepAtom__3)
+
+instance DepAtom__4 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__rwalld,2,DepAtom__4)
+

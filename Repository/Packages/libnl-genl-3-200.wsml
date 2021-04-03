@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libnl_genl_3_200
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libnl_genl_3_200 memberOf Package
+	package hasValue "libnl-genl-3-200"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libs"
+	installedSize hasValue "57"
+	maintainer hasValue "Original-Heiko Stuebner <mmind@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.4.0-1"
+	fileName hasValue "pool/main/libn/libnl3/libnl-genl-3-200_3.4.0-1_amd64.deb"
+	size hasValue "11140"
+	md5sum hasValue "5b08aba73ba7545f115f437716660725"
+	sha1 hasValue "623ddf1453cabc1478bbf67095456bea8c4f1327"
+	sha256 hasValue "c733bb39dc0486790f080f0df123f8af391acf7591d1e1a97974a616c3ce4d92"
+	description hasValue "library for dealing with netlink sockets - generic netlink"
+	descriptionMd5 hasValue "ff95f226ef9d6cbaad5efbee578c439f"
+	homepage hasValue "http://www.infradead.org/~tgr/libnl/"
+	depends hasValue "libnl-3-200 (= 3.4.0-1), libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libnl-3-200"
+	comparison hasValue "="
+	version hasValue "3.4.0-1"
+
+relationInstance depends(P0__libnl_genl_3_200,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libnl_genl_3_200,1,DepAtom__1)
+

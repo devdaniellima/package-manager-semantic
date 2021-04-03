@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libstemmer_tools
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libstemmer_tools memberOf Package
+	package hasValue "libstemmer-tools"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/text"
+	installedSize hasValue "25"
+	maintainer hasValue "Original-Stefano Rivera <stefanor@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0+svn585-2"
+	fileName hasValue "pool/universe/s/snowball/libstemmer-tools_0+svn585-2_amd64.deb"
+	size hasValue "5644"
+	md5sum hasValue "af34c63019aa1e53eecd938cfc2d1bed"
+	sha1 hasValue "3a5cdd38bfd5dbc1efc833012c9550470fce4bbf"
+	sha256 hasValue "3faeddc37dde70e90092dc29eaec45b1ff5c2c5c47bee675c066ff2860b2e6b0"
+	descriptionMd5 hasValue "2c6bff0c1560b8df2510c16e2e7d9469"
+	homepage hasValue "http://snowball.tartarus.org/"
+	depends hasValue "libstemmer0d (= 0+svn585-2), libc6 (>= 2.3.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libstemmer0d"
+	comparison hasValue "="
+	version hasValue "0+svn585-2"
+
+relationInstance depends(P0__libstemmer_tools,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.3.4"
+
+relationInstance depends(P0__libstemmer_tools,1,DepAtom__1)
+

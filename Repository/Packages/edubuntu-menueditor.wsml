@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology edubuntu_menueditor
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__edubuntu_menueditor memberOf Package
+	package hasValue "edubuntu-menueditor"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/misc"
+	installedSize hasValue "161"
+	maintainer hasValue "Ubuntu MOTU Developers <ubuntu-motu@lists.ubuntu.com>"
+	architecture hasValue "all"
+	version hasValue "1.3.5-0ubuntu3"
+	fileName hasValue "pool/universe/e/edubuntu-menueditor/edubuntu-menueditor_1.3.5-0ubuntu3_all.deb"
+	size hasValue "22012"
+	md5sum hasValue "44bd9f088103226ea0ebc3a130ecb23d"
+	sha1 hasValue "bc3d31fe217185f4e68ff7ccdb058bac5ee4b0c5"
+	sha256 hasValue "a1e87efe1f308e67e6b4f0bca166c9bf0bec3e390411454304249d60185003cb"
+	descriptionMd5 hasValue "aff23371a0a2dbcfd3a650b37d0a6325"
+	homepage hasValue "http://www.edubuntu.org"
+	depends hasValue "python2:any (<< 2.8), python2:any (>= 2.7~), desktop-profiles"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue "<<"
+	version hasValue "2.8"
+
+relationInstance depends(P0__edubuntu_menueditor,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue ">="
+	version hasValue "2.7~"
+
+relationInstance depends(P0__edubuntu_menueditor,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "desktop-profiles"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__edubuntu_menueditor,2,DepAtom__2)
+

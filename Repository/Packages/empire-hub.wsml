@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology empire_hub
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__empire_hub memberOf Package
+	package hasValue "empire-hub"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/games"
+	installedSize hasValue "43"
+	maintainer hasValue "Original-Drake Diedrich <dld@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.2.2"
+	fileName hasValue "pool/universe/e/empire-hub/empire-hub_1.0.2.2_amd64.deb"
+	size hasValue "14816"
+	md5sum hasValue "073aed809c2b0d9686bff3f6d27d6b3b"
+	sha1 hasValue "9cdd5810fd4038180df7191089f94b5f6c42bede"
+	sha256 hasValue "07812103b9189b531e7c97ccdc1ba5e3629fd1633d4009a6e079af3af22c3e54"
+	description hasValue "Multiplexador do protocolo Empire."
+	descriptionMd5 hasValue "da0baae69903b39d0327e3d1b150a357"
+	depends hasValue "libc6 (>= 2.15)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__empire_hub,0,DepAtom__0)
+

@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology unyaffs
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__unyaffs memberOf Package
+	package hasValue "unyaffs"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/devel"
+	installedSize hasValue "51"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.9.7-0.2"
+	fileName hasValue "pool/universe/u/unyaffs/unyaffs_0.9.7-0.2_amd64.deb"
+	size hasValue "19384"
+	md5sum hasValue "62d85666d448b76f63ed9e67fc97a62d"
+	sha1 hasValue "b5ccabf19e04593b717211b9a3e2d4ec8f866870"
+	sha256 hasValue "1ebf870b493142c1251cffe97befecc20f8be171bf1353f4787f6c0c3ba18a15"
+	descriptionMd5 hasValue "3fc6f8836118aa63cfe64377e7301ab3"
+	homepage hasValue "https://github.com/ehlers/unyaffs"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__unyaffs,0,DepAtom__0)
+

@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology sng
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__sng memberOf Package
+	package hasValue "sng"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/graphics"
+	installedSize hasValue "98"
+	maintainer hasValue "Original-Reiner Herrmann <reiner@reiner-h.de>"
+	architecture hasValue "amd64"
+	version hasValue "1.1.0-3"
+	fileName hasValue "pool/universe/s/sng/sng_1.1.0-3_amd64.deb"
+	size hasValue "35452"
+	md5sum hasValue "c0beb758e9e23f7e76d834041ee15ebb"
+	sha1 hasValue "f4f2f1cd071ba551a79e428326edc0486cfe5b24"
+	sha256 hasValue "85994e4bde573da54ab7ce317f41ebf0b7615a8a2ed0c4ccd94ef95b1f80d86b"
+	descriptionMd5 hasValue "d0dfadead98b02c39aaa78c2e37d0e78"
+	homepage hasValue "http://sng.sourceforge.net/"
+	depends hasValue "libc6 (>= 2.14), libpng16-16 (>= 1.6.2-1), x11-common"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__sng,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libpng16-16"
+	comparison hasValue ">="
+	version hasValue "1.6.2-1"
+
+relationInstance depends(P0__sng,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "x11-common"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__sng,2,DepAtom__2)
+

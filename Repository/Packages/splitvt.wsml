@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology splitvt
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__splitvt memberOf Package
+	package hasValue "splitvt"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "97"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.6.6-13build2"
+	fileName hasValue "pool/universe/s/splitvt/splitvt_1.6.6-13build2_amd64.deb"
+	size hasValue "35040"
+	md5sum hasValue "448fa31ef502afac7671b57982736de2"
+	sha1 hasValue "a38fa245bbbbd8df2802a1f075653997ff3b98bb"
+	sha256 hasValue "d3535cbafa8a1aa1680d34acce5cda759d61561ccbece9c7d4f4093477a83724"
+	description hasValue "executa dois programas em uma tela dividida"
+	descriptionMd5 hasValue "866a80345ca9edd16ce61aee19de8327"
+	homepage hasValue "http://slouken.libsdl.org/projects/splitvt/index.html"
+	depends hasValue "libc6 (>= 2.15), libtinfo6 (>= 6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__splitvt,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libtinfo6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__splitvt,1,DepAtom__1)
+

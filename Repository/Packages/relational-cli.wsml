@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology relational_cli
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__relational_cli memberOf Package
+	package hasValue "relational-cli"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/math"
+	installedSize hasValue "38"
+	maintainer hasValue "Original-Salvo 'LtWorf' Tomaselli <tiposchi@tiscali.it>"
+	architecture hasValue "all"
+	version hasValue "2.5-2"
+	fileName hasValue "pool/universe/r/relational/relational-cli_2.5-2_all.deb"
+	size hasValue "7208"
+	md5sum hasValue "7b331a1b25f031fa17784893dbddd4de"
+	sha1 hasValue "5322271ee7b50b3b7dbc3a1a31db41fa8e583973"
+	sha256 hasValue "1fd31912088dd11934974f2d7b0d3b69dafe4d7692b1f144bead26dbf967e50b"
+	description hasValue "Educational tool for relational algebra (command line interface)"
+	descriptionMd5 hasValue "fee13806478885574b9337aa5c052968"
+	homepage hasValue "http://ltworf.github.io/relational/"
+	depends hasValue "python3:any (>= 3.4~), python3-relational (>= 2.5-2), python3-xtermcolor"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ">="
+	version hasValue "3.4~"
+
+relationInstance depends(P0__relational_cli,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3-relational"
+	comparison hasValue ">="
+	version hasValue "2.5-2"
+
+relationInstance depends(P0__relational_cli,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "python3-xtermcolor"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__relational_cli,2,DepAtom__2)
+

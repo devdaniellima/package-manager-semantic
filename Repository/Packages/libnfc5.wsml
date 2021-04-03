@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libnfc5
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libnfc5 memberOf Package
+	package hasValue "libnfc5"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/libs"
+	installedSize hasValue "183"
+	maintainer hasValue "Original-Nobuhiro Iwamatsu <iwamatsu@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.7.1-4build1"
+	replaces hasValue "libnfc4"
+	fileName hasValue "pool/universe/libn/libnfc/libnfc5_1.7.1-4build1_amd64.deb"
+	size hasValue "55316"
+	md5sum hasValue "a0ecfa70e6723dc0bda78cca6bf34fc7"
+	sha1 hasValue "b75363f245bf71c4b1c7547cbb8d9ac8e4a0dc01"
+	sha256 hasValue "84f1fdb598947f32877dadcd1b87265d3b0ff352bbb77a49e339427533658b51"
+	descriptionMd5 hasValue "ba9b969f618f147c461db7f7275cbdda"
+	homepage hasValue "http://www.nfc-tools.org/"
+	depends hasValue "libc6 (>= 2.15), libusb-0.1-4 (>= 2:0.1.12)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__libnfc5,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libusb-0.1-4"
+	comparison hasValue ">="
+	version hasValue "2:0.1.12"
+
+relationInstance depends(P0__libnfc5,1,DepAtom__1)
+

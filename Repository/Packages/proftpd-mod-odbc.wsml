@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology proftpd_mod_odbc
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__proftpd_mod_odbc memberOf Package
+	package hasValue "proftpd-mod-odbc"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "525"
+	maintainer hasValue "Original-ProFTPD Maintainance Team <pkg-proftpd-maintainers@alioth-lists.debian.net>"
+	architecture hasValue "amd64"
+	version hasValue "1.3.6c-2"
+	fileName hasValue "pool/universe/p/proftpd-dfsg/proftpd-mod-odbc_1.3.6c-2_amd64.deb"
+	size hasValue "14896"
+	md5sum hasValue "ce6458bb0bae652057d79ea964d409ed"
+	sha1 hasValue "8b2f7739ee15c40f0c64dbae96326c0a797c1052"
+	sha256 hasValue "933b03bcae83aa9eed5dc5eebc77977f3372afb938040aae7139e8b5bb71f6e4"
+	description hasValue "Versatile, virtual-hosting FTP daemon - ODBC module"
+	descriptionMd5 hasValue "5a1e8ce64cc3371ee50e415ba7f85e03"
+	homepage hasValue "http://www.proftpd.org/"
+	depends hasValue "proftpd-basic (= 1.3.6c-2), libc6 (>= 2.4), libodbc1 (>= 2.3.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "proftpd-basic"
+	comparison hasValue "="
+	version hasValue "1.3.6c-2"
+
+relationInstance depends(P0__proftpd_mod_odbc,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__proftpd_mod_odbc,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libodbc1"
+	comparison hasValue ">="
+	version hasValue "2.3.1"
+
+relationInstance depends(P0__proftpd_mod_odbc,2,DepAtom__2)
+

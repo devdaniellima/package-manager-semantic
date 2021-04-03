@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology runit_systemd
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__runit_systemd memberOf Package
+	package hasValue "runit-systemd"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "31"
+	maintainer hasValue "Original-Dmitry Bogatov <KAction@gnu.org>"
+	architecture hasValue "all"
+	version hasValue "2.1.2-9.2ubuntu1"
+	replaces hasValue "runit (<< 2.1.2-4)"
+	fileName hasValue "pool/universe/r/runit/runit-systemd_2.1.2-9.2ubuntu1_all.deb"
+	size hasValue "3052"
+	md5sum hasValue "6c7fa022fba0779a3e0a72de184588f8"
+	sha1 hasValue "f33031bc7bdc5103801026d726f4fba8c070a912"
+	sha256 hasValue "be5265a9971f1ea45dc451e79a4f9e7fc1904f60de4bac18e04d3e584dc3670f"
+	descriptionMd5 hasValue "314c2793773b73bbe07bae410765f1f1"
+	homepage hasValue "http://smarden.org/runit/"
+	depends hasValue "runit (>= 2.1.2-7), systemd-sysv"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "runit"
+	comparison hasValue ">="
+	version hasValue "2.1.2-7"
+
+relationInstance depends(P0__runit_systemd,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "systemd-sysv"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__runit_systemd,1,DepAtom__1)
+

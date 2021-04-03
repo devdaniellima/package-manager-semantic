@@ -1,0 +1,59 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libutil_freebsd_9
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libutil_freebsd_9 memberOf Package
+	package hasValue "libutil-freebsd-9"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "63"
+	maintainer hasValue "Original-GNU/kFreeBSD Maintainers <debian-bsd@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "10.3~svn296373-10"
+	fileName hasValue "pool/universe/f/freebsd-libs/libutil-freebsd-9_10.3~svn296373-10_amd64.deb"
+	size hasValue "16972"
+	md5sum hasValue "54bb608457ca92e5fda63563ea8c5f3a"
+	sha1 hasValue "a73bf9ca8245603db00978a116f86b13fa3a106c"
+	sha256 hasValue "e6e867761622191c5553c2936a72b45a101a91f173ac2f26a5d0072bb3fb512d"
+	descriptionMd5 hasValue "bcaff4dae8ae1808d162d3cff586e265"
+	depends hasValue "libbsd0 (>= 0.3.0), libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libbsd0"
+	comparison hasValue ">="
+	version hasValue "0.3.0"
+
+relationInstance depends(P0__libutil_freebsd_9,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libutil_freebsd_9,1,DepAtom__1)
+

@@ -1,0 +1,64 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology xzip
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__xzip memberOf Package
+	package hasValue "xzip"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/games"
+	installedSize hasValue "126"
+	maintainer hasValue "Original-Daniel Schepler <schepler@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:1.8.2-4build1"
+	replaces hasValue "zcode-support"
+	provides hasValue "zcode-interpreter"
+	conflicts hasValue "gsn-curses (= 16-1), gsn-jigsaw (= 3-1), gumshoe (= 1-1), so-far (= 6-1), weather (= 6-1), zcode-support"
+	fileName hasValue "pool/universe/x/xzip/xzip_1.8.2-4build1_amd64.deb"
+	size hasValue "54876"
+	md5sum hasValue "b744b0b16078a8428c304f6433eb7b4c"
+	sha1 hasValue "4184640e276bc11d2781d65d0ae43d33f4798c2b"
+	sha256 hasValue "fc2504cf4f984a9e6011baff2e17f91624fffaba8bc51286fad21d523fdc8f85"
+	description hasValue "Interpretador dos arquivos de história no formato Infocom."
+	descriptionMd5 hasValue "847596b3d3ffd0a0a895746d516d2e1d"
+	homepage hasValue "http://www.eblong.com/zarf/xzip.html"
+	depends hasValue "libc6 (>= 2.15), libx11-6"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__xzip,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libx11-6"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__xzip,1,DepAtom__1)
+

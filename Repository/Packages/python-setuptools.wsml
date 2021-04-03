@@ -1,0 +1,69 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python_setuptools
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python_setuptools memberOf Package
+	package hasValue "python-setuptools"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "1433"
+	maintainer hasValue "Original-Matthias Klose <doko@debian.org>"
+	architecture hasValue "all"
+	version hasValue "44.0.0-2"
+	provides hasValue "python-distribute"
+	fileName hasValue "pool/universe/p/python-setuptools/python-setuptools_44.0.0-2_all.deb"
+	size hasValue "329684"
+	md5sum hasValue "e4eb04df54783683ad1635414feeacdc"
+	sha1 hasValue "49bfc45e0e32116c7ee24b4063c3927c6c8eb8f5"
+	sha256 hasValue "6bbeecc7cf3ff012170a83b44f165ff5fdc6e193faf136c9efe9fff789ce8ee5"
+	description hasValue "Melhorias Python Distutils"
+	descriptionMd5 hasValue "0dd761e68dbcfc3cc67580ac5b5688c7"
+	homepage hasValue "https://pypi.python.org/pypi/setuptools"
+	depends hasValue "python-pkg-resources (= 44.0.0-2), python2:any (<< 2.8), python2:any (>= 2.7~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python-pkg-resources"
+	comparison hasValue "="
+	version hasValue "44.0.0-2"
+
+relationInstance depends(P0__python_setuptools,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue "<<"
+	version hasValue "2.8"
+
+relationInstance depends(P0__python_setuptools,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue ">="
+	version hasValue "2.7~"
+
+relationInstance depends(P0__python_setuptools,2,DepAtom__2)
+

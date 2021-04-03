@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libmm_ocaml
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libmm_ocaml memberOf Package
+	package hasValue "libmm-ocaml"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/ocaml"
+	installedSize hasValue "94"
+	maintainer hasValue "Original-Debian OCaml Maintainers <debian-ocaml-maint@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.5.0-1"
+	provides hasValue "libmm-ocaml-r44j9"
+	fileName hasValue "pool/universe/o/ocaml-mm/libmm-ocaml_0.5.0-1_amd64.deb"
+	size hasValue "34940"
+	md5sum hasValue "d3cd5bc7f224a68bfaa0a429d6c85ed2"
+	sha1 hasValue "da72897128dff097714f78899a802ca79fa9c51c"
+	sha256 hasValue "1cf2e3d852e93af91e690c9335e9562dd702ed52e941ba97cb557287f6783c4c"
+	description hasValue "OCaml multimedia library -- runtime files"
+	descriptionMd5 hasValue "c0336f4b8f658f3e7b4eda5d114b48f6"
+	homepage hasValue "https://github.com/savonet/ocaml-mm"
+	depends hasValue "ocaml-base-nox-4.08.1, libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "ocaml-base-nox-4.08.1"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libmm_ocaml,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libmm_ocaml,1,DepAtom__1)
+

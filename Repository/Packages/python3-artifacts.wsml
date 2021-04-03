@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python3_artifacts
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python3_artifacts memberOf Package
+	package hasValue "python3-artifacts"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "65"
+	maintainer hasValue "Original-Debian Security Tools <team+pkg-security@tracker.debian.org>"
+	architecture hasValue "all"
+	version hasValue "20190320-3"
+	fileName hasValue "pool/universe/f/forensic-artifacts/python3-artifacts_20190320-3_all.deb"
+	size hasValue "9472"
+	md5sum hasValue "7f59afb4f31bad5bb7afdf7968609950"
+	sha1 hasValue "de887e094bc37d8b430262b3ddaccacd7b7c3011"
+	sha256 hasValue "ea15533f3eb7c92e340af44d0b4960a3668033af335fc0d9fe4ef6f5e9630634"
+	descriptionMd5 hasValue "eb414bee9883111cc8f6f482cb8ace66"
+	homepage hasValue "https://github.com/ForensicArtifacts/artifacts"
+	depends hasValue "python3:any, forensic-artifacts (= 20190320-3)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__python3_artifacts,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "forensic-artifacts"
+	comparison hasValue "="
+	version hasValue "20190320-3"
+
+relationInstance depends(P0__python3_artifacts,1,DepAtom__1)
+

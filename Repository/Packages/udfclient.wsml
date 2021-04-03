@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology udfclient
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__udfclient memberOf Package
+	package hasValue "udfclient"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/otherosfs"
+	installedSize hasValue "1029"
+	maintainer hasValue "Original-Pali Rohár <pali.rohar@gmail.com>"
+	architecture hasValue "amd64"
+	version hasValue "0.8.9-1"
+	fileName hasValue "pool/universe/u/udfclient/udfclient_0.8.9-1_amd64.deb"
+	size hasValue "174256"
+	md5sum hasValue "a6e1cee6affce8ecf876fb09257639ab"
+	sha1 hasValue "436d47ac5e5891f6efbc728232df8fd76274e9fe"
+	sha256 hasValue "57b206866a35ae7b7fbba928bb429bca5b27d50e33d277bd31b774c9a5c18a42"
+	descriptionMd5 hasValue "a1ba1fb9b8e207c77d42d43184676f1d"
+	homepage hasValue "http://www.13thmonkey.org/udfclient/"
+	depends hasValue "libc6 (>= 2.28)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.28"
+
+relationInstance depends(P0__udfclient,0,DepAtom__0)
+

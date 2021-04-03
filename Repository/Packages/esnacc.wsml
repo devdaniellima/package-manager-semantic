@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology esnacc
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__esnacc memberOf Package
+	package hasValue "esnacc"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "586"
+	maintainer hasValue "Original-Balint Reczey <balint@balintreczey.hu>"
+	architecture hasValue "amd64"
+	version hasValue "1.8.1-1build2"
+	fileName hasValue "pool/universe/e/esnacc/esnacc_1.8.1-1build2_amd64.deb"
+	size hasValue "149436"
+	md5sum hasValue "d5fe640d8d3937d3266fd9de7d517dad"
+	sha1 hasValue "b412d00603e1070cb8a6276706252da4e1733264"
+	sha256 hasValue "213c3ea1f9dbb852d1162b9e2a01d42667afa6e834091870940177389f424799"
+	descriptionMd5 hasValue "c6670f009a02fa36fcc40a8cb4f1a8e4"
+	homepage hasValue "https://esnacc.org"
+	depends hasValue "libc6 (>= 2.14), libesnacc180"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__esnacc,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libesnacc180"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__esnacc,1,DepAtom__1)
+

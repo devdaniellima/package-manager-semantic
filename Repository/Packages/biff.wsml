@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology biff
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__biff memberOf Package
+	package hasValue "biff"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/mail"
+	installedSize hasValue "57"
+	maintainer hasValue "Original-Dave Holland <dave@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:0.17.pre20000412-5.1"
+	fileName hasValue "pool/universe/b/biff/biff_0.17.pre20000412-5.1_amd64.deb"
+	size hasValue "12716"
+	md5sum hasValue "df37edbfa322bd62aa28592a0d81b3e8"
+	sha1 hasValue "36145eaa797ee5203c83e9f563f4ec46e9d87cee"
+	sha256 hasValue "2a3fde5b556fb95cf08d0b87bc50031d5cc4420202cb5ec2557b56932c5f290a"
+	description hasValue "uma ferramenta de notificação de correio eletrônico"
+	descriptionMd5 hasValue "8371ac164838c91c11bf21c401c5054d"
+	depends hasValue "libc6 (>= 2.4), netbase"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__biff,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "netbase"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__biff,1,DepAtom__1)
+

@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology dictzip
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__dictzip memberOf Package
+	package hasValue "dictzip"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "text"
+	installedSize hasValue "103"
+	maintainer hasValue "Original-Robert Luberda <robert@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.12.1+dfsg-8"
+	replaces hasValue "dictd (<< 1.7.1-1)"
+	fileName hasValue "pool/main/d/dictd/dictzip_1.12.1+dfsg-8_amd64.deb"
+	size hasValue "24308"
+	md5sum hasValue "aabf08ed329235560af15088e7320f9f"
+	sha1 hasValue "e14648adc190930b6d05388f806cc352e34ebacc"
+	sha256 hasValue "51192a193b0140fdc75b3d8c85ef0c88aef37b0d66036b1445bd895a1e5007ea"
+	descriptionMd5 hasValue "8b6985a0311f25c9b6975297145471f8"
+	homepage hasValue "https://sourceforge.net/projects/dict/"
+	depends hasValue "libc6 (>= 2.14), libmaa4 (>= 1.2.0), zlib1g (>= 1:1.1.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__dictzip,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libmaa4"
+	comparison hasValue ">="
+	version hasValue "1.2.0"
+
+relationInstance depends(P0__dictzip,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "zlib1g"
+	comparison hasValue ">="
+	version hasValue "1:1.1.4"
+
+relationInstance depends(P0__dictzip,2,DepAtom__2)
+

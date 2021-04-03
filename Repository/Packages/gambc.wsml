@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gambc
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gambc memberOf Package
+	package hasValue "gambc"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "216"
+	maintainer hasValue "Original-Abdelhakim Qbaich <abdelhakim@qbaich.com>"
+	architecture hasValue "amd64"
+	version hasValue "4.8.8-3.1"
+	fileName hasValue "pool/universe/g/gambc/gambc_4.8.8-3.1_amd64.deb"
+	size hasValue "37604"
+	md5sum hasValue "7b19d5920185da257ea72e4d72aabe71"
+	sha1 hasValue "c5787497c7c61f174562243363a6590b6b2090f5"
+	sha256 hasValue "af3a06eee59e8a0040f9ae14fe89a9f0a0b91813c95f4169111ae8274579617f"
+	descriptionMd5 hasValue "4d6f2c7c06d97ccfc0591e7c7b1bdc75"
+	homepage hasValue "http://gambitscheme.org"
+	depends hasValue "libc6 (>= 2.2.5), libgambit4 (= 4.8.8-3.1), libgambit4-dev (= 4.8.8-3.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.2.5"
+
+relationInstance depends(P0__gambc,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgambit4"
+	comparison hasValue "="
+	version hasValue "4.8.8-3.1"
+
+relationInstance depends(P0__gambc,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libgambit4-dev"
+	comparison hasValue "="
+	version hasValue "4.8.8-3.1"
+
+relationInstance depends(P0__gambc,2,DepAtom__2)
+

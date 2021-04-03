@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology porg
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__porg memberOf Package
+	package hasValue "porg"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "257"
+	maintainer hasValue "Original-Brandon L Griffith <brandon@logyx.net>"
+	architecture hasValue "amd64"
+	version hasValue "2:0.10-1.1build1"
+	replaces hasValue "paco (<< 2.0.9-3~)"
+	fileName hasValue "pool/universe/p/porg/porg_0.10-1.1build1_amd64.deb"
+	size hasValue "72560"
+	md5sum hasValue "f5623de4016fd459cb00a63f8aa043a1"
+	sha1 hasValue "8941b23853d82bf62d54b8000d0a1e8b21d282c1"
+	sha256 hasValue "cb63ddaeda626b36c9301e7e612e4c651e6fa254a3a92e6507b300de43c89a90"
+	descriptionMd5 hasValue "d8f0f5924bbf7502dc830d2845c2a707"
+	homepage hasValue "http://porg.sourceforge.net/"
+	depends hasValue "libc6 (>= 2.27), libgcc-s1 (>= 3.0), libstdc++6 (>= 5.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.27"
+
+relationInstance depends(P0__porg,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgcc-s1"
+	comparison hasValue ">="
+	version hasValue "3.0"
+
+relationInstance depends(P0__porg,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "5.2"
+
+relationInstance depends(P0__porg,2,DepAtom__2)
+

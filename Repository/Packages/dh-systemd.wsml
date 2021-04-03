@@ -1,0 +1,52 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology dh_systemd
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__dh_systemd memberOf Package
+	package hasValue "dh-systemd"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/admin"
+	installedSize hasValue "136"
+	maintainer hasValue "Original-Debhelper Maintainers <debhelper@packages.debian.org>"
+	architecture hasValue "all"
+	version hasValue "12.10ubuntu1"
+	fileName hasValue "pool/universe/d/debhelper/dh-systemd_12.10ubuntu1_all.deb"
+	size hasValue "2680"
+	md5sum hasValue "8f0d3e52efba7e865c400c1f4f3804db"
+	sha1 hasValue "1f6a4433de370fd7954fb0fd52a2497dd97e5467"
+	sha256 hasValue "c5f05cea3383eeca6c6b9020bb057e3d58662dc9249fe4e249e73e0bda36cde4"
+	descriptionMd5 hasValue "67a68071a0cbbaa9df2bcd81ec5a29b1"
+	depends hasValue "debhelper (>= 9.20160709)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "debhelper"
+	comparison hasValue ">="
+	version hasValue "9.20160709"
+
+relationInstance depends(P0__dh_systemd,0,DepAtom__0)
+

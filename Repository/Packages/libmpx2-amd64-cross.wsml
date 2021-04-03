@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libmpx2_amd64_cross
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libmpx2_amd64_cross memberOf Package
+	package hasValue "libmpx2-amd64-cross"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "53"
+	maintainer hasValue "Original-Debian GCC Maintainers <debian-gcc@lists.debian.org>"
+	architecture hasValue "all"
+	version hasValue "8.4.0-3ubuntu1cross1"
+	replaces hasValue "libmpx0 (<< 6-20160120-1)"
+	fileName hasValue "pool/universe/g/gcc-8-cross/libmpx2-amd64-cross_8.4.0-3ubuntu1cross1_all.deb"
+	size hasValue "11688"
+	md5sum hasValue "90b0c2c3559da0600d75f55a35fefe7d"
+	sha1 hasValue "c730e15508d067c4f0b38558c796c3e6725028d7"
+	sha256 hasValue "a848098cc431c1921a981c7bcc8e944daefa7458a86552783428c79602ff99d1"
+	descriptionMd5 hasValue "068b37fc53b1ed6a5ce5c0b46ead8728"
+	homepage hasValue "http://gcc.gnu.org/"
+	depends hasValue "gcc-8-cross-base (>= 8.4.0-3ubuntu1), libc6 (>= 2.17)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "gcc-8-cross-base"
+	comparison hasValue ">="
+	version hasValue "8.4.0-3ubuntu1"
+
+relationInstance depends(P0__libmpx2_amd64_cross,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.17"
+
+relationInstance depends(P0__libmpx2_amd64_cross,1,DepAtom__1)
+

@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology nasm
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__nasm memberOf Package
+	package hasValue "nasm"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "3295"
+	maintainer hasValue "Original-Anibal Monsalve Salazar <anibal@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.14.02-1"
+	fileName hasValue "pool/universe/n/nasm/nasm_2.14.02-1_amd64.deb"
+	size hasValue "361512"
+	md5sum hasValue "5780551ccb74934be6c1fe8e3058d618"
+	sha1 hasValue "ba504e2fd07ab2c8ba14186449c46ccd54954096"
+	sha256 hasValue "81df9284d37955590520dc9a3ddf2cb6d7c2dd2337767e43e2caf0b4df8c4722"
+	descriptionMd5 hasValue "bc3dcab1162eb9b0f97c24bb0f3a90d0"
+	homepage hasValue "http://www.nasm.us/"
+	depends hasValue "dpkg (>= 1.15.4) | install-info, libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "dpkg"
+	comparison hasValue ">="
+	version hasValue "1.15.4"
+
+relationInstance depends(P0__nasm,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "install-info"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__nasm,0,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__nasm,1,DepAtom__2)
+

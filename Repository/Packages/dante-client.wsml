@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology dante_client
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__dante_client memberOf Package
+	package hasValue "dante-client"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "87"
+	maintainer hasValue "Original-Peter Pentchev <roam@debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.4.2+dfsg-7build1"
+	fileName hasValue "pool/universe/d/dante/dante-client_1.4.2+dfsg-7build1_all.deb"
+	size hasValue "13948"
+	md5sum hasValue "d19c0ee937946638b5b16235b6de32c9"
+	sha1 hasValue "4d1770f57cce2e85a9f980b8ac66d5bb9d2dc3a9"
+	sha256 hasValue "fdebd6c245f3336a96c4e230258e938aaec8b8480a93beafc8c86602e91b02bf"
+	description hasValue "invólucro SOCKS para usuário por trás de um firewall"
+	descriptionMd5 hasValue "3dda083094c90b44bebc6ecc9da32d8c"
+	homepage hasValue "https://www.inet.no/dante/"
+	depends hasValue "libdsocksd0 (>= 1.4.2+dfsg-7build1), libfile-which-perl"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libdsocksd0"
+	comparison hasValue ">="
+	version hasValue "1.4.2+dfsg-7build1"
+
+relationInstance depends(P0__dante_client,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libfile-which-perl"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__dante_client,1,DepAtom__1)
+

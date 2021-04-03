@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology galileo
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__galileo memberOf Package
+	package hasValue "galileo"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/science"
+	installedSize hasValue "142"
+	maintainer hasValue "Original-Debian Med Packaging Team <debian-med-packaging@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.5.1-6"
+	fileName hasValue "pool/universe/g/galileo/galileo_0.5.1-6_all.deb"
+	size hasValue "37432"
+	md5sum hasValue "56c03266ea22e7a3a9d072496fc69f8a"
+	sha1 hasValue "9eec4afe7f2279280ed2207461a23d079f5092b4"
+	sha256 hasValue "b703600d6b2173e930b8e23ba7bcddefb3cdd22e90f62b428211366239846509"
+	descriptionMd5 hasValue "19384a5a652701d9c6499a762726fbec"
+	homepage hasValue "https://bitbucket.org/benallard/galileo/"
+	depends hasValue "python3-requests (>= 2), python3-usb, python3:any"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3-requests"
+	comparison hasValue ">="
+	version hasValue "2"
+
+relationInstance depends(P0__galileo,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3-usb"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__galileo,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__galileo,2,DepAtom__2)
+

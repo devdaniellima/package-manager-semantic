@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology myspell_nn
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__myspell_nn memberOf Package
+	package hasValue "myspell-nn"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/text"
+	installedSize hasValue "3415"
+	maintainer hasValue "Original-Tollef Fog Heen <tfheen@debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.2-4"
+	provides hasValue "myspell-dictionary, myspell-dictionary-nn, openoffice.org-spellcheck-nn"
+	fileName hasValue "pool/universe/n/norwegian/myspell-nn_2.2-4_all.deb"
+	size hasValue "823480"
+	md5sum hasValue "483f840c663a03c5e99aff061260543d"
+	sha1 hasValue "7f5e47188eb785d88cf24b966ce1838765e4caec"
+	sha256 hasValue "917f058a4dae4d93569a0ae7f6a91179412e2a86242013dbec3df40f3fb48b05"
+	descriptionMd5 hasValue "7183af419c88fa2510f65f3f461d6bfb"
+	homepage hasValue "http://alioth.debian.org/projects/spell-norwegian/"
+	depends hasValue "dictionaries-common (>> 0.10) | openoffice.org-updatedicts"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "dictionaries-common"
+	comparison hasValue ">>"
+	version hasValue "0.10"
+
+relationInstance depends(P0__myspell_nn,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "openoffice.org-updatedicts"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__myspell_nn,0,DepAtom__1)
+

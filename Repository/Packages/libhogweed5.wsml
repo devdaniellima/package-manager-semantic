@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libhogweed5
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libhogweed5 memberOf Package
+	package hasValue "libhogweed5"
+	packageSource hasValue Source__S1
+	priority hasValue "important"
+	section hasValue "libs"
+	installedSize hasValue "241"
+	maintainer hasValue "Original-Magnus Holmgren <holmgren@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.5.1+really3.5.1-2"
+	fileName hasValue "pool/main/n/nettle/libhogweed5_3.5.1+really3.5.1-2_amd64.deb"
+	size hasValue "137896"
+	md5sum hasValue "3dbe95e37abfac1460acdd742700e47c"
+	sha1 hasValue "d4ee939f75a6f411bc20d50f73eee2ceacf60433"
+	sha256 hasValue "f6d44532a0d12bf5c7046295755c4a5897f8e06c814d36acb545c50f9652f852"
+	description hasValue "biblioteca criptográfica de baixo nível (\"cryptos\" de chave pública)"
+	descriptionMd5 hasValue "2a20554eaadbd355079396956d5d3edb"
+	homepage hasValue "http://www.lysator.liu.se/~nisse/nettle/"
+	depends hasValue "libc6 (>= 2.14), libgmp10 (>= 2:6.0.0), libnettle7 (= 3.5.1+really3.5.1-2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libhogweed5,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgmp10"
+	comparison hasValue ">="
+	version hasValue "2:6.0.0"
+
+relationInstance depends(P0__libhogweed5,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libnettle7"
+	comparison hasValue "="
+	version hasValue "3.5.1+really3.5.1-2"
+
+relationInstance depends(P0__libhogweed5,2,DepAtom__2)
+

@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gpart
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gpart memberOf Package
+	package hasValue "gpart"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "81"
+	maintainer hasValue "Original-Debian Security Tools <team+pkg-security@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:0.3-8"
+	fileName hasValue "pool/universe/g/gpart/gpart_0.3-8_amd64.deb"
+	size hasValue "35216"
+	md5sum hasValue "d08eb26516f4e2cddc04a040196c3f1d"
+	sha1 hasValue "325f8ebf924000118f7b9db0f61c2f4fe4185131"
+	sha256 hasValue "35d1bf07953e4a835820a09ae93b36d53c469af8f452a97aa27ad34084f8e679"
+	descriptionMd5 hasValue "4adc170a5c4ff7927ed10795940f56ee"
+	homepage hasValue "https://github.com/baruch/gpart"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__gpart,0,DepAtom__0)
+

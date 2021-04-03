@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libambix_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libambix_dev memberOf Package
+	package hasValue "libambix-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "48"
+	maintainer hasValue "Original-Debian Multimedia Maintainers <debian-multimedia@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.1.1-2"
+	fileName hasValue "pool/universe/liba/libambix/libambix-dev_0.1.1-2_amd64.deb"
+	size hasValue "9436"
+	md5sum hasValue "ee4965212482eb49c8a121e17839ea24"
+	sha1 hasValue "3cd8f793e7dfa1ace0172885be5bc9806be28abf"
+	sha256 hasValue "c822bfa006efb0ae31bdc63a9366887464ffeb45c8dbd8b327848a16cd344134"
+	descriptionMd5 hasValue "d8dc9f2adcd4c6f43299649ee82f51ef"
+	homepage hasValue "http://ambisonics.iem.at/xchange/format"
+	depends hasValue "libambix0 (>= 0.1.1-2), libambix0 (<< 0.1.1+1~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libambix0"
+	comparison hasValue ">="
+	version hasValue "0.1.1-2"
+
+relationInstance depends(P0__libambix_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libambix0"
+	comparison hasValue "<<"
+	version hasValue "0.1.1+1~"
+
+relationInstance depends(P0__libambix_dev,1,DepAtom__1)
+

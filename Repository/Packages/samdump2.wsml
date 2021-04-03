@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology samdump2
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__samdump2 memberOf Package
+	package hasValue "samdump2"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "44"
+	maintainer hasValue "Original-Debian Security Tools <team+pkg-security@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.0.0-7"
+	replaces hasValue "bkhive (<< 3.0.0)"
+	fileName hasValue "pool/universe/s/samdump2/samdump2_3.0.0-7_amd64.deb"
+	size hasValue "16056"
+	md5sum hasValue "56437bd24e525de2c89a782b2fba596c"
+	sha1 hasValue "8052e2529b5cc0ed6442966261dd98ff1dfe3e40"
+	sha256 hasValue "080ef5789fab6da28612a478c8aad47f1914bd1f7d7bf2311d3dd11c0260cf1d"
+	description hasValue "Dump Windows 2k/NT/XP password hashes"
+	descriptionMd5 hasValue "b188f87787fb45a1a26d81a5dbe2e2a1"
+	homepage hasValue "http://ophcrack.sourceforge.net/"
+	depends hasValue "libc6 (>= 2.14), libssl1.1 (>= 1.1.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__samdump2,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libssl1.1"
+	comparison hasValue ">="
+	version hasValue "1.1.0"
+
+relationInstance depends(P0__samdump2,1,DepAtom__1)
+

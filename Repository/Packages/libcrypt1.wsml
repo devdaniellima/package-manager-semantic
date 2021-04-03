@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libcrypt1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libcrypt1 memberOf Package
+	package hasValue "libcrypt1"
+	packageSource hasValue Source__S1
+	priority hasValue "required"
+	section hasValue "libs"
+	installedSize hasValue "226"
+	maintainer hasValue "Original-Marco d'Itri <md@linux.it>"
+	architecture hasValue "amd64"
+	version hasValue "1:4.4.10-10ubuntu4"
+	replaces hasValue "libc6 (<< 2.31)"
+	fileName hasValue "pool/main/libx/libxcrypt/libcrypt1_4.4.10-10ubuntu4_amd64.deb"
+	size hasValue "78204"
+	md5sum hasValue "7c69e5240c0782a3025f5b821b6b833b"
+	sha1 hasValue "92245daae4e797ead6caee3a75164beb0527048d"
+	sha256 hasValue "231b4dbbe5865775f118cfa61394f1e16fa7102b6953a327e672499a20876d73"
+	descriptionMd5 hasValue "deac8c9adc422e925bdaf6bffdd3e875"
+	depends hasValue "libc6 (>= 2.25)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.25"
+
+relationInstance depends(P0__libcrypt1,0,DepAtom__0)
+

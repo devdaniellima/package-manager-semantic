@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology fonts_misaki
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__fonts_misaki memberOf Package
+	package hasValue "fonts-misaki"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/fonts"
+	installedSize hasValue "3291"
+	maintainer hasValue "Original-Debian Fonts Task Force <pkg-fonts-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "20191019-1"
+	replaces hasValue "ttf-misaki (<< 11-20080603-10)"
+	fileName hasValue "pool/universe/f/fonts-misaki/fonts-misaki_20191019-1_all.deb"
+	size hasValue "263276"
+	md5sum hasValue "582e548ae8bca0ddef800ee246fb647c"
+	sha1 hasValue "9948a190dcb51c068c365af634d7291786fa57d2"
+	sha256 hasValue "35c22ec6936d0f07b28ce331823a661bc5a38580e660b3fcf15db85fb57da356"
+	descriptionMd5 hasValue "07c280cc82af31e35a964ca49bb98728"
+	homepage hasValue "http://littlelimit.net/misaki.htm"
+	depends hasValue "Pre-dpkg (>= 1.15.6~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "Pre-dpkg"
+	comparison hasValue ">="
+	version hasValue "1.15.6~"
+
+relationInstance depends(P0__fonts_misaki,0,DepAtom__0)
+

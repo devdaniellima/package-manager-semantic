@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libocas_tools
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libocas_tools memberOf Package
+	package hasValue "libocas-tools"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/science"
+	installedSize hasValue "6090"
+	maintainer hasValue "Original-Christian Kastner <ckk@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.97+dfsg-6"
+	fileName hasValue "pool/universe/libo/libocas/libocas-tools_0.97+dfsg-6_amd64.deb"
+	size hasValue "5377116"
+	md5sum hasValue "54220fc097606d3d08c2c96dd06506d2"
+	sha1 hasValue "4cf5ab66cfe907f38778dfc4aadb5b007f909dc0"
+	sha256 hasValue "88d9b989017c24930895f5e96c40ae31fa0e4e85354df29199d93afb7c1dc18b"
+	descriptionMd5 hasValue "d0708ea67d3481622667210aecfd4ca6"
+	homepage hasValue "http://cmp.felk.cvut.cz/~xfrancv/ocas/html/"
+	depends hasValue "libc6 (>= 2.29), libocas0 (= 0.97+dfsg-6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__libocas_tools,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libocas0"
+	comparison hasValue "="
+	version hasValue "0.97+dfsg-6"
+
+relationInstance depends(P0__libocas_tools,1,DepAtom__1)
+

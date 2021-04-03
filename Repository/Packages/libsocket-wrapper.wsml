@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libsocket_wrapper
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libsocket_wrapper memberOf Package
+	package hasValue "libsocket-wrapper"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "98"
+	maintainer hasValue "Original-Laszlo Boszormenyi (GCS) <gcs@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.2.3-1"
+	fileName hasValue "pool/universe/s/socket-wrapper/libsocket-wrapper_1.2.3-1_amd64.deb"
+	size hasValue "29476"
+	md5sum hasValue "3b4e4ae5f845ed5bce939e3dbbc629cb"
+	sha1 hasValue "e17016fe011baf35387fd3ac2e46561a482c7f11"
+	sha256 hasValue "70d04ab50dd302918fc2ae67f55a57a34a5169d1a0744f09cbed66210e7720b2"
+	descriptionMd5 hasValue "df581241da4b0b0d2068c5948a2fc755"
+	homepage hasValue "http://cwrap.org/socket_wrapper.html"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libsocket_wrapper,0,DepAtom__0)
+

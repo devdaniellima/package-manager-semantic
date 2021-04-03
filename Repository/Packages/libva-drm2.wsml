@@ -1,0 +1,74 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libva_drm2
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libva_drm2 memberOf Package
+	package hasValue "libva-drm2"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "44"
+	maintainer hasValue "Original-Debian Multimedia Maintainers <debian-multimedia@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.7.0-2"
+	fileName hasValue "pool/universe/libv/libva/libva-drm2_2.7.0-2_amd64.deb"
+	size hasValue "7044"
+	md5sum hasValue "c6ca87d0cb336236cb45edfd84a30641"
+	sha1 hasValue "adc88add91c2005e94c3c9c08238654393fafae6"
+	sha256 hasValue "10dc262d9dd96a2809e521f7ceab45c466ff7541f3e35e37f3ea1b869d73381c"
+	descriptionMd5 hasValue "d5921cff6033884644f622b92b9c0ea8"
+	homepage hasValue "https://01.org/linuxmedia/vaapi"
+	depends hasValue "libc6 (>= 2.4), libdrm2 (>= 2.4.16), libva2 (>= 2.7.0), libva2 (<< 2.7.0.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libva_drm2,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libdrm2"
+	comparison hasValue ">="
+	version hasValue "2.4.16"
+
+relationInstance depends(P0__libva_drm2,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libva2"
+	comparison hasValue ">="
+	version hasValue "2.7.0"
+
+relationInstance depends(P0__libva_drm2,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "libva2"
+	comparison hasValue "<<"
+	version hasValue "2.7.0.1"
+
+relationInstance depends(P0__libva_drm2,3,DepAtom__3)
+

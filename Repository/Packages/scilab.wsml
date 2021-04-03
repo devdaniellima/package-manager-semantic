@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology scilab
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__scilab memberOf Package
+	package hasValue "scilab"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/math"
+	installedSize hasValue "241"
+	maintainer hasValue "Original-Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "6.1.0+dfsg1-1ubuntu3"
+	fileName hasValue "pool/universe/s/scilab/scilab_6.1.0+dfsg1-1ubuntu3_all.deb"
+	size hasValue "19712"
+	md5sum hasValue "5d7b68b03231ebdc072298505f11cac0"
+	sha1 hasValue "495a865bb29f9557c2407bb5c09553e2a6319cb2"
+	sha256 hasValue "01940d0418e23de0f8f55df29a12731fc793ae469df0bc6a9d2b9cddef30ff2b"
+	description hasValue "pacote de software científico para cálculos numéricos"
+	descriptionMd5 hasValue "36b280660db0e407caf724c273ac9413"
+	homepage hasValue "https://www.scilab.org"
+	depends hasValue "scilab-cli (>= 6.1.0+dfsg1-1ubuntu3), scilab-full-bin"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "scilab-cli"
+	comparison hasValue ">="
+	version hasValue "6.1.0+dfsg1-1ubuntu3"
+
+relationInstance depends(P0__scilab,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "scilab-full-bin"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__scilab,1,DepAtom__1)
+

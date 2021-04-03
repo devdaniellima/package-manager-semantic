@@ -1,0 +1,75 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology g_wrap
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__g_wrap memberOf Package
+	package hasValue "g-wrap"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/interpreters"
+	installedSize hasValue "212"
+	maintainer hasValue "Original-Tommi Höynälänmaa <tommi.hoynalanmaa@iki.fi>"
+	architecture hasValue "all"
+	version hasValue "1.9.15-3build2"
+	conflicts hasValue "guile-g-wrap (<< 1.9.9-1), libgwrapguile-dev"
+	fileName hasValue "pool/universe/g/g-wrap/g-wrap_1.9.15-3build2_all.deb"
+	size hasValue "67788"
+	md5sum hasValue "712a4e3f6b1f1c34fa0245e5c8f6e9f6"
+	sha1 hasValue "43a093be05e0da7d8a51601c7cfecdefadfa5208"
+	sha256 hasValue "a5966586b2ac242e08ed32805f4d1f7fa700f71e1330950349b5b7a48a57f08f"
+	descriptionMd5 hasValue "c7c2bd9277521362b3f2191659ca8c54"
+	homepage hasValue "http://www.nongnu.org/g-wrap/"
+	depends hasValue "guile-2.2, guile-library (>= 0.2.6.1), dpkg (>= 1.15.4) | install-info"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "guile-2.2"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__g_wrap,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "guile-library"
+	comparison hasValue ">="
+	version hasValue "0.2.6.1"
+
+relationInstance depends(P0__g_wrap,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "dpkg"
+	comparison hasValue ">="
+	version hasValue "1.15.4"
+
+relationInstance depends(P0__g_wrap,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "install-info"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__g_wrap,2,DepAtom__3)
+

@@ -1,0 +1,75 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python3_radix
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python3_radix memberOf Package
+	package hasValue "python3-radix"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "86"
+	maintainer hasValue "Original-Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.10.0-3build1"
+	provides hasValue "python3.8-radix"
+	fileName hasValue "pool/universe/p/py-radix/python3-radix_0.10.0-3build1_amd64.deb"
+	size hasValue "22144"
+	md5sum hasValue "b1b7ffda8c763946c58988d2893e6112"
+	sha1 hasValue "19c55ca651f7642fba1c6941a05b5410ef8d654e"
+	sha256 hasValue "0bcffa44213c32fde55901378dd0401d9788e5d0e596ae8db5e8593fb8c0a5b7"
+	descriptionMd5 hasValue "7842c7c403835ff66e34d55499916f46"
+	homepage hasValue "https://github.com/mjschultz/py-radix"
+	depends hasValue "libc6 (>= 2.4), python3 (<< 3.9), python3 (>= 3.8~), python3:any"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__python3_radix,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3"
+	comparison hasValue "<<"
+	version hasValue "3.9"
+
+relationInstance depends(P0__python3_radix,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "python3"
+	comparison hasValue ">="
+	version hasValue "3.8~"
+
+relationInstance depends(P0__python3_radix,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__python3_radix,3,DepAtom__3)
+

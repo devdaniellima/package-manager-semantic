@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology nim
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__nim memberOf Package
+	package hasValue "nim"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "11875"
+	maintainer hasValue "Original-Federico Ceratto <federico@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.6-1"
+	fileName hasValue "pool/universe/n/nim/nim_1.0.6-1_amd64.deb"
+	size hasValue "2991088"
+	md5sum hasValue "8001a952a4b391b9e77cfa705f4121ce"
+	sha1 hasValue "3b5d967cef59c0e11e52247e1801c248a2f44a49"
+	sha256 hasValue "d8b328f737466af4a3ea27c8076b8f75dd953e87bf4226d8667d66638a1f9bb6"
+	descriptionMd5 hasValue "1077ec624ad7f485ec20529f4e9db6d8"
+	homepage hasValue "https://nim-lang.org/"
+	depends hasValue "libc6 (>= 2.29), libssl1.1"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__nim,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libssl1.1"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__nim,1,DepAtom__1)
+

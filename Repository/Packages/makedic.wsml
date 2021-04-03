@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology makedic
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__makedic memberOf Package
+	package hasValue "makedic"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/text"
+	installedSize hasValue "50"
+	maintainer hasValue "Original-Євгеній Мещеряков <eugen@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "6.5deb2-12"
+	fileName hasValue "pool/universe/k/kdrill/makedic_6.5deb2-12_amd64.deb"
+	size hasValue "8180"
+	md5sum hasValue "520644e184ef64b2bda8878b65987de9"
+	sha1 hasValue "b98a99f3dd425ee6f889ab11f9d18069e6184ae1"
+	sha256 hasValue "e41b6ca42f85e933eea1035ba1e889129a10e949b082794a4f4cae657c6dfe73"
+	descriptionMd5 hasValue "0d80c55e7259017f7a5adde558dd1477"
+	homepage hasValue "http://www.bolthole.com/kdrill/"
+	depends hasValue "libc6 (>= 2.7)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__makedic,0,DepAtom__0)
+

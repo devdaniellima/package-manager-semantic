@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology john
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__john memberOf Package
+	package hasValue "john"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "admin"
+	installedSize hasValue "443"
+	maintainer hasValue "Original-Ruben Molina <rmolina@udea.edu.co>"
+	architecture hasValue "amd64"
+	version hasValue "1.8.0-2build1"
+	fileName hasValue "pool/main/j/john/john_1.8.0-2build1_amd64.deb"
+	size hasValue "189462"
+	md5sum hasValue "282eea01579737f6108cc5d3f73063e3"
+	sha1 hasValue "70482fd7787847fe4edd1763fe04d99e517ce581"
+	sha256 hasValue "d28953876fef7fff47465cbc3121235a4d0011d489f72c3f1493eba11ccb831b"
+	descriptionMd5 hasValue "2ffcaf0da9fa0a8266bfe4aa906d4742"
+	homepage hasValue "http://www.openwall.com/john/"
+	depends hasValue "libc6 (>= 2.14), john-data (= 1.8.0-2build1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__john,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "john-data"
+	comparison hasValue "="
+	version hasValue "1.8.0-2build1"
+
+relationInstance depends(P0__john,1,DepAtom__1)
+

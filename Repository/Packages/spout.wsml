@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology spout
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__spout memberOf Package
+	package hasValue "spout"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/games"
+	installedSize hasValue "53"
+	maintainer hasValue "Original-Scott Leggett <scott@sl.id.au>"
+	architecture hasValue "amd64"
+	version hasValue "1.4-4"
+	fileName hasValue "pool/universe/s/spout/spout_1.4-4_amd64.deb"
+	size hasValue "17228"
+	md5sum hasValue "be3ea44aa615769effd301da8d8baee4"
+	sha1 hasValue "d5114d7b66538f5e25823344943ef22d457b2e04"
+	sha256 hasValue "66c4d6e1375ebbd08de23d603e1782d85185a6fd5847a031da1e251ed8a8e51d"
+	description hasValue "jogo 2D pequeno e abstrato de tiro em caverna em preto-e-branco"
+	descriptionMd5 hasValue "94d75747720c4d414efa06e2444a69b7"
+	homepage hasValue "https://njw.me.uk/spout/"
+	depends hasValue "libc6 (>= 2.4), libsdl1.2debian (>= 1.2.11)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__spout,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libsdl1.2debian"
+	comparison hasValue ">="
+	version hasValue "1.2.11"
+
+relationInstance depends(P0__spout,1,DepAtom__1)
+

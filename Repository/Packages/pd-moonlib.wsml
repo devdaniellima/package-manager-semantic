@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology pd_moonlib
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__pd_moonlib memberOf Package
+	package hasValue "pd-moonlib"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/sound"
+	installedSize hasValue "591"
+	maintainer hasValue "Original-Debian Multimedia Maintainers <debian-multimedia@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.4-1"
+	fileName hasValue "pool/universe/p/pd-moonlib/pd-moonlib_0.4-1_amd64.deb"
+	size hasValue "83004"
+	md5sum hasValue "fd88ec9c014eee975f5632f259a498a7"
+	sha1 hasValue "ec073ce842ebb4f871e244116472c92695a6769d"
+	sha256 hasValue "5f04d227660af2f7beefa3154150f6c73911acd0438372692df674f92c583304"
+	descriptionMd5 hasValue "38054d851e519f0212af204cb7a13dd5"
+	homepage hasValue "https://github.com/MetaluNet/moonlib/"
+	depends hasValue "libc6 (>= 2.14), puredata-core | pd"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__pd_moonlib,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "puredata-core"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__pd_moonlib,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "pd"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__pd_moonlib,1,DepAtom__2)
+

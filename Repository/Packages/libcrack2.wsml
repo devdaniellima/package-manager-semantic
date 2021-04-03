@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libcrack2
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libcrack2 memberOf Package
+	package hasValue "libcrack2"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libs"
+	installedSize hasValue "152"
+	maintainer hasValue "Original-Jan Dittberner <jandd@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.9.6-3.2"
+	fileName hasValue "pool/main/c/cracklib2/libcrack2_2.9.6-3.2_amd64.deb"
+	size hasValue "28300"
+	md5sum hasValue "98b541b38c2641e63a6fe78ecc403f67"
+	sha1 hasValue "605e264b157522fc004dfc44edbdd1e4e864dfce"
+	sha256 hasValue "c73ca08474e9bb9385cc4174943e6e0ea25008a2bce9d1b2f107c86ba3db9510"
+	description hasValue "biblioteca pró-ativa de verificação de senhas"
+	descriptionMd5 hasValue "7c7145f5450c1a0c56b8fff046f9d67e"
+	homepage hasValue "https://github.com/cracklib/cracklib"
+	depends hasValue "libc6 (>= 2.14), zlib1g (>= 1:1.1.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libcrack2,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "zlib1g"
+	comparison hasValue ">="
+	version hasValue "1:1.1.4"
+
+relationInstance depends(P0__libcrack2,1,DepAtom__1)
+

@@ -1,0 +1,74 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology nas
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__nas memberOf Package
+	package hasValue "nas"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/sound"
+	installedSize hasValue "247"
+	maintainer hasValue "Original-Steve McIntyre <93sam@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.9.4-6build1"
+	fileName hasValue "pool/universe/n/nas/nas_1.9.4-6build1_amd64.deb"
+	size hasValue "78372"
+	md5sum hasValue "814664386ce494f0dd4464c30c759461"
+	sha1 hasValue "c22bfadec85d642ad7d4384bc21254234c53b6b9"
+	sha256 hasValue "95f7283db88851ba29e7aa6d2cdd0d23b95b841f9f40c81e69ec506bd8e11e93"
+	description hasValue "Network Audio System - servidor local"
+	descriptionMd5 hasValue "250afd943a8f2f6e0200b6b91bfc6955"
+	depends hasValue "libaudio2 (>= 1.9.4-6build1), libc6 (>= 2.28), debconf (>= 0.5) | debconf-2.0"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libaudio2"
+	comparison hasValue ">="
+	version hasValue "1.9.4-6build1"
+
+relationInstance depends(P0__nas,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.28"
+
+relationInstance depends(P0__nas,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "debconf"
+	comparison hasValue ">="
+	version hasValue "0.5"
+
+relationInstance depends(P0__nas,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "debconf-2.0"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__nas,2,DepAtom__3)
+

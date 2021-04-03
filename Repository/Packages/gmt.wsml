@@ -1,0 +1,76 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gmt
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gmt memberOf Package
+	package hasValue "gmt"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/science"
+	installedSize hasValue "1495"
+	maintainer hasValue "Original-Debian GIS Project <pkg-grass-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "6.0.0+dfsg-1build2"
+	replaces hasValue "libgenome-perl (<< 0.06-3~), libgmt-dev (<< 5.3.2+dfsg-1~exp2)"
+	fileName hasValue "pool/universe/g/gmt/gmt_6.0.0+dfsg-1build2_amd64.deb"
+	size hasValue "541496"
+	md5sum hasValue "5c288ffe6fadfe720f445b8c28813ced"
+	sha1 hasValue "31708820d198366caad5930ff4b9393d6335008c"
+	sha256 hasValue "bd26294d2e26ca7c5dc82116071c8979ca94993ddaac5f330f19e0adda0a19fb"
+	description hasValue "Ferramentas Genérias de Mapeamento"
+	descriptionMd5 hasValue "8ac67adc3c58bce0682536c089d9c7ce"
+	homepage hasValue "http://gmt.soest.hawaii.edu/"
+	depends hasValue "gmt-common (= 6.0.0+dfsg-1build2), libc6 (>= 2.29), libgmt6 (>= 6.0.0), libnetcdf15 (>= 3.6.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "gmt-common"
+	comparison hasValue "="
+	version hasValue "6.0.0+dfsg-1build2"
+
+relationInstance depends(P0__gmt,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__gmt,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libgmt6"
+	comparison hasValue ">="
+	version hasValue "6.0.0"
+
+relationInstance depends(P0__gmt,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "libnetcdf15"
+	comparison hasValue ">="
+	version hasValue "3.6.1"
+
+relationInstance depends(P0__gmt,3,DepAtom__3)
+

@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology rblcheck
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__rblcheck memberOf Package
+	package hasValue "rblcheck"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/net"
+	installedSize hasValue "60"
+	maintainer hasValue "Original-Marco d'Itri <md@linux.it>"
+	architecture hasValue "amd64"
+	version hasValue "20190930-1"
+	fileName hasValue "pool/universe/r/rblcheck/rblcheck_20190930-1_amd64.deb"
+	size hasValue "33388"
+	md5sum hasValue "67b683b2a75020032793ddd45836ecbd"
+	sha1 hasValue "9d9857502b4013042213009d5e175a87dedbfa9b"
+	sha256 hasValue "3e104b58a83f7e873bfeb6760e892037a18c022271b56e95930c7233adcff9ea"
+	description hasValue "Tool to query DNSBL servers"
+	descriptionMd5 hasValue "6bee9f1882cba26e5217a297b19793ac"
+	homepage hasValue "https://github.com/logic/rblcheck"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__rblcheck,0,DepAtom__0)
+

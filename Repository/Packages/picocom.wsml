@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology picocom
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__picocom memberOf Package
+	package hasValue "picocom"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/comm"
+	installedSize hasValue "101"
+	maintainer hasValue "Original-Matt Palmer <mpalmer@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.1-2"
+	fileName hasValue "pool/universe/p/picocom/picocom_3.1-2_amd64.deb"
+	size hasValue "44032"
+	md5sum hasValue "3cb57321c43df2d260b75d550728ef50"
+	sha1 hasValue "da11dacaae3523ce056e83d36ae8f32b25ae2d6e"
+	sha256 hasValue "9801a21b8cb2b8b67f5e130153c8222855ea6a6bcf81e5bd854bc1f84cad14d1"
+	descriptionMd5 hasValue "8388ab286473c706d22cd40ec72a12a3"
+	homepage hasValue "https://github.com/npat-efault/picocom"
+	depends hasValue "libc6 (>= 2.15)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__picocom,0,DepAtom__0)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology postgresql_12_asn1oid
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__postgresql_12_asn1oid memberOf Package
+	package hasValue "postgresql-12-asn1oid"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/database"
+	installedSize hasValue "50"
+	maintainer hasValue "Original-Debian PostgreSQL Maintainers <team+postgresql@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.2-3"
+	fileName hasValue "pool/universe/p/pgsql-asn1oid/postgresql-12-asn1oid_1.2-3_amd64.deb"
+	size hasValue "13512"
+	md5sum hasValue "bebab69a16e3c8cb9890edc8d0621f99"
+	sha1 hasValue "3265208cf0494b0d41935bead32d06b152bd361b"
+	sha256 hasValue "c6fff99202f65992fa21e16021e2c1e1b616a4f292262396127d89fb31d7874b"
+	descriptionMd5 hasValue "1d66110df108490dcab2101723a5f94d"
+	homepage hasValue "https://github.com/ChristophBerg/pgsql-asn1oid"
+	depends hasValue "libc6 (>= 2.4), postgresql-12"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__postgresql_12_asn1oid,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "postgresql-12"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__postgresql_12_asn1oid,1,DepAtom__1)
+

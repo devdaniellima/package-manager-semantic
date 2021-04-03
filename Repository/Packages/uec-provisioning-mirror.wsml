@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology uec_provisioning_mirror
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__uec_provisioning_mirror memberOf Package
+	package hasValue "uec-provisioning-mirror"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "16"
+	maintainer hasValue "Ubuntu Server Team <ubuntu-server@lists.ubuntu.com>"
+	architecture hasValue "all"
+	version hasValue "0.5.1ubuntu1"
+	fileName hasValue "pool/universe/u/uec-provisioning/uec-provisioning-mirror_0.5.1ubuntu1_all.deb"
+	size hasValue "2336"
+	md5sum hasValue "160e55318c3915e1cf08384166c123c8"
+	sha1 hasValue "a1ab7d303e5b6521ec007d6df53118a5ddbce7f4"
+	sha256 hasValue "bd78f5bdbef481e70ae23ebcc61035f712179761980fc5cfacbf40f4a53c0094"
+	descriptionMd5 hasValue "5f718f5707701b52b1de8f02fff055db"
+	homepage hasValue "http://launchpad.net/uec-provisioning"
+	depends hasValue "approx, uec-provisioning-common"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "approx"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__uec_provisioning_mirror,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "uec-provisioning-common"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__uec_provisioning_mirror,1,DepAtom__1)
+

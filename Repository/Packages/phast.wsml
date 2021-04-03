@@ -1,0 +1,74 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology phast
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__phast memberOf Package
+	package hasValue "phast"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/science"
+	installedSize hasValue "28222"
+	maintainer hasValue "Original-Debian Med Packaging Team <debian-med-packaging@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.5+dfsg-1"
+	fileName hasValue "pool/universe/p/phast/phast_1.5+dfsg-1_amd64.deb"
+	size hasValue "2118268"
+	md5sum hasValue "3814d263210ef9170ed18ac924456a59"
+	sha1 hasValue "dd72a18447dd78f4e5e100ca52686831385b1aff"
+	sha256 hasValue "293f2e0d841a7b285f711d3b393e2eb7ff8e17960f950b83d922f35fc1a0e060"
+	descriptionMd5 hasValue "5260b2251e211c62f521fa0303e12a8d"
+	homepage hasValue "http://compgen.cshl.edu/phast/"
+	depends hasValue "libc6 (>= 2.23), liblapack3 | liblapack.so.3, libpcre3"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.23"
+
+relationInstance depends(P0__phast,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "liblapack3"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__phast,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "liblapack.so.3"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__phast,1,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "libpcre3"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__phast,2,DepAtom__3)
+

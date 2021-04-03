@@ -1,0 +1,74 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology mumps_test
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__mumps_test memberOf Package
+	package hasValue "mumps-test"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/math"
+	installedSize hasValue "103"
+	maintainer hasValue "Original-Debian Science Maintainers <debian-science-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "5.2.1-2build1"
+	fileName hasValue "pool/universe/m/mumps/mumps-test_5.2.1-2build1_amd64.deb"
+	size hasValue "15792"
+	md5sum hasValue "1bf782fe200557843c0dffb12a51966d"
+	sha1 hasValue "072752355e824fe441712263f0cb187584bac9ee"
+	sha256 hasValue "f3e3e680aaf85330a78a4d80783d672d32fc897cb121398a229d092f52aeb245"
+	descriptionMd5 hasValue "8d200f9cb9fe070eeca2c4e4e51c0ab7"
+	homepage hasValue "http://mumps-solver.org/"
+	depends hasValue "libc6 (>= 2.2.5), libgfortran5 (>= 8), libmumps-5.2.1 (>= 5.2.1), libopenmpi3 (>= 4.0.3~rc4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.2.5"
+
+relationInstance depends(P0__mumps_test,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgfortran5"
+	comparison hasValue ">="
+	version hasValue "8"
+
+relationInstance depends(P0__mumps_test,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libmumps-5.2.1"
+	comparison hasValue ">="
+	version hasValue "5.2.1"
+
+relationInstance depends(P0__mumps_test,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "libopenmpi3"
+	comparison hasValue ">="
+	version hasValue "4.0.3~rc4"
+
+relationInstance depends(P0__mumps_test,3,DepAtom__3)
+

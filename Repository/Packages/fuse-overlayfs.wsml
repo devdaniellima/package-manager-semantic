@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology fuse_overlayfs
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__fuse_overlayfs memberOf Package
+	package hasValue "fuse-overlayfs"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/misc"
+	installedSize hasValue "109"
+	maintainer hasValue "Original-Reinhard Tartler <siretart@tauware.de>"
+	architecture hasValue "amd64"
+	version hasValue "0.7.6-1"
+	fileName hasValue "pool/universe/f/fuse-overlayfs/fuse-overlayfs_0.7.6-1_amd64.deb"
+	size hasValue "38700"
+	md5sum hasValue "416c8f60f619d8f7425ed054ec71fca3"
+	sha1 hasValue "5041cbfefbd62559e302aa6dc92ab61c56998c33"
+	sha256 hasValue "896dc21a7c6d443d06f71892af97aad2b5b11725de1821901b4ad0d7b9ae0da6"
+	descriptionMd5 hasValue "c4e052d72c2adc350355e396b2fd9e47"
+	homepage hasValue "https://github.com/containers/fuse-overlayfs"
+	depends hasValue "fuse3, libc6 (>= 2.28), libfuse3-3 (>= 3.2.3)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "fuse3"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__fuse_overlayfs,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.28"
+
+relationInstance depends(P0__fuse_overlayfs,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libfuse3-3"
+	comparison hasValue ">="
+	version hasValue "3.2.3"
+
+relationInstance depends(P0__fuse_overlayfs,2,DepAtom__2)
+

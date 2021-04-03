@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology xstow
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__xstow memberOf Package
+	package hasValue "xstow"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "766"
+	maintainer hasValue "Original-Adrian Bunk <bunk@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.2-1build1"
+	fileName hasValue "pool/universe/x/xstow/xstow_1.0.2-1build1_amd64.deb"
+	size hasValue "208492"
+	md5sum hasValue "235517a1719432f400a4ca9476322543"
+	sha1 hasValue "77cc6a88403510ec232e366b9f6f66c71d62a461"
+	sha256 hasValue "de478b124a09e6f8b5f3f2b482ef74d9726c897ba8235176461c44ecc9568f27"
+	descriptionMd5 hasValue "764a08756bfdcec7b3d41e06a795e072"
+	homepage hasValue "http://xstow.sf.net"
+	depends hasValue "libc6 (>= 2.14), libgcc-s1 (>= 3.0), libstdc++6 (>= 9)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__xstow,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgcc-s1"
+	comparison hasValue ">="
+	version hasValue "3.0"
+
+relationInstance depends(P0__xstow,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "9"
+
+relationInstance depends(P0__xstow,2,DepAtom__2)
+

@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libappstream_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libappstream_dev memberOf Package
+	package hasValue "libappstream-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libdevel"
+	installedSize hasValue "798"
+	maintainer hasValue "Original-Matthias Klumpp <mak@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.12.10-2"
+	fileName hasValue "pool/main/a/appstream/libappstream-dev_0.12.10-2_amd64.deb"
+	size hasValue "59144"
+	md5sum hasValue "13fa4047ce2819bf884d69c58515c16b"
+	sha1 hasValue "4b737e37a614e0f774331550ccfa4e79310e6e63"
+	sha256 hasValue "0cea8ac5c574b5b35376c1a479f4ebea56baa4ac9f78592d356ccc48032e1d3a"
+	descriptionMd5 hasValue "09cded90f0e4f692b9183d306bdb450a"
+	homepage hasValue "https://www.freedesktop.org/wiki/Distributions/AppStream/"
+	depends hasValue "gir1.2-appstream-1.0 (= 0.12.10-2), libappstream4 (= 0.12.10-2), libglib2.0-dev (>= 2.46)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "gir1.2-appstream-1.0"
+	comparison hasValue "="
+	version hasValue "0.12.10-2"
+
+relationInstance depends(P0__libappstream_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libappstream4"
+	comparison hasValue "="
+	version hasValue "0.12.10-2"
+
+relationInstance depends(P0__libappstream_dev,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libglib2.0-dev"
+	comparison hasValue ">="
+	version hasValue "2.46"
+
+relationInstance depends(P0__libappstream_dev,2,DepAtom__2)
+

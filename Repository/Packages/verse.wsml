@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology verse
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__verse memberOf Package
+	package hasValue "verse"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/doc"
+	installedSize hasValue "110"
+	maintainer hasValue "Original-Roberto C. Sanchez <roberto@connexer.com>"
+	architecture hasValue "amd64"
+	version hasValue "0.22.7build1"
+	fileName hasValue "pool/universe/v/verse/verse_0.22.7build1_amd64.deb"
+	size hasValue "28072"
+	md5sum hasValue "447cfdcced6dbdadc46dc3be3b4e1f60"
+	sha1 hasValue "f7fa7ae37045ebd16c31506ae4df38e566644809"
+	sha256 hasValue "fc5cd89c174810a04882cd5c6cda82fa193ec0a9695fe89cf8e32e5ae3c2338d"
+	description hasValue "Verso devocional diário para Bíblia KJV"
+	descriptionMd5 hasValue "27e206037d17dab62f7e2feefbd45523"
+	depends hasValue "dialog, libc6 (>= 2.3.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "dialog"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__verse,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.3.4"
+
+relationInstance depends(P0__verse,1,DepAtom__1)
+

@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology paxtest
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__paxtest memberOf Package
+	package hasValue "paxtest"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "975"
+	maintainer hasValue "Original-Javier Fernández-Sanguino Peña <jfs@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:0.9.14-2"
+	fileName hasValue "pool/universe/p/paxtest/paxtest_0.9.14-2_amd64.deb"
+	size hasValue "26464"
+	md5sum hasValue "485e5478d2843ef7a6efaabcd823bb56"
+	sha1 hasValue "041e359c83b145cc6092415c79febd1d4bdf7efd"
+	sha256 hasValue "a7f30e7be81c615460a46ebfc5acd0835c34f4713daf16e85f44150e39e81d84"
+	descriptionMd5 hasValue "f5f8241cd3ba2c88c5b37dfb583ce7a1"
+	homepage hasValue "http://www.grsecurity.net/~spender/"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__paxtest,0,DepAtom__0)
+

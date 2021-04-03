@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology bwbar
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__bwbar memberOf Package
+	package hasValue "bwbar"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "46"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.2.3-4"
+	fileName hasValue "pool/universe/b/bwbar/bwbar_1.2.3-4_amd64.deb"
+	size hasValue "11264"
+	md5sum hasValue "77695637e908d40fc364759b1096349d"
+	sha1 hasValue "06d6a17e26577b010d26e4ec4907ae30e032de46"
+	sha256 hasValue "3e102c64af3095a8ad60cd4ca977d1d49382cdcd9825e3a76912bd3eb9ffe664"
+	description hasValue "gera saída de texto e gráfica do uso atual da banda"
+	descriptionMd5 hasValue "ac4c055b2951d82ac9ebc0240bfb5329"
+	depends hasValue "libc6 (>= 2.14), libpng16-16 (>= 1.6.2-1), lsb-base"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__bwbar,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libpng16-16"
+	comparison hasValue ">="
+	version hasValue "1.6.2-1"
+
+relationInstance depends(P0__bwbar,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "lsb-base"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__bwbar,2,DepAtom__2)
+

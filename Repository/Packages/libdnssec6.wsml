@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libdnssec6
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libdnssec6 memberOf Package
+	package hasValue "libdnssec6"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "117"
+	maintainer hasValue "Original-knot packagers <knot@packages.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.7.8-1"
+	replaces hasValue "knot-libs (<< 2.0.1-4), libdnssec4 (<< 2.6.1-1~)"
+	fileName hasValue "pool/universe/k/knot/libdnssec6_2.7.8-1_amd64.deb"
+	size hasValue "26968"
+	md5sum hasValue "c0d622a23644257c1b447b4c6b1929d3"
+	sha1 hasValue "5d4d35b118f34805620d2a05214a17b696aa5d11"
+	sha256 hasValue "6e354ebad5a2d23d7664053b19b1cdd8233b5bdc622d01e36c1d18609ff95efb"
+	descriptionMd5 hasValue "9852d9f3239a2e68ca33e00ef75db1f3"
+	homepage hasValue "https://www.knot-dns.cz/"
+	depends hasValue "libc6 (>= 2.14), libgnutls30 (>= 3.6.10)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libdnssec6,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgnutls30"
+	comparison hasValue ">="
+	version hasValue "3.6.10"
+
+relationInstance depends(P0__libdnssec6,1,DepAtom__1)
+

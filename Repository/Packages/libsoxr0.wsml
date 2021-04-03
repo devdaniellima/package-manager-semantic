@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libsoxr0
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libsoxr0 memberOf Package
+	package hasValue "libsoxr0"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libs"
+	installedSize hasValue "230"
+	maintainer hasValue "Original-Debian Multimedia Maintainers <debian-multimedia@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.1.3-2build1"
+	fileName hasValue "pool/main/libs/libsoxr/libsoxr0_0.1.3-2build1_amd64.deb"
+	size hasValue "77984"
+	md5sum hasValue "2302047f69e540d82249388e5c18d9fe"
+	sha1 hasValue "1067b1cc71fc688b8e6e190cd23111d9b686df68"
+	sha256 hasValue "df76fddbbad5943fad75cbfee9048f572480716fb9df89037da83dc37b1c1934"
+	descriptionMd5 hasValue "652ca67b35b6df12e6d443463c33f16a"
+	homepage hasValue "http://sourceforge.net/projects/soxr/"
+	depends hasValue "libc6 (>= 2.29), libgomp1 (>= 4.9)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__libsoxr0,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgomp1"
+	comparison hasValue ">="
+	version hasValue "4.9"
+
+relationInstance depends(P0__libsoxr0,1,DepAtom__1)
+

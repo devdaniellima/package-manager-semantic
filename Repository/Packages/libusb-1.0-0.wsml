@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libusb_1Dot0_0
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libusb_1Dot0_0 memberOf Package
+	package hasValue "libusb-1.0-0"
+	packageSource hasValue Source__S1
+	priority hasValue "standard"
+	section hasValue "libs"
+	installedSize hasValue "136"
+	maintainer hasValue "Original-Aurelien Jarno <aurel32@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2:1.0.23-2build1"
+	fileName hasValue "pool/main/libu/libusb-1.0/libusb-1.0-0_1.0.23-2build1_amd64.deb"
+	size hasValue "46488"
+	md5sum hasValue "a5a7d6df3f57e8658c9ea931ccf33ba1"
+	sha1 hasValue "012b984ec51ff1cd31375818ca5851156811881a"
+	sha256 hasValue "97333d5deba0dc34a0f1663cdae2116001faf922d56d84b964e664a305f0d648"
+	description hasValue "biblioteca de programação USB em espaço de usuário"
+	descriptionMd5 hasValue "2dcfdc1b1a0fdb8e8f86496cec6f9062"
+	homepage hasValue "http://www.libusb.info"
+	depends hasValue "libc6 (>= 2.17), libudev1 (>= 183)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.17"
+
+relationInstance depends(P0__libusb_1Dot0_0,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libudev1"
+	comparison hasValue ">="
+	version hasValue "183"
+
+relationInstance depends(P0__libusb_1Dot0_0,1,DepAtom__1)
+

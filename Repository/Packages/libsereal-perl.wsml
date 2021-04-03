@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libsereal_perl
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libsereal_perl memberOf Package
+	package hasValue "libsereal-perl"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "perl"
+	installedSize hasValue "24"
+	maintainer hasValue "Original-Debian Perl Group <pkg-perl-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "4.011-1"
+	fileName hasValue "pool/main/libs/libsereal-perl/libsereal-perl_4.011-1_all.deb"
+	size hasValue "8604"
+	md5sum hasValue "0875d9ca41c06e0c62c289fed5dad7ca"
+	sha1 hasValue "69704bfa0247141d784f1b6c1a08a4317e4ae54a"
+	sha256 hasValue "b05613bcffa737c2afaaa2e9bc286966f46b20f19152c202e4f9ce4adbfd4976"
+	descriptionMd5 hasValue "240f9f42c7e8cd851c392c8bbb9933b1"
+	homepage hasValue "https://metacpan.org/release/Sereal"
+	depends hasValue "perl:any, libsereal-decoder-perl (>= 4.011), libsereal-encoder-perl (>= 4.011)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "perl:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libsereal_perl,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libsereal-decoder-perl"
+	comparison hasValue ">="
+	version hasValue "4.011"
+
+relationInstance depends(P0__libsereal_perl,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libsereal-encoder-perl"
+	comparison hasValue ">="
+	version hasValue "4.011"
+
+relationInstance depends(P0__libsereal_perl,2,DepAtom__2)
+

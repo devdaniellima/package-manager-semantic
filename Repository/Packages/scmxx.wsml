@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology scmxx
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__scmxx memberOf Package
+	package hasValue "scmxx"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/comm"
+	installedSize hasValue "545"
+	maintainer hasValue "Original-Michael Banck <mbanck@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.9.0-2.4"
+	fileName hasValue "pool/universe/s/scmxx/scmxx_0.9.0-2.4_amd64.deb"
+	size hasValue "159972"
+	md5sum hasValue "5ebf73160b73a1118de4920705b4da93"
+	sha1 hasValue "fca8141a493e4809cf21e4eb3c20e5fdd761ca48"
+	sha256 hasValue "a6637ce0d61f3ec1a2e375c985742c28cb82d8027798d67f3a4f0ea5a924aa98"
+	descriptionMd5 hasValue "5aaeb75a0035ce8915a3b47e0201efb5"
+	homepage hasValue "http://www.hendrik-sattler.de/scmxx/"
+	depends hasValue "libbluetooth3 (>= 4.91), libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libbluetooth3"
+	comparison hasValue ">="
+	version hasValue "4.91"
+
+relationInstance depends(P0__scmxx,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__scmxx,1,DepAtom__1)
+

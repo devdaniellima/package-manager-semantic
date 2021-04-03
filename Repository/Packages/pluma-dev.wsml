@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology pluma_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__pluma_dev memberOf Package
+	package hasValue "pluma-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "604"
+	maintainer hasValue "Original-Debian+Ubuntu MATE Packaging Team <debian-mate@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.24.0-1"
+	fileName hasValue "pool/universe/p/pluma/pluma-dev_1.24.0-1_amd64.deb"
+	size hasValue "44868"
+	md5sum hasValue "5cccbcdc2e20efe5c99e3cf8442be323"
+	sha1 hasValue "74b51228568e8ca7ebd1c56ad374d52b8eb7b477"
+	sha256 hasValue "8cc24eed8380d5355e7e9ef3292d59deaceb9256fd6180b46d8e961047403436"
+	descriptionMd5 hasValue "88e887c2e35717fc107417627e8eb75e"
+	homepage hasValue "http://www.mate-desktop.org/"
+	depends hasValue "pluma (= 1.24.0-1), gir1.2-pluma-1.0 (= 1.24.0-1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "pluma"
+	comparison hasValue "="
+	version hasValue "1.24.0-1"
+
+relationInstance depends(P0__pluma_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "gir1.2-pluma-1.0"
+	comparison hasValue "="
+	version hasValue "1.24.0-1"
+
+relationInstance depends(P0__pluma_dev,1,DepAtom__1)
+

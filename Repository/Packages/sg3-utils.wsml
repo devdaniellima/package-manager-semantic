@@ -1,0 +1,63 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology sg3_utils
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__sg3_utils memberOf Package
+	package hasValue "sg3-utils"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "admin"
+	installedSize hasValue "2608"
+	maintainer hasValue "Original-Ritesh Raj Sarraf <rrs@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.44-1ubuntu2"
+	replaces hasValue "sg-utils"
+	conflicts hasValue "cdwrite, sg-utils"
+	fileName hasValue "pool/main/s/sg3-utils/sg3-utils_1.44-1ubuntu2_amd64.deb"
+	size hasValue "803372"
+	md5sum hasValue "1565c78b009c50d134ee0db53d242419"
+	sha1 hasValue "fb384592966a435b0dfe7111457d094615240b47"
+	sha256 hasValue "0ee2e7899b9c06155028c4d4422639d63b2ffc15deda425a8d9f5ca567b2fafb"
+	description hasValue "utilities for devices using the SCSI command set"
+	descriptionMd5 hasValue "87527871471a549569721d9f87e03c31"
+	homepage hasValue "http://sg.danny.cz/sg/"
+	depends hasValue "libc6 (>= 2.17), libsgutils2-2 (>= 1.43)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.17"
+
+relationInstance depends(P0__sg3_utils,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libsgutils2-2"
+	comparison hasValue ">="
+	version hasValue "1.43"
+
+relationInstance depends(P0__sg3_utils,1,DepAtom__1)
+

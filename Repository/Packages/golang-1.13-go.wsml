@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology golang_1Dot13_go
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__golang_1Dot13_go memberOf Package
+	package hasValue "golang-1.13-go"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "devel"
+	installedSize hasValue "219890"
+	maintainer hasValue "Original-Go Compiler Team <team+go-compiler@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.13.8-1ubuntu1"
+	fileName hasValue "pool/main/g/golang-1.13/golang-1.13-go_1.13.8-1ubuntu1_amd64.deb"
+	size hasValue "47580784"
+	md5sum hasValue "95cffe91f16e2558401e7ac7634de775"
+	sha1 hasValue "e589e123192fa22f9f18f8146cab0953c564c176"
+	sha256 hasValue "f5233205fb2dc66769ff6f17f610bab2356488a0f2b08f3cd5281b9c71fc8b98"
+	descriptionMd5 hasValue "9791676e1d7825e569bdb76ce1ad2e08"
+	homepage hasValue "https://golang.org"
+	depends hasValue "golang-1.13-src (>= 1.13.8-1ubuntu1), libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "golang-1.13-src"
+	comparison hasValue ">="
+	version hasValue "1.13.8-1ubuntu1"
+
+relationInstance depends(P0__golang_1Dot13_go,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__golang_1Dot13_go,1,DepAtom__1)
+

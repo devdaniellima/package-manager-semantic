@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology patch
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__patch memberOf Package
+	package hasValue "patch"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "utils"
+	installedSize hasValue "232"
+	maintainer hasValue "Original-Laszlo Boszormenyi (GCS) <gcs@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.7.6-6"
+	fileName hasValue "pool/main/p/patch/patch_2.7.6-6_amd64.deb"
+	size hasValue "104988"
+	md5sum hasValue "5c3598f5800967732985b28546e0294e"
+	sha1 hasValue "1f4e49e9f8b55bcb485486fd0dc0a0ec5bdc46cf"
+	sha256 hasValue "e29e780677057f72c82d7dde465fb9d9c3be629c527bcf8174f588232af23872"
+	description hasValue "aplica um arquivo diff a um original"
+	descriptionMd5 hasValue "d56076980d5ce0f54f9dd685e6ca0ce7"
+	homepage hasValue "http://savannah.gnu.org/projects/patch/"
+	depends hasValue "libc6 (>= 2.17)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.17"
+
+relationInstance depends(P0__patch,0,DepAtom__0)
+

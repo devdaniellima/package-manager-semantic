@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology tweak
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__tweak memberOf Package
+	package hasValue "tweak"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/editors"
+	installedSize hasValue "134"
+	maintainer hasValue "Original-Daniel Kahn Gillmor <dkg@fifthhorseman.net>"
+	architecture hasValue "amd64"
+	version hasValue "3.02-4"
+	fileName hasValue "pool/universe/t/tweak/tweak_3.02-4_amd64.deb"
+	size hasValue "48472"
+	md5sum hasValue "1ff0f7c78c71bca991e65fc641a0c64d"
+	sha1 hasValue "d0921d525a6b8ffee7b5bb63e4b8edbf7649ad38"
+	sha256 hasValue "6bee93550a79ebdbd7845f30eed286d884c5b25266fef891e449e4e1886db890"
+	descriptionMd5 hasValue "4813ec3e9d638da2b630446492761006"
+	homepage hasValue "https://www.chiark.greenend.org.uk/~sgtatham/tweak/"
+	depends hasValue "libc6 (>= 2.14), libncurses6 (>= 6), libtinfo6 (>= 6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__tweak,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libncurses6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__tweak,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libtinfo6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__tweak,2,DepAtom__2)
+

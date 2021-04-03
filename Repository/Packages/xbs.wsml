@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology xbs
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__xbs memberOf Package
+	package hasValue "xbs"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/science"
+	installedSize hasValue "344"
+	maintainer hasValue "Original-Matthew Vernon <matthew@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0-10build1"
+	fileName hasValue "pool/universe/x/xbs/xbs_0-10build1_amd64.deb"
+	size hasValue "87852"
+	md5sum hasValue "93874986c191626982e67587e778a81d"
+	sha1 hasValue "0baff63fa8f88cdf995540b31a09e0f0399671c5"
+	sha256 hasValue "08c65cb401cdbbb55db3e01f0505f816ed4e5648688aa2c138caca835417fa55"
+	description hasValue "modelos e filmes 3-d de moléculas"
+	descriptionMd5 hasValue "2830012a45c290ad454cc0a98a39680c"
+	depends hasValue "libc6 (>= 2.14), libx11-6"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__xbs,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libx11-6"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__xbs,1,DepAtom__1)
+

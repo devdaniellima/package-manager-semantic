@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology crunch
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__crunch memberOf Package
+	package hasValue "crunch"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/misc"
+	installedSize hasValue "110"
+	maintainer hasValue "Original-Marcio de Souza Oliveira <m.desouza20@gmail.com>"
+	architecture hasValue "amd64"
+	version hasValue "3.6-2"
+	fileName hasValue "pool/universe/c/crunch/crunch_3.6-2_amd64.deb"
+	size hasValue "29672"
+	md5sum hasValue "f4ce71d2793580bdc9090c73373cae99"
+	sha1 hasValue "f8d7ac2ed0f9d01c29d193eb283033c51acc3cff"
+	sha256 hasValue "5f7164137f03b008f37ef1f3faf67fc6c4d10471a110c67efad990f09f823d79"
+	descriptionMd5 hasValue "764338ffe25304dca81453db54262c62"
+	homepage hasValue "http://sourceforge.net/projects/crunch-wordlist/"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__crunch,0,DepAtom__0)
+

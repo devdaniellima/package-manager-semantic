@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python_ptyprocess
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python_ptyprocess memberOf Package
+	package hasValue "python-ptyprocess"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "53"
+	maintainer hasValue "Original-Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.6.0-1ubuntu1"
+	fileName hasValue "pool/universe/p/ptyprocess/python-ptyprocess_0.6.0-1ubuntu1_all.deb"
+	size hasValue "13256"
+	md5sum hasValue "0081c3281c8a70d0e7509b12c211af9a"
+	sha1 hasValue "3aee38662544a9fb3b0d9d493ffa021e6c1ab870"
+	sha256 hasValue "cfa564826f85a33ef669c3bcba2fef34831d3005b9aa19a0e16e25ff331b8d35"
+	descriptionMd5 hasValue "099c01a22c95d56ebe1d372d5909421f"
+	homepage hasValue "https://github.com/pexpect/ptyprocess"
+	depends hasValue "python2:any (<< 2.8), python2:any (>= 2.7~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue "<<"
+	version hasValue "2.8"
+
+relationInstance depends(P0__python_ptyprocess,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue ">="
+	version hasValue "2.7~"
+
+relationInstance depends(P0__python_ptyprocess,1,DepAtom__1)
+

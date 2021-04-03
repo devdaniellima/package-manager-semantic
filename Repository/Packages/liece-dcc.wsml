@@ -1,0 +1,59 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology liece_dcc
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__liece_dcc memberOf Package
+	package hasValue "liece-dcc"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/net"
+	installedSize hasValue "54"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.0+0.20030527cvs-12"
+	fileName hasValue "pool/universe/l/liece/liece-dcc_2.0+0.20030527cvs-12_amd64.deb"
+	size hasValue "9548"
+	md5sum hasValue "e180dd3dd3069c3f2a6f331749a4bf9e"
+	sha1 hasValue "bfce26e827fd3f546cc40733bd31d9135edd12c5"
+	sha256 hasValue "f2929132674983116a651302b5dcb4d235c7b6f651ac438e3092bec19b17410d"
+	descriptionMd5 hasValue "ebd9cdb742901354032a022704fc3c15"
+	depends hasValue "libc6 (>= 2.15), liece (= 2.0+0.20030527cvs-12)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__liece_dcc,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "liece"
+	comparison hasValue "="
+	version hasValue "2.0+0.20030527cvs-12"
+
+relationInstance depends(P0__liece_dcc,1,DepAtom__1)
+

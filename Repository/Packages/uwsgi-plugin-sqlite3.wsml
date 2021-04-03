@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology uwsgi_plugin_sqlite3
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__uwsgi_plugin_sqlite3 memberOf Package
+	package hasValue "uwsgi-plugin-sqlite3"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/web"
+	installedSize hasValue "85"
+	maintainer hasValue "Original-uWSGI packaging team <pkg-uwsgi-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.0.18-11ubuntu1"
+	fileName hasValue "pool/universe/u/uwsgi/uwsgi-plugin-sqlite3_2.0.18-11ubuntu1_amd64.deb"
+	size hasValue "18644"
+	md5sum hasValue "96a42fd5b5dc7462c10db79b02b09fb9"
+	sha1 hasValue "284168d749d283319225d9c1d3b43c172f0bcf2b"
+	sha256 hasValue "d563441b7356405c1f322b1a04588a84d90734420b9f131dadcb2e539ebc9059"
+	descriptionMd5 hasValue "8dd97dba87fb4e4d4e93b258b0ce19bc"
+	homepage hasValue "http://projects.unbit.it/uwsgi/"
+	depends hasValue "uwsgi-core (= 2.0.18-11ubuntu1), libc6 (>= 2.4), libsqlite3-0 (>= 3.5.9)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "uwsgi-core"
+	comparison hasValue "="
+	version hasValue "2.0.18-11ubuntu1"
+
+relationInstance depends(P0__uwsgi_plugin_sqlite3,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__uwsgi_plugin_sqlite3,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libsqlite3-0"
+	comparison hasValue ">="
+	version hasValue "3.5.9"
+
+relationInstance depends(P0__uwsgi_plugin_sqlite3,2,DepAtom__2)
+

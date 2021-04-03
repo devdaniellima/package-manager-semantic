@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology mutrace
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__mutrace memberOf Package
+	package hasValue "mutrace"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "77"
+	maintainer hasValue "Original-Riku Voipio <riku.voipio@linaro.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.2.0-3"
+	fileName hasValue "pool/universe/m/mutrace/mutrace_0.2.0-3_amd64.deb"
+	size hasValue "18154"
+	md5sum hasValue "f9002a5736444479fa3e84df8a3a6d11"
+	sha1 hasValue "5125f4cf8efa380939b30e91c10988af8b9ff120"
+	sha256 hasValue "454400cb6d29a0813f2641eaa11f5a6d349f8ee1198131cc81597d0e54339ebf"
+	descriptionMd5 hasValue "24acb8ced7f49bf23566aa78b26bd00d"
+	homepage hasValue "http://0pointer.de/blog/projects/mutrace.html"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__mutrace,0,DepAtom__0)
+

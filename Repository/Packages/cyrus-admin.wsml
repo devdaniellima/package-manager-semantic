@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology cyrus_admin
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__cyrus_admin memberOf Package
+	package hasValue "cyrus-admin"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/mail"
+	installedSize hasValue "136"
+	maintainer hasValue "Original-Debian Cyrus Team <team+cyrus@tracker.debian.org>"
+	architecture hasValue "all"
+	version hasValue "3.0.13-5"
+	fileName hasValue "pool/universe/c/cyrus-imapd/cyrus-admin_3.0.13-5_all.deb"
+	size hasValue "22204"
+	md5sum hasValue "26b00f8a8d3a2bbbe072992a43ecfbd9"
+	sha1 hasValue "4e874b29b22ad0bfbce07e343cfad1e00da1876d"
+	sha256 hasValue "f11c3879081cbbf478636dfd09c3ec0740915273a46e4d1982d1ccedf1ca6c98"
+	description hasValue "sistema de email Cyrus - ferramentas de administração"
+	descriptionMd5 hasValue "30d4f431154e19f3badd2b37661f7170"
+	homepage hasValue "https://www.cyrusimap.org/"
+	depends hasValue "cyrus-common, libcyrus-imap-perl (>= 3.0.13-5), perl:any"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "cyrus-common"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__cyrus_admin,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libcyrus-imap-perl"
+	comparison hasValue ">="
+	version hasValue "3.0.13-5"
+
+relationInstance depends(P0__cyrus_admin,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "perl:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__cyrus_admin,2,DepAtom__2)
+

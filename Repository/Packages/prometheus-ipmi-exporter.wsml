@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology prometheus_ipmi_exporter
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__prometheus_ipmi_exporter memberOf Package
+	package hasValue "prometheus-ipmi-exporter"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "9743"
+	maintainer hasValue "Original-Debian Go Packaging Team <pkg-go-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.1.0+ds-1"
+	fileName hasValue "pool/universe/p/prometheus-ipmi-exporter/prometheus-ipmi-exporter_1.1.0+ds-1_amd64.deb"
+	size hasValue "2963548"
+	md5sum hasValue "84f7888e0f99e12425de36b79a8f9345"
+	sha1 hasValue "3d148d11afa3f96a0184a5531c69dafcd043a052"
+	sha256 hasValue "044d53cada025f1a622e0d8cab4d10dc6f2492c9e6d0ba4328683a4d24affafa"
+	descriptionMd5 hasValue "5a7234af932b452f2884a49a9f7f0385"
+	homepage hasValue "https://github.com/soundcloud/ipmi_exporter"
+	depends hasValue "freeipmi-tools, libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "freeipmi-tools"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__prometheus_ipmi_exporter,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__prometheus_ipmi_exporter,1,DepAtom__1)
+

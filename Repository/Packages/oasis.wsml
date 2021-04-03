@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology oasis
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__oasis memberOf Package
+	package hasValue "oasis"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/ocaml"
+	installedSize hasValue "5152"
+	maintainer hasValue "Original-Debian OCaml Maintainers <debian-ocaml-maint@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.4.11-1build2"
+	fileName hasValue "pool/universe/o/oasis/oasis_0.4.11-1build2_amd64.deb"
+	size hasValue "1134664"
+	md5sum hasValue "8a933331fd489d383d77550213ff378e"
+	sha1 hasValue "a632d1e42aa769debd1997b01c448753955df88e"
+	sha256 hasValue "03fb53821eae9103128d3bab14f2b568ae7507313e90842263c9dc60f6b0c153"
+	descriptionMd5 hasValue "ba097297129a850fb305e2c0b6623270"
+	homepage hasValue "http://oasis.forge.ocamlcore.org/"
+	depends hasValue "libc6 (>= 2.29), liboasis-ocaml-dev"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__oasis,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "liboasis-ocaml-dev"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__oasis,1,DepAtom__1)
+

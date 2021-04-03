@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology csh
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__csh memberOf Package
+	package hasValue "csh"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/shells"
+	installedSize hasValue "358"
+	maintainer hasValue "Original-Alastair McKinstry <mckinstry@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "20110502-5"
+	provides hasValue "c-shell"
+	fileName hasValue "pool/universe/c/csh/csh_20110502-5_amd64.deb"
+	size hasValue "243256"
+	md5sum hasValue "0e8da4329b0e095306269042f091038e"
+	sha1 hasValue "e8498bf17422c13697a022259b0408fc418be865"
+	sha256 hasValue "24c54d2b1b94cab555b2ebddb3e1d749ac86c9ecf73e3f13be8ce012279d4052"
+	description hasValue "Shell with C-like syntax"
+	descriptionMd5 hasValue "2c5801ae50d85749f7c5723b77605b5d"
+	homepage hasValue "https://www.openbsd.org/cgi-bin/cvsweb/src/bin/csh/"
+	depends hasValue "libbsd0 (>= 0.2.0), libc6 (>= 2.27)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libbsd0"
+	comparison hasValue ">="
+	version hasValue "0.2.0"
+
+relationInstance depends(P0__csh,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.27"
+
+relationInstance depends(P0__csh,1,DepAtom__1)
+

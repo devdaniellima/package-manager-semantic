@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology graywolf
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__graywolf memberOf Package
+	package hasValue "graywolf"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/electronics"
+	installedSize hasValue "1047"
+	maintainer hasValue "Original-Debian Science Maintainers <debian-science-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.1.6-3"
+	fileName hasValue "pool/universe/g/graywolf/graywolf_0.1.6-3_amd64.deb"
+	size hasValue "330392"
+	md5sum hasValue "d62fd3aed46b8813be6498002e78fdb7"
+	sha1 hasValue "b86ce928f3254512630c0c16bf83b310eac3276e"
+	sha256 hasValue "f8d619d04bbefa61decf2d92a0994a83af2bafddbdefc6ef581e917455d16056"
+	descriptionMd5 hasValue "0edd9487336bbca3727ea9c4744a99e6"
+	homepage hasValue "https://github.com/rubund/graywolf"
+	depends hasValue "libycadgraywolf1 (= 0.1.6-3), libc6 (>= 2.29), libgsl23 (>= 2.5)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libycadgraywolf1"
+	comparison hasValue "="
+	version hasValue "0.1.6-3"
+
+relationInstance depends(P0__graywolf,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__graywolf,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libgsl23"
+	comparison hasValue ">="
+	version hasValue "2.5"
+
+relationInstance depends(P0__graywolf,2,DepAtom__2)
+

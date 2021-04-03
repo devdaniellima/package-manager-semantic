@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology termrec
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__termrec memberOf Package
+	package hasValue "termrec"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/misc"
+	installedSize hasValue "100"
+	maintainer hasValue "Original-Adam Borowski <kilobyte@angband.pl>"
+	architecture hasValue "amd64"
+	version hasValue "0.18-2build1"
+	fileName hasValue "pool/universe/t/termrec/termrec_0.18-2build1_amd64.deb"
+	size hasValue "25708"
+	md5sum hasValue "7fef54ffe1402008339692399dc3cfab"
+	sha1 hasValue "0a12c58a8609fbbe07da4b232db305d58caf749a"
+	sha256 hasValue "35d7699f43aabe57d4ecbba5c92389c514f7e74c60c3f9ce07e318d580a2de02"
+	descriptionMd5 hasValue "d82f4b3c8570870be2cbd7ba844dd4b9"
+	homepage hasValue "http://angband.pl/termrec.html"
+	depends hasValue "libtty1 (>= 0.18-2build1), libc6 (>= 2.15)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libtty1"
+	comparison hasValue ">="
+	version hasValue "0.18-2build1"
+
+relationInstance depends(P0__termrec,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__termrec,1,DepAtom__1)
+

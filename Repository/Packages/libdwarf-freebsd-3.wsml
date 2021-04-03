@@ -1,0 +1,59 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libdwarf_freebsd_3
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libdwarf_freebsd_3 memberOf Package
+	package hasValue "libdwarf-freebsd-3"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "80"
+	maintainer hasValue "Original-GNU/kFreeBSD Maintainers <debian-bsd@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "10.3~svn296373-10"
+	fileName hasValue "pool/universe/f/freebsd-libs/libdwarf-freebsd-3_10.3~svn296373-10_amd64.deb"
+	size hasValue "19460"
+	md5sum hasValue "abbf3005625806a0aa0e450d6f41494b"
+	sha1 hasValue "1d1b1ad57374de5e2743274c407417177267cbb5"
+	sha256 hasValue "bf2236fb2917be8e24496bcd0daa48af80169e51920e22778762cc3c8dd0bf7b"
+	descriptionMd5 hasValue "eb3487b1591fce766f514a446ce431f1"
+	depends hasValue "libc6 (>= 2.4), libelf-freebsd-1 (>= 9.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libdwarf_freebsd_3,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libelf-freebsd-1"
+	comparison hasValue ">="
+	version hasValue "9.0"
+
+relationInstance depends(P0__libdwarf_freebsd_3,1,DepAtom__1)
+

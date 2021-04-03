@@ -1,0 +1,59 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology pngmeta
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__pngmeta memberOf Package
+	package hasValue "pngmeta"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/graphics"
+	installedSize hasValue "40"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.11-9"
+	fileName hasValue "pool/universe/p/pngmeta/pngmeta_1.11-9_amd64.deb"
+	size hasValue "13516"
+	md5sum hasValue "44cbefd1ac4db44c14785810c66a771c"
+	sha1 hasValue "6b7c6197da231f408456a8dc50e3731a387997d2"
+	sha256 hasValue "7d2c579838ebc888625fbc6a721fd4593fd3d1724a1945702d527d541b1dc779"
+	descriptionMd5 hasValue "621146b3b6c97b3aad4e90a99cd87080"
+	depends hasValue "libc6 (>= 2.11), libpng16-16 (>= 1.6.2-1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.11"
+
+relationInstance depends(P0__pngmeta,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libpng16-16"
+	comparison hasValue ">="
+	version hasValue "1.6.2-1"
+
+relationInstance depends(P0__pngmeta,1,DepAtom__1)
+

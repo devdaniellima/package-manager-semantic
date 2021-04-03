@@ -1,0 +1,74 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology jblas
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__jblas memberOf Package
+	package hasValue "jblas"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/science"
+	installedSize hasValue "319"
+	maintainer hasValue "Original-Debian Java Maintainers <pkg-java-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.2.4-2build1"
+	fileName hasValue "pool/universe/j/jblas/jblas_1.2.4-2build1_amd64.deb"
+	size hasValue "161980"
+	md5sum hasValue "89e4c8610c3e153bfa14176d8ad401c3"
+	sha1 hasValue "8537dd5ab7873b03a2e7b46e6aecb0ff3c6f9d29"
+	sha256 hasValue "d3806ec40f24d5ba59f2a3ff6ff0cb64922affbc008d2c5ce2e9852c785be94f"
+	descriptionMd5 hasValue "5eedbfbaf0318107a1698b2f21613046"
+	homepage hasValue "http://jblas.org"
+	depends hasValue "libatlas3-base, libc6 (>= 2.4), liblapack3 | liblapack.so.3"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libatlas3-base"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__jblas,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__jblas,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "liblapack3"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__jblas,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "liblapack.so.3"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__jblas,2,DepAtom__3)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology tinycdb
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__tinycdb memberOf Package
+	package hasValue "tinycdb"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "utils"
+	installedSize hasValue "40"
+	maintainer hasValue "Original-Michael Tokarev <mjt@tls.msk.ru>"
+	architecture hasValue "amd64"
+	version hasValue "0.78build1"
+	fileName hasValue "pool/main/t/tinycdb/tinycdb_0.78build1_amd64.deb"
+	size hasValue "12246"
+	md5sum hasValue "2d584032a8e4a63ad2a2e0977b9949f1"
+	sha1 hasValue "da864a82e7a070af45f7c3a9411a7b43288a2c53"
+	sha256 hasValue "a4c5ef97c3d0b72f21e5061f9882edc9e9f36255e13ade7a0b206af4ef6bc300"
+	description hasValue "utilitário para manipular bases de dados constantes (cdb)"
+	descriptionMd5 hasValue "db206835a75a16ebc84290ca026c89ed"
+	depends hasValue "libc6 (>= 2.14), libcdb1"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__tinycdb,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libcdb1"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__tinycdb,1,DepAtom__1)
+

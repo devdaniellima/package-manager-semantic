@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology camo
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__camo memberOf Package
+	package hasValue "camo"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/web"
+	installedSize hasValue "38"
+	maintainer hasValue "Original-Zulip Debian Packaging Team <debian@zulip.com>"
+	architecture hasValue "all"
+	version hasValue "2.3.0+dfsg-1.1"
+	fileName hasValue "pool/universe/c/camo/camo_2.3.0+dfsg-1.1_all.deb"
+	size hasValue "10440"
+	md5sum hasValue "129d8215dea7f22519701f6fcee38686"
+	sha1 hasValue "aa06f70e4ab9013a5b1a486a836eb6e82165fc86"
+	sha256 hasValue "202dfb3d3422ad6bddf825273a2613423c7322e4b3252b231263043a878e2f60"
+	descriptionMd5 hasValue "5adf0a8d6d096e3d96981325d5466fdd"
+	homepage hasValue "https://github.com/atmos/camo"
+	depends hasValue "nodejs (>= 0.10.0), openssl"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "nodejs"
+	comparison hasValue ">="
+	version hasValue "0.10.0"
+
+relationInstance depends(P0__camo,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "openssl"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__camo,1,DepAtom__1)
+

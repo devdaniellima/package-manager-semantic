@@ -1,0 +1,73 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology eldav
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__eldav memberOf Package
+	package hasValue "eldav"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "85"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.8.1-10"
+	fileName hasValue "pool/universe/e/eldav/eldav_0.8.1-10_all.deb"
+	size hasValue "17716"
+	md5sum hasValue "33d14ed3518abc2d566c656ba37316a0"
+	sha1 hasValue "fdccf50a045a6a9b293f241f906c30e1f9860dd1"
+	sha256 hasValue "c03da26182f5f13ca70ce326a759bcb2223caf3c8993dd3fd5dffd1e4ae4b79a"
+	descriptionMd5 hasValue "6c17b623035632c5d9568e8a0ed27167"
+	depends hasValue "emacs | emacsen, apel (>= 10.4+cvs.2003.05.29-1), nd (>= 0.7.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "emacs"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__eldav,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "emacsen"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__eldav,0,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "apel"
+	comparison hasValue ">="
+	version hasValue "10.4+cvs.2003.05.29-1"
+
+relationInstance depends(P0__eldav,1,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "nd"
+	comparison hasValue ">="
+	version hasValue "0.7.0"
+
+relationInstance depends(P0__eldav,2,DepAtom__3)
+

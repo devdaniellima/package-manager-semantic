@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology postgresql_12_pg_qualstats
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__postgresql_12_pg_qualstats memberOf Package
+	package hasValue "postgresql-12-pg-qualstats"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/database"
+	installedSize hasValue "130"
+	maintainer hasValue "Original-Julien Rouhaud <rjuju123@gmail.com>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.9-1"
+	fileName hasValue "pool/universe/p/pg-qualstats/postgresql-12-pg-qualstats_1.0.9-1_amd64.deb"
+	size hasValue "51232"
+	md5sum hasValue "7506dd5246cbd3daa89e43039689afec"
+	sha1 hasValue "be56a0b98cb273fbb81ba1d34e70dbad592f6c80"
+	sha256 hasValue "19aba9d68acad6f854691547155b17f60907314334894e3099234e17b99d2763"
+	descriptionMd5 hasValue "5110285de5b20492efb46822cc4dfaa5"
+	homepage hasValue "https://powa.readthedocs.io/"
+	depends hasValue "libc6 (>= 2.14), postgresql-12"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__postgresql_12_pg_qualstats,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "postgresql-12"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__postgresql_12_pg_qualstats,1,DepAtom__1)
+

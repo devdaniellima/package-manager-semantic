@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology slirp
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__slirp memberOf Package
+	package hasValue "slirp"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "485"
+	maintainer hasValue "Original-Roberto Lumbreras <rover@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:1.0.17-10"
+	fileName hasValue "pool/universe/s/slirp/slirp_1.0.17-10_amd64.deb"
+	size hasValue "169260"
+	md5sum hasValue "2eea9bd5585883b596e253397273c947"
+	sha1 hasValue "4e191cca2cab1cf5f84e6b822a1fe2a67c63a940"
+	sha256 hasValue "fb6eed5745aed6f199696b8ad12325aa5fd33325c44f9cddb41eb475ec244604"
+	description hasValue "Emulador SLIP/PPP usando uma conta shell por linha discada."
+	descriptionMd5 hasValue "faaf73e9c5947f77bc2b583f41b08e56"
+	homepage hasValue "http://slirp.sourceforge.net"
+	depends hasValue "libc6 (>= 2.15)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__slirp,0,DepAtom__0)
+

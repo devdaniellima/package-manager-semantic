@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology tinysshd
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__tinysshd memberOf Package
+	package hasValue "tinysshd"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "159"
+	maintainer hasValue "Original-Jan Mojžíš <jan.mojzis@gmail.com>"
+	architecture hasValue "amd64"
+	version hasValue "20190101-1build1"
+	provides hasValue "ssh-server"
+	fileName hasValue "pool/universe/t/tinyssh/tinysshd_20190101-1build1_amd64.deb"
+	size hasValue "54636"
+	md5sum hasValue "af4a8a2878cb71ad4faa0f2740bd4fd0"
+	sha1 hasValue "78ed0144b610bb9fb49da57fe86b30798acf1a12"
+	sha256 hasValue "ff655cfbc17c8579baa0ab1d72bbcafe4099b1706af030eb3f84f05ae31bec7b"
+	descriptionMd5 hasValue "85d6c4280c44d4d5354c1038edfbb880"
+	homepage hasValue "https://mojzis.com/software/tinyssh/"
+	depends hasValue "libc6 (>= 2.16)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.16"
+
+relationInstance depends(P0__tinysshd,0,DepAtom__0)
+

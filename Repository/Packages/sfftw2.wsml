@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology sfftw2
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__sfftw2 memberOf Package
+	package hasValue "sfftw2"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "585"
+	maintainer hasValue "Original-Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.1.5-4.2build2"
+	provides hasValue "fftw2-single"
+	conflicts hasValue "fftw2 (<= 2.1.3-10), fftw2-single"
+	fileName hasValue "pool/universe/f/fftw/sfftw2_2.1.5-4.2build2_amd64.deb"
+	size hasValue "188940"
+	md5sum hasValue "15f70a0a87d536554c963b6301fba994"
+	sha1 hasValue "ec1a00b93a4bd408e192af8e0076b2c715dc7ea7"
+	sha256 hasValue "d39020cf0d09fa5728d700523e6c4fa28cf37926078ae5ba659b1ed5dfbad092"
+	descriptionMd5 hasValue "6658deaf0ac7f822634b0fd0b08e0e31"
+	homepage hasValue "http://fftw.org"
+	depends hasValue "libc6 (>= 2.14), libopenmpi3"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__sfftw2,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libopenmpi3"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__sfftw2,1,DepAtom__1)
+

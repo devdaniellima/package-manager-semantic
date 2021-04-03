@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gap_io
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gap_io memberOf Package
+	package hasValue "gap-io"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/math"
+	installedSize hasValue "1430"
+	maintainer hasValue "Original-Debian Science Maintainers <debian-science-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "4.7.0+ds-1ubuntu1"
+	provides hasValue "gap-pkg-io"
+	fileName hasValue "pool/universe/g/gap-io/gap-io_4.7.0+ds-1ubuntu1_amd64.deb"
+	size hasValue "381020"
+	md5sum hasValue "1a58ea9407ac343077846526bd67266c"
+	sha1 hasValue "6d54b92b1939cce56d8231c997413b0907705e19"
+	sha256 hasValue "b5f4ebc02ff26a44147e357ff65166565c3a258e9756c59907e0668748c99daf"
+	descriptionMd5 hasValue "aa88ef4366830f577a7abbdf340344ed"
+	homepage hasValue "https://www.gap-system.org/Packages/io.html"
+	depends hasValue "libc6 (>= 2.15), gap (>= 4r10p2-1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__gap_io,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "gap"
+	comparison hasValue ">="
+	version hasValue "4r10p2-1"
+
+relationInstance depends(P0__gap_io,1,DepAtom__1)
+

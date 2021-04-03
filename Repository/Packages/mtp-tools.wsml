@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology mtp_tools
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__mtp_tools memberOf Package
+	package hasValue "mtp-tools"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "335"
+	maintainer hasValue "Original-Alessio Treglia <alessio@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.1.17-3"
+	fileName hasValue "pool/universe/libm/libmtp/mtp-tools_1.1.17-3_amd64.deb"
+	size hasValue "34648"
+	md5sum hasValue "7ba43afafd21d5cad9417cbb4f753e6c"
+	sha1 hasValue "18ff7fe1b4f0970502473c93d978d7a6027cb0a2"
+	sha256 hasValue "c0aad7200822cd301a62e42f7a2beda03f545391417d96707a725ae454da227e"
+	description hasValue "Media Transfer Protocol (MTP) library tools"
+	descriptionMd5 hasValue "b21df6970cd0c308c870019c053e3080"
+	homepage hasValue "http://libmtp.sourceforge.net/"
+	depends hasValue "libc6 (>= 2.14), libmtp9 (>= 1.1.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__mtp_tools,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libmtp9"
+	comparison hasValue ">="
+	version hasValue "1.1.0"
+
+relationInstance depends(P0__mtp_tools,1,DepAtom__1)
+

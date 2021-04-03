@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology wine_binfmt
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__wine_binfmt memberOf Package
+	package hasValue "wine-binfmt"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/otherosfs"
+	installedSize hasValue "104"
+	maintainer hasValue "Original-Debian Wine Party <debian-wine@lists.debian.org>"
+	architecture hasValue "all"
+	version hasValue "5.0-3ubuntu1"
+	fileName hasValue "pool/universe/w/wine/wine-binfmt_5.0-3ubuntu1_all.deb"
+	size hasValue "10280"
+	md5sum hasValue "d19ee075f0b1bea2d888879e0e380e61"
+	sha1 hasValue "3b1c69fe0bfea5e01c2591583b3ba6d09674b081"
+	sha256 hasValue "938e3f357541fdfb6ad2c4e9e684fd60a5244d5c3e0ab46cd9a842339d4295f1"
+	description hasValue "Register Wine as the interpreter for Windows executables"
+	descriptionMd5 hasValue "4bba22bb33c88475063baee9894f3f54"
+	homepage hasValue "https://www.winehq.org"
+	depends hasValue "wine, binfmt-support"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "wine"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__wine_binfmt,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "binfmt-support"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__wine_binfmt,1,DepAtom__1)
+

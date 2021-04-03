@@ -1,0 +1,70 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology info
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__info memberOf Package
+	package hasValue "info"
+	packageSource hasValue Source__S1
+	priority hasValue "standard"
+	section hasValue "doc"
+	installedSize hasValue "812"
+	maintainer hasValue "Original-Debian TeX maintainers <debian-tex-maint@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "6.7.0.dfsg.2-5"
+	replaces hasValue "texinfo (<< 4.7-2), texinfo-doc-nonfree"
+	provides hasValue "info-browser"
+	fileName hasValue "pool/main/t/texinfo/info_6.7.0.dfsg.2-5_amd64.deb"
+	size hasValue "202556"
+	md5sum hasValue "5cf56654cd389032e2b094c7d468347f"
+	sha1 hasValue "c3044f498d5adb31c6f56201b93dcdb02c19c22b"
+	sha256 hasValue "af402e2cecb7640daf9e7b5344cb551401d3759968fb3760fab800f9da649127"
+	description hasValue "Visualizador independente de documentacao do GNU Info"
+	descriptionMd5 hasValue "98475bbce3804b8961f7886328b1baea"
+	homepage hasValue "https://www.gnu.org/software/texinfo/"
+	depends hasValue "libc6 (>= 2.15), libtinfo6 (>= 6), install-info"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__info,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libtinfo6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__info,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "install-info"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__info,2,DepAtom__2)
+

@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology go_internal
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__go_internal memberOf Package
+	package hasValue "go-internal"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "18908"
+	maintainer hasValue "Original-Debian Go Packaging Team <team+pkg-go@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.5.2-1"
+	fileName hasValue "pool/universe/g/golang-github-rogpeppe-go-internal/go-internal_1.5.2-1_amd64.deb"
+	size hasValue "4490892"
+	md5sum hasValue "40cbe312d77c32dfea516110220a1ac4"
+	sha1 hasValue "86012fba30f18f9489b43a287b22d8bc12fc1ead"
+	sha256 hasValue "2443320f4427347eb2d08c5d20dd083dead08adb2ae05f12daf070740fe75856"
+	descriptionMd5 hasValue "ad1524a66a3041c36f10fa689303ed26"
+	homepage hasValue "https://github.com/rogpeppe/go-internal"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__go_internal,0,DepAtom__0)
+

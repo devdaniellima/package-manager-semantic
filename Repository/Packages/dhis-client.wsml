@@ -1,0 +1,77 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology dhis_client
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__dhis_client memberOf Package
+	package hasValue "dhis-client"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "70"
+	maintainer hasValue "Original-Guus Sliepen <guus@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "5.5-5"
+	replaces hasValue "dhid (<< 5.1-5)"
+	provides hasValue "dhid"
+	conflicts hasValue "dhid (<< 5.1-5)"
+	fileName hasValue "pool/universe/d/dhis-client/dhis-client_5.5-5_amd64.deb"
+	size hasValue "24950"
+	md5sum hasValue "8df50b3733550f8e51f1a260542ab28d"
+	sha1 hasValue "ae792bc936fbe865390d0c752bcc72b2eaefc744"
+	sha256 hasValue "22083326af06ba6fa7a7ea74667f131987d53e8d8d2a21f1816240a97a74814b"
+	descriptionMd5 hasValue "2f7383bcfc42f0c60f1fcaf0d1baa02d"
+	homepage hasValue "http://www.dhis.org/"
+	depends hasValue "libc6 (>= 2.15), libgmp10, debconf (>= 0.5.00) | debconf-2.0"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__dhis_client,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgmp10"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__dhis_client,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "debconf"
+	comparison hasValue ">="
+	version hasValue "0.5.00"
+
+relationInstance depends(P0__dhis_client,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "debconf-2.0"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__dhis_client,2,DepAtom__3)
+

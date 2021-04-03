@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology lmemory
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__lmemory memberOf Package
+	package hasValue "lmemory"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/games"
+	installedSize hasValue "517"
+	maintainer hasValue "Original-Debian Games Team <pkg-games-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.6c-9"
+	fileName hasValue "pool/universe/l/lmemory/lmemory_0.6c-9_amd64.deb"
+	size hasValue "116848"
+	md5sum hasValue "1f19d5bce603081a081b98ab29ba7e3c"
+	sha1 hasValue "9d47ef6bd60c90786558ffddff3b63391fc4b989"
+	sha256 hasValue "8e728d63e535e392efc09271106016fc0fda538ca52f4445d945644f1dde861f"
+	description hasValue "jogo infantil baseado no jogo da Memória"
+	descriptionMd5 hasValue "1f752f8e17c3337df0bf91c67a007a25"
+	homepage hasValue "https://tracker.debian.org/pkg/lmemory"
+	depends hasValue "libc6 (>= 2.4), libglib2.0-0 (>= 2.12.0), libgtk2.0-0 (>= 2.8.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__lmemory,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libglib2.0-0"
+	comparison hasValue ">="
+	version hasValue "2.12.0"
+
+relationInstance depends(P0__lmemory,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libgtk2.0-0"
+	comparison hasValue ">="
+	version hasValue "2.8.0"
+
+relationInstance depends(P0__lmemory,2,DepAtom__2)
+

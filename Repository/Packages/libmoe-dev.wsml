@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libmoe_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libmoe_dev memberOf Package
+	package hasValue "libmoe-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "16"
+	maintainer hasValue "Original-TANIGUCHI Takaki <takaki@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.5.8-5"
+	replaces hasValue "libiso2mb-dev, libmoe1.5 (<< 1.5.8-3)"
+	conflicts hasValue "libiso2mb-dev"
+	fileName hasValue "pool/universe/libm/libmoe/libmoe-dev_1.5.8-5_amd64.deb"
+	size hasValue "4012"
+	md5sum hasValue "e651be141f6245e030575840fcd97bbd"
+	sha1 hasValue "4fa271f8870d5c3be5fab8bbc6ff8e2d439210e7"
+	sha256 hasValue "08bf031b82b5a7553cd2c3dc054720b6cf36d7a32f5405577cd958baa69e45b1"
+	descriptionMd5 hasValue "565fd817ce34396e6f3fb5fcf9575c6a"
+	depends hasValue "libmoe1.5 (= 1.5.8-5), libc6-dev"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libmoe1.5"
+	comparison hasValue "="
+	version hasValue "1.5.8-5"
+
+relationInstance depends(P0__libmoe_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6-dev"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libmoe_dev,1,DepAtom__1)
+

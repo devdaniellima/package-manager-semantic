@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology capstats
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__capstats memberOf Package
+	package hasValue "capstats"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "41"
+	maintainer hasValue "Original-Raúl Benencia <rul@kalgan.cc>"
+	architecture hasValue "amd64"
+	version hasValue "0.22-2build1"
+	fileName hasValue "pool/universe/c/capstats/capstats_0.22-2build1_amd64.deb"
+	size hasValue "12464"
+	md5sum hasValue "28ffbd7291668fc5a4d3e000c19d5a98"
+	sha1 hasValue "c0a9f5510e9d3fa1af2cda1656c5a630e1f8b38b"
+	sha256 hasValue "11a604bc7d02042d1234010c80089b9fe76acd64ac2ed45db999edb5de63e660"
+	descriptionMd5 hasValue "abe7fcfcd8198f0d40721432dcd0894a"
+	homepage hasValue "https://www.bro.org/sphinx/components/capstats/README.html"
+	depends hasValue "libc6 (>= 2.15), libpcap0.8 (>= 0.9.8), libstdc++6 (>= 4.1.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__capstats,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libpcap0.8"
+	comparison hasValue ">="
+	version hasValue "0.9.8"
+
+relationInstance depends(P0__capstats,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "4.1.1"
+
+relationInstance depends(P0__capstats,2,DepAtom__2)
+

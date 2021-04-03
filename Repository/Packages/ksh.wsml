@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ksh
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ksh memberOf Package
+	package hasValue "ksh"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/shells"
+	installedSize hasValue "2735"
+	maintainer hasValue "Original-Anuradha Weeraman <aweeraman@gmail.com>"
+	architecture hasValue "amd64"
+	version hasValue "2020.0.0-5"
+	replaces hasValue "ksh93"
+	fileName hasValue "pool/universe/k/ksh/ksh_2020.0.0-5_amd64.deb"
+	size hasValue "797536"
+	md5sum hasValue "7f8c9ea372499577ae63fc6a5554d56a"
+	sha1 hasValue "7389ea2b8da63b25d466effc4488eaad7f93bf4d"
+	sha256 hasValue "c5f30e975d477516b9402e9722d226acca0d870faacdcf6a8022c32c35db045f"
+	descriptionMd5 hasValue "e98b5fe1ee9d24124de027e5329ef780"
+	homepage hasValue "https://github.com/att/ast"
+	depends hasValue "binfmt-support, libc6 (>= 2.29)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "binfmt-support"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ksh,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__ksh,1,DepAtom__1)
+

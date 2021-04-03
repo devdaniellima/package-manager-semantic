@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python3_pg8000
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python3_pg8000 memberOf Package
+	package hasValue "python3-pg8000"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "124"
+	maintainer hasValue "Original-Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.10.6-2build1"
+	fileName hasValue "pool/universe/p/pg8000/python3-pg8000_1.10.6-2build1_all.deb"
+	size hasValue "23552"
+	md5sum hasValue "154333ed67441f004ed04a1e28a87fb4"
+	sha1 hasValue "f4030356b883a15fa409bec519dfaf4c3a44e25b"
+	sha256 hasValue "7f804eb4bc0a5197e63f522c1d44a975d0341ea6fb8c3c186bbac762ef894e1a"
+	descriptionMd5 hasValue "5577f66df3813227bdece762190e1dd6"
+	homepage hasValue "https://github.com/mfenniak/pg8000"
+	depends hasValue "python3-six (>= 1.10.0), python3:any"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3-six"
+	comparison hasValue ">="
+	version hasValue "1.10.0"
+
+relationInstance depends(P0__python3_pg8000,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__python3_pg8000,1,DepAtom__1)
+

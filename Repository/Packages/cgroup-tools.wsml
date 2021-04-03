@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology cgroup_tools
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__cgroup_tools memberOf Package
+	package hasValue "cgroup-tools"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "336"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.41-10"
+	replaces hasValue "cgroup-bin (<< 0.40~rc1-3~)"
+	fileName hasValue "pool/universe/libc/libcgroup/cgroup-tools_0.41-10_amd64.deb"
+	size hasValue "66188"
+	md5sum hasValue "f7bf50ca6ce9d2748d597430090a000f"
+	sha1 hasValue "22044ee1c978b9788343e7390efda04d1224a091"
+	sha256 hasValue "d00023a2a06f07798ad6ee1db7dc1f56e8a832496fe0fe6f4a10bf1034514bde"
+	description hasValue "control and monitor control groups (tools)"
+	descriptionMd5 hasValue "31bbde716d49909064e8fe618de2abd5"
+	homepage hasValue "http://libcg.sourceforge.net/"
+	depends hasValue "libc6 (>= 2.15), libcgroup1 (>= 0.40~rc1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__cgroup_tools,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libcgroup1"
+	comparison hasValue ">="
+	version hasValue "0.40~rc1"
+
+relationInstance depends(P0__cgroup_tools,1,DepAtom__1)
+

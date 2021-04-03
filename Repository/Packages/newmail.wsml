@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology newmail
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__newmail memberOf Package
+	package hasValue "newmail"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/mail"
+	installedSize hasValue "37"
+	maintainer hasValue "Original-Martin Schulze <joey@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.5-2build1"
+	fileName hasValue "pool/universe/n/newmail/newmail_0.5-2build1_amd64.deb"
+	size hasValue "13424"
+	md5sum hasValue "c078d7d7c9bed89607136b65a2e68122"
+	sha1 hasValue "f96f79f355a850d781993210188e40cad6aefe12"
+	sha256 hasValue "6016978b42d7f875577ecca3594a5c9441a9cc1fb6dd3c7645fd1e3c8affe6fb"
+	descriptionMd5 hasValue "49b0168ce625e668ce3031036ad2f541"
+	homepage hasValue "http://www.infodrom.org/projects/newmail/"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__newmail,0,DepAtom__0)
+

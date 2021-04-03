@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology remote_logon_config_agent
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__remote_logon_config_agent memberOf Package
+	package hasValue "remote-logon-config-agent"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "33"
+	maintainer hasValue "Original-Debian Remote Maintainers <pkg-remote-team@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.10-1"
+	fileName hasValue "pool/universe/r/remote-logon-config-agent/remote-logon-config-agent_0.10-1_all.deb"
+	size hasValue "7168"
+	md5sum hasValue "80078114a30d7150bbc2ebdac538f8e7"
+	sha1 hasValue "3d253c0888d4435296995031e2bf590677c629b1"
+	sha256 hasValue "0178ace0d757dc110e9964d9dae1bdf0292cc2ccef3e9127eb1e50dab1de670e"
+	descriptionMd5 hasValue "aecec4a606577858d81a18a7f98e559a"
+	homepage hasValue "https://github.com/ArcticaProject/remote-logon-config-agent"
+	depends hasValue "python3:any (>= 3.3.2-2~), python3-pycurl"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ">="
+	version hasValue "3.3.2-2~"
+
+relationInstance depends(P0__remote_logon_config_agent,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3-pycurl"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__remote_logon_config_agent,1,DepAtom__1)
+

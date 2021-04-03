@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology vacation
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__vacation memberOf Package
+	package hasValue "vacation"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/mail"
+	installedSize hasValue "50"
+	maintainer hasValue "Original-Phil Brooke <pjb@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.3.3"
+	replaces hasValue "bsdmainutils (<= 4.8)"
+	conflicts hasValue "bsdmainutils (<= 4.8)"
+	fileName hasValue "pool/universe/v/vacation/vacation_3.3.3_amd64.deb"
+	size hasValue "15704"
+	md5sum hasValue "3637dd11b90a675e1b796156d4b10163"
+	sha1 hasValue "adb11714bd0806f8a139d6ddca4d3cf0b8c72de3"
+	sha256 hasValue "e58c76d9d3e16d280b58d98865919b19594b37734a5fc2d20022579814ea37b1"
+	description hasValue "Auto-resposta para e-mail"
+	descriptionMd5 hasValue "5f22c904d74e4098bb56b9b4f9b22b2b"
+	depends hasValue "libc6 (>= 2.4), libdb5.3"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__vacation,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libdb5.3"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__vacation,1,DepAtom__1)
+

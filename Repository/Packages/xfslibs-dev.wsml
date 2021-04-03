@@ -1,0 +1,75 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology xfslibs_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__xfslibs_dev memberOf Package
+	package hasValue "xfslibs-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "libdevel"
+	installedSize hasValue "251"
+	maintainer hasValue "Original-XFS Development Team <linux-xfs@vger.kernel.org>"
+	architecture hasValue "amd64"
+	version hasValue "5.3.0-1ubuntu2"
+	fileName hasValue "pool/main/x/xfsprogs/xfslibs-dev_5.3.0-1ubuntu2_amd64.deb"
+	size hasValue "71744"
+	md5sum hasValue "82ecdd79e681f7c20b8b4f017223aedb"
+	sha1 hasValue "dd354b0abeab590188b17c870877be40191898c0"
+	sha256 hasValue "7f661c1d6c1045421e13e4a2617b7ad1c6c2b158d7497475e508724cd77e1f35"
+	description hasValue "XFS filesystem-specific static libraries and headers"
+	descriptionMd5 hasValue "8fd1710c9afb5a76b6200c23b3b170cf"
+	homepage hasValue "https://xfs.wiki.kernel.org/"
+	depends hasValue "libc6-dev | libc-dev, uuid-dev, xfsprogs (>= 3.0.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6-dev"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__xfslibs_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc-dev"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__xfslibs_dev,0,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "uuid-dev"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__xfslibs_dev,1,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "xfsprogs"
+	comparison hasValue ">="
+	version hasValue "3.0.0"
+
+relationInstance depends(P0__xfslibs_dev,2,DepAtom__3)
+

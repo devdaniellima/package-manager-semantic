@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology webext_tbsync
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__webext_tbsync memberOf Package
+	package hasValue "webext-tbsync"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/mail"
+	installedSize hasValue "1919"
+	maintainer hasValue "Original-Debian Mozilla Extension Maintainers <pkg-mozext-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.11-1"
+	fileName hasValue "pool/universe/t/tbsync/webext-tbsync_2.11-1_all.deb"
+	size hasValue "763020"
+	md5sum hasValue "26ce2b85dcf766e33d971255a76ca380"
+	sha1 hasValue "9ae9b70725c534040b6062e0a15d06b5613ee9dd"
+	sha256 hasValue "efb379de659e98426b68fa2eb28423ddce0d863750a5ddaaeeb3440252b452ae"
+	descriptionMd5 hasValue "b7e47c52624edc36833ec726e5ec2f03"
+	homepage hasValue "https://github.com/jobisoft/TbSync"
+	depends hasValue "thunderbird (>= 1:68.2), lightning (>= 1:68.2) | xul-ext-lightning"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "thunderbird"
+	comparison hasValue ">="
+	version hasValue "1:68.2"
+
+relationInstance depends(P0__webext_tbsync,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "lightning"
+	comparison hasValue ">="
+	version hasValue "1:68.2"
+
+relationInstance depends(P0__webext_tbsync,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "xul-ext-lightning"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__webext_tbsync,1,DepAtom__2)
+

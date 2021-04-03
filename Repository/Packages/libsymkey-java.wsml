@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libsymkey_java
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libsymkey_java memberOf Package
+	package hasValue "libsymkey-java"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/java"
+	installedSize hasValue "55"
+	maintainer hasValue "Original-Debian FreeIPA Team <pkg-freeipa-devel@alioth-lists.debian.net>"
+	architecture hasValue "all"
+	version hasValue "10.8.3-1ubuntu1"
+	fileName hasValue "pool/universe/d/dogtag-pki/libsymkey-java_10.8.3-1ubuntu1_all.deb"
+	size hasValue "13212"
+	md5sum hasValue "ca2024ff415478238a7d7d96e5073b44"
+	sha1 hasValue "b3c5ef4b360076e7572ec2f4da2de7869163ebde"
+	sha256 hasValue "dfe33decd1ae21a6753d5147059bc60d8ad892f082fd13631a3d7fc1702b98c9"
+	descriptionMd5 hasValue "f75ad87c5e9141f1c08b4b9b37aafd36"
+	homepage hasValue "http://pki.fedoraproject.org"
+	depends hasValue "libjss-java, libsymkey-jni (>= 10.8.3-1ubuntu1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libjss-java"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libsymkey_java,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libsymkey-jni"
+	comparison hasValue ">="
+	version hasValue "10.8.3-1ubuntu1"
+
+relationInstance depends(P0__libsymkey_java,1,DepAtom__1)
+

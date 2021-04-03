@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology rdnssd
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__rdnssd memberOf Package
+	package hasValue "rdnssd"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "62"
+	maintainer hasValue "Original-Bernhard Schmidt <berni@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.4-1ubuntu1"
+	conflicts hasValue "network-manager"
+	fileName hasValue "pool/universe/n/ndisc6/rdnssd_1.0.4-1ubuntu1_amd64.deb"
+	size hasValue "15900"
+	md5sum hasValue "849ad6c0bca37591157a14b36b0ec989"
+	sha1 hasValue "939a7445bd5b97948b3ad2d287ed025533bf291f"
+	sha256 hasValue "722c4693c2cbfe2018ade725d5ccdf7b4b469c5c238f2611e48585d161ea26fe"
+	descriptionMd5 hasValue "7f6af1fa6e3e8a6e206f1e1d3aa62701"
+	homepage hasValue "http://www.remlab.net/ndisc6/"
+	depends hasValue "libc6 (>= 2.4), lsb-base (>= 3.0-6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__rdnssd,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "lsb-base"
+	comparison hasValue ">="
+	version hasValue "3.0-6"
+
+relationInstance depends(P0__rdnssd,1,DepAtom__1)
+

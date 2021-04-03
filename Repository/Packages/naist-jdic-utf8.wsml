@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology naist_jdic_utf8
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__naist_jdic_utf8 memberOf Package
+	package hasValue "naist-jdic-utf8"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/misc"
+	installedSize hasValue "28"
+	maintainer hasValue "Original-Natural Language Processing (Japanese) <team+pkg-nlp-ja@tracker.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1:0.4.3-21"
+	provides hasValue "chasen-dic"
+	fileName hasValue "pool/universe/n/naist-jdic/naist-jdic-utf8_0.4.3-21_all.deb"
+	size hasValue "3692"
+	md5sum hasValue "fdb29fd4d18a31a8ce3d02d6b9acf204"
+	sha1 hasValue "6dfc990896bd4e2cfd1e5c6c2d7bee85d65b6e9b"
+	sha256 hasValue "fca5aa5b487114973c3af0630f6e43ee7371e951fc1226023cbbf58d2c9df063"
+	descriptionMd5 hasValue "5faa0e4d0df778d62d31029dcc5c3c48"
+	homepage hasValue "https://osdn.net/projects/naist-jdic/"
+	depends hasValue "chasen-dictutils (>= 2.3.2), naist-jdic (= 1:0.4.3-21)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "chasen-dictutils"
+	comparison hasValue ">="
+	version hasValue "2.3.2"
+
+relationInstance depends(P0__naist_jdic_utf8,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "naist-jdic"
+	comparison hasValue "="
+	version hasValue "1:0.4.3-21"
+
+relationInstance depends(P0__naist_jdic_utf8,1,DepAtom__1)
+

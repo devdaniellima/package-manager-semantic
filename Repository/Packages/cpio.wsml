@@ -1,0 +1,56 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology cpio
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__cpio memberOf Package
+	package hasValue "cpio"
+	packageSource hasValue Source__S1
+	priority hasValue "standard"
+	section hasValue "utils"
+	installedSize hasValue "368"
+	maintainer hasValue "Original-Anibal Monsalve Salazar <anibal@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.13+dfsg-2"
+	replaces hasValue "cpio-mt"
+	conflicts hasValue "cpio-mt, mt-st (<< 0.6)"
+	fileName hasValue "pool/main/c/cpio/cpio_2.13+dfsg-2_amd64.deb"
+	size hasValue "86044"
+	md5sum hasValue "12754f4081c671b77f70eb84436a676f"
+	sha1 hasValue "b0a6f052b482946c2647de64d0bb71d135d9f216"
+	sha256 hasValue "367560e7a5f757d75c48e67821ee3120abdc76873172392964bff93d089d72a6"
+	description hasValue "cpio da GNU -- um programa para gerenciar agregados de arquivos"
+	descriptionMd5 hasValue "5f492bf139a41f29fd2d6fcadf43606e"
+	homepage hasValue "https://www.gnu.org/software/cpio/"
+	depends hasValue "libc6 (>= 2.17)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.17"
+
+relationInstance depends(P0__cpio,0,DepAtom__0)
+

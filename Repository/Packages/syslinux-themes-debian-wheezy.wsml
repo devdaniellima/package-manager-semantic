@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology syslinux_themes_debian_wheezy
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__syslinux_themes_debian_wheezy memberOf Package
+	package hasValue "syslinux-themes-debian-wheezy"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/misc"
+	installedSize hasValue "256"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "all"
+	version hasValue "12-4"
+	provides hasValue "syslinux-theme"
+	fileName hasValue "pool/universe/s/syslinux-themes-debian/syslinux-themes-debian-wheezy_12-4_all.deb"
+	size hasValue "35386"
+	md5sum hasValue "88938cd5a4e328e77ec4ab2f717cf77f"
+	sha1 hasValue "82f020764a5f7e9ff71e8dc57175d74ba5a81897"
+	sha256 hasValue "52882a81f3ac506247bf29356d49f4a0247690f06a751c6550eee70f0b92ea4c"
+	description hasValue "collection of boot loaders (debian-wheezy theme)"
+	descriptionMd5 hasValue "2aba9b3e266d5bb39cd0c72d9443d9e5"
+	depends hasValue "memtest86+, syslinux-common"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "memtest86+"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__syslinux_themes_debian_wheezy,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "syslinux-common"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__syslinux_themes_debian_wheezy,1,DepAtom__1)
+

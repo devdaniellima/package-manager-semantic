@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gnuit
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gnuit memberOf Package
+	package hasValue "gnuit"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "1248"
+	maintainer hasValue "Original-Ian Beckwith <ianb@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "4.9.5-3build3"
+	fileName hasValue "pool/universe/g/gnuit/gnuit_4.9.5-3build3_amd64.deb"
+	size hasValue "250404"
+	md5sum hasValue "be279db29db5f8503a09b61249c09056"
+	sha1 hasValue "bcbc432b74a133a136cec605b5835d5f799ef5f9"
+	sha256 hasValue "b1519449b373653832bc37b96233b36661b1eeec1327ea8a39bc5c5136456b6f"
+	descriptionMd5 hasValue "c4ab7066d6551e3d3830aa94838f8fcf"
+	homepage hasValue "http://www.gnu.org/software/gnuit/"
+	depends hasValue "libc6 (>= 2.17), libtinfo6 (>= 6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.17"
+
+relationInstance depends(P0__gnuit,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libtinfo6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__gnuit,1,DepAtom__1)
+

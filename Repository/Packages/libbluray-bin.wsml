@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libbluray_bin
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libbluray_bin memberOf Package
+	package hasValue "libbluray-bin"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "56"
+	maintainer hasValue "Original-Debian Multimedia Maintainers <debian-multimedia@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:1.2.0-1"
+	fileName hasValue "pool/universe/libb/libbluray/libbluray-bin_1.2.0-1_amd64.deb"
+	size hasValue "13208"
+	md5sum hasValue "011e6a45ffbe8bd994b87e3ce70ebbd9"
+	sha1 hasValue "2b0cd22f37eb0f52de2acc014397ef21b9276c70"
+	sha256 hasValue "df3ee34c6c85108afbfd3d626f8dca3660a64c634ec76200a251de32f0bd8124"
+	description hasValue "Blu-ray disc playback support library (tools)"
+	descriptionMd5 hasValue "86a606cc18261bb244b282564b079c54"
+	homepage hasValue "http://www.videolan.org/developers/libbluray.html"
+	depends hasValue "libbluray2 (= 1:1.2.0-1), libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libbluray2"
+	comparison hasValue "="
+	version hasValue "1:1.2.0-1"
+
+relationInstance depends(P0__libbluray_bin,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libbluray_bin,1,DepAtom__1)
+

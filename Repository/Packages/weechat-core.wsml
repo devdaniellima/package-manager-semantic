@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology weechat_core
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__weechat_core memberOf Package
+	package hasValue "weechat-core"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "4024"
+	maintainer hasValue "Original-Emmanuel Bouthenot <kolter@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.8-1"
+	fileName hasValue "pool/universe/w/weechat/weechat-core_2.8-1_amd64.deb"
+	size hasValue "757444"
+	md5sum hasValue "ae3862cb886b2eae6421429df207305b"
+	sha1 hasValue "1896d60f4ebaaab4b5d12824227eb2cc6d69b7a9"
+	sha256 hasValue "32d0e73ae1ec909edf4679132d9e290d20a64246ddb09e7789725163c176a38e"
+	descriptionMd5 hasValue "190e3257327c71dfff2337b947edab14"
+	homepage hasValue "https://weechat.org/"
+	depends hasValue "libc6 (>= 2.28), libgcrypt20 (>= 1.8.0), libgnutls30 (>= 3.6.12)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.28"
+
+relationInstance depends(P0__weechat_core,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgcrypt20"
+	comparison hasValue ">="
+	version hasValue "1.8.0"
+
+relationInstance depends(P0__weechat_core,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libgnutls30"
+	comparison hasValue ">="
+	version hasValue "3.6.12"
+
+relationInstance depends(P0__weechat_core,2,DepAtom__2)
+

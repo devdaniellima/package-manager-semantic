@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology default_mysql_server
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__default_mysql_server memberOf Package
+	package hasValue "default-mysql-server"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/database"
+	installedSize hasValue "10"
+	maintainer hasValue "Original-Debian MySQL Maintainers <pkg-mysql-maint@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.0.5ubuntu2"
+	fileName hasValue "pool/universe/m/mysql-defaults/default-mysql-server_1.0.5ubuntu2_all.deb"
+	size hasValue "3712"
+	md5sum hasValue "e3a3dbec081e74d5ade6b884a1926747"
+	sha1 hasValue "fd5235e0dffe3245f276033568326033ec1ca932"
+	sha256 hasValue "aa45e8b0fb6ae7f3e9c8ef48ce4a96efdbd4ab4d384aa9931a01875d65431fe2"
+	description hasValue "MySQL database server binaries and system database setup (metapackage)"
+	descriptionMd5 hasValue "9550a987565ff8657fc9f699871795c3"
+	depends hasValue "mysql-server-8.0"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "mysql-server-8.0"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__default_mysql_server,0,DepAtom__0)
+

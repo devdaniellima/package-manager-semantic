@@ -1,0 +1,74 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology myproxy_admin
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__myproxy_admin memberOf Package
+	package hasValue "myproxy-admin"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "233"
+	maintainer hasValue "Original-Mattias Ellert <mattias.ellert@physics.uu.se>"
+	architecture hasValue "amd64"
+	version hasValue "6.2.6-1"
+	fileName hasValue "pool/universe/m/myproxy/myproxy-admin_6.2.6-1_amd64.deb"
+	size hasValue "41548"
+	md5sum hasValue "57384fac0b6b40295e54a703acf4ad6c"
+	sha1 hasValue "7c9ff61b163a5571b60ebe8436796a028ce1f591"
+	sha256 hasValue "0bd1149bbe9ea3a8c89a19ca143baa28c56e131a31c9f859f02f74060d8f700f"
+	descriptionMd5 hasValue "9c24b287266c12bdf15e4151cb59aeaa"
+	homepage hasValue "http://grid.ncsa.illinois.edu/myproxy/"
+	depends hasValue "libmyproxy6 (= 6.2.6-1), myproxy-server (= 6.2.6-1), libc6 (>= 2.4), perl:any"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libmyproxy6"
+	comparison hasValue "="
+	version hasValue "6.2.6-1"
+
+relationInstance depends(P0__myproxy_admin,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "myproxy-server"
+	comparison hasValue "="
+	version hasValue "6.2.6-1"
+
+relationInstance depends(P0__myproxy_admin,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__myproxy_admin,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "perl:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__myproxy_admin,3,DepAtom__3)
+

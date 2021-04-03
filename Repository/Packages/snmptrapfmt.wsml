@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology snmptrapfmt
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__snmptrapfmt memberOf Package
+	package hasValue "snmptrapfmt"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "63"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.16"
+	fileName hasValue "pool/universe/s/snmptrapfmt/snmptrapfmt_1.16_amd64.deb"
+	size hasValue "17316"
+	md5sum hasValue "1d43186d43973c0b5172a2751de5adf7"
+	sha1 hasValue "125bfdcc7652d9d012d5d8453f4374c0592799a0"
+	sha256 hasValue "7fa3d5db97de75803761f535dc4ae270c531c088c63124f3379b78b922010ecd"
+	descriptionMd5 hasValue "32f9646072a34d1bd46a47745c904f0f"
+	homepage hasValue "https://alioth.debian.org/projects/snmptrapfmt/"
+	depends hasValue "snmpd, libc6 (>= 2.15)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "snmpd"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__snmptrapfmt,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__snmptrapfmt,1,DepAtom__1)
+

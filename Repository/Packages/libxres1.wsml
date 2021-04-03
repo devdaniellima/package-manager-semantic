@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libxres1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libxres1 memberOf Package
+	package hasValue "libxres1"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libs"
+	installedSize hasValue "35"
+	maintainer hasValue "Original-Debian X Strike Force <debian-x@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2:1.2.0-4"
+	fileName hasValue "pool/main/libx/libxres/libxres1_1.2.0-4_amd64.deb"
+	size hasValue "7584"
+	md5sum hasValue "4d0ccee6c6d5531f70443cbef0aa01e8"
+	sha1 hasValue "3ff992a0f4ddb556f4308fbeea83240697a7b1da"
+	sha256 hasValue "60ff9501a2a94975a2fbd4147bee98399b9eaec2332767e31180b7b948b0133c"
+	description hasValue "X11 Resource extension library"
+	descriptionMd5 hasValue "d9399de89592de94c1d00cfcb2c850b3"
+	homepage hasValue "https://www.x.org"
+	depends hasValue "libc6 (>= 2.4), libx11-6 (>= 2:1.6.0), libxext6"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libxres1,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libx11-6"
+	comparison hasValue ">="
+	version hasValue "2:1.6.0"
+
+relationInstance depends(P0__libxres1,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libxext6"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libxres1,2,DepAtom__2)
+

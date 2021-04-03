@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology tcl_itcl4
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__tcl_itcl4 memberOf Package
+	package hasValue "tcl-itcl4"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "355"
+	maintainer hasValue "Original-Debian Tcl/Tk Packagers <pkg-tcltk-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "4.2.0-1"
+	fileName hasValue "pool/universe/i/itcl4/tcl-itcl4_4.2.0-1_amd64.deb"
+	size hasValue "110344"
+	md5sum hasValue "95708b1f8f6e7bb2bf8276c45a948d47"
+	sha1 hasValue "9181bb0ad9361978d9fa00aadb61de7efb13c656"
+	sha256 hasValue "f00bea73ae570fa6b006f7bc8064ced24b39c998b5de92b3eaa98a57905669ce"
+	descriptionMd5 hasValue "643c8a563963f7e6a7188ff456a6032d"
+	homepage hasValue "http://incrtcl.sourceforge.net/"
+	depends hasValue "libtcl, libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libtcl"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__tcl_itcl4,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__tcl_itcl4,1,DepAtom__1)
+

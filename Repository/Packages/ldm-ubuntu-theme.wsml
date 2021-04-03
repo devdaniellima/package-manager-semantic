@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ldm_ubuntu_theme
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ldm_ubuntu_theme memberOf Package
+	package hasValue "ldm-ubuntu-theme"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/misc"
+	installedSize hasValue "410"
+	maintainer hasValue "Ubuntu Core Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	architecture hasValue "all"
+	version hasValue "2:2.0.47"
+	provides hasValue "ldm-themes"
+	conflicts hasValue "ldm-ubuntu-themes (<= 2:2.0.40.1)"
+	fileName hasValue "pool/universe/l/ldm-ubuntu-themes/ldm-ubuntu-theme_2.0.47_all.deb"
+	size hasValue "349698"
+	md5sum hasValue "5f50ee76d22c0c54eabe45af13ee60e3"
+	sha1 hasValue "71842e05d2d39397c37df21685fafdc2781dc580"
+	sha256 hasValue "0efc28d934181b1e290fe9a063f14cd17c156d8367b95669f7cc7fa907973f28"
+	descriptionMd5 hasValue "2facb1227f5099161294dac67bad23bb"
+	depends hasValue "human-theme, ldm (>= 2:2.0.6-1ubuntu1), ttf-ubuntu-font-family"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "human-theme"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ldm_ubuntu_theme,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "ldm"
+	comparison hasValue ">="
+	version hasValue "2:2.0.6-1ubuntu1"
+
+relationInstance depends(P0__ldm_ubuntu_theme,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "ttf-ubuntu-font-family"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ldm_ubuntu_theme,2,DepAtom__2)
+

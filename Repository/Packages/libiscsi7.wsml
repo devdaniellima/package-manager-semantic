@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libiscsi7
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libiscsi7 memberOf Package
+	package hasValue "libiscsi7"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libs"
+	installedSize hasValue "203"
+	maintainer hasValue "Original-Michael Tokarev <mjt@tls.msk.ru>"
+	architecture hasValue "amd64"
+	version hasValue "1.18.0-2"
+	fileName hasValue "pool/main/libi/libiscsi/libiscsi7_1.18.0-2_amd64.deb"
+	size hasValue "63944"
+	md5sum hasValue "96bc6e791e12b5c60bd8bca83e71368a"
+	sha1 hasValue "95f2898bf48d38a35ac00d21a94e5d8baea0e1b9"
+	sha256 hasValue "f8fdf9ac426b0200271b93d7873af74593b2ce0be7fc1e9565799d7dd8c69a81"
+	descriptionMd5 hasValue "064625df53bd4a3770b555b02abbc38d"
+	homepage hasValue "https://github.com/sahlberg/libiscsi"
+	depends hasValue "libc6 (>= 2.14), libibverbs1 (>= 1.1.6), librdmacm1 (>= 1.0.15)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libiscsi7,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libibverbs1"
+	comparison hasValue ">="
+	version hasValue "1.1.6"
+
+relationInstance depends(P0__libiscsi7,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "librdmacm1"
+	comparison hasValue ">="
+	version hasValue "1.0.15"
+
+relationInstance depends(P0__libiscsi7,2,DepAtom__2)
+

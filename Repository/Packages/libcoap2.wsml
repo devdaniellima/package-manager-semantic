@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libcoap2
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libcoap2 memberOf Package
+	package hasValue "libcoap2"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "623"
+	maintainer hasValue "Original-Debian IoT Maintainers <debian-iot-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "4.2.1-1"
+	fileName hasValue "pool/universe/libc/libcoap2/libcoap2_4.2.1-1_amd64.deb"
+	size hasValue "146576"
+	md5sum hasValue "33b2e80f28599ed303a6ae7a78b08eba"
+	sha1 hasValue "272650fa349b99e1852a453b789c0c7ca004677c"
+	sha256 hasValue "fdd5c2e4f19025fb204fe1b348a9ccb9639392725efab609ba767173a73552a2"
+	descriptionMd5 hasValue "e64261d9df58c64aa5e089e22d5a1d4e"
+	homepage hasValue "https://libcoap.net/"
+	depends hasValue "libc6 (>= 2.17), libgnutls30 (>= 3.6.6), libssl1.1 (>= 1.1.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.17"
+
+relationInstance depends(P0__libcoap2,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgnutls30"
+	comparison hasValue ">="
+	version hasValue "3.6.6"
+
+relationInstance depends(P0__libcoap2,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libssl1.1"
+	comparison hasValue ">="
+	version hasValue "1.1.1"
+
+relationInstance depends(P0__libcoap2,2,DepAtom__2)
+

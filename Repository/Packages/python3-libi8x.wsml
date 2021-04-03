@@ -1,0 +1,74 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python3_libi8x
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python3_libi8x memberOf Package
+	package hasValue "python3-libi8x"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "142"
+	maintainer hasValue "Original-Matthias Klose <doko@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.0.5-1build2"
+	fileName hasValue "pool/universe/libi/libi8x/python3-libi8x_0.0.5-1build2_amd64.deb"
+	size hasValue "40324"
+	md5sum hasValue "fe0fb16761d3ee77e88fa305a28003ea"
+	sha1 hasValue "36730063abe6647e8e1840811276bc10187f8560"
+	sha256 hasValue "78a7cfe415455767e4f5a370fe8fc3162d925dee1b6944608f349de0bfa4aa04"
+	descriptionMd5 hasValue "c34ccd1ed07f18ffb36ffee361c05383"
+	homepage hasValue "https://infinitynotes.org/wiki/Infinity"
+	depends hasValue "libi8x0 (= 0.0.5-1build2), libc6 (>= 2.17), python3 (<< 3.9), python3 (>= 3.8~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libi8x0"
+	comparison hasValue "="
+	version hasValue "0.0.5-1build2"
+
+relationInstance depends(P0__python3_libi8x,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.17"
+
+relationInstance depends(P0__python3_libi8x,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "python3"
+	comparison hasValue "<<"
+	version hasValue "3.9"
+
+relationInstance depends(P0__python3_libi8x,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "python3"
+	comparison hasValue ">="
+	version hasValue "3.8~"
+
+relationInstance depends(P0__python3_libi8x,3,DepAtom__3)
+

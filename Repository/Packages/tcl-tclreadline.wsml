@@ -1,0 +1,70 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology tcl_tclreadline
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__tcl_tclreadline memberOf Package
+	package hasValue "tcl-tclreadline"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "305"
+	maintainer hasValue "Original-Debian Tcl/Tk Packagers <pkg-tcltk-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.3.8-1"
+	replaces hasValue "tclreadline"
+	provides hasValue "tclreadline"
+	conflicts hasValue "tclreadline"
+	fileName hasValue "pool/universe/t/tclreadline/tcl-tclreadline_2.3.8-1_amd64.deb"
+	size hasValue "50800"
+	md5sum hasValue "8762c39688f4057e8903f23979820b4f"
+	sha1 hasValue "f6a006f6d5046616389659e8662de2f0f365f1f5"
+	sha256 hasValue "7f8f3cb3ffc348c6954d9a05eb9a7052c96004bb0af16a8690c26498ac043ff1"
+	descriptionMd5 hasValue "a596fe7b3cbb5229f415e9694c2e2927"
+	homepage hasValue "https://github.com/flightaware/tclreadline"
+	depends hasValue "libc6 (>= 2.4), libreadline8 (>= 6.0), tcl (>= 8.6.0-2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__tcl_tclreadline,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libreadline8"
+	comparison hasValue ">="
+	version hasValue "6.0"
+
+relationInstance depends(P0__tcl_tclreadline,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "tcl"
+	comparison hasValue ">="
+	version hasValue "8.6.0-2"
+
+relationInstance depends(P0__tcl_tclreadline,2,DepAtom__2)
+

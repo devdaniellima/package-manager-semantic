@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology linux_modules_nvidia_450_lowlatency_hwe_20Dot04
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__linux_modules_nvidia_450_lowlatency_hwe_20Dot04 memberOf Package
+	package hasValue "linux-modules-nvidia-450-lowlatency-hwe-20.04"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "restricted/kernel"
+	installedSize hasValue "23"
+	maintainer hasValue "Canonical Kernel Team <kernel-team@lists.ubuntu.com>"
+	architecture hasValue "amd64"
+	version hasValue "5.8.0-45.51~20.04.1+1"
+	provides hasValue "nvidia-dkms-450 (= 450.102.04-0ubuntu0.20.10.1), nvidia-prebuilt-kernel"
+	fileName hasValue "pool/restricted/l/linux-restricted-modules-hwe-5.8/linux-modules-nvidia-450-lowlatency-hwe-20.04_5.8.0-45.51~20.04.1+1_amd64.deb"
+	size hasValue "5520"
+	md5sum hasValue "4a75f5b273310f04b8fe75a04f1beb81"
+	sha1 hasValue "4ff3f42de2b80cafb09f6e1d1ecac30e573b515e"
+	sha256 hasValue "16ff9ce3017ea20c78b8ecb2532442786bc0b74c80ec93c90e596cfdcc0acfaf"
+	sha512 hasValue "c2e2dbde5fa9139328c2f8a52834fcf5d2af561ed1b8b020bb93d916a24863cfa86d5f64288094f020339af4bb9d26a4587b5e60fe60bb624d9466c8c99c6952"
+	descriptionMd5 hasValue "708267b28ac58e32a4f877203f8b74c3"
+	depends hasValue "linux-modules-nvidia-450-5.8.0-45-lowlatency (= 5.8.0-45.51~20.04.1+1), nvidia-kernel-common-450 (<= 450.102.04-1), nvidia-kernel-common-450 (>= 450.102.04)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "linux-modules-nvidia-450-5.8.0-45-lowlatency"
+	comparison hasValue "="
+	version hasValue "5.8.0-45.51~20.04.1+1"
+
+relationInstance depends(P0__linux_modules_nvidia_450_lowlatency_hwe_20Dot04,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "nvidia-kernel-common-450"
+	comparison hasValue "<="
+	version hasValue "450.102.04-1"
+
+relationInstance depends(P0__linux_modules_nvidia_450_lowlatency_hwe_20Dot04,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "nvidia-kernel-common-450"
+	comparison hasValue ">="
+	version hasValue "450.102.04"
+
+relationInstance depends(P0__linux_modules_nvidia_450_lowlatency_hwe_20Dot04,2,DepAtom__2)
+

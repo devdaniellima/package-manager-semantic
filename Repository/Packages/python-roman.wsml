@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python_roman
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python_roman memberOf Package
+	package hasValue "python-roman"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "33"
+	maintainer hasValue "Original-Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.0.0-3build1"
+	fileName hasValue "pool/universe/p/python-roman/python-roman_2.0.0-3build1_all.deb"
+	size hasValue "8636"
+	md5sum hasValue "eff560651f89e38ec713cc8f6dc557aa"
+	sha1 hasValue "8e97d1d9a3231f417594d6d1a2ec298ea06467b0"
+	sha256 hasValue "30c5ba26b95ff68bf2aa56018098e3a2098df62f682a8eb70acb3b1ee72356b6"
+	description hasValue "módulo para geração/análise de algarismos romanos para Python 2"
+	descriptionMd5 hasValue "0c888324b96636a57132cb7e90495993"
+	homepage hasValue "https://pypi.python.org/pypi/roman/"
+	depends hasValue "python2:any (<< 2.8), python2:any (>= 2.7~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue "<<"
+	version hasValue "2.8"
+
+relationInstance depends(P0__python_roman,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue ">="
+	version hasValue "2.7~"
+
+relationInstance depends(P0__python_roman,1,DepAtom__1)
+

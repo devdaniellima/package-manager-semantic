@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology cloudprint_service
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__cloudprint_service memberOf Package
+	package hasValue "cloudprint-service"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "38"
+	maintainer hasValue "Original-David Steele <steele@debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.14-13"
+	provides hasValue "cloudprintd"
+	fileName hasValue "pool/universe/c/cloudprint/cloudprint-service_0.14-13_all.deb"
+	size hasValue "6320"
+	md5sum hasValue "b628652b3bdf02eda21527720d578618"
+	sha1 hasValue "5fea56e9ab91e1ecc6f9f4a23140446dd2c13adc"
+	sha256 hasValue "1aa5b1181a6a8f98cdaff6f5637aedfcfecc5047368cf23f87bf647646aecca0"
+	descriptionMd5 hasValue "1591878b5dcacd33e2e935480f4eb86e"
+	homepage hasValue "https://pypi.python.org/pypi/cloudprint/"
+	depends hasValue "cloudprint, systemd"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "cloudprint"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__cloudprint_service,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "systemd"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__cloudprint_service,1,DepAtom__1)
+

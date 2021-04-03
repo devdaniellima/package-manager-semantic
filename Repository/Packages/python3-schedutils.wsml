@@ -1,0 +1,75 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python3_schedutils
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python3_schedutils memberOf Package
+	package hasValue "python3-schedutils"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "44"
+	maintainer hasValue "Original-Stewart Ferguson <stew@ferg.aero>"
+	architecture hasValue "amd64"
+	version hasValue "0.6-2build2"
+	replaces hasValue "python-schedutils (<< 0.6-2)"
+	fileName hasValue "pool/universe/p/python-schedutils/python3-schedutils_0.6-2build2_amd64.deb"
+	size hasValue "10604"
+	md5sum hasValue "2568e35350e578b12072e290511ea7ce"
+	sha1 hasValue "3585e500ccb7e7223a5ba9df69be6e5b6f45634c"
+	sha256 hasValue "3059d0a35c00508eea43cf622a8b8c65e0b6da96af146e510bf949b3b9bb45cb"
+	descriptionMd5 hasValue "fa8d1db1f0a1766f4009f0ff0e456702"
+	homepage hasValue "https://rt.wiki.kernel.org/index.php/Tuna"
+	depends hasValue "python3 (<< 3.9), python3 (>= 3.8~), python3:any, libc6 (>= 2.7)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3"
+	comparison hasValue "<<"
+	version hasValue "3.9"
+
+relationInstance depends(P0__python3_schedutils,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3"
+	comparison hasValue ">="
+	version hasValue "3.8~"
+
+relationInstance depends(P0__python3_schedutils,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__python3_schedutils,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__python3_schedutils,3,DepAtom__3)
+

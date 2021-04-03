@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology medcon
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__medcon memberOf Package
+	package hasValue "medcon"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/graphics"
+	installedSize hasValue "50"
+	maintainer hasValue "Original-Debian Med Packaging Team <debian-med-packaging@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.16.1+dfsg-1"
+	fileName hasValue "pool/universe/x/xmedcon/medcon_0.16.1+dfsg-1_amd64.deb"
+	size hasValue "20100"
+	md5sum hasValue "0deaf0a5a3f70aca3a899eec0624701b"
+	sha1 hasValue "cb2f23b03973908e8b93a88a6846a21a301dc155"
+	sha256 hasValue "63fe23b4d216261201714a7c7f2ea16b3dba67219659a188fb1c54fcf6c7b894"
+	description hasValue "ferramenta de conversão de imagens médicas (DICOM, ECAT, ...)"
+	descriptionMd5 hasValue "06576e7dcc31c6ed74b250627939542b"
+	homepage hasValue "http://xmedcon.sourceforge.net/"
+	depends hasValue "libc6 (>= 2.4), libmdc3 (>= 0.16.1+dfsg)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__medcon,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libmdc3"
+	comparison hasValue ">="
+	version hasValue "0.16.1+dfsg"
+
+relationInstance depends(P0__medcon,1,DepAtom__1)
+

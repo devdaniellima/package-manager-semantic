@@ -1,0 +1,66 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology textdraw
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__textdraw memberOf Package
+	package hasValue "textdraw"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/graphics"
+	installedSize hasValue "47"
+	maintainer hasValue "Original-Rene Engelhard <rene@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.2+ds-0+nmu1build3"
+	fileName hasValue "pool/universe/t/textdraw/textdraw_0.2+ds-0+nmu1build3_amd64.deb"
+	size hasValue "14868"
+	md5sum hasValue "dc16fd90fd6be310d664f4b8dfb23be6"
+	sha1 hasValue "c931fceb7ecdfd6e03ce351300cb9357eee75cc4"
+	sha256 hasValue "b92a5567a55f308d38d635408c88dd2fb8e5b083103bbf6356dec0f7628452c7"
+	descriptionMd5 hasValue "7ff4a0337763e04a3516048d5a28c471"
+	depends hasValue "libc6 (>= 2.7), libncurses6 (>= 6), libtinfo6 (>= 6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__textdraw,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libncurses6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__textdraw,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libtinfo6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__textdraw,2,DepAtom__2)
+

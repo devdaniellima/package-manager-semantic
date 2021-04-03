@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology unionfs_fuse
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__unionfs_fuse memberOf Package
+	package hasValue "unionfs-fuse"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/misc"
+	installedSize hasValue "143"
+	maintainer hasValue "Original-Bernd Schubert <bernd.schubert@fastmail.fm>"
+	architecture hasValue "amd64"
+	version hasValue "1.0-1ubuntu2"
+	fileName hasValue "pool/universe/u/unionfs-fuse/unionfs-fuse_1.0-1ubuntu2_amd64.deb"
+	size hasValue "48692"
+	md5sum hasValue "e18cf9944ce9fe4b09ba9753475785ea"
+	sha1 hasValue "361c7b46aad482501924dfdf29aa93e57c4a3709"
+	sha256 hasValue "01baf5418e533fd023715304941c7b5d2017896fe2521334ead05b4c8cea2c2c"
+	descriptionMd5 hasValue "3cf52592fe13c3064499e6556589fea2"
+	homepage hasValue "https://github.com/rpodgorny/unionfs-fuse"
+	depends hasValue "libc6 (>= 2.7), libfuse2 (>= 2.8), fuse"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__unionfs_fuse,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libfuse2"
+	comparison hasValue ">="
+	version hasValue "2.8"
+
+relationInstance depends(P0__unionfs_fuse,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "fuse"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__unionfs_fuse,2,DepAtom__2)
+

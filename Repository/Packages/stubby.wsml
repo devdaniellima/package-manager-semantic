@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology stubby
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__stubby memberOf Package
+	package hasValue "stubby"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/net"
+	installedSize hasValue "114"
+	maintainer hasValue "Original-getdns packagers <getdns@packages.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.5.1-1build1"
+	replaces hasValue "getdns-utils (<< 1.2.1-1~)"
+	fileName hasValue "pool/universe/g/getdns/stubby_1.5.1-1build1_amd64.deb"
+	size hasValue "31088"
+	md5sum hasValue "4046949722c845dbdefa8d84a552604a"
+	sha1 hasValue "76a13932f0734dac15c83416f6813c9214edf2e8"
+	sha256 hasValue "949069817a3c912ce30260408711c9384c2f64e9ca79a23b22e13cf0a1434f3f"
+	descriptionMd5 hasValue "bc98f2b43cb916f83d10bc959a8bf9b0"
+	homepage hasValue "https://getdnsapi.net/"
+	depends hasValue "libgetdns10 (= 1.5.1-1build1), libc6 (>= 2.14), libyaml-0-2"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libgetdns10"
+	comparison hasValue "="
+	version hasValue "1.5.1-1build1"
+
+relationInstance depends(P0__stubby,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__stubby,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libyaml-0-2"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__stubby,2,DepAtom__2)
+

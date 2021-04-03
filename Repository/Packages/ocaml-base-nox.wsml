@@ -1,0 +1,56 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ocaml_base_nox
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ocaml_base_nox memberOf Package
+	package hasValue "ocaml-base-nox"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "2351"
+	maintainer hasValue "Original-Debian OCaml Maintainers <debian-ocaml-maint@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "4.08.1-8"
+	replaces hasValue "ocaml-base (<< 4.08), ocaml-nox (<< 4.08)"
+	provides hasValue "libseq-ocaml, libstdlib-shims-ocaml, libuchar-ocaml, ocaml-base-nox-4.08.1"
+	fileName hasValue "pool/universe/o/ocaml/ocaml-base-nox_4.08.1-8_amd64.deb"
+	size hasValue "510124"
+	md5sum hasValue "413267e857c1f01f40bda730edf2d9d8"
+	sha1 hasValue "466fe598b726a1d426b3a0c4bfae5ba9a11962b9"
+	sha256 hasValue "ff5c66aa8c08db66214f7715c42e87f29f6b28ea634c9613d98074bea80a1ef5"
+	description hasValue "Runtime system for OCaml bytecode executables (no X)"
+	descriptionMd5 hasValue "bb24dbfee7bb8f2ca497066cab6a4f5f"
+	homepage hasValue "https://ocaml.org/"
+	depends hasValue "libc6 (>= 2.29)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__ocaml_base_nox,0,DepAtom__0)
+

@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology bruteforce_luks
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__bruteforce_luks memberOf Package
+	package hasValue "bruteforce-luks"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "41"
+	maintainer hasValue "Original-Paulo Roberto Alves de Oliveira (aka kretcheu) <kretcheu@gmail.com>"
+	architecture hasValue "amd64"
+	version hasValue "1.3.1-1"
+	fileName hasValue "pool/universe/b/bruteforce-luks/bruteforce-luks_1.3.1-1_amd64.deb"
+	size hasValue "12952"
+	md5sum hasValue "e577d1524a4a6ca95fa301019a0d8afc"
+	sha1 hasValue "e62bd59cbefb8deb6433d7b67a78483d47bba330"
+	sha256 hasValue "49ff0bc7320b97c80d35e5bfb73346ba87abecea59f373ba642b4d03709c487e"
+	description hasValue "tenta encontrar a senha de um volume LUKS encriptado"
+	descriptionMd5 hasValue "7200d3fb2c51ec59b9c10d40efe5b1d8"
+	homepage hasValue "https://github.com/glv2/bruteforce-luks"
+	depends hasValue "libc6 (>= 2.7), libcryptsetup12 (>= 2:1.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__bruteforce_luks,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libcryptsetup12"
+	comparison hasValue ">="
+	version hasValue "2:1.4"
+
+relationInstance depends(P0__bruteforce_luks,1,DepAtom__1)
+

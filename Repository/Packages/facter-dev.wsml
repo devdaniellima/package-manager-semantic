@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology facter_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__facter_dev memberOf Package
+	package hasValue "facter-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "119"
+	maintainer hasValue "Original-Puppet Package Maintainers <pkg-puppet-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.11.0-4"
+	fileName hasValue "pool/universe/f/facter/facter-dev_3.11.0-4_amd64.deb"
+	size hasValue "16784"
+	md5sum hasValue "94e23ddcf627be685d69bfb7a13adbcf"
+	sha1 hasValue "990b4a4b24ff00e20321e2ac8031f39dfe8d6183"
+	sha256 hasValue "bd9d102ec9ed021ec980e17aec9caff4e25ee79c04651af9b19892999a7360bd"
+	descriptionMd5 hasValue "f0300b0d3b0180f50268167734094386"
+	homepage hasValue "https://github.com/puppetlabs/facter"
+	depends hasValue "libfacter3.11.0 (= 3.11.0-4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libfacter3.11.0"
+	comparison hasValue "="
+	version hasValue "3.11.0-4"
+
+relationInstance depends(P0__facter_dev,0,DepAtom__0)
+

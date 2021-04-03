@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology intel_mkl_cluster
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__intel_mkl_cluster memberOf Package
+	package hasValue "intel-mkl-cluster"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "multiverse/metapackages"
+	installedSize hasValue "34"
+	maintainer hasValue "Original-Debian Science Maintainers <debian-science-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2020.0.166-1"
+	fileName hasValue "pool/multiverse/i/intel-mkl/intel-mkl-cluster_2020.0.166-1_amd64.deb"
+	size hasValue "7544"
+	md5sum hasValue "914c027ae6eaa0823cda8cd975f255e8"
+	sha1 hasValue "12aa6cd8fbcd4fefac455803613672ce0fbb6381"
+	sha256 hasValue "bfb5ddd856d23258d2917859ef07c161f1c544c3e1679a89947e39a5df450ae0"
+	descriptionMd5 hasValue "7d993e3fecb68de9c41f4c0680cf8a78"
+	homepage hasValue "https://software.intel.com/en-us/mkl"
+	depends hasValue "intel-mkl (= 2020.0.166-1), libmkl-meta-cluster (= 2020.0.166-1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "intel-mkl"
+	comparison hasValue "="
+	version hasValue "2020.0.166-1"
+
+relationInstance depends(P0__intel_mkl_cluster,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libmkl-meta-cluster"
+	comparison hasValue "="
+	version hasValue "2020.0.166-1"
+
+relationInstance depends(P0__intel_mkl_cluster,1,DepAtom__1)
+

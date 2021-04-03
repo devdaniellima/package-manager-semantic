@@ -1,0 +1,75 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology stealth
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__stealth memberOf Package
+	package hasValue "stealth"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "300"
+	maintainer hasValue "Original-Frank B. Brokken <f.b.brokken@rug.nl>"
+	architecture hasValue "amd64"
+	version hasValue "4.02.00-3"
+	fileName hasValue "pool/universe/s/stealth/stealth_4.02.00-3_amd64.deb"
+	size hasValue "95444"
+	md5sum hasValue "0532b8d464e823316bb1a4d0e720e515"
+	sha1 hasValue "67a86ce41cd1fdbf3b0223a19108b7c08f12cca9"
+	sha256 hasValue "447ed18f953bb7365fe7fc25943e1603328c00445d7cb50896e6cd3e3f8c88a5"
+	description hasValue "verificador de integridade de arquivos stealthy"
+	descriptionMd5 hasValue "5bc700bb5b7b5d6ee7d8fdc9665b6a25"
+	homepage hasValue "https://fbb-git.gitlab.io/stealth"
+	depends hasValue "libbobcat5 (>= 5.02.00), libc6 (>= 2.14), libgcc-s1 (>= 3.0), libstdc++6 (>= 9)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libbobcat5"
+	comparison hasValue ">="
+	version hasValue "5.02.00"
+
+relationInstance depends(P0__stealth,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__stealth,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libgcc-s1"
+	comparison hasValue ">="
+	version hasValue "3.0"
+
+relationInstance depends(P0__stealth,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "9"
+
+relationInstance depends(P0__stealth,3,DepAtom__3)
+

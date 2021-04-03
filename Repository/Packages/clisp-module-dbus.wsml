@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology clisp_module_dbus
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__clisp_module_dbus memberOf Package
+	package hasValue "clisp-module-dbus"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/lisp"
+	installedSize hasValue "1660"
+	maintainer hasValue "Original-Debian Common Lisp Team <debian-common-lisp@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:2.49.20180218+really2.49.92-3build3"
+	fileName hasValue "pool/universe/c/clisp/clisp-module-dbus_2.49.20180218+really2.49.92-3build3_amd64.deb"
+	size hasValue "94040"
+	md5sum hasValue "e7d7e91a308acb35b36b2f3c5bd6cee8"
+	sha1 hasValue "cd25ed9a93872a928d8ea32f53f037e5d0889c30"
+	sha256 hasValue "49de77aa213a2ca61d61a29694329a94a0c19d461185a51f7996965db01d9e75"
+	descriptionMd5 hasValue "e5d9e87c24db82c4b7487ccf1a070bac"
+	homepage hasValue "http://www.clisp.org/"
+	depends hasValue "libdbus-1-3 (>= 1.9.14), clisp (= 1:2.49.20180218+really2.49.92-3build3)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libdbus-1-3"
+	comparison hasValue ">="
+	version hasValue "1.9.14"
+
+relationInstance depends(P0__clisp_module_dbus,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "clisp"
+	comparison hasValue "="
+	version hasValue "1:2.49.20180218+really2.49.92-3build3"
+
+relationInstance depends(P0__clisp_module_dbus,1,DepAtom__1)
+

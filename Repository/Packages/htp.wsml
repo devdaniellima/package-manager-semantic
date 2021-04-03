@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology htp
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__htp memberOf Package
+	package hasValue "htp"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/web"
+	installedSize hasValue "653"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.19-7"
+	fileName hasValue "pool/universe/h/htp/htp_1.19-7_amd64.deb"
+	size hasValue "116928"
+	md5sum hasValue "52fe284a9538fe0511230f590dcadd5a"
+	sha1 hasValue "11bf2d8a7be97addd3c53fd8950426edbca82fee"
+	sha256 hasValue "5f96a2db4e32bc7121786d4edc434e8cf8d22ed61fb3951f0289504e27ba17de"
+	description hasValue "nice HTML pre-processor"
+	descriptionMd5 hasValue "1ad44ca426dd3dfee5d9aca48ccc3333"
+	homepage hasValue "http://htp.sourceforge.net"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__htp,0,DepAtom__0)
+

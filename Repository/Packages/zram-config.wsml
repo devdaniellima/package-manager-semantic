@@ -1,0 +1,59 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology zram_config
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__zram_config memberOf Package
+	package hasValue "zram-config"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/utils"
+	installedSize hasValue "54"
+	maintainer hasValue "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	architecture hasValue "all"
+	version hasValue "0.5"
+	fileName hasValue "pool/universe/z/zram-config/zram-config_0.5_all.deb"
+	size hasValue "4312"
+	md5sum hasValue "59e06d82fad8b1f3701296d1cab765dc"
+	sha1 hasValue "bd4215a39b070aca4a164b23ffb9c00f3845d92e"
+	sha256 hasValue "0510dcb3fddcf4cd383b2356ef8322fda89fab85b4954988708dc10418229efb"
+	descriptionMd5 hasValue "ee0297843455ae53aeb89e88f31cdbf8"
+	depends hasValue "init-system-helpers (>= 1.18~), lsb-base (>= 4.1+Debian11ubuntu7)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "init-system-helpers"
+	comparison hasValue ">="
+	version hasValue "1.18~"
+
+relationInstance depends(P0__zram_config,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "lsb-base"
+	comparison hasValue ">="
+	version hasValue "4.1+Debian11ubuntu7"
+
+relationInstance depends(P0__zram_config,1,DepAtom__1)
+

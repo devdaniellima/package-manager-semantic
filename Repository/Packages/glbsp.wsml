@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology glbsp
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__glbsp memberOf Package
+	package hasValue "glbsp"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "34"
+	maintainer hasValue "Original-Jonathan Dowland <jmtd@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.24-4"
+	provides hasValue "doom-node-builder"
+	fileName hasValue "pool/universe/g/glbsp/glbsp_2.24-4_amd64.deb"
+	size hasValue "9596"
+	md5sum hasValue "07c1c3bccc326f93ceaf30536067b7d0"
+	sha1 hasValue "8fcf69ee2658087af203ce3aacba8f1c26291474"
+	sha256 hasValue "9f240a0a5d612bfc7235d7ca9cee3f130265202bd86d3bc9be67031703823060"
+	descriptionMd5 hasValue "a501ce22d47de8a8e772c8c1416eab84"
+	depends hasValue "libc6 (>= 2.4), libglbsp3 (>= 2.24)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__glbsp,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libglbsp3"
+	comparison hasValue ">="
+	version hasValue "2.24"
+
+relationInstance depends(P0__glbsp,1,DepAtom__1)
+

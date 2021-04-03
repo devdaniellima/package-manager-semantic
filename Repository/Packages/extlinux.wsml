@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology extlinux
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__extlinux memberOf Package
+	package hasValue "extlinux"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "351"
+	maintainer hasValue "Original-Debian CD Group <debian-cd@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3:6.04~git20190206.bf6db5b4+dfsg1-2"
+	fileName hasValue "pool/universe/s/syslinux/extlinux_6.04~git20190206.bf6db5b4+dfsg1-2_amd64.deb"
+	size hasValue "143652"
+	md5sum hasValue "777d918e3c9a10c324c449f0e70ae126"
+	sha1 hasValue "d8d598dbc1373b64ec1e53d5de384f9935fa9431"
+	sha256 hasValue "132e3052f0c7b1b746ab79b7785c6235385ac1887449ab6a99a4646ca00172d9"
+	description hasValue "coleção de carregadores de boot (sistemas de arquivos Linux ext2/ext3/ext4, btrfs e xfs)"
+	descriptionMd5 hasValue "414e5877200f459574bf4120db85ccc3"
+	homepage hasValue "http://www.syslinux.org/"
+	depends hasValue "libc6 (>= 2.8)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.8"
+
+relationInstance depends(P0__extlinux,0,DepAtom__0)
+

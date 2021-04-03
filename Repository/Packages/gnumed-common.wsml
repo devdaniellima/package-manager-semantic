@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gnumed_common
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gnumed_common memberOf Package
+	package hasValue "gnumed-common"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/misc"
+	installedSize hasValue "650"
+	maintainer hasValue "Original-Debian Med Packaging Team <debian-med-packaging@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.8.0+dfsg-1"
+	fileName hasValue "pool/universe/g/gnumed-client/gnumed-common_1.8.0+dfsg-1_all.deb"
+	size hasValue "129988"
+	md5sum hasValue "c5f237d27e1fc7348d18f574ebad2093"
+	sha1 hasValue "bba8a8116b000aa2a62ffff6e81bb3ebf7b51eba"
+	sha256 hasValue "ea3948103da06fa5ecc21d3453b14a8355c6108199272fdca01693dc5909b3c1"
+	description hasValue "medical practice management - common files"
+	descriptionMd5 hasValue "6ebd23a6d370faa2d7114b720e28c691"
+	homepage hasValue "https://www.gnumed.de"
+	depends hasValue "python3-psycopg2 (>= 2.7.4~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3-psycopg2"
+	comparison hasValue ">="
+	version hasValue "2.7.4~"
+
+relationInstance depends(P0__gnumed_common,0,DepAtom__0)
+

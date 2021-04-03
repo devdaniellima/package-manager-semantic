@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology mlton_tools
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__mlton_tools memberOf Package
+	package hasValue "mlton-tools"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "4070"
+	maintainer hasValue "Original-Wesley W. Terpstra <terpstra@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "20130715-3"
+	replaces hasValue "mlton (<< 20100608-3)"
+	fileName hasValue "pool/universe/m/mlton/mlton-tools_20130715-3_amd64.deb"
+	size hasValue "1122510"
+	md5sum hasValue "aeba61b6e5ad0fb9c403499b40578441"
+	sha1 hasValue "e173b37263ff7dbf47eefcc13972a329252d23a6"
+	sha256 hasValue "3c90f623d0d83c4713ded79d7c76ae24eaba3b67707b91ebe437d861aa1610cc"
+	descriptionMd5 hasValue "a59e92666abcf7288f4e38dd042239e1"
+	homepage hasValue "http://mlton.org/"
+	depends hasValue "libc6 (>= 2.14), libgmp10"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__mlton_tools,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgmp10"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__mlton_tools,1,DepAtom__1)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libgisi0
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libgisi0 memberOf Package
+	package hasValue "libgisi0"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/libs"
+	installedSize hasValue "56"
+	maintainer hasValue "Original-Sebastian Reichel <sre@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.1.0-2"
+	fileName hasValue "pool/universe/libg/libgisi/libgisi0_0.1.0-2_amd64.deb"
+	size hasValue "17358"
+	md5sum hasValue "8701b6796540b13d1bf95027440cc44c"
+	sha1 hasValue "94cd57fddc48b64237ed302c3729f4f873b83bbc"
+	sha256 hasValue "91746b71772bd5ea756fff38da6788f7928c209a7efc1c4da8c9cc225bf9a9ab"
+	descriptionMd5 hasValue "a949fe722f757a4b1b0cdb636f3a6106"
+	homepage hasValue "http://freesmartphone.org/"
+	depends hasValue "libc6 (>= 2.14), libglib2.0-0 (>= 2.18.0~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libgisi0,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libglib2.0-0"
+	comparison hasValue ">="
+	version hasValue "2.18.0~"
+
+relationInstance depends(P0__libgisi0,1,DepAtom__1)
+

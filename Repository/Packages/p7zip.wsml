@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology p7zip
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__p7zip memberOf Package
+	package hasValue "p7zip"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "986"
+	maintainer hasValue "Original-Robert Luberda <robert@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "16.02+dfsg-7build1"
+	fileName hasValue "pool/universe/p/p7zip/p7zip_16.02+dfsg-7build1_amd64.deb"
+	size hasValue "357928"
+	md5sum hasValue "19fbdb80bc164537caf22ccb142c7bf3"
+	sha1 hasValue "b5e358fb3fd264f81b9f8179ec670048b7c02f5c"
+	sha256 hasValue "9b115dee8658ec76945e803c3af219100eee05105f7c774d4fd37f3b687457f2"
+	description hasValue "arquivador 7zr com alta taxa de compressão"
+	descriptionMd5 hasValue "a0431f39711e498d6462ffa98530d64b"
+	homepage hasValue "http://p7zip.sourceforge.net/"
+	depends hasValue "libc6 (>= 2.14), libgcc-s1 (>= 3.0), libstdc++6 (>= 5)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__p7zip,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgcc-s1"
+	comparison hasValue ">="
+	version hasValue "3.0"
+
+relationInstance depends(P0__p7zip,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "5"
+
+relationInstance depends(P0__p7zip,2,DepAtom__2)
+

@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology lr
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__lr memberOf Package
+	package hasValue "lr"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "75"
+	maintainer hasValue "Original-nicoo <nicoo@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.5.1-2"
+	fileName hasValue "pool/universe/l/lr/lr_1.5.1-2_amd64.deb"
+	size hasValue "26092"
+	md5sum hasValue "dcd0315e4bc72c6a16caea30cb674d24"
+	sha1 hasValue "fed718283ab04949569e14f569a734441f582b64"
+	sha256 hasValue "2883355a580582e2cc64d351f5d00298bd49a81a6af83fcec93952fbcb55d187"
+	descriptionMd5 hasValue "ecb9fd8d5132cd0a85c22c1fc0ed1e77"
+	homepage hasValue "https://git.vuxu.org/lr/about/"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__lr,0,DepAtom__0)
+

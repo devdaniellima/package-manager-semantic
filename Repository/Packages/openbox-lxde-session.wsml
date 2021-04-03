@@ -1,0 +1,70 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology openbox_lxde_session
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__openbox_lxde_session memberOf Package
+	package hasValue "openbox-lxde-session"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/x11"
+	installedSize hasValue "70"
+	maintainer hasValue "Original-Debian LXDE Maintainers <pkg-lxde-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.99.2-3"
+	replaces hasValue "lxde-common (<< 0.99.2-1)"
+	provides hasValue "lxde-session, x-session-manager"
+	fileName hasValue "pool/universe/l/lxde-common/openbox-lxde-session_0.99.2-3_all.deb"
+	size hasValue "12386"
+	md5sum hasValue "2686d845a8d8530942ffe4f0e6647bc3"
+	sha1 hasValue "4c611aec6a9ea1f35c1b93a72f4ba73cc921718f"
+	sha256 hasValue "6a3603dc8ef1f8984b0241d29787ebfbf545cbe2e528510cb3a4cc38971ac04c"
+	description hasValue "LXDE session manager and configuration files"
+	descriptionMd5 hasValue "5475097460208980d4b5d0d46ed3a34c"
+	homepage hasValue "http://www.lxde.org/"
+	depends hasValue "lxde-common (>= 0.99.2-1), lxsession, openbox"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "lxde-common"
+	comparison hasValue ">="
+	version hasValue "0.99.2-1"
+
+relationInstance depends(P0__openbox_lxde_session,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "lxsession"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__openbox_lxde_session,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "openbox"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__openbox_lxde_session,2,DepAtom__2)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology groonga_examples
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__groonga_examples memberOf Package
+	package hasValue "groonga-examples"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/database"
+	installedSize hasValue "739"
+	maintainer hasValue "Original-Groonga Project <packages@groonga.org>"
+	architecture hasValue "all"
+	version hasValue "9.1.2-1"
+	fileName hasValue "pool/universe/g/groonga/groonga-examples_9.1.2-1_all.deb"
+	size hasValue "155600"
+	md5sum hasValue "c8b85daa1bbcdbd3f4706b1b4b54b750"
+	sha1 hasValue "1929c356bc76dfa95cd62eee9df51bcaf59ff3e7"
+	sha256 hasValue "ed77dc3b72724957134fe8ce6bde1705619f134c9ee914cbe28ea20bff59e5d7"
+	descriptionMd5 hasValue "d30e10e0051ce4487f28aaf67b98bce6"
+	homepage hasValue "http://groonga.org/"
+	depends hasValue "groonga-bin (>= 9.1.2-1), ruby"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "groonga-bin"
+	comparison hasValue ">="
+	version hasValue "9.1.2-1"
+
+relationInstance depends(P0__groonga_examples,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "ruby"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__groonga_examples,1,DepAtom__1)
+

@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology chktex
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__chktex memberOf Package
+	package hasValue "chktex"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/tex"
+	installedSize hasValue "215"
+	maintainer hasValue "Original-Thorsten Alteholz <debian@alteholz.de>"
+	architecture hasValue "amd64"
+	version hasValue "1.7.6-3"
+	fileName hasValue "pool/universe/c/chktex/chktex_1.7.6-3_amd64.deb"
+	size hasValue "92504"
+	md5sum hasValue "c286e3b4242b352943cd7bee09bab948"
+	sha1 hasValue "e5a703fa8d68d3f50506059ae7acfbbeb5d9e953"
+	sha256 hasValue "6883bd9ef6494764f13bd18179f3e1a789b96f4c52806edc5c230deb19ffdc08"
+	description hasValue "encontra erros tipográficos em LaTeX"
+	descriptionMd5 hasValue "436e0e3a1b4f3382caaae822c79330c9"
+	homepage hasValue "http://baruch.ev-en.org/proj/chktex/"
+	depends hasValue "libc6 (>= 2.14), libpcre3, libtinfo6 (>= 6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__chktex,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libpcre3"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__chktex,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libtinfo6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__chktex,2,DepAtom__2)
+

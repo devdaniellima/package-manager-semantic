@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology openal_info
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__openal_info memberOf Package
+	package hasValue "openal-info"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/sound"
+	installedSize hasValue "42"
+	maintainer hasValue "Original-Debian Games Team <pkg-games-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:1.19.1-1"
+	replaces hasValue "libopenal-dev-bin (<< 1:1.15.1-5~)"
+	fileName hasValue "pool/universe/o/openal-soft/openal-info_1.19.1-1_amd64.deb"
+	size hasValue "8860"
+	md5sum hasValue "66c890aa55e70c1e91c5eca83987ba6d"
+	sha1 hasValue "bcb64368db366edefbfec01ce64b382bffc27d70"
+	sha256 hasValue "a7fd62fe1a42e0749cb5a96940f0533e7ebc61fad409dd5e9171ae5ff92fa8f6"
+	descriptionMd5 hasValue "a8f56d7c85cd29cecff54c795e5c93c3"
+	homepage hasValue "http://kcat.strangesoft.net/openal.html"
+	depends hasValue "libopenal1 (= 1:1.19.1-1), libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libopenal1"
+	comparison hasValue "="
+	version hasValue "1:1.19.1-1"
+
+relationInstance depends(P0__openal_info,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__openal_info,1,DepAtom__1)
+

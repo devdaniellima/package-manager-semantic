@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gsmc
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gsmc memberOf Package
+	package hasValue "gsmc"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/hamradio"
+	installedSize hasValue "117"
+	maintainer hasValue "Original-Debian Hamradio Maintainers <debian-hams@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.2.1-1"
+	fileName hasValue "pool/universe/g/gsmc/gsmc_1.2.1-1_amd64.deb"
+	size hasValue "40828"
+	md5sum hasValue "fe728bc8fd8a6a423bbb55f3cc736dc2"
+	sha1 hasValue "92a27c2cdd6f8b9c143d47da79d598e3490d1486"
+	sha256 hasValue "0e14687f1ae5dced19ae4e47d65a97e1aac3dcae9a6b8c338e0acbf627896c93"
+	description hasValue "calculadora de 'Smith Chart' para 'impedance matching'"
+	descriptionMd5 hasValue "ddc6007fbfb533dc96cd2786040e7108"
+	homepage hasValue "https://github.com/radioteknos/gsmc"
+	depends hasValue "libc6 (>= 2.7), libglib2.0-0 (>= 2.12.0), libgtk2.0-0 (>= 2.8.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__gsmc,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libglib2.0-0"
+	comparison hasValue ">="
+	version hasValue "2.12.0"
+
+relationInstance depends(P0__gsmc,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libgtk2.0-0"
+	comparison hasValue ">="
+	version hasValue "2.8.0"
+
+relationInstance depends(P0__gsmc,2,DepAtom__2)
+

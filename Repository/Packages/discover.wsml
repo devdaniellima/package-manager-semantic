@@ -1,0 +1,75 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology discover
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__discover memberOf Package
+	package hasValue "discover"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "89"
+	maintainer hasValue "Original-Debian Install System Team <debian-boot@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.1.2-8"
+	conflicts hasValue "discover1 (<< 2.0)"
+	fileName hasValue "pool/universe/d/discover/discover_2.1.2-8_amd64.deb"
+	size hasValue "24084"
+	md5sum hasValue "a545d1277d1f7e70c6b8c58d0ecda29e"
+	sha1 hasValue "2aae43e1771b57fa6fd83e0f7694d1b7a1f05084"
+	sha256 hasValue "0beb1c010a53c768dc635e345a66ba23e413f3f3e8587f6ce51dcb1d9586bfef"
+	description hasValue "sistema de identificação de hardware"
+	descriptionMd5 hasValue "a5dea31ea54f4b79eeb359717cce264b"
+	depends hasValue "libc6 (>= 2.4), libdiscover2 (= 2.1.2-8), debconf (>= 0.5) | debconf-2.0"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__discover,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libdiscover2"
+	comparison hasValue "="
+	version hasValue "2.1.2-8"
+
+relationInstance depends(P0__discover,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "debconf"
+	comparison hasValue ">="
+	version hasValue "0.5"
+
+relationInstance depends(P0__discover,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "debconf-2.0"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__discover,2,DepAtom__3)
+

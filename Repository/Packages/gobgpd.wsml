@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gobgpd
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gobgpd memberOf Package
+	package hasValue "gobgpd"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/devel"
+	installedSize hasValue "33581"
+	maintainer hasValue "Original-Debian Go Packaging Team <pkg-go-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.12.0-1"
+	fileName hasValue "pool/universe/g/gobgp/gobgpd_2.12.0-1_amd64.deb"
+	size hasValue "9657632"
+	md5sum hasValue "7228a9da892681548b64dabcd42fbb83"
+	sha1 hasValue "d21fc8c347be3543a2680cdb97daefb5674165c6"
+	sha256 hasValue "06f4029aada606d8561b3fc6022fbb498dd1f7417ccd969341531a3fc785ff4d"
+	descriptionMd5 hasValue "e6f6939bca8bc73a3489a527ad1b3bc7"
+	homepage hasValue "https://github.com/osrg/gobgp"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__gobgpd,0,DepAtom__0)
+

@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology proxychains
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__proxychains memberOf Package
+	package hasValue "proxychains"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "26"
+	maintainer hasValue "Original-Daniel Echeverry <epsilon77@gmail.com>"
+	architecture hasValue "all"
+	version hasValue "3.1-8.1"
+	fileName hasValue "pool/universe/p/proxychains/proxychains_3.1-8.1_all.deb"
+	size hasValue "5032"
+	md5sum hasValue "2e9985a33ee241d08a77ecb4b13c7f64"
+	sha1 hasValue "c9de43b3c22ac0e921c0cfc1bb8024d0f7b4bdce"
+	sha256 hasValue "c6115dde9569c06f6bf78526d4777895ce4e997031986afe5fc8ee7246494e50"
+	descriptionMd5 hasValue "040457b770c0fda03ec53238fc3e3cb4"
+	homepage hasValue "http://proxychains.sourceforge.net"
+	depends hasValue "libproxychains3 (>= 3.1-8.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libproxychains3"
+	comparison hasValue ">="
+	version hasValue "3.1-8.1"
+
+relationInstance depends(P0__proxychains,0,DepAtom__0)
+

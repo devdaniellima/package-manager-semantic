@@ -1,0 +1,76 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology rng_tools_debian
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__rng_tools_debian memberOf Package
+	package hasValue "rng-tools-debian"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "124"
+	maintainer hasValue "Original-Thorsten Glaser <tg@mirbsd.de>"
+	architecture hasValue "amd64"
+	version hasValue "2.1"
+	replaces hasValue "intel-rng-tools, rng-tools"
+	provides hasValue "intel-rng-tools, rng-tools (= 2.1)"
+	conflicts hasValue "intel-rng-tools, rng-tools"
+	fileName hasValue "pool/universe/r/rng-tools-debian/rng-tools-debian_2.1_amd64.deb"
+	size hasValue "36720"
+	md5sum hasValue "0c903d736bd7abcf9b81718d4a1f16e1"
+	sha1 hasValue "986a33198ff1cbd209028c1536de1f1e8582ef40"
+	sha256 hasValue "f35688aa76a9bbd9fa82308a5891d2521646573bcfb4e70e1802cdcbe5f8fa02"
+	descriptionMd5 hasValue "92853c313852972f917ddd479b6d7b05"
+	depends hasValue "libc6 (>= 2.14), lsb-base, udev (>= 0.053) | makedev (>= 2.3.1-77)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__rng_tools_debian,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "lsb-base"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__rng_tools_debian,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "udev"
+	comparison hasValue ">="
+	version hasValue "0.053"
+
+relationInstance depends(P0__rng_tools_debian,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "makedev"
+	comparison hasValue ">="
+	version hasValue "2.3.1-77"
+
+relationInstance depends(P0__rng_tools_debian,2,DepAtom__3)
+

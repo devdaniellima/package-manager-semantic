@@ -1,0 +1,74 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python3_multidict
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python3_multidict memberOf Package
+	package hasValue "python3-multidict"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "178"
+	maintainer hasValue "Original-Piotr Ożarowski <piotr@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "4.7.3-1build1"
+	fileName hasValue "pool/universe/p/python-multidict/python3-multidict_4.7.3-1build1_amd64.deb"
+	size hasValue "37124"
+	md5sum hasValue "73872370d0b3991e20be89854ee0f009"
+	sha1 hasValue "46080d7537ac13f386414933e3b6ece46ca38aa1"
+	sha256 hasValue "b6e6c285d55752332e1b063a10cb231479f26ba0f4328e8d4641f5713955e119"
+	descriptionMd5 hasValue "e884e3d5439781cc2d7a6185e877101f"
+	homepage hasValue "https://github.com/aio-libs/multidict/"
+	depends hasValue "python3 (<< 3.9), python3 (>= 3.8~), python3:any, libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3"
+	comparison hasValue "<<"
+	version hasValue "3.9"
+
+relationInstance depends(P0__python3_multidict,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3"
+	comparison hasValue ">="
+	version hasValue "3.8~"
+
+relationInstance depends(P0__python3_multidict,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__python3_multidict,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__python3_multidict,3,DepAtom__3)
+

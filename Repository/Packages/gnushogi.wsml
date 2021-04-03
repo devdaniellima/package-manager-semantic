@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gnushogi
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gnushogi memberOf Package
+	package hasValue "gnushogi"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/games"
+	installedSize hasValue "603"
+	maintainer hasValue "Original-Yann Dirson <dirson@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.4.2-6"
+	fileName hasValue "pool/universe/g/gnushogi/gnushogi_1.4.2-6_amd64.deb"
+	size hasValue "236048"
+	md5sum hasValue "491582c5969af9b77c2ec06281a2210b"
+	sha1 hasValue "488c85bf6a10d24c741ba985c8add80074ed8e92"
+	sha256 hasValue "f9d72e3d78d39d9c55a3c78ac3dff256e3fe83a2f9cc0c6f70dbddf46efc5d61"
+	description hasValue "programa para jogar shogi, a versão japonesa do xadrez"
+	descriptionMd5 hasValue "f699bba132a06e0decf92dfaaa17046e"
+	homepage hasValue "https://www.gnu.org/software/gnushogi/"
+	depends hasValue "libc6 (>= 2.7), libncurses6 (>= 6), libtinfo6 (>= 6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__gnushogi,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libncurses6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__gnushogi,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libtinfo6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__gnushogi,2,DepAtom__2)
+

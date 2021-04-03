@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology fml_asm
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__fml_asm memberOf Package
+	package hasValue "fml-asm"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/science"
+	installedSize hasValue "158"
+	maintainer hasValue "Original-Debian Med Packaging Team <debian-med-packaging@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.1-9ubuntu1"
+	fileName hasValue "pool/universe/f/fermi-lite/fml-asm_0.1-9ubuntu1_amd64.deb"
+	size hasValue "67864"
+	md5sum hasValue "f9398a6c56f533d141689a3d070ab425"
+	sha1 hasValue "5880e17a74823428400a94428d3bc3c3ffe87d4c"
+	sha256 hasValue "338027f02e88ce274200069e6d59a0c7bb84c4e338ef1dee39072b563c70f693"
+	descriptionMd5 hasValue "889752688090c5f0fc58cbefe6c92bce"
+	homepage hasValue "https://github.com/lh3/fermi-lite"
+	depends hasValue "libc6 (>= 2.14), zlib1g (>= 1:1.1.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__fml_asm,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "zlib1g"
+	comparison hasValue ">="
+	version hasValue "1:1.1.4"
+
+relationInstance depends(P0__fml_asm,1,DepAtom__1)
+

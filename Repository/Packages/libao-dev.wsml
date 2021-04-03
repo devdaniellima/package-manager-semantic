@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libao_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libao_dev memberOf Package
+	package hasValue "libao-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libdevel"
+	installedSize hasValue "139"
+	maintainer hasValue "Original-Ron Lee <ron@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.2.2+20180113-1ubuntu1"
+	fileName hasValue "pool/main/liba/libao/libao-dev_1.2.2+20180113-1ubuntu1_amd64.deb"
+	size hasValue "21956"
+	md5sum hasValue "4c63b7493ee8913359e5b8547bc10b5b"
+	sha1 hasValue "9a39c22e8e640fef9b468a344171fae15e3e587c"
+	sha256 hasValue "3edc100eab56ff8b8a61958b0b6514f15bec8eb5296347f6421602a81505f9ad"
+	descriptionMd5 hasValue "7ef8d936721d85cc443bba7bbe24cef8"
+	homepage hasValue "http://www.xiph.org/ao/"
+	depends hasValue "libao4 (= 1.2.2+20180113-1ubuntu1), libc6-dev"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libao4"
+	comparison hasValue "="
+	version hasValue "1.2.2+20180113-1ubuntu1"
+
+relationInstance depends(P0__libao_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6-dev"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libao_dev,1,DepAtom__1)
+

@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology slib
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__slib memberOf Package
+	package hasValue "slib"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "3862"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "all"
+	version hasValue "3b1-5"
+	conflicts hasValue "guile-1.6-libs (<= 1.6.7-1.1), libguile9 (<= 1:1.4-26), scm (<< 5e3)"
+	fileName hasValue "pool/universe/s/slib/slib_3b1-5_all.deb"
+	size hasValue "715318"
+	md5sum hasValue "d7f46d6c1b2ca6ce6ca2b9a5c57c53d3"
+	sha1 hasValue "c2ac75bef408f529ffc4039024fbb7e43745a84f"
+	sha256 hasValue "b69731ec7e269d37f0ad444bb7d50ad261ef89ff75856c35dc10bb2625ae9d31"
+	descriptionMd5 hasValue "0ee7a0b7d85285b272da11727c99a510"
+	homepage hasValue "http://people.csail.mit.edu/jaffer/SLIB.html"
+	depends hasValue "dpkg (>= 1.15.4) | install-info"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "dpkg"
+	comparison hasValue ">="
+	version hasValue "1.15.4"
+
+relationInstance depends(P0__slib,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "install-info"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__slib,0,DepAtom__1)
+

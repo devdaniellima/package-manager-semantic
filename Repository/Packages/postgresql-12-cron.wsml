@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology postgresql_12_cron
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__postgresql_12_cron memberOf Package
+	package hasValue "postgresql-12-cron"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/database"
+	installedSize hasValue "150"
+	maintainer hasValue "Original-Debian PostgreSQL Maintainers <team+postgresql@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.2.0-1"
+	fileName hasValue "pool/universe/p/pg-cron/postgresql-12-cron_1.2.0-1_amd64.deb"
+	size hasValue "59560"
+	md5sum hasValue "7348d34f0a0c66d5f5ba4486cd828d44"
+	sha1 hasValue "5b6ac21424e4d15743d713f5707f30d04d85d232"
+	sha256 hasValue "e682bee724b3095a354d9c5934a4d1ec30d4ee3888c51f356233a2c1e3919029"
+	descriptionMd5 hasValue "b733e29764720cd3b047e4ca93764fb2"
+	homepage hasValue "https://github.com/citusdata/pg_cron"
+	depends hasValue "postgresql-12, libc6 (>= 2.4), libpq5 (>= 9.0~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "postgresql-12"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__postgresql_12_cron,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__postgresql_12_cron,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libpq5"
+	comparison hasValue ">="
+	version hasValue "9.0~"
+
+relationInstance depends(P0__postgresql_12_cron,2,DepAtom__2)
+

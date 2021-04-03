@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology keychain
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__keychain memberOf Package
+	package hasValue "keychain"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "84"
+	maintainer hasValue "Original-Peter Pentchev <roam@debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.8.5-1"
+	fileName hasValue "pool/universe/k/keychain/keychain_2.8.5-1_all.deb"
+	size hasValue "38944"
+	md5sum hasValue "1157090784917ad006538865763a6982"
+	sha1 hasValue "776662af7335aaa678e97ca5a077ae156627a364"
+	sha256 hasValue "4e561afc6e62d2c62bdf5ad452147d80b371259c25a07de8bef86eab2c693955"
+	description hasValue "gerenciador de chaves para OpenSSH"
+	descriptionMd5 hasValue "aee669baa71e3017fbfdcaf59344fd72"
+	homepage hasValue "https://www.funtoo.org/Keychain"
+	depends hasValue "openssh-client | ssh-client"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "openssh-client"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__keychain,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "ssh-client"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__keychain,0,DepAtom__1)
+

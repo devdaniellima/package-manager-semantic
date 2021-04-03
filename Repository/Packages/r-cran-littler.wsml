@@ -1,0 +1,70 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology r_cran_littler
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__r_cran_littler memberOf Package
+	package hasValue "r-cran-littler"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/gnu-r"
+	installedSize hasValue "2066"
+	maintainer hasValue "Original-Dirk Eddelbuettel <edd@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.3.9-1"
+	replaces hasValue "littler"
+	provides hasValue "littler"
+	conflicts hasValue "littler (<= 0.2.3-2)"
+	fileName hasValue "pool/universe/l/littler/r-cran-littler_0.3.9-1_amd64.deb"
+	size hasValue "299668"
+	md5sum hasValue "6bcfce5a9a004ce5bc55a60f2bfddd4f"
+	sha1 hasValue "4588b54a560ea36a05553a067de34c1a702d39e8"
+	sha256 hasValue "5ec2405f6a6825d75a130e0aed3e82d20c4426e4fe4b873898b9f09f4ef85e61"
+	descriptionMd5 hasValue "f696f1e4db13cfb0347f3ab93e90d267"
+	homepage hasValue "https://cran.r-project.org/package=littler"
+	depends hasValue "r-base-core (>= 3.6.1-7), r-api-3.5, libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "r-base-core"
+	comparison hasValue ">="
+	version hasValue "3.6.1-7"
+
+relationInstance depends(P0__r_cran_littler,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "r-api-3.5"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__r_cran_littler,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__r_cran_littler,2,DepAtom__2)
+

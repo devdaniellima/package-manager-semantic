@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology jcal
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__jcal memberOf Package
+	package hasValue "jcal"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/utils"
+	installedSize hasValue "43"
+	maintainer hasValue "Original-Lior Kaplan <kaplan@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.4.1-2build1"
+	fileName hasValue "pool/universe/j/jcal/jcal_0.4.1-2build1_amd64.deb"
+	size hasValue "18144"
+	md5sum hasValue "f9d74b6df78919ac0f0a78a8ce844a10"
+	sha1 hasValue "a219727e11f8ad70e3eaebe97430606df06c10ae"
+	sha256 hasValue "a59810b84dc485dce9f2bd629016e2264f33adfadc69db5799e25c96d35daa16"
+	descriptionMd5 hasValue "5536005664059e0b01daef3d01d40f79"
+	homepage hasValue "http://savannah.nongnu.org/projects/jcal/"
+	depends hasValue "libc6 (>= 2.4), libjalali0"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__jcal,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libjalali0"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__jcal,1,DepAtom__1)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology liborcania1Dot2
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__liborcania1Dot2 memberOf Package
+	package hasValue "liborcania1.2"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "40"
+	maintainer hasValue "Original-Debian IoT Maintainers <debian-iot-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.2.9-5"
+	fileName hasValue "pool/universe/o/orcania/liborcania1.2_1.2.9-5_amd64.deb"
+	size hasValue "9400"
+	md5sum hasValue "706df5b0efb21004a2aa4b8b53576f1f"
+	sha1 hasValue "19310c526f14d5d68c5709efc382383aa092ff01"
+	sha256 hasValue "301687529c0358b6e109ee44fc3593ba9315f1194f2e7ae6b50e99db2e1c302e"
+	descriptionMd5 hasValue "b9ef1772f1d745e6c070069fad45265a"
+	homepage hasValue "https://github.com/babelouest/orcania"
+	depends hasValue "libc6 (>= 2.14), libjansson4 (>= 2.3)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__liborcania1Dot2,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libjansson4"
+	comparison hasValue ">="
+	version hasValue "2.3"
+
+relationInstance depends(P0__liborcania1Dot2,1,DepAtom__1)
+

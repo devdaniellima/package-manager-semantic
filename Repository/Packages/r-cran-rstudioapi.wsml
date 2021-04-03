@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology r_cran_rstudioapi
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__r_cran_rstudioapi memberOf Package
+	package hasValue "r-cran-rstudioapi"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/gnu-r"
+	installedSize hasValue "420"
+	maintainer hasValue "Original-Dirk Eddelbuettel <edd@debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.11-1"
+	fileName hasValue "pool/universe/r/r-cran-rstudioapi/r-cran-rstudioapi_0.11-1_all.deb"
+	size hasValue "244956"
+	md5sum hasValue "816b7da4d00b4794e26157f827b23173"
+	sha1 hasValue "0897ec30b99fb85b691e0fdc88cc9845fbf74a37"
+	sha256 hasValue "d830ad70d5910bc956c14fb2899ab2d23a4a2430269f9f67b89a17b6d7c425cb"
+	descriptionMd5 hasValue "23b9b317184338c5398c74125e9ff595"
+	homepage hasValue "https://cran.r-project.org/package=rstudioapi"
+	depends hasValue "r-base-core (>= 3.6.2-2), r-api-3.5"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "r-base-core"
+	comparison hasValue ">="
+	version hasValue "3.6.2-2"
+
+relationInstance depends(P0__r_cran_rstudioapi,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "r-api-3.5"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__r_cran_rstudioapi,1,DepAtom__1)
+

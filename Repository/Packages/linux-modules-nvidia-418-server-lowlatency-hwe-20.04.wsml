@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology linux_modules_nvidia_418_server_lowlatency_hwe_20Dot04
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__linux_modules_nvidia_418_server_lowlatency_hwe_20Dot04 memberOf Package
+	package hasValue "linux-modules-nvidia-418-server-lowlatency-hwe-20.04"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "restricted/kernel"
+	installedSize hasValue "23"
+	maintainer hasValue "Canonical Kernel Team <kernel-team@lists.ubuntu.com>"
+	architecture hasValue "amd64"
+	version hasValue "5.8.0-45.51~20.04.1+1"
+	provides hasValue "nvidia-dkms-418-server (= 418.181.07-0ubuntu0.20.10.1), nvidia-prebuilt-kernel"
+	fileName hasValue "pool/restricted/l/linux-restricted-modules-hwe-5.8/linux-modules-nvidia-418-server-lowlatency-hwe-20.04_5.8.0-45.51~20.04.1+1_amd64.deb"
+	size hasValue "5524"
+	md5sum hasValue "bcb2d145a2e964b0cca871ca15186043"
+	sha1 hasValue "17e4ee2262525a42ecc923045c711ee20008c478"
+	sha256 hasValue "3cc8b97ad70ac8318eeaaa6263c2f08bea6130c64c17215073331e306efcc14e"
+	sha512 hasValue "406af9b2f3eb143267d673844dacdb751ee85d6c342c691cf6b04e980a50b7c1d66ceb56908dad9a6259261d55edd2b556407b1821b70e535663a04574bfb1bb"
+	descriptionMd5 hasValue "983f5a549f64052513621346330f3c82"
+	depends hasValue "linux-modules-nvidia-418-server-5.8.0-45-lowlatency (= 5.8.0-45.51~20.04.1+1), nvidia-kernel-common-418-server (<= 418.181.07-1), nvidia-kernel-common-418-server (>= 418.181.07)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "linux-modules-nvidia-418-server-5.8.0-45-lowlatency"
+	comparison hasValue "="
+	version hasValue "5.8.0-45.51~20.04.1+1"
+
+relationInstance depends(P0__linux_modules_nvidia_418_server_lowlatency_hwe_20Dot04,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "nvidia-kernel-common-418-server"
+	comparison hasValue "<="
+	version hasValue "418.181.07-1"
+
+relationInstance depends(P0__linux_modules_nvidia_418_server_lowlatency_hwe_20Dot04,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "nvidia-kernel-common-418-server"
+	comparison hasValue ">="
+	version hasValue "418.181.07"
+
+relationInstance depends(P0__linux_modules_nvidia_418_server_lowlatency_hwe_20Dot04,2,DepAtom__2)
+

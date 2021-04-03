@@ -1,0 +1,75 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology tmpreaper
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__tmpreaper memberOf Package
+	package hasValue "tmpreaper"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "122"
+	maintainer hasValue "Original-Paul Slootman <paul@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.6.14+nmu1"
+	replaces hasValue "tmpwatch"
+	conflicts hasValue "tmpwatch"
+	fileName hasValue "pool/universe/t/tmpreaper/tmpreaper_1.6.14+nmu1_amd64.deb"
+	size hasValue "41520"
+	md5sum hasValue "8de5a3b42eda9ff5712ce499f276ea01"
+	sha1 hasValue "401c549041996ee35f9b1bd2d5d80e7e802474f1"
+	sha256 hasValue "0c68f04f2f0cf23b3c42e7def0adedff483e428183e49613fd07fdf01d4756d1"
+	descriptionMd5 hasValue "a0e82c31f2d9aee95c0f41d6cc0557b2"
+	depends hasValue "libc6 (>= 2.27), libmount1 (>= 2.24.2), debconf (>= 0.5.0) | debconf-2.0"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.27"
+
+relationInstance depends(P0__tmpreaper,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libmount1"
+	comparison hasValue ">="
+	version hasValue "2.24.2"
+
+relationInstance depends(P0__tmpreaper,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "debconf"
+	comparison hasValue ">="
+	version hasValue "0.5.0"
+
+relationInstance depends(P0__tmpreaper,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "debconf-2.0"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__tmpreaper,2,DepAtom__3)
+

@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology asterisk_mysql
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__asterisk_mysql memberOf Package
+	package hasValue "asterisk-mysql"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/comm"
+	installedSize hasValue "211"
+	maintainer hasValue "Original-Debian VoIP Team <pkg-voip-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:16.2.1~dfsg-2ubuntu1"
+	fileName hasValue "pool/universe/a/asterisk/asterisk-mysql_16.2.1~dfsg-2ubuntu1_amd64.deb"
+	size hasValue "46580"
+	md5sum hasValue "806fea1050815bca9fb90a7ce18f0f9b"
+	sha1 hasValue "34a5b8a714bc4570bf2fd62daa9f557cd5cd0386"
+	sha256 hasValue "98aa9a776be546a1890220c88c6395e1da2e63fcf02d046345c0e8e2e543acd2"
+	description hasValue "MySQL database protocol support for the Asterisk PBX"
+	descriptionMd5 hasValue "b2553271b814e80df7d7376f64f21e53"
+	homepage hasValue "http://www.asterisk.org/"
+	depends hasValue "asterisk (= 1:16.2.1~dfsg-2ubuntu1), libc6 (>= 2.14), libmysqlclient21 (>= 8.0.11)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "asterisk"
+	comparison hasValue "="
+	version hasValue "1:16.2.1~dfsg-2ubuntu1"
+
+relationInstance depends(P0__asterisk_mysql,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__asterisk_mysql,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libmysqlclient21"
+	comparison hasValue ">="
+	version hasValue "8.0.11"
+
+relationInstance depends(P0__asterisk_mysql,2,DepAtom__2)
+

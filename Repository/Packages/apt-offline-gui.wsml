@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology apt_offline_gui
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__apt_offline_gui memberOf Package
+	package hasValue "apt-offline-gui"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "263"
+	maintainer hasValue "Original-Ritesh Raj Sarraf <rrs@debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.8.2-1"
+	fileName hasValue "pool/universe/a/apt-offline/apt-offline-gui_1.8.2-1_all.deb"
+	size hasValue "58988"
+	md5sum hasValue "62d028ab0d28796d97bbc0b6fc297771"
+	sha1 hasValue "047a1e074322dcf6b04fe66f92d396f15086dedb"
+	sha256 hasValue "5082557c77a3888ca2033daddf128a7237db6bfa52e04b76835f0e6a2fc9f12f"
+	description hasValue "gestor de pacotes APT offline - GUI"
+	descriptionMd5 hasValue "c320d4ba3db03ee58760227c3cc84884"
+	homepage hasValue "https://github.com/rickysarraf/apt-offline"
+	depends hasValue "python3:any, apt-offline (= 1.8.2-1), python3-pyqt5"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__apt_offline_gui,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "apt-offline"
+	comparison hasValue "="
+	version hasValue "1.8.2-1"
+
+relationInstance depends(P0__apt_offline_gui,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "python3-pyqt5"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__apt_offline_gui,2,DepAtom__2)
+

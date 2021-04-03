@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology fever
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__fever memberOf Package
+	package hasValue "fever"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "12795"
+	maintainer hasValue "Original-Sascha Steinbiss <satta@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.8-4"
+	fileName hasValue "pool/universe/f/fever/fever_1.0.8-4_amd64.deb"
+	size hasValue "3793320"
+	md5sum hasValue "688e3649fc0613b950c6f23b53326d59"
+	sha1 hasValue "e00c66242d0f496130e1df66270b883d51642367"
+	sha256 hasValue "6bae4d3366f1454857df22ae0b98a4b494e8e9fe4ee43b95473696d5862b851f"
+	descriptionMd5 hasValue "b909bca5113c0484e6b8f6dc555941a4"
+	homepage hasValue "https://github.com/DCSO/fever"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__fever,0,DepAtom__0)
+

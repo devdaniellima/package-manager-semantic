@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology tidy
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__tidy memberOf Package
+	package hasValue "tidy"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/web"
+	installedSize hasValue "84"
+	maintainer hasValue "Original-Tidy HTML5 <tidy-html5@packages.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2:5.6.0-11"
+	fileName hasValue "pool/universe/t/tidy-html5/tidy_5.6.0-11_amd64.deb"
+	size hasValue "28540"
+	md5sum hasValue "f09642087cf02a1a948528be3a982a1b"
+	sha1 hasValue "c5a684235a6e0b7bde41553405d69de023f2209a"
+	sha256 hasValue "e486b9577df82f88451ca1f3dd1de0fc129d58c0785fef2aaf423bedd079a342"
+	descriptionMd5 hasValue "eff51c85a9534da83a2d195a16e57001"
+	homepage hasValue "https://www.html-tidy.org/"
+	depends hasValue "libtidy5deb1 (= 2:5.6.0-11), libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libtidy5deb1"
+	comparison hasValue "="
+	version hasValue "2:5.6.0-11"
+
+relationInstance depends(P0__tidy,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__tidy,1,DepAtom__1)
+

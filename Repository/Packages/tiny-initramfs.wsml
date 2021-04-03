@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology tiny_initramfs
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__tiny_initramfs memberOf Package
+	package hasValue "tiny-initramfs"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "34"
+	maintainer hasValue "Original-Christian Seiler <christian@iwakd.de>"
+	architecture hasValue "all"
+	version hasValue "0.1-5"
+	provides hasValue "linux-initramfs-tool"
+	conflicts hasValue "dracut, initramfs-tools, live-tools"
+	fileName hasValue "pool/universe/t/tiny-initramfs/tiny-initramfs_0.1-5_all.deb"
+	size hasValue "4268"
+	md5sum hasValue "fca61b466a522bc86487cf2992a7ccd9"
+	sha1 hasValue "1524bec35aa62485e3f4b57a79439065bb958f2b"
+	sha256 hasValue "36618c042e53dea1d6173668f500aeea47e52dbd7bf579cb7cbf821b71d3beaf"
+	descriptionMd5 hasValue "f21681110ae703bb6849e64e50836f0b"
+	homepage hasValue "https://github.com/chris-se/tiny-initramfs/"
+	depends hasValue "tiny-initramfs-core (>= 0.1-5), tiny-initramfs-core (<< 0.1-5+b+~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "tiny-initramfs-core"
+	comparison hasValue ">="
+	version hasValue "0.1-5"
+
+relationInstance depends(P0__tiny_initramfs,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "tiny-initramfs-core"
+	comparison hasValue "<<"
+	version hasValue "0.1-5+b+~"
+
+relationInstance depends(P0__tiny_initramfs,1,DepAtom__1)
+

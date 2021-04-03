@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology sweed
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__sweed memberOf Package
+	package hasValue "sweed"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/science"
+	installedSize hasValue "152"
+	maintainer hasValue "Original-Debian Med Packaging Team <debian-med-packaging@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.2.1+dfsg-1"
+	fileName hasValue "pool/universe/s/sweed/sweed_3.2.1+dfsg-1_amd64.deb"
+	size hasValue "66100"
+	md5sum hasValue "567a15e667e81333a92a1528ed9b560b"
+	sha1 hasValue "96e8cad8526496d255e6298009347447e41a569d"
+	sha256 hasValue "e304c70ceebbc5536807f0cc8972f887e0a1e0245b26c3fc976b8c0d4cbf0e03"
+	descriptionMd5 hasValue "8ff0c702fca9de5362a10d068b3e3bc3"
+	homepage hasValue "https://sco.h-its.org/exelixis/web/software/sweed/"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__sweed,0,DepAtom__0)
+

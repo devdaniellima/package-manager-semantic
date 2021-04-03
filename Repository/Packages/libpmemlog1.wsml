@@ -1,0 +1,74 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libpmemlog1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libpmemlog1 memberOf Package
+	package hasValue "libpmemlog1"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "150"
+	maintainer hasValue "Original-Adam Borowski <kilobyte@angband.pl>"
+	architecture hasValue "amd64"
+	version hasValue "1.8-1ubuntu1"
+	fileName hasValue "pool/universe/p/pmdk/libpmemlog1_1.8-1ubuntu1_amd64.deb"
+	size hasValue "50716"
+	md5sum hasValue "fbe696497845083b6a1f2d07660cd2f3"
+	sha1 hasValue "2127e489518069067496b6259d68ad18e6d2346b"
+	sha256 hasValue "4562ea546380b9fdaca2c87615ca65b795d952cbcf26d930f806ecc7f23a4e9c"
+	descriptionMd5 hasValue "67e3acc4dccc137002792541ef8231f2"
+	homepage hasValue "https://pmem.io/pmdk/"
+	depends hasValue "libpmem1 (= 1.8-1ubuntu1), libc6 (>= 2.17), libdaxctl1 (>= 64), libndctl6 (>= 64)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libpmem1"
+	comparison hasValue "="
+	version hasValue "1.8-1ubuntu1"
+
+relationInstance depends(P0__libpmemlog1,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.17"
+
+relationInstance depends(P0__libpmemlog1,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libdaxctl1"
+	comparison hasValue ">="
+	version hasValue "64"
+
+relationInstance depends(P0__libpmemlog1,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "libndctl6"
+	comparison hasValue ">="
+	version hasValue "64"
+
+relationInstance depends(P0__libpmemlog1,3,DepAtom__3)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology simh
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__simh memberOf Package
+	package hasValue "simh"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/otherosfs"
+	installedSize hasValue "10630"
+	maintainer hasValue "Original-Andreas Bombe <aeb@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.8.1-6"
+	fileName hasValue "pool/universe/s/simh/simh_3.8.1-6_amd64.deb"
+	size hasValue "3901226"
+	md5sum hasValue "ffd361b894056f7bde7b573140004974"
+	sha1 hasValue "77da1e73dfc5e4fa99ab41e1d01b5aac4013c268"
+	sha256 hasValue "7b11ec2cf5940864bf78d7bfe4b397af037fe15e6fba7121abf08c17bdb7c9b3"
+	descriptionMd5 hasValue "fb79c5fb49cfd2ac36082a8e0f4c0c11"
+	homepage hasValue "http://simh.trailing-edge.com"
+	depends hasValue "libc6 (>= 2.15), libpcap0.8 (>= 0.9.8)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__simh,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libpcap0.8"
+	comparison hasValue ">="
+	version hasValue "0.9.8"
+
+relationInstance depends(P0__simh,1,DepAtom__1)
+

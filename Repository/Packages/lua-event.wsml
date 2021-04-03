@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology lua_event
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__lua_event memberOf Package
+	package hasValue "lua-event"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/interpreters"
+	installedSize hasValue "146"
+	maintainer hasValue "Original-Enrico Tassi <gareuselesinge@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.4.6-1build1"
+	provides hasValue "lua5.1-event, lua5.2-event, lua5.3-event"
+	fileName hasValue "pool/universe/l/lua-event/lua-event_0.4.6-1build1_amd64.deb"
+	size hasValue "16148"
+	md5sum hasValue "914512af642d248486c4d2958c1ed377"
+	sha1 hasValue "087430e48c61e48d4321be9cbb2f9f716515fca2"
+	sha256 hasValue "12e28537d232bf90f0684f171442daea69f18112db380fcec2ad57bc9fc5e6a0"
+	descriptionMd5 hasValue "2a5ed780197eb4b24b8d67b50492af87"
+	homepage hasValue "https://github.com/harningt/luaevent.git"
+	depends hasValue "lua-socket, libc6 (>= 2.4), libevent-2.1-7 (>= 2.1.8-stable)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "lua-socket"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__lua_event,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__lua_event,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libevent-2.1-7"
+	comparison hasValue ">="
+	version hasValue "2.1.8-stable"
+
+relationInstance depends(P0__lua_event,2,DepAtom__2)
+

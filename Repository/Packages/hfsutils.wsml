@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology hfsutils
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__hfsutils memberOf Package
+	package hasValue "hfsutils"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "otherosfs"
+	installedSize hasValue "1827"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.2.6-14"
+	fileName hasValue "pool/main/h/hfsutils/hfsutils_3.2.6-14_amd64.deb"
+	size hasValue "71864"
+	md5sum hasValue "61bde67248f20e0402b0dccd5db07353"
+	sha1 hasValue "900c951a6cfd0c0c1b727d9e9b07cd0557e2c23d"
+	sha256 hasValue "24523f0881ece072c5216d429be472b2bccff64ff2c6397b3389fbab5e71b5db"
+	descriptionMd5 hasValue "bc1cfdae0eb986fc7820c770cf54995a"
+	homepage hasValue "http://www.mars.org/home/rob/proj/hfs/"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__hfsutils,0,DepAtom__0)
+

@@ -1,0 +1,66 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology haskell_devscripts
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__haskell_devscripts memberOf Package
+	package hasValue "haskell-devscripts"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "27"
+	maintainer hasValue "Original-Debian Haskell Group <pkg-haskell-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.15.1"
+	fileName hasValue "pool/universe/h/haskell-devscripts/haskell-devscripts_0.15.1_all.deb"
+	size hasValue "4012"
+	md5sum hasValue "de5284237196c982f3a65cad63994080"
+	sha1 hasValue "1a99e4c203ff23b5127c29ee2d83ea8c7435a108"
+	sha256 hasValue "0b11367f82e170bee1616690691512eaf7844600627c4ebae65e738c431fdc65"
+	descriptionMd5 hasValue "e2ecdbdce97c559b1a3716779e8d2e91"
+	depends hasValue "ghc (>= 8.2), haskell-devscripts-minimal, hscolour"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "ghc"
+	comparison hasValue ">="
+	version hasValue "8.2"
+
+relationInstance depends(P0__haskell_devscripts,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "haskell-devscripts-minimal"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__haskell_devscripts,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "hscolour"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__haskell_devscripts,2,DepAtom__2)
+

@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology mairix
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__mairix memberOf Package
+	package hasValue "mairix"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/mail"
+	installedSize hasValue "210"
+	maintainer hasValue "Original-Benjamin Mako Hill <mako@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.24-2"
+	fileName hasValue "pool/universe/m/mairix/mairix_0.24-2_amd64.deb"
+	size hasValue "93376"
+	md5sum hasValue "f2ee1e5f26160f0f803d5afce33eee58"
+	sha1 hasValue "94aac7b76decfeb4a42fd3ab30a8b73cffedfcab"
+	sha256 hasValue "812e4d08a5cba7f2ad0d399fe3620f9a2c4849a42a5ddb5815fc5a5187cca46e"
+	descriptionMd5 hasValue "29e3a29f8b58f49286bc01f0c530bcd6"
+	homepage hasValue "https://github.com/vandry/mairix"
+	depends hasValue "libbz2-1.0, libc6 (>= 2.14), zlib1g (>= 1:1.1.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libbz2-1.0"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__mairix,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__mairix,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "zlib1g"
+	comparison hasValue ">="
+	version hasValue "1:1.1.4"
+
+relationInstance depends(P0__mairix,2,DepAtom__2)
+

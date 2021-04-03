@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology w1retap_pgsql
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__w1retap_pgsql memberOf Package
+	package hasValue "w1retap-pgsql"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/electronics"
+	installedSize hasValue "37"
+	maintainer hasValue "Original-Thomas Stewart <thomas@stewarts.org.uk>"
+	architecture hasValue "amd64"
+	version hasValue "1.4.4-3ubuntu2"
+	fileName hasValue "pool/universe/w/w1retap/w1retap-pgsql_1.4.4-3ubuntu2_amd64.deb"
+	size hasValue "8452"
+	md5sum hasValue "aef0b260f81ec2a9ba03188b11e65cbf"
+	sha1 hasValue "db542ad61e4c16f68bc035e49d26b862ef253783"
+	sha256 hasValue "2596a09a64a00d86167df9828081db05bbf562b54c74b84f545ee303d8176360"
+	descriptionMd5 hasValue "0ceb23241f76029bf045d08a6772dfc2"
+	homepage hasValue "http://www.zen35309.zen.co.uk/wx/tech.html"
+	depends hasValue "libc6 (>= 2.8), libpq5"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.8"
+
+relationInstance depends(P0__w1retap_pgsql,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libpq5"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__w1retap_pgsql,1,DepAtom__1)
+

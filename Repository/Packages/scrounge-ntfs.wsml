@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology scrounge_ntfs
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__scrounge_ntfs memberOf Package
+	package hasValue "scrounge-ntfs"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "48"
+	maintainer hasValue "Original-Debian Security Tools <team+pkg-security@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.9-9"
+	fileName hasValue "pool/universe/s/scrounge-ntfs/scrounge-ntfs_0.9-9_amd64.deb"
+	size hasValue "17988"
+	md5sum hasValue "092c806970c32a03a3912b3d1231c444"
+	sha1 hasValue "029f9099068afef71263ccbb561c13c9add5f26b"
+	sha256 hasValue "dbbe1e6af4aa2edc80283b4d0342406ce9e3fa104358ae4f28436698d1582e8f"
+	descriptionMd5 hasValue "7e24bc4a431f0a97b451d926a4c0d5c2"
+	homepage hasValue "http://thewalter.net/stef/software/scrounge/"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__scrounge_ntfs,0,DepAtom__0)
+

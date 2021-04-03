@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gnokii
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gnokii memberOf Package
+	package hasValue "gnokii"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/comm"
+	installedSize hasValue "6"
+	maintainer hasValue "Original-Leo Costela <costela@debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.6.31+dfsg-2ubuntu10"
+	fileName hasValue "pool/universe/g/gnokii/gnokii_0.6.31+dfsg-2ubuntu10_all.deb"
+	size hasValue "1092"
+	md5sum hasValue "0b797b003b56e3f87a7659714d76fa4b"
+	sha1 hasValue "8b3bafa50e3024d5d29a132f32be0f3c5a33bf1a"
+	sha256 hasValue "de2b7f71e6437a03d9a74f66d775e595e0186c3d3a56850f43f294b17dc8c8ac"
+	description hasValue "suite de dados para gerenciamento de celulares"
+	descriptionMd5 hasValue "85bb299fd9d08f741d528ad8a20e5b0a"
+	homepage hasValue "http://gnokii.org"
+	depends hasValue "gnokii-cli (>= 0.6.31+dfsg-2ubuntu10), xgnokii (>= 0.6.31+dfsg-2ubuntu10), gnokii-common (= 0.6.31+dfsg-2ubuntu10)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "gnokii-cli"
+	comparison hasValue ">="
+	version hasValue "0.6.31+dfsg-2ubuntu10"
+
+relationInstance depends(P0__gnokii,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "xgnokii"
+	comparison hasValue ">="
+	version hasValue "0.6.31+dfsg-2ubuntu10"
+
+relationInstance depends(P0__gnokii,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "gnokii-common"
+	comparison hasValue "="
+	version hasValue "0.6.31+dfsg-2ubuntu10"
+
+relationInstance depends(P0__gnokii,2,DepAtom__2)
+

@@ -1,0 +1,74 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology owhttpd
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__owhttpd memberOf Package
+	package hasValue "owhttpd"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/electronics"
+	installedSize hasValue "101"
+	maintainer hasValue "Original-Vincent Danjean <vdanjean@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.2p3+dfsg1-5build1"
+	fileName hasValue "pool/universe/o/owfs/owhttpd_3.2p3+dfsg1-5build1_amd64.deb"
+	size hasValue "29024"
+	md5sum hasValue "3b2d160e7460193ee3bfffdd18988df5"
+	sha1 hasValue "d258db2ef7bf3406fd1f41586016d9210f146a3b"
+	sha256 hasValue "fec6a67ce879e34feba3d56164284d29d32af9dcd54a71af915ab55b985e3cbd"
+	descriptionMd5 hasValue "70410bc668b88ee80f4bcdd09bf3fb77"
+	homepage hasValue "http://owfs.org/"
+	depends hasValue "libc6 (>= 2.7), libow-3.2-3 (>= 3.2p3+dfsg1), owfs-common (>= 3.2p3-1~), lsb-base"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__owhttpd,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libow-3.2-3"
+	comparison hasValue ">="
+	version hasValue "3.2p3+dfsg1"
+
+relationInstance depends(P0__owhttpd,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "owfs-common"
+	comparison hasValue ">="
+	version hasValue "3.2p3-1~"
+
+relationInstance depends(P0__owhttpd,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "lsb-base"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__owhttpd,3,DepAtom__3)
+

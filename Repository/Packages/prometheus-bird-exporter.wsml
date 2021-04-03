@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology prometheus_bird_exporter
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__prometheus_bird_exporter memberOf Package
+	package hasValue "prometheus-bird-exporter"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "7030"
+	maintainer hasValue "Original-Debian Go Packaging Team <pkg-go-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.2.2-1"
+	fileName hasValue "pool/universe/p/prometheus-bird-exporter/prometheus-bird-exporter_1.2.2-1_amd64.deb"
+	size hasValue "1986728"
+	md5sum hasValue "823b535253099421cb58a2a7ac8db72d"
+	sha1 hasValue "49ee3a629f679ce1027e7b50822a66e3ef6f9dd1"
+	sha256 hasValue "9671fa3cc2ee4fe2f6e670f7e47e82dea32a750d045dc61d3f6a74c3b5e0ff96"
+	descriptionMd5 hasValue "bbfa4011aaac98b69230482752eed96a"
+	homepage hasValue "https://github.com/czerwonk/bird_exporter"
+	depends hasValue "bird, libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "bird"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__prometheus_bird_exporter,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__prometheus_bird_exporter,1,DepAtom__1)
+

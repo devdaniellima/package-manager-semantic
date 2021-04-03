@@ -1,0 +1,55 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology node_on_finished
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__node_on_finished memberOf Package
+	package hasValue "node-on-finished"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/web"
+	installedSize hasValue "31"
+	maintainer hasValue "Original-Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.3.0-1"
+	replaces hasValue "node-finished (<< 2.1.0~)"
+	provides hasValue "node-ee-first (= 1.1.1), node-finished"
+	fileName hasValue "pool/universe/n/node-on-finished/node-on-finished_2.3.0-1_all.deb"
+	size hasValue "8056"
+	md5sum hasValue "1eaec3c514dc1b5dab5749d09fe7cc69"
+	sha1 hasValue "f79ba8293b7ac347180d29fc8ca223eecd675029"
+	sha256 hasValue "d57bffc171b7adbcd271642cdbccebaee9bc195b9b8b876b958c0352ebdfb506"
+	descriptionMd5 hasValue "023a0041ae28ea442f1550e15d83150d"
+	homepage hasValue "https://github.com/jshttp/on-finished"
+	depends hasValue "nodejs (>= 6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "nodejs"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__node_on_finished,0,DepAtom__0)
+

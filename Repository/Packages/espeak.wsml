@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology espeak
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__espeak memberOf Package
+	package hasValue "espeak"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/sound"
+	installedSize hasValue "212"
+	maintainer hasValue "Original-Debian Accessibility Team <pkg-a11y-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.48.04+dfsg-8build1"
+	fileName hasValue "pool/universe/e/espeak/espeak_1.48.04+dfsg-8build1_amd64.deb"
+	size hasValue "61772"
+	md5sum hasValue "21821c06a305effdde2a968e07a9df2e"
+	sha1 hasValue "4883db2013b6a39411d52e12fc2818e077fa96f3"
+	sha256 hasValue "1ae5c337565368dcf305615d252c1430cdeeb9b0090f3d1909ecd34d08779ac2"
+	description hasValue "Software sintetizador de voz multi-idioma"
+	descriptionMd5 hasValue "e4d7ea42a09ed7423403adc9c62ce2f5"
+	homepage hasValue "http://espeak.sourceforge.net/"
+	depends hasValue "libc6 (>= 2.7), libespeak1 (>= 1.48.04+dfsg)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__espeak,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libespeak1"
+	comparison hasValue ">="
+	version hasValue "1.48.04+dfsg"
+
+relationInstance depends(P0__espeak,1,DepAtom__1)
+

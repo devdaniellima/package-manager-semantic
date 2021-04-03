@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gpw
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gpw memberOf Package
+	package hasValue "gpw"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "58"
+	maintainer hasValue "Original-Francesco Paolo Lovergine <frankie@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.0.19940601-9build1"
+	fileName hasValue "pool/universe/g/gpw/gpw_0.0.19940601-9build1_amd64.deb"
+	size hasValue "17100"
+	md5sum hasValue "09a85b63ffbd347dd0afeb56b459cf0a"
+	sha1 hasValue "4142d2b3218abc520175954a4178db2ae8fde8ec"
+	sha256 hasValue "bae3d40246d230058ebf3b9ba3f99588684ec13a2e146ec38540863dee495700"
+	descriptionMd5 hasValue "f066608c89cdcc3732adbce3da7faf09"
+	homepage hasValue "http://www.multicians.org/thvv/tvvtools.html"
+	depends hasValue "libc6 (>= 2.2.5)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.2.5"
+
+relationInstance depends(P0__gpw,0,DepAtom__0)
+

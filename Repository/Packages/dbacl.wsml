@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology dbacl
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__dbacl memberOf Package
+	package hasValue "dbacl"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/text"
+	installedSize hasValue "1432"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.14.1-2"
+	fileName hasValue "pool/universe/d/dbacl/dbacl_1.14.1-2_amd64.deb"
+	size hasValue "631096"
+	md5sum hasValue "a97511363d30a69906c5ca9e993f8aff"
+	sha1 hasValue "89a57f58107ffca7f475a4e148e474e1a4f700a9"
+	sha256 hasValue "6f01beec1b688fe83accd2d87d33fb61c7a13d4a8230a2ffa571229c8f61e1d1"
+	descriptionMd5 hasValue "e3c986ec27cfd8a90eb1b2a5e9e738e5"
+	homepage hasValue "http://www.lbreyer.com/gpl.html"
+	depends hasValue "libc6 (>= 2.29), libreadline5 (>= 5.2), libslang2 (>= 2.2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__dbacl,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libreadline5"
+	comparison hasValue ">="
+	version hasValue "5.2"
+
+relationInstance depends(P0__dbacl,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libslang2"
+	comparison hasValue ">="
+	version hasValue "2.2.4"
+
+relationInstance depends(P0__dbacl,2,DepAtom__2)
+

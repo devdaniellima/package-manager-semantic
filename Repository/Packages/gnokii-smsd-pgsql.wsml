@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gnokii_smsd_pgsql
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gnokii_smsd_pgsql memberOf Package
+	package hasValue "gnokii-smsd-pgsql"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/comm"
+	installedSize hasValue "100"
+	maintainer hasValue "Original-Leo Costela <costela@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.6.31+dfsg-2ubuntu10"
+	fileName hasValue "pool/universe/g/gnokii/gnokii-smsd-pgsql_0.6.31+dfsg-2ubuntu10_amd64.deb"
+	size hasValue "7728"
+	md5sum hasValue "9264d82fa321911d55f659cf77764066"
+	sha1 hasValue "0381f98bc65e2c546cc696dc2e44a930902c9605"
+	sha256 hasValue "8ad84b46e7186c32977d3e5eb1ccd532b87c2b55b39dd50af1e131c7ba4a03ce"
+	description hasValue "SMSD plugin for PostgreSQL storage backend"
+	descriptionMd5 hasValue "bf5b18f06e0393a8e54b6c35174064ea"
+	homepage hasValue "http://gnokii.org"
+	depends hasValue "libc6 (>= 2.4), libpq5, gnokii-smsd (= 0.6.31+dfsg-2ubuntu10)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__gnokii_smsd_pgsql,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libpq5"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__gnokii_smsd_pgsql,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "gnokii-smsd"
+	comparison hasValue "="
+	version hasValue "0.6.31+dfsg-2ubuntu10"
+
+relationInstance depends(P0__gnokii_smsd_pgsql,2,DepAtom__2)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology xwit
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__xwit memberOf Package
+	package hasValue "xwit"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/x11"
+	installedSize hasValue "56"
+	maintainer hasValue "Original-Bernhard R. Link <brlink@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.4-16"
+	fileName hasValue "pool/universe/x/xwit/xwit_3.4-16_amd64.deb"
+	size hasValue "18876"
+	md5sum hasValue "3c153382ecbdd35f1c6e12f4c6885383"
+	sha1 hasValue "1d799bab5747fb0fcd421d82b3463c6e0d2ec518"
+	sha256 hasValue "1cbb3bc571fe7b846f9f938f6d1edd4f4b59dbb98e5c9c6080caee3b391d7f59"
+	description hasValue "coleção de rotinas simples para chamar algumas funções X11"
+	descriptionMd5 hasValue "29cd5dc3adf20e14677646ca8f0706ef"
+	depends hasValue "libc6 (>= 2.7), libx11-6"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__xwit,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libx11-6"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__xwit,1,DepAtom__1)
+

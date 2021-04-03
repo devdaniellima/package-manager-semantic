@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology wbox
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__wbox memberOf Package
+	package hasValue "wbox"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/web"
+	installedSize hasValue "52"
+	maintainer hasValue "Original-Alberto Furia <straluna@email.it>"
+	architecture hasValue "amd64"
+	version hasValue "5-1build1"
+	fileName hasValue "pool/universe/w/wbox/wbox_5-1build1_amd64.deb"
+	size hasValue "21056"
+	md5sum hasValue "e39ff72e7e624f4bd277b821b7f269a8"
+	sha1 hasValue "fce67c76cc35250199f7527a96baea8569aa4c4f"
+	sha256 hasValue "e482bf9fb4a22d70de3287ee9e502a1ceb6ee8d9996dcb2105b7e62894020b1f"
+	descriptionMd5 hasValue "d4e227ddc208e8ac7a1306a287a6eeb8"
+	homepage hasValue "http://www.hping.org/wbox/"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__wbox,0,DepAtom__0)
+

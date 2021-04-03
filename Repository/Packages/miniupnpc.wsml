@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology miniupnpc
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__miniupnpc memberOf Package
+	package hasValue "miniupnpc"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "52"
+	maintainer hasValue "Original-Thomas Goirand <zigo@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.1.20190824-0ubuntu2"
+	fileName hasValue "pool/universe/m/miniupnpc/miniupnpc_2.1.20190824-0ubuntu2_amd64.deb"
+	size hasValue "13740"
+	md5sum hasValue "5ec352993e947ea8254b6166af17329e"
+	sha1 hasValue "ceb1a40c0b85506c08dfdcd78df2ada9ccbca209"
+	sha256 hasValue "fa165426c84fcdcdce466dec821789757ffdc80631adb19e885b2c37da8a5d08"
+	descriptionMd5 hasValue "3d9ea3e08c317f931e9646ec11c73197"
+	homepage hasValue "http://miniupnp.free.fr/"
+	depends hasValue "libc6 (>= 2.7), libminiupnpc17 (>= 1.9.20140610)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__miniupnpc,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libminiupnpc17"
+	comparison hasValue ">="
+	version hasValue "1.9.20140610"
+
+relationInstance depends(P0__miniupnpc,1,DepAtom__1)
+

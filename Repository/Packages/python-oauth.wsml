@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python_oauth
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python_oauth memberOf Package
+	package hasValue "python-oauth"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "50"
+	maintainer hasValue "Original-Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.0.1-6ubuntu1"
+	provides hasValue "python2.7-oauth"
+	fileName hasValue "pool/universe/p/python-oauth/python-oauth_1.0.1-6ubuntu1_all.deb"
+	size hasValue "13260"
+	md5sum hasValue "5fb38cc04277f1868fc9dfc13ac12d69"
+	sha1 hasValue "0727638c382bef93010961c460a12d5422388bab"
+	sha256 hasValue "1c47153a4200de707c635be2aa895e767698646523872727ff2f1b73632cc7a0"
+	descriptionMd5 hasValue "28c98bf4852ce37e6f12e5f37f561868"
+	homepage hasValue "http://code.google.com/p/oauth"
+	depends hasValue "python2:any (<< 2.8), python2:any (>= 2.7~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue "<<"
+	version hasValue "2.8"
+
+relationInstance depends(P0__python_oauth,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue ">="
+	version hasValue "2.7~"
+
+relationInstance depends(P0__python_oauth,1,DepAtom__1)
+

@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libladspa_ocaml
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libladspa_ocaml memberOf Package
+	package hasValue "libladspa-ocaml"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "42"
+	maintainer hasValue "Original-Debian OCaml Maintainers <debian-ocaml-maint@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.1.4-1.1build4"
+	provides hasValue "libladspa-ocaml-3wnq4"
+	fileName hasValue "pool/universe/o/ocaml-ladspa/libladspa-ocaml_0.1.4-1.1build4_amd64.deb"
+	size hasValue "8860"
+	md5sum hasValue "8d8a04a8942325b96fd0cebec14abc76"
+	sha1 hasValue "ac19a8e6ffbce204c7347f68294410903690558e"
+	sha256 hasValue "2c3b1353d14a117bd333e30930b48094c39ca65a9341f95b8fc04c6593e7520a"
+	descriptionMd5 hasValue "acc3ab45ccccd200cec81e77ead75018"
+	homepage hasValue "http://savonet.sourceforge.net/"
+	depends hasValue "ocaml-base-nox-4.08.1, libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "ocaml-base-nox-4.08.1"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libladspa_ocaml,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libladspa_ocaml,1,DepAtom__1)
+

@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libtermbox1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libtermbox1 memberOf Package
+	package hasValue "libtermbox1"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "64"
+	maintainer hasValue "Original-Mo Zhou <cdluminate@gmail.com>"
+	architecture hasValue "amd64"
+	version hasValue "1.1.2+dfsg-3build2"
+	fileName hasValue "pool/universe/t/termbox/libtermbox1_1.1.2+dfsg-3build2_amd64.deb"
+	size hasValue "18208"
+	md5sum hasValue "c9e80bcf4c51689b7da043b445a53bbd"
+	sha1 hasValue "80e09b0234c35f3347751dabf6d98e809102e75b"
+	sha256 hasValue "503f836da3fb21e20a017a50b54a833353d7177917c88b9f5bd599abb3f7819d"
+	descriptionMd5 hasValue "7afff2fc98c3e658190f25a7410aa372"
+	homepage hasValue "https://github.com/nsf/termbox"
+	depends hasValue "libc6 (>= 2.15)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__libtermbox1,0,DepAtom__0)
+

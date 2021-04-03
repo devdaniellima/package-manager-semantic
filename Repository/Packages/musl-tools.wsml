@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology musl_tools
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__musl_tools memberOf Package
+	package hasValue "musl-tools"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/devel"
+	installedSize hasValue "63"
+	maintainer hasValue "Original-Reiner Herrmann <reiner@reiner-h.de>"
+	architecture hasValue "amd64"
+	version hasValue "1.1.24-1"
+	replaces hasValue "musl (<< 1.1.15-1)"
+	fileName hasValue "pool/universe/m/musl/musl-tools_1.1.24-1_amd64.deb"
+	size hasValue "5868"
+	md5sum hasValue "01920e51b406ef7f551b80210386306b"
+	sha1 hasValue "1bc52da775659906615e0b8b6a6899774b497ac5"
+	sha256 hasValue "d5cb017c00c32b0e9575230b24e04cac7146d72f7b61d085b29fd5d6d6803f1b"
+	descriptionMd5 hasValue "66a2dc8a7d9035e9ad7ecd9e95191563"
+	homepage hasValue "https://www.musl-libc.org/"
+	depends hasValue "musl-dev (= 1.1.24-1), gcc"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "musl-dev"
+	comparison hasValue "="
+	version hasValue "1.1.24-1"
+
+relationInstance depends(P0__musl_tools,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "gcc"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__musl_tools,1,DepAtom__1)
+

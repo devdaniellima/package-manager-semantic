@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology fasm
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__fasm memberOf Package
+	package hasValue "fasm"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "356"
+	maintainer hasValue "Original-Tomasz Buchert <tomasz@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.73.22-1"
+	fileName hasValue "pool/universe/f/fasm/fasm_1.73.22-1_amd64.deb"
+	size hasValue "158692"
+	md5sum hasValue "9d1bc034b1cbe21e163ad778d6d814cf"
+	sha1 hasValue "0cd9ba45a537d22add6fe7aa6b87c64dda8a7880"
+	sha256 hasValue "a2090a0c2d5af20f387905945cadeb1ab645bbe6adca524aac68e60db86dc68d"
+	descriptionMd5 hasValue "bc56833ca51013cf84753cdfae7d97a4"
+	homepage hasValue "http://flatassembler.net/"
+	depends hasValue "libc6-i386 (>= 2.1.3)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6-i386"
+	comparison hasValue ">="
+	version hasValue "2.1.3"
+
+relationInstance depends(P0__fasm,0,DepAtom__0)
+

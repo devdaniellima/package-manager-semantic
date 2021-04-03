@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libmm_glib0
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libmm_glib0 memberOf Package
+	package hasValue "libmm-glib0"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libs"
+	installedSize hasValue "1002"
+	maintainer hasValue "Original-Mathieu Trudel-Lapierre <mathieu.tl@gmail.com>"
+	architecture hasValue "amd64"
+	version hasValue "1.12.8-1"
+	fileName hasValue "pool/main/m/modemmanager/libmm-glib0_1.12.8-1_amd64.deb"
+	size hasValue "184596"
+	md5sum hasValue "9aa95c42e2de2bbe142fdc51954306d3"
+	sha1 hasValue "13073f16e56f750289eb3c899809ec6c7dc3d3ac"
+	sha256 hasValue "1d2129aeb41ac384ef97de2074b3c4336e1fde781d63fc7b6dd1505fd328ec1d"
+	description hasValue "D-Bus service for managing modems - shared libraries"
+	descriptionMd5 hasValue "5e5e06d017e475f8b484357bd83c0b80"
+	homepage hasValue "https://www.freedesktop.org/wiki/Software/ModemManager/"
+	depends hasValue "libc6 (>= 2.14), libglib2.0-0 (>= 2.36.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libmm_glib0,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libglib2.0-0"
+	comparison hasValue ">="
+	version hasValue "2.36.0"
+
+relationInstance depends(P0__libmm_glib0,1,DepAtom__1)
+

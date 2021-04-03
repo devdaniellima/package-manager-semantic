@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology wipe
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__wipe memberOf Package
+	package hasValue "wipe"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/utils"
+	installedSize hasValue "88"
+	maintainer hasValue "Original-Debian Security Tools <team+pkg-security@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.24-6"
+	fileName hasValue "pool/universe/w/wipe/wipe_0.24-6_amd64.deb"
+	size hasValue "38600"
+	md5sum hasValue "587100e9820e736d41570bef0736d364"
+	sha1 hasValue "bdf0d37f080320b00c4af2d611c16e838357ad7f"
+	sha256 hasValue "920a94e4c84fb73ba68fbf458ed8c6ab236254db6e7cbebf5885f4eaf8bdc349"
+	description hasValue "secure file deletion"
+	descriptionMd5 hasValue "1a506a423a5341cc02f3faef2f77580f"
+	homepage hasValue "https://github.com/berke/wipe"
+	depends hasValue "libc6 (>= 2.15)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__wipe,0,DepAtom__0)
+

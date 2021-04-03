@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology flac
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__flac memberOf Package
+	package hasValue "flac"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/sound"
+	installedSize hasValue "370"
+	maintainer hasValue "Original-Debian Multimedia Maintainers <debian-multimedia@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.3.3-1build1"
+	fileName hasValue "pool/universe/f/flac/flac_1.3.3-1build1_amd64.deb"
+	size hasValue "120688"
+	md5sum hasValue "885255bab882455aa76c89902d51002c"
+	sha1 hasValue "1364149389ef65cb4f2c11e56c4817b13973a921"
+	sha256 hasValue "6d73b215c2aa2d993cbab57d38d23bdbecc5904d34f719e2036a1594015bf286"
+	description hasValue "Codec de Áudio Livre de Perdas - ferramentas de linha de comando"
+	descriptionMd5 hasValue "f1560839832c89e0262853df6c9f7e62"
+	homepage hasValue "http://xiph.org/flac/"
+	depends hasValue "libc6 (>= 2.29), libflac8 (>= 1.3.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__flac,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libflac8"
+	comparison hasValue ">="
+	version hasValue "1.3.0"
+
+relationInstance depends(P0__flac,1,DepAtom__1)
+

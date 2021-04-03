@@ -1,0 +1,77 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libsemanage1_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libsemanage1_dev memberOf Package
+	package hasValue "libsemanage1-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libdevel"
+	installedSize hasValue "782"
+	maintainer hasValue "Original-Debian SELinux maintainers <selinux-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.0-1build2"
+	provides hasValue "libsemanage-dev"
+	conflicts hasValue "libsemanage-dev"
+	fileName hasValue "pool/main/libs/libsemanage/libsemanage1-dev_3.0-1build2_amd64.deb"
+	size hasValue "119080"
+	md5sum hasValue "e89a4e60374145d4c950beb42b82efcf"
+	sha1 hasValue "81e54ffda177533dbb1f61319cdf0120ebde3797"
+	sha256 hasValue "bf76dae74327ad1143f83d8d2c3aa4de65d828ced0a427ff482a7fc0d5dec03e"
+	description hasValue "Header files and libraries for SELinux policy manipulation"
+	descriptionMd5 hasValue "303bd4372e6052211e2f9b4e60af2b0d"
+	homepage hasValue "http://userspace.selinuxproject.org/"
+	depends hasValue "libbz2-dev, libselinux1-dev (>= 3.0), libsemanage1 (= 3.0-1build2), libsepol1-dev (>= 3.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libbz2-dev"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libsemanage1_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libselinux1-dev"
+	comparison hasValue ">="
+	version hasValue "3.0"
+
+relationInstance depends(P0__libsemanage1_dev,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libsemanage1"
+	comparison hasValue "="
+	version hasValue "3.0-1build2"
+
+relationInstance depends(P0__libsemanage1_dev,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "libsepol1-dev"
+	comparison hasValue ">="
+	version hasValue "3.0"
+
+relationInstance depends(P0__libsemanage1_dev,3,DepAtom__3)
+

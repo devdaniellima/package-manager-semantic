@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology icebreaker
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__icebreaker memberOf Package
+	package hasValue "icebreaker"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/games"
+	installedSize hasValue "121"
+	maintainer hasValue "Original-Debian Games Team <pkg-games-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.21-12"
+	fileName hasValue "pool/universe/i/icebreaker/icebreaker_1.21-12_amd64.deb"
+	size hasValue "41868"
+	md5sum hasValue "f12e72e5e2dd30f0b6c16ef82bb25300"
+	sha1 hasValue "637ec8af875aaa0291a1424a3ef05533d058e3d0"
+	sha256 hasValue "bdea806cda85c0920d34ab621d4b74dc8666858f02c408b6a91dbfb053f9d3ec"
+	description hasValue "Quebre o iceberg."
+	descriptionMd5 hasValue "926a53afe0cd03e3d7658b381f5aeb63"
+	homepage hasValue "https://mattdm.org/icebreaker/"
+	depends hasValue "libc6 (>= 2.14), libsdl-mixer1.2, libsdl1.2debian (>= 1.2.11)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__icebreaker,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libsdl-mixer1.2"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__icebreaker,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libsdl1.2debian"
+	comparison hasValue ">="
+	version hasValue "1.2.11"
+
+relationInstance depends(P0__icebreaker,2,DepAtom__2)
+

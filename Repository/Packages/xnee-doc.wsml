@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology xnee_doc
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__xnee_doc memberOf Package
+	package hasValue "xnee-doc"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/doc"
+	installedSize hasValue "934"
+	maintainer hasValue "Original-Vincent Bernat <bernat@debian.org>"
+	architecture hasValue "all"
+	version hasValue "3.19-4.1ubuntu1"
+	replaces hasValue "xnee (<< 3)"
+	fileName hasValue "pool/universe/x/xnee/xnee-doc_3.19-4.1ubuntu1_all.deb"
+	size hasValue "586608"
+	md5sum hasValue "9780cae0052f0fbfcc16d6b4355ac89a"
+	sha1 hasValue "8a054a643645f6bc7a98374ccede3ca394ddcd31"
+	sha256 hasValue "9c02c6cabb420a6d5d2aeb980aec56e2f9db0b738c4179674da2dafd68b1113b"
+	description hasValue "X event recorder/replayer - documentation"
+	descriptionMd5 hasValue "6599482985a9ec056b31e13fb0eb1637"
+	homepage hasValue "http://www.sandklef.com/xnee/"
+	depends hasValue "dpkg (>= 1.15.4) | install-info"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "dpkg"
+	comparison hasValue ">="
+	version hasValue "1.15.4"
+
+relationInstance depends(P0__xnee_doc,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "install-info"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__xnee_doc,0,DepAtom__1)
+

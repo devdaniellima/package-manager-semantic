@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libxml2_utils
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libxml2_utils memberOf Package
+	package hasValue "libxml2-utils"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "text"
+	installedSize hasValue "185"
+	maintainer hasValue "Original-Debian XML/SGML Group <debian-xml-sgml-pkgs@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.9.10+dfsg-5"
+	fileName hasValue "pool/main/libx/libxml2/libxml2-utils_2.9.10+dfsg-5_amd64.deb"
+	size hasValue "36940"
+	md5sum hasValue "eef0cdd73b3f97c8c604f8dcf490777c"
+	sha1 hasValue "7a098c90d8534824acb8c1d2090d4b5e6e9cf3d7"
+	sha256 hasValue "85608055aeecbed9f59eccf49ebad936c5fb6dc3297b244ab5911ddbf1d923c8"
+	description hasValue "XML utilities"
+	descriptionMd5 hasValue "eb24a32e7f02ae9cc4d9ada525dc1964"
+	homepage hasValue "http://xmlsoft.org"
+	depends hasValue "libc6 (>= 2.7), libxml2 (>= 2.9.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__libxml2_utils,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libxml2"
+	comparison hasValue ">="
+	version hasValue "2.9.0"
+
+relationInstance depends(P0__libxml2_utils,1,DepAtom__1)
+

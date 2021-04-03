@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ppdfilt
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ppdfilt memberOf Package
+	package hasValue "ppdfilt"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "42"
+	maintainer hasValue "Original-A Mennucc1 <mennucc1@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2:0.10-7.3"
+	fileName hasValue "pool/universe/libp/libppd/ppdfilt_0.10-7.3_amd64.deb"
+	size hasValue "12846"
+	md5sum hasValue "d5f48c94c078aa95a0148c836dc0efd6"
+	sha1 hasValue "6d73d1e656d9fdacd5c5700a773f493218fcff17"
+	sha256 hasValue "5627ce3087d263fdcba92f6930ff2aa77a5eff34a507c6a58272b8ad85d90600"
+	description hasValue "Filtro que insere comandos de impressora específicos em trabalhos de impressão."
+	descriptionMd5 hasValue "fca583af4e18b78aee91743a3ebdb6d8"
+	depends hasValue "libc6 (>= 2.7), libglib2.0-0 (>= 2.12.0), libppd0 (>= 2:0.10)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__ppdfilt,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libglib2.0-0"
+	comparison hasValue ">="
+	version hasValue "2.12.0"
+
+relationInstance depends(P0__ppdfilt,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libppd0"
+	comparison hasValue ">="
+	version hasValue "2:0.10"
+
+relationInstance depends(P0__ppdfilt,2,DepAtom__2)
+

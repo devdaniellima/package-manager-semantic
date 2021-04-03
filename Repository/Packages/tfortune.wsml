@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology tfortune
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__tfortune memberOf Package
+	package hasValue "tfortune"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/games"
+	installedSize hasValue "99"
+	maintainer hasValue "Original-Andre Noll <maan@tuebingen.mpg.de>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.1-1"
+	fileName hasValue "pool/universe/t/tfortune/tfortune_1.0.1-1_amd64.deb"
+	size hasValue "36104"
+	md5sum hasValue "685c4bfcb5c85c14b3a032b0d00dbf41"
+	sha1 hasValue "2524b2f241fac80f25cc0a6761acec274c3f10d1"
+	sha256 hasValue "4195dc86b6faa6efdc9642c860253dcb7ce253341f27f7be843359fb0697589f"
+	descriptionMd5 hasValue "e503deb883dedf383cce1711387cab18"
+	homepage hasValue "http://people.tuebingen.mpg.de/maan/tfortune/"
+	depends hasValue "libc6 (>= 2.17), liblopsub1"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.17"
+
+relationInstance depends(P0__tfortune,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "liblopsub1"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__tfortune,1,DepAtom__1)
+

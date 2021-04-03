@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gcc_x86_64_linux_gnux32
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gcc_x86_64_linux_gnux32 memberOf Package
+	package hasValue "gcc-x86-64-linux-gnux32"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "25"
+	maintainer hasValue "Original-Debian GCC Maintainers <debian-gcc@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "4:9.3.0-1ubuntu2"
+	fileName hasValue "pool/universe/g/gcc-defaults-ports/gcc-x86-64-linux-gnux32_9.3.0-1ubuntu2_amd64.deb"
+	size hasValue "1424"
+	md5sum hasValue "ab9008612c6cb48b00cce8fac8c3f3da"
+	sha1 hasValue "ed24df3b4c2894e5ebe68e03e73e3e84a4e58fdf"
+	sha256 hasValue "e2faef56f2d771d9813588c25b79959a81dd2e44dd9df25b2e75ff5b15d4ba79"
+	description hasValue "GNU C compiler for the x32 architecture"
+	descriptionMd5 hasValue "b4211c1f0ee569d26c5442d9627cb0ed"
+	depends hasValue "cpp-x86-64-linux-gnux32 (= 4:9.3.0-1ubuntu2), gcc-9-x86-64-linux-gnux32 (>= 9.3.0-3~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "cpp-x86-64-linux-gnux32"
+	comparison hasValue "="
+	version hasValue "4:9.3.0-1ubuntu2"
+
+relationInstance depends(P0__gcc_x86_64_linux_gnux32,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "gcc-9-x86-64-linux-gnux32"
+	comparison hasValue ">="
+	version hasValue "9.3.0-3~"
+
+relationInstance depends(P0__gcc_x86_64_linux_gnux32,1,DepAtom__1)
+

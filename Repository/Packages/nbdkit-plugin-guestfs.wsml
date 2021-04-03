@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology nbdkit_plugin_guestfs
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__nbdkit_plugin_guestfs memberOf Package
+	package hasValue "nbdkit-plugin-guestfs"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "46"
+	maintainer hasValue "Original-Hilko Bengen <bengen@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.16.2-1ubuntu3"
+	conflicts hasValue "nbdkit (<< 1.1.5-2~)"
+	fileName hasValue "pool/universe/n/nbdkit/nbdkit-plugin-guestfs_1.16.2-1ubuntu3_amd64.deb"
+	size hasValue "12208"
+	md5sum hasValue "b509fc3cadc374af72a68818603e0509"
+	sha1 hasValue "0b12088bdfb0b9df4d688ec57fa29b7fe3710779"
+	sha256 hasValue "a34bdfa98a6425e051d29c5ac2652cf7070863eac717cca842ad79fc960eb981"
+	descriptionMd5 hasValue "1d3438dcd3d93a0cd3ceca0f156d8989"
+	homepage hasValue "https://github.com/libguestfs/nbdkit"
+	depends hasValue "libc6 (>= 2.14), libguestfs0 (>= 1:1.20), nbdkit"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__nbdkit_plugin_guestfs,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libguestfs0"
+	comparison hasValue ">="
+	version hasValue "1:1.20"
+
+relationInstance depends(P0__nbdkit_plugin_guestfs,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "nbdkit"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__nbdkit_plugin_guestfs,2,DepAtom__2)
+

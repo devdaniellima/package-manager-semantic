@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology mdevctl
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__mdevctl memberOf Package
+	package hasValue "mdevctl"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "51"
+	maintainer hasValue "Christian Ehrhardt <christian.ehrhardt@canonical.com>"
+	architecture hasValue "all"
+	version hasValue "0.59-1"
+	fileName hasValue "pool/universe/m/mdevctl/mdevctl_0.59-1_all.deb"
+	size hasValue "11096"
+	md5sum hasValue "7e5e8401d070e53b3c6a85559175b92b"
+	sha1 hasValue "2eb3ace4a57188bb070643105a0e5994a2add9df"
+	sha256 hasValue "188f6f181cd53d49821a42d30ce2511968831c3d2aa1b972037f2fc11b6a83fe"
+	descriptionMd5 hasValue "0fb9bffbdd19e2db98b5338bc7bb5a16"
+	homepage hasValue "https://github.com/mdevctl/mdevctl"
+	depends hasValue "jq, udev"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "jq"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__mdevctl,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "udev"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__mdevctl,1,DepAtom__1)
+

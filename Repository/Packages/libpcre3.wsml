@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libpcre3
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libpcre3 memberOf Package
+	package hasValue "libpcre3"
+	packageSource hasValue Source__S1
+	priority hasValue "required"
+	section hasValue "libs"
+	installedSize hasValue "671"
+	maintainer hasValue "Original-Matthew Vernon <matthew@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2:8.39-12build1"
+	conflicts hasValue "libpcre3-dev (<= 4.3-3)"
+	fileName hasValue "pool/main/p/pcre3/libpcre3_8.39-12build1_amd64.deb"
+	size hasValue "232028"
+	md5sum hasValue "372dfa8f7afbea94292874a13fabcf10"
+	sha1 hasValue "b6c05f6a3f58ca6a50aeebff6e3372df00723196"
+	sha256 hasValue "2e94c88431a1cfdc9f5be37a9063c617c2e85be4eeee194b3956b7a1d35040cd"
+	description hasValue "Antiga biblioteca de expressões regulares compatível com Perl 5 - arquivos de execução"
+	descriptionMd5 hasValue "554ac784f7314cb2c59649814e330d34"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libpcre3,0,DepAtom__0)
+

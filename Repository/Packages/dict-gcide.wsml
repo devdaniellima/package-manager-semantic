@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology dict_gcide
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__dict_gcide memberOf Package
+	package hasValue "dict-gcide"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "text"
+	installedSize hasValue "17099"
+	maintainer hasValue "Original-Ritesh Raj Sarraf <rrs@debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.48.5"
+	replaces hasValue "dict-web1913"
+	provides hasValue "dict-web1913, dictd-dictionary"
+	fileName hasValue "pool/main/d/dict-gcide/dict-gcide_0.48.5_all.deb"
+	size hasValue "14796068"
+	md5sum hasValue "664179b7cbd713fd9400da795cccec48"
+	sha1 hasValue "471583fb6ef8ca03f74b64fae38754e462af10b3"
+	sha256 hasValue "d83c23f3d9b5c13cad0b9dd4fbf03e34d517a6476fd696252343d6e92695e662"
+	descriptionMd5 hasValue "5de203d81ca57711d27ea9dedad7c40f"
+	depends hasValue "dictd | dict-server"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "dictd"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__dict_gcide,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "dict-server"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__dict_gcide,0,DepAtom__1)
+

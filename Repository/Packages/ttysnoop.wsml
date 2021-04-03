@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ttysnoop
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ttysnoop memberOf Package
+	package hasValue "ttysnoop"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "65"
+	maintainer hasValue "Original-Mats Erik Andersson <mats.andersson@gisladisker.se>"
+	architecture hasValue "amd64"
+	version hasValue "0.12d-6build1"
+	fileName hasValue "pool/universe/t/ttysnoop/ttysnoop_0.12d-6build1_amd64.deb"
+	size hasValue "17656"
+	md5sum hasValue "7e0ad10810f3b56beb92cb2a5440e193"
+	sha1 hasValue "7c77bdde520fe0f24c8302d7bc0ae82625a96ea2"
+	sha256 hasValue "b8de541bbda595a7da956a8820111b67d9fdccb159e89ae9696b3358ec40dbc4"
+	description hasValue "allows you to spy on telnet+serial connections"
+	descriptionMd5 hasValue "60b90ebb8f84214f504d7151f178fafe"
+	depends hasValue "libc6 (>= 2.15)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__ttysnoop,0,DepAtom__0)
+

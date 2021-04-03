@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology mpop
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__mpop memberOf Package
+	package hasValue "mpop"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/net"
+	installedSize hasValue "382"
+	maintainer hasValue "Original-Emmanuel Bouthenot <kolter@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.4.6-1"
+	fileName hasValue "pool/universe/m/mpop/mpop_1.4.6-1_amd64.deb"
+	size hasValue "118028"
+	md5sum hasValue "91423e5ddde6552f1a844f774afdd2d8"
+	sha1 hasValue "346bff5321d2f18cb07e226cfb3c53e4a393118c"
+	sha256 hasValue "b4477108df81fc940e6f9fdc5eae39bf31dd37aef0a364ee95226f193611fd6d"
+	descriptionMd5 hasValue "4e2610eec53ac90b3e5120c466583bd7"
+	homepage hasValue "https://marlam.de/mpop/"
+	depends hasValue "libc6 (>= 2.15), libgnutls30 (>= 3.6.6), libgsasl7 (>= 1.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__mpop,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgnutls30"
+	comparison hasValue ">="
+	version hasValue "3.6.6"
+
+relationInstance depends(P0__mpop,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libgsasl7"
+	comparison hasValue ">="
+	version hasValue "1.1"
+
+relationInstance depends(P0__mpop,2,DepAtom__2)
+

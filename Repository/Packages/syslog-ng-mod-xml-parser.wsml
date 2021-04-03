@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology syslog_ng_mod_xml_parser
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__syslog_ng_mod_xml_parser memberOf Package
+	package hasValue "syslog-ng-mod-xml-parser"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "90"
+	maintainer hasValue "Original-syslog-ng maintainers <syslog-ng-maintainers@alioth-lists.debian.net>"
+	architecture hasValue "amd64"
+	version hasValue "3.25.1-3"
+	fileName hasValue "pool/universe/s/syslog-ng/syslog-ng-mod-xml-parser_3.25.1-3_amd64.deb"
+	size hasValue "14280"
+	md5sum hasValue "0c789b4b83816be0aef8b727d6397f15"
+	sha1 hasValue "0e587a5137d49ef2d8c7a73d4453f83885e05d58"
+	sha256 hasValue "b4171adb66621ab80bf5e7c5074eeec5b149df2e0430a3d6960323c50c867ec4"
+	description hasValue "Enhanced system logging daemon (xml parser plugin)"
+	descriptionMd5 hasValue "2a0db99165de9948e70351eb8e6e009c"
+	homepage hasValue "https://www.syslog-ng.com/"
+	depends hasValue "libc6 (>= 2.14), syslog-ng-core (>= 3.25.1-3), syslog-ng-core (<< 3.25.1-3.1~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__syslog_ng_mod_xml_parser,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "syslog-ng-core"
+	comparison hasValue ">="
+	version hasValue "3.25.1-3"
+
+relationInstance depends(P0__syslog_ng_mod_xml_parser,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "syslog-ng-core"
+	comparison hasValue "<<"
+	version hasValue "3.25.1-3.1~"
+
+relationInstance depends(P0__syslog_ng_mod_xml_parser,2,DepAtom__2)
+

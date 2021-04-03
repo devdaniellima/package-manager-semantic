@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology httpry_daemon
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__httpry_daemon memberOf Package
+	package hasValue "httpry-daemon"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "27"
+	maintainer hasValue "Original-Janos Guljas <janos@debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.1.8-1"
+	fileName hasValue "pool/universe/h/httpry/httpry-daemon_0.1.8-1_all.deb"
+	size hasValue "5446"
+	md5sum hasValue "8eb56dccfeb884bfc188dea521f8a564"
+	sha1 hasValue "025d45918fd0c31936649b090a92328b2dad2ee2"
+	sha256 hasValue "0a5b6f1c61f90c651fb10e6e98df0ca3b8ee0164b59e6cfb82eb0055aaadbdb5"
+	descriptionMd5 hasValue "c758e141aa5ce9332447ede6604262f6"
+	homepage hasValue "http://dumpsterventures.com/jason/httpry/"
+	depends hasValue "httpry (>= 0.1.8-1), lsb-base (>= 3.0-6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "httpry"
+	comparison hasValue ">="
+	version hasValue "0.1.8-1"
+
+relationInstance depends(P0__httpry_daemon,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "lsb-base"
+	comparison hasValue ">="
+	version hasValue "3.0-6"
+
+relationInstance depends(P0__httpry_daemon,1,DepAtom__1)
+

@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology mdns_scan
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__mdns_scan memberOf Package
+	package hasValue "mdns-scan"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "32"
+	maintainer hasValue "Original-Thorsten Alteholz <debian@alteholz.de>"
+	architecture hasValue "amd64"
+	version hasValue "0.5-5"
+	fileName hasValue "pool/universe/m/mdns-scan/mdns-scan_0.5-5_amd64.deb"
+	size hasValue "10784"
+	md5sum hasValue "40b5984478549060349a6486dd585f9f"
+	sha1 hasValue "ad0f725331091c1328b6d432ab13f6bdba0efff8"
+	sha256 hasValue "fcd0df8cf2c45204f89a9bc5047b68ef4a7b8c448467e458b8d7e566be5c351b"
+	description hasValue "busca serviços mDNS/DNS-SD publicados na rede local"
+	descriptionMd5 hasValue "724eeaa2ae2b9134573a86be37ee5532"
+	homepage hasValue "https://github.com/alteholz/mdns-scan"
+	depends hasValue "libc6 (>= 2.15)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__mdns_scan,0,DepAtom__0)
+

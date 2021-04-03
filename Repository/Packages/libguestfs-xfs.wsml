@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libguestfs_xfs
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libguestfs_xfs memberOf Package
+	package hasValue "libguestfs-xfs"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/libs"
+	installedSize hasValue "29"
+	maintainer hasValue "Original-Debian Libvirt Maintainers <pkg-libvirt-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:1.40.2-7ubuntu5"
+	fileName hasValue "pool/universe/libg/libguestfs/libguestfs-xfs_1.40.2-7ubuntu5_amd64.deb"
+	size hasValue "1772"
+	md5sum hasValue "ee3d4d86f15a2ca97757df32b5ce7bc4"
+	sha1 hasValue "ec3b1a66ac73acddb03c5bf05b44adbfb7c3c682"
+	sha256 hasValue "989a53aa332a001f4a2cd2efcb965ea0f3243a04542605fe55682b75412931e1"
+	description hasValue "guest disk image management system - XFS support"
+	descriptionMd5 hasValue "5c7d00c081f22eeb296ca33f9061d478"
+	homepage hasValue "http://libguestfs.org"
+	depends hasValue "libguestfs0 (= 1:1.40.2-7ubuntu5), xfsprogs"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libguestfs0"
+	comparison hasValue "="
+	version hasValue "1:1.40.2-7ubuntu5"
+
+relationInstance depends(P0__libguestfs_xfs,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "xfsprogs"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libguestfs_xfs,1,DepAtom__1)
+

@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology open_isns_utils
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__open_isns_utils memberOf Package
+	package hasValue "open-isns-utils"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "79"
+	maintainer hasValue "Original-Debian iSCSI Maintainers <open-isns@packages.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.97-3"
+	fileName hasValue "pool/universe/o/open-isns/open-isns-utils_0.97-3_amd64.deb"
+	size hasValue "29616"
+	md5sum hasValue "e520d8e817905ba1b6f6fc8e9c405897"
+	sha1 hasValue "77dd189cf8c3c0dd8933ac7d8492bf3d16725c02"
+	sha256 hasValue "10d0e1cf41547e61b78b334a922b3cb0de5c6d56c982987199bd7a9a32a4d359"
+	descriptionMd5 hasValue "9d5cdca02aa00857b9327d6f80362183"
+	homepage hasValue "https://github.com/open-iscsi/open-isns"
+	depends hasValue "libc6 (>= 2.4), libisns0 (>= 0.96), libssl1.1 (>= 1.1.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__open_isns_utils,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libisns0"
+	comparison hasValue ">="
+	version hasValue "0.96"
+
+relationInstance depends(P0__open_isns_utils,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libssl1.1"
+	comparison hasValue ">="
+	version hasValue "1.1.0"
+
+relationInstance depends(P0__open_isns_utils,2,DepAtom__2)
+

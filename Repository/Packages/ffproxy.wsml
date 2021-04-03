@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ffproxy
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ffproxy memberOf Package
+	package hasValue "ffproxy"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "120"
+	maintainer hasValue "Original-Emmanuel Bouthenot <kolter@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.6-12"
+	fileName hasValue "pool/universe/f/ffproxy/ffproxy_1.6-12_amd64.deb"
+	size hasValue "36464"
+	md5sum hasValue "5a23d694a56b5db64459c8814871eb49"
+	sha1 hasValue "a4331881518e9da669970d2dda3e5f3d76721034"
+	sha256 hasValue "987182db3ec29cde53344aceb6ee2fb29c1dbfa00a04da574c9f911fe1f7dbb0"
+	description hasValue "servidor proxy http(s) leve e personalizável com suporte a IPv6"
+	descriptionMd5 hasValue "bd7d52d35d22cfcda7b0683939b89244"
+	homepage hasValue "http://ffproxy.sourceforge.net/"
+	depends hasValue "libc6 (>= 2.15), lsb-base (>= 3.0-3), ucf (>= 0.08)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__ffproxy,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "lsb-base"
+	comparison hasValue ">="
+	version hasValue "3.0-3"
+
+relationInstance depends(P0__ffproxy,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "ucf"
+	comparison hasValue ">="
+	version hasValue "0.08"
+
+relationInstance depends(P0__ffproxy,2,DepAtom__2)
+

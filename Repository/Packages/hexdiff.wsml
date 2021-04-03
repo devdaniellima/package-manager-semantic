@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology hexdiff
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__hexdiff memberOf Package
+	package hasValue "hexdiff"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/devel"
+	installedSize hasValue "60"
+	maintainer hasValue "Original-Tanguy Herrmann <dolanor@evereska.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.0.53-0ubuntu4"
+	fileName hasValue "pool/universe/h/hexdiff/hexdiff_0.0.53-0ubuntu4_amd64.deb"
+	size hasValue "18380"
+	md5sum hasValue "9c6118c9d6b5e0f5d44ef28a320c943b"
+	sha1 hasValue "e86fda5de3034e2b2827fc557d5113731e39bc4f"
+	sha256 hasValue "ad4073c65e127fb804f8226dd8cfb46d86fa33dfc95d083660556a3e558e9ec4"
+	descriptionMd5 hasValue "86c9ddde7e9cf2cc9a7621031e32eeb1"
+	homepage hasValue "http://tboudet.free.fr/hexdiff/"
+	depends hasValue "libc6 (>= 2.4), libncurses6 (>= 6), libtinfo6 (>= 6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__hexdiff,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libncurses6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__hexdiff,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libtinfo6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__hexdiff,2,DepAtom__2)
+

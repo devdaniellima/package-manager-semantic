@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology enum
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__enum memberOf Package
+	package hasValue "enum"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "80"
+	maintainer hasValue "Original-Jan Hauke Rahm <jhr@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.1-1"
+	fileName hasValue "pool/universe/e/enum/enum_1.1-1_amd64.deb"
+	size hasValue "25064"
+	md5sum hasValue "4692781f57f9fb2eae3fc740aec721af"
+	sha1 hasValue "213d1d2ec6f370f8ff8e7df30adec05df23718ce"
+	sha256 hasValue "21b57a2fe259db2ca65578a489c9bb36813a5ccfea365618eed989ecd29c89b9"
+	descriptionMd5 hasValue "2a2e1929bfb626a42331656e3a7a5685"
+	homepage hasValue "https://fedorahosted.org/enum"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__enum,0,DepAtom__0)
+

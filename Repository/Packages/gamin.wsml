@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gamin
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gamin memberOf Package
+	package hasValue "gamin"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "127"
+	maintainer hasValue "Original-Michael Banck <mbanck@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.1.10-6"
+	conflicts hasValue "fam"
+	fileName hasValue "pool/universe/g/gamin/gamin_0.1.10-6_amd64.deb"
+	size hasValue "43684"
+	md5sum hasValue "a081efcd8cbab1f1b839397f3e963908"
+	sha1 hasValue "5f8813ac726bf461b44e1e3e78c670dd56668246"
+	sha256 hasValue "2a0beacdbde82c6aac87ce880c48312d87f84de207a9a6e7d1cb28e75f3fe1f9"
+	description hasValue "sistema de monitoramento de arquivos e diretórios"
+	descriptionMd5 hasValue "c04501e5781daec3e4a91c67a2b0e018"
+	depends hasValue "libc6 (>= 2.28), libglib2.0-0 (>= 2.35.9), libgamin0 (= 0.1.10-6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.28"
+
+relationInstance depends(P0__gamin,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libglib2.0-0"
+	comparison hasValue ">="
+	version hasValue "2.35.9"
+
+relationInstance depends(P0__gamin,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libgamin0"
+	comparison hasValue "="
+	version hasValue "0.1.10-6"
+
+relationInstance depends(P0__gamin,2,DepAtom__2)
+

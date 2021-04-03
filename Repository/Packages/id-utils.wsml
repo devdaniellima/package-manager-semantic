@@ -1,0 +1,66 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology id_utils
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__id_utils memberOf Package
+	package hasValue "id-utils"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "1128"
+	maintainer hasValue "Original-Bradley A. Bosch <brad@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "4.6+git20120811-4ubuntu2"
+	fileName hasValue "pool/universe/i/id-utils/id-utils_4.6+git20120811-4ubuntu2_amd64.deb"
+	size hasValue "156584"
+	md5sum hasValue "ca95f7124d01e96ba936f82e2235e910"
+	sha1 hasValue "d41f968f63d3d735dd935c26a03219b5168f6922"
+	sha256 hasValue "a3ffa78b38381e5bde0b9f0717548b8fed02d14f0478b864b5aa39fadd1adb00"
+	descriptionMd5 hasValue "3f85175a34f0d5e2c543d52fd8a2607f"
+	depends hasValue "libc6 (>= 2.14), dpkg (>= 1.15.4) | install-info"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__id_utils,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "dpkg"
+	comparison hasValue ">="
+	version hasValue "1.15.4"
+
+relationInstance depends(P0__id_utils,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "install-info"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__id_utils,1,DepAtom__2)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology uhubctl
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__uhubctl memberOf Package
+	package hasValue "uhubctl"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/electronics"
+	installedSize hasValue "51"
+	maintainer hasValue "Original-gustavo panizzo <gfa@zumbi.com.ar>"
+	architecture hasValue "amd64"
+	version hasValue "2.1.0-1"
+	fileName hasValue "pool/universe/u/uhubctl/uhubctl_2.1.0-1_amd64.deb"
+	size hasValue "18364"
+	md5sum hasValue "f5ddd5c4402d97772328d36422e08f68"
+	sha1 hasValue "a20bd7e3150a0d379b7b5791efb02ce607382b86"
+	sha256 hasValue "0ba6af60d258ea8c46b29a05acb612ac0a4f3c4f2a5264a7a4b06763bf9c36f4"
+	descriptionMd5 hasValue "4fbea6f9fd276cb0b567e63a5ec63ffe"
+	homepage hasValue "https://github.com/mvp/uhubctl"
+	depends hasValue "libc6 (>= 2.4), libusb-1.0-0 (>= 2:1.0.16)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__uhubctl,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libusb-1.0-0"
+	comparison hasValue ">="
+	version hasValue "2:1.0.16"
+
+relationInstance depends(P0__uhubctl,1,DepAtom__1)
+

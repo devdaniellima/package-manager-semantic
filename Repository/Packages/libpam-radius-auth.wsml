@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libpam_radius_auth
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libpam_radius_auth memberOf Package
+	package hasValue "libpam-radius-auth"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/libs"
+	installedSize hasValue "68"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.4.0-3"
+	fileName hasValue "pool/universe/libp/libpam-radius-auth/libpam-radius-auth_1.4.0-3_amd64.deb"
+	size hasValue "21020"
+	md5sum hasValue "b709a4dc1579fc4f4d232d050e052477"
+	sha1 hasValue "b7b2268b313eeb0bdc3418090741fccf5b7c04f1"
+	sha256 hasValue "b379a2a74dbfa160904a10bba0399f8c058302235975d528083d0d01706c2684"
+	descriptionMd5 hasValue "b1d911feec4563ba30fb34237dd03b2f"
+	homepage hasValue "https://www.freeradius.org/pam_radius_auth/"
+	depends hasValue "libc6 (>= 2.15), libpam0g (>= 0.99.7.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__libpam_radius_auth,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libpam0g"
+	comparison hasValue ">="
+	version hasValue "0.99.7.1"
+
+relationInstance depends(P0__libpam_radius_auth,1,DepAtom__1)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python_typing
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python_typing memberOf Package
+	package hasValue "python-typing"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "94"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "all"
+	version hasValue "3.6.6-2"
+	fileName hasValue "pool/universe/p/python-typing/python-typing_3.6.6-2_all.deb"
+	size hasValue "22840"
+	md5sum hasValue "622b093befad4a1eb491df9a6acd8af4"
+	sha1 hasValue "383e9b038d23323b67bbad32c70e249b3bd423ee"
+	sha256 hasValue "95a55f6b869c3f72559e5d8794a46d7c6d28e42a59666a405f43a4119f79bcce"
+	descriptionMd5 hasValue "7b5861ffb7f12dd4a87a9d45543feffd"
+	homepage hasValue "https://pypi.python.org/pypi/typing/"
+	depends hasValue "python2:any (<< 2.8), python2:any (>= 2.7~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue "<<"
+	version hasValue "2.8"
+
+relationInstance depends(P0__python_typing,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue ">="
+	version hasValue "2.7~"
+
+relationInstance depends(P0__python_typing,1,DepAtom__1)
+

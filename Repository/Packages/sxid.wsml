@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology sxid
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__sxid memberOf Package
+	package hasValue "sxid"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/admin"
+	installedSize hasValue "74"
+	maintainer hasValue "Original-Timur Birsh <taem@linukz.org>"
+	architecture hasValue "amd64"
+	version hasValue "4.20130802-1ubuntu2"
+	fileName hasValue "pool/universe/s/sxid/sxid_4.20130802-1ubuntu2_amd64.deb"
+	size hasValue "27680"
+	md5sum hasValue "928971dfc65f9a7961729bcf7dc07408"
+	sha1 hasValue "771e0a04717538a59ad726e07e0611e570ae8c69"
+	sha256 hasValue "94d96a5af8b7893722e2183aed980c61e524fdda411988129699ed3d744ba6d8"
+	descriptionMd5 hasValue "3dd02068d3ff5b761c45f4f02ec71a25"
+	homepage hasValue "http://linukz.org/sxid.shtml"
+	depends hasValue "libc6 (>= 2.4), exim4 | mail-transport-agent"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__sxid,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "exim4"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__sxid,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "mail-transport-agent"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__sxid,1,DepAtom__2)
+

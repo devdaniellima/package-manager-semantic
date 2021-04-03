@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology php_symfony_lock
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__php_symfony_lock memberOf Package
+	package hasValue "php-symfony-lock"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/php"
+	installedSize hasValue "137"
+	maintainer hasValue "Original-Debian PHP PEAR Maintainers <pkg-php-pear@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "4.3.8+dfsg-1ubuntu1"
+	fileName hasValue "pool/universe/s/symfony/php-symfony-lock_4.3.8+dfsg-1ubuntu1_all.deb"
+	size hasValue "22788"
+	md5sum hasValue "950a9758aa8ffc5dac88c69143cd5bc5"
+	sha1 hasValue "6a87edb91abdff1e480794bb4cc14d6c5634f0ca"
+	sha256 hasValue "cb58ce6a5e2ce87ff0660370fd837610971d0c655a6143bb20a945c6a54a2a59"
+	descriptionMd5 hasValue "6e6df2e5f63586e04d7404ab7e933140"
+	homepage hasValue "https://symfony.com/doc/4.3/components/lock.html"
+	depends hasValue "php-common, php-psr-log (>= 1.0), php-psr-log (<< 2~~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "php-common"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__php_symfony_lock,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "php-psr-log"
+	comparison hasValue ">="
+	version hasValue "1.0"
+
+relationInstance depends(P0__php_symfony_lock,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "php-psr-log"
+	comparison hasValue "<<"
+	version hasValue "2~~"
+
+relationInstance depends(P0__php_symfony_lock,2,DepAtom__2)
+

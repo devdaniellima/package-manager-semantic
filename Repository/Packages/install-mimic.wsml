@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology install_mimic
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__install_mimic memberOf Package
+	package hasValue "install-mimic"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "29"
+	maintainer hasValue "Original-Peter Pentchev <roam@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.4.0-4"
+	fileName hasValue "pool/universe/i/install-mimic/install-mimic_0.4.0-4_amd64.deb"
+	size hasValue "9360"
+	md5sum hasValue "57a88059ca2a51437ec1540163bb4855"
+	sha1 hasValue "29d98e3e3f1b91350c1ff3cfd91fa9b45bea642c"
+	sha256 hasValue "9d50eeedf168b76ac6e32d2421c6affa273668e6e0ef63fa8b881fbbf09436cf"
+	descriptionMd5 hasValue "4b0ae88a06724f7d80b66918e84d6acd"
+	homepage hasValue "https://devel.ringlet.net/misc/install-mimic/"
+	depends hasValue "libc6 (>= 2.10)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.10"
+
+relationInstance depends(P0__install_mimic,0,DepAtom__0)
+

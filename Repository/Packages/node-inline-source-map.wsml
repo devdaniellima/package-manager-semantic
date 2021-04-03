@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology node_inline_source_map
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__node_inline_source_map memberOf Package
+	package hasValue "node-inline-source-map"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/web"
+	installedSize hasValue "24"
+	maintainer hasValue "Original-Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.6.2~git-3"
+	fileName hasValue "pool/universe/n/node-inline-source-map/node-inline-source-map_0.6.2~git-3_all.deb"
+	size hasValue "5268"
+	md5sum hasValue "ded6ac97ab91ab62c72f9c79fca1154a"
+	sha1 hasValue "e65894a466e35097db28f1e6cfd74e373b8eea54"
+	sha256 hasValue "f53d3ce6b304e98d1fef1162560e07b4f33599eab1f37a3967865d6123fb1769"
+	descriptionMd5 hasValue "65810c7a5ba5d60fe4a6b8044afbd66c"
+	homepage hasValue "https://github.com/thlorenz/inline-source-map"
+	depends hasValue "nodejs (>= 8), node-source-map (>= 0.5.3)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "nodejs"
+	comparison hasValue ">="
+	version hasValue "8"
+
+relationInstance depends(P0__node_inline_source_map,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "node-source-map"
+	comparison hasValue ">="
+	version hasValue "0.5.3"
+
+relationInstance depends(P0__node_inline_source_map,1,DepAtom__1)
+

@@ -1,0 +1,75 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology coreutils
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__coreutils memberOf Package
+	package hasValue "coreutils"
+	packageSource hasValue Source__S1
+	priority hasValue "required"
+	section hasValue "utils"
+	installedSize hasValue "7196"
+	maintainer hasValue "Original-Michael Stone <mstone@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "8.30-3ubuntu2"
+	fileName hasValue "pool/main/c/coreutils/coreutils_8.30-3ubuntu2_amd64.deb"
+	size hasValue "1249368"
+	md5sum hasValue "e8e201b6d1b7f39776da07f6713e1675"
+	sha1 hasValue "1d4ab60c729a361d46a90d92defaca518b2918d2"
+	sha256 hasValue "99aa50af84de1737735f2f51e570d60f5842aa1d4a3129527906e7ffda368853"
+	description hasValue "utilitários centrais do GNU"
+	descriptionMd5 hasValue "d0d975dec3625409d24be1238cede238"
+	homepage hasValue "http://gnu.org/software/coreutils"
+	depends hasValue "Pre-libacl1 (>= 2.2.23), libattr1 (>= 1:2.4.44), libc6 (>= 2.28), libselinux1 (>= 2.1.13)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "Pre-libacl1"
+	comparison hasValue ">="
+	version hasValue "2.2.23"
+
+relationInstance depends(P0__coreutils,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libattr1"
+	comparison hasValue ">="
+	version hasValue "1:2.4.44"
+
+relationInstance depends(P0__coreutils,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.28"
+
+relationInstance depends(P0__coreutils,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "libselinux1"
+	comparison hasValue ">="
+	version hasValue "2.1.13"
+
+relationInstance depends(P0__coreutils,3,DepAtom__3)
+

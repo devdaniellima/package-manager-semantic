@@ -1,0 +1,75 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology bisoncPlusPlus
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__bisoncPlusPlus memberOf Package
+	package hasValue "bisonc++"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "800"
+	maintainer hasValue "Original-Frank B. Brokken <f.b.brokken@rug.nl>"
+	architecture hasValue "amd64"
+	version hasValue "6.03.00-1build1"
+	fileName hasValue "pool/universe/b/bisonc++/bisonc++_6.03.00-1build1_amd64.deb"
+	size hasValue "204320"
+	md5sum hasValue "a6e28b855ce7828938f5b90b7aff5444"
+	sha1 hasValue "165bb0d90fec651bcad1fab17ca2df960423e3c1"
+	sha256 hasValue "975357647a0316c25f9956fb6f68bbbfef95ba8d43776255318223036b66e31e"
+	description hasValue "gerador de analisador estilo bison para C++"
+	descriptionMd5 hasValue "74fda00dbfd36167bcdfa72847ca341b"
+	homepage hasValue "https://fbb-git.gitlab.io/bisoncpp/"
+	depends hasValue "libbobcat5 (>= 5.02.00), libc6 (>= 2.14), libgcc-s1 (>= 3.0), libstdc++6 (>= 9)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libbobcat5"
+	comparison hasValue ">="
+	version hasValue "5.02.00"
+
+relationInstance depends(P0__bisoncPlusPlus,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__bisoncPlusPlus,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libgcc-s1"
+	comparison hasValue ">="
+	version hasValue "3.0"
+
+relationInstance depends(P0__bisoncPlusPlus,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "9"
+
+relationInstance depends(P0__bisoncPlusPlus,3,DepAtom__3)
+

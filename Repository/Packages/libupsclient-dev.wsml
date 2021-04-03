@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libupsclient_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libupsclient_dev memberOf Package
+	package hasValue "libupsclient-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libdevel"
+	installedSize hasValue "206"
+	maintainer hasValue "Original-Arnaud Quette <aquette@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.7.4-11ubuntu4"
+	fileName hasValue "pool/main/n/nut/libupsclient-dev_2.7.4-11ubuntu4_amd64.deb"
+	size hasValue "43444"
+	md5sum hasValue "01e980ae737b245018846ba4f0857fc2"
+	sha1 hasValue "a4fd92009ea689baa2ebc3e3d6c5ac2158901cf2"
+	sha256 hasValue "066818f2a805b0c0b173546260124d324b15ea7307244106a6333f86594ae31a"
+	description hasValue "network UPS tools - development files"
+	descriptionMd5 hasValue "250337065f929786472de73f6a87196b"
+	homepage hasValue "https://networkupstools.org/"
+	depends hasValue "libnss3-dev, libupsclient4 (= 2.7.4-11ubuntu4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libnss3-dev"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libupsclient_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libupsclient4"
+	comparison hasValue "="
+	version hasValue "2.7.4-11ubuntu4"
+
+relationInstance depends(P0__libupsclient_dev,1,DepAtom__1)
+

@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ruby_celluloid
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ruby_celluloid memberOf Package
+	package hasValue "ruby-celluloid"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/ruby"
+	installedSize hasValue "200"
+	maintainer hasValue "Original-Debian Ruby Extras Maintainers <pkg-ruby-extras-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.16.0-5"
+	fileName hasValue "pool/universe/r/ruby-celluloid/ruby-celluloid_0.16.0-5_all.deb"
+	size hasValue "40288"
+	md5sum hasValue "2b8de1265462e8b8990c461bc555a337"
+	sha1 hasValue "485886c8210eedcae016e64959a2943c78abc9f3"
+	sha256 hasValue "55ba7ad93e83001db76c44cccb375e197d27096858cd52db72f20b3f4602768d"
+	descriptionMd5 hasValue "7410cd591431fe9d44e55aa8917f64fd"
+	homepage hasValue "https://github.com/celluloid/celluloid"
+	depends hasValue "ruby | ruby-interpreter, ruby-timers (>= 4.0.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "ruby"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ruby_celluloid,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "ruby-interpreter"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ruby_celluloid,0,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "ruby-timers"
+	comparison hasValue ">="
+	version hasValue "4.0.0"
+
+relationInstance depends(P0__ruby_celluloid,1,DepAtom__2)
+

@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libpng16_16
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libpng16_16 memberOf Package
+	package hasValue "libpng16-16"
+	packageSource hasValue Source__S1
+	priority hasValue "standard"
+	section hasValue "libs"
+	installedSize hasValue "341"
+	maintainer hasValue "Original-Maintainers of libpng1.6 packages <libpng1.6@packages.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.6.37-2"
+	fileName hasValue "pool/main/libp/libpng1.6/libpng16-16_1.6.37-2_amd64.deb"
+	size hasValue "179076"
+	md5sum hasValue "7edbe750fe15b1384d6c4afcc58675bd"
+	sha1 hasValue "38bdf0a5623a26d73af6324f0c701cc491e2eb48"
+	sha256 hasValue "6c512b7c67eafe0302026fa719f924bb77b39c57e1845a3d8b81cfd607c3b22c"
+	description hasValue "PNG library - runtime (version 1.6)"
+	descriptionMd5 hasValue "d5a985e94f8651ba49089e3bee0eb18f"
+	homepage hasValue "http://libpng.org/pub/png/libpng.html"
+	depends hasValue "libc6 (>= 2.29), zlib1g (>= 1:1.2.11)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__libpng16_16,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "zlib1g"
+	comparison hasValue ">="
+	version hasValue "1:1.2.11"
+
+relationInstance depends(P0__libpng16_16,1,DepAtom__1)
+

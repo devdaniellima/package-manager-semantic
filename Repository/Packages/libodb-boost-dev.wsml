@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libodb_boost_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libodb_boost_dev memberOf Package
+	package hasValue "libodb-boost-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "198"
+	maintainer hasValue "Original-Laszlo Boszormenyi (GCS) <gcs@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.4.0-1build2"
+	fileName hasValue "pool/universe/libo/libodb-boost/libodb-boost-dev_2.4.0-1build2_amd64.deb"
+	size hasValue "18824"
+	md5sum hasValue "d71226ff1bcadf444f09941ac815327f"
+	sha1 hasValue "dcb3e364de6354ae1dfbb2a67918036b1e259603"
+	sha256 hasValue "c9fd8ae9f0c6389f876bd6e664c81c96759058191e8e114e7dece7202345eed7"
+	descriptionMd5 hasValue "63f56cc9a82c717434d8b700a3c6f8cf"
+	homepage hasValue "http://www.codesynthesis.com/products/odb"
+	depends hasValue "libodb-boost-2.4 (= 2.4.0-1build2), libodb-dev (>= 2.4.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libodb-boost-2.4"
+	comparison hasValue "="
+	version hasValue "2.4.0-1build2"
+
+relationInstance depends(P0__libodb_boost_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libodb-dev"
+	comparison hasValue ">="
+	version hasValue "2.4.0"
+
+relationInstance depends(P0__libodb_boost_dev,1,DepAtom__1)
+

@@ -1,0 +1,74 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python3_pymssql
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python3_pymssql memberOf Package
+	package hasValue "python3-pymssql"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "757"
+	maintainer hasValue "Original-Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.1.4+dfsg-3build2"
+	fileName hasValue "pool/universe/p/pymssql/python3-pymssql_2.1.4+dfsg-3build2_amd64.deb"
+	size hasValue "238676"
+	md5sum hasValue "c991e68d8108f714f4e4290b558ed174"
+	sha1 hasValue "6374f7a6079160be23cb1fef0ee16ccc8c9c6156"
+	sha256 hasValue "fff7656d6296553511b9a79f007710e1a96dd84da502fd1a6467336b2bbd7252"
+	descriptionMd5 hasValue "5571f36696867ac10fb994cf2b71b5d2"
+	homepage hasValue "https://github.com/pymssql/pymssql"
+	depends hasValue "libc6 (>= 2.14), libsybdb5 (>= 0.63), python3 (<< 3.9), python3 (>= 3.8~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__python3_pymssql,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libsybdb5"
+	comparison hasValue ">="
+	version hasValue "0.63"
+
+relationInstance depends(P0__python3_pymssql,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "python3"
+	comparison hasValue "<<"
+	version hasValue "3.9"
+
+relationInstance depends(P0__python3_pymssql,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "python3"
+	comparison hasValue ">="
+	version hasValue "3.8~"
+
+relationInstance depends(P0__python3_pymssql,3,DepAtom__3)
+

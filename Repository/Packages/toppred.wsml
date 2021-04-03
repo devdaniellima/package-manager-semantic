@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology toppred
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__toppred memberOf Package
+	package hasValue "toppred"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/science"
+	installedSize hasValue "148"
+	maintainer hasValue "Original-Debian Med Packaging Team <debian-med-packaging@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.10-7"
+	fileName hasValue "pool/universe/t/toppred/toppred_1.10-7_amd64.deb"
+	size hasValue "59552"
+	md5sum hasValue "eb7fa2f543c0bc177d956b9556861b08"
+	sha1 hasValue "ccb9e19b97ede1fb24872c97825065e1fae0e8b4"
+	sha256 hasValue "f6f09118c69f3e1c5e8359dd4bbba1ee6d532dfa8215971f025e326af8bb10a7"
+	descriptionMd5 hasValue "3b4bd629fd7f7ff93c878461d8aa9585"
+	homepage hasValue "https://github.com/bioinfo-center-pasteur-fr/toppred"
+	depends hasValue "libc6 (>= 2.4), libgd3 (>= 2.1.0~alpha~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__toppred,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgd3"
+	comparison hasValue ">="
+	version hasValue "2.1.0~alpha~"
+
+relationInstance depends(P0__toppred,1,DepAtom__1)
+

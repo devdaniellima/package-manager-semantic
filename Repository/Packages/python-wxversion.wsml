@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python_wxversion
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python_wxversion memberOf Package
+	package hasValue "python-wxversion"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "64"
+	maintainer hasValue "Original-wxWidgets Maintainers <team+wx@tracker.debian.org>"
+	architecture hasValue "all"
+	version hasValue "3.0.2.0+dfsg-8build1"
+	fileName hasValue "pool/universe/w/wxpython3.0/python-wxversion_3.0.2.0+dfsg-8build1_all.deb"
+	size hasValue "12144"
+	md5sum hasValue "2bde268761e34a608c30bc766c39612e"
+	sha1 hasValue "f250a1881561e1f42846cde8db377c7bc84dfff9"
+	sha256 hasValue "1a84ee186f198a9c2ca3e5f185e4222e275aef2c7cd5edda07e76720b985a7b8"
+	description hasValue "API para selecionar a versão de uso do wxPython"
+	descriptionMd5 hasValue "127167a948fd40308dfa22fce6ef43a7"
+	homepage hasValue "https://www.wxpython.org/"
+	depends hasValue "python2:any (<< 2.8), python2:any (>= 2.7~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue "<<"
+	version hasValue "2.8"
+
+relationInstance depends(P0__python_wxversion,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue ">="
+	version hasValue "2.7~"
+
+relationInstance depends(P0__python_wxversion,1,DepAtom__1)
+

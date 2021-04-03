@@ -1,0 +1,66 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology mokutil
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__mokutil memberOf Package
+	package hasValue "mokutil"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "admin"
+	installedSize hasValue "70"
+	maintainer hasValue "Original-Simon Quigley <tsimonq2@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.3.0+1538710437.fb6250f-1"
+	fileName hasValue "pool/main/m/mokutil/mokutil_0.3.0+1538710437.fb6250f-1_amd64.deb"
+	size hasValue "22584"
+	md5sum hasValue "91b0d48a55e1f97bef10fa17f7cae442"
+	sha1 hasValue "577baae778a5727ce6c67d7a025af896c06b42ee"
+	sha256 hasValue "98fedd849ff9150ccc69fdb3c0e0f72516290283da71b607fc7e62a6f3fba8c6"
+	descriptionMd5 hasValue "1f2830b85d41721be416d1513db0c537"
+	depends hasValue "libc6 (>= 2.14), libefivar1 (>= 37), libssl1.1 (>= 1.1.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__mokutil,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libefivar1"
+	comparison hasValue ">="
+	version hasValue "37"
+
+relationInstance depends(P0__mokutil,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libssl1.1"
+	comparison hasValue ">="
+	version hasValue "1.1.0"
+
+relationInstance depends(P0__mokutil,2,DepAtom__2)
+

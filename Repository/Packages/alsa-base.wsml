@@ -1,0 +1,69 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology alsa_base
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__alsa_base memberOf Package
+	package hasValue "alsa-base"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "sound"
+	installedSize hasValue "464"
+	maintainer hasValue "Original-Debian ALSA Maintainers <pkg-alsa-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.0.25+dfsg-0ubuntu5"
+	provides hasValue "alsa"
+	fileName hasValue "pool/main/a/alsa-driver/alsa-base_1.0.25+dfsg-0ubuntu5_all.deb"
+	size hasValue "145082"
+	md5sum hasValue "ddc42aa52d04987edc96b7a6e453ee79"
+	sha1 hasValue "312c589b56c796fb13a4827aac4077e07831063c"
+	sha256 hasValue "ee2fb0a2bcab12e45393a8953c66b4d6f91b731535088063f7b72a8e535d137b"
+	description hasValue "arquivos de configuração do controlador ALSA"
+	descriptionMd5 hasValue "14d30d1beb8026b3d2636c32c5a92cca"
+	homepage hasValue "http://www.alsa-project.org/"
+	depends hasValue "kmod (>= 17-1), linux-sound-base, udev"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "kmod"
+	comparison hasValue ">="
+	version hasValue "17-1"
+
+relationInstance depends(P0__alsa_base,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "linux-sound-base"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__alsa_base,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "udev"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__alsa_base,2,DepAtom__2)
+

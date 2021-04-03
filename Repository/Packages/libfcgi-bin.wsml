@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libfcgi_bin
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libfcgi_bin memberOf Package
+	package hasValue "libfcgi-bin"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "35"
+	maintainer hasValue "Original-Boris Pek <tehnick@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.4.0-10build1"
+	replaces hasValue "libfcgi0ldbl (<< 2.4.0-8.4)"
+	fileName hasValue "pool/universe/libf/libfcgi/libfcgi-bin_2.4.0-10build1_amd64.deb"
+	size hasValue "10536"
+	md5sum hasValue "fd457546e2cfc5d7eb20a3caa44c8b41"
+	sha1 hasValue "1fb07308aad2915bd42c9eccb8840e661b4d30be"
+	sha256 hasValue "71c7f7848e254a07d09e4f6a6be6bfc460bd41312db7ab880285a48e197e69d5"
+	description hasValue "FastCGI bridge from CGI"
+	descriptionMd5 hasValue "5c862c120fcc08699e2aeabe759d1e17"
+	homepage hasValue "https://github.com/FastCGI-Archives"
+	depends hasValue "libc6 (>= 2.14), libfcgi0ldbl"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libfcgi_bin,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libfcgi0ldbl"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libfcgi_bin,1,DepAtom__1)
+

@@ -1,0 +1,75 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libnvtt_bin
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libnvtt_bin memberOf Package
+	package hasValue "libnvtt-bin"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/libs"
+	installedSize hasValue "173"
+	maintainer hasValue "Original-Lennart Weller <lhw@ring0.de>"
+	architecture hasValue "amd64"
+	version hasValue "2.0.8-1+dfsg-8.2build2"
+	provides hasValue "nvidia-texture-tools"
+	fileName hasValue "pool/universe/n/nvidia-texture-tools/libnvtt-bin_2.0.8-1+dfsg-8.2build2_amd64.deb"
+	size hasValue "29444"
+	md5sum hasValue "9799fba784ebaaa05548e9449506797b"
+	sha1 hasValue "c5b2fc15e64507b4f3a3f631f0a1ed5bda615c6e"
+	sha256 hasValue "cde66e582899c464b067edab6231f92b63983ad12864875202695dbe3d4d8c4a"
+	descriptionMd5 hasValue "598e2d6011d38701b5a2a43e7d189162"
+	homepage hasValue "https://github.com/castano/nvidia-texture-tools"
+	depends hasValue "libnvtt2 (= 2.0.8-1+dfsg-8.2build2), libc6 (>= 2.4), libgcc-s1 (>= 3.0), libstdc++6 (>= 5)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libnvtt2"
+	comparison hasValue "="
+	version hasValue "2.0.8-1+dfsg-8.2build2"
+
+relationInstance depends(P0__libnvtt_bin,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libnvtt_bin,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libgcc-s1"
+	comparison hasValue ">="
+	version hasValue "3.0"
+
+relationInstance depends(P0__libnvtt_bin,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "5"
+
+relationInstance depends(P0__libnvtt_bin,3,DepAtom__3)
+

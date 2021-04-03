@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology r_cran_evaluate
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__r_cran_evaluate memberOf Package
+	package hasValue "r-cran-evaluate"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/gnu-r"
+	installedSize hasValue "152"
+	maintainer hasValue "Original-Debian R Packages Maintainers <r-pkg-team@alioth-lists.debian.net>"
+	architecture hasValue "all"
+	version hasValue "0.14-1"
+	fileName hasValue "pool/universe/r/r-cran-evaluate/r-cran-evaluate_0.14-1_all.deb"
+	size hasValue "81048"
+	md5sum hasValue "d0dc096706e2b1022431c4c7c77ac470"
+	sha1 hasValue "24924c175e7979bcda4268aae959319818ee82c5"
+	sha256 hasValue "2251bec7046583670ba99a7bc597beee16f99f0d15a76adcb54711beeb8b72bc"
+	descriptionMd5 hasValue "0e78eeb201129f8682703b016ba0a1c5"
+	homepage hasValue "https://cran.r-project.org/package=evaluate"
+	depends hasValue "r-base-core (>= 3.6.1-2), r-api-3.5"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "r-base-core"
+	comparison hasValue ">="
+	version hasValue "3.6.1-2"
+
+relationInstance depends(P0__r_cran_evaluate,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "r-api-3.5"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__r_cran_evaluate,1,DepAtom__1)
+

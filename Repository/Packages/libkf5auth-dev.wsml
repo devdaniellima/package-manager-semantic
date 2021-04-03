@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libkf5auth_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libkf5auth_dev memberOf Package
+	package hasValue "libkf5auth-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "123"
+	maintainer hasValue "Original-Debian/Kubuntu Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "5.68.0-0ubuntu1"
+	replaces hasValue "libkf5auth-bin-dev (<< 5.47)"
+	fileName hasValue "pool/universe/k/kauth/libkf5auth-dev_5.68.0-0ubuntu1_amd64.deb"
+	size hasValue "22064"
+	md5sum hasValue "19cec5a0d1b87d3e405d74085f0dd523"
+	sha1 hasValue "8706b65c0f875e67aade7cf19ce4104c670fc647"
+	sha256 hasValue "cd485732e30b0755847c27fc64dbb4eda62220d82b32569cf28d9c51bc902962"
+	descriptionMd5 hasValue "7f6460ac3eca997359b91b6f182732b7"
+	homepage hasValue "https://projects.kde.org/projects/frameworks/kauth"
+	depends hasValue "libkf5auth-dev-bin (= 5.68.0-0ubuntu1), libkf5auth5 (= 5.68.0-0ubuntu1), libkf5coreaddons-dev (>= 5.68.0~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libkf5auth-dev-bin"
+	comparison hasValue "="
+	version hasValue "5.68.0-0ubuntu1"
+
+relationInstance depends(P0__libkf5auth_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libkf5auth5"
+	comparison hasValue "="
+	version hasValue "5.68.0-0ubuntu1"
+
+relationInstance depends(P0__libkf5auth_dev,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libkf5coreaddons-dev"
+	comparison hasValue ">="
+	version hasValue "5.68.0~"
+
+relationInstance depends(P0__libkf5auth_dev,2,DepAtom__2)
+

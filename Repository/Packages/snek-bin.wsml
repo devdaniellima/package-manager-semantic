@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology snek_bin
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__snek_bin memberOf Package
+	package hasValue "snek-bin"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/interpreters"
+	installedSize hasValue "100"
+	maintainer hasValue "Original-Keith Packard <keithp@keithp.com>"
+	architecture hasValue "amd64"
+	version hasValue "1.1-1.1"
+	fileName hasValue "pool/universe/s/snek/snek-bin_1.1-1.1_amd64.deb"
+	size hasValue "35772"
+	md5sum hasValue "4acf12f0d3ec4c6cd601c223b2ecf4dc"
+	sha1 hasValue "b11a158dbc9a783fd6107f583c1624d6f9bbe4a5"
+	sha256 hasValue "8afcdd0fc7c4ebfb2785994769b9351e2a0483887592403b443b82e1f94eb9a9"
+	descriptionMd5 hasValue "656134ca0eb4673966b2f80d9a344ae9"
+	homepage hasValue "https://keithp.com"
+	depends hasValue "libc6 (>= 2.27), libreadline8 (>= 6.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.27"
+
+relationInstance depends(P0__snek_bin,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libreadline8"
+	comparison hasValue ">="
+	version hasValue "6.0"
+
+relationInstance depends(P0__snek_bin,1,DepAtom__1)
+

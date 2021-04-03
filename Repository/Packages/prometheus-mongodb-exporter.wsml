@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology prometheus_mongodb_exporter
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__prometheus_mongodb_exporter memberOf Package
+	package hasValue "prometheus-mongodb-exporter"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/net"
+	installedSize hasValue "6108"
+	maintainer hasValue "Original-Debian Go Packaging Team <pkg-go-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.0+git20180522.e755a44-1"
+	fileName hasValue "pool/universe/p/prometheus-mongodb-exporter/prometheus-mongodb-exporter_1.0.0+git20180522.e755a44-1_amd64.deb"
+	size hasValue "1781444"
+	md5sum hasValue "4c5ae7eaf24456b2a3e02bc62da40f6a"
+	sha1 hasValue "4d91cb2f15dc817d2a17a372f57cfd3f16422d15"
+	sha256 hasValue "86ffb13d6fd6aefbf3318c4d9521e4b5e38a7fb05e5872af6520ecf0790a6b3f"
+	descriptionMd5 hasValue "950c3c621c98f63abad15b3d8082d2b6"
+	homepage hasValue "https://github.com/dcu/mongodb_exporter"
+	depends hasValue "daemon, libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "daemon"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__prometheus_mongodb_exporter,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__prometheus_mongodb_exporter,1,DepAtom__1)
+

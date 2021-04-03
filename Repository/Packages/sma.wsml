@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology sma
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__sma memberOf Package
+	package hasValue "sma"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/mail"
+	installedSize hasValue "103"
+	maintainer hasValue "Original-Andrew Pollock <apollock@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.4-3build1"
+	fileName hasValue "pool/universe/s/sma/sma_1.4-3build1_amd64.deb"
+	size hasValue "37908"
+	md5sum hasValue "e7b9a15e4edf959b5cba08e069eba051"
+	sha1 hasValue "d123c3e4a2dda53342abb0d4e953bf96bd6106b3"
+	sha256 hasValue "31a6dadd90cc7cae6c2b185bff6317f2ee855fec15338f75257aa2f3597f6e13"
+	description hasValue "analisador de registros (log) do Sendmail"
+	descriptionMd5 hasValue "76ba18e18aecad8f99f7369db8c3a35a"
+	homepage hasValue "http://www.klake.org/sma/"
+	depends hasValue "libc6 (>= 2.7)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__sma,0,DepAtom__0)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology w1retap_sqlite
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__w1retap_sqlite memberOf Package
+	package hasValue "w1retap-sqlite"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/electronics"
+	installedSize hasValue "38"
+	maintainer hasValue "Original-Thomas Stewart <thomas@stewarts.org.uk>"
+	architecture hasValue "amd64"
+	version hasValue "1.4.4-3ubuntu2"
+	fileName hasValue "pool/universe/w/w1retap/w1retap-sqlite_1.4.4-3ubuntu2_amd64.deb"
+	size hasValue "8340"
+	md5sum hasValue "560740fea92f43aedae419f6f6c23af6"
+	sha1 hasValue "c637340e48ef175f47e8258969718664328b85b1"
+	sha256 hasValue "6b66d48a60e3aa09e32270a478333c0b78efda417208a31d5cfcec10a13be0d8"
+	descriptionMd5 hasValue "98135d3d928597268d13de7279d81082"
+	homepage hasValue "http://www.zen35309.zen.co.uk/wx/tech.html"
+	depends hasValue "libc6 (>= 2.8), libsqlite3-0 (>= 3.5.9)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.8"
+
+relationInstance depends(P0__w1retap_sqlite,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libsqlite3-0"
+	comparison hasValue ">="
+	version hasValue "3.5.9"
+
+relationInstance depends(P0__w1retap_sqlite,1,DepAtom__1)
+

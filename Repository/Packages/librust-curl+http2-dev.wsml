@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology librust_curlPlushttp2_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__librust_curlPlushttp2_dev memberOf Package
+	package hasValue "librust-curl+http2-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/rust"
+	installedSize hasValue "6"
+	maintainer hasValue "Original-Debian Rust Maintainers <pkg-rust-maintainers@alioth-lists.debian.net>"
+	architecture hasValue "amd64"
+	version hasValue "0.4.25-1"
+	provides hasValue "librust-curl-0+http2-dev (= 0.4.25-1), librust-curl-0.4+http2-dev (= 0.4.25-1), librust-curl-0.4.25+http2-dev (= 0.4.25-1)"
+	fileName hasValue "pool/universe/r/rust-curl/librust-curl+http2-dev_0.4.25-1_amd64.deb"
+	size hasValue "1104"
+	md5sum hasValue "fe0a1cbb92e5dfca948ab3a41e7b833e"
+	sha1 hasValue "5638917c6d3d5395cb451d0533098cc2f9ff40db"
+	sha256 hasValue "a22fb2dc1cae2d902c135b97f629300cedc3189b295d3a7b318a2c7f7522af1a"
+	descriptionMd5 hasValue "e38fbc8cddafea0695b50e674f55790d"
+	homepage hasValue "https://github.com/alexcrichton/curl-rust"
+	depends hasValue "librust-curl-dev (= 0.4.25-1), librust-curl-sys-0.4+http2-dev (>= 0.4.21-~~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "librust-curl-dev"
+	comparison hasValue "="
+	version hasValue "0.4.25-1"
+
+relationInstance depends(P0__librust_curlPlushttp2_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "librust-curl-sys-0.4+http2-dev"
+	comparison hasValue ">="
+	version hasValue "0.4.21-~~"
+
+relationInstance depends(P0__librust_curlPlushttp2_dev,1,DepAtom__1)
+

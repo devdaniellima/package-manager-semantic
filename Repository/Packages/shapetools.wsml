@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology shapetools
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__shapetools memberOf Package
+	package hasValue "shapetools"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "258"
+	maintainer hasValue "Original-Matthias Klose <doko@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.4pl6-14"
+	fileName hasValue "pool/universe/s/shapetools/shapetools_1.4pl6-14_amd64.deb"
+	size hasValue "112628"
+	md5sum hasValue "e345f12f7f8a3996da1afa6cb70c262a"
+	sha1 hasValue "339e9ba1dcbc6a5579f9d44b688d4329dac8e4cd"
+	sha256 hasValue "f2bd6eaa7a2cf53254c9ce7f05b3f19c14dc337b1ad13ddc3e215076c68227b7"
+	descriptionMd5 hasValue "9fbbfdee53d2ec138031a593c11d8fc4"
+	homepage hasValue "http://swt.cs.tu-berlin.de/~shape/index.html"
+	depends hasValue "atfs (= 1.4pl6-14), libatfs1 (>= 1.4pl6), libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "atfs"
+	comparison hasValue "="
+	version hasValue "1.4pl6-14"
+
+relationInstance depends(P0__shapetools,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libatfs1"
+	comparison hasValue ">="
+	version hasValue "1.4pl6"
+
+relationInstance depends(P0__shapetools,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__shapetools,2,DepAtom__2)
+

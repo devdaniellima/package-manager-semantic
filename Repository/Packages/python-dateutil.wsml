@@ -1,0 +1,73 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python_dateutil
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python_dateutil memberOf Package
+	package hasValue "python-dateutil"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "321"
+	maintainer hasValue "Original-Guido Günther <agx@sigxcpu.org>"
+	architecture hasValue "all"
+	version hasValue "2.7.3-3ubuntu1"
+	fileName hasValue "pool/universe/p/python-dateutil/python-dateutil_2.7.3-3ubuntu1_all.deb"
+	size hasValue "75484"
+	md5sum hasValue "b4175a2934123036f4576566c3e1a826"
+	sha1 hasValue "b126e5a1a1d1c8ad65013e5bd2de1f70a40f5e4b"
+	sha256 hasValue "e76a701495fbc74efb015abdde1f09602c3e9644f955aafa3add6e1f39d0479b"
+	descriptionMd5 hasValue "9cd126276cc5f8b44d9c9d9295216efa"
+	depends hasValue "python-six (>= 1.5), python2:any (<< 2.8), python2:any (>= 2.7~), tzdata"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python-six"
+	comparison hasValue ">="
+	version hasValue "1.5"
+
+relationInstance depends(P0__python_dateutil,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue "<<"
+	version hasValue "2.8"
+
+relationInstance depends(P0__python_dateutil,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue ">="
+	version hasValue "2.7~"
+
+relationInstance depends(P0__python_dateutil,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "tzdata"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__python_dateutil,3,DepAtom__3)
+

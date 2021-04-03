@@ -1,0 +1,66 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python3_dateutil
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python3_dateutil memberOf Package
+	package hasValue "python3-dateutil"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "python"
+	installedSize hasValue "309"
+	maintainer hasValue "Original-Guido Günther <agx@sigxcpu.org>"
+	architecture hasValue "all"
+	version hasValue "2.7.3-3ubuntu1"
+	fileName hasValue "pool/main/p/python-dateutil/python3-dateutil_2.7.3-3ubuntu1_all.deb"
+	size hasValue "63272"
+	md5sum hasValue "6e3e2b8ce7c98ae20d33e0f7b4e2fcd2"
+	sha1 hasValue "214bbbd3d26d245c989c71d53e965127aec87820"
+	sha256 hasValue "f9b76d827646a27efe4bebe65c25096bcb5c67494fde100dfbff6f1debb37462"
+	descriptionMd5 hasValue "6da4799ce631dbe76c11e5635f2b1a79"
+	depends hasValue "python3-six (>= 1.5), python3:any (>= 3.2~), tzdata"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3-six"
+	comparison hasValue ">="
+	version hasValue "1.5"
+
+relationInstance depends(P0__python3_dateutil,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ">="
+	version hasValue "3.2~"
+
+relationInstance depends(P0__python3_dateutil,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "tzdata"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__python3_dateutil,2,DepAtom__2)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libstlink1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libstlink1 memberOf Package
+	package hasValue "libstlink1"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "116"
+	maintainer hasValue "Original-Luca Boccassi <bluca@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.6.0+ds-1"
+	fileName hasValue "pool/universe/s/stlink/libstlink1_1.6.0+ds-1_amd64.deb"
+	size hasValue "39264"
+	md5sum hasValue "04a088bfd795bb39279005bdcd5321cd"
+	sha1 hasValue "2a6c39bd8ea8ecd8c77dbec19a67da7f586bdfc0"
+	sha256 hasValue "daa0336a056008b17c863e9c528e7f1b02dd5c2219a4c9de79717b38085b422b"
+	descriptionMd5 hasValue "1314aad6e3dc1f12b1edd29bae5cf9a3"
+	homepage hasValue "https://github.com/texane/stlink"
+	depends hasValue "libc6 (>= 2.14), libusb-1.0-0 (>= 2:1.0.22)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libstlink1,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libusb-1.0-0"
+	comparison hasValue ">="
+	version hasValue "2:1.0.22"
+
+relationInstance depends(P0__libstlink1,1,DepAtom__1)
+

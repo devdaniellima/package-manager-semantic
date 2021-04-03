@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology jzip
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__jzip memberOf Package
+	package hasValue "jzip"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/games"
+	installedSize hasValue "141"
+	maintainer hasValue "Original-tony mancill <tmancill@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "210r20001005d-4build2"
+	provides hasValue "zcode-interpreter"
+	fileName hasValue "pool/universe/j/jzip/jzip_210r20001005d-4build2_amd64.deb"
+	size hasValue "51592"
+	md5sum hasValue "e5a7ad7d18750b6b52a2987cff52aed9"
+	sha1 hasValue "8d9a6aa5c442a65ed9b598ee2a24ce7e0fd46424"
+	sha256 hasValue "e636dbc0a95c9d0f87d21694966ebdb9d03a74eba770119da3ef8061c2303071"
+	descriptionMd5 hasValue "1fd33c5751e02ad525634c02d1c4954a"
+	homepage hasValue "http://jzip.sourceforge.net/"
+	depends hasValue "libc6 (>= 2.15), libtinfo6 (>= 6), zlib1g (>= 1:1.1.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__jzip,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libtinfo6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__jzip,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "zlib1g"
+	comparison hasValue ">="
+	version hasValue "1:1.1.4"
+
+relationInstance depends(P0__jzip,2,DepAtom__2)
+

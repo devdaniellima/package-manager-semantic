@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology elpa_pkg_info
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__elpa_pkg_info memberOf Package
+	package hasValue "elpa-pkg-info"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/lisp"
+	installedSize hasValue "44"
+	maintainer hasValue "Original-Debian Emacs addons team <pkg-emacsen-addons@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.6-5"
+	fileName hasValue "pool/universe/p/pkg-info-el/elpa-pkg-info_0.6-5_all.deb"
+	size hasValue "7392"
+	md5sum hasValue "a2ef79c2c52342b2d85a7aaec3d2fd40"
+	sha1 hasValue "e139b2d33c59ffabb29c9d9fad0fde42a86af18f"
+	sha256 hasValue "7e7668b7fd459824a6a5db84c50d309a6504d78594ce120d77392fd46fe95153"
+	descriptionMd5 hasValue "c90a033b9b550594fc84b3cf4c7177ee"
+	homepage hasValue "https://github.com/lunaryorn/pkg-info.el"
+	depends hasValue "emacsen-common, emacs, elpa-epl (>= 0.8)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "emacsen-common"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__elpa_pkg_info,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "emacs"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__elpa_pkg_info,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "elpa-epl"
+	comparison hasValue ">="
+	version hasValue "0.8"
+
+relationInstance depends(P0__elpa_pkg_info,2,DepAtom__2)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology r_cran_formatr
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__r_cran_formatr memberOf Package
+	package hasValue "r-cran-formatr"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/gnu-r"
+	installedSize hasValue "293"
+	maintainer hasValue "Original-Debian R Packages Maintainers <r-pkg-team@alioth-lists.debian.net>"
+	architecture hasValue "all"
+	version hasValue "1.7-1"
+	fileName hasValue "pool/universe/r/r-cran-formatr/r-cran-formatr_1.7-1_all.deb"
+	size hasValue "147152"
+	md5sum hasValue "b6abe38eadefd659138c2132e2c50bce"
+	sha1 hasValue "03337fe20971ca0dedcf6ca13af8071c1995a136"
+	sha256 hasValue "ada9b86f0396474e83dccb73d47d33cd090134eeeb69c816a1347570b916e0e6"
+	descriptionMd5 hasValue "58c255f8c6d41916e5a1c5e8c731e3e7"
+	homepage hasValue "https://cran.r-project.org/package=formatR"
+	depends hasValue "r-base-core (>= 3.6.1-2), r-api-3.5"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "r-base-core"
+	comparison hasValue ">="
+	version hasValue "3.6.1-2"
+
+relationInstance depends(P0__r_cran_formatr,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "r-api-3.5"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__r_cran_formatr,1,DepAtom__1)
+

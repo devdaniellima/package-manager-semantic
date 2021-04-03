@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libapache2_mod_bw
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libapache2_mod_bw memberOf Package
+	package hasValue "libapache2-mod-bw"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/web"
+	installedSize hasValue "100"
+	maintainer hasValue "Original-Sergey B Kirpichev <skirpichev@gmail.com>"
+	architecture hasValue "amd64"
+	version hasValue "0.92-11"
+	fileName hasValue "pool/universe/liba/libapache2-mod-bw/libapache2-mod-bw_0.92-11_amd64.deb"
+	size hasValue "22608"
+	md5sum hasValue "788647d52924da1b23bc103487793a78"
+	sha1 hasValue "1a144e24ef47cfe671028112ea7422179ed39daa"
+	sha256 hasValue "8c1f79ee3e4a572be9deb32ff7a9ee8a1b086af77a570119771de582e45f4ccd"
+	descriptionMd5 hasValue "6f14effcc764cceb1cefb303c965ae30"
+	homepage hasValue "http://apache.ivn.cl/#bandwidth"
+	depends hasValue "libc6 (>= 2.4), apache2-api-20120211"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libapache2_mod_bw,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "apache2-api-20120211"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libapache2_mod_bw,1,DepAtom__1)
+

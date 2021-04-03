@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libpam_python
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libpam_python memberOf Package
+	package hasValue "libpam-python"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/python"
+	installedSize hasValue "113"
+	maintainer hasValue "Original-Russell Stuart <russell-debian@stuart.id.au>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.7-1ubuntu1"
+	fileName hasValue "pool/universe/p/pam-python/libpam-python_1.0.7-1ubuntu1_amd64.deb"
+	size hasValue "27692"
+	md5sum hasValue "15cc26b4f0806d254aa0b2ac62f9138d"
+	sha1 hasValue "05310fb2eb4dbd3ac8ad07698ac2ad7b82d9c250"
+	sha256 hasValue "d55d6c06af7f8a655f6bc8450e8ba74799f5ed3d12662cb9da317113e1a014ae"
+	descriptionMd5 hasValue "894c07d34a094a24a02bc960f8dc0943"
+	homepage hasValue "http://pam-python.sourceforge.net/"
+	depends hasValue "libc6 (>= 2.4), libpam0g (>= 0.99.7.1), libpython2.7 (>= 2.7)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libpam_python,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libpam0g"
+	comparison hasValue ">="
+	version hasValue "0.99.7.1"
+
+relationInstance depends(P0__libpam_python,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libpython2.7"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__libpam_python,2,DepAtom__2)
+

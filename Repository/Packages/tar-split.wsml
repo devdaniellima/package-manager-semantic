@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology tar_split
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__tar_split memberOf Package
+	package hasValue "tar-split"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/devel"
+	installedSize hasValue "3376"
+	maintainer hasValue "Original-Debian Go Packaging Team <pkg-go-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.11.1-1"
+	fileName hasValue "pool/universe/g/golang-github-vbatts-tar-split/tar-split_0.11.1-1_amd64.deb"
+	size hasValue "1047768"
+	md5sum hasValue "4b2d943daa112af3170e3c51bb026d5c"
+	sha1 hasValue "ea917b5f2d63ea4c4796cd8c10010aab499fc037"
+	sha256 hasValue "cb63fcdc897d91d5055a8b497d5357ad00120a3fd1e6b33b221a5c62cea3ac0b"
+	descriptionMd5 hasValue "0a7073586375397f4634a2441b79a786"
+	homepage hasValue "https://github.com/vbatts/tar-split"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__tar_split,0,DepAtom__0)
+

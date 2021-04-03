@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology expat
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__expat memberOf Package
+	package hasValue "expat"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/text"
+	installedSize hasValue "71"
+	maintainer hasValue "Original-Laszlo Boszormenyi (GCS) <gcs@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.2.9-1build1"
+	fileName hasValue "pool/universe/e/expat/expat_2.2.9-1build1_amd64.deb"
+	size hasValue "15644"
+	md5sum hasValue "5d7218c1e1b4c0e42587ed9aad00df96"
+	sha1 hasValue "55760a17fa332b128983fcecd9165f4793fa406f"
+	sha256 hasValue "8ece04e16e741135b42432d20a800d6055fc382f1b3e8f18a9871c53c9b97700"
+	description hasValue "Biblioteca C de análise XML - aplicação de exemplo"
+	descriptionMd5 hasValue "946951e418841b66002f30694d1a0b72"
+	homepage hasValue "https://libexpat.github.io/"
+	depends hasValue "libc6 (>= 2.14), libexpat1 (>= 2.0.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__expat,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libexpat1"
+	comparison hasValue ">="
+	version hasValue "2.0.1"
+
+relationInstance depends(P0__expat,1,DepAtom__1)
+

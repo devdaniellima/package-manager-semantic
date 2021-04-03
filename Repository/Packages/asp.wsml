@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology asp
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__asp memberOf Package
+	package hasValue "asp"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/net"
+	installedSize hasValue "60"
+	maintainer hasValue "Original-Roland Stigge <stigge@antcom.de>"
+	architecture hasValue "amd64"
+	version hasValue "1.8-8build1"
+	fileName hasValue "pool/universe/a/asp/asp_1.8-8build1_amd64.deb"
+	size hasValue "17868"
+	md5sum hasValue "f6427f84d84e3be0c3a0e5470350780e"
+	sha1 hasValue "89b911b51b2f918292bd10a174f6d868a2a5a947"
+	sha256 hasValue "185d25a37b25bd0c7f6025fd5cc15e5c60def7c2c2cd36428517a834a7f49375"
+	description hasValue "descubra o endereço ip atual de máquinas conectadas dinamicamente"
+	descriptionMd5 hasValue "f43db071108b258671b2244199658f78"
+	homepage hasValue "https://sourceforge.net/projects/asp/"
+	depends hasValue "libc6 (>= 2.15)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__asp,0,DepAtom__0)
+

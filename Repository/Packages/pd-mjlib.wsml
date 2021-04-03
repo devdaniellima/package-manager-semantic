@@ -1,0 +1,74 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology pd_mjlib
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__pd_mjlib memberOf Package
+	package hasValue "pd-mjlib"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/sound"
+	installedSize hasValue "127"
+	maintainer hasValue "Original-Debian Multimedia Maintainers <debian-multimedia@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.1.1-4"
+	fileName hasValue "pool/universe/p/pd-mjlib/pd-mjlib_0.1.1-4_amd64.deb"
+	size hasValue "22160"
+	md5sum hasValue "391d538fae86516b9e110712e962b02e"
+	sha1 hasValue "6c0b8663238806ddbde89dc43e438ce13898f1cb"
+	sha256 hasValue "39d4357a4e77056d91a19666b03cd7005f3491e1a394c6a0d5f7d3f935aff443"
+	descriptionMd5 hasValue "89a4e26159637d14aaba1d9bd2a9a977"
+	homepage hasValue "https://puredata.info"
+	depends hasValue "libc6 (>= 2.14), puredata-core | pd, pd-libdir"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__pd_mjlib,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "puredata-core"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__pd_mjlib,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "pd"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__pd_mjlib,1,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "pd-libdir"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__pd_mjlib,2,DepAtom__3)
+

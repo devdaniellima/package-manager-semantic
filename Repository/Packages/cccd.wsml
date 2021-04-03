@@ -1,0 +1,66 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology cccd
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__cccd memberOf Package
+	package hasValue "cccd"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/sound"
+	installedSize hasValue "96"
+	maintainer hasValue "Original-Uwe Hermann <uwe@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.3beta4-7.1build1"
+	fileName hasValue "pool/universe/c/cccd/cccd_0.3beta4-7.1build1_amd64.deb"
+	size hasValue "33124"
+	md5sum hasValue "0737019dfce3476db9bf4e26be37e82e"
+	sha1 hasValue "4e3239edd629a4cffe2fb7ddc34a0907cf5e5bb6"
+	sha256 hasValue "b25c5291553d93125db749394b87ba0a353dafa0b9b83d603a6b1ee8785825f5"
+	descriptionMd5 hasValue "80f5a5ec79c4c380d2126dc795c1b5bf"
+	depends hasValue "libc6 (>= 2.15), libglib2.0-0 (>= 2.12.0), libgtk2.0-0 (>= 2.8.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__cccd,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libglib2.0-0"
+	comparison hasValue ">="
+	version hasValue "2.12.0"
+
+relationInstance depends(P0__cccd,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libgtk2.0-0"
+	comparison hasValue ">="
+	version hasValue "2.8.0"
+
+relationInstance depends(P0__cccd,2,DepAtom__2)
+

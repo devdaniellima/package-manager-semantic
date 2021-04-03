@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python_gi_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python_gi_dev memberOf Package
+	package hasValue "python-gi-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "58"
+	maintainer hasValue "Original-Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.36.0-1"
+	fileName hasValue "pool/universe/p/pygobject/python-gi-dev_3.36.0-1_amd64.deb"
+	size hasValue "8564"
+	md5sum hasValue "5136460bd3abf1ee71aaff238e54fca4"
+	sha1 hasValue "6544a2068c956841466b075fb609a46a7cd75a30"
+	sha256 hasValue "07e122b8313fc1427a84bd9b50b59665084126aedc49399de0eb7a3ac4a36e5b"
+	description hasValue "development headers for GObject Python bindings"
+	descriptionMd5 hasValue "f5f0bb4fb02f0013d4124b7ce2dabd49"
+	homepage hasValue "https://wiki.gnome.org/Projects/PyGObject"
+	depends hasValue "libffi-dev (>= 3.3), libglib2.0-dev (>= 2.48.0), python3-gi (= 3.36.0-1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libffi-dev"
+	comparison hasValue ">="
+	version hasValue "3.3"
+
+relationInstance depends(P0__python_gi_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libglib2.0-dev"
+	comparison hasValue ">="
+	version hasValue "2.48.0"
+
+relationInstance depends(P0__python_gi_dev,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "python3-gi"
+	comparison hasValue "="
+	version hasValue "3.36.0-1"
+
+relationInstance depends(P0__python_gi_dev,2,DepAtom__2)
+

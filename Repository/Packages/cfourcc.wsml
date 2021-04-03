@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology cfourcc
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__cfourcc memberOf Package
+	package hasValue "cfourcc"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/graphics"
+	installedSize hasValue "40"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.1.2-10"
+	fileName hasValue "pool/universe/c/cfourcc/cfourcc_0.1.2-10_amd64.deb"
+	size hasValue "15340"
+	md5sum hasValue "47399705aeaf2a19904efa8c276f5e18"
+	sha1 hasValue "1087e92bf968438aa7e6feff8cea22368939c048"
+	sha256 hasValue "fd0570d552152dc16508fc649f0ff1c51e4a296d5e8c6c13b69e2d633e01bfa0"
+	description hasValue "ferramenta de linha de comando para trocar FourCC em arquivos Microsoft RIFF AVI"
+	descriptionMd5 hasValue "43a50279090e8d765e9d411a26fd5d26"
+	homepage hasValue "https://github.com/mypapit/cfourcc"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__cfourcc,0,DepAtom__0)
+

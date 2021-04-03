@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology bubblewrap
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__bubblewrap memberOf Package
+	package hasValue "bubblewrap"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "admin"
+	installedSize hasValue "107"
+	maintainer hasValue "Original-Utopia Maintenance Team <pkg-utopia-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.4.0-1ubuntu4"
+	fileName hasValue "pool/main/b/bubblewrap/bubblewrap_0.4.0-1ubuntu4_amd64.deb"
+	size hasValue "35376"
+	md5sum hasValue "7848cf9f8db5da7ad37e70459c1641d5"
+	sha1 hasValue "0df1fc17259abbff097898f2dc16fde988ca9a6b"
+	sha256 hasValue "e0e119e92f7c8887bd8c1a39efcf6f6faa10051ef85c7ffad46d855fc5cb129d"
+	descriptionMd5 hasValue "766bca05fa607b2707be6d2a303a2583"
+	homepage hasValue "https://github.com/projectatomic/bubblewrap"
+	depends hasValue "libc6 (>= 2.16), libcap2 (>= 1:2.10), libselinux1 (>= 2.1.9)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.16"
+
+relationInstance depends(P0__bubblewrap,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libcap2"
+	comparison hasValue ">="
+	version hasValue "1:2.10"
+
+relationInstance depends(P0__bubblewrap,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libselinux1"
+	comparison hasValue ">="
+	version hasValue "2.1.9"
+
+relationInstance depends(P0__bubblewrap,2,DepAtom__2)
+

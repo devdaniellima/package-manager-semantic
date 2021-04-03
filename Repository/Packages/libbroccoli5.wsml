@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libbroccoli5
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libbroccoli5 memberOf Package
+	package hasValue "libbroccoli5"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "161"
+	maintainer hasValue "Original-Hilko Bengen <bengen@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.100-1build1"
+	fileName hasValue "pool/universe/b/broccoli/libbroccoli5_1.100-1build1_amd64.deb"
+	size hasValue "52944"
+	md5sum hasValue "2edb10348a6af722a9f2f7e4e57e1e36"
+	sha1 hasValue "28718ab5e9908f34b7ebd34e4c67c8ad10f09906"
+	sha256 hasValue "27d5d4b9180a97c1026c34de3a7634924719fd634678189d931f6ad4008f3f64"
+	descriptionMd5 hasValue "ed83da784be27b7f5e39c3a6aad8fc5a"
+	homepage hasValue "http://www.bro.org/"
+	depends hasValue "libc6 (>= 2.14), libssl1.1 (>= 1.1.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libbroccoli5,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libssl1.1"
+	comparison hasValue ">="
+	version hasValue "1.1.0"
+
+relationInstance depends(P0__libbroccoli5,1,DepAtom__1)
+

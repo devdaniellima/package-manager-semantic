@@ -1,0 +1,59 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology pcal
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__pcal memberOf Package
+	package hasValue "pcal"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "497"
+	maintainer hasValue "Original-Camm Maguire <camm@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "4.11.0-3build1"
+	fileName hasValue "pool/universe/p/pcal/pcal_4.11.0-3build1_amd64.deb"
+	size hasValue "224116"
+	md5sum hasValue "9c3836be5ce0efddba9c742f2083bc0a"
+	sha1 hasValue "074af12e66ff62b2e86b07032b784e3762f46eb2"
+	sha256 hasValue "5dac5cc26f60f5b68c2891ff9c4c172b2a685f79784dece1d16c061341265354"
+	descriptionMd5 hasValue "ed203dec4c5ab8132edd7a79c2d1d206"
+	depends hasValue "libc6 (>= 2.14), libpaper1"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__pcal,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libpaper1"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__pcal,1,DepAtom__1)
+

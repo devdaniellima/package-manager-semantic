@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libsolv0
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libsolv0 memberOf Package
+	package hasValue "libsolv0"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/admin"
+	installedSize hasValue "611"
+	maintainer hasValue "Original-Mike Gabriel <sunweaver@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.6.36-2"
+	fileName hasValue "pool/universe/libs/libsolv/libsolv0_0.6.36-2_amd64.deb"
+	size hasValue "258312"
+	md5sum hasValue "1b1f3ed521c5452d437b82b8399a1a25"
+	sha1 hasValue "735b09d531f56386d8590062a2137b75242ad837"
+	sha256 hasValue "fec9e29407aa79d6e504b1439919e0abddc0102ce8e89e27fba94c9a0c73d04c"
+	descriptionMd5 hasValue "6723c852d5c4315974bf51247d6e055e"
+	homepage hasValue "https://github.com/openSUSE/libsolv"
+	depends hasValue "libc6 (>= 2.28)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.28"
+
+relationInstance depends(P0__libsolv0,0,DepAtom__0)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python3_gumbo
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python3_gumbo memberOf Package
+	package hasValue "python3-gumbo"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "52"
+	maintainer hasValue "Original-Onur Aslan <onur@onur.im>"
+	architecture hasValue "all"
+	version hasValue "0.10.1+dfsg-2.4"
+	fileName hasValue "pool/universe/g/gumbo-parser/python3-gumbo_0.10.1+dfsg-2.4_all.deb"
+	size hasValue "11416"
+	md5sum hasValue "a23c46d62a9e5b19b1eaa641ae341cba"
+	sha1 hasValue "b7a3a02b17df52669553e8eac64f2f6eab3bd22d"
+	sha256 hasValue "44ce998c6224563428880093bfdb8ac2c1a5853cdb61fa09303b2b4b3efa2258"
+	descriptionMd5 hasValue "3bdfa062c0e001420fab2ee2a77d2bc6"
+	homepage hasValue "https://github.com/google/gumbo-parser"
+	depends hasValue "python3:any (>= 3.4~), libgumbo1 (>= 0.10.1+dfsg-2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ">="
+	version hasValue "3.4~"
+
+relationInstance depends(P0__python3_gumbo,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgumbo1"
+	comparison hasValue ">="
+	version hasValue "0.10.1+dfsg-2.4"
+
+relationInstance depends(P0__python3_gumbo,1,DepAtom__1)
+

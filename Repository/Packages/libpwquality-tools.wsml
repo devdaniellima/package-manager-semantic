@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libpwquality_tools
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libpwquality_tools memberOf Package
+	package hasValue "libpwquality-tools"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "48"
+	maintainer hasValue "Original-Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.4.2-1build1"
+	fileName hasValue "pool/universe/libp/libpwquality/libpwquality-tools_1.4.2-1build1_amd64.deb"
+	size hasValue "9640"
+	md5sum hasValue "61a7d235552b98f5c056bc27f7c78b47"
+	sha1 hasValue "9301f7b0de26b2f30263d3d267bdd397125e2183"
+	sha256 hasValue "5dbf48534aa207fe389568634957fbf089072b84c1f8845b50a8880c703232af"
+	descriptionMd5 hasValue "748331af36bc84978f52ee4344e90e81"
+	homepage hasValue "https://github.com/libpwquality/libpwquality"
+	depends hasValue "libc6 (>= 2.4), libpwquality1 (>= 1.1.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libpwquality_tools,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libpwquality1"
+	comparison hasValue ">="
+	version hasValue "1.1.0"
+
+relationInstance depends(P0__libpwquality_tools,1,DepAtom__1)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology zulusafe_cli
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__zulusafe_cli memberOf Package
+	package hasValue "zulusafe-cli"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "56"
+	maintainer hasValue "Original-Marcio de Souza Oliveira <marciosouza@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "5.7.0-1build1"
+	fileName hasValue "pool/universe/z/zulucrypt/zulusafe-cli_5.7.0-1build1_amd64.deb"
+	size hasValue "16816"
+	md5sum hasValue "9208e77e23684cbf9ef7b128a4919b22"
+	sha1 hasValue "e0c941798240b99bdc8931a60eb24393bc91dc36"
+	sha256 hasValue "d769364adc120315762d9e54d5505605dd1467524b75e7960e3a3ebb70e88701"
+	descriptionMd5 hasValue "0af88f32298465c0f3876b1eb5646c68"
+	homepage hasValue "http://mhogomchungu.github.io/zuluCrypt"
+	depends hasValue "libc6 (>= 2.14), libgcrypt20 (>= 1.8.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__zulusafe_cli,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgcrypt20"
+	comparison hasValue ">="
+	version hasValue "1.8.0"
+
+relationInstance depends(P0__zulusafe_cli,1,DepAtom__1)
+

@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ticker
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ticker memberOf Package
+	package hasValue "ticker"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "34"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.11"
+	fileName hasValue "pool/universe/t/ticker/ticker_1.11_amd64.deb"
+	size hasValue "9276"
+	md5sum hasValue "42a5e691e1f6e6ac0fb2c916be776dc9"
+	sha1 hasValue "0924d3b2d2d663c5ef814f304b220e30bcddff32"
+	sha256 hasValue "7f34035755a3628dc6537a07087f0623dbdb12a94c16ca8d9b158b4884257735"
+	description hasValue "Rolador de texto configurável"
+	descriptionMd5 hasValue "3d688ea1e77830fc9e4757869996104c"
+	homepage hasValue "http://kitenet.net/~joey/code/ticker/"
+	depends hasValue "libc6 (>= 2.4), libslang2 (>= 2.2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__ticker,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libslang2"
+	comparison hasValue ">="
+	version hasValue "2.2.4"
+
+relationInstance depends(P0__ticker,1,DepAtom__1)
+

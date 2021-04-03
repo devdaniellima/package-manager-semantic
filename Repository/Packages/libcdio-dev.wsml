@@ -1,0 +1,82 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libcdio_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libcdio_dev memberOf Package
+	package hasValue "libcdio-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "devel"
+	installedSize hasValue "745"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.0.0-2"
+	fileName hasValue "pool/main/libc/libcdio/libcdio-dev_2.0.0-2_amd64.deb"
+	size hasValue "166680"
+	md5sum hasValue "6786ff0fcf3fac0c23b68f4bb04d882c"
+	sha1 hasValue "08ed834f0148e910089bfc5fbd67061cb2d2d23b"
+	sha256 hasValue "a360ff32e86460c539ce676189401e36b716141c1ad5716621a00d4e1c9e08fe"
+	description hasValue "library to read and control CD-ROM (development files)"
+	descriptionMd5 hasValue "69075d5ba09a07334affe44f52f94b6e"
+	homepage hasValue "http://www.gnu.org/software/libcdio/"
+	depends hasValue "libcdio18 (= 2.0.0-2), libc6-dev | libc-dev, dpkg (>= 1.15.4) | install-info"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libcdio18"
+	comparison hasValue "="
+	version hasValue "2.0.0-2"
+
+relationInstance depends(P0__libcdio_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6-dev"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libcdio_dev,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libc-dev"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libcdio_dev,1,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "dpkg"
+	comparison hasValue ">="
+	version hasValue "1.15.4"
+
+relationInstance depends(P0__libcdio_dev,2,DepAtom__3)
+
+instance DepAtom__4 memberOf DependencyAtom
+	package hasValue "install-info"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libcdio_dev,2,DepAtom__4)
+

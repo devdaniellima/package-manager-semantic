@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology dracut
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__dracut memberOf Package
+	package hasValue "dracut"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "26"
+	maintainer hasValue "Original-Thomas Lange <lange@debian.org>"
+	architecture hasValue "all"
+	version hasValue "048+80-2"
+	provides hasValue "linux-initramfs-tool"
+	conflicts hasValue "initramfs-tools, live-tools"
+	fileName hasValue "pool/universe/d/dracut/dracut_048+80-2_all.deb"
+	size hasValue "3084"
+	md5sum hasValue "f08776ee894f6e4eaca841941df2db30"
+	sha1 hasValue "50904848c0fd4629471c6fe8ee4c4e3cadf27556"
+	sha256 hasValue "61b8b77eb0e6daf20f4fa6091bfb258da02634c5033b0e36c7469d9031803edf"
+	descriptionMd5 hasValue "2591035ec0b583faf4801d2cb379cd54"
+	homepage hasValue "http://www.kernel.org/pub/linux/utils/boot/dracut/dracut.html"
+	depends hasValue "dracut-core (>= 048+80-2), dracut-core (<< 048+80-2+b+~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "dracut-core"
+	comparison hasValue ">="
+	version hasValue "048+80-2"
+
+relationInstance depends(P0__dracut,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "dracut-core"
+	comparison hasValue "<<"
+	version hasValue "048+80-2+b+~"
+
+relationInstance depends(P0__dracut,1,DepAtom__1)
+

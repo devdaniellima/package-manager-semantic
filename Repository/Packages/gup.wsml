@@ -1,0 +1,74 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gup
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gup memberOf Package
+	package hasValue "gup"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/news"
+	installedSize hasValue "79"
+	maintainer hasValue "Original-Marco d'Itri <md@linux.it>"
+	architecture hasValue "amd64"
+	version hasValue "0.5.15build1"
+	fileName hasValue "pool/universe/g/gup/gup_0.5.15build1_amd64.deb"
+	size hasValue "27156"
+	md5sum hasValue "bd95bc516881de4d28c7ebb514413218"
+	sha1 hasValue "b0a885c6a80ca64288ae74c901411157d2539833"
+	sha256 hasValue "e9ce45ec8535a45beb89db5481af6b8ca0a7aea4cf7cb8305e17da31371026d5"
+	description hasValue "permite um site remoto trocar sua inscrição no newsgroup"
+	descriptionMd5 hasValue "6d6cbba9d8c2b6655f461f0947b2bca6"
+	depends hasValue "libc6 (>= 2.14), default-mta | mail-transport-agent, adduser"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__gup,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "default-mta"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__gup,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "mail-transport-agent"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__gup,1,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "adduser"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__gup,2,DepAtom__3)
+

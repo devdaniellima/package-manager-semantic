@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology acpid
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__acpid memberOf Package
+	package hasValue "acpid"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "admin"
+	installedSize hasValue "155"
+	maintainer hasValue "Original-Josue Ortega <josue@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:2.0.32-1ubuntu1"
+	fileName hasValue "pool/main/a/acpid/acpid_2.0.32-1ubuntu1_amd64.deb"
+	size hasValue "37688"
+	md5sum hasValue "66f7478827cbedf3aa7588525006df68"
+	sha1 hasValue "c8e5449e3e913c3ff9e0aaa43bababcee78003d9"
+	sha256 hasValue "fef6273e8bf6f46989fc83f3cca6d0be5d11535949d47fba83cdaece3e6f4399"
+	description hasValue "Advanced Configuration and Power Interface - daemon de eventos"
+	descriptionMd5 hasValue "6a7c4e4695f570d8fbcaec667cdcfcfe"
+	homepage hasValue "http://sourceforge.net/projects/acpid2/"
+	depends hasValue "libc6 (>= 2.27), lsb-base (>= 3.2-14), kmod"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.27"
+
+relationInstance depends(P0__acpid,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "lsb-base"
+	comparison hasValue ">="
+	version hasValue "3.2-14"
+
+relationInstance depends(P0__acpid,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "kmod"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__acpid,2,DepAtom__2)
+

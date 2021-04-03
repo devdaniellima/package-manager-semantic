@@ -1,0 +1,75 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology primus
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__primus memberOf Package
+	package hasValue "primus"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/utils"
+	installedSize hasValue "33"
+	maintainer hasValue "Original-Debian NVIDIA Maintainers <pkg-nvidia-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0~20150328-10"
+	fileName hasValue "pool/universe/p/primus/primus_0~20150328-10_amd64.deb"
+	size hasValue "9776"
+	md5sum hasValue "6078ec667a2d99a006828f5602d7fcbb"
+	sha1 hasValue "caa968c397376a76dbea2bcac04afbaad3e39532"
+	sha256 hasValue "1e9fc39beb1d3b2335a3e0b74caf74f8be8ea32fbb3d4ce4881f4bbb64852b32"
+	description hasValue "GPU offloading no lado cliente para NVIDIA Optimus"
+	descriptionMd5 hasValue "86cd26e1866a08575cea3e262f2dbb68"
+	homepage hasValue "https://github.com/amonakov/primus"
+	depends hasValue "bumblebee (>= 3.2.1-21~), primus-libs (= 0~20150328-10), xserver-xorg-core (>= 2:1.18.3-2) | xserver-xorg-video-intel (>= 2:2.99.917)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "bumblebee"
+	comparison hasValue ">="
+	version hasValue "3.2.1-21~"
+
+relationInstance depends(P0__primus,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "primus-libs"
+	comparison hasValue "="
+	version hasValue "0~20150328-10"
+
+relationInstance depends(P0__primus,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "xserver-xorg-core"
+	comparison hasValue ">="
+	version hasValue "2:1.18.3-2"
+
+relationInstance depends(P0__primus,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "xserver-xorg-video-intel"
+	comparison hasValue ">="
+	version hasValue "2:2.99.917"
+
+relationInstance depends(P0__primus,2,DepAtom__3)
+

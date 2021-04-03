@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology pd_iemlib
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__pd_iemlib memberOf Package
+	package hasValue "pd-iemlib"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/sound"
+	installedSize hasValue "1214"
+	maintainer hasValue "Original-Debian Multimedia Maintainers <debian-multimedia@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.21-2"
+	fileName hasValue "pool/universe/p/pd-iemlib/pd-iemlib_1.21-2_amd64.deb"
+	size hasValue "318128"
+	md5sum hasValue "db13a7e9f9c140f7d3b38e7a21e60cdf"
+	sha1 hasValue "83f029d2afe3168f2f11277a256fc44b88b550b4"
+	sha256 hasValue "12854a62232097abf567450ed8a86d8952f076338c2f630b8b488c3ff7cfd9cd"
+	descriptionMd5 hasValue "60753743a485a197ff2a63d29cd83fb9"
+	homepage hasValue "https://git.iem.at/pd/iemlib"
+	depends hasValue "libc6 (>= 2.29), puredata | pd"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__pd_iemlib,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "puredata"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__pd_iemlib,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "pd"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__pd_iemlib,1,DepAtom__2)
+

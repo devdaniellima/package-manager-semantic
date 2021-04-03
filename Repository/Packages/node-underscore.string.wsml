@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology node_underscoreDotstring
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__node_underscoreDotstring memberOf Package
+	package hasValue "node-underscore.string"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/web"
+	installedSize hasValue "14"
+	maintainer hasValue "Original-Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "3.3.4+dfsg-2"
+	fileName hasValue "pool/universe/u/underscore.string/node-underscore.string_3.3.4+dfsg-2_all.deb"
+	size hasValue "2560"
+	md5sum hasValue "ab87f0c97ebccfa06e2134ed78b5eeb9"
+	sha1 hasValue "d5e4a6d0e2cd021549cae3bf7876878127aeccb9"
+	sha256 hasValue "0eae029efd941f404c091561ab02fdae505d8935e7256be079aec766e165ae58"
+	descriptionMd5 hasValue "a1cca7b35ca1a817785b1b45c599db4b"
+	homepage hasValue "https://github.com/epeli/underscore.string"
+	depends hasValue "nodejs (>= 0.6.19~dfsg1-3), libjs-underscore.string"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "nodejs"
+	comparison hasValue ">="
+	version hasValue "0.6.19~dfsg1-3"
+
+relationInstance depends(P0__node_underscoreDotstring,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libjs-underscore.string"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__node_underscoreDotstring,1,DepAtom__1)
+

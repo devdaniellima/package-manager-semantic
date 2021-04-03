@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology liboggz2
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__liboggz2 memberOf Package
+	package hasValue "liboggz2"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "82"
+	maintainer hasValue "Original-Debian Multimedia Maintainers <debian-multimedia@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.1.1-7"
+	fileName hasValue "pool/universe/libo/liboggz/liboggz2_1.1.1-7_amd64.deb"
+	size hasValue "26484"
+	md5sum hasValue "b7e5d6623874a261c1df8612dc46eb98"
+	sha1 hasValue "8f7af9a63f11c5abf1a1e3a130bcf05308bd04d7"
+	sha256 hasValue "b925339cb8b4de8ee3fcc212b1a3204f5a71b78af20aa24f9918fa00763da4a7"
+	descriptionMd5 hasValue "f1e6c8918c25db317bb7a2e883c5f9f2"
+	homepage hasValue "https://xiph.org/oggz/"
+	depends hasValue "libc6 (>= 2.14), libogg0 (>= 1.0rc3)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__liboggz2,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libogg0"
+	comparison hasValue ">="
+	version hasValue "1.0rc3"
+
+relationInstance depends(P0__liboggz2,1,DepAtom__1)
+

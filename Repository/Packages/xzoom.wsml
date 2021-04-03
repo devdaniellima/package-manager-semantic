@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology xzoom
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__xzoom memberOf Package
+	package hasValue "xzoom"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/x11"
+	installedSize hasValue "41"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.3-25"
+	fileName hasValue "pool/universe/x/xzoom/xzoom_0.3-25_amd64.deb"
+	size hasValue "11776"
+	md5sum hasValue "b49c10d695920cf170a936fe48924fd5"
+	sha1 hasValue "8b555dea17fbf3be1db222d3d981cc6480d36d10"
+	sha256 hasValue "49f6b6ee262a6bbdd452c6130083f43a5e4e8fc251926cd95265912c7cd447e9"
+	descriptionMd5 hasValue "0ce8a40bad0657d20295f4058f5e4493"
+	homepage hasValue "ftp://sunsite.unc.edu/pub/linux/libs/X/"
+	depends hasValue "libc6 (>= 2.14), libx11-6, libxext6"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__xzoom,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libx11-6"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__xzoom,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libxext6"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__xzoom,2,DepAtom__2)
+

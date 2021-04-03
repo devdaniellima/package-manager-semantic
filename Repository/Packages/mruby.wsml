@@ -1,0 +1,52 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology mruby
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__mruby memberOf Package
+	package hasValue "mruby"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/ruby"
+	installedSize hasValue "2431"
+	maintainer hasValue "Original-Nobuhiro Iwamatsu <iwamatsu@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.0.0-1"
+	fileName hasValue "pool/universe/m/mruby/mruby_2.0.0-1_amd64.deb"
+	size hasValue "345460"
+	md5sum hasValue "a07e43f1135d8deaa102b0858127188b"
+	sha1 hasValue "b8c7c72deec58c7d1d451a089e2cf90f9b8256e3"
+	sha256 hasValue "87d5843ff76d9cbeb9645408ce3389e3bd72a21a4f868144a6290df12038d51b"
+	descriptionMd5 hasValue "e66dd0a59235cfa4fbf55773da168909"
+	depends hasValue "libc6 (>= 2.16)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.16"
+
+relationInstance depends(P0__mruby,0,DepAtom__0)
+

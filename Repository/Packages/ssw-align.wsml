@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ssw_align
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ssw_align memberOf Package
+	package hasValue "ssw-align"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/science"
+	installedSize hasValue "43"
+	maintainer hasValue "Original-Debian Med Packaging Team <debian-med-packaging@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.1-9"
+	fileName hasValue "pool/universe/libs/libssw/ssw-align_1.1-9_amd64.deb"
+	size hasValue "12296"
+	md5sum hasValue "e8c963aeebaecee9dc8e0c67fce82251"
+	sha1 hasValue "f86b6e3fc69e3d01ef5376db938bc9f1e8601b61"
+	sha256 hasValue "be1737e71274018c952a8fc42de401aea2648dd7a8ad6ce38c086748761d8717"
+	descriptionMd5 hasValue "54697b373972ff5d6af08220d3066181"
+	homepage hasValue "https://github.com/mengyao/Complete-Striped-Smith-Waterman-Library"
+	depends hasValue "libc6 (>= 2.29), libssw0 (= 1.1-9), zlib1g (>= 1:1.1.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__ssw_align,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libssw0"
+	comparison hasValue "="
+	version hasValue "1.1-9"
+
+relationInstance depends(P0__ssw_align,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "zlib1g"
+	comparison hasValue ">="
+	version hasValue "1:1.1.4"
+
+relationInstance depends(P0__ssw_align,2,DepAtom__2)
+

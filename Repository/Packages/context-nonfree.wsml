@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology context_nonfree
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__context_nonfree memberOf Package
+	package hasValue "context-nonfree"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "multiverse/tex"
+	installedSize hasValue "858"
+	maintainer hasValue "Original-Debian TeX maintainers <debian-tex-maint@lists.debian.org>"
+	architecture hasValue "all"
+	version hasValue "2007.03.22-2"
+	fileName hasValue "pool/multiverse/c/context-nonfree/context-nonfree_2007.03.22-2_all.deb"
+	size hasValue "673460"
+	md5sum hasValue "6bec1a10c6004c595a597ff46a92207c"
+	sha1 hasValue "f86fae63f2317b3ea2b40290a4ba8ec0672b1558"
+	sha256 hasValue "58857a3df2491ea6dec10660767e1ed0c873a6aea6666ec43b2e3ff769191c79"
+	description hasValue "Non-free items from the ConTeXt distribution"
+	descriptionMd5 hasValue "b57b7bb7ce4c1305d8e45e7a156b0c04"
+	depends hasValue "tex-common (>= 6), context"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "tex-common"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__context_nonfree,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "context"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__context_nonfree,1,DepAtom__1)
+

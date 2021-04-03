@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python3_ldap3
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python3_ldap3 memberOf Package
+	package hasValue "python3-ldap3"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "2002"
+	maintainer hasValue "Original-Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.4.1-2"
+	fileName hasValue "pool/universe/p/python-ldap3/python3-ldap3_2.4.1-2_all.deb"
+	size hasValue "217188"
+	md5sum hasValue "accaf9daa69eca040b059853cc84568d"
+	sha1 hasValue "4df5259862eb24aeacda748121545758e132ca58"
+	sha256 hasValue "fd7400af2b4636955d26e238ddc07dfe2a8749d1ece58442e28ed7c819f55440"
+	descriptionMd5 hasValue "80cc59296cd0c35abdd18e9f3eaa5e56"
+	homepage hasValue "https://github.com/cannatag/ldap3"
+	depends hasValue "python3-pyasn1 (>= 0.1.8), python3:any"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3-pyasn1"
+	comparison hasValue ">="
+	version hasValue "0.1.8"
+
+relationInstance depends(P0__python3_ldap3,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__python3_ldap3,1,DepAtom__1)
+

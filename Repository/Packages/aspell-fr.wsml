@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology aspell_fr
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__aspell_fr memberOf Package
+	package hasValue "aspell-fr"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/text"
+	installedSize hasValue "439"
+	maintainer hasValue "Original-Rémi Vanicat <vanicat@debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.50-3-8"
+	provides hasValue "aspell-dictionary"
+	fileName hasValue "pool/universe/a/aspell-fr/aspell-fr_0.50-3-8_all.deb"
+	size hasValue "378138"
+	md5sum hasValue "955300601fbc2e881e34681db6c551bd"
+	sha1 hasValue "304b6c631e045bd1775d8d66581fabf5b02525b0"
+	sha256 hasValue "cb7eb55bcc0e4d852a03fb6b5af7e6efdcd5fd264a58591337cfac2e1ed83cea"
+	description hasValue "dicionário francês para o aspell"
+	descriptionMd5 hasValue "c6a3a421f5b63d0c12f61f861b02487d"
+	homepage hasValue "http://ftp.gnu.org/gnu/aspell/dict/0index.html"
+	depends hasValue "aspell, dictionaries-common (>= 1.23~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "aspell"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__aspell_fr,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "dictionaries-common"
+	comparison hasValue ">="
+	version hasValue "1.23~"
+
+relationInstance depends(P0__aspell_fr,1,DepAtom__1)
+

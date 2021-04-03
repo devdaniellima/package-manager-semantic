@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology mpeg3_utils
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__mpeg3_utils memberOf Package
+	package hasValue "mpeg3-utils"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "62"
+	maintainer hasValue "Original-Petter Reinholdtsen <pere@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.8.dfsg-2.1"
+	fileName hasValue "pool/universe/libm/libmpeg3/mpeg3-utils_1.8.dfsg-2.1_amd64.deb"
+	size hasValue "12376"
+	md5sum hasValue "a8f58de1112445a66ca0e6a032ee5984"
+	sha1 hasValue "e4e8adadd52d47e59439b51a5b809450e904be8f"
+	sha256 hasValue "1ee18764229527e616cd429c68e89806a1bd6d2834d2b16e77f066bbab4867ff"
+	descriptionMd5 hasValue "019be72ca07bcbf212853f5d1ba8ae15"
+	homepage hasValue "http://heroines.sourceforge.net/libmpeg3.php"
+	depends hasValue "libc6 (>= 2.14), libmpeg3-2 (>= 1.8.dfsg)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__mpeg3_utils,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libmpeg3-2"
+	comparison hasValue ">="
+	version hasValue "1.8.dfsg"
+
+relationInstance depends(P0__mpeg3_utils,1,DepAtom__1)
+

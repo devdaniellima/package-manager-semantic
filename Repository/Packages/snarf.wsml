@@ -1,0 +1,52 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology snarf
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__snarf memberOf Package
+	package hasValue "snarf"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "51"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "7.0-6build1"
+	fileName hasValue "pool/universe/s/snarf/snarf_7.0-6build1_amd64.deb"
+	size hasValue "19288"
+	md5sum hasValue "672451e6f0dae673503409d16e70e838"
+	sha1 hasValue "8e058c237a0deb92cc148958635962b8f15f5139"
+	sha256 hasValue "ae1b96671ade9707550e239db916cb0cc111c3827f8dcc66a3feb97006df8094"
+	descriptionMd5 hasValue "71e5109141217611629ec55d6026e15f"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__snarf,0,DepAtom__0)
+

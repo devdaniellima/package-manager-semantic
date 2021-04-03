@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology dnsmap
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__dnsmap memberOf Package
+	package hasValue "dnsmap"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "256"
+	maintainer hasValue "Original-Debian Security Tools <team+pkg-security@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.35-3"
+	fileName hasValue "pool/universe/d/dnsmap/dnsmap_0.35-3_amd64.deb"
+	size hasValue "26964"
+	md5sum hasValue "98a68fde2a49fbaeea912af359a50de9"
+	sha1 hasValue "3fac611d73978963d7b17a383ab79a72c05813eb"
+	sha256 hasValue "ef68dba50ec52d83478b80635642989a84a6ffae4cf48dc98d589142c598307a"
+	descriptionMd5 hasValue "8da238b788e263a0deb14cbebae67043"
+	homepage hasValue "https://github.com/resurrecting-open-source-projects/dnsmap"
+	depends hasValue "libc6 (>= 2.7)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__dnsmap,0,DepAtom__0)
+

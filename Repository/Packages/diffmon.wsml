@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology diffmon
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__diffmon memberOf Package
+	package hasValue "diffmon"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "90"
+	maintainer hasValue "Original-Jeff Bailey <jbailey@nisa.net>"
+	architecture hasValue "all"
+	version hasValue "20020222-2.6"
+	fileName hasValue "pool/universe/d/diffmon/diffmon_20020222-2.6_all.deb"
+	size hasValue "12386"
+	md5sum hasValue "6b6bf869581edf38aa61abed7a98129b"
+	sha1 hasValue "8651783745f88f6a061336d23437c1cc890a273d"
+	sha256 hasValue "8fb28bd5d8a17cb7e3888d41f5e3318ce4f11014dacdef8f55d05bb4d157192d"
+	description hasValue "Ferramenta para relatório de mudanças na configuração do sistema"
+	descriptionMd5 hasValue "cd0d45613de3fe966574f804703905dd"
+	depends hasValue "sendmail | mail-transport-agent, bash (>= 2.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "sendmail"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__diffmon,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "mail-transport-agent"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__diffmon,0,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "bash"
+	comparison hasValue ">="
+	version hasValue "2.0"
+
+relationInstance depends(P0__diffmon,1,DepAtom__2)
+

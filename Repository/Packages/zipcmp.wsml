@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology zipcmp
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__zipcmp memberOf Package
+	package hasValue "zipcmp"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "43"
+	maintainer hasValue "Original-Stefan Schörghofer <amd1212@4md.gr>"
+	architecture hasValue "amd64"
+	version hasValue "1.5.1-0ubuntu1"
+	fileName hasValue "pool/universe/libz/libzip/zipcmp_1.5.1-0ubuntu1_amd64.deb"
+	size hasValue "10412"
+	md5sum hasValue "6aa1490c8e833a38e1982409dc291722"
+	sha1 hasValue "7af3ea93be79ce77a7597d677c192bab7024f210"
+	sha256 hasValue "3c56cdeb5ed512d9292cbbb134cd0f8449eaca7b9cbffa48efdb1c74653a85f6"
+	description hasValue "compara o conteúdo de arquivos compactados no formato zip"
+	descriptionMd5 hasValue "b5afa964f0a0ea99413a08675f8e3533"
+	homepage hasValue "http://www.nih.at/libzip/"
+	depends hasValue "libc6 (>= 2.4), libzip5 (>= 1.0), zlib1g (>= 1:1.1.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__zipcmp,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libzip5"
+	comparison hasValue ">="
+	version hasValue "1.0"
+
+relationInstance depends(P0__zipcmp,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "zlib1g"
+	comparison hasValue ">="
+	version hasValue "1:1.1.4"
+
+relationInstance depends(P0__zipcmp,2,DepAtom__2)
+

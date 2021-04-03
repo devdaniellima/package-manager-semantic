@@ -1,0 +1,82 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libgpgme11
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libgpgme11 memberOf Package
+	package hasValue "libgpgme11"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libs"
+	installedSize hasValue "355"
+	maintainer hasValue "Original-Debian GnuPG Maintainers <pkg-gnupg-maint@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.13.1-7ubuntu2"
+	fileName hasValue "pool/main/g/gpgme1.0/libgpgme11_1.13.1-7ubuntu2_amd64.deb"
+	size hasValue "120900"
+	md5sum hasValue "cdd5a780f4e5f1ba12e2c460bb7af761"
+	sha1 hasValue "e04fcdd9f16bcee10cd337fbd9fc519989cadfc8"
+	sha256 hasValue "e8fc81b7852004a50e4f8ed33ecce609d4dea3a074b8556f6860bfd6ff23acf9"
+	description hasValue "GPGME - GnuPG Made Easy (library)"
+	descriptionMd5 hasValue "7305da3bebc903cedb7fa94da8ad1fbf"
+	homepage hasValue "https://www.gnupg.org/related_software/gpgme/"
+	depends hasValue "gnupg (>= 2.1.21-4) | gpg, libassuan0 (>= 2.4.2), libc6 (>= 2.15), libgpg-error0 (>= 1.24)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "gnupg"
+	comparison hasValue ">="
+	version hasValue "2.1.21-4"
+
+relationInstance depends(P0__libgpgme11,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "gpg"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libgpgme11,0,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libassuan0"
+	comparison hasValue ">="
+	version hasValue "2.4.2"
+
+relationInstance depends(P0__libgpgme11,1,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__libgpgme11,2,DepAtom__3)
+
+instance DepAtom__4 memberOf DependencyAtom
+	package hasValue "libgpg-error0"
+	comparison hasValue ">="
+	version hasValue "1.24"
+
+relationInstance depends(P0__libgpgme11,3,DepAtom__4)
+

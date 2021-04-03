@@ -1,0 +1,59 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology med_psychology
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__med_psychology memberOf Package
+	package hasValue "med-psychology"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/misc"
+	installedSize hasValue "38"
+	maintainer hasValue "Original-Debian Med Packaging Team <debian-med-packaging@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "3.5.1"
+	fileName hasValue "pool/universe/d/debian-med/med-psychology_3.5.1_all.deb"
+	size hasValue "3340"
+	md5sum hasValue "74dcedaa474aea52c5a4070b56b0f06f"
+	sha1 hasValue "1604cbbd509a180fe92da11938aa4cdfffaac707"
+	sha256 hasValue "ca24dad556e3a0c52b7d1defbbd5ce1e0835e7733bb610761721b99704889de0"
+	descriptionMd5 hasValue "be99a17bdfda635353b69de2c7e13cd8"
+	depends hasValue "med-config (= 3.5.1), med-tasks (= 3.5.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "med-config"
+	comparison hasValue "="
+	version hasValue "3.5.1"
+
+relationInstance depends(P0__med_psychology,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "med-tasks"
+	comparison hasValue "="
+	version hasValue "3.5.1"
+
+relationInstance depends(P0__med_psychology,1,DepAtom__1)
+

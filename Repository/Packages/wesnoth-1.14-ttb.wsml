@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology wesnoth_1Dot14_ttb
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__wesnoth_1Dot14_ttb memberOf Package
+	package hasValue "wesnoth-1.14-ttb"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/games"
+	installedSize hasValue "7019"
+	maintainer hasValue "Original-Debian Games Team <pkg-games-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1:1.14.9-1ubuntu5"
+	fileName hasValue "pool/universe/w/wesnoth-1.14/wesnoth-1.14-ttb_1.14.9-1ubuntu5_all.deb"
+	size hasValue "5495496"
+	md5sum hasValue "319ec65e6921b4f0de3e34b133949bc9"
+	sha1 hasValue "be41f918fa3f07933035e8e65f8769bb629ba70f"
+	sha256 hasValue "4e74866331936e68b98c8c29534b3fba88d6776a5eca5ea58f5a224df5a26bce"
+	description hasValue "\"A Tale of Two Brothers\" official campaign for Wesnoth (branch 1.14)"
+	descriptionMd5 hasValue "c01062c2b1b1cf692c9b0dd48f24f857"
+	homepage hasValue "http://wesnoth.org/"
+	depends hasValue "wesnoth-1.14-core (>= 1:1.14), wesnoth-1.14-core (<< 1:1.15)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "wesnoth-1.14-core"
+	comparison hasValue ">="
+	version hasValue "1:1.14"
+
+relationInstance depends(P0__wesnoth_1Dot14_ttb,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "wesnoth-1.14-core"
+	comparison hasValue "<<"
+	version hasValue "1:1.15"
+
+relationInstance depends(P0__wesnoth_1Dot14_ttb,1,DepAtom__1)
+

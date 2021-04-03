@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology dte
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__dte memberOf Package
+	package hasValue "dte"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/editors"
+	installedSize hasValue "353"
+	maintainer hasValue "Original-Mirek Kratochvil <exa.exa@gmail.com>"
+	architecture hasValue "amd64"
+	version hasValue "1.9.1-1"
+	fileName hasValue "pool/universe/d/dte/dte_1.9.1-1_amd64.deb"
+	size hasValue "133920"
+	md5sum hasValue "93b7bb80c86c0df2d361726fc83a15ea"
+	sha1 hasValue "da9a6ee6527c87f23ad90e3183c0606a27d9a3f2"
+	sha256 hasValue "285c22e80967acedffad53c6c618fb77444e0f70176b6814ce944d24d015541e"
+	descriptionMd5 hasValue "5f625975c5abf05766602b872be612d9"
+	homepage hasValue "https://craigbarnes.gitlab.io/dte/"
+	depends hasValue "libc6 (>= 2.27), libtinfo6 (>= 6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.27"
+
+relationInstance depends(P0__dte,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libtinfo6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__dte,1,DepAtom__1)
+

@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology siftool
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__siftool memberOf Package
+	package hasValue "siftool"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "2146"
+	maintainer hasValue "Original-Debian Go Packaging Team <team+pkg-go@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.9-1"
+	fileName hasValue "pool/universe/g/golang-github-sylabs-sif/siftool_1.0.9-1_amd64.deb"
+	size hasValue "690260"
+	md5sum hasValue "8a977a0b74ec209565bcafc268d4a203"
+	sha1 hasValue "33b02ec7d27c4efab10cc68f656cf0f57f42514c"
+	sha256 hasValue "619bbda3a7790144044e9130d3aa5cbeb3cfc776a31073d002a62a4016c46601"
+	descriptionMd5 hasValue "bdf52f12e9e1fd6d9db3fcf264b8ef4a"
+	homepage hasValue "https://github.com/sylabs/sif"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__siftool,0,DepAtom__0)
+

@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology unhide
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__unhide memberOf Package
+	package hasValue "unhide"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/admin"
+	installedSize hasValue "168"
+	maintainer hasValue "Original-Debian Security Tools <team+pkg-security@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "20130526-4"
+	fileName hasValue "pool/universe/u/unhide/unhide_20130526-4_amd64.deb"
+	size hasValue "48800"
+	md5sum hasValue "6e11442b17cd7f76bce9e6f35d92c173"
+	sha1 hasValue "6e01ca9660cdf726c4997681e6d9ac59c5be9754"
+	sha256 hasValue "561e3ac6e80c826b098bc6ede8e8f4fa1ccaa4c22c848a2c1a7b93a426e62dd7"
+	description hasValue "ferramenta forense para localizar portas e processos escondidos"
+	descriptionMd5 hasValue "2b450c591220d6cd58e2fe58256d0e89"
+	homepage hasValue "http://www.unhide-forensics.info"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__unhide,0,DepAtom__0)
+

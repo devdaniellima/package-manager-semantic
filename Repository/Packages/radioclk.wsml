@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology radioclk
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__radioclk memberOf Package
+	package hasValue "radioclk"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/net"
+	installedSize hasValue "64"
+	maintainer hasValue "Original-Paride Legovini <pl@ninthfloor.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.pristine-2"
+	fileName hasValue "pool/universe/r/radioclk/radioclk_1.0.pristine-2_amd64.deb"
+	size hasValue "20464"
+	md5sum hasValue "c2b4b375925c804ef9207d5c578db1e8"
+	sha1 hasValue "0c16723958424abb570c828791d992d7431ce58d"
+	sha256 hasValue "acf6187bb68ca43ea251e729b78fa4efd9f203c2212502efab81f48b8bf96ccb"
+	descriptionMd5 hasValue "21679d71da952b3457c2393945658d74"
+	homepage hasValue "http://www.buzzard.me.uk/jonathan/radioclock.html"
+	depends hasValue "libc6 (>= 2.11), debconf (>= 0.5) | debconf-2.0"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.11"
+
+relationInstance depends(P0__radioclk,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "debconf"
+	comparison hasValue ">="
+	version hasValue "0.5"
+
+relationInstance depends(P0__radioclk,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "debconf-2.0"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__radioclk,1,DepAtom__2)
+

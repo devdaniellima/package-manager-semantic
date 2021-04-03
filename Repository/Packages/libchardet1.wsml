@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libchardet1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libchardet1 memberOf Package
+	package hasValue "libchardet1"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/libs"
+	installedSize hasValue "141"
+	maintainer hasValue "Original-Ximin Luo <infinity0@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.4-1"
+	fileName hasValue "pool/universe/libc/libchardet/libchardet1_1.0.4-1_amd64.deb"
+	size hasValue "61288"
+	md5sum hasValue "14ea7b59659916155012778e26227e40"
+	sha1 hasValue "171da9ddc851a6a4890cf733eef3e198046d456e"
+	sha256 hasValue "2fbf73067e64c72b1ea95f4947c2ad25ab9c9ca3ad1e9133fafdd10d7f08092c"
+	descriptionMd5 hasValue "b1e560b83f4b61c7dc82172f33cc5218"
+	homepage hasValue "https://ftp.oops.org/pub/oops/libchardet/"
+	depends hasValue "libc6 (>= 2.4), libstdc++6 (>= 4.1.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libchardet1,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "4.1.1"
+
+relationInstance depends(P0__libchardet1,1,DepAtom__1)
+

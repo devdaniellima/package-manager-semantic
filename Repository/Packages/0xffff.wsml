@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology 0xffff
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__0xffff memberOf Package
+	package hasValue "0xffff"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/misc"
+	installedSize hasValue "164"
+	maintainer hasValue "Original-Sebastian Reichel <sre@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.8-1"
+	fileName hasValue "pool/universe/0/0xffff/0xffff_0.8-1_amd64.deb"
+	size hasValue "58636"
+	md5sum hasValue "9ab965b1cc6ea8281c0ec066e3d8b0c6"
+	sha1 hasValue "deb404609070f3c7411a7c9bee337b1a98b3f258"
+	sha256 hasValue "5dd31a4fc64a616d38c7ff4d02413be49f2e600784b022758575154d31ceba7a"
+	descriptionMd5 hasValue "183c49f6505eb3432d1b069800f1f5b6"
+	homepage hasValue "https://github.com/pali/0xFFFF"
+	depends hasValue "libc6 (>= 2.14), libusb-0.1-4 (>= 2:0.1.12)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__0xffff,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libusb-0.1-4"
+	comparison hasValue ">="
+	version hasValue "2:0.1.12"
+
+relationInstance depends(P0__0xffff,1,DepAtom__1)
+

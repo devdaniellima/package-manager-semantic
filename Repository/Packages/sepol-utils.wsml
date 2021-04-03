@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology sepol_utils
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__sepol_utils memberOf Package
+	package hasValue "sepol-utils"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/misc"
+	installedSize hasValue "46"
+	maintainer hasValue "Original-Debian SELinux maintainers <selinux-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.0-1"
+	fileName hasValue "pool/universe/libs/libsepol/sepol-utils_3.0-1_amd64.deb"
+	size hasValue "8000"
+	md5sum hasValue "5a7584fc6c457eb40be27a728624fbec"
+	sha1 hasValue "3d1036b6900e059361648a3b89d64bdf8c47bdf3"
+	sha256 hasValue "ab7f92a91dd638cd372eece4e61486f94a82c9a8d01e2505919871e9578d23e7"
+	descriptionMd5 hasValue "a1b596ce0ddd460c537eafbf4c1d7137"
+	homepage hasValue "http://userspace.selinuxproject.org/"
+	depends hasValue "libc6 (>= 2.3.4), libsepol1 (>= 2.5)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.3.4"
+
+relationInstance depends(P0__sepol_utils,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libsepol1"
+	comparison hasValue ">="
+	version hasValue "2.5"
+
+relationInstance depends(P0__sepol_utils,1,DepAtom__1)
+

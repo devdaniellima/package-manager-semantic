@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology lnpd
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__lnpd memberOf Package
+	package hasValue "lnpd"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/devel"
+	installedSize hasValue "183"
+	maintainer hasValue "Original-Michael Tautschnig <mt@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.9.0-11build1"
+	fileName hasValue "pool/universe/l/lnpd/lnpd_0.9.0-11build1_amd64.deb"
+	size hasValue "47184"
+	md5sum hasValue "849d1da92c356002ee61766bf32ddf1e"
+	sha1 hasValue "ad486beb159df9dd6f439d528a4271598276b6ed"
+	sha256 hasValue "1d3d654240c5c9f62045cedfe0908220166114db0bdc4d48eb2b32a1c2bcd065"
+	description hasValue "daemon para comunicação via LNP com o BrickOS"
+	descriptionMd5 hasValue "afc3ad67b0e96f5d966c5dd8e059616b"
+	homepage hasValue "http://brickos.sourceforge.net"
+	depends hasValue "libc6 (>= 2.15)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__lnpd,0,DepAtom__0)
+

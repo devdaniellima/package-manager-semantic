@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology mrtdreader
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__mrtdreader memberOf Package
+	package hasValue "mrtdreader"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "34"
+	maintainer hasValue "Original-Ruben Undheim <rubund@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.1.6-3"
+	fileName hasValue "pool/universe/m/mrtdreader/mrtdreader_0.1.6-3_amd64.deb"
+	size hasValue "7772"
+	md5sum hasValue "56eadcb96c8d761fcbac898d0ad350d2"
+	sha1 hasValue "e84be743238656ac76f015671240760486ba484f"
+	sha256 hasValue "38aba26f9c367cc1f55f6503a315b9485d88f1af88045679cf1e90a2efd764d5"
+	descriptionMd5 hasValue "4c898ac9befd7a8f1017eace428108c2"
+	homepage hasValue "https://github.com/rubund/mrtdreader"
+	depends hasValue "libmrtd0 (= 0.1.6-3), libc6 (>= 2.14), libnfc5 (>= 1.7.0~rc2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libmrtd0"
+	comparison hasValue "="
+	version hasValue "0.1.6-3"
+
+relationInstance depends(P0__mrtdreader,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__mrtdreader,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libnfc5"
+	comparison hasValue ">="
+	version hasValue "1.7.0~rc2"
+
+relationInstance depends(P0__mrtdreader,2,DepAtom__2)
+

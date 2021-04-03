@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology xfonts_base
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__xfonts_base memberOf Package
+	package hasValue "xfonts-base"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "x11"
+	installedSize hasValue "7166"
+	maintainer hasValue "Original-Debian X Strike Force <debian-x@lists.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1:1.0.5"
+	replaces hasValue "xfonts-misc"
+	fileName hasValue "pool/main/x/xfonts-base/xfonts-base_1.0.5_all.deb"
+	size hasValue "5896032"
+	md5sum hasValue "f99bb6f22bf8f9c1fdc51910029c8d0f"
+	sha1 hasValue "a30304534be0c37cfc653b77910fc64e0c326bc5"
+	sha256 hasValue "db3d735d9aaa938b5cf6ebfcdb1a8837fad394ae198b51e74b9f0544bbe4635b"
+	description hasValue "fontes padrão para o X"
+	descriptionMd5 hasValue "b523687dc2655def36c6861a16a103b0"
+	depends hasValue "xfonts-utils (>= 1:7.5+2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "xfonts-utils"
+	comparison hasValue ">="
+	version hasValue "1:7.5+2"
+
+relationInstance depends(P0__xfonts_base,0,DepAtom__0)
+

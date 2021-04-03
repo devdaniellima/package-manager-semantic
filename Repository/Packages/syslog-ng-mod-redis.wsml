@@ -1,0 +1,75 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology syslog_ng_mod_redis
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__syslog_ng_mod_redis memberOf Package
+	package hasValue "syslog-ng-mod-redis"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/admin"
+	installedSize hasValue "98"
+	maintainer hasValue "Original-syslog-ng maintainers <syslog-ng-maintainers@alioth-lists.debian.net>"
+	architecture hasValue "amd64"
+	version hasValue "3.25.1-3"
+	fileName hasValue "pool/universe/s/syslog-ng/syslog-ng-mod-redis_3.25.1-3_amd64.deb"
+	size hasValue "17344"
+	md5sum hasValue "c5485cd4cbc11604e2b2bfd2b8a568e6"
+	sha1 hasValue "0cc841b160162cdfec43ecd7b972bfc11d2a8d98"
+	sha256 hasValue "cb7287665fc2ebcdf0705137bc49a7cb9cad3f12e8c9d946098355d24684dc59"
+	description hasValue "Enhanced system logging daemon (Redis plugin)"
+	descriptionMd5 hasValue "f03b81038aae87e40382598af2cb75af"
+	homepage hasValue "https://www.syslog-ng.com/"
+	depends hasValue "libc6 (>= 2.14), libhiredis0.14 (>= 0.14.0), syslog-ng-core (>= 3.25.1-3), syslog-ng-core (<< 3.25.1-3.1~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__syslog_ng_mod_redis,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libhiredis0.14"
+	comparison hasValue ">="
+	version hasValue "0.14.0"
+
+relationInstance depends(P0__syslog_ng_mod_redis,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "syslog-ng-core"
+	comparison hasValue ">="
+	version hasValue "3.25.1-3"
+
+relationInstance depends(P0__syslog_ng_mod_redis,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "syslog-ng-core"
+	comparison hasValue "<<"
+	version hasValue "3.25.1-3.1~"
+
+relationInstance depends(P0__syslog_ng_mod_redis,3,DepAtom__3)
+

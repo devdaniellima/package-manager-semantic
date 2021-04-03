@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology librust_randPluslog_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__librust_randPluslog_dev memberOf Package
+	package hasValue "librust-rand+log-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/rust"
+	installedSize hasValue "6"
+	maintainer hasValue "Original-Debian Rust Maintainers <pkg-rust-maintainers@alioth-lists.debian.net>"
+	architecture hasValue "amd64"
+	version hasValue "0.7.2-1"
+	provides hasValue "librust-rand-0+log-dev (= 0.7.2-1), librust-rand-0.7+log-dev (= 0.7.2-1), librust-rand-0.7.2+log-dev (= 0.7.2-1)"
+	fileName hasValue "pool/universe/r/rust-rand/librust-rand+log-dev_0.7.2-1_amd64.deb"
+	size hasValue "1096"
+	md5sum hasValue "842f2770ec8833fb1f9973d615b1bf40"
+	sha1 hasValue "a4bc5eaec3b410c7517738548c36bb0ece0060a1"
+	sha256 hasValue "110a321a95a4e134cf3026d7e5f9dba49d32ec30b2d67c3d94a47287a11eb69a"
+	descriptionMd5 hasValue "89a636cb1403128e949fff33365712a6"
+	homepage hasValue "https://crates.io/crates/rand"
+	depends hasValue "librust-rand-dev (= 0.7.2-1), librust-log-0.4+default-dev (>= 0.4.4-~~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "librust-rand-dev"
+	comparison hasValue "="
+	version hasValue "0.7.2-1"
+
+relationInstance depends(P0__librust_randPluslog_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "librust-log-0.4+default-dev"
+	comparison hasValue ">="
+	version hasValue "0.4.4-~~"
+
+relationInstance depends(P0__librust_randPluslog_dev,1,DepAtom__1)
+

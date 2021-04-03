@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology shared_mime_info
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__shared_mime_info memberOf Package
+	package hasValue "shared-mime-info"
+	packageSource hasValue Source__S1
+	priority hasValue "important"
+	section hasValue "misc"
+	installedSize hasValue "2652"
+	maintainer hasValue "Original-Debian freedesktop.org maintainers <pkg-freedesktop-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.15-1"
+	fileName hasValue "pool/main/s/shared-mime-info/shared-mime-info_1.15-1_amd64.deb"
+	size hasValue "430464"
+	md5sum hasValue "14e1958302d33d903753d1347de5de0b"
+	sha1 hasValue "c8e76e01bb8e9ee700955cc1b98ce41bac4e72dd"
+	sha256 hasValue "c9e67a8c8587045dcfd1327234c4ec4ebaff94cc725b8ce931c3415d0e1cc760"
+	description hasValue "especificação e banco de dados MIME compartilhados do FreeDesktop.org"
+	descriptionMd5 hasValue "6f0051137219a573d6748b4e3bc55889"
+	homepage hasValue "https://freedesktop.org/wiki/Software/shared-mime-info"
+	depends hasValue "libc6 (>= 2.14), libglib2.0-0 (>= 2.35.9), libxml2 (>= 2.7.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__shared_mime_info,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libglib2.0-0"
+	comparison hasValue ">="
+	version hasValue "2.35.9"
+
+relationInstance depends(P0__shared_mime_info,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libxml2"
+	comparison hasValue ">="
+	version hasValue "2.7.4"
+
+relationInstance depends(P0__shared_mime_info,2,DepAtom__2)
+

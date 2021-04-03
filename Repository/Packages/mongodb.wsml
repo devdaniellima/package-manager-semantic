@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology mongodb
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__mongodb memberOf Package
+	package hasValue "mongodb"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/database"
+	installedSize hasValue "43"
+	maintainer hasValue "Original-Debian MongoDB Maintainers <pkg-mongodb-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:3.6.9+really3.6.8+90~g8e540c0b6d-0ubuntu5"
+	fileName hasValue "pool/universe/m/mongodb/mongodb_3.6.9+really3.6.8+90~g8e540c0b6d-0ubuntu5_amd64.deb"
+	size hasValue "9292"
+	md5sum hasValue "0e93a8c081895090ff09bb275869efdc"
+	sha1 hasValue "954dce434efad307ad8af6e1995683dc4e72bc2f"
+	sha256 hasValue "0f87ea80aa613979725a8e2fa9501bf16d6d84179fcf49d68a481ba12e75a479"
+	description hasValue "banco de dados orientado a documentos/objetos (meta-pacote)"
+	descriptionMd5 hasValue "8fa8c030cb4f008d0ac716b496446f9d"
+	homepage hasValue "https://www.mongodb.org"
+	depends hasValue "mongodb-server (>= 1:2.4.1-2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "mongodb-server"
+	comparison hasValue ">="
+	version hasValue "1:2.4.1-2"
+
+relationInstance depends(P0__mongodb,0,DepAtom__0)
+

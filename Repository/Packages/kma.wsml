@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology kma
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__kma memberOf Package
+	package hasValue "kma"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/science"
+	installedSize hasValue "443"
+	maintainer hasValue "Original-Debian Med Packaging Team <debian-med-packaging@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.2.21-1"
+	fileName hasValue "pool/universe/k/kma/kma_1.2.21-1_amd64.deb"
+	size hasValue "161172"
+	md5sum hasValue "fd75f4adaec35d6737bcec3cf67690dc"
+	sha1 hasValue "71866709c4e5941ff39aba0be4e6b08578900ac1"
+	sha256 hasValue "9dd6a5f71038b50947897239afe0a57a6a72c7073f4906f1c3fc0d8f5a2f89b7"
+	descriptionMd5 hasValue "2096f8927a2b82fc955d8fbdca77c1aa"
+	homepage hasValue "https://bitbucket.org/genomicepidemiology/kma"
+	depends hasValue "libc6 (>= 2.29), zlib1g (>= 1:1.1.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__kma,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "zlib1g"
+	comparison hasValue ">="
+	version hasValue "1:1.1.4"
+
+relationInstance depends(P0__kma,1,DepAtom__1)
+

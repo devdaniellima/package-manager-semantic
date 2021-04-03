@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology node_retape
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__node_retape memberOf Package
+	package hasValue "node-retape"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/web"
+	installedSize hasValue "17"
+	maintainer hasValue "Original-Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.0.3-4"
+	fileName hasValue "pool/universe/n/node-retape/node-retape_0.0.3-4_all.deb"
+	size hasValue "3836"
+	md5sum hasValue "4de1dcadc8f46027a09aa1e6f7966982"
+	sha1 hasValue "4d6e417fa4d56dd11f622662c7156209f5239da8"
+	sha256 hasValue "4aa0bc06d43a888c885ce8f1878464679bfbd17687c064fe56330814373afcb8"
+	descriptionMd5 hasValue "610de0be4913131e4a39abe94abeb846"
+	homepage hasValue "https://github.com/Gozala/retape"
+	depends hasValue "nodejs (>= 10), node-tape (>= 0.1.5), node-test (>> 0.6.0-3~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "nodejs"
+	comparison hasValue ">="
+	version hasValue "10"
+
+relationInstance depends(P0__node_retape,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "node-tape"
+	comparison hasValue ">="
+	version hasValue "0.1.5"
+
+relationInstance depends(P0__node_retape,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "node-test"
+	comparison hasValue ">>"
+	version hasValue "0.6.0-3~"
+
+relationInstance depends(P0__node_retape,2,DepAtom__2)
+

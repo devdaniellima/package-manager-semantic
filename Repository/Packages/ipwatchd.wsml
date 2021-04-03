@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ipwatchd
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ipwatchd memberOf Package
+	package hasValue "ipwatchd"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "60"
+	maintainer hasValue "Original-Jaroslav Imrich <jariq@jariq.sk>"
+	architecture hasValue "amd64"
+	version hasValue "1.2.1-1build1"
+	fileName hasValue "pool/universe/i/ipwatchd/ipwatchd_1.2.1-1build1_amd64.deb"
+	size hasValue "16840"
+	md5sum hasValue "9ac9bdef4f1f8260b566921a6ba609ac"
+	sha1 hasValue "2d64c2f4242f79518194b694b158697302034253"
+	sha256 hasValue "03e2d7ff23c18d5bd04dd7d23fd7f8f0c927ca42a67e0100eaae4544346315a2"
+	descriptionMd5 hasValue "d96bad203b9451e0e69309ccc488ad46"
+	homepage hasValue "http://ipwatchd.sf.net"
+	depends hasValue "libc6 (>= 2.14), libnet1 (>= 1.1.2.1), libpcap0.8 (>= 0.9.8)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__ipwatchd,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libnet1"
+	comparison hasValue ">="
+	version hasValue "1.1.2.1"
+
+relationInstance depends(P0__ipwatchd,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libpcap0.8"
+	comparison hasValue ">="
+	version hasValue "0.9.8"
+
+relationInstance depends(P0__ipwatchd,2,DepAtom__2)
+

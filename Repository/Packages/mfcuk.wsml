@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology mfcuk
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__mfcuk memberOf Package
+	package hasValue "mfcuk"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "86"
+	maintainer hasValue "Original-Debian Security Tools <team+pkg-security@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.3.8+git20180720-1"
+	fileName hasValue "pool/universe/m/mfcuk/mfcuk_0.3.8+git20180720-1_amd64.deb"
+	size hasValue "23980"
+	md5sum hasValue "a28089c501ac9479cf5cadc6dd40af0a"
+	sha1 hasValue "1a6a7f861fe4d70b94d37686740c54ffb41edee8"
+	sha256 hasValue "80fbc4df8881198e99db83b5c049e930d41ff723a96ceebdc0fdf696ce9a4f51"
+	descriptionMd5 hasValue "8ee7baed1de25ef87738efb7434e95bd"
+	homepage hasValue "https://github.com/nfc-tools/mfcuk"
+	depends hasValue "libc6 (>= 2.14), libnfc5 (>= 1.7.0~rc7)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__mfcuk,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libnfc5"
+	comparison hasValue ">="
+	version hasValue "1.7.0~rc7"
+
+relationInstance depends(P0__mfcuk,1,DepAtom__1)
+

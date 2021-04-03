@@ -1,0 +1,69 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology bacula_common_mysql
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__bacula_common_mysql memberOf Package
+	package hasValue "bacula-common-mysql"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "57"
+	maintainer hasValue "Original-Debian Bacula Team <pkg-bacula-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "9.4.2-2ubuntu5"
+	conflicts hasValue "bacula-common-pgsql, bacula-common-sqlite3"
+	fileName hasValue "pool/universe/b/bacula/bacula-common-mysql_9.4.2-2ubuntu5_amd64.deb"
+	size hasValue "10408"
+	md5sum hasValue "9fc1ab6cbdedcefec6c8a27120181b5b"
+	sha1 hasValue "60559ebe1b06ce8bff587966144738627ceeb58d"
+	sha256 hasValue "658c39c4356298fa6070e85af4b1767ea8e8b1027b37748cfe4cdfe28c90ba30"
+	description hasValue "network backup service - MySQL common files"
+	descriptionMd5 hasValue "64bc48d168e93df5fe6d8ddece4e207d"
+	homepage hasValue "http://www.bacula.org/"
+	depends hasValue "bacula-common (= 9.4.2-2ubuntu5), libc6 (>= 2.14), libmysqlclient21 (>= 8.0.11)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "bacula-common"
+	comparison hasValue "="
+	version hasValue "9.4.2-2ubuntu5"
+
+relationInstance depends(P0__bacula_common_mysql,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__bacula_common_mysql,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libmysqlclient21"
+	comparison hasValue ">="
+	version hasValue "8.0.11"
+
+relationInstance depends(P0__bacula_common_mysql,2,DepAtom__2)
+

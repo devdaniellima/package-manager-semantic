@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ng_latin
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ng_latin memberOf Package
+	package hasValue "ng-latin"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/editors"
+	installedSize hasValue "211"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.5~beta1-9"
+	fileName hasValue "pool/universe/n/ng/ng-latin_1.5~beta1-9_amd64.deb"
+	size hasValue "84620"
+	md5sum hasValue "515ea3ded64a95d26df5da4de4b533bd"
+	sha1 hasValue "c33a5179c73bdfc9686482b1a5c8d629c20fe83a"
+	sha256 hasValue "2ef3b13e253c66f18d7ae8eec03e91c4ff8d7704a97cb8129715b2048548177e"
+	description hasValue "Nihongo MicroGnuEmacs with Latin support"
+	descriptionMd5 hasValue "dafeb8fd37189b6974a071026660ffc3"
+	depends hasValue "libc6 (>= 2.14), libtinfo6 (>= 6), ng-common"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__ng_latin,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libtinfo6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__ng_latin,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "ng-common"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ng_latin,2,DepAtom__2)
+

@@ -1,0 +1,69 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology lzip
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__lzip memberOf Package
+	package hasValue "lzip"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "182"
+	maintainer hasValue "Original-Daniel Baumann <daniel.baumann@progress-linux.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.21-6build1"
+	provides hasValue "lzip-alternative, lzip-compressor, lzip-decompressor"
+	fileName hasValue "pool/universe/l/lzip/lzip_1.21-6build1_amd64.deb"
+	size hasValue "81556"
+	md5sum hasValue "66baba655e7d0d0363e14aeb5a13182c"
+	sha1 hasValue "e4f0017195a290218b9ce348c5e8d71a08f1221c"
+	sha256 hasValue "b52cca3630a8b721f3c69ef2170b87fd707b466db2802542402614528026e4a1"
+	description hasValue "compressor de dados sem perdas baseado no algoritmo LZMA"
+	descriptionMd5 hasValue "73f117c376d6c36fdafbb3d29d615eec"
+	homepage hasValue "http://www.nongnu.org/lzip/lzip.html"
+	depends hasValue "libc6 (>= 2.14), libgcc-s1 (>= 3.0), libstdc++6 (>= 5.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__lzip,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgcc-s1"
+	comparison hasValue ">="
+	version hasValue "3.0"
+
+relationInstance depends(P0__lzip,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "5.2"
+
+relationInstance depends(P0__lzip,2,DepAtom__2)
+

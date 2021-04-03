@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ghmm
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ghmm memberOf Package
+	package hasValue "ghmm"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/science"
+	installedSize hasValue "80"
+	maintainer hasValue "Original-Debian Med Packaging Team <debian-med-packaging@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.9~rc3-2ubuntu2"
+	fileName hasValue "pool/universe/g/ghmm/ghmm_0.9~rc3-2ubuntu2_amd64.deb"
+	size hasValue "6176"
+	md5sum hasValue "80b183bb3ca7ecf195f5f8ebf62aeb16"
+	sha1 hasValue "8fc744a71eb8a462c71df24bf0aa357feb3a497d"
+	sha256 hasValue "030081691e1b561cbc0342dcf488bb4783b892ad0d5d409ca2d53fb839932f55"
+	descriptionMd5 hasValue "63083fc12d8c6202abfa1dd52fd2451c"
+	homepage hasValue "https://ghmm.org"
+	depends hasValue "libc6 (>= 2.2.5), python2:any, libghmm1"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.2.5"
+
+relationInstance depends(P0__ghmm,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ghmm,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libghmm1"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ghmm,2,DepAtom__2)
+

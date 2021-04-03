@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology mapproxy
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__mapproxy memberOf Package
+	package hasValue "mapproxy"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/web"
+	installedSize hasValue "40"
+	maintainer hasValue "Original-Debian GIS Project <pkg-grass-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.12.0-1"
+	fileName hasValue "pool/universe/m/mapproxy/mapproxy_1.12.0-1_all.deb"
+	size hasValue "14584"
+	md5sum hasValue "bb7295c6150b8b76b67bcd85dcaea5f3"
+	sha1 hasValue "c967d666bdb3bcb73c2ff6e76cd766edba8712fd"
+	sha256 hasValue "0cbae68ceb99bc14f6d547788ab5aeac1d2f29ce752b9c6c4960d95722c8911e"
+	descriptionMd5 hasValue "e582f7fa43e86d3848e8ff17f17cc1cb"
+	homepage hasValue "http://mapproxy.org/"
+	depends hasValue "python3-mapproxy (= 1.12.0-1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3-mapproxy"
+	comparison hasValue "="
+	version hasValue "1.12.0-1"
+
+relationInstance depends(P0__mapproxy,0,DepAtom__0)
+

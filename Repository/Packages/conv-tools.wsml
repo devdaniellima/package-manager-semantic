@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology conv_tools
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__conv_tools memberOf Package
+	package hasValue "conv-tools"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "42"
+	maintainer hasValue "Original-Petter Reinholdtsen <pere@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "20160905-2"
+	fileName hasValue "pool/universe/c/conv-tools/conv-tools_20160905-2_amd64.deb"
+	size hasValue "13934"
+	md5sum hasValue "c6dbea368d5ee1b2c479a09d6ca5e226"
+	sha1 hasValue "b7e3915ae7a0ad8d3d5beed210da1e2fde7b1c8b"
+	sha256 hasValue "feeefaa8817d66e09cdcd68bc4a8c37923fbe25b9dcbcc78fd50e4d9e5888d45"
+	descriptionMd5 hasValue "429ff076e8013d1e0806dfbafcbc4daa"
+	homepage hasValue "https://github.com/dag-erling/conv-tools"
+	depends hasValue "libc6 (>= 2.22)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.22"
+
+relationInstance depends(P0__conv_tools,0,DepAtom__0)
+

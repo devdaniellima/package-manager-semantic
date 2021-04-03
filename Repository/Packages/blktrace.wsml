@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology blktrace
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__blktrace memberOf Package
+	package hasValue "blktrace"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "1076"
+	maintainer hasValue "Original-Bas Zoetekouw <bas@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.2.0-5"
+	fileName hasValue "pool/universe/b/blktrace/blktrace_1.2.0-5_amd64.deb"
+	size hasValue "771008"
+	md5sum hasValue "afac5311adb19bb250c052a9b516bf7e"
+	sha1 hasValue "7bf83844fc3b841261ef0770b6db250b0fe5f59d"
+	sha256 hasValue "b9721fc1fdc53bc9af1aa4415f295e704e3ae9cb26c39467d9ecc03738e4df79"
+	description hasValue "utilitários para rastreio de ES da camada de bloco"
+	descriptionMd5 hasValue "a8addeb4f4b028f6532eaa1c74cdbf22"
+	homepage hasValue "https://git.kernel.org/pub/scm/linux/kernel/git/axboe/blktrace.git/about/"
+	depends hasValue "libaio1 (>= 0.3.93), libc6 (>= 2.29), python3"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libaio1"
+	comparison hasValue ">="
+	version hasValue "0.3.93"
+
+relationInstance depends(P0__blktrace,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__blktrace,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "python3"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__blktrace,2,DepAtom__2)
+

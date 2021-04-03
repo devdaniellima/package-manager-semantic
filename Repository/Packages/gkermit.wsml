@@ -1,0 +1,52 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gkermit
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gkermit memberOf Package
+	package hasValue "gkermit"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/comm"
+	installedSize hasValue "82"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0-11"
+	fileName hasValue "pool/universe/g/gkermit/gkermit_1.0-11_amd64.deb"
+	size hasValue "43176"
+	md5sum hasValue "a6093fbab1ef3b53037186b3d641c3d0"
+	sha1 hasValue "a003a2fa401e10be9576e6b55d444ba1bd9fa469"
+	sha256 hasValue "88c93e4e4692995d03026f8b11b9c5d810af33a6004fe4681afcc177e83b11c5"
+	descriptionMd5 hasValue "87078cd7155254171352b000e9fb35fb"
+	depends hasValue "libc6 (>= 2.11)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.11"
+
+relationInstance depends(P0__gkermit,0,DepAtom__0)
+

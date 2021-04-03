@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology aptly_api
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__aptly_api memberOf Package
+	package hasValue "aptly-api"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "28"
+	maintainer hasValue "Original-Sebastien Delafond <seb@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.3.0+ds1-4"
+	fileName hasValue "pool/universe/a/aptly/aptly-api_1.3.0+ds1-4_amd64.deb"
+	size hasValue "4992"
+	md5sum hasValue "2e541fbfcb96c4b3ebf79f24f3f23bb9"
+	sha1 hasValue "1d926bc2efd9c201efbc232d943a82bd4295b0e3"
+	sha256 hasValue "fe772b7d479181540a4c2668b8c09115a438e1a347c89dc235aac4ad9c9de3ae"
+	descriptionMd5 hasValue "35f8d825ae06ba18f3415b0d0b7fbda4"
+	homepage hasValue "https://www.aptly.info"
+	depends hasValue "aptly, adduser"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "aptly"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__aptly_api,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "adduser"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__aptly_api,1,DepAtom__1)
+

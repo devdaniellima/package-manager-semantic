@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology wesnoth_1Dot14_nr
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__wesnoth_1Dot14_nr memberOf Package
+	package hasValue "wesnoth-1.14-nr"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/games"
+	installedSize hasValue "13657"
+	maintainer hasValue "Original-Debian Games Team <pkg-games-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1:1.14.9-1ubuntu5"
+	fileName hasValue "pool/universe/w/wesnoth-1.14/wesnoth-1.14-nr_1.14.9-1ubuntu5_all.deb"
+	size hasValue "7856240"
+	md5sum hasValue "0dbfdbe7252f4ab25aeeeba97cf9817c"
+	sha1 hasValue "935dc67c5e38de70d18bcbb208256a1848a67586"
+	sha256 hasValue "1b2cd4ae05be23798a3b403fed59fdfe2902d5f51d123399e92d203c40d981b2"
+	description hasValue "\"Northern Rebirth\" official campaign for Wesnoth (branch 1.14)"
+	descriptionMd5 hasValue "854a28604649872e7e8789f9b6e39d85"
+	homepage hasValue "http://wesnoth.org/"
+	depends hasValue "wesnoth-1.14-core (>= 1:1.14), wesnoth-1.14-core (<< 1:1.15)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "wesnoth-1.14-core"
+	comparison hasValue ">="
+	version hasValue "1:1.14"
+
+relationInstance depends(P0__wesnoth_1Dot14_nr,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "wesnoth-1.14-core"
+	comparison hasValue "<<"
+	version hasValue "1:1.15"
+
+relationInstance depends(P0__wesnoth_1Dot14_nr,1,DepAtom__1)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gcc_s390x_linux_gnu
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gcc_s390x_linux_gnu memberOf Package
+	package hasValue "gcc-s390x-linux-gnu"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "devel"
+	installedSize hasValue "25"
+	maintainer hasValue "Original-Debian GCC Maintainers <debian-gcc@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "4:9.3.0-1ubuntu2"
+	fileName hasValue "pool/main/g/gcc-defaults/gcc-s390x-linux-gnu_9.3.0-1ubuntu2_amd64.deb"
+	size hasValue "1408"
+	md5sum hasValue "97030c01637b9a82643ef1b12c380379"
+	sha1 hasValue "773d2aa8d14fed8372f55eb10f602fc63a561f7f"
+	sha256 hasValue "8187e1e01f081b4b04f31dd43790899b8e2f1e8680079c6a4f091601108f7321"
+	description hasValue "GNU C compiler for the s390x architecture"
+	descriptionMd5 hasValue "0e9bad3b62304d1f54438e18e774f9bd"
+	depends hasValue "cpp-s390x-linux-gnu (= 4:9.3.0-1ubuntu2), gcc-9-s390x-linux-gnu (>= 9.3.0-3~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "cpp-s390x-linux-gnu"
+	comparison hasValue "="
+	version hasValue "4:9.3.0-1ubuntu2"
+
+relationInstance depends(P0__gcc_s390x_linux_gnu,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "gcc-9-s390x-linux-gnu"
+	comparison hasValue ">="
+	version hasValue "9.3.0-3~"
+
+relationInstance depends(P0__gcc_s390x_linux_gnu,1,DepAtom__1)
+

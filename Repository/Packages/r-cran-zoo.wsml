@@ -1,0 +1,74 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology r_cran_zoo
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__r_cran_zoo memberOf Package
+	package hasValue "r-cran-zoo"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/math"
+	installedSize hasValue "1370"
+	maintainer hasValue "Original-Dirk Eddelbuettel <edd@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.8-7-2"
+	fileName hasValue "pool/universe/r/r-zoo/r-cran-zoo_1.8-7-2_amd64.deb"
+	size hasValue "1063992"
+	md5sum hasValue "e0d5d8d0aff1d71eb2ad3dc4d1f62409"
+	sha1 hasValue "4cd31f4e4ddf8a7360e67cfc191192afbfe26fc9"
+	sha256 hasValue "b144ecd49206552a247eb865a17371ec929571d12811d22d27743e087e5810bc"
+	descriptionMd5 hasValue "fcd81229df7dbee7df8cbbd25ff74872"
+	homepage hasValue "https://cran.r-project.org/package=zoo"
+	depends hasValue "libc6 (>= 2.14), r-base-core (>= 3.6.2-2), r-api-3.5, r-cran-lattice (>= 0.20-27)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__r_cran_zoo,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "r-base-core"
+	comparison hasValue ">="
+	version hasValue "3.6.2-2"
+
+relationInstance depends(P0__r_cran_zoo,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "r-api-3.5"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__r_cran_zoo,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "r-cran-lattice"
+	comparison hasValue ">="
+	version hasValue "0.20-27"
+
+relationInstance depends(P0__r_cran_zoo,3,DepAtom__3)
+

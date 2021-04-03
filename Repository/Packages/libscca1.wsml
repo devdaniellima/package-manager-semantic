@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libscca1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libscca1 memberOf Package
+	package hasValue "libscca1"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "1331"
+	maintainer hasValue "Original-Debian Security Tools <team+pkg-security@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "20181227-1.1"
+	fileName hasValue "pool/universe/libs/libscca/libscca1_20181227-1.1_amd64.deb"
+	size hasValue "418028"
+	md5sum hasValue "74fb137439be3a148e0765d115085069"
+	sha1 hasValue "5cdb70b25e18062f8c8aed4c16567dc7e59e3cd8"
+	sha256 hasValue "1572c8c95842d6933e78236355617cbb38cfb3e34eadb7128d128ce35b708d52"
+	description hasValue "Windows Prefetch File access library"
+	descriptionMd5 hasValue "2f678b98ca09e74729ffbf3ad42cc6f1"
+	homepage hasValue "https://github.com/libyal/libscca"
+	depends hasValue "libbfio1 (>= 20120425), libc6 (>= 2.17)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libbfio1"
+	comparison hasValue ">="
+	version hasValue "20120425"
+
+relationInstance depends(P0__libscca1,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.17"
+
+relationInstance depends(P0__libscca1,1,DepAtom__1)
+

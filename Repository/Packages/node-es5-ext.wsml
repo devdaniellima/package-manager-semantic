@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology node_es5_ext
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__node_es5_ext memberOf Package
+	package hasValue "node-es5-ext"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/web"
+	installedSize hasValue "733"
+	maintainer hasValue "Original-Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.10.30-1"
+	fileName hasValue "pool/universe/n/node-es5-ext/node-es5-ext_0.10.30-1_all.deb"
+	size hasValue "81672"
+	md5sum hasValue "52ce62249355685960284023bf24cc9d"
+	sha1 hasValue "7b305bf30ee278f9dd6a80f7c36edcc0ea0cfec4"
+	sha256 hasValue "928fd47d3f9f43deb212c714dd6d0ecccaba703a33f3f824b1d9886d2fdf8678"
+	descriptionMd5 hasValue "cbb6f7549fc0f730b064edc8f0686910"
+	homepage hasValue "https://github.com/medikoo/es5-ext#readme"
+	depends hasValue "nodejs, node-es6-iterator (>= 2), node-es6-symbol (>= 3.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "nodejs"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__node_es5_ext,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "node-es6-iterator"
+	comparison hasValue ">="
+	version hasValue "2"
+
+relationInstance depends(P0__node_es5_ext,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "node-es6-symbol"
+	comparison hasValue ">="
+	version hasValue "3.1"
+
+relationInstance depends(P0__node_es5_ext,2,DepAtom__2)
+

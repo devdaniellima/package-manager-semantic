@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ubuntu_defaults_it
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ubuntu_defaults_it memberOf Package
+	package hasValue "ubuntu-defaults-it"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/metapackages"
+	installedSize hasValue "76"
+	maintainer hasValue "Paolo Sammicheli <xdatap1@ubuntu.com>"
+	architecture hasValue "all"
+	version hasValue "0.2.3"
+	provides hasValue "ubuntu-default-settings"
+	conflicts hasValue "ubuntu-default-settings"
+	fileName hasValue "pool/universe/u/ubuntu-defaults-it/ubuntu-defaults-it_0.2.3_all.deb"
+	size hasValue "4754"
+	md5sum hasValue "7ee0b85e3c7babacd46b69389522ca2d"
+	sha1 hasValue "6b1b5e34044d116dc80e3c6ffb3ba0e59924db38"
+	sha256 hasValue "57a8c5eeed154b7b689868ab4bdaf2a47bc7126de448922043835f808e1000b0"
+	descriptionMd5 hasValue "1469a5dbf45204ffccefc6c220213ccb"
+	depends hasValue "manpages-it, aspell-it"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "manpages-it"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ubuntu_defaults_it,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "aspell-it"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ubuntu_defaults_it,1,DepAtom__1)
+

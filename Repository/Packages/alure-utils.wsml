@@ -1,0 +1,69 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology alure_utils
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__alure_utils memberOf Package
+	package hasValue "alure-utils"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "64"
+	maintainer hasValue "Original-Debian Games Team <pkg-games-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.2-6build2"
+	replaces hasValue "libalure-dev (<< 1.2-2)"
+	fileName hasValue "pool/universe/a/alure/alure-utils_1.2-6build2_amd64.deb"
+	size hasValue "12356"
+	md5sum hasValue "5a05a46a7edbf575237f5142e328e629"
+	sha1 hasValue "42a2a488d43c42d1de8defad34f5b7336ba41607"
+	sha256 hasValue "31b3c5cce8c2f1edfe824b6cbd988afe89b89c5ea95289c8a63e91805e3ed6bc"
+	description hasValue "AL Utilities REtooled (utilities)"
+	descriptionMd5 hasValue "358936a90b40701c6b42821a5f7f8286"
+	homepage hasValue "http://kcat.strangesoft.net/alure.html"
+	depends hasValue "libalure1 (= 1.2-6build2), libc6 (>= 2.4), libopenal1 (>= 1.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libalure1"
+	comparison hasValue "="
+	version hasValue "1.2-6build2"
+
+relationInstance depends(P0__alure_utils,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__alure_utils,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libopenal1"
+	comparison hasValue ">="
+	version hasValue "1.14"
+
+relationInstance depends(P0__alure_utils,2,DepAtom__2)
+

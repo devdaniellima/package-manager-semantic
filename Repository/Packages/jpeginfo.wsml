@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology jpeginfo
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__jpeginfo memberOf Package
+	package hasValue "jpeginfo"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/graphics"
+	installedSize hasValue "34"
+	maintainer hasValue "Original-Ola Lundqvist <opal@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.6.0-6build1"
+	fileName hasValue "pool/universe/j/jpeginfo/jpeginfo_1.6.0-6build1_amd64.deb"
+	size hasValue "12456"
+	md5sum hasValue "6cdd38a2d673c4ef931314bb42df5965"
+	sha1 hasValue "d53156f3701efa0b50b02b1db7fbb5e4cc4af592"
+	sha256 hasValue "e246aba0863e494c39f3fed35804fa23549a31f441e4c51f438ff25133d97da9"
+	description hasValue "Obtém informações e testa integridade de arquivos JPEG/JFIF"
+	descriptionMd5 hasValue "7ea8c1f7da371de8cc411a047eda9f1f"
+	depends hasValue "libc6 (>= 2.11), libjpeg8 (>= 8c)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.11"
+
+relationInstance depends(P0__jpeginfo,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libjpeg8"
+	comparison hasValue ">="
+	version hasValue "8c"
+
+relationInstance depends(P0__jpeginfo,1,DepAtom__1)
+

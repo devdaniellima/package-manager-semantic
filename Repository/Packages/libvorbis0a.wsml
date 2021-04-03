@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libvorbis0a
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libvorbis0a memberOf Package
+	package hasValue "libvorbis0a"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libs"
+	installedSize hasValue "210"
+	maintainer hasValue "Original-Debian Multimedia Maintainers <debian-multimedia@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.3.6-2ubuntu1"
+	fileName hasValue "pool/main/libv/libvorbis/libvorbis0a_1.3.6-2ubuntu1_amd64.deb"
+	size hasValue "86980"
+	md5sum hasValue "068868a53ef2a5bc30dba5cf0d4d461f"
+	sha1 hasValue "8db80768bff48bad1518cf66a52d33af9fba679d"
+	sha256 hasValue "1eff92a3ee043354a3dfa5f84bd04855082e9f072061d41755670ae70b0d8728"
+	description hasValue "decoder library for Vorbis General Audio Compression Codec"
+	descriptionMd5 hasValue "3d5f6e2f017c27f4140d878dc88f155c"
+	homepage hasValue "https://www.xiph.org/vorbis/"
+	depends hasValue "libc6 (>= 2.15), libogg0 (>= 1.1.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__libvorbis0a,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libogg0"
+	comparison hasValue ">="
+	version hasValue "1.1.0"
+
+relationInstance depends(P0__libvorbis0a,1,DepAtom__1)
+

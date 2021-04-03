@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology tcl_xpa
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__tcl_xpa memberOf Package
+	package hasValue "tcl-xpa"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/libs"
+	installedSize hasValue "63"
+	maintainer hasValue "Original-Debian Astro Team <debian-astro-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.1.19-1"
+	fileName hasValue "pool/universe/x/xpa/tcl-xpa_2.1.19-1_amd64.deb"
+	size hasValue "18904"
+	md5sum hasValue "df8ea231b82e7d9ee45ec5c1044f01b9"
+	sha1 hasValue "94fe6d96f2f22ab7827cb8181ba06006314f1de4"
+	sha256 hasValue "9115de050c53fb2ab9032a79aa5672877974ad5e7c98268b8d16c84b3960b680"
+	descriptionMd5 hasValue "468ae6e3594b6e658d93a169c985304e"
+	homepage hasValue "https://hea-www.harvard.edu/RD/xpa/"
+	depends hasValue "libxpa1 (= 2.1.19-1), libc6 (>= 2.7)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libxpa1"
+	comparison hasValue "="
+	version hasValue "2.1.19-1"
+
+relationInstance depends(P0__tcl_xpa,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__tcl_xpa,1,DepAtom__1)
+

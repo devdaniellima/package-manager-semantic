@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology retweet
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__retweet memberOf Package
+	package hasValue "retweet"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "51"
+	maintainer hasValue "Original-Carl Chenet <chaica@debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.10-1build1"
+	fileName hasValue "pool/universe/r/retweet/retweet_0.10-1build1_all.deb"
+	size hasValue "8452"
+	md5sum hasValue "dd9a7e1a8b50665756230b166277ea1b"
+	sha1 hasValue "3976244c867e5ab9d936a693769d58b9ba476902"
+	sha256 hasValue "a63cd3eefc0f096688bdd8d7fcedaa2ceb48966afd90e1916715d54203206110"
+	descriptionMd5 hasValue "d19d95b73641e7c3140f5d7109293275"
+	homepage hasValue "https://github.com/chaica/retweet"
+	depends hasValue "python3-sqlalchemy, python3-tweepy, python3:any (>= 3.4~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3-sqlalchemy"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__retweet,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3-tweepy"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__retweet,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ">="
+	version hasValue "3.4~"
+
+relationInstance depends(P0__retweet,2,DepAtom__2)
+

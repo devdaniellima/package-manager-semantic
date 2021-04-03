@@ -1,0 +1,52 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology input_utils
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__input_utils memberOf Package
+	package hasValue "input-utils"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "56"
+	maintainer hasValue "Original-Marcus Better <marcus@better.se>"
+	architecture hasValue "amd64"
+	version hasValue "1.0-1.1build1"
+	fileName hasValue "pool/universe/i/input-utils/input-utils_1.0-1.1build1_amd64.deb"
+	size hasValue "12520"
+	md5sum hasValue "eec6530601f91ce615e7827e961370e2"
+	sha1 hasValue "1e2073fd601d867628447ff12109c3ecf8003614"
+	sha256 hasValue "d66612eb410ff74a7bacf0586d811cdb03458d80f357c9699579d47642102657"
+	descriptionMd5 hasValue "dd66158405459c9bc0352a2fdde0b7d0"
+	depends hasValue "libc6 (>= 2.15)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__input_utils,0,DepAtom__0)
+

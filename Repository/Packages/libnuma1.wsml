@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libnuma1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libnuma1 memberOf Package
+	package hasValue "libnuma1"
+	packageSource hasValue Source__S1
+	priority hasValue "standard"
+	section hasValue "libs"
+	installedSize hasValue "72"
+	maintainer hasValue "Original-Ian Wienand <ianw@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.0.12-1"
+	fileName hasValue "pool/main/n/numactl/libnuma1_2.0.12-1_amd64.deb"
+	size hasValue "20828"
+	md5sum hasValue "101dbf1b6ca589bc5a4dd6f679f1b079"
+	sha1 hasValue "accd5330662ad1a55a838a5dac7a6d35b2b2506e"
+	sha256 hasValue "0b1edf08cf9befecd21fe94e298ac25e476f87fd876ddd4adf42ef713449e637"
+	description hasValue "bibliotecas para controlar políticas NUMA"
+	descriptionMd5 hasValue "1c8f1cdf694caf8232aca544dd8b33ba"
+	homepage hasValue "https://github.com/numactl/numactl"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libnuma1,0,DepAtom__0)
+

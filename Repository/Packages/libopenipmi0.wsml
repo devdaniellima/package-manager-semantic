@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libopenipmi0
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libopenipmi0 memberOf Package
+	package hasValue "libopenipmi0"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "devel"
+	installedSize hasValue "1806"
+	maintainer hasValue "Original-Noël Köthe <noel@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.0.27-0ubuntu2"
+	fileName hasValue "pool/main/o/openipmi/libopenipmi0_2.0.27-0ubuntu2_amd64.deb"
+	size hasValue "455680"
+	md5sum hasValue "dcbe8925189009e71f820d6881590189"
+	sha1 hasValue "0e5c1bde0ca92aeff0c2518fada1b3475d956d86"
+	sha256 hasValue "8ddc5681390376cd28287fb25e071a8174b077e368b010d96fd5e7d2433c32c5"
+	description hasValue "Intelligent Platform Management Interface - runtime"
+	descriptionMd5 hasValue "88f1a1a59f14b572b981410392d3b8a4"
+	homepage hasValue "http://openipmi.sourceforge.net/"
+	depends hasValue "libc6 (>= 2.29), libssl1.1 (>= 1.1.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__libopenipmi0,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libssl1.1"
+	comparison hasValue ">="
+	version hasValue "1.1.0"
+
+relationInstance depends(P0__libopenipmi0,1,DepAtom__1)
+

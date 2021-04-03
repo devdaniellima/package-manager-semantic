@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python3_jedi
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python3_jedi memberOf Package
+	package hasValue "python3-jedi"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "3936"
+	maintainer hasValue "Original-Piotr Ożarowski <piotr@debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.15.2-1"
+	fileName hasValue "pool/universe/p/python-jedi/python3-jedi_0.15.2-1_all.deb"
+	size hasValue "501928"
+	md5sum hasValue "44921ba751377bc579102e56fa0a8c5a"
+	sha1 hasValue "c54690c8147752ed4a50917aa4f35a13eae1543f"
+	sha256 hasValue "da2da1bb2d2491633eee8558960186cf16cbe0b9c763928eb7cac4e51a66dbe1"
+	descriptionMd5 hasValue "2c9cf980f8c0cfe92286502b805edda8"
+	homepage hasValue "https://github.com/davidhalter/jedi"
+	depends hasValue "python3-parso (>= 0.3), python3:any"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3-parso"
+	comparison hasValue ">="
+	version hasValue "0.3"
+
+relationInstance depends(P0__python3_jedi,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__python3_jedi,1,DepAtom__1)
+

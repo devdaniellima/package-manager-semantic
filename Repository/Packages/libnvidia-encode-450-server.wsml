@@ -1,0 +1,64 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libnvidia_encode_450_server
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libnvidia_encode_450_server memberOf Package
+	package hasValue "libnvidia-encode-450-server"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "restricted/libs"
+	installedSize hasValue "128"
+	maintainer hasValue "Ubuntu Core Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	architecture hasValue "amd64"
+	version hasValue "450.102.04-0ubuntu0.20.04.1"
+	replaces hasValue "libnvidia-encode"
+	provides hasValue "libnvidia-encode"
+	conflicts hasValue "libnvidia-encode"
+	fileName hasValue "pool/restricted/n/nvidia-graphics-drivers-450-server/libnvidia-encode-450-server_450.102.04-0ubuntu0.20.04.1_amd64.deb"
+	size hasValue "39400"
+	md5sum hasValue "173f6d3da73409372c606b7a2e9adcd3"
+	sha1 hasValue "a24b0a98a39484b41fd457fb443f9377a26e1661"
+	sha256 hasValue "ec7524ee0b608215b84e2f0b9e1cd84b40be50e529b45e3c384fecc54c5824ad"
+	sha512 hasValue "a32d9f7c28f3ab039757f6168a59c49096354476cb9983b6b1b5e5300e7b4c107a77bdc4bd308ab016b572a7dd04213050944146121f1fb3b5718fa7ea6483b7"
+	descriptionMd5 hasValue "21b4191ea88e49a7e948a2b89cfed901"
+	homepage hasValue "http://www.nvidia.com"
+	depends hasValue "libc6 (>= 2.2.5), libnvidia-decode-450-server"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.2.5"
+
+relationInstance depends(P0__libnvidia_encode_450_server,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libnvidia-decode-450-server"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libnvidia_encode_450_server,1,DepAtom__1)
+

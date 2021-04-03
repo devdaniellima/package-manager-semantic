@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology dpic
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__dpic memberOf Package
+	package hasValue "dpic"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "952"
+	maintainer hasValue "Original-Aniol Marti <amarti@caliu.cat>"
+	architecture hasValue "amd64"
+	version hasValue "2020.03.01-1"
+	fileName hasValue "pool/universe/d/dpic/dpic_2020.03.01-1_amd64.deb"
+	size hasValue "657744"
+	md5sum hasValue "94ee77a476723ad2ac7cc2bbb3bfa73d"
+	sha1 hasValue "4da4ca98d822ab59c199b887193cd02d357ddf12"
+	sha256 hasValue "a158b94211d0d15863d8d79a95abfdacbd1a00424da0d7867da2fa7817524478"
+	descriptionMd5 hasValue "99d9b2ed0b020b2d8db26ac7309e11d1"
+	homepage hasValue "https://ece.uwaterloo.ca/~aplevich/dpic/"
+	depends hasValue "libc6 (>= 2.29)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__dpic,0,DepAtom__0)
+

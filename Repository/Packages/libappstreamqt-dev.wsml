@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libappstreamqt_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libappstreamqt_dev memberOf Package
+	package hasValue "libappstreamqt-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "86"
+	maintainer hasValue "Original-Matthias Klumpp <mak@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.12.10-2"
+	fileName hasValue "pool/universe/a/appstream/libappstreamqt-dev_0.12.10-2_amd64.deb"
+	size hasValue "10780"
+	md5sum hasValue "20eb3ec4292afc051a610019c335fbcc"
+	sha1 hasValue "a066184aaad74b1316fbfc21b48bcf2aa0ce72fb"
+	sha256 hasValue "29f6d580063360e5cb21598b5dce3b350eba822b847c8efefff56b59c16f84e7"
+	descriptionMd5 hasValue "0a7919e7eb3578aabb849ac6507d3493"
+	homepage hasValue "https://www.freedesktop.org/wiki/Distributions/AppStream/"
+	depends hasValue "libappstreamqt2 (= 0.12.10-2), qtbase5-dev (>= 5.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libappstreamqt2"
+	comparison hasValue "="
+	version hasValue "0.12.10-2"
+
+relationInstance depends(P0__libappstreamqt_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "qtbase5-dev"
+	comparison hasValue ">="
+	version hasValue "5.4"
+
+relationInstance depends(P0__libappstreamqt_dev,1,DepAtom__1)
+

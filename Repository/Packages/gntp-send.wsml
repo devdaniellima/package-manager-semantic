@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gntp_send
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gntp_send memberOf Package
+	package hasValue "gntp-send"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "64"
+	maintainer hasValue "Original-Kentaro Hayashi <hayashi@clear-code.com>"
+	architecture hasValue "amd64"
+	version hasValue "0.3.4-4"
+	fileName hasValue "pool/universe/g/gntp-send/gntp-send_0.3.4-4_amd64.deb"
+	size hasValue "15720"
+	md5sum hasValue "088c6db03c08b86c3df7e4a87903ebfe"
+	sha1 hasValue "8ac360d10e459950845d049a24cb3cdfa5a1d8f2"
+	sha256 hasValue "074acb4617d7525392b3ce1c9d86199769bd3e12cb1f872e256e9c71131577d3"
+	descriptionMd5 hasValue "2ba6a5d2169d248b6e2d0e1287645af5"
+	homepage hasValue "https://github.com/mattn/gntp-send"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__gntp_send,0,DepAtom__0)
+

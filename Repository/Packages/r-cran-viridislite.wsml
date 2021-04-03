@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology r_cran_viridislite
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__r_cran_viridislite memberOf Package
+	package hasValue "r-cran-viridislite"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/gnu-r"
+	installedSize hasValue "100"
+	maintainer hasValue "Original-Dirk Eddelbuettel <edd@debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.3.0-3"
+	fileName hasValue "pool/universe/r/r-cran-viridislite/r-cran-viridislite_0.3.0-3_all.deb"
+	size hasValue "58896"
+	md5sum hasValue "86111a4526a0f807342c1c9554d7d64f"
+	sha1 hasValue "ae4c1db18d9e6a817cc31803d0ea417001a3b29a"
+	sha256 hasValue "f7c9f3b81bd929be54925a8659e0b4b1ab67871a0201ab29ab329bb4eaa3107a"
+	descriptionMd5 hasValue "3ba0e05e71432f3314c816c8ebd023ce"
+	homepage hasValue "https://cran.r-project.org/package=viridisLite"
+	depends hasValue "r-base-core (>= 3.5.0-5), r-api-3.5"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "r-base-core"
+	comparison hasValue ">="
+	version hasValue "3.5.0-5"
+
+relationInstance depends(P0__r_cran_viridislite,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "r-api-3.5"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__r_cran_viridislite,1,DepAtom__1)
+

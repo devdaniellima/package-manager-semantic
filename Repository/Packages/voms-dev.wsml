@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology voms_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__voms_dev memberOf Package
+	package hasValue "voms-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "819"
+	maintainer hasValue "Original-Mattias Ellert <mattias.ellert@physics.uu.se>"
+	architecture hasValue "amd64"
+	version hasValue "2.1.0~rc0-6build2"
+	fileName hasValue "pool/universe/v/voms/voms-dev_2.1.0~rc0-6build2_amd64.deb"
+	size hasValue "148168"
+	md5sum hasValue "22cc90ef7d85aed289b0f2e1e01d1c20"
+	sha1 hasValue "393861a9122101ec1007e2df1405d083e88b95fa"
+	sha256 hasValue "c68302808f909bb5f1bb61e37c5f1e30c7865ab6edaf02e46a5646ffe9972b42"
+	descriptionMd5 hasValue "a260aae2606b46b82d54082016854d22"
+	homepage hasValue "https://wiki.italiangrid.it/VOMS"
+	depends hasValue "libvomsapi1v5 (= 2.1.0~rc0-6build2), libssl-dev"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libvomsapi1v5"
+	comparison hasValue "="
+	version hasValue "2.1.0~rc0-6build2"
+
+relationInstance depends(P0__voms_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libssl-dev"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__voms_dev,1,DepAtom__1)
+

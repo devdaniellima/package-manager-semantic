@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gcc_powerpc64le_linux_gnu
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gcc_powerpc64le_linux_gnu memberOf Package
+	package hasValue "gcc-powerpc64le-linux-gnu"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "devel"
+	installedSize hasValue "25"
+	maintainer hasValue "Original-Debian GCC Maintainers <debian-gcc@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "4:9.3.0-1ubuntu2"
+	fileName hasValue "pool/main/g/gcc-defaults/gcc-powerpc64le-linux-gnu_9.3.0-1ubuntu2_amd64.deb"
+	size hasValue "1436"
+	md5sum hasValue "9866b11169493c1a9cc947207a090232"
+	sha1 hasValue "134d65d6eaec348d09b434c1e7f980fa9dc25321"
+	sha256 hasValue "02ebc8307d19cfc5f6a1b06cc4f818bb59aa91700f91f83f819011eb6d3e2afd"
+	description hasValue "GNU C compiler for the ppc64el architecture"
+	descriptionMd5 hasValue "1df9b59dd3526c77f2a01a78470f8faa"
+	depends hasValue "cpp-powerpc64le-linux-gnu (= 4:9.3.0-1ubuntu2), gcc-9-powerpc64le-linux-gnu (>= 9.3.0-3~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "cpp-powerpc64le-linux-gnu"
+	comparison hasValue "="
+	version hasValue "4:9.3.0-1ubuntu2"
+
+relationInstance depends(P0__gcc_powerpc64le_linux_gnu,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "gcc-9-powerpc64le-linux-gnu"
+	comparison hasValue ">="
+	version hasValue "9.3.0-3~"
+
+relationInstance depends(P0__gcc_powerpc64le_linux_gnu,1,DepAtom__1)
+

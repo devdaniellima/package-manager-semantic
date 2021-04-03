@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology modplug_tools
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__modplug_tools memberOf Package
+	package hasValue "modplug-tools"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/sound"
+	installedSize hasValue "61"
+	maintainer hasValue "Original-Gürkan Myczko <gurkan@phys.ethz.ch>"
+	architecture hasValue "amd64"
+	version hasValue "0.5.3-3"
+	fileName hasValue "pool/universe/m/modplugtools/modplug-tools_0.5.3-3_amd64.deb"
+	size hasValue "12900"
+	md5sum hasValue "e29402ae987c0c13827b0739f11ab20e"
+	sha1 hasValue "5d3d1eb1a45fb2918d59b8f2b545e087c1cf1779"
+	sha256 hasValue "910bbbd9f24bd9af02e076f047e0e80520eb28f649921addf31262a18a509112"
+	descriptionMd5 hasValue "11aa7fe8642afbb8cced97eddf49632c"
+	homepage hasValue "http://modplug-xmms.sourceforge.net/"
+	depends hasValue "libao4 (>= 1.1.0), libc6 (>= 2.4), libopenmpt-modplug1 (>= 0.2.7386~beta20.3)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libao4"
+	comparison hasValue ">="
+	version hasValue "1.1.0"
+
+relationInstance depends(P0__modplug_tools,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__modplug_tools,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libopenmpt-modplug1"
+	comparison hasValue ">="
+	version hasValue "0.2.7386~beta20.3"
+
+relationInstance depends(P0__modplug_tools,2,DepAtom__2)
+

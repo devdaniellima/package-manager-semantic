@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python_asterisk
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python_asterisk memberOf Package
+	package hasValue "python-asterisk"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/comm"
+	installedSize hasValue "72"
+	maintainer hasValue "Original-Debian VoIP Maintainers <pkg-voip-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.5.3-1.1build1"
+	fileName hasValue "pool/universe/p/py-asterisk/python-asterisk_0.5.3-1.1build1_all.deb"
+	size hasValue "16236"
+	md5sum hasValue "1fc284380bc5351f44c800530ae29c6b"
+	sha1 hasValue "55d0a1334c066f4964f137ed527b2694db5291d6"
+	sha256 hasValue "8e245d99389c65d8e9ae8da61a076395a4ee3490497559a0bd8ef86fc4f178dd"
+	descriptionMd5 hasValue "cd539d9fb5e0c216630735f9c6d371a2"
+	homepage hasValue "https://pypi.python.org/pypi/py-Asterisk"
+	depends hasValue "python2:any (<< 2.8), python2:any (>= 2.7~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue "<<"
+	version hasValue "2.8"
+
+relationInstance depends(P0__python_asterisk,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue ">="
+	version hasValue "2.7~"
+
+relationInstance depends(P0__python_asterisk,1,DepAtom__1)
+

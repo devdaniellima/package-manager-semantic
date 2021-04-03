@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology couriergraph
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__couriergraph memberOf Package
+	package hasValue "couriergraph"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/admin"
+	installedSize hasValue "70"
+	maintainer hasValue "Original-Jose Luis Tallon <jltallon@adv-solutions.net>"
+	architecture hasValue "all"
+	version hasValue "0.25-4.4"
+	fileName hasValue "pool/universe/c/couriergraph/couriergraph_0.25-4.4_all.deb"
+	size hasValue "19428"
+	md5sum hasValue "2a1017bb6c046709717ad3597d9e1f14"
+	sha1 hasValue "0c8f895495c2d01a10cfb5e7788e01564df80ea0"
+	sha256 hasValue "32db013dcc5ec54974dd9c5b26098e179dd968ef571ba14827a9c2273ded8b7c"
+	description hasValue "Interface RRDtool para estatísticas de email para Courier-{POP-IMAP}"
+	descriptionMd5 hasValue "17d254159a685c52f8ff50b5b56a6ec1"
+	depends hasValue "libfile-tail-perl, librrds-perl (>= 1.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libfile-tail-perl"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__couriergraph,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "librrds-perl"
+	comparison hasValue ">="
+	version hasValue "1.2"
+
+relationInstance depends(P0__couriergraph,1,DepAtom__1)
+

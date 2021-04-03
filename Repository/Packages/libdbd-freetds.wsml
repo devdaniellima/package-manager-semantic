@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libdbd_freetds
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libdbd_freetds memberOf Package
+	package hasValue "libdbd-freetds"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libs"
+	installedSize hasValue "57"
+	maintainer hasValue "Original-Laszlo Boszormenyi (GCS) <gcs@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.9.0-8ubuntu1"
+	fileName hasValue "pool/main/libd/libdbi-drivers/libdbd-freetds_0.9.0-8ubuntu1_amd64.deb"
+	size hasValue "12868"
+	md5sum hasValue "cfb48a490e3cc12aff19ff06ecc55db7"
+	sha1 hasValue "77c0d442af837431074ecee5b8d23506ae1486e0"
+	sha256 hasValue "b03af5adc3471ed2dd9340bc85fb91aa20e639c394b46a2ce0c0e7c735f1e3d0"
+	descriptionMd5 hasValue "437893fe7e8036a8f1aaebb14b0de68e"
+	homepage hasValue "http://libdbi.sourceforge.net/"
+	depends hasValue "libc6 (>= 2.8), libct4 (>= 0.64), libdbi1 (>= 0.8.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.8"
+
+relationInstance depends(P0__libdbd_freetds,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libct4"
+	comparison hasValue ">="
+	version hasValue "0.64"
+
+relationInstance depends(P0__libdbd_freetds,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libdbi1"
+	comparison hasValue ">="
+	version hasValue "0.8.4"
+
+relationInstance depends(P0__libdbd_freetds,2,DepAtom__2)
+

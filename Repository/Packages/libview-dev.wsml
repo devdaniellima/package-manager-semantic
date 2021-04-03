@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libview_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libview_dev memberOf Package
+	package hasValue "libview-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "861"
+	maintainer hasValue "Original-Bradley Smith <bradsmith@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.6.6-2.1ubuntu4"
+	fileName hasValue "pool/universe/libv/libview/libview-dev_0.6.6-2.1ubuntu4_amd64.deb"
+	size hasValue "95492"
+	md5sum hasValue "42183eb63e1b84b492af528c143758fa"
+	sha1 hasValue "0a5fc72fde8db4a3c10b1e3ec774593126a3374a"
+	sha256 hasValue "e9ac937b453866abf45fa90def8093fac8d5d936edf19aa41d843efdea36cb3b"
+	descriptionMd5 hasValue "c0605d8aa8b0d8a380d6766c38798251"
+	homepage hasValue "http://view.sourceforge.net"
+	depends hasValue "libview2 (= 0.6.6-2.1ubuntu4), libgtkmm-2.4-dev"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libview2"
+	comparison hasValue "="
+	version hasValue "0.6.6-2.1ubuntu4"
+
+relationInstance depends(P0__libview_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgtkmm-2.4-dev"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libview_dev,1,DepAtom__1)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libdpkg_perl
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libdpkg_perl memberOf Package
+	package hasValue "libdpkg-perl"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "perl"
+	installedSize hasValue "2176"
+	maintainer hasValue "Original-Dpkg Developers <debian-dpkg@lists.debian.org>"
+	architecture hasValue "all"
+	version hasValue "- Dpkg::parse and manipulate Debian package versions"
+	fileName hasValue "pool/main/d/dpkg/libdpkg-perl_1.19.7ubuntu3_all.deb"
+	size hasValue "230268"
+	md5sum hasValue "03dda26abe5c0e6ca90f4863a01b9afd"
+	sha1 hasValue "457128c6ad95b0d775e4febfcd0b1e7599cc6cf8"
+	sha256 hasValue "b7f34bb3574e2fae9054649d87a69e8d28a0f2c6a616d07a4f294d5462bb161c"
+	descriptionMd5 hasValue "fc07f0c7c95a4c2e478014327b0bc0a1"
+	homepage hasValue "https://wiki.debian.org/Teams/Dpkg"
+	depends hasValue "perl:any, dpkg (>= 1.18.11)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "perl:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libdpkg_perl,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "dpkg"
+	comparison hasValue ">="
+	version hasValue "1.18.11"
+
+relationInstance depends(P0__libdpkg_perl,1,DepAtom__1)
+

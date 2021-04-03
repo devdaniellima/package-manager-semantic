@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology bfs
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__bfs memberOf Package
+	package hasValue "bfs"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/utils"
+	installedSize hasValue "175"
+	maintainer hasValue "Original-Chris Lamb <lamby@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.5.2-1"
+	fileName hasValue "pool/universe/b/bfs/bfs_1.5.2-1_amd64.deb"
+	size hasValue "62028"
+	md5sum hasValue "647674b8513177996ecd071b59dab771"
+	sha1 hasValue "e820435f8b9b8785e51a8210076f0fe1f0a8ac8f"
+	sha256 hasValue "7802d39e831684b7aa1b6799021571812b78f3c14d485b5f0342fd0edfbfa610"
+	descriptionMd5 hasValue "6af55a6b8932ab739ba592e9f4b72864"
+	homepage hasValue "https://github.com/tavianator/bfs"
+	depends hasValue "libacl1 (>= 2.2.23), libc6 (>= 2.28), libcap2 (>= 1:2.10)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libacl1"
+	comparison hasValue ">="
+	version hasValue "2.2.23"
+
+relationInstance depends(P0__bfs,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.28"
+
+relationInstance depends(P0__bfs,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libcap2"
+	comparison hasValue ">="
+	version hasValue "1:2.10"
+
+relationInstance depends(P0__bfs,2,DepAtom__2)
+

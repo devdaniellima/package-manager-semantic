@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology chiark_rwbuffer
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__chiark_rwbuffer memberOf Package
+	package hasValue "chiark-rwbuffer"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/utils"
+	installedSize hasValue "57"
+	maintainer hasValue "Original-Ian Jackson <ijackson@chiark.greenend.org.uk>"
+	architecture hasValue "amd64"
+	version hasValue "6.1.2"
+	fileName hasValue "pool/universe/c/chiark-utils/chiark-rwbuffer_6.1.2_amd64.deb"
+	size hasValue "8948"
+	md5sum hasValue "48546f629ff1abdb393a423bfab26452"
+	sha1 hasValue "e0e8807504e19fa951a16bc1d1eebc8fde1c93da"
+	sha256 hasValue "34841bea82c489309703bc5b7079d8a152e8ed71f4b8f36aa8487a0c9bb509bc"
+	description hasValue "readbuffer/writebuffer: previne que unidades de fita fiquem reiniciando, etc."
+	descriptionMd5 hasValue "4f79465741ec8b18804b213a7948ac8d"
+	depends hasValue "libc6 (>= 2.15)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__chiark_rwbuffer,0,DepAtom__0)
+

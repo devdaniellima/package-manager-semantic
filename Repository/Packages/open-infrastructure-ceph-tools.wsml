@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology open_infrastructure_ceph_tools
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__open_infrastructure_ceph_tools memberOf Package
+	package hasValue "open-infrastructure-ceph-tools"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "122"
+	maintainer hasValue "Original-Daniel Baumann <daniel.baumann@progress-linux.org>"
+	architecture hasValue "all"
+	version hasValue "20190301-lts1-2"
+	replaces hasValue "open-infrastructure-storage-tools"
+	provides hasValue "ceph-tools"
+	fileName hasValue "pool/universe/o/open-infrastructure-storage-tools/open-infrastructure-ceph-tools_20190301-lts1-2_all.deb"
+	size hasValue "23076"
+	md5sum hasValue "6d3c6237efe9fa36ee94399573d583e3"
+	sha1 hasValue "86f41b5f07bbe51791f29c33a39eefe0c548dc5a"
+	sha256 hasValue "90e35e39d4b81438cc8a1995b8ffe63676e6e37ed1863c69cd19abdf74a557d6"
+	descriptionMd5 hasValue "d0ed458a56e97c3286b3d55dbce484ca"
+	homepage hasValue "https://open-infrastructure.net/software/storage-tools"
+	depends hasValue "debconf (>= 0.5) | debconf-2.0"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "debconf"
+	comparison hasValue ">="
+	version hasValue "0.5"
+
+relationInstance depends(P0__open_infrastructure_ceph_tools,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "debconf-2.0"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__open_infrastructure_ceph_tools,0,DepAtom__1)
+

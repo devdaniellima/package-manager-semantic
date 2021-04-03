@@ -1,0 +1,75 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python3_admesh
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python3_admesh memberOf Package
+	package hasValue "python3-admesh"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "180"
+	maintainer hasValue "Original-Debian Science Maintainers <debian-science-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.98.9-2build1"
+	fileName hasValue "pool/universe/p/python-admesh/python3-admesh_0.98.9-2build1_amd64.deb"
+	size hasValue "50016"
+	md5sum hasValue "95620f25713da0d54f70eb1fb098ce59"
+	sha1 hasValue "4fe99e2e28361994799754d3cbc5503d7523c8d6"
+	sha256 hasValue "39cfc13062c8e216ce2dbcb9407af321210868e5eb7c03f67b9a02c0962da398"
+	description hasValue "Python bindings for the ADMesh (Python 3)"
+	descriptionMd5 hasValue "c755ae3bc415d8ed3ddb335536f19336"
+	homepage hasValue "https://github.com/admesh/python-admesh"
+	depends hasValue "python3 (<< 3.9), python3 (>= 3.8~), libadmesh1 (>= 0.98.4), libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3"
+	comparison hasValue "<<"
+	version hasValue "3.9"
+
+relationInstance depends(P0__python3_admesh,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3"
+	comparison hasValue ">="
+	version hasValue "3.8~"
+
+relationInstance depends(P0__python3_admesh,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libadmesh1"
+	comparison hasValue ">="
+	version hasValue "0.98.4"
+
+relationInstance depends(P0__python3_admesh,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__python3_admesh,3,DepAtom__3)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libhidapi_libusb0
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libhidapi_libusb0 memberOf Package
+	package hasValue "libhidapi-libusb0"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/libs"
+	installedSize hasValue "60"
+	maintainer hasValue "Original-Scott Talbert <swt@techie.net>"
+	architecture hasValue "amd64"
+	version hasValue "0.9.0+dfsg-1"
+	fileName hasValue "pool/universe/h/hidapi/libhidapi-libusb0_0.9.0+dfsg-1_amd64.deb"
+	size hasValue "14508"
+	md5sum hasValue "b8b75764b6a752258768a1372ab63255"
+	sha1 hasValue "463b252afec368df4a7799433421efb1598fd814"
+	sha256 hasValue "05aa51e0822e88a4c1f1519a06a804db3cf2c60cd355e6887cdb157f4d5d5405"
+	descriptionMd5 hasValue "858d0616ec887129e96fc82aba766ada"
+	homepage hasValue "https://github.com/libusb/hidapi"
+	depends hasValue "libc6 (>= 2.14), libusb-1.0-0 (>= 2:1.0.9)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libhidapi_libusb0,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libusb-1.0-0"
+	comparison hasValue ">="
+	version hasValue "2:1.0.9"
+
+relationInstance depends(P0__libhidapi_libusb0,1,DepAtom__1)
+

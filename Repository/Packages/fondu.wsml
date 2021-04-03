@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology fondu
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__fondu memberOf Package
+	package hasValue "fondu"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "288"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.0.20060102-5"
+	fileName hasValue "pool/universe/f/fondu/fondu_0.0.20060102-5_amd64.deb"
+	size hasValue "79468"
+	md5sum hasValue "9dd49b6ed4fe404afac5d13e9f1cbec5"
+	sha1 hasValue "e9bf2ea4ca09f483af4e326768efc95f33eb1c56"
+	sha256 hasValue "afeafee0645377838971ce1c0f5f46b1eccc1b18e0a0c744331a70d5fec90354"
+	descriptionMd5 hasValue "f6bf8c3bf733118b95000d8dc20c8dc6"
+	homepage hasValue "http://www.sourceforge.net/projects/fondu"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__fondu,0,DepAtom__0)
+

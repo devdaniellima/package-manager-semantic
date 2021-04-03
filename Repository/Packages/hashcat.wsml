@@ -1,0 +1,81 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology hashcat
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__hashcat memberOf Package
+	package hasValue "hashcat"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "928"
+	maintainer hasValue "Original-Debian Security Tools <team+pkg-security@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "5.1.0+ds1-2"
+	fileName hasValue "pool/universe/h/hashcat/hashcat_5.1.0+ds1-2_amd64.deb"
+	size hasValue "284220"
+	md5sum hasValue "3b405fdcd07b7441d3555e0091a52601"
+	sha1 hasValue "13b04f1d0148a7da53c56ca92d76a8227a21dbe1"
+	sha256 hasValue "e313f5b5086a3df066ab890e2f2d9a241531508ba23b248858b99ba3f4ad007e"
+	descriptionMd5 hasValue "19a7ccd275950acef6d3b0d443bfdecd"
+	homepage hasValue "https://hashcat.net/hashcat/"
+	depends hasValue "hashcat-data (>= 5.1.0+ds1-2), pocl-opencl-icd | opencl-icd, libc6 (>= 2.29), libxxhash0 (>= 0.6.5)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "hashcat-data"
+	comparison hasValue ">="
+	version hasValue "5.1.0+ds1-2"
+
+relationInstance depends(P0__hashcat,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "pocl-opencl-icd"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__hashcat,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "opencl-icd"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__hashcat,1,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__hashcat,2,DepAtom__3)
+
+instance DepAtom__4 memberOf DependencyAtom
+	package hasValue "libxxhash0"
+	comparison hasValue ">="
+	version hasValue "0.6.5"
+
+relationInstance depends(P0__hashcat,3,DepAtom__4)
+

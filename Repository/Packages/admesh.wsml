@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology admesh
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__admesh memberOf Package
+	package hasValue "admesh"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/math"
+	installedSize hasValue "61"
+	maintainer hasValue "Original-Debian Science Maintainers <debian-science-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.98.4-1"
+	fileName hasValue "pool/universe/a/admesh/admesh_0.98.4-1_amd64.deb"
+	size hasValue "19920"
+	md5sum hasValue "19c76997752a4caa25fbeef4c581edfd"
+	sha1 hasValue "ce608b6140a54fd35586820f5e11fb19202056a6"
+	sha256 hasValue "e409eadb6dbfff91e5218821481bcfe546ee11ab73b19308cde6b4c1b90bd8ca"
+	descriptionMd5 hasValue "618cfc32b0d16e74aea7a47ac42a2ec2"
+	homepage hasValue "https://github.com/admesh/admesh"
+	depends hasValue "libadmesh1 (= 0.98.4-1), libc6 (>= 2.7)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libadmesh1"
+	comparison hasValue "="
+	version hasValue "0.98.4-1"
+
+relationInstance depends(P0__admesh,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__admesh,1,DepAtom__1)
+

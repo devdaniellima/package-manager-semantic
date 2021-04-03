@@ -1,0 +1,81 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology debci_worker
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__debci_worker memberOf Package
+	package hasValue "debci-worker"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "39"
+	maintainer hasValue "Original-Debian CI team <team+ci@tracker.debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.8"
+	fileName hasValue "pool/universe/d/debci/debci-worker_2.8_all.deb"
+	size hasValue "3536"
+	md5sum hasValue "e755d4d08aa69c8198f4f082968e3303"
+	sha1 hasValue "1794be1b99fae5853ce2487a836e69bf21e91ffb"
+	sha256 hasValue "a669d12669a2c8a69fba7c8b33f46b4cf3d4eb86b11a656fd4c86810cdca16b7"
+	descriptionMd5 hasValue "6ea2307dc1e2980b7e8904c22f5f015d"
+	homepage hasValue "http://ci.debian.net/"
+	depends hasValue "debci (= 2.8), autodep8 (>= 0.2~), autopkgtest (>= 5.5~), lxc | schroot"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "debci"
+	comparison hasValue "="
+	version hasValue "2.8"
+
+relationInstance depends(P0__debci_worker,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "autodep8"
+	comparison hasValue ">="
+	version hasValue "0.2~"
+
+relationInstance depends(P0__debci_worker,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "autopkgtest"
+	comparison hasValue ">="
+	version hasValue "5.5~"
+
+relationInstance depends(P0__debci_worker,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "lxc"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__debci_worker,3,DepAtom__3)
+
+instance DepAtom__4 memberOf DependencyAtom
+	package hasValue "schroot"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__debci_worker,3,DepAtom__4)
+

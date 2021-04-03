@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology perl_openssl_defaults
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__perl_openssl_defaults memberOf Package
+	package hasValue "perl-openssl-defaults"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "perl"
+	installedSize hasValue "27"
+	maintainer hasValue "Original-Debian Perl Group <pkg-perl-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "4"
+	provides hasValue "dh-sequence-perl-openssl, perl-openssl-abi-1.1"
+	fileName hasValue "pool/main/p/perl-openssl-defaults/perl-openssl-defaults_4_amd64.deb"
+	size hasValue "7192"
+	md5sum hasValue "d426b58821c99994a9d58bcbbfbb77d9"
+	sha1 hasValue "aa320d2422e533ec7ee7242961df5a24a6f29f3d"
+	sha256 hasValue "427a19a2353096b1283a9353f1198642db974c6bdb68d438407768d261b8390b"
+	descriptionMd5 hasValue "666a41ae5378933a994e5c6b4d4c4d15"
+	depends hasValue "libc6 (>= 2.2.5), libssl1.1 (>= 1.1.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.2.5"
+
+relationInstance depends(P0__perl_openssl_defaults,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libssl1.1"
+	comparison hasValue ">="
+	version hasValue "1.1.0"
+
+relationInstance depends(P0__perl_openssl_defaults,1,DepAtom__1)
+

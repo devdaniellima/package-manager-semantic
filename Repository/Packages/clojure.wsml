@@ -1,0 +1,76 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology clojure
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__clojure memberOf Package
+	package hasValue "clojure"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "93"
+	maintainer hasValue "Original-Debian Clojure Maintainers <pkg-clojure-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.10.1-1"
+	replaces hasValue "clojure1.8 (<< 1.8.0-6)"
+	fileName hasValue "pool/universe/c/clojure/clojure_1.10.1-1_all.deb"
+	size hasValue "13460"
+	md5sum hasValue "f4a14ee04d7f7d6bc513eafcce8687d4"
+	sha1 hasValue "cd77be27a1339a76511dab53698b170eb6b4a8f8"
+	sha256 hasValue "fb8b462619d998ecf9abcc8c6cdb53c03b87fe42e558b2fa0d790c4729cf8fd1"
+	description hasValue "Lisp dialect for the JVM"
+	descriptionMd5 hasValue "375367a1e5611012be8bf354320a8e10"
+	homepage hasValue "http://clojure.org"
+	depends hasValue "default-jre-headless | java8-runtime-headless | openjdk-11-jre-headless, libclojure-java (= 1.10.1-1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "default-jre-headless"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__clojure,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "java8-runtime-headless"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__clojure,0,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "openjdk-11-jre-headless"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__clojure,0,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "libclojure-java"
+	comparison hasValue "="
+	version hasValue "1.10.1-1"
+
+relationInstance depends(P0__clojure,1,DepAtom__3)
+

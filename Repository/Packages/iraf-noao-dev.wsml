@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology iraf_noao_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__iraf_noao_dev memberOf Package
+	package hasValue "iraf-noao-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/science"
+	installedSize hasValue "18188"
+	maintainer hasValue "Original-Debian Astro Team <debian-astro-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.16.1+2018.11.01-3"
+	fileName hasValue "pool/universe/i/iraf/iraf-noao-dev_2.16.1+2018.11.01-3_amd64.deb"
+	size hasValue "2599412"
+	md5sum hasValue "31ef25970df43fb2c77c611f3e78102f"
+	sha1 hasValue "2711130c4bd5fb312d7a7c1bfd0d56b62e090518"
+	sha256 hasValue "b6085785f2c13e16f9b5f6cd1a4dee1a5b24b5785729fbf9511a10abc253890a"
+	descriptionMd5 hasValue "01dc270f04f52a826856c831c3da2261"
+	homepage hasValue "https://iraf-community.github.io"
+	depends hasValue "iraf-dev (= 2.16.1+2018.11.01-3), iraf-noao (= 2.16.1+2018.11.01-3)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "iraf-dev"
+	comparison hasValue "="
+	version hasValue "2.16.1+2018.11.01-3"
+
+relationInstance depends(P0__iraf_noao_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "iraf-noao"
+	comparison hasValue "="
+	version hasValue "2.16.1+2018.11.01-3"
+
+relationInstance depends(P0__iraf_noao_dev,1,DepAtom__1)
+

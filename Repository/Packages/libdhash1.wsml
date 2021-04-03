@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libdhash1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libdhash1 memberOf Package
+	package hasValue "libdhash1"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "libs"
+	installedSize hasValue "37"
+	maintainer hasValue "Original-Debian SSSD Team <pkg-sssd-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.6.1-2"
+	fileName hasValue "pool/main/d/ding-libs/libdhash1_0.6.1-2_amd64.deb"
+	size hasValue "8636"
+	md5sum hasValue "0d15dfa72d970ca6dab7ec4b395f225d"
+	sha1 hasValue "b7a54395b014829ffac8340fc50dabc93bba6a9c"
+	sha256 hasValue "4e04645aa5153f3d0a89d25f833609910dfbc429a95294e8801bc21b4231006a"
+	descriptionMd5 hasValue "0ca14de908fde381445369392f95dd0a"
+	homepage hasValue "https://pagure.io/SSSD/ding-libs"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libdhash1,0,DepAtom__0)
+

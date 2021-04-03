@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology luksipc
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__luksipc memberOf Package
+	package hasValue "luksipc"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "68"
+	maintainer hasValue "Original-Vincent Bernat <bernat@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.04-3"
+	fileName hasValue "pool/universe/l/luksipc/luksipc_0.04-3_amd64.deb"
+	size hasValue "21796"
+	md5sum hasValue "50c8c1bc4d477e5f6d838a3cb6953c9b"
+	sha1 hasValue "a829e536d80b298e8c4d21fca50f936e9dc8fb62"
+	sha256 hasValue "b032529a0a019cce00aec55b995a905477c15729f123412e75c80053fb0101ef"
+	descriptionMd5 hasValue "586c628a04a4b3e8a794cc5284079599"
+	homepage hasValue "http://johannes-bauer.com/linux/luksipc/"
+	depends hasValue "libc6 (>= 2.14), cryptsetup-bin, dmsetup"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__luksipc,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "cryptsetup-bin"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__luksipc,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "dmsetup"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__luksipc,2,DepAtom__2)
+

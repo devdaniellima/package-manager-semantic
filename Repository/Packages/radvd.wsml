@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology radvd
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__radvd memberOf Package
+	package hasValue "radvd"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "net"
+	installedSize hasValue "160"
+	maintainer hasValue "Original-Geert Stappers <stappers@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:2.17-2"
+	fileName hasValue "pool/main/r/radvd/radvd_2.17-2_amd64.deb"
+	size hasValue "58976"
+	md5sum hasValue "c2b02782b0f1179ea6585b2b4ec04c24"
+	sha1 hasValue "79dab56753979147485fde2263f33af5a76cc259"
+	sha256 hasValue "5829dc3a18a29c042350038d70c886b1fee9803091ac401369742326741c14e7"
+	description hasValue "Servidor de Anúncios de Roteador."
+	descriptionMd5 hasValue "fdb4578fd1d88489eda410ee8b1f7b20"
+	homepage hasValue "http://www.litech.org/radvd/"
+	depends hasValue "libc6 (>= 2.17), adduser, lsb-base (>= 3.0-6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.17"
+
+relationInstance depends(P0__radvd,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "adduser"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__radvd,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "lsb-base"
+	comparison hasValue ">="
+	version hasValue "3.0-6"
+
+relationInstance depends(P0__radvd,2,DepAtom__2)
+

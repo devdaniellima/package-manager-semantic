@@ -1,0 +1,76 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology sysvinit_utils
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__sysvinit_utils memberOf Package
+	package hasValue "sysvinit-utils"
+	packageSource hasValue Source__S1
+	priority hasValue "required"
+	section hasValue "admin"
+	installedSize hasValue "74"
+	maintainer hasValue "Original-Debian sysvinit maintainers <debian-init-diversity@chiark.greenend.org.uk>"
+	architecture hasValue "amd64"
+	version hasValue "2.96-2.1ubuntu1"
+	replaces hasValue "initscripts (<< 2.88dsf-59.5)"
+	fileName hasValue "pool/main/s/sysvinit/sysvinit-utils_2.96-2.1ubuntu1_amd64.deb"
+	size hasValue "20592"
+	md5sum hasValue "ecdc526a109948924b084208272f606a"
+	sha1 hasValue "55ba3b3ab3ca6bda2cc09a87f170848a373e082a"
+	sha256 hasValue "ab9c644c65a6b48968991801f4e2846bbfcb1393e0dcbc656a1aa26003b6c57b"
+	description hasValue "utilitários estilo System-V"
+	descriptionMd5 hasValue "bb5793e0170c92deb135060f77ebc485"
+	homepage hasValue "https://savannah.nongnu.org/projects/sysvinit"
+	depends hasValue "init-system-helpers (>= 1.25~), lsb-base (>= 11.0.0~), util-linux (>> 2.28-2~), libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "init-system-helpers"
+	comparison hasValue ">="
+	version hasValue "1.25~"
+
+relationInstance depends(P0__sysvinit_utils,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "lsb-base"
+	comparison hasValue ">="
+	version hasValue "11.0.0~"
+
+relationInstance depends(P0__sysvinit_utils,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "util-linux"
+	comparison hasValue ">>"
+	version hasValue "2.28-2~"
+
+relationInstance depends(P0__sysvinit_utils,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__sysvinit_utils,3,DepAtom__3)
+

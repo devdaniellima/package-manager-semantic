@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology pluto_jpl_eph
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__pluto_jpl_eph memberOf Package
+	package hasValue "pluto-jpl-eph"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/science"
+	installedSize hasValue "143"
+	maintainer hasValue "Original-Steffen Moeller <moeller@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.0~git20180228-1.1build1"
+	fileName hasValue "pool/universe/p/pluto-jpl-eph/pluto-jpl-eph_0.0~git20180228-1.1build1_amd64.deb"
+	size hasValue "25792"
+	md5sum hasValue "19ef02b404f4fd4c9fd07025412aea92"
+	sha1 hasValue "7b0692852bc363d8819544b76e6e2987c7e5a1fd"
+	sha256 hasValue "8850ef80ecc148d21dd8a7903e5939bd3526d199fa3f78c8cc7206cea631f956"
+	descriptionMd5 hasValue "537af8a706f584d57fe8328f18ffd3f0"
+	homepage hasValue "https://github.com/bill-gray/jpl_eph"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__pluto_jpl_eph,0,DepAtom__0)
+

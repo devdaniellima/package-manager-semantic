@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology lswm
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__lswm memberOf Package
+	package hasValue "lswm"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/utils"
+	installedSize hasValue "43"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.6.00+svn201-5"
+	fileName hasValue "pool/universe/c/cwiid/lswm_0.6.00+svn201-5_amd64.deb"
+	size hasValue "5504"
+	md5sum hasValue "3269a802febdd3cfa0ed0e9d8637769f"
+	sha1 hasValue "020449faf4b45409482c07f93dc531696b782762"
+	sha256 hasValue "89762249aeda70852a88fd9fcae9d961f42b87353a5ca273264585d4f3f60cb3"
+	description hasValue "wiimote discover utility"
+	descriptionMd5 hasValue "e8b7b09d4e73830e23a5f013b5160c13"
+	homepage hasValue "http://abstrakraft.org/cwiid/"
+	depends hasValue "libbluetooth3 (>= 4.91), libc6 (>= 2.4), libcwiid1 (>= 0.6.00+svn184)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libbluetooth3"
+	comparison hasValue ">="
+	version hasValue "4.91"
+
+relationInstance depends(P0__lswm,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__lswm,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libcwiid1"
+	comparison hasValue ">="
+	version hasValue "0.6.00+svn184"
+
+relationInstance depends(P0__lswm,2,DepAtom__2)
+

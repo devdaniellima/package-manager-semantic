@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology pigpio_tools
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__pigpio_tools memberOf Package
+	package hasValue "pigpio-tools"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "99"
+	maintainer hasValue "Original-Peter Michael Green <plugwash@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.68-4"
+	conflicts hasValue "pigpio (<< 1.68-1)"
+	fileName hasValue "pool/universe/p/pigpio/pigpio-tools_1.68-4_amd64.deb"
+	size hasValue "41892"
+	md5sum hasValue "f86015210bdde6da07d0065f2d1f9e59"
+	sha1 hasValue "bd4aa29fae181efb63efd62ec9ff872fd448923b"
+	sha256 hasValue "07c435ba9d828393e60cd92bd1e7fef2028215c9442fd14ec170e6630fd076f9"
+	descriptionMd5 hasValue "9eb213f115890f29258af661f93cd0d3"
+	homepage hasValue "http://abyz.co.uk/rpi/pigpio/"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__pigpio_tools,0,DepAtom__0)
+

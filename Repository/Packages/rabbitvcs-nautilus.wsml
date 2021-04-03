@@ -1,0 +1,69 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology rabbitvcs_nautilus
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__rabbitvcs_nautilus memberOf Package
+	package hasValue "rabbitvcs-nautilus"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "41"
+	maintainer hasValue "Original-Python Applications Packaging Team <python-apps-team@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.18-1ubuntu1"
+	replaces hasValue "rabbitvcs-nautilus3"
+	conflicts hasValue "rabbitvcs-nautilus3"
+	fileName hasValue "pool/universe/r/rabbitvcs/rabbitvcs-nautilus_0.18-1ubuntu1_all.deb"
+	size hasValue "9276"
+	md5sum hasValue "b4373e76f3d16a566309eaa148fc41f8"
+	sha1 hasValue "a02482f75af795dedb1ec6f902a2c9e68bf42733"
+	sha256 hasValue "34d6533b3ff87b6a4660053e753477a067f28d4387afa23404f387f5fe17bff2"
+	descriptionMd5 hasValue "53542ac9518bfbc2081f313bdc22c94f"
+	homepage hasValue "http://www.rabbitvcs.org"
+	depends hasValue "nautilus (>= 3~), python3-nautilus (>= 1.0~), rabbitvcs-core (>= 0.15)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "nautilus"
+	comparison hasValue ">="
+	version hasValue "3~"
+
+relationInstance depends(P0__rabbitvcs_nautilus,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3-nautilus"
+	comparison hasValue ">="
+	version hasValue "1.0~"
+
+relationInstance depends(P0__rabbitvcs_nautilus,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "rabbitvcs-core"
+	comparison hasValue ">="
+	version hasValue "0.15"
+
+relationInstance depends(P0__rabbitvcs_nautilus,2,DepAtom__2)
+

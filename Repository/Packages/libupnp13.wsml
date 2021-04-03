@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libupnp13
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libupnp13 memberOf Package
+	package hasValue "libupnp13"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "267"
+	maintainer hasValue "Original-James Cowgill <jcowgill@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:1.8.4-2ubuntu2"
+	fileName hasValue "pool/universe/p/pupnp-1.8/libupnp13_1.8.4-2ubuntu2_amd64.deb"
+	size hasValue "87852"
+	md5sum hasValue "4a7216ac9e9b8c25523f73ed014c7a60"
+	sha1 hasValue "7f972590a8fdc39290a7f1cbae42cdd6366c0a4d"
+	sha256 hasValue "2cd71b18709956e3cb5157b7556ce2e6c629516b4e2b1088ba3fd28504905b74"
+	descriptionMd5 hasValue "49eab7c685d8ffa1604e50da9b5d1436"
+	homepage hasValue "http://pupnp.sourceforge.net/"
+	depends hasValue "libc6 (>= 2.15), libixml10 (>= 1:1.8.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__libupnp13,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libixml10"
+	comparison hasValue ">="
+	version hasValue "1:1.8.0"
+
+relationInstance depends(P0__libupnp13,1,DepAtom__1)
+

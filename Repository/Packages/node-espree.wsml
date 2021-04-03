@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology node_espree
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__node_espree memberOf Package
+	package hasValue "node-espree"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/web"
+	installedSize hasValue "56"
+	maintainer hasValue "Original-Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "6.0.0+ds-3"
+	fileName hasValue "pool/universe/n/node-espree/node-espree_6.0.0+ds-3_all.deb"
+	size hasValue "15012"
+	md5sum hasValue "8074ecadb02776a40c999b3119d273ed"
+	sha1 hasValue "37d6a52b838cdf6b2dae758dfed05b9100929322"
+	sha256 hasValue "6ae9b7e3158408db5b82ae907f238f845661572be40d2d88976416aefcd87ebb"
+	descriptionMd5 hasValue "5540324043e97f46a6b82612201736c6"
+	homepage hasValue "https://github.com/eslint/espree"
+	depends hasValue "nodejs (>= 6), node-acorn (>= 6~), node-eslint-visitor-keys (>= 1~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "nodejs"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__node_espree,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "node-acorn"
+	comparison hasValue ">="
+	version hasValue "6~"
+
+relationInstance depends(P0__node_espree,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "node-eslint-visitor-keys"
+	comparison hasValue ">="
+	version hasValue "1~"
+
+relationInstance depends(P0__node_espree,2,DepAtom__2)
+

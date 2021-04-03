@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology stiff
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__stiff memberOf Package
+	package hasValue "stiff"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/science"
+	installedSize hasValue "206"
+	maintainer hasValue "Original-Debian Astronomy Maintainers <debian-astro-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.4.0-3"
+	fileName hasValue "pool/universe/s/stiff/stiff_2.4.0-3_amd64.deb"
+	size hasValue "61700"
+	md5sum hasValue "91226fd1549c14177e313771be6860bb"
+	sha1 hasValue "bcb26c49397edbf4f1f4d61d489df0516a177d4e"
+	sha256 hasValue "e6b8ec8c1d5907ed9367194297f56c59737e9bd5eecac97d260a58ea7f6563f1"
+	descriptionMd5 hasValue "cc5516ce019c76d247f0b99e6b930675"
+	homepage hasValue "https://www.astromatic.net/software/stiff"
+	depends hasValue "libc6 (>= 2.27), libtiff5 (>= 4.0.3)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.27"
+
+relationInstance depends(P0__stiff,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libtiff5"
+	comparison hasValue ">="
+	version hasValue "4.0.3"
+
+relationInstance depends(P0__stiff,1,DepAtom__1)
+

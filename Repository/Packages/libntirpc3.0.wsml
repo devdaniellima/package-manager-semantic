@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libntirpc3Dot0
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libntirpc3Dot0 memberOf Package
+	package hasValue "libntirpc3.0"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libs"
+	installedSize hasValue "307"
+	maintainer hasValue "Original-Dmitry Smirnov <onlyjob@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.0-0ubuntu2"
+	fileName hasValue "pool/main/n/ntirpc/libntirpc3.0_3.0-0ubuntu2_amd64.deb"
+	size hasValue "116952"
+	md5sum hasValue "a8ea48cea473c369d2225cbf0a9a9704"
+	sha1 hasValue "28837803be3576b69203ffd849459b3cea292309"
+	sha256 hasValue "4fba905ab03b5102893c35b5d110e02bc69982c3d9ad478a1ac24a2b4fbc61f1"
+	descriptionMd5 hasValue "99e9068973771fe00ebab2713a6aa784"
+	homepage hasValue "https://github.com/nfs-ganesha/ntirpc"
+	depends hasValue "libc6 (>= 2.17), libgssapi-krb5-2 (>= 1.17)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.17"
+
+relationInstance depends(P0__libntirpc3Dot0,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgssapi-krb5-2"
+	comparison hasValue ">="
+	version hasValue "1.17"
+
+relationInstance depends(P0__libntirpc3Dot0,1,DepAtom__1)
+

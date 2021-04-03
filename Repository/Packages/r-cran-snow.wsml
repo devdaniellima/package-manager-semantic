@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology r_cran_snow
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__r_cran_snow memberOf Package
+	package hasValue "r-cran-snow"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/math"
+	installedSize hasValue "154"
+	maintainer hasValue "Original-Dirk Eddelbuettel <edd@debian.org>"
+	architecture hasValue "all"
+	version hasValue "1:0.4.3-1"
+	fileName hasValue "pool/universe/s/snow/r-cran-snow_0.4.3-1_all.deb"
+	size hasValue "107216"
+	md5sum hasValue "4d311b1d87207677b7157fbf2d70e089"
+	sha1 hasValue "7e797d59e8fb7a7b0e80b149aea6695a6ff4dc98"
+	sha256 hasValue "faaac343d18dee9bde89601d94dc61006a814fa7e1cc722a5478955e7c69fab0"
+	descriptionMd5 hasValue "8ef2341cc63946eea1ae1eb2ba7048a5"
+	homepage hasValue "https://cran.r-project.org/package=snow"
+	depends hasValue "r-base-core (>= 3.5.1-1build1), r-api-3.5"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "r-base-core"
+	comparison hasValue ">="
+	version hasValue "3.5.1-1build1"
+
+relationInstance depends(P0__r_cran_snow,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "r-api-3.5"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__r_cran_snow,1,DepAtom__1)
+

@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology itop
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__itop memberOf Package
+	package hasValue "itop"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/admin"
+	installedSize hasValue "24"
+	maintainer hasValue "Original-Jose Parrella <bureado@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.1-4build1"
+	fileName hasValue "pool/universe/i/itop/itop_0.1-4build1_amd64.deb"
+	size hasValue "6620"
+	md5sum hasValue "764a18bbf1a7f29fc26496e99e3787ee"
+	sha1 hasValue "641fb1150db52a6ebbf65a481b8423ad84fd4f6e"
+	sha256 hasValue "3905cf622dba44df42ef313963a4b41f495b89213c867ebdf66759f6fd2edcb3"
+	descriptionMd5 hasValue "0d9a21fc5cbdd417278592febf60646e"
+	homepage hasValue "http://www.hunz.org/"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__itop,0,DepAtom__0)
+

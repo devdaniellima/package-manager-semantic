@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology prometheus_mysqld_exporter
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__prometheus_mysqld_exporter memberOf Package
+	package hasValue "prometheus-mysqld-exporter"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/net"
+	installedSize hasValue "7832"
+	maintainer hasValue "Original-Debian Go Packaging Team <pkg-go-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.11.0+ds-1"
+	fileName hasValue "pool/universe/p/prometheus-mysqld-exporter/prometheus-mysqld-exporter_0.11.0+ds-1_amd64.deb"
+	size hasValue "2194416"
+	md5sum hasValue "8733dff6a1adadd444d78102fb0f4fbf"
+	sha1 hasValue "473614d82e1f1ecf373de63139e1c2d0e9b7f67a"
+	sha256 hasValue "0206d3770363028023a53f1f21978b38a41b0a2b1f8e01640cfc010288acc98c"
+	descriptionMd5 hasValue "9ab79c552006c990d8f401d8c8d016ce"
+	homepage hasValue "https://github.com/prometheus/mysqld_exporter"
+	depends hasValue "daemon, libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "daemon"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__prometheus_mysqld_exporter,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__prometheus_mysqld_exporter,1,DepAtom__1)
+

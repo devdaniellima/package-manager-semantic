@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology debian_mate_default_settings
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__debian_mate_default_settings memberOf Package
+	package hasValue "debian-mate-default-settings"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/x11"
+	installedSize hasValue "50"
+	maintainer hasValue "Original-Debian+Ubuntu MATE Packaging Team <debian-mate@lists.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.24.0-2ubuntu1"
+	conflicts hasValue "mint-mate-default-settings, ubuntu-mate-default-settings"
+	fileName hasValue "pool/universe/m/mate-session-manager/debian-mate-default-settings_1.24.0-2ubuntu1_all.deb"
+	size hasValue "7968"
+	md5sum hasValue "3cebe572616a35e77f25c6d028c9d21a"
+	sha1 hasValue "8ffb336814c42353150cdfbc2eb19ddf152d2c7d"
+	sha256 hasValue "b2ecc8a848eedb555c771a2cfeed5292e92917b95dd41872a20a892ef5edeb61"
+	descriptionMd5 hasValue "152eb0142abbab57029c38b58f82291b"
+	homepage hasValue "http://www.mate-desktop.org/"
+	depends hasValue "desktop-file-utils"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "desktop-file-utils"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__debian_mate_default_settings,0,DepAtom__0)
+

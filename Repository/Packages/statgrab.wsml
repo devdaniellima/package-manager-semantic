@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology statgrab
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__statgrab memberOf Package
+	package hasValue "statgrab"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "58"
+	maintainer hasValue "Original-Bartosz Fenski <fenio@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.92-2"
+	fileName hasValue "pool/universe/libs/libstatgrab/statgrab_0.92-2_amd64.deb"
+	size hasValue "16528"
+	md5sum hasValue "ba08f37dc298d8150274be6c21152dbc"
+	sha1 hasValue "d10ef311e42be31bcbc2fc06332d63e17f9a7147"
+	sha256 hasValue "9e7825fdde9ed6d71aa95e8655a496befc1144858e59ecfb336e60e40de7f6f3"
+	description hasValue "acesso a estatísticas do sistema estilo sysctl"
+	descriptionMd5 hasValue "16e603690dc3433a07f19dd966943f23"
+	homepage hasValue "https://libstatgrab.org"
+	depends hasValue "libc6 (>= 2.14), libstatgrab10"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__statgrab,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libstatgrab10"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__statgrab,1,DepAtom__1)
+

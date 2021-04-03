@@ -1,0 +1,52 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology klone_package
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__klone_package memberOf Package
+	package hasValue "klone-package"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/web"
+	installedSize hasValue "112"
+	maintainer hasValue "Original-Kari Pahula <kaol@debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.3"
+	fileName hasValue "pool/universe/w/webserver-package/klone-package_0.3_all.deb"
+	size hasValue "9674"
+	md5sum hasValue "bbed81f757beba80d42b6a9aeef50776"
+	sha1 hasValue "4ed294b8acaa9af22574bbe22f1ab3206c45af02"
+	sha256 hasValue "4e9aad57b05df6a9cb0893cd67e9905bd8ce5077efc2fe9191cfe7cc37954752"
+	descriptionMd5 hasValue "cb0260df1d8209c1e599670edda90499"
+	depends hasValue "klone (>= 2.0.0~rc9-1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "klone"
+	comparison hasValue ">="
+	version hasValue "2.0.0~rc9-1"
+
+relationInstance depends(P0__klone_package,0,DepAtom__0)
+

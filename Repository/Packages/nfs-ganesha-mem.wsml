@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology nfs_ganesha_mem
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__nfs_ganesha_mem memberOf Package
+	package hasValue "nfs-ganesha-mem"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "134"
+	maintainer hasValue "Original-Philippe Deniel <philippe.deniel@cea.fr>"
+	architecture hasValue "amd64"
+	version hasValue "3.0.3-0ubuntu3"
+	fileName hasValue "pool/universe/n/nfs-ganesha/nfs-ganesha-mem_3.0.3-0ubuntu3_amd64.deb"
+	size hasValue "30588"
+	md5sum hasValue "5ade26d0779b08d65bfff6222f289090"
+	sha1 hasValue "7ba80a60fb29daec9581ea48c032ed4af034c744"
+	sha256 hasValue "0e9cc7dcd669915ae44dcf26240515e91a411d1fd6bd47aa889b5493d12b5e96"
+	descriptionMd5 hasValue "8b8c371ea95a0b99111a57a865284357"
+	homepage hasValue "https://github.com/nfs-ganesha/nfs-ganesha"
+	depends hasValue "libc6 (>= 2.17), nfs-ganesha (= 3.0.3-0ubuntu3)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.17"
+
+relationInstance depends(P0__nfs_ganesha_mem,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "nfs-ganesha"
+	comparison hasValue "="
+	version hasValue "3.0.3-0ubuntu3"
+
+relationInstance depends(P0__nfs_ganesha_mem,1,DepAtom__1)
+

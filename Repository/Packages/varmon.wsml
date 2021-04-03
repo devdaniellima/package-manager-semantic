@@ -1,0 +1,66 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology varmon
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__varmon memberOf Package
+	package hasValue "varmon"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/admin"
+	installedSize hasValue "517"
+	maintainer hasValue "Original-Julien Danjou <acid@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.2.1-1build3"
+	fileName hasValue "pool/universe/v/varmon/varmon_1.2.1-1build3_amd64.deb"
+	size hasValue "481404"
+	md5sum hasValue "c9c2f36c9b67377bd73b9c8ae8d85cf4"
+	sha1 hasValue "f0206e136155b8d01adb518230bf570bc7bb5f6e"
+	sha256 hasValue "0cdc745c999db2c5ce79acc169a00b765df7e3a85e81e3d382afba21ffc2b18e"
+	descriptionMd5 hasValue "cc05db2005fb6a0b7d2fc23db08b0d81"
+	depends hasValue "libc6 (>= 2.4), libncurses6 (>= 6), libtinfo6 (>= 6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__varmon,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libncurses6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__varmon,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libtinfo6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__varmon,2,DepAtom__2)
+

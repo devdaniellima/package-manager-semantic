@@ -1,0 +1,69 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libotr5_bin
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libotr5_bin memberOf Package
+	package hasValue "libotr5-bin"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/misc"
+	installedSize hasValue "174"
+	maintainer hasValue "Original-Debian Privacy Tools Maintainers <pkg-privacy-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "4.1.1-3ubuntu1"
+	replaces hasValue "libotr1-bin, libotr2-bin"
+	conflicts hasValue "libotr2-bin"
+	fileName hasValue "pool/universe/libo/libotr/libotr5-bin_4.1.1-3ubuntu1_amd64.deb"
+	size hasValue "26172"
+	md5sum hasValue "4e3eb3d68fb056edcc33b95f6f5fb61e"
+	sha1 hasValue "385d11b18874564afea47dcfd5d8a9bee6b54151"
+	sha256 hasValue "608b49a11bb423c658f8c4a6bf8e077363e151ee4df08cec50df09bf43a320a9"
+	descriptionMd5 hasValue "e2cff41cba01eb729b59708a65bd3911"
+	homepage hasValue "https://otr.cypherpunks.ca/"
+	depends hasValue "libc6 (>= 2.14), libgcrypt20 (>= 1.8.0), libotr5 (>= 4.0.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libotr5_bin,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgcrypt20"
+	comparison hasValue ">="
+	version hasValue "1.8.0"
+
+relationInstance depends(P0__libotr5_bin,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libotr5"
+	comparison hasValue ">="
+	version hasValue "4.0.0"
+
+relationInstance depends(P0__libotr5_bin,2,DepAtom__2)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology rabbitsign
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__rabbitsign memberOf Package
+	package hasValue "rabbitsign"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "126"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.1+dmca1-2"
+	fileName hasValue "pool/universe/r/rabbitsign/rabbitsign_2.1+dmca1-2_amd64.deb"
+	size hasValue "41216"
+	md5sum hasValue "e2930e1cef8a45657f4a867a30961837"
+	sha1 hasValue "fac0c5e1ddd7c1c02069c843fe9bd4f910b1b3df"
+	sha256 hasValue "2c95cfabc2838e89db828bbe7293873757186ae3e32fff9d388a5951f6f9f145"
+	descriptionMd5 hasValue "b8938710d96ca75bbc7f5a7c52ec5cbb"
+	homepage hasValue "http://www.ticalc.org/archives/files/fileinfo/383/38392.html"
+	depends hasValue "libc6 (>= 2.14), libgmp10"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__rabbitsign,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgmp10"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__rabbitsign,1,DepAtom__1)
+

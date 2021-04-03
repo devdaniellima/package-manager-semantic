@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology scilab_cli
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__scilab_cli memberOf Package
+	package hasValue "scilab-cli"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/math"
+	installedSize hasValue "626"
+	maintainer hasValue "Original-Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "6.1.0+dfsg1-1ubuntu3"
+	fileName hasValue "pool/universe/s/scilab/scilab-cli_6.1.0+dfsg1-1ubuntu3_all.deb"
+	size hasValue "376580"
+	md5sum hasValue "afc6180e4cd6b8dc13287956def289bc"
+	sha1 hasValue "8056f6ce982edb50b291d4740e94afe818f6c1b5"
+	sha256 hasValue "0c6bfcb4db9ac0dba5b1fe554b055bac3ca1b4c57c845b595846867336466d5e"
+	description hasValue "Scientific software package - Command Line Interpreter"
+	descriptionMd5 hasValue "c82205392ad1a90583774dae1eb33898"
+	homepage hasValue "https://www.scilab.org"
+	depends hasValue "scilab-minimal-bin (>= 6.1.0+dfsg1-1ubuntu3), scilab-data (= 6.1.0+dfsg1-1ubuntu3), scilab-include (>= 6.1.0+dfsg1-1ubuntu3)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "scilab-minimal-bin"
+	comparison hasValue ">="
+	version hasValue "6.1.0+dfsg1-1ubuntu3"
+
+relationInstance depends(P0__scilab_cli,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "scilab-data"
+	comparison hasValue "="
+	version hasValue "6.1.0+dfsg1-1ubuntu3"
+
+relationInstance depends(P0__scilab_cli,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "scilab-include"
+	comparison hasValue ">="
+	version hasValue "6.1.0+dfsg1-1ubuntu3"
+
+relationInstance depends(P0__scilab_cli,2,DepAtom__2)
+

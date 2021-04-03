@@ -1,0 +1,74 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology grok
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__grok memberOf Package
+	package hasValue "grok"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/misc"
+	installedSize hasValue "217"
+	maintainer hasValue "Original-Stig Sandbeck Mathisen <ssm@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.20110708.1-4.4"
+	fileName hasValue "pool/universe/g/grok/grok_1.20110708.1-4.4_amd64.deb"
+	size hasValue "56224"
+	md5sum hasValue "f078dab7ef4f72ccf8f1daf28733070c"
+	sha1 hasValue "c41304477ea3055712e9471eb9805762f859e0d3"
+	sha256 hasValue "3dabf4206dcd712fe36cea3787bc6028141613e53ee1b1ccabf135118a70128d"
+	descriptionMd5 hasValue "ec1f0797a6f94ee8fbe6e86d3f2c8233"
+	homepage hasValue "http://code.google.com/p/semicomplete/wiki/Grok"
+	depends hasValue "libc6 (>= 2.14), libevent-2.1-7 (>= 2.1.8-stable), libpcre3, libtokyocabinet9 (>= 1.4.47)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__grok,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libevent-2.1-7"
+	comparison hasValue ">="
+	version hasValue "2.1.8-stable"
+
+relationInstance depends(P0__grok,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libpcre3"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__grok,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "libtokyocabinet9"
+	comparison hasValue ">="
+	version hasValue "1.4.47"
+
+relationInstance depends(P0__grok,3,DepAtom__3)
+

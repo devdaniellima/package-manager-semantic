@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology httpfs2
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__httpfs2 memberOf Package
+	package hasValue "httpfs2"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/web"
+	installedSize hasValue "37"
+	maintainer hasValue "Original-Michal Suchanek <hramrach@centrum.cz>"
+	architecture hasValue "amd64"
+	version hasValue "0.1.4-1.1"
+	fileName hasValue "pool/universe/h/httpfs2/httpfs2_0.1.4-1.1_amd64.deb"
+	size hasValue "11440"
+	md5sum hasValue "e47a162fdb2f2625ac0affd4fb1bfdc0"
+	sha1 hasValue "130d78150b7e18d963cfec585c9e532b0f63aac6"
+	sha256 hasValue "a5d09e8fc46871b81eb00c14bf092585e4838d8e8a8b64c14d290748d999ac7e"
+	descriptionMd5 hasValue "0a4c7ec7c205045b2fa707a9f2b05848"
+	homepage hasValue "http://sourceforge.net/projects/httpfs/"
+	depends hasValue "libc6 (>= 2.4), libfuse2 (>= 2.6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__httpfs2,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libfuse2"
+	comparison hasValue ">="
+	version hasValue "2.6"
+
+relationInstance depends(P0__httpfs2,1,DepAtom__1)
+

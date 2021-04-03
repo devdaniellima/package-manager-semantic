@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology lua_rex_onig
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__lua_rex_onig memberOf Package
+	package hasValue "lua-rex-onig"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/interpreters"
+	installedSize hasValue "115"
+	maintainer hasValue "Original-Enrico Tassi <gareuselesinge@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.7.2-4build2"
+	provides hasValue "lua5.1-rex-onig, lua5.2-rex-onig"
+	fileName hasValue "pool/universe/l/lua-rexlib/lua-rex-onig_2.7.2-4build2_amd64.deb"
+	size hasValue "19752"
+	md5sum hasValue "10d5657dd40d8c99e633a6f6e1f64e71"
+	sha1 hasValue "eed73006eebc4fc54aea80d9af8a5671626c4e4f"
+	sha256 hasValue "e4266f91e7c8e9c2e51dbce96d33f28e1c2b1846f9fd9dc42552845ea129556d"
+	descriptionMd5 hasValue "f429ecc9cba5fabc9c8f17001f590d8b"
+	homepage hasValue "http://lrexlib.luaforge.net/"
+	depends hasValue "libc6 (>= 2.14), libonig5 (>= 6.8.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__lua_rex_onig,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libonig5"
+	comparison hasValue ">="
+	version hasValue "6.8.1"
+
+relationInstance depends(P0__lua_rex_onig,1,DepAtom__1)
+

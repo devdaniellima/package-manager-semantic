@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology lua5Dot3
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__lua5Dot3 memberOf Package
+	package hasValue "lua5.3"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/interpreters"
+	installedSize hasValue "404"
+	maintainer hasValue "Original-Enrico Tassi <gareuselesinge@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "5.3.3-1.1ubuntu2"
+	provides hasValue "lua"
+	fileName hasValue "pool/universe/l/lua5.3/lua5.3_5.3.3-1.1ubuntu2_amd64.deb"
+	size hasValue "109972"
+	md5sum hasValue "84009cae286ea0e8ca469e25ddbf7730"
+	sha1 hasValue "20f090eb5ff389a7717a4141fc0d274f507c5798"
+	sha256 hasValue "5b762634bc0f375a7cbff81dfce3015664e48d2d69dbab803aab895dd63779ae"
+	description hasValue "linguagem de programação embarcável, extensível e simples"
+	descriptionMd5 hasValue "130003bb49100d21ad1dd4ef09dee02f"
+	homepage hasValue "http://www.lua.org"
+	depends hasValue "libc6 (>= 2.29), libreadline8 (>= 6.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__lua5Dot3,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libreadline8"
+	comparison hasValue ">="
+	version hasValue "6.0"
+
+relationInstance depends(P0__lua5Dot3,1,DepAtom__1)
+

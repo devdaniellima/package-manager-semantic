@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology lighttpd_mod_geoip
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__lighttpd_mod_geoip memberOf Package
+	package hasValue "lighttpd-mod-geoip"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/httpd"
+	installedSize hasValue "95"
+	maintainer hasValue "Original-Debian lighttpd maintainers <team+lighttpd@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.4.55-1ubuntu1"
+	fileName hasValue "pool/universe/l/lighttpd/lighttpd-mod-geoip_1.4.55-1ubuntu1_amd64.deb"
+	size hasValue "6404"
+	md5sum hasValue "eb2ab1390222167a2375480e8c23df2f"
+	sha1 hasValue "b91222247d41723d01a50f2d7aa7951eaf9ebc9a"
+	sha256 hasValue "0c8b9edf71ba6f01555ce29dab8c7ac03791872309ad80abd0571091d7cc2c14"
+	descriptionMd5 hasValue "ab547b8ad21a623471cbdc43eb5be98f"
+	homepage hasValue "https://www.lighttpd.net/"
+	depends hasValue "libc6 (>= 2.4), libgeoip1 (>= 1.6.12), lighttpd (= 1.4.55-1ubuntu1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__lighttpd_mod_geoip,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgeoip1"
+	comparison hasValue ">="
+	version hasValue "1.6.12"
+
+relationInstance depends(P0__lighttpd_mod_geoip,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "lighttpd"
+	comparison hasValue "="
+	version hasValue "1.4.55-1ubuntu1"
+
+relationInstance depends(P0__lighttpd_mod_geoip,2,DepAtom__2)
+

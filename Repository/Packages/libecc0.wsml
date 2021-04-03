@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libecc0
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libecc0 memberOf Package
+	package hasValue "libecc0"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "1122"
+	maintainer hasValue "Original-Jerome St-Louis <jerstlouis@gmail.com>"
+	architecture hasValue "amd64"
+	version hasValue "0.44.15-1build3"
+	replaces hasValue "libec0 (<= 0.44.02-1)"
+	fileName hasValue "pool/universe/e/ecere-sdk/libecc0_0.44.15-1build3_amd64.deb"
+	size hasValue "322320"
+	md5sum hasValue "ddf9932d9c6a385bcd6929356a18aafe"
+	sha1 hasValue "9be3000dcfb9dea970a146ab61398d92709a9379"
+	sha256 hasValue "67e0f366748fa2280dac0f8c817a57ed97680a3513425eeea7b66434bca72283"
+	descriptionMd5 hasValue "76ca25ffeeff042273bb93fc6423e384"
+	homepage hasValue "http://ecere.org/"
+	depends hasValue "libecere0 (= 0.44.15-1build3), libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libecere0"
+	comparison hasValue "="
+	version hasValue "0.44.15-1build3"
+
+relationInstance depends(P0__libecc0,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libecc0,1,DepAtom__1)
+

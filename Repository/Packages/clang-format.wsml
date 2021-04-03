@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology clang_format
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__clang_format memberOf Package
+	package hasValue "clang-format"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "29"
+	maintainer hasValue "Original-LLVM Packaging Team <pkg-llvm-team@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:10.0-50~exp1"
+	replaces hasValue "clang (<< 1:3.6-28)"
+	fileName hasValue "pool/universe/l/llvm-defaults/clang-format_10.0-50~exp1_amd64.deb"
+	size hasValue "3272"
+	md5sum hasValue "650b7d6c3202e5cb3eb7fcc3df18f232"
+	sha1 hasValue "fabef8898bad2683f07586c68b446e075e8d088d"
+	sha256 hasValue "49999b4f6f0644876cfaabd67d470cce2562eb6f83300473300e7eda4a33eac4"
+	descriptionMd5 hasValue "b50362fb3abbe4fca65017f3e1c209b3"
+	depends hasValue "clang-format-10 (>= 10~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "clang-format-10"
+	comparison hasValue ">="
+	version hasValue "10~"
+
+relationInstance depends(P0__clang_format,0,DepAtom__0)
+

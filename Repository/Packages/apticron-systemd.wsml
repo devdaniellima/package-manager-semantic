@@ -1,0 +1,82 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology apticron_systemd
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__apticron_systemd memberOf Package
+	package hasValue "apticron-systemd"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "57"
+	maintainer hasValue "Original-Tiago Bortoletto Vaz <tiago@debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.2.3+nmu1"
+	conflicts hasValue "apticron"
+	fileName hasValue "pool/universe/a/apticron/apticron-systemd_1.2.3+nmu1_all.deb"
+	size hasValue "11864"
+	md5sum hasValue "6da413c3957416fe9dec7b2b47637732"
+	sha1 hasValue "07d8fa789854f6cc8cccea6fccab8bbb54aeef4b"
+	sha256 hasValue "5d25dc51f3c08758ef7343bccc5cdbdfdeb4eb014207199f747fc277ec318df8"
+	description hasValue "Simple tool to mail about pending package updates - systemd version"
+	descriptionMd5 hasValue "ec7d80bc9e810358bcc5d154b03beb8a"
+	depends hasValue "bsd-mailx | mailx, apt (>= 1.1~exp9), systemd, bzip2"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "bsd-mailx"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__apticron_systemd,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "mailx"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__apticron_systemd,0,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "apt"
+	comparison hasValue ">="
+	version hasValue "1.1~exp9"
+
+relationInstance depends(P0__apticron_systemd,1,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "systemd"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__apticron_systemd,2,DepAtom__3)
+
+instance DepAtom__4 memberOf DependencyAtom
+	package hasValue "bzip2"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__apticron_systemd,3,DepAtom__4)
+

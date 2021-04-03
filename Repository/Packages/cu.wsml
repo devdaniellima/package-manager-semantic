@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology cu
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__cu memberOf Package
+	package hasValue "cu"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "comm"
+	installedSize hasValue "213"
+	maintainer hasValue "Original-Thorsten Alteholz <debian@alteholz.de>"
+	architecture hasValue "amd64"
+	version hasValue "1.07-27build1"
+	fileName hasValue "pool/main/u/uucp/cu_1.07-27build1_amd64.deb"
+	size hasValue "79720"
+	md5sum hasValue "1b8b3ab1b9da1439aa9df167e61cfb5d"
+	sha1 hasValue "07f5f098f8ddcc9f84633b05de883af25b128f6f"
+	sha256 hasValue "c2663d2557675b34f0b1af14a83e27da95213138192baeae44b93de47c4097ee"
+	description hasValue "chamada para outro sistema"
+	descriptionMd5 hasValue "41fb11f69b66c4b17a00cecf9bf8d7da"
+	homepage hasValue "http://airs.com/ian/uucp.html"
+	depends hasValue "libc6 (>= 2.15)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__cu,0,DepAtom__0)
+

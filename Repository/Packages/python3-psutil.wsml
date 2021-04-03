@@ -1,0 +1,74 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python3_psutil
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python3_psutil memberOf Package
+	package hasValue "python3-psutil"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "python"
+	installedSize hasValue "880"
+	maintainer hasValue "Original-Sandro Tosi <morph@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "5.5.1-1ubuntu4"
+	fileName hasValue "pool/main/p/python-psutil/python3-psutil_5.5.1-1ubuntu4_amd64.deb"
+	size hasValue "141308"
+	md5sum hasValue "31e398dbcc4fcbb1bcba53cb2f383778"
+	sha1 hasValue "7eecdda78448924670cf8ebe1c30638155eb9a92"
+	sha256 hasValue "dee8726134d07a1e7649cdba10886b2f1754ea4b7ce427d7b10b2e0d3140aa35"
+	descriptionMd5 hasValue "1afa4bbc2f865e75ea83252d8a6a0b39"
+	homepage hasValue "https://github.com/giampaolo/psutil"
+	depends hasValue "libc6 (>= 2.13), python3 (<< 3.9), python3 (>= 3.8~), python3:any"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.13"
+
+relationInstance depends(P0__python3_psutil,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3"
+	comparison hasValue "<<"
+	version hasValue "3.9"
+
+relationInstance depends(P0__python3_psutil,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "python3"
+	comparison hasValue ">="
+	version hasValue "3.8~"
+
+relationInstance depends(P0__python3_psutil,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__python3_psutil,3,DepAtom__3)
+

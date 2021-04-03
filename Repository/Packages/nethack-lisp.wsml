@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology nethack_lisp
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__nethack_lisp memberOf Package
+	package hasValue "nethack-lisp"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/games"
+	installedSize hasValue "2567"
+	maintainer hasValue "Original-Debian Games Team <pkg-games-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.6.1-1"
+	provides hasValue "nethack"
+	fileName hasValue "pool/universe/n/nethack/nethack-lisp_3.6.1-1_amd64.deb"
+	size hasValue "1119516"
+	md5sum hasValue "fcc9216e42db9115508cbc82527c1ad9"
+	sha1 hasValue "9366789ccbfb2a8f6d8bcca9cf075450866c356a"
+	sha256 hasValue "768f695006c286bf1e52fefa61417004e0c4782ed0f12c2b69617c7d13ae8e96"
+	description hasValue "dungeon crawl game - Lisp interface"
+	descriptionMd5 hasValue "956029c0f568fdd42598b9639bdd7294"
+	homepage hasValue "https://www.nethack.org"
+	depends hasValue "nethack-common (= 3.6.1-1), libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "nethack-common"
+	comparison hasValue "="
+	version hasValue "3.6.1-1"
+
+relationInstance depends(P0__nethack_lisp,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__nethack_lisp,1,DepAtom__1)
+

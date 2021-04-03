@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology tf
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__tf memberOf Package
+	package hasValue "tf"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/games"
+	installedSize hasValue "771"
+	maintainer hasValue "Original-Jan Niehusmann <jan@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:4.0s1-20build1"
+	fileName hasValue "pool/universe/t/tf/tf_4.0s1-20build1_amd64.deb"
+	size hasValue "229148"
+	md5sum hasValue "e8bb850ec3d663f45b224f1b14438862"
+	sha1 hasValue "87c15667553e497b4796396881fe85058cdd96e4"
+	sha256 hasValue "cbdbb13f5a18bddd7611b176216bb21c3b0bef9e6e324d4a14a0750b14e6e4a0"
+	description hasValue "Cliente MUD Tinyfugue para TinyMUDs, DikuMUDs e LPMUDs."
+	descriptionMd5 hasValue "b99f7a91eaa3f3f4561e40be2a833a2d"
+	depends hasValue "libc6 (>= 2.15), libtinfo6 (>= 6), zlib1g (>= 1:1.1.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__tf,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libtinfo6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__tf,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "zlib1g"
+	comparison hasValue ">="
+	version hasValue "1:1.1.4"
+
+relationInstance depends(P0__tf,2,DepAtom__2)
+

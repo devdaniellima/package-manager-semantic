@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libkf5solid_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libkf5solid_dev memberOf Package
+	package hasValue "libkf5solid-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "160"
+	maintainer hasValue "Original-Debian/Kubuntu Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "5.68.0-0ubuntu1"
+	fileName hasValue "pool/universe/s/solid/libkf5solid-dev_5.68.0-0ubuntu1_amd64.deb"
+	size hasValue "21368"
+	md5sum hasValue "00aadef46d16f9903f220ef332ca84d4"
+	sha1 hasValue "276dc97333fb2c4f07614ddcb14ebef2589f3295"
+	sha256 hasValue "b9a19a7f2bac6da74e85d2ed3cbdf9292df504297d3f65332e731b8cfa6432ea"
+	description hasValue "Qt library to query and control hardware"
+	descriptionMd5 hasValue "7dc236fc00f1a461c4a56518c3570fd4"
+	homepage hasValue "https://projects.kde.org/projects/frameworks/solid"
+	depends hasValue "libkf5solid5 (= 5.68.0-0ubuntu1), qtbase5-dev (>= 5.8.0~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libkf5solid5"
+	comparison hasValue "="
+	version hasValue "5.68.0-0ubuntu1"
+
+relationInstance depends(P0__libkf5solid_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "qtbase5-dev"
+	comparison hasValue ">="
+	version hasValue "5.8.0~"
+
+relationInstance depends(P0__libkf5solid_dev,1,DepAtom__1)
+

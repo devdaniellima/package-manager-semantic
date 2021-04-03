@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libpkgconf3
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libpkgconf3 memberOf Package
+	package hasValue "libpkgconf3"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "104"
+	maintainer hasValue "Original-Andrej Shadura <andrewsh@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.6.3-5"
+	fileName hasValue "pool/universe/p/pkgconf/libpkgconf3_1.6.3-5_amd64.deb"
+	size hasValue "28516"
+	md5sum hasValue "07d62a5a78607966cd37fef016c0d723"
+	sha1 hasValue "1191cb3e20c40a4f737abd5b5beb862e5b227669"
+	sha256 hasValue "8fd712bd3202f06f4c99225544bd9baf2f433fcc607ff406e1cbbbaf45709d92"
+	descriptionMd5 hasValue "c1c9e56a9d100685238d565a6c62b7db"
+	homepage hasValue "https://git.sr.ht/~kaniini/pkgconf"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libpkgconf3,0,DepAtom__0)
+

@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology linux_modules_nvidia_450_server_generic_hwe_20Dot04_edge
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__linux_modules_nvidia_450_server_generic_hwe_20Dot04_edge memberOf Package
+	package hasValue "linux-modules-nvidia-450-server-generic-hwe-20.04-edge"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "restricted/kernel"
+	installedSize hasValue "23"
+	maintainer hasValue "Canonical Kernel Team <kernel-team@lists.ubuntu.com>"
+	architecture hasValue "amd64"
+	version hasValue "5.8.0-45.51~20.04.1+1"
+	provides hasValue "nvidia-dkms-450-server (= 450.102.04-0ubuntu0.20.10.1), nvidia-prebuilt-kernel"
+	fileName hasValue "pool/restricted/l/linux-restricted-modules-hwe-5.8/linux-modules-nvidia-450-server-generic-hwe-20.04-edge_5.8.0-45.51~20.04.1+1_amd64.deb"
+	size hasValue "5528"
+	md5sum hasValue "8330d82432d71a0a4f4256cd7207eed3"
+	sha1 hasValue "ce08bb34bfbf761e40c0d041309b8e1a9f3e8cdd"
+	sha256 hasValue "9af7f9976091741b63ca08b5e73a58775d81c8353c9cce10eb87834c4faeac59"
+	sha512 hasValue "f6f3a4d1107a4621b332c275621a2cf47674c2d0f07858b778fea21343e045c0991c8771bbb14571d48750fbf34553361f1234fb93585cf0d7fcff8856447b0e"
+	descriptionMd5 hasValue "959abe703cf949d1b908104b5f4ac35c"
+	depends hasValue "linux-modules-nvidia-450-server-5.8.0-45-generic (= 5.8.0-45.51~20.04.1+1), nvidia-kernel-common-450-server (<= 450.102.04-1), nvidia-kernel-common-450-server (>= 450.102.04)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "linux-modules-nvidia-450-server-5.8.0-45-generic"
+	comparison hasValue "="
+	version hasValue "5.8.0-45.51~20.04.1+1"
+
+relationInstance depends(P0__linux_modules_nvidia_450_server_generic_hwe_20Dot04_edge,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "nvidia-kernel-common-450-server"
+	comparison hasValue "<="
+	version hasValue "450.102.04-1"
+
+relationInstance depends(P0__linux_modules_nvidia_450_server_generic_hwe_20Dot04_edge,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "nvidia-kernel-common-450-server"
+	comparison hasValue ">="
+	version hasValue "450.102.04"
+
+relationInstance depends(P0__linux_modules_nvidia_450_server_generic_hwe_20Dot04_edge,2,DepAtom__2)
+

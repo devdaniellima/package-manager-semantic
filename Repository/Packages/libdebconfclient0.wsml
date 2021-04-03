@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libdebconfclient0
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libdebconfclient0 memberOf Package
+	package hasValue "libdebconfclient0"
+	packageSource hasValue Source__S1
+	priority hasValue "required"
+	section hasValue "libs"
+	installedSize hasValue "74"
+	maintainer hasValue "Original-Debian Install System Team <debian-boot@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.251ubuntu1"
+	fileName hasValue "pool/main/c/cdebconf/libdebconfclient0_0.251ubuntu1_amd64.deb"
+	size hasValue "6160"
+	md5sum hasValue "8973453567493cab9f8224480a917541"
+	sha1 hasValue "584954056cbcb42d8c9f272c9d9c6e5749be7b05"
+	sha256 hasValue "98cc9975a3e4d9c4f505db3845fff2820337c82ea7c8174d9664d2c36cfef248"
+	description hasValue "Sistema de Gerenciamento de Configuração do Debian (biblioteca da implementação em C)"
+	descriptionMd5 hasValue "b6846d950dc3d5d61a275932cc66b18d"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libdebconfclient0,0,DepAtom__0)
+

@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology flare
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__flare memberOf Package
+	package hasValue "flare"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/games"
+	installedSize hasValue "57"
+	maintainer hasValue "Original-Jan-Hendrik Peters <hennr@hennr.name>"
+	architecture hasValue "all"
+	version hasValue "0.19-1"
+	fileName hasValue "pool/universe/f/flare/flare_0.19-1_all.deb"
+	size hasValue "13098"
+	md5sum hasValue "b98edf4672831fec6df5ced26364ef18"
+	sha1 hasValue "7ae411fe66f0d706bec2cae5dcc7f7a11ffe6978"
+	sha256 hasValue "e1c33d4bfd256afca954b691008b7db3eb643cb8aa1df47842262c55025e9226"
+	descriptionMd5 hasValue "59f4e815f5472b894296c82ffa84b791"
+	homepage hasValue "http://flarerpg.org/"
+	depends hasValue "flare-engine (>= 0.19)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "flare-engine"
+	comparison hasValue ">="
+	version hasValue "0.19"
+
+relationInstance depends(P0__flare,0,DepAtom__0)
+

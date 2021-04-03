@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libkpmcore_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libkpmcore_dev memberOf Package
+	package hasValue "libkpmcore-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "365"
+	maintainer hasValue "Original-Debian KDE Extras Team <pkg-kde-extras@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "4.1.0-2"
+	replaces hasValue "libkpmcore3-dev, libkpmcore4-dev"
+	fileName hasValue "pool/universe/k/kpmcore/libkpmcore-dev_4.1.0-2_amd64.deb"
+	size hasValue "34420"
+	md5sum hasValue "104e04d7eadec85d818ff857c76b949a"
+	sha1 hasValue "006b868bcbef34795d933cb5ba6585729dff5f9a"
+	sha256 hasValue "5de3a1198a03495325ec5b99d313e1f56d2c4292ebf1e40fcb565bca73f5b294"
+	descriptionMd5 hasValue "7b3f5faffa8ed8cc5294d595e79a7b4b"
+	homepage hasValue "https://github.com/KDE/kpmcore"
+	depends hasValue "libatasmart-dev, libkpmcore9 (= 4.1.0-2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libatasmart-dev"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libkpmcore_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libkpmcore9"
+	comparison hasValue "="
+	version hasValue "4.1.0-2"
+
+relationInstance depends(P0__libkpmcore_dev,1,DepAtom__1)
+

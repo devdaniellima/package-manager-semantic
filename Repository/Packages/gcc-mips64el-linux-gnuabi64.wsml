@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gcc_mips64el_linux_gnuabi64
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gcc_mips64el_linux_gnuabi64 memberOf Package
+	package hasValue "gcc-mips64el-linux-gnuabi64"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "25"
+	maintainer hasValue "Original-Debian GCC Maintainers <debian-gcc@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "4:9.2.1-4.1"
+	fileName hasValue "pool/universe/g/gcc-defaults-mipsen/gcc-mips64el-linux-gnuabi64_9.2.1-4.1_amd64.deb"
+	size hasValue "1432"
+	md5sum hasValue "8964d9a708ea9f31cd4e1c632ca72f50"
+	sha1 hasValue "e7fcd74d3e27dcefe8dfb6bb9cd37d7a01fe5088"
+	sha256 hasValue "9deb46d70bb1c59c594348d260928420171505a9ae165ebc4e550e77a1acbf94"
+	description hasValue "GNU C compiler for the mips64el architecture"
+	descriptionMd5 hasValue "bf957c91207d05b289c20c7079f38391"
+	depends hasValue "cpp-mips64el-linux-gnuabi64 (= 4:9.2.1-4.1), gcc-9-mips64el-linux-gnuabi64 (>= 9.2.1-1~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "cpp-mips64el-linux-gnuabi64"
+	comparison hasValue "="
+	version hasValue "4:9.2.1-4.1"
+
+relationInstance depends(P0__gcc_mips64el_linux_gnuabi64,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "gcc-9-mips64el-linux-gnuabi64"
+	comparison hasValue ">="
+	version hasValue "9.2.1-1~"
+
+relationInstance depends(P0__gcc_mips64el_linux_gnuabi64,1,DepAtom__1)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology node_promzard
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__node_promzard memberOf Package
+	package hasValue "node-promzard"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/javascript"
+	installedSize hasValue "36"
+	maintainer hasValue "Original-Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.3.0-1"
+	fileName hasValue "pool/universe/n/node-promzard/node-promzard_0.3.0-1_all.deb"
+	size hasValue "9004"
+	md5sum hasValue "b522b576b7afb75b920c9a7eed0190f3"
+	sha1 hasValue "8ee625135be1fd8650a3d49723b44a61fa6865e3"
+	sha256 hasValue "cc8a5db46c77ea53ad3c72160b10e3576734d3f53a5688bb4547dc1acb722578"
+	descriptionMd5 hasValue "92bd72d1d03e415613417c59f7626ca4"
+	homepage hasValue "https://github.com/isaacs/promzard"
+	depends hasValue "nodejs, node-read (>= 1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "nodejs"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__node_promzard,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "node-read"
+	comparison hasValue ">="
+	version hasValue "1"
+
+relationInstance depends(P0__node_promzard,1,DepAtom__1)
+

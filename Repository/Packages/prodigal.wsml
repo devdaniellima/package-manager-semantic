@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology prodigal
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__prodigal memberOf Package
+	package hasValue "prodigal"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/science"
+	installedSize hasValue "11928"
+	maintainer hasValue "Original-Debian Med Packaging Team <debian-med-packaging@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "Metagenomic Prodigal can run in metagenomic mode and analyze"
+	fileName hasValue "pool/universe/p/prodigal/prodigal_2.6.3-4_amd64.deb"
+	size hasValue "691520"
+	md5sum hasValue "4eef915699e2451e977cb8ae09d76b23"
+	sha1 hasValue "816e2a9bb3d3d7d6cfe416cee2ac8cd2142fc6a6"
+	sha256 hasValue "c2146b2cf3aefe4808939dacf2acd6eaeb982ca23a80739ecfacff9c507776a0"
+	descriptionMd5 hasValue "17547e924925fa3b22bf27a8a6cf1be5"
+	homepage hasValue "http://prodigal.ornl.gov/"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__prodigal,0,DepAtom__0)
+

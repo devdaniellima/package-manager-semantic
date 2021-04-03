@@ -1,0 +1,63 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology mono_runtime_dbg
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__mono_runtime_dbg memberOf Package
+	package hasValue "mono-runtime-dbg"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/debug"
+	installedSize hasValue "60083"
+	maintainer hasValue "Original-Debian Mono Group <pkg-mono-group@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "6.8.0.105+dfsg-2"
+	replaces hasValue "mono-jit-dbg (<< 2.4)"
+	conflicts hasValue "mono-jit-dbg (<< 2.4)"
+	fileName hasValue "pool/universe/m/mono/mono-runtime-dbg_6.8.0.105+dfsg-2_amd64.deb"
+	size hasValue "13842152"
+	md5sum hasValue "ec9633a6bd1127ca1fc866e0f67b3f61"
+	sha1 hasValue "1016d81cd9d96590b2ab758ae1c7c7a4d2f9e8bf"
+	sha256 hasValue "e739a5613698b653c53c4a736de22278c3dbf9559907d31248a7dbdd2f65c852"
+	description hasValue "Mono runtime, debugging symbols"
+	descriptionMd5 hasValue "0f5b756bd9c313fa705058f5c7b6d0a6"
+	homepage hasValue "http://www.mono-project.com/"
+	depends hasValue "mono-runtime-sgen (= 6.8.0.105+dfsg-2), mono-runtime-boehm (= 6.8.0.105+dfsg-2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "mono-runtime-sgen"
+	comparison hasValue "="
+	version hasValue "6.8.0.105+dfsg-2"
+
+relationInstance depends(P0__mono_runtime_dbg,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "mono-runtime-boehm"
+	comparison hasValue "="
+	version hasValue "6.8.0.105+dfsg-2"
+
+relationInstance depends(P0__mono_runtime_dbg,1,DepAtom__1)
+

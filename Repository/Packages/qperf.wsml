@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology qperf
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__qperf memberOf Package
+	package hasValue "qperf"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "170"
+	maintainer hasValue "Original-Debian HPC team <debian-hpc@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.4.11-2"
+	fileName hasValue "pool/universe/q/qperf/qperf_0.4.11-2_amd64.deb"
+	size hasValue "54316"
+	md5sum hasValue "3c9d321020344576b09ce07e241727a1"
+	sha1 hasValue "a969fca5278b8340f3f7054bb358a9d8e0eabacc"
+	sha256 hasValue "d61212ecc4d1459ba4f4eadefdbdc44e0f511f0c83a42cebdc37759d26fb6eae"
+	descriptionMd5 hasValue "9b8f8900d41257ea7c0db714d4e0e373"
+	homepage hasValue "https://github.com/linux-rdma/qperf"
+	depends hasValue "libc6 (>= 2.15), libibverbs1 (>= 1.1.6), librdmacm1 (>= 1.0.19)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__qperf,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libibverbs1"
+	comparison hasValue ">="
+	version hasValue "1.1.6"
+
+relationInstance depends(P0__qperf,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "librdmacm1"
+	comparison hasValue ">="
+	version hasValue "1.0.19"
+
+relationInstance depends(P0__qperf,2,DepAtom__2)
+

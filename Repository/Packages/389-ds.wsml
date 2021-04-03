@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology 389_ds
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__389_ds memberOf Package
+	package hasValue "389-ds"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "50"
+	maintainer hasValue "Original-Debian FreeIPA Team <pkg-freeipa-devel@alioth-lists.debian.net>"
+	architecture hasValue "all"
+	version hasValue "1.4.3.6-2"
+	fileName hasValue "pool/universe/3/389-ds-base/389-ds_1.4.3.6-2_all.deb"
+	size hasValue "11392"
+	md5sum hasValue "549c37737f6688757e7b4cd32918039e"
+	sha1 hasValue "cc3d56ebcc7341057ece3f5c50e9b137ebae617b"
+	sha256 hasValue "a169d647377430b8d388cdd905a70fedcfafb39e4276d483061ead45360ad0e2"
+	descriptionMd5 hasValue "72b0f037b5c7bab3e3a681a127817467"
+	homepage hasValue "https://directory.fedoraproject.org"
+	depends hasValue "389-ds-base, cockpit-389-ds"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "389-ds-base"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__389_ds,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "cockpit-389-ds"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__389_ds,1,DepAtom__1)
+

@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology untex
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__untex memberOf Package
+	package hasValue "untex"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/tex"
+	installedSize hasValue "30"
+	maintainer hasValue "Original-Jari Aalto <jari.aalto@cante.net>"
+	architecture hasValue "amd64"
+	version hasValue "1:1.2-6"
+	fileName hasValue "pool/universe/u/untex/untex_1.2-6_amd64.deb"
+	size hasValue "10484"
+	md5sum hasValue "420d635af93b6c9cc4234f33a201cafd"
+	sha1 hasValue "2c7be70bd5ee5b1011b256c80fed95c0767c3af0"
+	sha256 hasValue "a3e5c8ede8b2768f12e65a3940eae86dc59dc26d68026a37652efe65bc19af55"
+	descriptionMd5 hasValue "7bc110668f441aefc765345150cdf56c"
+	homepage hasValue "http://www.ctan.org/pkg/untex"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__untex,0,DepAtom__0)
+

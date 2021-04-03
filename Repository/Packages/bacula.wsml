@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology bacula
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__bacula memberOf Package
+	package hasValue "bacula"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "6"
+	maintainer hasValue "Original-Debian Bacula Team <pkg-bacula-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "9.4.2-2ubuntu5"
+	fileName hasValue "pool/universe/b/bacula/bacula_9.4.2-2ubuntu5_all.deb"
+	size hasValue "1240"
+	md5sum hasValue "365b200aa7e6b589e2a82037a5209c89"
+	sha1 hasValue "cdde41ddad3c6d0a676fc4dd55290a4ad66d0744"
+	sha256 hasValue "cde979dfc7538810c03fea420d0c8c478d549135f6e6b3027344a139c418c5c2"
+	descriptionMd5 hasValue "67b9d5f42cb2fef261b3f6467efb517d"
+	homepage hasValue "http://www.bacula.org/"
+	depends hasValue "bacula-client, bacula-server (= 9.4.2-2ubuntu5)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "bacula-client"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__bacula,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "bacula-server"
+	comparison hasValue "="
+	version hasValue "9.4.2-2ubuntu5"
+
+relationInstance depends(P0__bacula,1,DepAtom__1)
+

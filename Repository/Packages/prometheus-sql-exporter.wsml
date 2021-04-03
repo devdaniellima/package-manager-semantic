@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology prometheus_sql_exporter
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__prometheus_sql_exporter memberOf Package
+	package hasValue "prometheus-sql-exporter"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/database"
+	installedSize hasValue "8817"
+	maintainer hasValue "Original-Debian PostgreSQL Maintainers <team+postgresql@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.2.0.ds-6"
+	fileName hasValue "pool/universe/p/prometheus-sql-exporter/prometheus-sql-exporter_0.2.0.ds-6_amd64.deb"
+	size hasValue "2374012"
+	md5sum hasValue "033a8eb9107674161cb3453a71173e59"
+	sha1 hasValue "d9e18e3a857e62226d70745fc62a851bd16c4f7a"
+	sha256 hasValue "08a992ee4b67edde0c8b1babd7ace5669ae70ad5b1efafeb0abb20937b16eef6"
+	descriptionMd5 hasValue "9263de1244ec588d0b84cd1488f1ffc4"
+	homepage hasValue "https://github.com/credativ/sql_exporter"
+	depends hasValue "postgresql-common, libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "postgresql-common"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__prometheus_sql_exporter,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__prometheus_sql_exporter,1,DepAtom__1)
+

@@ -1,0 +1,55 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology sharutils
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__sharutils memberOf Package
+	package hasValue "sharutils"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "utils"
+	installedSize hasValue "688"
+	maintainer hasValue "Original-Santiago Vila <sanvila@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:4.15.2-4build1"
+	conflicts hasValue "shar, uuencode"
+	fileName hasValue "pool/main/s/sharutils/sharutils_4.15.2-4build1_amd64.deb"
+	size hasValue "154640"
+	md5sum hasValue "bc96b1b59f35c0c629a7bbb8bb155161"
+	sha1 hasValue "ab9d6efba2747cf29428709759f49ae4a508693a"
+	sha256 hasValue "64eb5fb841c9b3f5583a29920ad258a561ade10229d11c48f154ad8aa773f7a2"
+	description hasValue "shar, unshar, uuencode, uudecode."
+	descriptionMd5 hasValue "a3a4ed873198b8a52375099d19def9a1"
+	homepage hasValue "http://www.gnu.org/software/sharutils/"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__sharutils,0,DepAtom__0)
+

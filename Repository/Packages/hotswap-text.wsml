@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology hotswap_text
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__hotswap_text memberOf Package
+	package hasValue "hotswap-text"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "100"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.4.0-15build1"
+	replaces hasValue "hotswap (<< 0.4.0)"
+	fileName hasValue "pool/universe/h/hotswap/hotswap-text_0.4.0-15build1_amd64.deb"
+	size hasValue "23476"
+	md5sum hasValue "2c6ff5bfda8b67021d4185d2fa3e8eb5"
+	sha1 hasValue "f38dcd80770fc259dd9598589eec57e201cc762b"
+	sha256 hasValue "7345fc002128dd053029e996d905ca3d9f428ced4bacb2d674fc753567d55af7"
+	descriptionMd5 hasValue "bb5cbdf1d637d1356e6685d986c50fee"
+	homepage hasValue "http://timstadelmann.de/hotswap.html"
+	depends hasValue "libc6 (>= 2.4), libxml2 (>= 2.7.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__hotswap_text,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libxml2"
+	comparison hasValue ">="
+	version hasValue "2.7.4"
+
+relationInstance depends(P0__hotswap_text,1,DepAtom__1)
+

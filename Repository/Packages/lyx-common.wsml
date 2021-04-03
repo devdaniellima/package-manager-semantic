@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology lyx_common
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__lyx_common memberOf Package
+	package hasValue "lyx-common"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/editors"
+	installedSize hasValue "46936"
+	maintainer hasValue "Original-Dr. Tobias Quathamer <toddy@debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.3.4.2-2"
+	fileName hasValue "pool/universe/l/lyx/lyx-common_2.3.4.2-2_all.deb"
+	size hasValue "10448200"
+	md5sum hasValue "69a669fa4e7f030e9f4ed984b9391396"
+	sha1 hasValue "71d9c41fff9a834ecf23a070ae0b16ba0c4fde3c"
+	sha256 hasValue "3c863d0246f35eb50f2e7502a5889fa335ed776441fea9e5352535eca44b6fe5"
+	descriptionMd5 hasValue "05751d4518079e93eb479a02877c43a8"
+	homepage hasValue "https://www.lyx.org/"
+	depends hasValue "tex-common (>= 6.13), python3:any"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "tex-common"
+	comparison hasValue ">="
+	version hasValue "6.13"
+
+relationInstance depends(P0__lyx_common,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__lyx_common,1,DepAtom__1)
+

@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology packit
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__packit memberOf Package
+	package hasValue "packit"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "95"
+	maintainer hasValue "Original-Joao Eriberto Mota Filho <eriberto@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.7-1"
+	fileName hasValue "pool/universe/p/packit/packit_1.7-1_amd64.deb"
+	size hasValue "35672"
+	md5sum hasValue "be56108e22beb12503dd2b46e7c230c8"
+	sha1 hasValue "bf9e70a74f306ae91d0ceab603033e7bedf65370"
+	sha256 hasValue "61df30700d8dd1329ccf05f9665decdf37486dc403da14fa95f69877390e7bb1"
+	descriptionMd5 hasValue "dc11a6dc47422fc1f62b6f3b45a73aa9"
+	homepage hasValue "https://github.com/resurrecting-open-source-projects/packit"
+	depends hasValue "libc6 (>= 2.4), libnet1 (>= 1.1.2.1), libpcap0.8 (>= 0.9.8)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__packit,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libnet1"
+	comparison hasValue ">="
+	version hasValue "1.1.2.1"
+
+relationInstance depends(P0__packit,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libpcap0.8"
+	comparison hasValue ">="
+	version hasValue "0.9.8"
+
+relationInstance depends(P0__packit,2,DepAtom__2)
+

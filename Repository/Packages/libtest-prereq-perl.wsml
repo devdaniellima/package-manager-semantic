@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libtest_prereq_perl
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libtest_prereq_perl memberOf Package
+	package hasValue "libtest-prereq-perl"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/perl"
+	installedSize hasValue "40"
+	maintainer hasValue "Original-Debian Perl Group <pkg-perl-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.003-1"
+	fileName hasValue "pool/universe/libt/libtest-prereq-perl/libtest-prereq-perl_2.003-1_all.deb"
+	size hasValue "15112"
+	md5sum hasValue "9a6944725b2cef62c3a508138100fd19"
+	sha1 hasValue "ccc9973fd2b697524cdda64cb1646bb533e43b94"
+	sha256 hasValue "dfabdfb4380bc88e128c72c0572e48ad740ca18c4796379f55bb1bc3ed192b13"
+	descriptionMd5 hasValue "cd1a78dc665258d81b40289e8830b397"
+	homepage hasValue "https://metacpan.org/release/Test-Prereq"
+	depends hasValue "perl (>= 5.22.0), libmodule-build-perl, libmodule-extract-use-perl"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "perl"
+	comparison hasValue ">="
+	version hasValue "5.22.0"
+
+relationInstance depends(P0__libtest_prereq_perl,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libmodule-build-perl"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libtest_prereq_perl,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libmodule-extract-use-perl"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libtest_prereq_perl,2,DepAtom__2)
+

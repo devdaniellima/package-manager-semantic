@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology r_cran_date
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__r_cran_date memberOf Package
+	package hasValue "r-cran-date"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/math"
+	installedSize hasValue "95"
+	maintainer hasValue "Original-Dirk Eddelbuettel <edd@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.2.39-1"
+	fileName hasValue "pool/universe/d/date/r-cran-date_1.2.39-1_amd64.deb"
+	size hasValue "49484"
+	md5sum hasValue "d3bef70ad3ee063ca149da45901c2f3b"
+	sha1 hasValue "904dbf2fd344d82fb6282cb59c275d20ce243e29"
+	sha256 hasValue "0c5343cd33b7ca0cddfd2152636b74b7acf28c191fe67b02ce6053088a0e22fc"
+	descriptionMd5 hasValue "16b788c71da8bdb0943897dd9f8ba810"
+	homepage hasValue "https://cran.r-project.org/package=date"
+	depends hasValue "libc6 (>= 2.4), r-base-core (>= 3.6.2-2), r-api-3.5"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__r_cran_date,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "r-base-core"
+	comparison hasValue ">="
+	version hasValue "3.6.2-2"
+
+relationInstance depends(P0__r_cran_date,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "r-api-3.5"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__r_cran_date,2,DepAtom__2)
+

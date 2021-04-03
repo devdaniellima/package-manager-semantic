@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python_flaky
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python_flaky memberOf Package
+	package hasValue "python-flaky"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "86"
+	maintainer hasValue "Original-Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "3.6.1-1build1"
+	fileName hasValue "pool/universe/p/python-flaky/python-flaky_3.6.1-1build1_all.deb"
+	size hasValue "15160"
+	md5sum hasValue "ab5a5167d9dca99fdba416ef91e9807e"
+	sha1 hasValue "417f797ba5989448c4edd8487e495b45f6811f9a"
+	sha256 hasValue "b55538666c7dcce35dd410fca879b6d8d82d9a4fb0cc1b33ace42b9fd05a2dc8"
+	descriptionMd5 hasValue "f02362426a713a3d885ae3118f8526fc"
+	homepage hasValue "https://github.com/box/flaky"
+	depends hasValue "python2:any (<< 2.8), python2:any (>= 2.7~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue "<<"
+	version hasValue "2.8"
+
+relationInstance depends(P0__python_flaky,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue ">="
+	version hasValue "2.7~"
+
+relationInstance depends(P0__python_flaky,1,DepAtom__1)
+

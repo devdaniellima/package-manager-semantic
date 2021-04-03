@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology wine32_development
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__wine32_development memberOf Package
+	package hasValue "wine32-development"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/otherosfs"
+	installedSize hasValue "668"
+	maintainer hasValue "Original-Debian Wine Party <debian-wine@lists.debian.org>"
+	architecture hasValue "i386"
+	version hasValue "5.5-3ubuntu1"
+	fileName hasValue "pool/universe/w/wine-development/wine32-development_5.5-3ubuntu1_i386.deb"
+	size hasValue "201368"
+	md5sum hasValue "d8191e7419f4b931ae98dc1202bd4e4e"
+	sha1 hasValue "71da5d36bdaabe0e2536109b859ffc7e2813a9be"
+	sha256 hasValue "661c08ea903df62789a282a1a9d59c0aa2b47785ba00e9c802149264a2bd4431"
+	description hasValue "implementação da API do Windows - carregador de binário 32-bit"
+	descriptionMd5 hasValue "6f28cbab79bb4fb84526de688bbbb0dc"
+	homepage hasValue "https://www.winehq.org"
+	depends hasValue "libc6 (>= 2.28), libwine-development (= 5.5-3ubuntu1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.28"
+
+relationInstance depends(P0__wine32_development,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libwine-development"
+	comparison hasValue "="
+	version hasValue "5.5-3ubuntu1"
+
+relationInstance depends(P0__wine32_development,1,DepAtom__1)
+

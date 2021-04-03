@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology jedit
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__jedit memberOf Package
+	package hasValue "jedit"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/editors"
+	installedSize hasValue "11197"
+	maintainer hasValue "Original-Debian Java Maintainers <pkg-java-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "5.5.0+dfsg-1"
+	fileName hasValue "pool/universe/j/jedit/jedit_5.5.0+dfsg-1_all.deb"
+	size hasValue "2348244"
+	md5sum hasValue "8799bc4ed4f13b766ceb122f65820203"
+	sha1 hasValue "07614a9befdce7ad5a46573ae99e9534dbce189d"
+	sha256 hasValue "d2c556899d1451d74a6d006861bb524ccb3d87c8196cee0d7a83eee9d69192d1"
+	descriptionMd5 hasValue "eb137161fe733c50e24507a41acb14ce"
+	homepage hasValue "http://www.jedit.org/"
+	depends hasValue "java-wrappers (>= 0.1.14), default-jre (>= 2:1.7) | java7-runtime"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "java-wrappers"
+	comparison hasValue ">="
+	version hasValue "0.1.14"
+
+relationInstance depends(P0__jedit,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "default-jre"
+	comparison hasValue ">="
+	version hasValue "2:1.7"
+
+relationInstance depends(P0__jedit,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "java7-runtime"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__jedit,1,DepAtom__2)
+

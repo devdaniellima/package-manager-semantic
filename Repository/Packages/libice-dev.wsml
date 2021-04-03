@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libice_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libice_dev memberOf Package
+	package hasValue "libice-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libdevel"
+	installedSize hasValue "227"
+	maintainer hasValue "Original-Debian X Strike Force <debian-x@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2:1.0.10-0ubuntu1"
+	fileName hasValue "pool/main/libi/libice/libice-dev_1.0.10-0ubuntu1_amd64.deb"
+	size hasValue "47800"
+	md5sum hasValue "1d28546294cc76b4d1dbeb80b4706493"
+	sha1 hasValue "5a8974360c1bac8460f6bff8e2a1cc9190544161"
+	sha256 hasValue "d78016a0ae0fedb408da0e8056c4b8409920b58654d2e37935f422b545dba724"
+	description hasValue "X11 Inter-Client Exchange library (development headers)"
+	descriptionMd5 hasValue "9ef50bcec7f1e713478c714843229850"
+	depends hasValue "libice6 (= 2:1.0.10-0ubuntu1), x11proto-core-dev"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libice6"
+	comparison hasValue "="
+	version hasValue "2:1.0.10-0ubuntu1"
+
+relationInstance depends(P0__libice_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "x11proto-core-dev"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libice_dev,1,DepAtom__1)
+

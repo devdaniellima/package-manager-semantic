@@ -1,0 +1,75 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology udunits_bin
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__udunits_bin memberOf Package
+	package hasValue "udunits-bin"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "173"
+	maintainer hasValue "Original-Alastair McKinstry <mckinstry@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.2.26-5"
+	replaces hasValue "libudunits2-0 (<= 2.2.26-2)"
+	fileName hasValue "pool/universe/u/udunits/udunits-bin_2.2.26-5_amd64.deb"
+	size hasValue "130508"
+	md5sum hasValue "e1f43502d9c1b0a7b3354ad444069368"
+	sha1 hasValue "627abcdff27e8533d9dfbb53da37a16b5e650e42"
+	sha256 hasValue "eb0d14c88637b79d0d85b28b3017cd5745b42b3f62115d1421af95ea1cc48e21"
+	descriptionMd5 hasValue "be52bef37b68f39f66da8bd9d7252602"
+	homepage hasValue "https://www.unidata.ucar.edu/software/udunits/"
+	depends hasValue "libc6 (>= 2.4), libudunits2-0 (>= 2.2.14), dpkg (>= 1.15.4) | install-info"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__udunits_bin,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libudunits2-0"
+	comparison hasValue ">="
+	version hasValue "2.2.14"
+
+relationInstance depends(P0__udunits_bin,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "dpkg"
+	comparison hasValue ">="
+	version hasValue "1.15.4"
+
+relationInstance depends(P0__udunits_bin,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "install-info"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__udunits_bin,2,DepAtom__3)
+

@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libsphde1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libsphde1 memberOf Package
+	package hasValue "libsphde1"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "216"
+	maintainer hasValue "Original-Frédéric Bonnard <frediz@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.4.0-2build1"
+	fileName hasValue "pool/universe/s/sphde/libsphde1_1.4.0-2build1_amd64.deb"
+	size hasValue "60112"
+	md5sum hasValue "92b903f1cc1bf1acb4c22579cd572f4e"
+	sha1 hasValue "6e77163f9b4e83c102871a7bbdc0c8349a7e9b2a"
+	sha256 hasValue "beea3ebd776a7c17c22330bea924e7c26bb91f664e3f8bd904a82aa8e8d8219c"
+	descriptionMd5 hasValue "32cb741ec854dc719b4fd90ef6d4facf"
+	homepage hasValue "https://github.com/sphde/sphde"
+	depends hasValue "libc6 (>= 2.17), libgcc-s1 (>= 3.4), libstdc++6 (>= 4.1.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.17"
+
+relationInstance depends(P0__libsphde1,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgcc-s1"
+	comparison hasValue ">="
+	version hasValue "3.4"
+
+relationInstance depends(P0__libsphde1,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "4.1.1"
+
+relationInstance depends(P0__libsphde1,2,DepAtom__2)
+

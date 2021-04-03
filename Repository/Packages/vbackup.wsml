@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology vbackup
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__vbackup memberOf Package
+	package hasValue "vbackup"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "186"
+	maintainer hasValue "Original-Stefanos Harhalakis <v13@v13.gr>"
+	architecture hasValue "all"
+	version hasValue "1.0.1-1.1"
+	fileName hasValue "pool/universe/v/vbackup/vbackup_1.0.1-1.1_all.deb"
+	size hasValue "36208"
+	md5sum hasValue "7003f853971a57c7807a4c5929053fc3"
+	sha1 hasValue "394b16caabb4be9f472f48c2a03ccbad66e733e8"
+	sha256 hasValue "e8d3fd5a9e84a8110f60a56bce914c8b4b8de04afc7060debacd6d292634e281"
+	descriptionMd5 hasValue "732a9eaca2c0bf41bcff6f5b772fe5ee"
+	homepage hasValue "http://www.v13.gr/"
+	depends hasValue "fdisk | util-linux (<< 2.29.2-3~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "fdisk"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__vbackup,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "util-linux"
+	comparison hasValue "<<"
+	version hasValue "2.29.2-3~"
+
+relationInstance depends(P0__vbackup,0,DepAtom__1)
+

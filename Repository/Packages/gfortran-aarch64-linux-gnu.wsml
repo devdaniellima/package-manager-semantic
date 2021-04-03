@@ -1,0 +1,66 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gfortran_aarch64_linux_gnu
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gfortran_aarch64_linux_gnu memberOf Package
+	package hasValue "gfortran-aarch64-linux-gnu"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "11"
+	maintainer hasValue "Original-Debian GCC Maintainers <debian-gcc@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "4:9.3.0-1ubuntu2"
+	fileName hasValue "pool/universe/g/gcc-defaults/gfortran-aarch64-linux-gnu_9.3.0-1ubuntu2_amd64.deb"
+	size hasValue "1192"
+	md5sum hasValue "3b525b2dcd771584ef0971743c4216e5"
+	sha1 hasValue "b1d0ea84e895070f5215d6efb7e6900f14ad42cf"
+	sha256 hasValue "ad3c19b4b67460e495bedf2c8c4d96a827e2247faa021ea4e40c98541a305b43"
+	descriptionMd5 hasValue "120eb5471ff675fc8ae06a2f862ebad9"
+	depends hasValue "cpp-aarch64-linux-gnu (= 4:9.3.0-1ubuntu2), gcc-aarch64-linux-gnu (= 4:9.3.0-1ubuntu2), gfortran-9-aarch64-linux-gnu (>= 9.3.0-3~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "cpp-aarch64-linux-gnu"
+	comparison hasValue "="
+	version hasValue "4:9.3.0-1ubuntu2"
+
+relationInstance depends(P0__gfortran_aarch64_linux_gnu,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "gcc-aarch64-linux-gnu"
+	comparison hasValue "="
+	version hasValue "4:9.3.0-1ubuntu2"
+
+relationInstance depends(P0__gfortran_aarch64_linux_gnu,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "gfortran-9-aarch64-linux-gnu"
+	comparison hasValue ">="
+	version hasValue "9.3.0-3~"
+
+relationInstance depends(P0__gfortran_aarch64_linux_gnu,2,DepAtom__2)
+

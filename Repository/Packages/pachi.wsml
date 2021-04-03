@@ -1,0 +1,74 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology pachi
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__pachi memberOf Package
+	package hasValue "pachi"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/games"
+	installedSize hasValue "91"
+	maintainer hasValue "Original-Martin A. Godisch <godisch@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:1.0-9build1"
+	fileName hasValue "pool/universe/p/pachi/pachi_1.0-9build1_amd64.deb"
+	size hasValue "26932"
+	md5sum hasValue "21aa4e06cfdb3aa12bc0fb822e9009d7"
+	sha1 hasValue "bcd764b4b1dfd9afe9266fd4ad5036e99ebcad0e"
+	sha256 hasValue "0741cc2f1f466b3a91b34d34cce22639c7cde76f4c1e23d98e53c3902551fbdf"
+	descriptionMd5 hasValue "dd13e6b8d4d8ad80c044506b562d6afc"
+	homepage hasValue "http://dragontech.sourceforge.net/"
+	depends hasValue "pachi-data (= 1:1.0-9build1), libc6 (>= 2.4), libsdl-mixer1.2, libsdl1.2debian (>= 1.2.11)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "pachi-data"
+	comparison hasValue "="
+	version hasValue "1:1.0-9build1"
+
+relationInstance depends(P0__pachi,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__pachi,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libsdl-mixer1.2"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__pachi,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "libsdl1.2debian"
+	comparison hasValue ">="
+	version hasValue "1.2.11"
+
+relationInstance depends(P0__pachi,3,DepAtom__3)
+

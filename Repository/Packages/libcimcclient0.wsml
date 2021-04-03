@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libcimcclient0
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libcimcclient0 memberOf Package
+	package hasValue "libcimcclient0"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "185"
+	maintainer hasValue "Ubuntu developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	architecture hasValue "amd64"
+	version hasValue "2.2.8-0ubuntu2"
+	fileName hasValue "pool/universe/s/sblim-sfcc/libcimcclient0_2.2.8-0ubuntu2_amd64.deb"
+	size hasValue "61572"
+	md5sum hasValue "d12496e203364b78511ecb5e0b0a6382"
+	sha1 hasValue "3ab170060df068ce2dff0b51413d5239ca54f9d1"
+	sha256 hasValue "14b9ac374f88bd44e57395e87faa76d99d02e242c813fe30083d5bbfafec5870"
+	descriptionMd5 hasValue "c02a03b6670270bfaf0ae2439de8e9a1"
+	homepage hasValue "http://sblim.sourceforge.net/wiki/index.php/Sfcc"
+	depends hasValue "libc6 (>= 2.15), libcurl4 (>= 7.16.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__libcimcclient0,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libcurl4"
+	comparison hasValue ">="
+	version hasValue "7.16.2"
+
+relationInstance depends(P0__libcimcclient0,1,DepAtom__1)
+

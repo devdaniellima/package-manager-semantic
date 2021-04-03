@@ -1,0 +1,66 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology uphpmvault
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__uphpmvault memberOf Package
+	package hasValue "uphpmvault"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "40"
+	maintainer hasValue "Original-Marc Singer <elf@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.8build2"
+	fileName hasValue "pool/universe/u/uphpmvault/uphpmvault_0.8build2_amd64.deb"
+	size hasValue "10860"
+	md5sum hasValue "9928cf59360e8182e59f2374af0cfd03"
+	sha1 hasValue "bd6ab5fd0117842611bde884763aee62058fae75"
+	sha256 hasValue "ee0245953d2aab905cbcc2b9c213aa32fbc693365aada4baa985fca7cefd2a75"
+	descriptionMd5 hasValue "95c38a3397e4c00c122f3b5cdc7f3d61"
+	depends hasValue "libc6 (>= 2.4), libgcc-s1 (>= 3.0), libstdc++6 (>= 5)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__uphpmvault,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgcc-s1"
+	comparison hasValue ">="
+	version hasValue "3.0"
+
+relationInstance depends(P0__uphpmvault,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "5"
+
+relationInstance depends(P0__uphpmvault,2,DepAtom__2)
+

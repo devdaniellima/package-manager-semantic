@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology r_cran_bitops
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__r_cran_bitops memberOf Package
+	package hasValue "r-cran-bitops"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/math"
+	installedSize hasValue "65"
+	maintainer hasValue "Original-Debian R Packages Maintainers <r-pkg-team@alioth-lists.debian.net>"
+	architecture hasValue "amd64"
+	version hasValue "1.0-6-4"
+	fileName hasValue "pool/universe/r/r-cran-bitops/r-cran-bitops_1.0-6-4_amd64.deb"
+	size hasValue "23488"
+	md5sum hasValue "abe9a8b312b5e959ac08ae1503d3a670"
+	sha1 hasValue "a091db5bc68491a6f7990291267612f1aa3d20ec"
+	sha256 hasValue "07a018e7b1d41c70c8b5aa5a97b2bb7468883c8c5e5e59073d82c943eab5b8e7"
+	descriptionMd5 hasValue "c14b326da205c671a6adfbed4dc0b2f8"
+	homepage hasValue "https://cran.r-project.org/package=bitops"
+	depends hasValue "r-base-core (>= 3.5.0-5), r-api-3.5"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "r-base-core"
+	comparison hasValue ">="
+	version hasValue "3.5.0-5"
+
+relationInstance depends(P0__r_cran_bitops,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "r-api-3.5"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__r_cran_bitops,1,DepAtom__1)
+

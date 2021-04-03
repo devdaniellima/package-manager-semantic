@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology r_cran_tsne
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__r_cran_tsne memberOf Package
+	package hasValue "r-cran-tsne"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/gnu-r"
+	installedSize hasValue "54"
+	maintainer hasValue "Original-Debian R Packages Maintainers <r-pkg-team@alioth-lists.debian.net>"
+	architecture hasValue "all"
+	version hasValue "0.1-3-2"
+	fileName hasValue "pool/universe/r/r-cran-tsne/r-cran-tsne_0.1-3-2_all.deb"
+	size hasValue "22940"
+	md5sum hasValue "84983947c05bc5b663f8bd08b623f8ff"
+	sha1 hasValue "2551b56c85975500f14d69782651d8f781998024"
+	sha256 hasValue "5d7a6e7e762243f9d8ecc606a192acbebde866181ce855214bea38b67a987328"
+	descriptionMd5 hasValue "4b2124c3a3dc946f4bebf26939a23b33"
+	homepage hasValue "https://cran.r-project.org/package=tsne"
+	depends hasValue "r-base-core (>= 3.6.2-2build1), r-api-3.5"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "r-base-core"
+	comparison hasValue ">="
+	version hasValue "3.6.2-2build1"
+
+relationInstance depends(P0__r_cran_tsne,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "r-api-3.5"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__r_cran_tsne,1,DepAtom__1)
+

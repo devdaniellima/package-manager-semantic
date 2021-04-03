@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libndpi_wireshark
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libndpi_wireshark memberOf Package
+	package hasValue "libndpi-wireshark"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "69"
+	maintainer hasValue "Original-Ludovico Cavedon <cavedon@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.6-5"
+	fileName hasValue "pool/universe/n/ndpi/libndpi-wireshark_2.6-5_amd64.deb"
+	size hasValue "13008"
+	md5sum hasValue "d0b687db6c267743253e7542fe32f2da"
+	sha1 hasValue "db8ebfc8a3d0e6800eb9d3cc722b1d0f018266c9"
+	sha256 hasValue "b8a1f8091f33319b215aecae88b393b5b83742696a29ede562b7c986352d2ac1"
+	descriptionMd5 hasValue "809b9def1ac7d2d84b4cbd9d358ba15a"
+	homepage hasValue "http://www.ntop.org/products/ndpi/"
+	depends hasValue "libndpi-bin (>= 2.6-5)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libndpi-bin"
+	comparison hasValue ">="
+	version hasValue "2.6-5"
+
+relationInstance depends(P0__libndpi_wireshark,0,DepAtom__0)
+

@@ -1,0 +1,74 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python3_yara
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python3_yara memberOf Package
+	package hasValue "python3-yara"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "60"
+	maintainer hasValue "Original-Hilko Bengen <bengen@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.11.0-1build1"
+	fileName hasValue "pool/universe/y/yara-python/python3-yara_3.11.0-1build1_amd64.deb"
+	size hasValue "15660"
+	md5sum hasValue "150f2f4b7b7532769bae1dbdc4991b54"
+	sha1 hasValue "1b0c6d8298c1edea40f8ebd01bf28a6b10088186"
+	sha256 hasValue "d6298164c556382b6f414a95d59db274181a074a61d4ec3bdb7303b08455c5f1"
+	descriptionMd5 hasValue "8eac54637ea2bdec5cbc8b1458177d2f"
+	homepage hasValue "https://pypi.python.org/pypi/yara-python"
+	depends hasValue "python3 (<< 3.9), python3 (>= 3.8~), libc6 (>= 2.14), libyara3 (>= 3.7.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3"
+	comparison hasValue "<<"
+	version hasValue "3.9"
+
+relationInstance depends(P0__python3_yara,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3"
+	comparison hasValue ">="
+	version hasValue "3.8~"
+
+relationInstance depends(P0__python3_yara,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__python3_yara,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "libyara3"
+	comparison hasValue ">="
+	version hasValue "3.7.0"
+
+relationInstance depends(P0__python3_yara,3,DepAtom__3)
+

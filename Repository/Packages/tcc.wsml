@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology tcc
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__tcc memberOf Package
+	package hasValue "tcc"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "692"
+	maintainer hasValue "Original-Thomas Preud'homme <robotux@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.9.27-8"
+	provides hasValue "c-compiler"
+	fileName hasValue "pool/universe/t/tcc/tcc_0.9.27-8_amd64.deb"
+	size hasValue "241844"
+	md5sum hasValue "a445bbb307d41a711e7aea933e37c601"
+	sha1 hasValue "dc40ff9b3e2d85a1e0d4e0138789f51723f86e1b"
+	sha256 hasValue "84b31803918fa12b5240b7fa7d15f5e1ecbf79f25fa58f8ce7e25974b6654c5d"
+	descriptionMd5 hasValue "dcac8a45b9295c2c42e6540299eec5fe"
+	homepage hasValue "http://www.tinycc.org/"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__tcc,0,DepAtom__0)
+

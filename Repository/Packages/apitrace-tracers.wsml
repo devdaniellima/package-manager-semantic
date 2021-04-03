@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology apitrace_tracers
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__apitrace_tracers memberOf Package
+	package hasValue "apitrace-tracers"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/graphics"
+	installedSize hasValue "8804"
+	maintainer hasValue "Original-Debian X Strike Force <debian-x@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "9.0+repack-1build3"
+	fileName hasValue "pool/universe/a/apitrace/apitrace-tracers_9.0+repack-1build3_amd64.deb"
+	size hasValue "1296608"
+	md5sum hasValue "83b754e798339afbfbebbd6a8fc2ecb3"
+	sha1 hasValue "59bb9fb4b932416807e4dcc7961c47394d17a08c"
+	sha256 hasValue "5ae1309812277082ef3dcaff6f044de48d0066bf3760870b50019f5d7dc83149"
+	descriptionMd5 hasValue "9d94cdfc03499602357a6afc04d9053c"
+	homepage hasValue "https://apitrace.github.io"
+	depends hasValue "libc6 (>> 2.31), libc6 (<< 2.32)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">>"
+	version hasValue "2.31"
+
+relationInstance depends(P0__apitrace_tracers,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue "<<"
+	version hasValue "2.32"
+
+relationInstance depends(P0__apitrace_tracers,1,DepAtom__1)
+

@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libstk_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libstk_dev memberOf Package
+	package hasValue "libstk-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "536"
+	maintainer hasValue "Original-Debian Multimedia Maintainers <debian-multimedia@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "4.6.1+dfsg-3"
+	replaces hasValue "libstk0-dev (<< 4.6.1+dfsg-1)"
+	fileName hasValue "pool/universe/s/stk/libstk-dev_4.6.1+dfsg-3_amd64.deb"
+	size hasValue "67756"
+	md5sum hasValue "14ac0a7a64c8bbb18ff33a634c4818ad"
+	sha1 hasValue "c84ef9c14ef5bbbf4776749f6a88ddab7a77a96d"
+	sha256 hasValue "e735d134e9e0f58a0a74217de62e96081b9b9a1aefa79cf14e2cce1735dcb3ca"
+	descriptionMd5 hasValue "766dd07d3c57b5161412b34877275814"
+	homepage hasValue "https://ccrma.stanford.edu/software/stk/"
+	depends hasValue "librtaudio-dev (>= 4.0.11~), librtmidi-dev (>= 2.0.1~), libstk-4.6.1 (= 4.6.1+dfsg-3)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "librtaudio-dev"
+	comparison hasValue ">="
+	version hasValue "4.0.11~"
+
+relationInstance depends(P0__libstk_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "librtmidi-dev"
+	comparison hasValue ">="
+	version hasValue "2.0.1~"
+
+relationInstance depends(P0__libstk_dev,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libstk-4.6.1"
+	comparison hasValue "="
+	version hasValue "4.6.1+dfsg-3"
+
+relationInstance depends(P0__libstk_dev,2,DepAtom__2)
+

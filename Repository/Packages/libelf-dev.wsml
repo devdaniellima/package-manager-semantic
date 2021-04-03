@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libelf_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libelf_dev memberOf Package
+	package hasValue "libelf-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libdevel"
+	installedSize hasValue "373"
+	maintainer hasValue "Original-Kurt Roeckx <kurt@roeckx.be>"
+	architecture hasValue "amd64"
+	version hasValue "0.176-1.1build1"
+	conflicts hasValue "libelfg0-dev"
+	fileName hasValue "pool/main/e/elfutils/libelf-dev_0.176-1.1build1_amd64.deb"
+	size hasValue "57048"
+	md5sum hasValue "2eceac1c8129b856128f20e5879ffb93"
+	sha1 hasValue "f6b4f1fa95c9c4707c8852e23ead20a0c77befa5"
+	sha256 hasValue "8b1dbbb8f2f96ce44bce709d1cfa25ccff96ea4f4b34b1fc707dfa1b0f70ebde"
+	descriptionMd5 hasValue "987fe60edac82d9ad80df9bdb9c08f33"
+	homepage hasValue "https://sourceware.org/elfutils/"
+	depends hasValue "libelf1 (= 0.176-1.1build1), zlib1g-dev"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libelf1"
+	comparison hasValue "="
+	version hasValue "0.176-1.1build1"
+
+relationInstance depends(P0__libelf_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "zlib1g-dev"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libelf_dev,1,DepAtom__1)
+

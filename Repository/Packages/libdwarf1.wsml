@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libdwarf1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libdwarf1 memberOf Package
+	package hasValue "libdwarf1"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "609"
+	maintainer hasValue "Original-Fabian Wolff <fabi.wolff@arcor.de>"
+	architecture hasValue "amd64"
+	version hasValue "20200114-1"
+	fileName hasValue "pool/universe/d/dwarfutils/libdwarf1_20200114-1_amd64.deb"
+	size hasValue "254760"
+	md5sum hasValue "91cab5bff3a78f161455a856f7c35257"
+	sha1 hasValue "e322849681a98e05d910247d6407de5cb6a6d152"
+	sha256 hasValue "d8e76aba32510e09beb4bcf367e771eed1581101b1366b2565aadd69d4c43018"
+	descriptionMd5 hasValue "e36362d506f45fbff29af19b81a8505c"
+	homepage hasValue "https://www.prevanders.net/dwarf.html"
+	depends hasValue "libc6 (>= 2.14), libelf1 (>= 0.131), zlib1g (>= 1:1.1.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libdwarf1,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libelf1"
+	comparison hasValue ">="
+	version hasValue "0.131"
+
+relationInstance depends(P0__libdwarf1,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "zlib1g"
+	comparison hasValue ">="
+	version hasValue "1:1.1.4"
+
+relationInstance depends(P0__libdwarf1,2,DepAtom__2)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology node_p_locate
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__node_p_locate memberOf Package
+	package hasValue "node-p-locate"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/web"
+	installedSize hasValue "17"
+	maintainer hasValue "Original-Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.0.0-1"
+	fileName hasValue "pool/universe/n/node-p-locate/node-p-locate_2.0.0-1_all.deb"
+	size hasValue "4104"
+	md5sum hasValue "fd152081f305dcbd6cbc2256df26ac7e"
+	sha1 hasValue "866e0c68ab4bcc765fa8548c222d29b63d2fa79d"
+	sha256 hasValue "abb0f25a9d5411a6a2851a87cd0fcd4ea571cec8ea0b14f8f1bbc86dbe4cd9ce"
+	descriptionMd5 hasValue "68ec566faf981f7d1565cccdc7a2d5f3"
+	homepage hasValue "https://github.com/sindresorhus/p-locate#readme"
+	depends hasValue "nodejs, node-p-limit (>= 1.1.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "nodejs"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__node_p_locate,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "node-p-limit"
+	comparison hasValue ">="
+	version hasValue "1.1.0"
+
+relationInstance depends(P0__node_p_locate,1,DepAtom__1)
+

@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology frr_pythontools
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__frr_pythontools memberOf Package
+	package hasValue "frr-pythontools"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "86"
+	maintainer hasValue "Original-David Lamparter <equinox-debian@diac24.net>"
+	architecture hasValue "all"
+	version hasValue "7.2.1-1"
+	fileName hasValue "pool/universe/f/frr/frr-pythontools_7.2.1-1_all.deb"
+	size hasValue "17588"
+	md5sum hasValue "ce23fa9e9247a0880f609cbde87a7585"
+	sha1 hasValue "e3e28542689e87583fbe8013c1df9ade9c6b8c45"
+	sha256 hasValue "8d9d1d5e204856d7d4eef51035203c77d5b46ce5b05bb2b9604aa4c300c15f33"
+	descriptionMd5 hasValue "ca3556435c120a76c403dd6d62720c4e"
+	homepage hasValue "https://www.frrouting.org/"
+	depends hasValue "frr (<< 7.2.1.0-~), frr (>= 7.2.1-1~), python3:any"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "frr"
+	comparison hasValue "<<"
+	version hasValue "7.2.1.0-~"
+
+relationInstance depends(P0__frr_pythontools,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "frr"
+	comparison hasValue ">="
+	version hasValue "7.2.1-1~"
+
+relationInstance depends(P0__frr_pythontools,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__frr_pythontools,2,DepAtom__2)
+

@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology daemon
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__daemon memberOf Package
+	package hasValue "daemon"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "277"
+	maintainer hasValue "Original-Marc Haber <mh+debian-packages@zugschlus.de>"
+	architecture hasValue "amd64"
+	version hasValue "0.6.4-1build2"
+	fileName hasValue "pool/universe/d/daemon/daemon_0.6.4-1build2_amd64.deb"
+	size hasValue "96340"
+	md5sum hasValue "470629f6a292f9c4daa582d401fb2f33"
+	sha1 hasValue "fe7c2dbb376a45270a8c758d17da4d60ca93917e"
+	sha256 hasValue "561c80e4c918d2e8ead1cf7c64d9e529b7e0592c7528e8aae2eafb60c93a6ca8"
+	description hasValue "transforma outros processos em daemons"
+	descriptionMd5 hasValue "a8b0de2efb2f9f4ea34fed416b448777"
+	homepage hasValue "http://www.libslack.org/daemon/"
+	depends hasValue "libc6 (>= 2.15)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__daemon,0,DepAtom__0)
+

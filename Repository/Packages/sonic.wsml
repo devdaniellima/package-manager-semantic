@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology sonic
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__sonic memberOf Package
+	package hasValue "sonic"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/sound"
+	installedSize hasValue "32"
+	maintainer hasValue "Original-Debian Accessibility Team <pkg-a11y-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.2.0-8"
+	fileName hasValue "pool/universe/s/sonic/sonic_0.2.0-8_amd64.deb"
+	size hasValue "8184"
+	md5sum hasValue "7a767ebd03f302ec7593b49978c1a2e0"
+	sha1 hasValue "2e5505cc5d05a9449223c8e2ae9f52782def287c"
+	sha256 hasValue "79268c7f77fa39f996b9938e12f1dbc490c7a671c576dfe21a4c4525d7fa95bb"
+	descriptionMd5 hasValue "86e5dc6ed4ab72898f2d9296cdf460ec"
+	homepage hasValue "https://github.com/waywardgeek/sonic"
+	depends hasValue "libsonic0 (= 0.2.0-8), libc6 (>= 2.7)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libsonic0"
+	comparison hasValue "="
+	version hasValue "0.2.0-8"
+
+relationInstance depends(P0__sonic,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__sonic,1,DepAtom__1)
+

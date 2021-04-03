@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology hoichess
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__hoichess memberOf Package
+	package hasValue "hoichess"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/games"
+	installedSize hasValue "570"
+	maintainer hasValue "Original-Samuel Henrique <samueloph@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.22.0-1build1"
+	fileName hasValue "pool/universe/h/hoichess/hoichess_0.22.0-1build1_amd64.deb"
+	size hasValue "171352"
+	md5sum hasValue "958be9197b7b649fd58f30a816c64ed4"
+	sha1 hasValue "3e3187a291593c432d902d3fcf4f8f9aab2c6cef"
+	sha256 hasValue "bb2d35d5c6200490b84644d7752dc8ea33fddba5a39cb728deff8f8c261c1ead"
+	descriptionMd5 hasValue "06ee5840909ea31497d5cf3a18ad2f80"
+	homepage hasValue "http://www.hoicher.de/hoichess/"
+	depends hasValue "libc6 (>= 2.14), libstdc++6 (>= 5.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__hoichess,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "5.2"
+
+relationInstance depends(P0__hoichess,1,DepAtom__1)
+

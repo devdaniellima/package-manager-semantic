@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology icmptx
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__icmptx memberOf Package
+	package hasValue "icmptx"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/net"
+	installedSize hasValue "27"
+	maintainer hasValue "Original-Runa Sandvik <runa.sandvik@gmail.com>"
+	architecture hasValue "amd64"
+	version hasValue "0.2-1build1"
+	fileName hasValue "pool/universe/i/icmptx/icmptx_0.2-1build1_amd64.deb"
+	size hasValue "7352"
+	md5sum hasValue "edd3a8ae3800d1413ec4c97af53d46b6"
+	sha1 hasValue "5bcc8fe59a2947b6b3298734ac5735351f78aac6"
+	sha256 hasValue "7e44d7000187b8664bb71b07f003836dca9c034f697d84ba4a40a367120ccf63"
+	descriptionMd5 hasValue "82320505e19949c349b53c1398e9655e"
+	homepage hasValue "http://github.com/jakkarth/icmptx"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__icmptx,0,DepAtom__0)
+

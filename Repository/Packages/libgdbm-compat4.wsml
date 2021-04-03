@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libgdbm_compat4
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libgdbm_compat4 memberOf Package
+	package hasValue "libgdbm-compat4"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libs"
+	installedSize hasValue "40"
+	maintainer hasValue "Original-Dmitry Bogatov <KAction@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.18.1-5"
+	fileName hasValue "pool/main/g/gdbm/libgdbm-compat4_1.18.1-5_amd64.deb"
+	size hasValue "6244"
+	md5sum hasValue "735cd4f29152a79371848144866420bc"
+	sha1 hasValue "62d511b3542b0f20837b4788a4b2f8c37288c55b"
+	sha256 hasValue "4f93394bda7be86b94fb32ac1bdf1a0b7124b8150962b55512371c3a816a382d"
+	description hasValue "GNU dbm database routines (legacy support runtime version)"
+	descriptionMd5 hasValue "622374ea7997805f56daf5e40b41ff73"
+	homepage hasValue "https://gnu.org/software/gdbm"
+	depends hasValue "libc6 (>= 2.14), libgdbm6 (>= 1.16)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libgdbm_compat4,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgdbm6"
+	comparison hasValue ">="
+	version hasValue "1.16"
+
+relationInstance depends(P0__libgdbm_compat4,1,DepAtom__1)
+

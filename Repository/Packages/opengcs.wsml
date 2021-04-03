@@ -1,0 +1,81 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology opengcs
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__opengcs memberOf Package
+	package hasValue "opengcs"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "5588"
+	maintainer hasValue "Original-Debian Go Packaging Team <pkg-go-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.3.4+dfsg2-0ubuntu3"
+	fileName hasValue "pool/universe/o/opengcs/opengcs_0.3.4+dfsg2-0ubuntu3_amd64.deb"
+	size hasValue "1255756"
+	md5sum hasValue "918af1161ae5ba6ab6d1c51475c66958"
+	sha1 hasValue "fe51ad6456c1e92f0187a52909c54f9ab78578ff"
+	sha256 hasValue "04e7353bc6b4acc225df576515e4d25c051606146008a3cc50d9f1507c11c92e"
+	descriptionMd5 hasValue "3567b534575a1a58390413720f96dd35"
+	homepage hasValue "https://github.com/Microsoft/opengcs"
+	depends hasValue "libc6 (>= 2.4), iproute | iproute2, runc (>= 1.0.0~rc4), udhcpd"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__opengcs,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "iproute"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__opengcs,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "iproute2"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__opengcs,1,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "runc"
+	comparison hasValue ">="
+	version hasValue "1.0.0~rc4"
+
+relationInstance depends(P0__opengcs,2,DepAtom__3)
+
+instance DepAtom__4 memberOf DependencyAtom
+	package hasValue "udhcpd"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__opengcs,3,DepAtom__4)
+

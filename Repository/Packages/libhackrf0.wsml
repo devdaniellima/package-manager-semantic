@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libhackrf0
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libhackrf0 memberOf Package
+	package hasValue "libhackrf0"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/libs"
+	installedSize hasValue "51"
+	maintainer hasValue "Original-A. Maitland Bottoms <bottoms@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2018.01.1-2"
+	fileName hasValue "pool/universe/h/hackrf/libhackrf0_2018.01.1-2_amd64.deb"
+	size hasValue "13276"
+	md5sum hasValue "e45951518a235fd57e42e55f9af80b0d"
+	sha1 hasValue "d262a7d0a739838495b6a2e1ad53df6a9d1719e8"
+	sha256 hasValue "33af8c57957487a21de94b7d38d0f1b6011c0e328c06b05144950c38067498f7"
+	description hasValue "Software defined radio peripheral - runtime library"
+	descriptionMd5 hasValue "53e308db8215eca080042034a183f6c2"
+	homepage hasValue "http://greatscottgadgets.com/hackrf/"
+	depends hasValue "libc6 (>= 2.4), libusb-1.0-0 (>= 2:1.0.16)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libhackrf0,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libusb-1.0-0"
+	comparison hasValue ">="
+	version hasValue "2:1.0.16"
+
+relationInstance depends(P0__libhackrf0,1,DepAtom__1)
+

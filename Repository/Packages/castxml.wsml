@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology castxml
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__castxml memberOf Package
+	package hasValue "castxml"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "29937"
+	maintainer hasValue "Original-Steve M. Robbins <smr@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.2.0-4build1"
+	fileName hasValue "pool/universe/c/castxml/castxml_0.2.0-4build1_amd64.deb"
+	size hasValue "5477672"
+	md5sum hasValue "d414ce93f5ba0e4296a006b0a4f1adab"
+	sha1 hasValue "c98010079a5a901ebe47f76506fda0be80e24176"
+	sha256 hasValue "015091c2fd8752bd1cd54a034b50a03ec791c78e0a7d52938e687b74768dbc90"
+	descriptionMd5 hasValue "0b6c3678eea001256be5255ac040ea99"
+	homepage hasValue "https://github.com/CastXML/CastXML"
+	depends hasValue "libc6 (>= 2.14), libllvm9 (>= 1:9~svn298832-1~), libstdc++6 (>= 9)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__castxml,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libllvm9"
+	comparison hasValue ">="
+	version hasValue "1:9~svn298832-1~"
+
+relationInstance depends(P0__castxml,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "9"
+
+relationInstance depends(P0__castxml,2,DepAtom__2)
+

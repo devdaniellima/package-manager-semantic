@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology wmaker_utils
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__wmaker_utils memberOf Package
+	package hasValue "wmaker-utils"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/x11"
+	installedSize hasValue "97"
+	maintainer hasValue "Original-Debian Window Maker Team <pkg-wmaker-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.95.8-3"
+	replaces hasValue "wmaker (<< 0.95.7-6)"
+	fileName hasValue "pool/universe/w/wmaker/wmaker-utils_0.95.8-3_amd64.deb"
+	size hasValue "21000"
+	md5sum hasValue "a99b5dfd3a8e75620d9b3aae578a2eee"
+	sha1 hasValue "759da649e8c82e61905db1c8034073389ea7a61a"
+	sha256 hasValue "63621fe390b2d1e83848c201e81172b2e411706103a0a9785f3d1835a0178b73"
+	description hasValue "Window Maker - Utilities"
+	descriptionMd5 hasValue "22e211c8cab9bf58239e50d9a19225d1"
+	homepage hasValue "https://www.windowmaker.org/"
+	depends hasValue "libc6 (>= 2.14), libx11-6"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__wmaker_utils,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libx11-6"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__wmaker_utils,1,DepAtom__1)
+

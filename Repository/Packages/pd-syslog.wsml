@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology pd_syslog
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__pd_syslog memberOf Package
+	package hasValue "pd-syslog"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/sound"
+	installedSize hasValue "28"
+	maintainer hasValue "Original-Debian Multimedia Maintainers <debian-multimedia@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.1-2"
+	fileName hasValue "pool/universe/p/pd-syslog/pd-syslog_0.1-2_amd64.deb"
+	size hasValue "5500"
+	md5sum hasValue "d20988f786f00220172354d288475223"
+	sha1 hasValue "83658ae9f49a6fbe6bb750cafcd9a45b901337ef"
+	sha256 hasValue "04fd3a0d9dbb05f1a753c780d15d6300df343a0968f87dc51b5ef3e9cf3365a4"
+	descriptionMd5 hasValue "859de8d0e13863762112c86ff9a04d64"
+	homepage hasValue "https://download.puredata.info/syslog"
+	depends hasValue "libc6 (>= 2.4), puredata | pd"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__pd_syslog,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "puredata"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__pd_syslog,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "pd"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__pd_syslog,1,DepAtom__2)
+

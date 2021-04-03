@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology pd_pdstring
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__pd_pdstring memberOf Package
+	package hasValue "pd-pdstring"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/sound"
+	installedSize hasValue "69"
+	maintainer hasValue "Original-Debian Multimedia Maintainers <debian-multimedia@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.10.2-4"
+	fileName hasValue "pool/universe/p/pd-pdstring/pd-pdstring_0.10.2-4_amd64.deb"
+	size hasValue "15636"
+	md5sum hasValue "5dfce71c913e4523596c6449ec35954d"
+	sha1 hasValue "3dccbc842da1048798ae717c2dff40368e2bcd7c"
+	sha256 hasValue "4afb82c236348bf8ef0066ea81f9de05459a1e74fd8ccabbbfdd5a2bd118db53"
+	descriptionMd5 hasValue "bf8486150ad8fceb880206eac05fa5da"
+	homepage hasValue "https://kaskade.dwds.de/~moocow/mirror/projects/pd/"
+	depends hasValue "libc6 (>= 2.14), puredata-core | pd"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__pd_pdstring,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "puredata-core"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__pd_pdstring,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "pd"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__pd_pdstring,1,DepAtom__2)
+

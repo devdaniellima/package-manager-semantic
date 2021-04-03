@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology alsaplayer_xosd
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__alsaplayer_xosd memberOf Package
+	package hasValue "alsaplayer-xosd"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/sound"
+	installedSize hasValue "43"
+	maintainer hasValue "Original-Paul Brossier <piem@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.99.81-2build2"
+	provides hasValue "alsaplayer-interface"
+	fileName hasValue "pool/universe/a/alsaplayer/alsaplayer-xosd_0.99.81-2build2_amd64.deb"
+	size hasValue "8076"
+	md5sum hasValue "b4757001c3207610731b82557acd1703"
+	sha1 hasValue "6035bc8961cbb7f2008377d2998943a887ef7f1d"
+	sha256 hasValue "392c049d6e69aead88fdc2ba1a6db9d89a286b336bc56de04f35c4738e8fdb97"
+	descriptionMd5 hasValue "19eb976ca3160e494c6163cabfe6cf82"
+	homepage hasValue "http://alsaplayer.sourceforge.net/"
+	depends hasValue "libc6 (>= 2.4), libxosd2 (>= 2.2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__alsaplayer_xosd,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libxosd2"
+	comparison hasValue ">="
+	version hasValue "2.2.14"
+
+relationInstance depends(P0__alsaplayer_xosd,1,DepAtom__1)
+

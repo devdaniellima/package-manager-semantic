@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology chroma
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__chroma memberOf Package
+	package hasValue "chroma"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "20864"
+	maintainer hasValue "Original-Debian Go Packaging Team <team+pkg-go@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.7.1-1"
+	fileName hasValue "pool/universe/g/golang-github-alecthomas-chroma/chroma_0.7.1-1_amd64.deb"
+	size hasValue "5627960"
+	md5sum hasValue "04cabad1d7af5e4fff4bfbb644395b76"
+	sha1 hasValue "ece29cddf0f5c3f6bd1aa3c46b224045ab593e89"
+	sha256 hasValue "14a6e6ae5d60b76204f1fa8cbb5657b2dfc8f1f720c9c4dcf1f88a5d7b246c60"
+	descriptionMd5 hasValue "245c1c93018daf7274310b44ad6dd161"
+	homepage hasValue "https://github.com/alecthomas/chroma"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__chroma,0,DepAtom__0)
+

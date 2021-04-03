@@ -1,0 +1,70 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology liblapack_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__liblapack_dev memberOf Package
+	package hasValue "liblapack-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "devel"
+	installedSize hasValue "24866"
+	maintainer hasValue "Original-Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.9.0-1build1"
+	replaces hasValue "liblapack-pic (<< 3.8.0-3)"
+	provides hasValue "liblapack.so"
+	fileName hasValue "pool/main/l/lapack/liblapack-dev_3.9.0-1build1_amd64.deb"
+	size hasValue "4241644"
+	md5sum hasValue "b4b4a1ce80f82c5011436412f08b71cd"
+	sha1 hasValue "60f3130cd1e2b6e1fb463de21f16371026cb04b8"
+	sha256 hasValue "4c705c1b650b2a818ae5f7fd43a6812109f7278fb81f77c9ab62e040257fa279"
+	description hasValue "Library of linear algebra routines 3 - static version"
+	descriptionMd5 hasValue "65560acd47f612ac798597cb69465bf3"
+	homepage hasValue "http://www.netlib.org/lapack/"
+	depends hasValue "liblapack3 (= 3.9.0-1build1), libblas-dev | libblas.so"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "liblapack3"
+	comparison hasValue "="
+	version hasValue "3.9.0-1build1"
+
+relationInstance depends(P0__liblapack_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libblas-dev"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__liblapack_dev,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libblas.so"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__liblapack_dev,1,DepAtom__2)
+

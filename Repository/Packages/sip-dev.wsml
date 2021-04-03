@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology sip_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__sip_dev memberOf Package
+	package hasValue "sip-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "440"
+	maintainer hasValue "Original-Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "4.19.21+dfsg-1build1"
+	fileName hasValue "pool/universe/s/sip4/sip-dev_4.19.21+dfsg-1build1_amd64.deb"
+	size hasValue "167532"
+	md5sum hasValue "b9e18a52bae596f84e545c6a194dc188"
+	sha1 hasValue "5ec75f1f54bd04237dd92d8e22acac418c44d1f9"
+	sha256 hasValue "1cbf28a092e7f5aed7b62caa0764be5e2a08140a87a8533b660d4ca9eead7497"
+	descriptionMd5 hasValue "c5a485e2857aa14add006945e93b72d6"
+	homepage hasValue "https://riverbankcomputing.com/software/sip/intro"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__sip_dev,0,DepAtom__0)
+

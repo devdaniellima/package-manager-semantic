@@ -1,0 +1,66 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology postgresql_12_debversion
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__postgresql_12_debversion memberOf Package
+	package hasValue "postgresql-12-debversion"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/database"
+	installedSize hasValue "65"
+	maintainer hasValue "Original-Debian PostgreSQL Maintainers <team+postgresql@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.1.1-3build1"
+	fileName hasValue "pool/universe/p/postgresql-debversion/postgresql-12-debversion_1.1.1-3build1_amd64.deb"
+	size hasValue "14664"
+	md5sum hasValue "0b95b94874ce15ba35a6b771f736e14b"
+	sha1 hasValue "f828cef674bb9f8227e49f290a8e45d71b65182f"
+	sha256 hasValue "a0e4867fc35e183bf46f2a40056e2110aa1152fe90172210b9215b303d49f122"
+	descriptionMd5 hasValue "ef3470a77fc6dee20bcbcc33637f1fb1"
+	depends hasValue "libapt-pkg6.0 (>= 0.8.0), libc6 (>= 2.2.5), postgresql-12"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libapt-pkg6.0"
+	comparison hasValue ">="
+	version hasValue "0.8.0"
+
+relationInstance depends(P0__postgresql_12_debversion,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.2.5"
+
+relationInstance depends(P0__postgresql_12_debversion,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "postgresql-12"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__postgresql_12_debversion,2,DepAtom__2)
+

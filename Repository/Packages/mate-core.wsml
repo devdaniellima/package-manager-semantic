@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology mate_core
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__mate_core memberOf Package
+	package hasValue "mate-core"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/x11"
+	installedSize hasValue "11"
+	maintainer hasValue "Original-Debian+Ubuntu MATE Packaging Team <debian-mate@lists.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.24.0+1"
+	fileName hasValue "pool/universe/m/mate-desktop-environment/mate-core_1.24.0+1_all.deb"
+	size hasValue "1824"
+	md5sum hasValue "9247e9ef0fa1591819171f89994ecf56"
+	sha1 hasValue "95490c1df3ebb596cde47f8e497556a571037cab"
+	sha256 hasValue "b5bfbeb1c7f07c6b6a7e72d478b1697e35392dfe0ea96c6e5ab49a6195c59224"
+	descriptionMd5 hasValue "9ff0776ded39cfed763cbf21cfce7add"
+	homepage hasValue "http://www.mate-desktop.org/"
+	depends hasValue "mate-desktop-environment-core (= 1.24.0+1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "mate-desktop-environment-core"
+	comparison hasValue "="
+	version hasValue "1.24.0+1"
+
+relationInstance depends(P0__mate_core,0,DepAtom__0)
+

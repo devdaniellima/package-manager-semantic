@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology umoci
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__umoci memberOf Package
+	package hasValue "umoci"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "5355"
+	maintainer hasValue "Original-Debian Go Packaging Team <pkg-go-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.4.5+dfsg-1"
+	fileName hasValue "pool/universe/u/umoci/umoci_0.4.5+dfsg-1_amd64.deb"
+	size hasValue "1643820"
+	md5sum hasValue "9b5440eb2f6fb0cbac97db55a9c76e1f"
+	sha1 hasValue "c648f5024b76c91a80b138111c71d011e3bddf0d"
+	sha256 hasValue "ac45936ea0c10116dd1ca0e4d553b7f3ecbce39c325e14882d6669ed6358a3e0"
+	descriptionMd5 hasValue "3de86304c0593ba60d1399cca0948062"
+	homepage hasValue "https://github.com/openSUSE/umoci"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__umoci,0,DepAtom__0)
+

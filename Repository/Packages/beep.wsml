@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology beep
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__beep memberOf Package
+	package hasValue "beep"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/sound"
+	installedSize hasValue "73"
+	maintainer hasValue "Original-Rhonda D'Vine <rhonda@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.4.3-2build1"
+	fileName hasValue "pool/universe/b/beep/beep_1.4.3-2build1_amd64.deb"
+	size hasValue "23504"
+	md5sum hasValue "91b9184a157857b21d127129933ad1b9"
+	sha1 hasValue "205a1026a3ee0cb18f6cc1b325cbd4753d35bbec"
+	sha256 hasValue "c4f158fb5ae3781e190ca94aafa3280ea8cec62621c3840837dec0be10dc29ed"
+	descriptionMd5 hasValue "9a7b060493693519da9ad2c1f4292fc7"
+	homepage hasValue "https://github.com/spkr-beep/beep"
+	depends hasValue "libc6 (>= 2.7)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__beep,0,DepAtom__0)
+

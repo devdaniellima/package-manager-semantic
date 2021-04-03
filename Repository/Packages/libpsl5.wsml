@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libpsl5
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libpsl5 memberOf Package
+	package hasValue "libpsl5"
+	packageSource hasValue Source__S1
+	priority hasValue "standard"
+	section hasValue "libs"
+	installedSize hasValue "91"
+	maintainer hasValue "Original-Tim Rühsen <tim.ruehsen@gmx.de>"
+	architecture hasValue "amd64"
+	version hasValue "0.21.0-1ubuntu1"
+	fileName hasValue "pool/main/libp/libpsl/libpsl5_0.21.0-1ubuntu1_amd64.deb"
+	size hasValue "51516"
+	md5sum hasValue "31ac22a5545580b4a603255383e18499"
+	sha1 hasValue "5bd0efa65f84359436089ccb17282d8e65b19b0c"
+	sha256 hasValue "650850916833e7776a127a907ea7203f7822b6a11379ddb1f8ce88f0855b5a3c"
+	description hasValue "Library for Public Suffix List (shared libraries)"
+	descriptionMd5 hasValue "737acdacc0f014d042db24cf175d47b8"
+	homepage hasValue "https://github.com/rockdaboot/libpsl"
+	depends hasValue "libidn2-0 (>= 0.16), libc6 (>= 2.4), libunistring2 (>= 0.9.7)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libidn2-0"
+	comparison hasValue ">="
+	version hasValue "0.16"
+
+relationInstance depends(P0__libpsl5,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libpsl5,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libunistring2"
+	comparison hasValue ">="
+	version hasValue "0.9.7"
+
+relationInstance depends(P0__libpsl5,2,DepAtom__2)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology zerofree
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__zerofree memberOf Package
+	package hasValue "zerofree"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "admin"
+	installedSize hasValue "25"
+	maintainer hasValue "Original-Thibaut Paumard <thibaut@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.1.1-1"
+	fileName hasValue "pool/main/z/zerofree/zerofree_1.1.1-1_amd64.deb"
+	size hasValue "8520"
+	md5sum hasValue "23a3573425967b50aa2ed7701485ff5a"
+	sha1 hasValue "d6beb06f639d4c01a7813f6435b65f314ce98aa4"
+	sha256 hasValue "92e5759f8a856237fda0978fae0a4ff024615126583f6eb88367ec78f82451e8"
+	descriptionMd5 hasValue "e8c47b284082ddf9145a003c9cbeafdb"
+	homepage hasValue "https://frippery.org/uml/"
+	depends hasValue "libc6 (>= 2.4), libext2fs2 (>= 1.42)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__zerofree,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libext2fs2"
+	comparison hasValue ">="
+	version hasValue "1.42"
+
+relationInstance depends(P0__zerofree,1,DepAtom__1)
+

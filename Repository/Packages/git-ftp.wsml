@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology git_ftp
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__git_ftp memberOf Package
+	package hasValue "git-ftp"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/vcs"
+	installedSize hasValue "79"
+	maintainer hasValue "Original-Dmitry Smirnov <onlyjob@debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.6.0+dfsg-1"
+	fileName hasValue "pool/universe/g/git-ftp/git-ftp_1.6.0+dfsg-1_all.deb"
+	size hasValue "25216"
+	md5sum hasValue "d4a933b38ed6616b551a3aace0742d74"
+	sha1 hasValue "9f7baaf60d2ee026725e98aae2336970a87ba896"
+	sha256 hasValue "ed0bc02e3754796055508c2b0ee1c6d390e2d8b625b3acb31647b55b2bd7a247"
+	description hasValue "cliente FTP turbinado com Git escrito como um shell script"
+	descriptionMd5 hasValue "867456da420db6ff0d35b8a0f38b9d3b"
+	homepage hasValue "https://github.com/git-ftp/git-ftp"
+	depends hasValue "bash (>= 4.2), curl, git-core"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "bash"
+	comparison hasValue ">="
+	version hasValue "4.2"
+
+relationInstance depends(P0__git_ftp,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "curl"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__git_ftp,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "git-core"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__git_ftp,2,DepAtom__2)
+

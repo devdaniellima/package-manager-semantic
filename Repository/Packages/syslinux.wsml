@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology syslinux
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__syslinux memberOf Package
+	package hasValue "syslinux"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "utils"
+	installedSize hasValue "354"
+	maintainer hasValue "Original-Debian CD Group <debian-cd@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3:6.04~git20190206.bf6db5b4+dfsg1-2"
+	fileName hasValue "pool/main/s/syslinux/syslinux_6.04~git20190206.bf6db5b4+dfsg1-2_amd64.deb"
+	size hasValue "154032"
+	md5sum hasValue "6d4f4ac3e75476617b4aadf2b938cdde"
+	sha1 hasValue "629a376ed7687ba095e856363d71de6b39905842"
+	sha256 hasValue "6bc2dec0f82c8bb5009211bcc6ec9196236d86530001e1c842470d6e8c401ab8"
+	description hasValue "coleção de gerenciadores de inicialização (FAT e NTFS)"
+	descriptionMd5 hasValue "50c42eb61f4eca6baafef92fdfa86fc7"
+	homepage hasValue "http://www.syslinux.org/"
+	depends hasValue "libc6 (>= 2.8), mtools"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.8"
+
+relationInstance depends(P0__syslinux,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "mtools"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__syslinux,1,DepAtom__1)
+

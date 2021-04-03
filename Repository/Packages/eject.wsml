@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology eject
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__eject memberOf Package
+	package hasValue "eject"
+	packageSource hasValue Source__S1
+	priority hasValue "important"
+	section hasValue "utils"
+	installedSize hasValue "172"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.1.5+deb1+cvs20081104-14"
+	fileName hasValue "pool/main/e/eject/eject_2.1.5+deb1+cvs20081104-14_amd64.deb"
+	size hasValue "23760"
+	md5sum hasValue "789b3f7052088253e52cf2889b22e33a"
+	sha1 hasValue "a71ca6533aea10bc5527057c41e58fee17ce4f6d"
+	sha256 hasValue "affaf212c2836a9877ef1a7afc1ca1186c6441ef6c83871d84161299f061792c"
+	description hasValue "ejeta CDs e opera disqueteiras sob o Linux"
+	descriptionMd5 hasValue "9a5f66fd7e4bca3deeb3357f3e927ab3"
+	homepage hasValue "http://eject.sourceforge.net/"
+	depends hasValue "libc6 (>= 2.8), libdevmapper1.02.1 (>= 2:1.02.97)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.8"
+
+relationInstance depends(P0__eject,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libdevmapper1.02.1"
+	comparison hasValue ">="
+	version hasValue "2:1.02.97"
+
+relationInstance depends(P0__eject,1,DepAtom__1)
+

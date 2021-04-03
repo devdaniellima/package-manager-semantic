@@ -1,0 +1,75 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology apt_offline
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__apt_offline memberOf Package
+	package hasValue "apt-offline"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "240"
+	maintainer hasValue "Original-Ritesh Raj Sarraf <rrs@debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.8.2-1"
+	fileName hasValue "pool/universe/a/apt-offline/apt-offline_1.8.2-1_all.deb"
+	size hasValue "49724"
+	md5sum hasValue "9038935713a8b11c1b65b565cb4ba1c1"
+	sha1 hasValue "9584d3d68492b17c01994f9c9fe2775f979ddcba"
+	sha256 hasValue "17f9eec652bd976542e4e564ffb9349a34a8e403eede0f1bbcec334ac08ddf74"
+	description hasValue "gerenciador de pacotes APT offline"
+	descriptionMd5 hasValue "7487fa218999d3466bc1f427d657de2f"
+	homepage hasValue "https://github.com/rickysarraf/apt-offline"
+	depends hasValue "python3:any, apt, less, python3-magic"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__apt_offline,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "apt"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__apt_offline,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "less"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__apt_offline,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "python3-magic"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__apt_offline,3,DepAtom__3)
+

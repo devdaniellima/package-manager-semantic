@@ -1,0 +1,75 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology abe
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__abe memberOf Package
+	package hasValue "abe"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/games"
+	installedSize hasValue "107"
+	maintainer hasValue "Original-Debian Games Team <pkg-games-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.1+dfsg-3"
+	fileName hasValue "pool/universe/a/abe/abe_1.1+dfsg-3_amd64.deb"
+	size hasValue "41304"
+	md5sum hasValue "421303b9f8e66a1f048ed0a396aec545"
+	sha1 hasValue "4b48b4a6c460ca15b34b7aa75b11c8d375730d37"
+	sha256 hasValue "6411954648e0162c6bf7511f61994fed5f4214ff9be253eaa3f8a02cd172b1a0"
+	description hasValue "side-scrolling game named \"Abe's Amazing Adventure\""
+	descriptionMd5 hasValue "b4ec019e3f9096ddfecc52da6004b162"
+	homepage hasValue "http://abe.sourceforge.net/"
+	depends hasValue "abe-data (= 1.1+dfsg-3), libc6 (>= 2.14), libsdl-mixer1.2, libsdl1.2debian (>= 1.2.11)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "abe-data"
+	comparison hasValue "="
+	version hasValue "1.1+dfsg-3"
+
+relationInstance depends(P0__abe,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__abe,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libsdl-mixer1.2"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__abe,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "libsdl1.2debian"
+	comparison hasValue ">="
+	version hasValue "1.2.11"
+
+relationInstance depends(P0__abe,3,DepAtom__3)
+

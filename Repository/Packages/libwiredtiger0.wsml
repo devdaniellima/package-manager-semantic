@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libwiredtiger0
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libwiredtiger0 memberOf Package
+	package hasValue "libwiredtiger0"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "1444"
+	maintainer hasValue "Original-Laszlo Boszormenyi (GCS) <gcs@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.9.3+ds-1ubuntu3"
+	fileName hasValue "pool/universe/w/wiredtiger/libwiredtiger0_2.9.3+ds-1ubuntu3_amd64.deb"
+	size hasValue "481520"
+	md5sum hasValue "6d3f3fa2e623c8119bd626fc9a256063"
+	sha1 hasValue "9e436f4acbe0d8e6df6e2913d6fa98a1d39db275"
+	sha256 hasValue "de75ffdbe198a94f5df8eb6f571cbf54d9d487938129c404168d0a93061ffacb"
+	descriptionMd5 hasValue "7ef98f6a7ab346f322a7ce6b795327b6"
+	homepage hasValue "http://www.wiredtiger.com/"
+	depends hasValue "libc6 (>= 2.17), libsnappy1v5 (>= 1.1.7), zlib1g (>= 1:1.1.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.17"
+
+relationInstance depends(P0__libwiredtiger0,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libsnappy1v5"
+	comparison hasValue ">="
+	version hasValue "1.1.7"
+
+relationInstance depends(P0__libwiredtiger0,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "zlib1g"
+	comparison hasValue ">="
+	version hasValue "1:1.1.4"
+
+relationInstance depends(P0__libwiredtiger0,2,DepAtom__2)
+

@@ -1,0 +1,75 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libgfortran4
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libgfortran4 memberOf Package
+	package hasValue "libgfortran4"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "1977"
+	maintainer hasValue "Original-Debian GCC Maintainers <debian-gcc@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "7.5.0-6ubuntu2"
+	fileName hasValue "pool/universe/g/gcc-7/libgfortran4_7.5.0-6ubuntu2_amd64.deb"
+	size hasValue "492528"
+	md5sum hasValue "5c5343e64ddb5416ab39a29451b0b649"
+	sha1 hasValue "589968c578fe6a3aefe52b26f0074a3183eb9478"
+	sha256 hasValue "9191a744ea8e1cb877c26bfb1cb6efa06305be49c7053eecfee5f1037a8005d5"
+	description hasValue "Runtime library for GNU Fortran applications"
+	descriptionMd5 hasValue "bb4b9e7dbbaa67e95441936718b11f39"
+	homepage hasValue "http://gcc.gnu.org/"
+	depends hasValue "gcc-7-base (= 7.5.0-6ubuntu2), libc6 (>= 2.29), libgcc-s1, libquadmath0"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "gcc-7-base"
+	comparison hasValue "="
+	version hasValue "7.5.0-6ubuntu2"
+
+relationInstance depends(P0__libgfortran4,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__libgfortran4,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libgcc-s1"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libgfortran4,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "libquadmath0"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libgfortran4,3,DepAtom__3)
+

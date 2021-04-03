@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology uci2wb
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__uci2wb memberOf Package
+	package hasValue "uci2wb"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/games"
+	installedSize hasValue "75"
+	maintainer hasValue "Original-Yann Dirson <dirson@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "4.0-1"
+	fileName hasValue "pool/universe/u/uci2wb/uci2wb_4.0-1_amd64.deb"
+	size hasValue "27028"
+	md5sum hasValue "ca29a87b067ab862195497395630f5f4"
+	sha1 hasValue "af388c79da6f692f8a8e12a60829311beb60081c"
+	sha256 hasValue "193269dc73a019b56453c77292d23dc96dcdbfba1c9f639fef6dbdb3779335ac"
+	descriptionMd5 hasValue "69899144fe5e062a8d06dffc9dd9f704"
+	homepage hasValue "http://hgm.nubati.net/cgi-bin/gitweb.cgi?p=uci2wb.git"
+	depends hasValue "libc6 (>= 2.7)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__uci2wb,0,DepAtom__0)
+

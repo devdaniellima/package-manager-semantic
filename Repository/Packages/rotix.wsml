@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology rotix
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__rotix memberOf Package
+	package hasValue "rotix"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/text"
+	installedSize hasValue "36"
+	maintainer hasValue "Original-Raúl Benencia <rul@kalgan.cc>"
+	architecture hasValue "amd64"
+	version hasValue "0.83-6"
+	fileName hasValue "pool/universe/r/rotix/rotix_0.83-6_amd64.deb"
+	size hasValue "9688"
+	md5sum hasValue "3aa527c3a86a5a88047a0c581046730b"
+	sha1 hasValue "fd96a62a32d3eea8dccf2a111eda5e604b7f0274"
+	sha256 hasValue "aabce13aa9003e92fcb0a4348268e4ac8a530bee1627910a474549d11c26067e"
+	description hasValue "generate rotational obfuscations"
+	descriptionMd5 hasValue "6316d7be5b1cb3e6a31486d45f917cfd"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__rotix,0,DepAtom__0)
+

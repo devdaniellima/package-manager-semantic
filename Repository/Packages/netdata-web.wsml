@@ -1,0 +1,76 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology netdata_web
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__netdata_web memberOf Package
+	package hasValue "netdata-web"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "3730"
+	maintainer hasValue "Original-Lennart Weller <lhw@ring0.de>"
+	architecture hasValue "all"
+	version hasValue "1.19.0-3ubuntu1"
+	replaces hasValue "netdata-data"
+	conflicts hasValue "netdata-data"
+	fileName hasValue "pool/universe/n/netdata/netdata-web_1.19.0-3ubuntu1_all.deb"
+	size hasValue "946404"
+	md5sum hasValue "f5a2fc278d9a0dd49863b1d91b2bf035"
+	sha1 hasValue "8733ee3a5752d24036a1c166cffb715ad8f4a693"
+	sha256 hasValue "a2f54399186a5da65684dcc8b52a1a4fb6744c69af7229cfba96cbeece6d58b3"
+	descriptionMd5 hasValue "3ed85ae4ec7fa18e84aaedf0bfea8e4e"
+	homepage hasValue "https://github.com/netdata/netdata"
+	depends hasValue "fonts-font-awesome, libjs-bootstrap, netdata-core (>= 1.19.0-3ubuntu1) | netdata-core-no-sse (>= 1.19.0-3ubuntu1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "fonts-font-awesome"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__netdata_web,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libjs-bootstrap"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__netdata_web,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "netdata-core"
+	comparison hasValue ">="
+	version hasValue "1.19.0-3ubuntu1"
+
+relationInstance depends(P0__netdata_web,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "netdata-core-no-sse"
+	comparison hasValue ">="
+	version hasValue "1.19.0-3ubuntu1"
+
+relationInstance depends(P0__netdata_web,2,DepAtom__3)
+

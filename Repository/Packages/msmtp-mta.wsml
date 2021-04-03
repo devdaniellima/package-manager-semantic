@@ -1,0 +1,63 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology msmtp_mta
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__msmtp_mta memberOf Package
+	package hasValue "msmtp-mta"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/mail"
+	installedSize hasValue "64"
+	maintainer hasValue "Original-Emmanuel Bouthenot <kolter@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.8.6-1"
+	replaces hasValue "mail-transport-agent"
+	provides hasValue "mail-transport-agent"
+	conflicts hasValue "mail-transport-agent"
+	fileName hasValue "pool/universe/m/msmtp/msmtp-mta_1.8.6-1_amd64.deb"
+	size hasValue "13140"
+	md5sum hasValue "9917eecd27ce6f2569c765696953626d"
+	sha1 hasValue "0bc959b8c2186e4b97ac449bd24787a082c6bc27"
+	sha256 hasValue "3b142e9c6a49a1802261daec5c67b17d3c7827482ff978ef1fd6cc610200f663"
+	descriptionMd5 hasValue "92a76bed20d7385fc7d78445076c37fc"
+	homepage hasValue "https://marlam.de/msmtp/"
+	depends hasValue "libc6 (>= 2.14), msmtp (= 1.8.6-1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__msmtp_mta,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "msmtp"
+	comparison hasValue "="
+	version hasValue "1.8.6-1"
+
+relationInstance depends(P0__msmtp_mta,1,DepAtom__1)
+

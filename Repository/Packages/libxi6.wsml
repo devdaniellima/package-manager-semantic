@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libxi6
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libxi6 memberOf Package
+	package hasValue "libxi6"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libs"
+	installedSize hasValue "92"
+	maintainer hasValue "Original-Debian X Strike Force <debian-x@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2:1.7.10-0ubuntu1"
+	fileName hasValue "pool/main/libx/libxi/libxi6_1.7.10-0ubuntu1_amd64.deb"
+	size hasValue "29896"
+	md5sum hasValue "c55d19632e35d2ea9cd17230bf9c970a"
+	sha1 hasValue "a7db9a1ceffd5dc26407d5cc72cfa1c2a1b252ef"
+	sha256 hasValue "462b5067ba80ab8dad197c83d1da7b4b1b51b0b392138e20f03029e8d33f9565"
+	description hasValue "X11 Input extension library"
+	descriptionMd5 hasValue "d1c377c726e0263738d2666185adc6f3"
+	homepage hasValue "https://www.x.org/"
+	depends hasValue "libc6 (>= 2.14), libx11-6 (>= 2:1.6.0), libxext6"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libxi6,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libx11-6"
+	comparison hasValue ">="
+	version hasValue "2:1.6.0"
+
+relationInstance depends(P0__libxi6,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libxext6"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libxi6,2,DepAtom__2)
+

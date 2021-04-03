@@ -1,0 +1,55 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology autoconf_archive
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__autoconf_archive memberOf Package
+	package hasValue "autoconf-archive"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "5756"
+	maintainer hasValue "Original-Bastien Roucariès <rouca@debian.org>"
+	architecture hasValue "all"
+	version hasValue "20190106-2.1ubuntu1"
+	replaces hasValue "autoconf-gl-macros (<< 20130609-1~), gnome-common (<< 3.14.0-2~)"
+	provides hasValue "autoconf-gl-macros"
+	fileName hasValue "pool/universe/a/autoconf-archive/autoconf-archive_20190106-2.1ubuntu1_all.deb"
+	size hasValue "664596"
+	md5sum hasValue "2f602d6d7641fabe57f6f13037d7eb5f"
+	sha1 hasValue "2af46d69a06d25221b7a7992c1601ed463393c44"
+	sha256 hasValue "24001c1aedf07fb911a11df66b4b41905bf34e7c08b1259338fb69a735270204"
+	descriptionMd5 hasValue "f1137e4316b07832b8b243d2230725af"
+	homepage hasValue "https://www.gnu.org/software/autoconf-archive/"
+	depends hasValue "Pre-dpkg (>= 1.17.5)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "Pre-dpkg"
+	comparison hasValue ">="
+	version hasValue "1.17.5"
+
+relationInstance depends(P0__autoconf_archive,0,DepAtom__0)
+

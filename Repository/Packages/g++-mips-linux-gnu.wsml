@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gPlusPlus_mips_linux_gnu
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gPlusPlus_mips_linux_gnu memberOf Package
+	package hasValue "g++-mips-linux-gnu"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "11"
+	maintainer hasValue "Original-Debian GCC Maintainers <debian-gcc@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "4:9.2.1-4.1"
+	fileName hasValue "pool/universe/g/gcc-defaults-mipsen/g++-mips-linux-gnu_9.2.1-4.1_amd64.deb"
+	size hasValue "1124"
+	md5sum hasValue "2da8dabd93f402a4446c13d2aa20e296"
+	sha1 hasValue "7e490d0d9e5c9aecc8801b93da6de0dc6e8e42b9"
+	sha256 hasValue "0cbf1d59285658d3b956a831bd2f2586e406f84f03bc18b75ed423e8dc26a645"
+	description hasValue "GNU C++ compiler for the mips architecture"
+	descriptionMd5 hasValue "7d0f5a2fd60fad3c51072d2ce11a6d33"
+	depends hasValue "cpp-mips-linux-gnu (= 4:9.2.1-4.1), gcc-mips-linux-gnu (= 4:9.2.1-4.1), g++-9-mips-linux-gnu (>= 9.2.1-1~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "cpp-mips-linux-gnu"
+	comparison hasValue "="
+	version hasValue "4:9.2.1-4.1"
+
+relationInstance depends(P0__gPlusPlus_mips_linux_gnu,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "gcc-mips-linux-gnu"
+	comparison hasValue "="
+	version hasValue "4:9.2.1-4.1"
+
+relationInstance depends(P0__gPlusPlus_mips_linux_gnu,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "g++-9-mips-linux-gnu"
+	comparison hasValue ">="
+	version hasValue "9.2.1-1~"
+
+relationInstance depends(P0__gPlusPlus_mips_linux_gnu,2,DepAtom__2)
+

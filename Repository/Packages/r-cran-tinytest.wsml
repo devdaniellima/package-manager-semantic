@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology r_cran_tinytest
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__r_cran_tinytest memberOf Package
+	package hasValue "r-cran-tinytest"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/gnu-r"
+	installedSize hasValue "601"
+	maintainer hasValue "Original-Debian R Packages Maintainers <r-pkg-team@alioth-lists.debian.net>"
+	architecture hasValue "all"
+	version hasValue "1.1.0-2"
+	fileName hasValue "pool/universe/r/r-cran-tinytest/r-cran-tinytest_1.1.0-2_all.deb"
+	size hasValue "472080"
+	md5sum hasValue "be267e6e65d112cd1edfa45e8568132e"
+	sha1 hasValue "38f4d43b5c4e11a3c0a9f17d9206814687c7b401"
+	sha256 hasValue "f540e879a3d43043c32b9a873061bd76175511b010bb79a8c60475566695da47"
+	descriptionMd5 hasValue "818a7b2ba30b19783b7a7f056f83c586"
+	homepage hasValue "https://cran.r-project.org/package=tinytest"
+	depends hasValue "r-base-core (>= 3.6.2-2), r-api-3.5"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "r-base-core"
+	comparison hasValue ">="
+	version hasValue "3.6.2-2"
+
+relationInstance depends(P0__r_cran_tinytest,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "r-api-3.5"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__r_cran_tinytest,1,DepAtom__1)
+

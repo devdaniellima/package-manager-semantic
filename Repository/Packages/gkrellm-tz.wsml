@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gkrellm_tz
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gkrellm_tz memberOf Package
+	package hasValue "gkrellm-tz"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/x11"
+	installedSize hasValue "43"
+	maintainer hasValue "Original-Andreas \"Jimmy\" Gredler <jimmy@grml.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.8-1"
+	fileName hasValue "pool/universe/g/gkrellm-tz/gkrellm-tz_0.8-1_amd64.deb"
+	size hasValue "11478"
+	md5sum hasValue "74cdfb836ba0fcbb8fca4885b434c8bb"
+	sha1 hasValue "9d545b493c2405464820b247bd26de219e319c22"
+	sha256 hasValue "c9c2347be1afe3d24e98d5f63aeed62d94231b7cf987fa10243d5c3260110a00"
+	descriptionMd5 hasValue "ffc254145674af7a843fa9384439dcc6"
+	homepage hasValue "http://mamuti.net/gkrellm/gkrellm-tz.en.html"
+	depends hasValue "libc6 (>= 2.7), gkrellm"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__gkrellm_tz,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "gkrellm"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__gkrellm_tz,1,DepAtom__1)
+

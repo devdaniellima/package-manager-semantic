@@ -1,0 +1,70 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology asterisk_voicemail_odbcstorage
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__asterisk_voicemail_odbcstorage memberOf Package
+	package hasValue "asterisk-voicemail-odbcstorage"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/comm"
+	installedSize hasValue "360"
+	maintainer hasValue "Original-Debian VoIP Team <pkg-voip-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:16.2.1~dfsg-2ubuntu1"
+	provides hasValue "asterisk-voicemail-storage"
+	conflicts hasValue "asterisk-voicemail-storage"
+	fileName hasValue "pool/universe/a/asterisk/asterisk-voicemail-odbcstorage_16.2.1~dfsg-2ubuntu1_amd64.deb"
+	size hasValue "113336"
+	md5sum hasValue "a8db7b399627cc4733a6d25e17feec39"
+	sha1 hasValue "fae45d8fc22d191858e432a8dced378355d3c39a"
+	sha256 hasValue "8f61b9ff9f4d354924d8ba638d0c33b11cecee74a8b9a65e87e8f45c3eeb5016"
+	description hasValue "ODBC voicemail storage support for the Asterisk PBX"
+	descriptionMd5 hasValue "3aa03566db8ac6e6c0a99deecb01ad49"
+	homepage hasValue "http://www.asterisk.org/"
+	depends hasValue "asterisk (= 1:16.2.1~dfsg-2ubuntu1), libc6 (>= 2.14), libodbc1 (>= 2.3.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "asterisk"
+	comparison hasValue "="
+	version hasValue "1:16.2.1~dfsg-2ubuntu1"
+
+relationInstance depends(P0__asterisk_voicemail_odbcstorage,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__asterisk_voicemail_odbcstorage,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libodbc1"
+	comparison hasValue ">="
+	version hasValue "2.3.1"
+
+relationInstance depends(P0__asterisk_voicemail_odbcstorage,2,DepAtom__2)
+

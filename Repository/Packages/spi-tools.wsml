@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology spi_tools
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__spi_tools memberOf Package
+	package hasValue "spi-tools"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "45"
+	maintainer hasValue "Original-Lubomir Rintel <lkundrak@v3.sk>"
+	architecture hasValue "amd64"
+	version hasValue "0.8.4-1"
+	fileName hasValue "pool/universe/s/spi-tools/spi-tools_0.8.4-1_amd64.deb"
+	size hasValue "9484"
+	md5sum hasValue "f995958cd374e4b0e6c8a18c2f82a6c1"
+	sha1 hasValue "d516cc3c1d4eac00a9827bb8f53a86b5d3b75de4"
+	sha256 hasValue "f8de91d52b14301654550bd75f6e3e12c0178a74ee2aa51146f6975c60728cec"
+	descriptionMd5 hasValue "461645ab993919a5982f7078a0afaa84"
+	homepage hasValue "https://github.com/cpb-/spi-tools"
+	depends hasValue "libc6 (>= 2.7)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__spi_tools,0,DepAtom__0)
+

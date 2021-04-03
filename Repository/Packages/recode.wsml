@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology recode
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__recode memberOf Package
+	package hasValue "recode"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "text"
+	installedSize hasValue "204"
+	maintainer hasValue "Original-Santiago Vila <sanvila@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.6-24"
+	fileName hasValue "pool/main/r/recode/recode_3.6-24_amd64.deb"
+	size hasValue "110712"
+	md5sum hasValue "df8ec406285ba63aca19c271ce23aaf5"
+	sha1 hasValue "d013fe8c0773e4ae297962ab2c426ac0731bdec1"
+	sha256 hasValue "c1caf0abe6080255f8d82277b2585ad844c5196c673fcd33ff0179c2392702e6"
+	description hasValue "utilitário de conversão de conjuntos de caracteres"
+	descriptionMd5 hasValue "c1971320f75c7a20b5b1d9b7d221ff3d"
+	depends hasValue "libc6 (>= 2.4), librecode0 (>= 3.6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__recode,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "librecode0"
+	comparison hasValue ">="
+	version hasValue "3.6"
+
+relationInstance depends(P0__recode,1,DepAtom__1)
+

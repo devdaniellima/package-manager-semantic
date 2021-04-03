@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology pagure_webhook
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__pagure_webhook memberOf Package
+	package hasValue "pagure-webhook"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "22"
+	maintainer hasValue "Original-Sergio Durigan Junior <sergiodj@debian.org>"
+	architecture hasValue "all"
+	version hasValue "5.8.1+dfsg-3"
+	fileName hasValue "pool/universe/p/pagure/pagure-webhook_5.8.1+dfsg-3_all.deb"
+	size hasValue "4492"
+	md5sum hasValue "01b61492a3b26ca4f95db27187ba17fb"
+	sha1 hasValue "995c04f65ed5fff9b9b4c14dd50be3753f337cc1"
+	sha256 hasValue "8e3bbf444b5abdbdb87e93443ef112028910f7e2ad5b6350bc75b30ee9cca803"
+	descriptionMd5 hasValue "84d109186d4b643f978b8039839489ec"
+	homepage hasValue "https://pagure.io/pagure"
+	depends hasValue "pagure (= 5.8.1+dfsg-3)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "pagure"
+	comparison hasValue "="
+	version hasValue "5.8.1+dfsg-3"
+
+relationInstance depends(P0__pagure_webhook,0,DepAtom__0)
+

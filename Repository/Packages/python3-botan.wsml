@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python3_botan
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python3_botan memberOf Package
+	package hasValue "python3-botan"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "81"
+	maintainer hasValue "Original-Laszlo Boszormenyi (GCS) <gcs@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.12.1-2build1"
+	fileName hasValue "pool/universe/b/botan/python3-botan_2.12.1-2build1_amd64.deb"
+	size hasValue "12908"
+	md5sum hasValue "bea79b3d0a94d0c0d2e223cf69c3a3b6"
+	sha1 hasValue "47ab54081790a4d8695fac95ea4889a62cffb444"
+	sha256 hasValue "d86fb17a781159a0c508b61bcdcb56a224ab2e97e2ec1902ab4c7709acaae8b7"
+	description hasValue "multiplatform crypto library (2.x version), Python3 module"
+	descriptionMd5 hasValue "2d7057453645c015e5f9e28cf44891c4"
+	homepage hasValue "https://botan.randombit.net/"
+	depends hasValue "python3:any, libbotan-2-12 (= 2.12.1-2build1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__python3_botan,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libbotan-2-12"
+	comparison hasValue "="
+	version hasValue "2.12.1-2build1"
+
+relationInstance depends(P0__python3_botan,1,DepAtom__1)
+

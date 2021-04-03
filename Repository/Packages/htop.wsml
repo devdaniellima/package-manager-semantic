@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology htop
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__htop memberOf Package
+	package hasValue "htop"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "utils"
+	installedSize hasValue "220"
+	maintainer hasValue "Original-Daniel Lange <DLange@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.2.0-2build1"
+	fileName hasValue "pool/main/h/htop/htop_2.2.0-2build1_amd64.deb"
+	size hasValue "80544"
+	md5sum hasValue "b62b3db6e66b492bba542ce5d03b8758"
+	sha1 hasValue "f8186bcd203f82f1b9a5fc68fc474ed76f823a3c"
+	sha256 hasValue "c803ab48c0f2e097283a2e0673914a758f10779a26a947a77d36a1e4353e85d6"
+	description hasValue "visualizador de processos interativo"
+	descriptionMd5 hasValue "8eb5aa19b3c92a975dc78e2165f6688d"
+	homepage hasValue "https://hisham.hm/htop/"
+	depends hasValue "libc6 (>= 2.15), libncursesw6 (>= 6), libtinfo6 (>= 6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__htop,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libncursesw6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__htop,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libtinfo6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__htop,2,DepAtom__2)
+

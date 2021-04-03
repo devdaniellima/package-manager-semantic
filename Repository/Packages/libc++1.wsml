@@ -1,0 +1,52 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libcPlusPlus1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libcPlusPlus1 memberOf Package
+	package hasValue "libc++1"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/libs"
+	installedSize hasValue "14"
+	maintainer hasValue "Original-LLVM Packaging Team <pkg-llvm-team@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:10.0-50~exp1"
+	fileName hasValue "pool/universe/l/llvm-defaults/libc++1_10.0-50~exp1_amd64.deb"
+	size hasValue "2904"
+	md5sum hasValue "2fa919ff21fe0018e163588128acdd3c"
+	sha1 hasValue "4afacc810d3513b4bb9320214dd9525e4a44d428"
+	sha256 hasValue "e7ec6cf3de8fe01879c18c6bdfeb6f5fd4d5860f38dd86287411903ebafc1efd"
+	descriptionMd5 hasValue "0ca3e9323e5fe0f6d714867a9814cdee"
+	depends hasValue "libc++1-10 (>= 10~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc++1-10"
+	comparison hasValue ">="
+	version hasValue "10~"
+
+relationInstance depends(P0__libcPlusPlus1,0,DepAtom__0)
+

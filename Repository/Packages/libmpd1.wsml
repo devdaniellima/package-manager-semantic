@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libmpd1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libmpd1 memberOf Package
+	package hasValue "libmpd1"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "115"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.20.0-3"
+	fileName hasValue "pool/universe/libm/libmpd/libmpd1_0.20.0-3_amd64.deb"
+	size hasValue "37848"
+	md5sum hasValue "774245dbce57c6881e40a3ef9bab614f"
+	sha1 hasValue "0fb741e8cc0c373720c8c902e41c20165bb6f4bf"
+	sha256 hasValue "737550780492ea52a02075dec597e291de7935ea26cc1656173a04515491d40c"
+	description hasValue "High-level client library for accessing Music Player Daemon"
+	descriptionMd5 hasValue "f68285677e81099625f7602eb71ee49e"
+	homepage hasValue "http://gmpc.wikia.com/"
+	depends hasValue "libc6 (>= 2.15), libglib2.0-0 (>= 2.16.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__libmpd1,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libglib2.0-0"
+	comparison hasValue ">="
+	version hasValue "2.16.0"
+
+relationInstance depends(P0__libmpd1,1,DepAtom__1)
+

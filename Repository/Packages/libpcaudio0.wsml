@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libpcaudio0
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libpcaudio0 memberOf Package
+	package hasValue "libpcaudio0"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libs"
+	installedSize hasValue "37"
+	maintainer hasValue "Original-Debian Accessibility Team <pkg-a11y-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.1-4"
+	fileName hasValue "pool/main/p/pcaudiolib/libpcaudio0_1.1-4_amd64.deb"
+	size hasValue "7908"
+	md5sum hasValue "2d3a137ca48d2404cc1634fb19ec7fcb"
+	sha1 hasValue "a2a7c4501d337e65738156d30131451373971898"
+	sha256 hasValue "7c86a4b5cccb2d7b84e2eff764ec4c6ac6676a43c8f228f323e44d4dcc1a3900"
+	description hasValue "C API to different audio devices - shared library"
+	descriptionMd5 hasValue "9b2e45c1472854471d308a3004ebbc73"
+	homepage hasValue "https://github.com/espeak-ng/pcaudiolib"
+	depends hasValue "libasound2 (>= 1.0.16), libc6 (>= 2.4), libpulse0 (>= 0.99.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libasound2"
+	comparison hasValue ">="
+	version hasValue "1.0.16"
+
+relationInstance depends(P0__libpcaudio0,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libpcaudio0,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libpulse0"
+	comparison hasValue ">="
+	version hasValue "0.99.1"
+
+relationInstance depends(P0__libpcaudio0,2,DepAtom__2)
+

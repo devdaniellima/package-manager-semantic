@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology istgt
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__istgt memberOf Package
+	package hasValue "istgt"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/admin"
+	installedSize hasValue "395"
+	maintainer hasValue "Original-GNU/kFreeBSD Maintainers <debian-bsd@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.4~20111008-3build1"
+	fileName hasValue "pool/universe/i/istgt/istgt_0.4~20111008-3build1_amd64.deb"
+	size hasValue "156024"
+	md5sum hasValue "4339de277d670e1c91b7e9737cf3498e"
+	sha1 hasValue "6c94bdb18b9e8484e0cb95f72e8c619cf7b3cbfb"
+	sha256 hasValue "22a82cabed6559ea5251194c492a53ee7ab65eb97dafe778ef1d9a55880fe3d5"
+	descriptionMd5 hasValue "c219befdb4bbcb6ddeb6d016658f3234"
+	homepage hasValue "http://www.peach.ne.jp/archives/istgt/"
+	depends hasValue "lsb-base (>= 3.0-6), libc6 (>= 2.16), libssl1.1 (>= 1.1.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "lsb-base"
+	comparison hasValue ">="
+	version hasValue "3.0-6"
+
+relationInstance depends(P0__istgt,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.16"
+
+relationInstance depends(P0__istgt,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libssl1.1"
+	comparison hasValue ">="
+	version hasValue "1.1.0"
+
+relationInstance depends(P0__istgt,2,DepAtom__2)
+

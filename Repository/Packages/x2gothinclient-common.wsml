@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology x2gothinclient_common
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__x2gothinclient_common memberOf Package
+	package hasValue "x2gothinclient-common"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "35"
+	maintainer hasValue "Original-Debian Remote Maintainers <debian-remote@lists.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.5.0.1-5"
+	replaces hasValue "x2gothinclient (<< 1.5.0.0)"
+	fileName hasValue "pool/universe/x/x2gothinclient/x2gothinclient-common_1.5.0.1-5_all.deb"
+	size hasValue "6564"
+	md5sum hasValue "ed2eb55af614a0946f370363fc41c97e"
+	sha1 hasValue "bebce188eda4e24681ba335a0d736c78d0bfef6e"
+	sha256 hasValue "a9f9ccd0a1f1420ab60dea0c0a5acbf51668687203b4ee8f53d5fde64a15e3f4"
+	descriptionMd5 hasValue "c11526b5cc72c647d4b5ea521e72659a"
+	homepage hasValue "https://code.x2go.org/releases/source/x2gothinclient"
+	depends hasValue "adduser, x2goclient (>= 4.0.1.2-0~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "adduser"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__x2gothinclient_common,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "x2goclient"
+	comparison hasValue ">="
+	version hasValue "4.0.1.2-0~"
+
+relationInstance depends(P0__x2gothinclient_common,1,DepAtom__1)
+

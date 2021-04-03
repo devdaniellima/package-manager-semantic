@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology fping
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__fping memberOf Package
+	package hasValue "fping"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "87"
+	maintainer hasValue "Original-Axel Beckert <abe@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "4.2-1"
+	fileName hasValue "pool/universe/f/fping/fping_4.2-1_amd64.deb"
+	size hasValue "32436"
+	md5sum hasValue "2429a11bb324574156fe653f47c9f23a"
+	sha1 hasValue "ad73c0c1753953b34308a48f8eda7df79ce0d81c"
+	sha256 hasValue "1af2189ef67e6d83da5446758f51429ecb1ed0d61bfda947b0b2a7808bbecd47"
+	description hasValue "envia pacotes ECHO_REQUEST de ICMP para máquinas de rede"
+	descriptionMd5 hasValue "39b9ab73fb3b3bedff57b40efd2819fd"
+	homepage hasValue "https://www.fping.org/"
+	depends hasValue "libcap2-bin, netbase, libc6 (>= 2.15)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libcap2-bin"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__fping,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "netbase"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__fping,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__fping,2,DepAtom__2)
+

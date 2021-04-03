@@ -1,0 +1,55 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology lunzip
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__lunzip memberOf Package
+	package hasValue "lunzip"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "79"
+	maintainer hasValue "Original-Daniel Baumann <daniel.baumann@progress-linux.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.11-8"
+	provides hasValue "lzip-alternative, lzip-decompressor"
+	fileName hasValue "pool/universe/l/lunzip/lunzip_1.11-8_amd64.deb"
+	size hasValue "28208"
+	md5sum hasValue "0858a594269942202b9ca76d5d02b094"
+	sha1 hasValue "0bf7067c636a914d6350aaf8e93ac5d0f07a5e3a"
+	sha256 hasValue "0ed2371688727e3827203822c466e42957bc0758c53d8c669ae5dc6d99322710"
+	description hasValue "data compressor based on the LZMA algorithm (decompressor)"
+	descriptionMd5 hasValue "dad1d8486f5fc429767e104dba9c5f90"
+	homepage hasValue "http://www.nongnu.org/lzip/lunzip.html"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__lunzip,0,DepAtom__0)
+

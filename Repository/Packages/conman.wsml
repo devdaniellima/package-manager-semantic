@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology conman
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__conman memberOf Package
+	package hasValue "conman"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/comm"
+	installedSize hasValue "365"
+	maintainer hasValue "Original-Yao-Po Wang <blue119@gmail.com>"
+	architecture hasValue "amd64"
+	version hasValue "0.2.7-1build2"
+	fileName hasValue "pool/universe/c/conman/conman_0.2.7-1build2_amd64.deb"
+	size hasValue "92636"
+	md5sum hasValue "d87fc0da5749f3f24632f25d59f050e6"
+	sha1 hasValue "eedba436a3598a75c6af7db75590b7bcbaa3c72c"
+	sha256 hasValue "27fb6895c07937d87a548c39c129701ed6e501d7ab08a2f2aaac0bf7b76c1ab3"
+	descriptionMd5 hasValue "cfc45b2af439c590556fae2aedd461f0"
+	homepage hasValue "https://github.com/dun/conman"
+	depends hasValue "libc6 (>= 2.15), libipmiconsole2 (>= 1.1.5), libwrap0 (>= 7.6-4~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__conman,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libipmiconsole2"
+	comparison hasValue ">="
+	version hasValue "1.1.5"
+
+relationInstance depends(P0__conman,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libwrap0"
+	comparison hasValue ">="
+	version hasValue "7.6-4~"
+
+relationInstance depends(P0__conman,2,DepAtom__2)
+

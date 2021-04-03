@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology pngcrush
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__pngcrush memberOf Package
+	package hasValue "pngcrush"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/graphics"
+	installedSize hasValue "140"
+	maintainer hasValue "Original-Margarita Manterola <marga@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.8.13-0.1"
+	fileName hasValue "pool/universe/p/pngcrush/pngcrush_1.8.13-0.1_amd64.deb"
+	size hasValue "52824"
+	md5sum hasValue "193fb99c49a1b37a2b42a00346d59acb"
+	sha1 hasValue "c074323773bfdb737e2c6e1c10bc2edd38aa7510"
+	sha256 hasValue "691dcb990552e99484ea1ae6ef0fb598d17a3a678ee89466039c731b32270218"
+	description hasValue "otimizador de arquivos PNG (Portable Network Graphics)"
+	descriptionMd5 hasValue "3fa9f9dda281f8e8843940a73b1d1ed7"
+	homepage hasValue "http://pmt.sourceforge.net/pngcrush/"
+	depends hasValue "libc6 (>= 2.11), libpng16-16 (>= 1.6.2-1), zlib1g (>= 1:1.1.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.11"
+
+relationInstance depends(P0__pngcrush,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libpng16-16"
+	comparison hasValue ">="
+	version hasValue "1.6.2-1"
+
+relationInstance depends(P0__pngcrush,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "zlib1g"
+	comparison hasValue ">="
+	version hasValue "1:1.1.4"
+
+relationInstance depends(P0__pngcrush,2,DepAtom__2)
+

@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libopenobex2
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libopenobex2 memberOf Package
+	package hasValue "libopenobex2"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libs"
+	installedSize hasValue "185"
+	maintainer hasValue "Original-Nobuhiro Iwamatsu <iwamatsu@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.7.2-1"
+	fileName hasValue "pool/main/libo/libopenobex/libopenobex2_1.7.2-1_amd64.deb"
+	size hasValue "47698"
+	md5sum hasValue "9617c050104a1132602fc429f265d2f9"
+	sha1 hasValue "175f6338302c01d652bdfe07644b8532f3b43dae"
+	sha256 hasValue "81ea9e1adf45586ca57669f8a34e90700f4cb14ab38ba1071e5c2ea264121350"
+	description hasValue "Biblioteca de protocolos OBEX"
+	descriptionMd5 hasValue "729a552232c780f0321b79447d299d2c"
+	homepage hasValue "http://sourceforge.net/projects/openobex/"
+	depends hasValue "libc6 (>= 2.15), libusb-1.0-0 (>= 2:1.0.8)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__libopenobex2,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libusb-1.0-0"
+	comparison hasValue ">="
+	version hasValue "2:1.0.8"
+
+relationInstance depends(P0__libopenobex2,1,DepAtom__1)
+

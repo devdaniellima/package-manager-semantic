@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology zipmerge
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__zipmerge memberOf Package
+	package hasValue "zipmerge"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "35"
+	maintainer hasValue "Original-Stefan Schörghofer <amd1212@4md.gr>"
+	architecture hasValue "amd64"
+	version hasValue "1.5.1-0ubuntu1"
+	fileName hasValue "pool/universe/libz/libzip/zipmerge_1.5.1-0ubuntu1_amd64.deb"
+	size hasValue "7988"
+	md5sum hasValue "72cff7f85e3a8a2a9e0ce989aaeb6e40"
+	sha1 hasValue "04861f3e510cb8adaabf015c604921b3cdc7b9bd"
+	sha256 hasValue "7a661cd515eced61658412751ec42ae94f728a04c39308262f6cc79b98a713a7"
+	description hasValue "mescla arquivamentos zip"
+	descriptionMd5 hasValue "b31ef64d55e213c298b63e7fe1e9db4d"
+	homepage hasValue "http://www.nih.at/libzip/"
+	depends hasValue "libc6 (>= 2.4), libzip5 (>= 1.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__zipmerge,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libzip5"
+	comparison hasValue ">="
+	version hasValue "1.0"
+
+relationInstance depends(P0__zipmerge,1,DepAtom__1)
+

@@ -1,0 +1,59 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology tre_agrep
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__tre_agrep memberOf Package
+	package hasValue "tre-agrep"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/text"
+	installedSize hasValue "31"
+	maintainer hasValue "Original-Santiago Vila <sanvila@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.8.0-6"
+	fileName hasValue "pool/universe/t/tre/tre-agrep_0.8.0-6_amd64.deb"
+	size hasValue "10002"
+	md5sum hasValue "ec0242ff2f50b17c814cc71317e2ace4"
+	sha1 hasValue "ff30277107f343fc5148dabfc93813ee8142e583"
+	sha256 hasValue "4383a302136d50104eb9dd1e1e3f10784a44fbbc5c1d247511c7de9b84184752"
+	descriptionMd5 hasValue "47cd6791257773c8e12fc1782424107d"
+	depends hasValue "libc6 (>= 2.4), libtre5 (= 0.8.0-6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__tre_agrep,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libtre5"
+	comparison hasValue "="
+	version hasValue "0.8.0-6"
+
+relationInstance depends(P0__tre_agrep,1,DepAtom__1)
+

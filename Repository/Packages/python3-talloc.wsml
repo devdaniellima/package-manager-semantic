@@ -1,0 +1,83 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python3_talloc
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python3_talloc memberOf Package
+	package hasValue "python3-talloc"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "python"
+	installedSize hasValue "76"
+	maintainer hasValue "Original-Debian Samba Maintainers <pkg-samba-maint@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.3.0-3ubuntu1"
+	provides hasValue "python3.8-talloc"
+	fileName hasValue "pool/main/t/talloc/python3-talloc_2.3.0-3ubuntu1_amd64.deb"
+	size hasValue "12160"
+	md5sum hasValue "a5f1549a4bfc01ee021644f684ca79eb"
+	sha1 hasValue "f317df9b09f196096bb5be5394974056d9f8a9ed"
+	sha256 hasValue "56be6163ce276c2d35bc43800414300ac1ba5e1663a7b9d0aaec3871bf5197a1"
+	description hasValue "hierarchical pool based memory allocator - Python3 bindings"
+	descriptionMd5 hasValue "1f69e5a938571daf4dc63c092547c640"
+	homepage hasValue "https://talloc.samba.org/"
+	depends hasValue "libtalloc2 (= 2.3.0-3ubuntu1), python3 (<< 3.9), python3 (>= 3.8~), libc6 (>= 2.4), libpython3.8 (>= 3.8.0~a1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libtalloc2"
+	comparison hasValue "="
+	version hasValue "2.3.0-3ubuntu1"
+
+relationInstance depends(P0__python3_talloc,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3"
+	comparison hasValue "<<"
+	version hasValue "3.9"
+
+relationInstance depends(P0__python3_talloc,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "python3"
+	comparison hasValue ">="
+	version hasValue "3.8~"
+
+relationInstance depends(P0__python3_talloc,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__python3_talloc,3,DepAtom__3)
+
+instance DepAtom__4 memberOf DependencyAtom
+	package hasValue "libpython3.8"
+	comparison hasValue ">="
+	version hasValue "3.8.0~a1"
+
+relationInstance depends(P0__python3_talloc,4,DepAtom__4)
+

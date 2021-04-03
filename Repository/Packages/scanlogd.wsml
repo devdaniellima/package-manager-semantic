@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology scanlogd
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__scanlogd memberOf Package
+	package hasValue "scanlogd"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "45"
+	maintainer hasValue "Original-Michael Vogt <mvo@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.2.5-3.3"
+	fileName hasValue "pool/universe/s/scanlogd/scanlogd_2.2.5-3.3_amd64.deb"
+	size hasValue "19356"
+	md5sum hasValue "31881a2b145748f33563595022dc3f2b"
+	sha1 hasValue "efde6fe83f29b168eca43b6816ca63e2ae75b4b9"
+	sha256 hasValue "bb6b249b181050befdae5c6a0deb56f99a19f822c70fa02da8dec086d28f05ff"
+	description hasValue "Uma ferramenta para detecção de portscan."
+	descriptionMd5 hasValue "1ae6733d6d6468bf6cbf3db37d465b8d"
+	homepage hasValue "http://www.openwall.com/scanlogd/"
+	depends hasValue "libc6 (>= 2.4), adduser"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__scanlogd,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "adduser"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__scanlogd,1,DepAtom__1)
+

@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libsqlite_tcl
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libsqlite_tcl memberOf Package
+	package hasValue "libsqlite-tcl"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/interpreters"
+	installedSize hasValue "38"
+	maintainer hasValue "Original-Laszlo Boszormenyi (GCS) <gcs@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.8.17-15fakesync1build1"
+	replaces hasValue "libsqlite0-tcl"
+	conflicts hasValue "libsqlite0-tcl"
+	fileName hasValue "pool/universe/s/sqlite/libsqlite-tcl_2.8.17-15fakesync1build1_amd64.deb"
+	size hasValue "7948"
+	md5sum hasValue "09971b451f92424169cb7b9b2a76b545"
+	sha1 hasValue "0e0f7d57f57b13ca6cd46156e2643c7f4dcdfe49"
+	sha256 hasValue "6eb2dfb3e63b106a2ee85b41d69ad010189ca137325455d824c6e68292cee859"
+	description hasValue "SQLite 2 Tcl bindings"
+	descriptionMd5 hasValue "918f092ba00b0b9e68311d15278e5d85"
+	depends hasValue "libc6 (>= 2.4), libsqlite0 (>= 2.8.17)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libsqlite_tcl,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libsqlite0"
+	comparison hasValue ">="
+	version hasValue "2.8.17"
+
+relationInstance depends(P0__libsqlite_tcl,1,DepAtom__1)
+

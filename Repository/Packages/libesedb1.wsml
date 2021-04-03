@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libesedb1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libesedb1 memberOf Package
+	package hasValue "libesedb1"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "1723"
+	maintainer hasValue "Original-Debian Security Tools <team+pkg-security@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "20181229-3.1"
+	fileName hasValue "pool/universe/libe/libesedb/libesedb1_20181229-3.1_amd64.deb"
+	size hasValue "417092"
+	md5sum hasValue "b31e3cbb5f8f76dd6d42d0e867cfc587"
+	sha1 hasValue "71ee3959987de3523ccc9790dd148ad2e2cf05d4"
+	sha256 hasValue "2ec7db256814e305a5e7d79bc1106ee10b85ba0232345dad47ef61c62878efe2"
+	description hasValue "Extensible Storage Engine DB access library"
+	descriptionMd5 hasValue "d8bb55d63029328c253f8eae8ea33cca"
+	homepage hasValue "https://github.com/libyal/libesedb"
+	depends hasValue "libbfio1 (>= 20120425), libc6 (>= 2.17)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libbfio1"
+	comparison hasValue ">="
+	version hasValue "20120425"
+
+relationInstance depends(P0__libesedb1,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.17"
+
+relationInstance depends(P0__libesedb1,1,DepAtom__1)
+

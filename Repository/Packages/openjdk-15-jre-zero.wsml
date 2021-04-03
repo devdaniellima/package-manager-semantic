@@ -1,0 +1,66 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology openjdk_15_jre_zero
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S2 memberOf Source
+	uri hasValue "http://ppa.launchpad.net/openjdk-r/ppa/ubuntu"
+
+// Packages instances
+
+instance P0__openjdk_15_jre_zero memberOf Package
+	package hasValue "openjdk-15-jre-zero"
+	packageSource hasValue Source__S2
+	priority hasValue "optional"
+	section hasValue "java"
+	installedSize hasValue "5750"
+	maintainer hasValue "OpenJDK Team <openjdk-15@packages.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "15.0.2+7-1~20.04~1"
+	fileName hasValue "pool/main/o/openjdk-15/openjdk-15-jre-zero_15.0.2+7-1~20.04~1_amd64.deb"
+	size hasValue "1795688"
+	md5sum hasValue "43ba02cc42dd33ab095c5644307eb1be"
+	sha1 hasValue "3d44f93dd1994f4f83c74a44ee2cc5fa39a5edcd"
+	sha256 hasValue "56403a364955bddb688df82d937ceeadc6bb6b43bb32b37e77376b899fec4820"
+	descriptionMd5 hasValue "c714861c802c9808def07d5329c6ed78"
+	depends hasValue "openjdk-15-jre-headless (= 15.0.2+7-1~20.04~1), libc6 (>= 2.29), libstdc++6 (>= 4.1.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "openjdk-15-jre-headless"
+	comparison hasValue "="
+	version hasValue "15.0.2+7-1~20.04~1"
+
+relationInstance depends(P0__openjdk_15_jre_zero,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__openjdk_15_jre_zero,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "4.1.1"
+
+relationInstance depends(P0__openjdk_15_jre_zero,2,DepAtom__2)
+

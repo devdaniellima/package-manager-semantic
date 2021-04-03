@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology zsh_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__zsh_dev memberOf Package
+	package hasValue "zsh-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libdevel"
+	installedSize hasValue "550"
+	maintainer hasValue "Original-Debian Zsh Maintainers <pkg-zsh-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "5.8-3ubuntu1"
+	fileName hasValue "pool/main/z/zsh/zsh-dev_5.8-3ubuntu1_amd64.deb"
+	size hasValue "93692"
+	md5sum hasValue "51f31757b0ce5d6a5c7902a021279265"
+	sha1 hasValue "ca68fe3a1c96817aa80a5ba149a398b1a6e0d025"
+	sha256 hasValue "e662a4c70bd17ef5c96fbdd4d1ce0d6068977d849896d49cf2b9710c2af8950c"
+	description hasValue "shell with lots of features (development files)"
+	descriptionMd5 hasValue "958eee099c22df2f69105f5ecae036a2"
+	homepage hasValue "https://www.zsh.org/"
+	depends hasValue "zsh-common (= 5.8-3ubuntu1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "zsh-common"
+	comparison hasValue "="
+	version hasValue "5.8-3ubuntu1"
+
+relationInstance depends(P0__zsh_dev,0,DepAtom__0)
+

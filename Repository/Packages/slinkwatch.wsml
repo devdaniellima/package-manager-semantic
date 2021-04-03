@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology slinkwatch
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__slinkwatch memberOf Package
+	package hasValue "slinkwatch"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "9875"
+	maintainer hasValue "Original-Sascha Steinbiss <satta@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.1-2"
+	fileName hasValue "pool/universe/s/slinkwatch/slinkwatch_1.1-2_amd64.deb"
+	size hasValue "3049248"
+	md5sum hasValue "ae7b0cc491a5e5994331fff6ab286c44"
+	sha1 hasValue "4f6459f09b4818402a1c9f2f9299c183ef7399f3"
+	sha256 hasValue "acb69870ca7fff6834411eb45988199d02e868a3f603e7d1fd6b5ab758f4a3c9"
+	descriptionMd5 hasValue "63d1d92a0c06d6d4320b4c7d87411783"
+	homepage hasValue "https://github.com/DCSO/slinkwatch"
+	depends hasValue "libc6 (>= 2.4), libdaemon0 (>= 0.10)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__slinkwatch,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libdaemon0"
+	comparison hasValue ">="
+	version hasValue "0.10"
+
+relationInstance depends(P0__slinkwatch,1,DepAtom__1)
+

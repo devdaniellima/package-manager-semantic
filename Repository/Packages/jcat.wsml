@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology jcat
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__jcat memberOf Package
+	package hasValue "jcat"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "48"
+	maintainer hasValue "Original-Debian EFI team <debian-efi@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.1.0-2"
+	fileName hasValue "pool/universe/libj/libjcat/jcat_0.1.0-2_amd64.deb"
+	size hasValue "11436"
+	md5sum hasValue "5fda148f324a9a92f39da64390e61d55"
+	sha1 hasValue "7ae021f64cfd13c969985f17f1fe5e26c9661977"
+	sha256 hasValue "dbe980867de7ea3a1f29e5fe6ff26fd8b76e219f01962e1e205da20118ba40df"
+	descriptionMd5 hasValue "68b4b5333d69aee5fe7a9944747dcf81"
+	homepage hasValue "https://github.com/hughsie/libjcat"
+	depends hasValue "libc6 (>= 2.4), libglib2.0-0 (>= 2.31.8), libjcat1 (>= 0.1.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__jcat,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libglib2.0-0"
+	comparison hasValue ">="
+	version hasValue "2.31.8"
+
+relationInstance depends(P0__jcat,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libjcat1"
+	comparison hasValue ">="
+	version hasValue "0.1.0"
+
+relationInstance depends(P0__jcat,2,DepAtom__2)
+

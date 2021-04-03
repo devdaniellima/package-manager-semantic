@@ -1,0 +1,55 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libgsm1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libgsm1 memberOf Package
+	package hasValue "libgsm1"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "80"
+	maintainer hasValue "Original-Felix Lechner <felix.lechner@lease-up.com>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.18-2"
+	conflicts hasValue "libgsm-dev"
+	fileName hasValue "pool/universe/libg/libgsm/libgsm1_1.0.18-2_amd64.deb"
+	size hasValue "24440"
+	md5sum hasValue "196d7f355e2ea5bcc556ced81724c1da"
+	sha1 hasValue "be16d20e5430200d1bef09e2cb76eaa0aa78de16"
+	sha256 hasValue "2640556f37ef687bf74bb30cbc3c63ce16d14aad1929783530dc05ca3984aefa"
+	description hasValue "bibliotecas compartilhadas para compressão de fala GSM"
+	descriptionMd5 hasValue "850b53b80d6b3097c0b767677916e50e"
+	homepage hasValue "http://www.quut.com/gsm/"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libgsm1,0,DepAtom__0)
+

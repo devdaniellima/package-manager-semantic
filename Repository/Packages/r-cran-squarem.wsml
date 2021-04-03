@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology r_cran_squarem
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__r_cran_squarem memberOf Package
+	package hasValue "r-cran-squarem"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/gnu-r"
+	installedSize hasValue "255"
+	maintainer hasValue "Original-Debian R Packages Maintainers <r-pkg-team@alioth-lists.debian.net>"
+	architecture hasValue "all"
+	version hasValue "2020.2-1"
+	fileName hasValue "pool/universe/r/r-cran-squarem/r-cran-squarem_2020.2-1_all.deb"
+	size hasValue "176508"
+	md5sum hasValue "b0f34112fb2f738df3d14c74ffa59f94"
+	sha1 hasValue "663a9cebbc9274bd8731329d9d42cd4343af996f"
+	sha256 hasValue "48b1267fb5612302b721f7e40ef8618016f04f1488996368a69214b32e1a3bbe"
+	descriptionMd5 hasValue "50244cb46e57114daf164eea0836d380"
+	homepage hasValue "https://cran.r-project.org/package=SQUAREM"
+	depends hasValue "r-base-core (>= 3.6.2.20200221-1), r-api-3.5"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "r-base-core"
+	comparison hasValue ">="
+	version hasValue "3.6.2.20200221-1"
+
+relationInstance depends(P0__r_cran_squarem,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "r-api-3.5"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__r_cran_squarem,1,DepAtom__1)
+

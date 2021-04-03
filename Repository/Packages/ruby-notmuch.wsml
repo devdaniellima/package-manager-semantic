@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ruby_notmuch
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ruby_notmuch memberOf Package
+	package hasValue "ruby-notmuch"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/ruby"
+	installedSize hasValue "72"
+	maintainer hasValue "Original-Carl Worth <cworth@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.29.3-1ubuntu2"
+	fileName hasValue "pool/universe/n/notmuch/ruby-notmuch_0.29.3-1ubuntu2_amd64.deb"
+	size hasValue "12300"
+	md5sum hasValue "8f55eb16a14cd5f638c289e4b3aa3f47"
+	sha1 hasValue "53b1dfc4d80ae2b2e1828e2d8ddd78c43530399e"
+	sha256 hasValue "d3cca3a858943bc668643de900eeb1e87303e540f45f9ddb44ef19effde7d4af"
+	descriptionMd5 hasValue "4a5eb6380faed4bf3e42af7e8ef0ea1a"
+	homepage hasValue "https://notmuchmail.org/"
+	depends hasValue "libc6 (>= 2.4), libnotmuch5 (>= 0.26~rc0), libruby2.7 (>= 2.7.0-4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__ruby_notmuch,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libnotmuch5"
+	comparison hasValue ">="
+	version hasValue "0.26~rc0"
+
+relationInstance depends(P0__ruby_notmuch,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libruby2.7"
+	comparison hasValue ">="
+	version hasValue "2.7.0-4"
+
+relationInstance depends(P0__ruby_notmuch,2,DepAtom__2)
+

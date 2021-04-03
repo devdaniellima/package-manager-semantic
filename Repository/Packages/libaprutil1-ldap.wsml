@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libaprutil1_ldap
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libaprutil1_ldap memberOf Package
+	package hasValue "libaprutil1-ldap"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libs"
+	installedSize hasValue "43"
+	maintainer hasValue "Original-Debian Apache Maintainers <debian-apache@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.6.1-4ubuntu2"
+	fileName hasValue "pool/main/a/apr-util/libaprutil1-ldap_1.6.1-4ubuntu2_amd64.deb"
+	size hasValue "8736"
+	md5sum hasValue "c5ffceac9783205ee6d775c49a252770"
+	sha1 hasValue "8cf8be116cfe0b8b37791e4d9ba9daeaa5235146"
+	sha256 hasValue "25d1d96e2be8ce675d150ddae77f4a141fdb0fb3208515800fd9b979762c47e7"
+	description hasValue "Apache Portable Runtime Utility Library - LDAP Driver"
+	descriptionMd5 hasValue "d25faaa24a0fbf145505cba06b4192d7"
+	homepage hasValue "http://apr.apache.org/"
+	depends hasValue "libaprutil1 (= 1.6.1-4ubuntu2), libc6 (>= 2.4), libldap-2.4-2 (>= 2.4.7)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libaprutil1"
+	comparison hasValue "="
+	version hasValue "1.6.1-4ubuntu2"
+
+relationInstance depends(P0__libaprutil1_ldap,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libaprutil1_ldap,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libldap-2.4-2"
+	comparison hasValue ">="
+	version hasValue "2.4.7"
+
+relationInstance depends(P0__libaprutil1_ldap,2,DepAtom__2)
+

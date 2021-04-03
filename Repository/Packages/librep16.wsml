@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology librep16
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__librep16 memberOf Package
+	package hasValue "librep16"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "717"
+	maintainer hasValue "Original-Jose M Calhariz <jose@calhariz.com>"
+	architecture hasValue "amd64"
+	version hasValue "0.92.5-3build5"
+	fileName hasValue "pool/universe/libr/librep/librep16_0.92.5-3build5_amd64.deb"
+	size hasValue "194736"
+	md5sum hasValue "9a0ed3a414c43e554e1adb8bba5bb277"
+	sha1 hasValue "29f7ead7a544dce32d14cf22248f90ec5f3bf4e8"
+	sha256 hasValue "8efae10e6916fc85ea2b2def4d3291c7c4ec34101e5a1f1ccf4266153c6306cf"
+	description hasValue "embedded lisp command interpreter library"
+	descriptionMd5 hasValue "8759c74887b085375c139464fcfd0338"
+	homepage hasValue "http://sawfish.tuxfamily.org/"
+	depends hasValue "libc6 (>= 2.29), libgmp10"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__librep16,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgmp10"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__librep16,1,DepAtom__1)
+

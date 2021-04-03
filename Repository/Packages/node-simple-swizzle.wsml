@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology node_simple_swizzle
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__node_simple_swizzle memberOf Package
+	package hasValue "node-simple-swizzle"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/javascript"
+	installedSize hasValue "16"
+	maintainer hasValue "Original-Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.2.2-3"
+	fileName hasValue "pool/universe/n/node-simple-swizzle/node-simple-swizzle_0.2.2-3_all.deb"
+	size hasValue "3708"
+	md5sum hasValue "fb02a3cd1c6816e02a3ed21898214794"
+	sha1 hasValue "f5a7b50d58e62dd7a5c6ae555298f58a9602265c"
+	sha256 hasValue "07fecdb6bdc6bb7b4b95f046e7ae807426136280ac90db1a366db4a6cdce9056"
+	descriptionMd5 hasValue "f6e6b34cd9e96de8910c7b5a1f08b8e0"
+	homepage hasValue "https://github.com/qix-/node-simple-swizzle#readme"
+	depends hasValue "nodejs, node-is-arrayish (>= 0.3.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "nodejs"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__node_simple_swizzle,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "node-is-arrayish"
+	comparison hasValue ">="
+	version hasValue "0.3.1"
+
+relationInstance depends(P0__node_simple_swizzle,1,DepAtom__1)
+

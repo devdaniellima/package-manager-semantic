@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology myspell_tn
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__myspell_tn memberOf Package
+	package hasValue "myspell-tn"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "text"
+	installedSize hasValue "107"
+	maintainer hasValue "Matthias Klose <doko@ubuntu.com>"
+	architecture hasValue "all"
+	version hasValue "20070206-4ubuntu3"
+	provides hasValue "openoffice.org-spellcheck-tn"
+	fileName hasValue "pool/main/d/dict-tn/myspell-tn_20070206-4ubuntu3_all.deb"
+	size hasValue "38108"
+	md5sum hasValue "d02d3a17272b607873cb539b08069b38"
+	sha1 hasValue "dd11c3d4073ab3757fe3d1a0edafc08bcf904599"
+	sha256 hasValue "0b225e046dd7f57eac6d2c76f8de8478a585d86e3fa971bfc98a2b357f18057d"
+	descriptionMd5 hasValue "086296a3f03eba1657a4382f4df289d3"
+	depends hasValue "dictionaries-common (>= 0.49.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "dictionaries-common"
+	comparison hasValue ">="
+	version hasValue "0.49.2"
+
+relationInstance depends(P0__myspell_tn,0,DepAtom__0)
+

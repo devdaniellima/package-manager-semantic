@@ -1,0 +1,69 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology wbritish
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__wbritish memberOf Package
+	package hasValue "wbritish"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "text"
+	installedSize hasValue "986"
+	maintainer hasValue "Original-Don Armstrong <don@debian.org>"
+	architecture hasValue "all"
+	version hasValue "2018.04.16-1"
+	provides hasValue "wordlist"
+	fileName hasValue "pool/main/s/scowl/wbritish_2018.04.16-1_all.deb"
+	size hasValue "208964"
+	md5sum hasValue "5ce1f6c6bffed6cfcbd3ff0396c28224"
+	sha1 hasValue "9de314074356d250dd9a67d2cce323ad988d261b"
+	sha256 hasValue "a6f87d9de95cec6972d56721bfb9bf26ed3d6667307e1ef20a39d837b1f38816"
+	description hasValue "dicionário inglês britânico de palavras para o /usr/share/dict"
+	descriptionMd5 hasValue "116a19ac7140ec65e353ae54c39f1127"
+	homepage hasValue "http://wordlist.sourceforge.net/"
+	depends hasValue "dictionaries-common (>= 0.20), debconf (>= 0.5) | debconf-2.0"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "dictionaries-common"
+	comparison hasValue ">="
+	version hasValue "0.20"
+
+relationInstance depends(P0__wbritish,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "debconf"
+	comparison hasValue ">="
+	version hasValue "0.5"
+
+relationInstance depends(P0__wbritish,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "debconf-2.0"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__wbritish,1,DepAtom__2)
+

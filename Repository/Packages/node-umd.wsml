@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology node_umd
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__node_umd memberOf Package
+	package hasValue "node-umd"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/web"
+	installedSize hasValue "38"
+	maintainer hasValue "Original-Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "3.0.3+ds-2"
+	fileName hasValue "pool/universe/n/node-umd/node-umd_3.0.3+ds-2_all.deb"
+	size hasValue "6532"
+	md5sum hasValue "4db38009023af25fc1fe221d7ba0023e"
+	sha1 hasValue "6f09e109b3a08f0d080d14add78915da38564678"
+	sha256 hasValue "21ec3e6e99edddd17c7f358f4ecfe00af0954e302c41e913a11c6c80673a8e00"
+	descriptionMd5 hasValue "e091fd2be57922463e6240042051225b"
+	homepage hasValue "https://github.com/ForbesLindesay/umd"
+	depends hasValue "nodejs (>= 4.7)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "nodejs"
+	comparison hasValue ">="
+	version hasValue "4.7"
+
+relationInstance depends(P0__node_umd,0,DepAtom__0)
+

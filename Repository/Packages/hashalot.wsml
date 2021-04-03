@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology hashalot
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__hashalot memberOf Package
+	package hasValue "hashalot"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "49"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.3-8"
+	fileName hasValue "pool/universe/h/hashalot/hashalot_0.3-8_amd64.deb"
+	size hasValue "15164"
+	md5sum hasValue "ec2ddb4279199916ed4128b74513b696"
+	sha1 hasValue "a540bc2cfbbd8822571ad143156b606ef60c6de5"
+	sha256 hasValue "08b3097126213c74b7074175f8b956f408055c65fafba76b894ca982cde29dc7"
+	description hasValue "Produz um \"hash\" a partir de uma frase-chave"
+	descriptionMd5 hasValue "e676351ceaa5fea9e9c9092dec2694f0"
+	homepage hasValue "http://www.paranoiacs.org/~sluskyb"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__hashalot,0,DepAtom__0)
+

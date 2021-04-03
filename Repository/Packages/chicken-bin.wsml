@@ -1,0 +1,70 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology chicken_bin
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__chicken_bin memberOf Package
+	package hasValue "chicken-bin"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/interpreters"
+	installedSize hasValue "8507"
+	maintainer hasValue "Original-Davide Puricelli (evo) <evo@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "5.1.0-1"
+	replaces hasValue "chicken, chicken-dev"
+	conflicts hasValue "chicken, chicken-dev"
+	fileName hasValue "pool/universe/c/chicken/chicken-bin_5.1.0-1_amd64.deb"
+	size hasValue "1287920"
+	md5sum hasValue "178ad44530d4b523583ef4bcad353703"
+	sha1 hasValue "32c4d982a898df190c15c912a3dfa663e6816b61"
+	sha256 hasValue "0c2fb534005a5dff6dbf2974dd1019b7cd7d0e82c36c69461dcaf0fd89f71518"
+	description hasValue "Practical and portable Scheme system - compiler"
+	descriptionMd5 hasValue "a2b8f17a423d7f435cd562848391bee4"
+	homepage hasValue "http://www.call-cc.org"
+	depends hasValue "libc6 (>= 2.4), libchicken11 (>= 5.1.0), libchicken-dev (= 5.1.0-1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__chicken_bin,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libchicken11"
+	comparison hasValue ">="
+	version hasValue "5.1.0"
+
+relationInstance depends(P0__chicken_bin,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libchicken-dev"
+	comparison hasValue "="
+	version hasValue "5.1.0-1"
+
+relationInstance depends(P0__chicken_bin,2,DepAtom__2)
+

@@ -1,0 +1,74 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology dpkg_www
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__dpkg_www memberOf Package
+	package hasValue "dpkg-www"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/doc"
+	installedSize hasValue "107"
+	maintainer hasValue "Original-Dpkg Developers <debian-dpkg@lists.debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.60"
+	fileName hasValue "pool/universe/d/dpkg-www/dpkg-www_2.60_all.deb"
+	size hasValue "27400"
+	md5sum hasValue "17ba71abbdc142bc5ad3f2a843bb6288"
+	sha1 hasValue "dc310e88d482c5da7f7fb19d02395d2fee11a95e"
+	sha256 hasValue "e6f098ce1fd743a848cbd84e381c343414d94c1f99cb17b3e7049adb8c06843e"
+	description hasValue "Debian package management web interface"
+	descriptionMd5 hasValue "421691801418401754f1cd59b864533a"
+	depends hasValue "dpkg (>= 1.19.3), apt, perl, libcgi-pm-perl"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "dpkg"
+	comparison hasValue ">="
+	version hasValue "1.19.3"
+
+relationInstance depends(P0__dpkg_www,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "apt"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__dpkg_www,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "perl"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__dpkg_www,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "libcgi-pm-perl"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__dpkg_www,3,DepAtom__3)
+

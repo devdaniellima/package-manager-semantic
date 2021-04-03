@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology g10k
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__g10k memberOf Package
+	package hasValue "g10k"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "4919"
+	maintainer hasValue "Original-Debian Go Packaging Team <team+pkg-go@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.5.7-1"
+	fileName hasValue "pool/universe/g/g10k/g10k_0.5.7-1_amd64.deb"
+	size hasValue "1482200"
+	md5sum hasValue "d5738fbaa714146a0c9af445d01d0019"
+	sha1 hasValue "edc08a7050447f777dbaae4cbdf2ec4cb0739ddf"
+	sha256 hasValue "5eb4e23dac68b1ffd7146b853e2edc67bd3815cbee70962735417bc22ad40634"
+	descriptionMd5 hasValue "63d579582dc520dd780c0fa5fbf6e921"
+	homepage hasValue "https://github.com/xorpaul/g10k"
+	depends hasValue "libc6 (>= 2.4), git"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__g10k,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "git"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__g10k,1,DepAtom__1)
+

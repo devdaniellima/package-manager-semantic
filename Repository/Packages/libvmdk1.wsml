@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libvmdk1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libvmdk1 memberOf Package
+	package hasValue "libvmdk1"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "1236"
+	maintainer hasValue "Original-Debian Security Tools <team+pkg-security@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "20181227-1.1"
+	fileName hasValue "pool/universe/libv/libvmdk/libvmdk1_20181227-1.1_amd64.deb"
+	size hasValue "404044"
+	md5sum hasValue "52f08c2e773a3b012ca9662e9de6cdc3"
+	sha1 hasValue "c85de6cc1f6b238e1e19e4fa4d02b22330a53e5f"
+	sha256 hasValue "9378fa7ea78b10f9c2222b32776d39bcf682b75ef0117b4173e4ab26e9f188c6"
+	description hasValue "VMWare Virtual Disk format access library"
+	descriptionMd5 hasValue "9515a1d6230845100408642fb273944d"
+	homepage hasValue "https://github.com/libyal/libvmdk"
+	depends hasValue "libbfio1 (>= 20120425), libc6 (>= 2.17), zlib1g (>= 1:1.1.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libbfio1"
+	comparison hasValue ">="
+	version hasValue "20120425"
+
+relationInstance depends(P0__libvmdk1,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.17"
+
+relationInstance depends(P0__libvmdk1,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "zlib1g"
+	comparison hasValue ">="
+	version hasValue "1:1.1.4"
+
+relationInstance depends(P0__libvmdk1,2,DepAtom__2)
+

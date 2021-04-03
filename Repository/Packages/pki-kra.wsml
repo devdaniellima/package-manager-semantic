@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology pki_kra
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__pki_kra memberOf Package
+	package hasValue "pki-kra"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/java"
+	installedSize hasValue "628"
+	maintainer hasValue "Original-Debian FreeIPA Team <pkg-freeipa-devel@alioth-lists.debian.net>"
+	architecture hasValue "all"
+	version hasValue "10.8.3-1ubuntu1"
+	fileName hasValue "pool/universe/d/dogtag-pki/pki-kra_10.8.3-1ubuntu1_all.deb"
+	size hasValue "181188"
+	md5sum hasValue "69c639b26b727588e52d9f99fc97eb09"
+	sha1 hasValue "683aa6ec733bfda1f111b05d4d5d09790f457203"
+	sha256 hasValue "b4c50810fe8f553b9ef82c7cc35307dd5fb892a695111513ebf4d4ee7172e2b5"
+	descriptionMd5 hasValue "246648bc4977717e7478d9a034ee965d"
+	homepage hasValue "http://pki.fedoraproject.org"
+	depends hasValue "pki-server (>= 10.8.3-1ubuntu1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "pki-server"
+	comparison hasValue ">="
+	version hasValue "10.8.3-1ubuntu1"
+
+relationInstance depends(P0__pki_kra,0,DepAtom__0)
+

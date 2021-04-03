@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology popularity_contest
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__popularity_contest memberOf Package
+	package hasValue "popularity-contest"
+	packageSource hasValue Source__S1
+	priority hasValue "standard"
+	section hasValue "misc"
+	installedSize hasValue "122"
+	maintainer hasValue "Original-Popularity Contest Developers <debian-popcon@lists.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.69ubuntu1"
+	provides hasValue "popcon"
+	fileName hasValue "pool/main/p/popularity-contest/popularity-contest_1.69ubuntu1_all.deb"
+	size hasValue "34336"
+	md5sum hasValue "1d91b6d86d8b8bfd6fbc2255fc42ee3b"
+	sha1 hasValue "3ab417db0c4fd7e53029ea7dc31f2604db2d6607"
+	sha256 hasValue "c0441c9dd63a7fd460b0e14f794b0a6bff9f8f778fa034b5e343a0bbec60f358"
+	descriptionMd5 hasValue "eb9d38f93e5a2c4d39973b8d4a8110dc"
+	homepage hasValue "https://popcon.debian.org/"
+	depends hasValue "debconf (>= 0.5) | debconf-2.0, dpkg (>= 1.10)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "debconf"
+	comparison hasValue ">="
+	version hasValue "0.5"
+
+relationInstance depends(P0__popularity_contest,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "debconf-2.0"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__popularity_contest,0,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "dpkg"
+	comparison hasValue ">="
+	version hasValue "1.10"
+
+relationInstance depends(P0__popularity_contest,1,DepAtom__2)
+

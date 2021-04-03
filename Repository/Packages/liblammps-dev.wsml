@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology liblammps_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__liblammps_dev memberOf Package
+	package hasValue "liblammps-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/science"
+	installedSize hasValue "273"
+	maintainer hasValue "Original-Debian Science Maintainers <debian-science-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "20191120+dfsg1-2build2"
+	fileName hasValue "pool/universe/l/lammps/liblammps-dev_20191120+dfsg1-2build2_amd64.deb"
+	size hasValue "48688"
+	md5sum hasValue "022edc557d6a79a0e8a799071216635f"
+	sha1 hasValue "94cd7c838b08c97d271d12b401b6ce8d0ead563d"
+	sha256 hasValue "4d2574f6d7f4880147f94e19a423c5ae70f1002a88a240fb9d405396c478c5a5"
+	descriptionMd5 hasValue "bd3e5f34aab7356671f9f3cbf2018f6a"
+	homepage hasValue "https://lammps.sandia.gov/"
+	depends hasValue "liblammps0 (= 20191120+dfsg1-2build2), mpi-default-dev"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "liblammps0"
+	comparison hasValue "="
+	version hasValue "20191120+dfsg1-2build2"
+
+relationInstance depends(P0__liblammps_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "mpi-default-dev"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__liblammps_dev,1,DepAtom__1)
+

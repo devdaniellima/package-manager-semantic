@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology lua_ldap
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__lua_ldap memberOf Package
+	package hasValue "lua-ldap"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/interpreters"
+	installedSize hasValue "105"
+	maintainer hasValue "Original-Victor Seva <vseva@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.2.5-1"
+	provides hasValue "lua5.1-ldap, lua5.2-ldap, lua5.3-ldap"
+	fileName hasValue "pool/universe/l/lua-ldap/lua-ldap_1.2.5-1_amd64.deb"
+	size hasValue "16840"
+	md5sum hasValue "d874e9a600b032adb116c116a987f0dc"
+	sha1 hasValue "e6759da52223b5a84dd0226206386c1f5f598d88"
+	sha256 hasValue "b208d4c16721d8337c4fb12ac5f994de621d672f6699dcf3d25eb5401bdf5273"
+	description hasValue "LDAP library for the Lua language"
+	descriptionMd5 hasValue "a7723a05f46b606e49686db915abfe7e"
+	homepage hasValue "https://github.com/lualdap/lualdap"
+	depends hasValue "libc6 (>= 2.4), libldap-2.4-2 (>= 2.4.7)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__lua_ldap,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libldap-2.4-2"
+	comparison hasValue ">="
+	version hasValue "2.4.7"
+
+relationInstance depends(P0__lua_ldap,1,DepAtom__1)
+

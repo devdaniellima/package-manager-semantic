@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libvshadow1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libvshadow1 memberOf Package
+	package hasValue "libvshadow1"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "1008"
+	maintainer hasValue "Original-Debian Security Tools <team+pkg-security@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "20190323-1.1"
+	fileName hasValue "pool/universe/libv/libvshadow/libvshadow1_20190323-1.1_amd64.deb"
+	size hasValue "338504"
+	md5sum hasValue "65f219be029cf85c8a767a51b9b9e7d8"
+	sha1 hasValue "e4d67d188c7dc86eed9743061cb6cd1a116dc447"
+	sha256 hasValue "2b875a0cd7b4ce59ba19306b60a8174c0ac8024fa6acc63aa13dc889ea7e5a22"
+	description hasValue "Volume Shadow Snapshot format access library"
+	descriptionMd5 hasValue "892d66090c89bbe8dc811491c33751b3"
+	homepage hasValue "https://github.com/libyal/libvshadow"
+	depends hasValue "libbfio1 (>= 20120425), libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libbfio1"
+	comparison hasValue ">="
+	version hasValue "20120425"
+
+relationInstance depends(P0__libvshadow1,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libvshadow1,1,DepAtom__1)
+

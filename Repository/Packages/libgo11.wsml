@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libgo11
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libgo11 memberOf Package
+	package hasValue "libgo11"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "49215"
+	maintainer hasValue "Original-Debian GCC Maintainers <debian-gcc@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "7.5.0-6ubuntu2"
+	replaces hasValue "libgo3, libgo8"
+	fileName hasValue "pool/universe/g/gcc-7/libgo11_7.5.0-6ubuntu2_amd64.deb"
+	size hasValue "9434916"
+	md5sum hasValue "e9a1aa0030a25f44f8c083e969f2cfbc"
+	sha1 hasValue "5792e3a5006a0c761074c2baeff39834ae87e3e2"
+	sha256 hasValue "39f0d19ba410b0aa347d80bfdef2a31443e210e1717dc88db86abcd3139f6266"
+	descriptionMd5 hasValue "9dac71a6885be90d89c8d4e0ae4b9f2c"
+	homepage hasValue "http://gcc.gnu.org/"
+	depends hasValue "gcc-7-base (= 7.5.0-6ubuntu2), libc6 (>= 2.29), libgcc-s1"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "gcc-7-base"
+	comparison hasValue "="
+	version hasValue "7.5.0-6ubuntu2"
+
+relationInstance depends(P0__libgo11,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__libgo11,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libgcc-s1"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libgo11,2,DepAtom__2)
+

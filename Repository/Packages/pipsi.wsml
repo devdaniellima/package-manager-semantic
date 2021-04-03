@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology pipsi
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__pipsi memberOf Package
+	package hasValue "pipsi"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "35"
+	maintainer hasValue "Original-ChangZhuo Chen (陳昌倬) <czchen@debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.9-1"
+	fileName hasValue "pool/universe/p/pipsi/pipsi_0.9-1_all.deb"
+	size hasValue "7372"
+	md5sum hasValue "a8b8625ea129e0e28dc9bfc418ccd16f"
+	sha1 hasValue "c23e30dd6d4c42dfb691afc42051fed3ccaf2cc9"
+	sha256 hasValue "7992c0d06727822dec10d22643fe7005c1cf6d1997af74f2c0afcd5903cad76a"
+	description hasValue "instalador de scripts pip"
+	descriptionMd5 hasValue "28478865a674e053c392e39988d29ca1"
+	homepage hasValue "https://github.com/mitsuhiko/pipsi"
+	depends hasValue "python3-click, python3-virtualenv, python3:any (>= 3.3.2-2~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3-click"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__pipsi,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3-virtualenv"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__pipsi,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ">="
+	version hasValue "3.3.2-2~"
+
+relationInstance depends(P0__pipsi,2,DepAtom__2)
+

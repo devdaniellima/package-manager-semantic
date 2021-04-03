@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology super
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__super memberOf Package
+	package hasValue "super"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "775"
+	maintainer hasValue "Original-Robert Luberda <robert@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.30.1-1"
+	fileName hasValue "pool/universe/s/super/super_3.30.1-1_amd64.deb"
+	size hasValue "103884"
+	md5sum hasValue "d2463177669f739a7f5029b93cc73dd0"
+	sha1 hasValue "454c810a87e706aef916ec050151501f0cb5ae22"
+	sha256 hasValue "f23419b31c09a858003f906b6a78d3a1cddfab8a01e50ae9ffad4941a71224fd"
+	description hasValue "Executa comandos setuid root"
+	descriptionMd5 hasValue "e4c684be37a7ad2c4a2ede7bcb7b6dff"
+	homepage hasValue "http://ftp.ucolick.org/pub/users/will/"
+	depends hasValue "libpam-runtime (>= 0.76-14), libc6 (>= 2.14), libpam0g (>= 0.99.7.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libpam-runtime"
+	comparison hasValue ">="
+	version hasValue "0.76-14"
+
+relationInstance depends(P0__super,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__super,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libpam0g"
+	comparison hasValue ">="
+	version hasValue "0.99.7.1"
+
+relationInstance depends(P0__super,2,DepAtom__2)
+

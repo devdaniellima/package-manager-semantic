@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libssh2_1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libssh2_1 memberOf Package
+	package hasValue "libssh2-1"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "270"
+	maintainer hasValue "Original-Mikhail Gusarov <dottedmag@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.8.0-2.1build1"
+	fileName hasValue "pool/universe/libs/libssh2/libssh2-1_1.8.0-2.1build1_amd64.deb"
+	size hasValue "75440"
+	md5sum hasValue "f66a97e5f0a46665860ce377a940a80e"
+	sha1 hasValue "3647f3a57e629a8fa3106b45df3a90c0b8b5be38"
+	sha256 hasValue "75965ba814a7dde1a2c97812b456a114b7a86359b570b531bd7fafcf1449b680"
+	description hasValue "biblioteca SSH2 do lado do cliente"
+	descriptionMd5 hasValue "a72806365acab9f7b0057c7e13cb7b14"
+	homepage hasValue "https://libssh2.org/"
+	depends hasValue "libc6 (>= 2.14), libgcrypt20 (>= 1.8.0), zlib1g (>= 1:1.1.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libssh2_1,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgcrypt20"
+	comparison hasValue ">="
+	version hasValue "1.8.0"
+
+relationInstance depends(P0__libssh2_1,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "zlib1g"
+	comparison hasValue ">="
+	version hasValue "1:1.1.4"
+
+relationInstance depends(P0__libssh2_1,2,DepAtom__2)
+

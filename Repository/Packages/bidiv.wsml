@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology bidiv
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__bidiv memberOf Package
+	package hasValue "bidiv"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/text"
+	installedSize hasValue "31"
+	maintainer hasValue "Original-Debian Hebrew Packaging Team <team+hebrew@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.5-6"
+	fileName hasValue "pool/universe/b/bidiv/bidiv_1.5-6_amd64.deb"
+	size hasValue "11340"
+	md5sum hasValue "86b4363059326b55e48d25b8af405797"
+	sha1 hasValue "d478ca0bf1438c1995c242eb067eb8fc752090db"
+	sha256 hasValue "1e2a8a2b544f5abf51ba5d251c1738ca9f27226c94f283843f30b682b0aa2705"
+	description hasValue "visualizador BiDi - ferramenta em linha de comando que mostra hebraico/árabe lógico"
+	descriptionMd5 hasValue "f54f3bcc32e78628e0970771051a6373"
+	depends hasValue "libc6 (>= 2.4), libfribidi0 (>= 0.19.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__bidiv,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libfribidi0"
+	comparison hasValue ">="
+	version hasValue "0.19.2"
+
+relationInstance depends(P0__bidiv,1,DepAtom__1)
+

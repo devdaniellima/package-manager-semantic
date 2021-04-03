@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology vdesk
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__vdesk memberOf Package
+	package hasValue "vdesk"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/x11"
+	installedSize hasValue "25"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.2-5"
+	fileName hasValue "pool/universe/v/vdesk/vdesk_1.2-5_amd64.deb"
+	size hasValue "8014"
+	md5sum hasValue "f78b1fafb867e2861cf66e23c5448192"
+	sha1 hasValue "cb437bc34aac0d3ce659922e73006423f7cff57f"
+	sha256 hasValue "30d5fe8668e9a2fb25f68dda772f475a580411ecb2dce5c1c6aea07c88b9898d"
+	description hasValue "gerencia áreas de trabalho virtuais para os gerenciadores de janelas minimalistas"
+	descriptionMd5 hasValue "7b649d4194dc0b21810cf289d68ed701"
+	homepage hasValue "http://offog.org/code/vdesk.html"
+	depends hasValue "libc6 (>= 2.4), libx11-6"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__vdesk,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libx11-6"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__vdesk,1,DepAtom__1)
+

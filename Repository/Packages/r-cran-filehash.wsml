@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology r_cran_filehash
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__r_cran_filehash memberOf Package
+	package hasValue "r-cran-filehash"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/gnu-r"
+	installedSize hasValue "471"
+	maintainer hasValue "Original-Debian R Packages Maintainers <r-pkg-team@alioth-lists.debian.net>"
+	architecture hasValue "amd64"
+	version hasValue "2.4-2-2"
+	fileName hasValue "pool/universe/r/r-cran-filehash/r-cran-filehash_2.4-2-2_amd64.deb"
+	size hasValue "307740"
+	md5sum hasValue "25ee4e3577c5aa1341a8ad60e90ac734"
+	sha1 hasValue "8e839d724253023c2492c6cafc81468705b44c95"
+	sha256 hasValue "cc84ca0d0cfd6ef0ad1c55a653e31b3c7efd6cd6fa42c31b8cb83a8e43a1caed"
+	descriptionMd5 hasValue "349b9b21f05eba9709afb2efda7782b7"
+	homepage hasValue "https://cran.r-project.org/package=filehash"
+	depends hasValue "r-base-core (>= 3.6.1-3ubuntu1), r-api-3.5, libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "r-base-core"
+	comparison hasValue ">="
+	version hasValue "3.6.1-3ubuntu1"
+
+relationInstance depends(P0__r_cran_filehash,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "r-api-3.5"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__r_cran_filehash,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__r_cran_filehash,2,DepAtom__2)
+

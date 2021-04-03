@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology hexec
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__hexec memberOf Package
+	package hasValue "hexec"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/devel"
+	installedSize hasValue "121"
+	maintainer hasValue "Original-TANIGUCHI Takaki <takaki@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.2.1-4"
+	fileName hasValue "pool/universe/h/hexec/hexec_0.2.1-4_amd64.deb"
+	size hasValue "26360"
+	md5sum hasValue "ed777a3ee8e61826f541f4c3704ea9fb"
+	sha1 hasValue "42e3d08a9e27f7fc9c06ff195f4743df676dffef"
+	sha256 hasValue "cf8433dd4df1fe5b78807584f04fae947549b338617ea4173592966a0c8f6301"
+	descriptionMd5 hasValue "c6b5d9dfd3dca63bc8964e2d53eba8d8"
+	homepage hasValue "http://sourceforge.net/projects/hexec/"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__hexec,0,DepAtom__0)
+

@@ -1,0 +1,63 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology tcl_vfs
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__tcl_vfs memberOf Package
+	package hasValue "tcl-vfs"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/interpreters"
+	installedSize hasValue "336"
+	maintainer hasValue "Original-Sergei Golovan <sgolovan@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.4.2~20121213-2"
+	replaces hasValue "tclvfs"
+	provides hasValue "tclvfs"
+	conflicts hasValue "tclvfs"
+	fileName hasValue "pool/universe/t/tclvfs/tcl-vfs_1.4.2~20121213-2_amd64.deb"
+	size hasValue "84406"
+	md5sum hasValue "76ea370d66d0a2ecff1c5ed6deb42f98"
+	sha1 hasValue "2776b148065ac9676eb9b0ffa2af958a2c01fc08"
+	sha256 hasValue "af56be603f87d5cf5db4b7387ad9ff8da88db48cc2ffaac72d76647ebfb60ee6"
+	descriptionMd5 hasValue "9f16e65234411a454145079200c5b6fd"
+	homepage hasValue "http://sourceforge.net/projects/tclvfs"
+	depends hasValue "libc6 (>= 2.4), tcl (>= 8.6.0-2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__tcl_vfs,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "tcl"
+	comparison hasValue ">="
+	version hasValue "8.6.0-2"
+
+relationInstance depends(P0__tcl_vfs,1,DepAtom__1)
+

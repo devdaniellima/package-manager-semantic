@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology aspell_is
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__aspell_is memberOf Package
+	package hasValue "aspell-is"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/text"
+	installedSize hasValue "419"
+	maintainer hasValue "Original-Brian Nelson <pyro@debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.51-0-utf8-0.2"
+	provides hasValue "aspell-dictionary"
+	fileName hasValue "pool/universe/a/aspell-is/aspell-is_0.51-0-utf8-0.2_all.deb"
+	size hasValue "405202"
+	md5sum hasValue "5c38ddff616bc8d73ec6950e804feef7"
+	sha1 hasValue "51863873fcb0df27674a75c305da3d26e0847224"
+	sha256 hasValue "af962b5596a575d8b25ddbd11657db979a5195a1099a8a29807a545be9d945f4"
+	description hasValue "dicionário islandês para o GNU Aspell"
+	descriptionMd5 hasValue "df5ba4d7f0d4e3452bd36288fcab7e1a"
+	depends hasValue "aspell (>= 0.60.3-2), dictionaries-common (>= 0.49.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "aspell"
+	comparison hasValue ">="
+	version hasValue "0.60.3-2"
+
+relationInstance depends(P0__aspell_is,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "dictionaries-common"
+	comparison hasValue ">="
+	version hasValue "0.49.2"
+
+relationInstance depends(P0__aspell_is,1,DepAtom__1)
+

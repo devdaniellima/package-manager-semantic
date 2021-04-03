@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libcommons_text_java
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libcommons_text_java memberOf Package
+	package hasValue "libcommons-text-java"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/java"
+	installedSize hasValue "225"
+	maintainer hasValue "Original-Debian Java Maintainers <pkg-java-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.8-2"
+	fileName hasValue "pool/universe/c/commons-text/libcommons-text-java_1.8-2_all.deb"
+	size hasValue "183480"
+	md5sum hasValue "dd2aa821ba270441d645c6de8a1e3a23"
+	sha1 hasValue "e5a2bfb89a405bff919b0f520da13f3e8f4fd100"
+	sha256 hasValue "29c3169b8649218fc1b159919f67a7e90b42baffff1d55f4d729c6cb74e0ca74"
+	descriptionMd5 hasValue "1210256d1bce63f648a79ec7a29fa1c7"
+	homepage hasValue "https://github.com/apache/commons-text"
+	depends hasValue "libmaven-jar-plugin-java (>= 3.1.2), libcommons-lang3-java (>= 3.8)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libmaven-jar-plugin-java"
+	comparison hasValue ">="
+	version hasValue "3.1.2"
+
+relationInstance depends(P0__libcommons_text_java,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libcommons-lang3-java"
+	comparison hasValue ">="
+	version hasValue "3.8"
+
+relationInstance depends(P0__libcommons_text_java,1,DepAtom__1)
+

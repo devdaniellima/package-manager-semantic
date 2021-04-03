@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology jbigkit_bin
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__jbigkit_bin memberOf Package
+	package hasValue "jbigkit-bin"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/graphics"
+	installedSize hasValue "85"
+	maintainer hasValue "Original-Michael van der Kolff <mvanderkolff@gmail.com>"
+	architecture hasValue "amd64"
+	version hasValue "2.1-3.1build1"
+	fileName hasValue "pool/universe/j/jbigkit/jbigkit-bin_2.1-3.1build1_amd64.deb"
+	size hasValue "24372"
+	md5sum hasValue "6709d684e5400b521e945487dd6df4a8"
+	sha1 hasValue "7461f4aa56e043b75c9aee27dbd715fedee8bcf2"
+	sha256 hasValue "a53b0e07bffbd091ff46c37a18db511715ab50457e04ef65d971cf0324760985"
+	descriptionMd5 hasValue "c24110cd197abef8c60744cecc6c49ed"
+	homepage hasValue "http://www.cl.cam.ac.uk/~mgk25/jbigkit/"
+	depends hasValue "libc6 (>= 2.7), libjbig0 (>= 2.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__jbigkit_bin,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libjbig0"
+	comparison hasValue ">="
+	version hasValue "2.0"
+
+relationInstance depends(P0__jbigkit_bin,1,DepAtom__1)
+

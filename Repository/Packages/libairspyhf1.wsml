@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libairspyhf1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libairspyhf1 memberOf Package
+	package hasValue "libairspyhf1"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "43"
+	maintainer hasValue "Original-A. Maitland Bottoms <bottoms@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.1.5-1"
+	fileName hasValue "pool/universe/a/airspyhf/libairspyhf1_1.1.5-1_amd64.deb"
+	size hasValue "13172"
+	md5sum hasValue "aab42e1930c4418e46f166cfac690c67"
+	sha1 hasValue "0a7ad868a89a4f76eceaf206a5c4e102d4f7c4ca"
+	sha256 hasValue "5da9ee06dec7a8059cad0498a5d040311dab920dcb8b99ad5469a160e3dbd056"
+	description hasValue "HF+VHF software defined radio receiver - library"
+	descriptionMd5 hasValue "d64d6ed88b5469a7443750cc3ed0ed9f"
+	homepage hasValue "http://airspy.com/airspy-hf-plus/"
+	depends hasValue "libc6 (>= 2.14), libusb-1.0-0 (>= 2:1.0.9)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libairspyhf1,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libusb-1.0-0"
+	comparison hasValue ">="
+	version hasValue "2:1.0.9"
+
+relationInstance depends(P0__libairspyhf1,1,DepAtom__1)
+

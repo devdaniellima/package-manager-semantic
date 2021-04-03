@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libzeitgeist_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libzeitgeist_dev memberOf Package
+	package hasValue "libzeitgeist-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "161"
+	maintainer hasValue "Siegfried-Angel Gevatter Pujals <rainct@ubuntu.com>"
+	architecture hasValue "amd64"
+	version hasValue "0.3.18-1ubuntu3"
+	fileName hasValue "pool/universe/libz/libzeitgeist/libzeitgeist-dev_0.3.18-1ubuntu3_amd64.deb"
+	size hasValue "18002"
+	md5sum hasValue "4dbf1cc0f760b1c086090bf7f7ae76f8"
+	sha1 hasValue "b5e46909226c5abd6b0785787d79856d04926d44"
+	sha256 hasValue "b84e732ee8baec6b383ceb3aa21450e479d4597f692a81a9a433eedab3f11f5b"
+	description hasValue "library to access Zeitgeist - development files"
+	descriptionMd5 hasValue "fd5d7b8d40b9c9f711482b8a95928b06"
+	homepage hasValue "https://launchpad.net/libzeitgeist"
+	depends hasValue "libzeitgeist-1.0-1 (= 0.3.18-1ubuntu3), libglib2.0-dev (>= 2.24.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libzeitgeist-1.0-1"
+	comparison hasValue "="
+	version hasValue "0.3.18-1ubuntu3"
+
+relationInstance depends(P0__libzeitgeist_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libglib2.0-dev"
+	comparison hasValue ">="
+	version hasValue "2.24.0"
+
+relationInstance depends(P0__libzeitgeist_dev,1,DepAtom__1)
+

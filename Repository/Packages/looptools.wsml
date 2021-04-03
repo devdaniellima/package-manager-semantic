@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology looptools
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__looptools memberOf Package
+	package hasValue "looptools"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/science"
+	installedSize hasValue "917"
+	maintainer hasValue "Original-Debian Science Maintainers <debian-science-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.8-1build3"
+	fileName hasValue "pool/universe/l/looptools/looptools_2.8-1build3_amd64.deb"
+	size hasValue "277976"
+	md5sum hasValue "2493396bb19043e3d1c0df347989c430"
+	sha1 hasValue "2e82f7fc190c5093030e9b2b798f0d0a45132527"
+	sha256 hasValue "e0a2f24f343d2e605881e5b8533e6f54dab2f77a8eff5b2a26fc7a61cbaef2e9"
+	descriptionMd5 hasValue "5c01bd86292d164f54d0c4d4187217f9"
+	homepage hasValue "http://www.feynarts.de/looptools/"
+	depends hasValue "libc6 (>= 2.29), libgcc-s1 (>= 4.3), libgfortran5 (>= 8)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__looptools,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgcc-s1"
+	comparison hasValue ">="
+	version hasValue "4.3"
+
+relationInstance depends(P0__looptools,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libgfortran5"
+	comparison hasValue ">="
+	version hasValue "8"
+
+relationInstance depends(P0__looptools,2,DepAtom__2)
+

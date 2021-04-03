@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology hunspell_se
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__hunspell_se memberOf Package
+	package hasValue "hunspell-se"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "text"
+	installedSize hasValue "25440"
+	maintainer hasValue "Original-Petter Reinholdtsen <pere@debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.0~beta6.20081222-1.2"
+	provides hasValue "hunspell-dictionary, hunspell-dictionary-se"
+	conflicts hasValue "openoffice.org-core (<< 1:2.4)"
+	fileName hasValue "pool/main/h/hunspell-se/hunspell-se_1.0~beta6.20081222-1.2_all.deb"
+	size hasValue "3323480"
+	md5sum hasValue "e9c3a30d18aa31f0ef9b9bd4a57ebd38"
+	sha1 hasValue "c8d3b5fdec195095f6a54c1453278c8f2945825c"
+	sha256 hasValue "dfc7cf40a5c8f4560a72d81e39f2c14418a11ee7f3ecec60804d2a8f938b9732"
+	descriptionMd5 hasValue "62b6e0369fa956d93175e6dd703ef89b"
+	homepage hasValue "http://www.divvun.no/"
+	depends hasValue "dictionaries-common (>= 0.10) | openoffice.org-updatedicts"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "dictionaries-common"
+	comparison hasValue ">="
+	version hasValue "0.10"
+
+relationInstance depends(P0__hunspell_se,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "openoffice.org-updatedicts"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__hunspell_se,0,DepAtom__1)
+

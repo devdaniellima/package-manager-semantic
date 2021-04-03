@@ -1,0 +1,66 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gfortran_mips_linux_gnu
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gfortran_mips_linux_gnu memberOf Package
+	package hasValue "gfortran-mips-linux-gnu"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "11"
+	maintainer hasValue "Original-Debian GCC Maintainers <debian-gcc@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "4:9.2.1-4.1"
+	fileName hasValue "pool/universe/g/gcc-defaults-mipsen/gfortran-mips-linux-gnu_9.2.1-4.1_amd64.deb"
+	size hasValue "1184"
+	md5sum hasValue "04012861154343b04bb2879f1d477e13"
+	sha1 hasValue "75421d69ecdd973678a5cbe50122717e5ee9e3ef"
+	sha256 hasValue "a26073fa93b8bd9ad57d67556f30773060e602440e0c298350a24559d45ca3f7"
+	descriptionMd5 hasValue "76f9f1ca2941c610751639bfb397fe3c"
+	depends hasValue "cpp-mips-linux-gnu (= 4:9.2.1-4.1), gcc-mips-linux-gnu (= 4:9.2.1-4.1), gfortran-9-mips-linux-gnu (>= 9.2.1-1~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "cpp-mips-linux-gnu"
+	comparison hasValue "="
+	version hasValue "4:9.2.1-4.1"
+
+relationInstance depends(P0__gfortran_mips_linux_gnu,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "gcc-mips-linux-gnu"
+	comparison hasValue "="
+	version hasValue "4:9.2.1-4.1"
+
+relationInstance depends(P0__gfortran_mips_linux_gnu,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "gfortran-9-mips-linux-gnu"
+	comparison hasValue ">="
+	version hasValue "9.2.1-1~"
+
+relationInstance depends(P0__gfortran_mips_linux_gnu,2,DepAtom__2)
+

@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libplayerctl2
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libplayerctl2 memberOf Package
+	package hasValue "libplayerctl2"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "190"
+	maintainer hasValue "Original-Debian Multimedia Maintainers <debian-multimedia@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.0.2-1"
+	fileName hasValue "pool/universe/p/playerctl/libplayerctl2_2.0.2-1_amd64.deb"
+	size hasValue "43284"
+	md5sum hasValue "d92f9f00e4693f492e83b7890c7ed524"
+	sha1 hasValue "47be6a43372076176a240192aa42c6d4e6f39afc"
+	sha256 hasValue "30f8dfa3b095beb8f3958273d966c3c1b1f33b30747f4e810421decad9aea92b"
+	description hasValue "utility to control media players via MPRIS (library)"
+	descriptionMd5 hasValue "efacf5c7aa75cab0f8035738de0e793e"
+	homepage hasValue "https://github.com/acrisci/playerctl"
+	depends hasValue "libc6 (>= 2.17), libglib2.0-0 (>= 2.39.90)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.17"
+
+relationInstance depends(P0__libplayerctl2,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libglib2.0-0"
+	comparison hasValue ">="
+	version hasValue "2.39.90"
+
+relationInstance depends(P0__libplayerctl2,1,DepAtom__1)
+

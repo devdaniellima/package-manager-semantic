@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology node_argv
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__node_argv memberOf Package
+	package hasValue "node-argv"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/web"
+	installedSize hasValue "27"
+	maintainer hasValue "Original-Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.0.2-3"
+	fileName hasValue "pool/universe/n/node-argv/node-argv_0.0.2-3_all.deb"
+	size hasValue "7916"
+	md5sum hasValue "7b27b16d20e278ff61b82888df416ae8"
+	sha1 hasValue "555d64074c36f338d801452ab064a66f60041411"
+	sha256 hasValue "d8a0c2441248941cb6cecd57dd31843c20d115cb44f16e8d5931ac7c8c3a8f18"
+	descriptionMd5 hasValue "516f8d3df4ccd6892db1fe0d0851e8d5"
+	homepage hasValue "https://github.com/codenothing/argv"
+	depends hasValue "nodejs (>= 10)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "nodejs"
+	comparison hasValue ">="
+	version hasValue "10"
+
+relationInstance depends(P0__node_argv,0,DepAtom__0)
+

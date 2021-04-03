@@ -1,0 +1,83 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology mu4e
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__mu4e memberOf Package
+	package hasValue "mu4e"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/lisp"
+	installedSize hasValue "508"
+	maintainer hasValue "Original-Norbert Preining <norbert@preining.info>"
+	architecture hasValue "all"
+	version hasValue "1.2.0-2build1"
+	replaces hasValue "maildir-utils (<< 0.9.8.4)"
+	conflicts hasValue "maildir-utils (<< 0.9.8.4)"
+	fileName hasValue "pool/universe/m/maildir-utils/mu4e_1.2.0-2build1_all.deb"
+	size hasValue "159484"
+	md5sum hasValue "b85e21dfc0bd71d084fd6398f957a265"
+	sha1 hasValue "2ca14445d6e7c23bf11e44b59478f1d776c11604"
+	sha256 hasValue "87b5c0fc909d1adfcdb841e5dbef106b96a58c4d7faaa2cbf5f12affce600ca4"
+	descriptionMd5 hasValue "fa2b6b5556c3aeb1f5e6c19b19a58695"
+	homepage hasValue "http://www.djcbsoftware.nl/code/mu/"
+	depends hasValue "maildir-utils (>= 1.2.0-2build1), maildir-utils (<< 1.2.0-2build1.1~), emacsen-common (>= 2.0.8), dpkg (>= 1.15.4) | install-info"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "maildir-utils"
+	comparison hasValue ">="
+	version hasValue "1.2.0-2build1"
+
+relationInstance depends(P0__mu4e,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "maildir-utils"
+	comparison hasValue "<<"
+	version hasValue "1.2.0-2build1.1~"
+
+relationInstance depends(P0__mu4e,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "emacsen-common"
+	comparison hasValue ">="
+	version hasValue "2.0.8"
+
+relationInstance depends(P0__mu4e,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "dpkg"
+	comparison hasValue ">="
+	version hasValue "1.15.4"
+
+relationInstance depends(P0__mu4e,3,DepAtom__3)
+
+instance DepAtom__4 memberOf DependencyAtom
+	package hasValue "install-info"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__mu4e,3,DepAtom__4)
+

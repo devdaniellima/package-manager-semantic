@@ -1,0 +1,74 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology pd_hid
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__pd_hid memberOf Package
+	package hasValue "pd-hid"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/sound"
+	installedSize hasValue "249"
+	maintainer hasValue "Original-Debian Multimedia Maintainers <debian-multimedia@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.7-3"
+	fileName hasValue "pool/universe/p/pd-hid/pd-hid_0.7-3_amd64.deb"
+	size hasValue "38992"
+	md5sum hasValue "d9b204ab8f3c88e0aeb63788104b6839"
+	sha1 hasValue "d518abc0c71e63267a82c5d9095254287e92d888"
+	sha256 hasValue "333d7fa4245cfd69db5117aefe0284a2652f50548cdb76abd92cf99e1d1962d9"
+	descriptionMd5 hasValue "432cc85f72def8e7376146875d4859c7"
+	homepage hasValue "https://puredata.info"
+	depends hasValue "libc6 (>= 2.4), puredata-core | pd, pd-mapping"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__pd_hid,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "puredata-core"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__pd_hid,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "pd"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__pd_hid,1,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "pd-mapping"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__pd_hid,2,DepAtom__3)
+

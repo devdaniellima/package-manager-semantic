@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology rtl_sdr
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__rtl_sdr memberOf Package
+	package hasValue "rtl-sdr"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/libs"
+	installedSize hasValue "261"
+	maintainer hasValue "Original-A. Maitland Bottoms <bottoms@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.6.0-3"
+	fileName hasValue "pool/universe/r/rtl-sdr/rtl-sdr_0.6.0-3_amd64.deb"
+	size hasValue "58388"
+	md5sum hasValue "9266b50126bffbcb06da646515160d57"
+	sha1 hasValue "4f6e7603ede525f427291b29d2e746408e5fb921"
+	sha256 hasValue "2c477d6079bbe3ff48164a16a01264bf94400b3e8ecc649bd81e66c971e3d8c2"
+	descriptionMd5 hasValue "e83ebc54466f1df73b3c0ad5540e4f0d"
+	homepage hasValue "http://sdr.osmocom.org/trac/wiki/rtl-sdr"
+	depends hasValue "librtlsdr0 (= 0.6.0-3), libc6 (>= 2.29)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "librtlsdr0"
+	comparison hasValue "="
+	version hasValue "0.6.0-3"
+
+relationInstance depends(P0__rtl_sdr,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__rtl_sdr,1,DepAtom__1)
+

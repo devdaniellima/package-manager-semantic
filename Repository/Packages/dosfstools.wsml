@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology dosfstools
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__dosfstools memberOf Package
+	package hasValue "dosfstools"
+	packageSource hasValue Source__S1
+	priority hasValue "standard"
+	section hasValue "otherosfs"
+	installedSize hasValue "211"
+	maintainer hasValue "Original-Andreas Bombe <aeb@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "4.1-2"
+	fileName hasValue "pool/main/d/dosfstools/dosfstools_4.1-2_amd64.deb"
+	size hasValue "59004"
+	md5sum hasValue "542e2629ae0c474b820c564e3405636d"
+	sha1 hasValue "50b66b6196a27543c41d396c285522f37da9ee2c"
+	sha256 hasValue "58492d84924cee267cb3cba0e64e1241accde967748e6a1f31820fa74892ee32"
+	description hasValue "utilitários para criar e verificar sistemas de arquivos FAT do MS-DOS"
+	descriptionMd5 hasValue "6e6f1615505926a1cde788227bb8c0b5"
+	homepage hasValue "https://github.com/dosfstools/dosfstools"
+	depends hasValue "libc6 (>= 2.14), libudev1 (>= 183)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__dosfstools,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libudev1"
+	comparison hasValue ">="
+	version hasValue "183"
+
+relationInstance depends(P0__dosfstools,1,DepAtom__1)
+

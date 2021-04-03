@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libfixbuf_tools
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libfixbuf_tools memberOf Package
+	package hasValue "libfixbuf-tools"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "173"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.4.0+ds-2"
+	fileName hasValue "pool/universe/libf/libfixbuf/libfixbuf-tools_2.4.0+ds-2_amd64.deb"
+	size hasValue "28728"
+	md5sum hasValue "e9dbc1b8a7372f7e540c0b979515e7d4"
+	sha1 hasValue "258ce1a3e739a86610862593a280e3f97ab032f5"
+	sha256 hasValue "91fb23d66d0758b46c66886fc4d252277e031f81ac3a739e073ba320ff991144"
+	descriptionMd5 hasValue "b2bc2faa3dac2c4e9a7062f5992ca04a"
+	homepage hasValue "http://tools.netsa.cert.org/fixbuf/index.html"
+	depends hasValue "libc6 (>= 2.7), libfixbuf9 (>= 2.4.0+ds), libglib2.0-0 (>= 2.12.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__libfixbuf_tools,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libfixbuf9"
+	comparison hasValue ">="
+	version hasValue "2.4.0+ds"
+
+relationInstance depends(P0__libfixbuf_tools,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libglib2.0-0"
+	comparison hasValue ">="
+	version hasValue "2.12.0"
+
+relationInstance depends(P0__libfixbuf_tools,2,DepAtom__2)
+

@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology sbc_tools
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__sbc_tools memberOf Package
+	package hasValue "sbc-tools"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/libs"
+	installedSize hasValue "194"
+	maintainer hasValue "Original-Debian Bluetooth Maintainers <team+pkg-bluetooth@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.4-1"
+	fileName hasValue "pool/universe/s/sbc/sbc-tools_1.4-1_amd64.deb"
+	size hasValue "41440"
+	md5sum hasValue "c05e86172b2e0cdc83e94e9d41a11820"
+	sha1 hasValue "6ae74bee963b833347a78c3ed295330e82f948df"
+	sha256 hasValue "347dace149874cd29d3a2f9c59df76534ab94420097ecba8602fce251bd58538"
+	descriptionMd5 hasValue "36effa94dde2c4dce9f6f86c1a4eeef4"
+	homepage hasValue "http://www.bluez.org/"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__sbc_tools,0,DepAtom__0)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libodb_qt_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libodb_qt_dev memberOf Package
+	package hasValue "libodb-qt-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "250"
+	maintainer hasValue "Original-Laszlo Boszormenyi (GCS) <gcs@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.4.0-3build1"
+	fileName hasValue "pool/universe/libo/libodb-qt/libodb-qt-dev_2.4.0-3build1_amd64.deb"
+	size hasValue "25360"
+	md5sum hasValue "6211a9570e5d08d0f3f782f5eab54a4d"
+	sha1 hasValue "979328de20ca10d3ac23a4694d9af9d5f2c8b825"
+	sha256 hasValue "8eaa77f5834917972c04c3a8669c10cb1deba0af0819315563603dd2e00068a8"
+	descriptionMd5 hasValue "95afc7743453fe7f6f5eab1b31f2e6b5"
+	homepage hasValue "http://www.codesynthesis.com/products/odb"
+	depends hasValue "libodb-qt-2.4 (= 2.4.0-3build1), libodb-dev (>= 2.4.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libodb-qt-2.4"
+	comparison hasValue "="
+	version hasValue "2.4.0-3build1"
+
+relationInstance depends(P0__libodb_qt_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libodb-dev"
+	comparison hasValue ">="
+	version hasValue "2.4.0"
+
+relationInstance depends(P0__libodb_qt_dev,1,DepAtom__1)
+

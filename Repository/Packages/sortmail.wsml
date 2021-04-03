@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology sortmail
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__sortmail memberOf Package
+	package hasValue "sortmail"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/mail"
+	installedSize hasValue "136"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:2.4-3"
+	fileName hasValue "pool/universe/s/sortmail/sortmail_2.4-3_amd64.deb"
+	size hasValue "50768"
+	md5sum hasValue "5dc39bcbecc14089288314fb4df76624"
+	sha1 hasValue "e568676f2c1a7f812ca997a2d8ca564fca16ec44"
+	sha256 hasValue "a8dac739d5b6e90466fd772dbecb550fa0190529be4d731a5aeeb4ee14be4551"
+	description hasValue "simple mail sorter"
+	descriptionMd5 hasValue "9e32fcffbc57a05d483e96d0bbd79a26"
+	homepage hasValue "http://sortmail.sourceforge.net/"
+	depends hasValue "libc6 (>= 2.14), libgdbm-compat4"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__sortmail,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgdbm-compat4"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__sortmail,1,DepAtom__1)
+

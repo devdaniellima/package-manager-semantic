@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology octave_zenity
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__octave_zenity memberOf Package
+	package hasValue "octave-zenity"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/math"
+	installedSize hasValue "67"
+	maintainer hasValue "Original-Debian Octave Group <team+pkg-octave-team@tracker.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.5.7-9"
+	fileName hasValue "pool/universe/o/octave-zenity/octave-zenity_0.5.7-9_all.deb"
+	size hasValue "24196"
+	md5sum hasValue "685bdb03f8b6bc1b4941fae99b5fce63"
+	sha1 hasValue "b1d1208eb2d65ed9697ac4c1dd7656e46972cc02"
+	sha256 hasValue "89608b14b346c6695c5300982185c9725a118c069803821a7f6abf91adce372f"
+	description hasValue "simple graphical user interfaces using zenity in Octave"
+	descriptionMd5 hasValue "399c1d8f8e8110ec09288bf062e84b8b"
+	homepage hasValue "https://octave.sourceforge.io/zenity/"
+	depends hasValue "octave (>= 4.4.1), zenity (>= 2.16)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "octave"
+	comparison hasValue ">="
+	version hasValue "4.4.1"
+
+relationInstance depends(P0__octave_zenity,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "zenity"
+	comparison hasValue ">="
+	version hasValue "2.16"
+
+relationInstance depends(P0__octave_zenity,1,DepAtom__1)
+

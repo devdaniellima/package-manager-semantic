@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology mwrap
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__mwrap memberOf Package
+	package hasValue "mwrap"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/devel"
+	installedSize hasValue "315"
+	maintainer hasValue "Original-Debian Octave Group <team+pkg-octave-team@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.33-9build2"
+	fileName hasValue "pool/universe/m/mwrap/mwrap_0.33-9build2_amd64.deb"
+	size hasValue "217836"
+	md5sum hasValue "0ec5c8d972967655538c31844c979b23"
+	sha1 hasValue "458973ca50965b2443644498dbd2c6c1e1145591"
+	sha256 hasValue "cde6b6601a182ef17366cead6e0d4a00f9795fe183e1155326958a1a93b5a8c2"
+	descriptionMd5 hasValue "837ed1ddf8be236eed910832e9857faa"
+	homepage hasValue "http://www.cs.cornell.edu/~bindel/sw/mwrap/"
+	depends hasValue "libc6 (>= 2.14), libgcc-s1 (>= 3.0), libstdc++6 (>= 5.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__mwrap,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgcc-s1"
+	comparison hasValue ">="
+	version hasValue "3.0"
+
+relationInstance depends(P0__mwrap,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "5.2"
+
+relationInstance depends(P0__mwrap,2,DepAtom__2)
+

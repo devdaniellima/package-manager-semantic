@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology mono_runtime_boehm
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__mono_runtime_boehm memberOf Package
+	package hasValue "mono-runtime-boehm"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/cli-mono"
+	installedSize hasValue "4555"
+	maintainer hasValue "Original-Debian Mono Group <pkg-mono-group@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "6.8.0.105+dfsg-2"
+	fileName hasValue "pool/universe/m/mono/mono-runtime-boehm_6.8.0.105+dfsg-2_amd64.deb"
+	size hasValue "1575308"
+	md5sum hasValue "f1ef205497df07ce3a216dced5906321"
+	sha1 hasValue "19e28d44c22ce7714d8e39b4eb1fe0dd0e21a3f6"
+	sha256 hasValue "feeb8f09a458b6bfa7a06b338b250b7c848d21d73925f57e6d5a77c91b9bcad0"
+	description hasValue "Mono runtime - Boehm"
+	descriptionMd5 hasValue "74feada03d34e3c54c7fc03b376a7cde"
+	homepage hasValue "http://www.mono-project.com/"
+	depends hasValue "libc6 (>= 2.29), libgcc-s1 (>= 3.3), mono-runtime-common (= 6.8.0.105+dfsg-2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__mono_runtime_boehm,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgcc-s1"
+	comparison hasValue ">="
+	version hasValue "3.3"
+
+relationInstance depends(P0__mono_runtime_boehm,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "mono-runtime-common"
+	comparison hasValue "="
+	version hasValue "6.8.0.105+dfsg-2"
+
+relationInstance depends(P0__mono_runtime_boehm,2,DepAtom__2)
+

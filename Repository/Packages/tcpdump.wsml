@@ -1,0 +1,76 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology tcpdump
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__tcpdump memberOf Package
+	package hasValue "tcpdump"
+	packageSource hasValue Source__S1
+	priority hasValue "standard"
+	section hasValue "net"
+	installedSize hasValue "1087"
+	maintainer hasValue "Original-Romain Francoise <rfrancoise@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "4.9.3-4"
+	replaces hasValue "apparmor-profiles-extra (<< 1.12~)"
+	fileName hasValue "pool/main/t/tcpdump/tcpdump_4.9.3-4_amd64.deb"
+	size hasValue "369804"
+	md5sum hasValue "153f48f9c1086f779bbb5405aa3a44ee"
+	sha1 hasValue "ae3f8f96d9bc998e4097f38fbc5e4f31f4ff61c6"
+	sha256 hasValue "30745b403c4f2b695f2b1392f33ba24a128a0977518619391f4241f6d9dd4bc0"
+	description hasValue "analisador de tráfego de rede em linha de comando"
+	descriptionMd5 hasValue "f01841bfda357d116d7ff7b7a47e8782"
+	homepage hasValue "https://www.tcpdump.org/"
+	depends hasValue "libc6 (>= 2.14), libpcap0.8 (>= 1.5.1), libssl1.1 (>= 1.1.0), adduser"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__tcpdump,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libpcap0.8"
+	comparison hasValue ">="
+	version hasValue "1.5.1"
+
+relationInstance depends(P0__tcpdump,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libssl1.1"
+	comparison hasValue ">="
+	version hasValue "1.1.0"
+
+relationInstance depends(P0__tcpdump,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "adduser"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__tcpdump,3,DepAtom__3)
+

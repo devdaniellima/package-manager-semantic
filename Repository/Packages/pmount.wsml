@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology pmount
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__pmount memberOf Package
+	package hasValue "pmount"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "490"
+	maintainer hasValue "Original-Vincent Fourmond <fourmond@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.9.23-3build1"
+	fileName hasValue "pool/universe/p/pmount/pmount_0.9.23-3build1_amd64.deb"
+	size hasValue "75144"
+	md5sum hasValue "6625ad41938854352bacead64c67a56e"
+	sha1 hasValue "31132212ff0020fe823ce2a3dfdb56393627029f"
+	sha256 hasValue "5464b7b025a02b2f185477151ed5dd995422cca0eb4a6783231fabfe57d42a35"
+	description hasValue "monte dispositivos removíveis como usuário normal"
+	descriptionMd5 hasValue "fb7e7dec158c24424e211a9ae41f5053"
+	depends hasValue "libblkid1 (>= 2.16), libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libblkid1"
+	comparison hasValue ">="
+	version hasValue "2.16"
+
+relationInstance depends(P0__pmount,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__pmount,1,DepAtom__1)
+

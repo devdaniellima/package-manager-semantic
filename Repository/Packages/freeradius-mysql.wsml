@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology freeradius_mysql
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__freeradius_mysql memberOf Package
+	package hasValue "freeradius-mysql"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "66"
+	maintainer hasValue "Original-Debian FreeRADIUS Packaging Team <pkg-freeradius-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.0.20+dfsg-3build1"
+	fileName hasValue "pool/universe/f/freeradius/freeradius-mysql_3.0.20+dfsg-3build1_amd64.deb"
+	size hasValue "10532"
+	md5sum hasValue "83a56d8fdee35b29d2b0f839cee6700f"
+	sha1 hasValue "a155c5bccb40ea6028b04cda55c875e824931f1c"
+	sha256 hasValue "25c8ed081c9e319290269e44606a3f645fb18e1c0a679df23590e7be8420f0f9"
+	descriptionMd5 hasValue "4423793fbfc997cd42deec2bcb196555"
+	homepage hasValue "http://www.freeradius.org/"
+	depends hasValue "freeradius (= 3.0.20+dfsg-3build1), libc6 (>= 2.4), libmysqlclient21 (>= 8.0.11)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "freeradius"
+	comparison hasValue "="
+	version hasValue "3.0.20+dfsg-3build1"
+
+relationInstance depends(P0__freeradius_mysql,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__freeradius_mysql,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libmysqlclient21"
+	comparison hasValue ">="
+	version hasValue "8.0.11"
+
+relationInstance depends(P0__freeradius_mysql,2,DepAtom__2)
+

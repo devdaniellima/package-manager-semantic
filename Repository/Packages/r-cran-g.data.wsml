@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology r_cran_gDotdata
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__r_cran_gDotdata memberOf Package
+	package hasValue "r-cran-g.data"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/gnu-r"
+	installedSize hasValue "141"
+	maintainer hasValue "Original-Debian R Packages Maintainers <r-pkg-team@alioth-lists.debian.net>"
+	architecture hasValue "all"
+	version hasValue "2.4-3"
+	fileName hasValue "pool/universe/r/r-cran-g.data/r-cran-g.data_2.4-3_all.deb"
+	size hasValue "88500"
+	md5sum hasValue "8c00eb2d327a98afd154f8f2a509b961"
+	sha1 hasValue "7d7080f3fbea70a809ce5a5000e819e949d3874d"
+	sha256 hasValue "09ccab10e80d89976b8802c3bef88f39b7180190f1c0bbe98d3c3099e69aa66f"
+	descriptionMd5 hasValue "7b55453462f80c76d77e90ca9aa95ef1"
+	homepage hasValue "https://cran.r-project.org/package=g.data"
+	depends hasValue "r-base-core (>= 3.5.0-3), r-api-3.5"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "r-base-core"
+	comparison hasValue ">="
+	version hasValue "3.5.0-3"
+
+relationInstance depends(P0__r_cran_gDotdata,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "r-api-3.5"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__r_cran_gDotdata,1,DepAtom__1)
+

@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology nodejs_mozilla
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__nodejs_mozilla memberOf Package
+	package hasValue "nodejs-mozilla"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/javascript"
+	installedSize hasValue "41624"
+	maintainer hasValue "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	architecture hasValue "amd64"
+	version hasValue "12.18.1-0ubuntu0.20.04.1"
+	fileName hasValue "pool/universe/n/nodejs-mozilla/nodejs-mozilla_12.18.1-0ubuntu0.20.04.1_amd64.deb"
+	size hasValue "10593332"
+	md5sum hasValue "e8472ea0ad7433a8275d781af979d415"
+	sha1 hasValue "a72107707efa5787262cb982d5d44e62e276b6f9"
+	sha256 hasValue "6485a34a1b4905504affddf28f177750caf011790c93f78a035ff395eb3ebbc3"
+	sha512 hasValue "69499f3d27fa67548ce4fe7f8685fa02c489d09da9d04903433ebdc8ba123277255781eb2ee678a0a6bfd28c1e4e8ce69760eb6bd710eb2cc1f0e89367b9316c"
+	descriptionMd5 hasValue "e507fb472d7cdaceffc5b285a62d5c1b"
+	homepage hasValue "http://nodejs.org/"
+	depends hasValue "libc6 (>= 2.29), libgcc-s1 (>= 3.4), libstdc++6 (>= 9)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__nodejs_mozilla,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgcc-s1"
+	comparison hasValue ">="
+	version hasValue "3.4"
+
+relationInstance depends(P0__nodejs_mozilla,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "9"
+
+relationInstance depends(P0__nodejs_mozilla,2,DepAtom__2)
+

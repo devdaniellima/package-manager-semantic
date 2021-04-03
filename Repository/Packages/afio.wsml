@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology afio
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__afio memberOf Package
+	package hasValue "afio"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "multiverse/utils"
+	installedSize hasValue "169"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.5.1.20160103+gitc8e4317-2"
+	fileName hasValue "pool/multiverse/a/afio/afio_2.5.1.20160103+gitc8e4317-2_amd64.deb"
+	size hasValue "61724"
+	md5sum hasValue "fb78d418c87406b488b21f99d36ba8c2"
+	sha1 hasValue "3a309aa307616a07f4f7944f10bf4b368524f07f"
+	sha256 hasValue "cf4dd9ab829fd3ab52d40e40fcd0ebe3fd612440a1285111662c94d23cf472b6"
+	descriptionMd5 hasValue "ca88467cccd23b8f150ff01185566a6c"
+	homepage hasValue "https://github.com/kholtman/afio"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__afio,0,DepAtom__0)
+

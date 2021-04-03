@@ -1,0 +1,74 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology kopano_webapp_apache2
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__kopano_webapp_apache2 memberOf Package
+	package hasValue "kopano-webapp-apache2"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/web"
+	installedSize hasValue "76"
+	maintainer hasValue "Original-Giraffe Maintainers <pkg-giraffe-maintainers@alioth-lists.debian.net>"
+	architecture hasValue "all"
+	version hasValue "3.5.14+dfsg1.orig-1"
+	fileName hasValue "pool/universe/k/kopano-webapp/kopano-webapp-apache2_3.5.14+dfsg1.orig-1_all.deb"
+	size hasValue "17592"
+	md5sum hasValue "6c849b7bab43c711c95d6c68c35889e2"
+	sha1 hasValue "034e57c2e7f3cee3a45d1b5d93aa433c00d04a92"
+	sha256 hasValue "08818d04a57611469c7b534e0edf94ac4a3db150e06bedc5b81f81f144e1155a"
+	descriptionMd5 hasValue "046e8ec515620cab90ad942e3890d72d"
+	homepage hasValue "https://github.com/Kopano-dev/kopano-webapp"
+	depends hasValue "apache2 | httpd, libapache2-mod-php, kopano-webapp-common (>= 3.5.14+dfsg1.orig-1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "apache2"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__kopano_webapp_apache2,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "httpd"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__kopano_webapp_apache2,0,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libapache2-mod-php"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__kopano_webapp_apache2,1,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "kopano-webapp-common"
+	comparison hasValue ">="
+	version hasValue "3.5.14+dfsg1.orig-1"
+
+relationInstance depends(P0__kopano_webapp_apache2,2,DepAtom__3)
+

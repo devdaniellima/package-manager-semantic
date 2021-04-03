@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python_pkg_resources
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python_pkg_resources memberOf Package
+	package hasValue "python-pkg-resources"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "566"
+	maintainer hasValue "Original-Matthias Klose <doko@debian.org>"
+	architecture hasValue "all"
+	version hasValue "44.0.0-2"
+	fileName hasValue "pool/universe/p/python-setuptools/python-pkg-resources_44.0.0-2_all.deb"
+	size hasValue "129424"
+	md5sum hasValue "fe313ec8aa7fec0817d033cf245219a8"
+	sha1 hasValue "759341fa048760f3442f24bc2768fffe9c2a57e2"
+	sha256 hasValue "2417aa196594ea7d0dcb3cb7423d4249c13a04ac499c4a588f1046c8bd864eff"
+	description hasValue "pacote de descoberta e acesso a recursos utilizando o pkg_resources"
+	descriptionMd5 hasValue "455aab7092c23bbca0a002df43ba97e4"
+	homepage hasValue "https://pypi.python.org/pypi/setuptools"
+	depends hasValue "python2:any (<< 2.8), python2:any (>= 2.7~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue "<<"
+	version hasValue "2.8"
+
+relationInstance depends(P0__python_pkg_resources,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue ">="
+	version hasValue "2.7~"
+
+relationInstance depends(P0__python_pkg_resources,1,DepAtom__1)
+

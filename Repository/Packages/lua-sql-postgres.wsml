@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology lua_sql_postgres
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__lua_sql_postgres memberOf Package
+	package hasValue "lua-sql-postgres"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/interpreters"
+	installedSize hasValue "96"
+	maintainer hasValue "Original-Enrico Tassi <gareuselesinge@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.3.4-1build2"
+	provides hasValue "lua5.1-sql-postgres, lua5.2-sql-postgres, lua5.3-sql-postgres"
+	fileName hasValue "pool/universe/l/lua-sql/lua-sql-postgres_2.3.4-1build2_amd64.deb"
+	size hasValue "12268"
+	md5sum hasValue "237b10e3935b15ceb8078ff7b777b2e3"
+	sha1 hasValue "62f2587a0bb0238cc53df84cec6183bce91ac43c"
+	sha256 hasValue "2b3ad57e25a18ffdcdf4f84b07df832ba24f1382272bd56946f468293135700d"
+	descriptionMd5 hasValue "fc45b5660e83a34000c49958be933f0b"
+	homepage hasValue "https://github.com/keplerproject/luasql"
+	depends hasValue "libc6 (>= 2.4), libpq5"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__lua_sql_postgres,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libpq5"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__lua_sql_postgres,1,DepAtom__1)
+

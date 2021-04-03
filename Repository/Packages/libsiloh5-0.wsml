@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libsiloh5_0
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libsiloh5_0 memberOf Package
+	package hasValue "libsiloh5-0"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "931"
+	maintainer hasValue "Original-Alastair McKinstry <mckinstry@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "4.10.2.real-7"
+	fileName hasValue "pool/universe/s/silo-llnl/libsiloh5-0_4.10.2.real-7_amd64.deb"
+	size hasValue "316932"
+	md5sum hasValue "67b0684c36aefda654c1f79f0a9562fe"
+	sha1 hasValue "ec3a443ee7cecd32ec3cfc3b3b455fe90b521c40"
+	sha256 hasValue "e89cbabcffa947553ceeb22cd3fe6708bf3318aad279b055a338ea6ea1373ec0"
+	descriptionMd5 hasValue "2e5cdda66dd0aca877bcaddcde85bed1"
+	homepage hasValue "https://wci.llnl.gov/simulation/computer-codes/silo/"
+	depends hasValue "libc6 (>= 2.14), libhdf5-openmpi-103 (>= 1.10.3), libopenmpi3 (>= 4.0.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libsiloh5_0,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libhdf5-openmpi-103"
+	comparison hasValue ">="
+	version hasValue "1.10.3"
+
+relationInstance depends(P0__libsiloh5_0,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libopenmpi3"
+	comparison hasValue ">="
+	version hasValue "4.0.2"
+
+relationInstance depends(P0__libsiloh5_0,2,DepAtom__2)
+

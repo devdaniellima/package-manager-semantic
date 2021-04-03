@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gnome_shell_extension_hijra
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gnome_shell_extension_hijra memberOf Package
+	package hasValue "gnome-shell-extension-hijra"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "multiverse/misc"
+	installedSize hasValue "13"
+	maintainer hasValue "Original-Debian Islamic Maintainers <debian-islamic-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.0-1"
+	fileName hasValue "pool/multiverse/h/hijra/gnome-shell-extension-hijra_1.0-1_all.deb"
+	size hasValue "1952"
+	md5sum hasValue "32cc03534e75c86d52bd766b9f9288e5"
+	sha1 hasValue "c08eaaa6ac462bf90d062b03e5b3890a7d58666d"
+	sha256 hasValue "34f6cd730463c92046d08e8ed31b4f0b27fe23ca5185a2fee0812e9a132c24bd"
+	descriptionMd5 hasValue "0585ce81681ded4475a16acf7965359b"
+	homepage hasValue "https://ojuba.org/hijra:%D8%A7%D9%84%D8%B1%D8%A6%D9%8A%D8%B3%D8%A9"
+	depends hasValue "python3-hijra (= 1.0-1), hijra-applet, gnome-shell (>= 3.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3-hijra"
+	comparison hasValue "="
+	version hasValue "1.0-1"
+
+relationInstance depends(P0__gnome_shell_extension_hijra,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "hijra-applet"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__gnome_shell_extension_hijra,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "gnome-shell"
+	comparison hasValue ">="
+	version hasValue "3.2"
+
+relationInstance depends(P0__gnome_shell_extension_hijra,2,DepAtom__2)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology metar
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__metar memberOf Package
+	package hasValue "metar"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "48"
+	maintainer hasValue "Original-Kees Leune <kees@leune.org>"
+	architecture hasValue "amd64"
+	version hasValue "20190227.1-1"
+	fileName hasValue "pool/universe/m/metar/metar_20190227.1-1_amd64.deb"
+	size hasValue "15812"
+	md5sum hasValue "b02af3c2abf3bc454e797f30c4bfcc84"
+	sha1 hasValue "a8437dbd69ff6553261bc3c3b71f59280719206e"
+	sha256 hasValue "6af3def4cf2997846e72854b4b3e3baec5af981a333cd4ef7da73171eb1c69ca"
+	descriptionMd5 hasValue "2ab9798a427af08be1bb013341eea609"
+	homepage hasValue "http://github.com/keesL/metar"
+	depends hasValue "libc6 (>= 2.14), libcurl4 (>= 7.16.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__metar,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libcurl4"
+	comparison hasValue ">="
+	version hasValue "7.16.2"
+
+relationInstance depends(P0__metar,1,DepAtom__1)
+

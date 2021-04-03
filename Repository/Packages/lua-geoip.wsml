@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology lua_geoip
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__lua_geoip memberOf Package
+	package hasValue "lua-geoip"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/interpreters"
+	installedSize hasValue "75"
+	maintainer hasValue "Original-Sophie Brun <sophie@freexian.com>"
+	architecture hasValue "amd64"
+	version hasValue "0.2-1"
+	provides hasValue "lua5.1-geoip"
+	fileName hasValue "pool/universe/l/lua-geoip/lua-geoip_0.2-1_amd64.deb"
+	size hasValue "9744"
+	md5sum hasValue "4adb1869e59908ff12a6eac110ebc2c9"
+	sha1 hasValue "7f034c449fb95027e5db0b27c924bdb8d0c84553"
+	sha256 hasValue "b7b4cbb407b03f79ea278f983bf32ffb979b6e1326f13bacfaf245d04522464e"
+	descriptionMd5 hasValue "15f754603a846efd48a7fed267808b37"
+	homepage hasValue "https://github.com/agladysh/lua-geoip"
+	depends hasValue "libgeoip1 (>= 1.6.12), geoip-database"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libgeoip1"
+	comparison hasValue ">="
+	version hasValue "1.6.12"
+
+relationInstance depends(P0__lua_geoip,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "geoip-database"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__lua_geoip,1,DepAtom__1)
+

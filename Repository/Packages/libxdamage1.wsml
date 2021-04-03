@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libxdamage1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libxdamage1 memberOf Package
+	package hasValue "libxdamage1"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libs"
+	installedSize hasValue "31"
+	maintainer hasValue "Original-Debian X Strike Force <debian-x@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:1.1.5-2"
+	fileName hasValue "pool/main/libx/libxdamage/libxdamage1_1.1.5-2_amd64.deb"
+	size hasValue "6996"
+	md5sum hasValue "b69e1f1f52741aeace0d45cecfd9fa15"
+	sha1 hasValue "70b514f921293cc68af7dd90a61b688f0ec40275"
+	sha256 hasValue "77f4088c85b973a05a9e12825db9fc8e0cc5a577bed57ac29f4427e187c2896f"
+	description hasValue "X11 damaged region extension library"
+	descriptionMd5 hasValue "98dd17ab9089c578805725bd9bce8f95"
+	homepage hasValue "https://www.x.org"
+	depends hasValue "libc6 (>= 2.4), libx11-6 (>= 2:1.4.99.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libxdamage1,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libx11-6"
+	comparison hasValue ">="
+	version hasValue "2:1.4.99.1"
+
+relationInstance depends(P0__libxdamage1,1,DepAtom__1)
+

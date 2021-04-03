@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology cruft
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__cruft memberOf Package
+	package hasValue "cruft"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "137"
+	maintainer hasValue "Original-Alexandre Detiste <alexandre.detiste@gmail.com>"
+	architecture hasValue "amd64"
+	version hasValue "0.9.38"
+	fileName hasValue "pool/universe/c/cruft/cruft_0.9.38_amd64.deb"
+	size hasValue "23592"
+	md5sum hasValue "8a05b85c9f8de5e3e2f86e5907ba5fb5"
+	sha1 hasValue "d597f4271192b6f1dfe58be8a802708fb68306d7"
+	sha256 hasValue "92b81a7486d99092c5c5765ff3241b2c983d780308ef051ccecb7cffe09e0fcc"
+	description hasValue "program that finds any cruft built up on your system"
+	descriptionMd5 hasValue "b82572c40bbf709315ad577d4eb16ed2"
+	depends hasValue "libc6 (>= 2.14), file, cruft-common (>= 0.9.24~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__cruft,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "file"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__cruft,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "cruft-common"
+	comparison hasValue ">="
+	version hasValue "0.9.24~"
+
+relationInstance depends(P0__cruft,2,DepAtom__2)
+

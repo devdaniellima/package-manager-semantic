@@ -1,0 +1,59 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology elpa_dpkg_dev_el
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__elpa_dpkg_dev_el memberOf Package
+	package hasValue "elpa-dpkg-dev-el"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/lisp"
+	installedSize hasValue "198"
+	maintainer hasValue "Original-Debian Emacsen team <debian-emacsen@lists.debian.org>"
+	architecture hasValue "all"
+	version hasValue "37.8"
+	fileName hasValue "pool/universe/d/dpkg-dev-el/elpa-dpkg-dev-el_37.8_all.deb"
+	size hasValue "38112"
+	md5sum hasValue "b823c5c48f544f8e1208a5f4fafd03ca"
+	sha1 hasValue "b3864bf34207e8e65e909a5d71506019375013c1"
+	sha256 hasValue "ef089fd9a1988f2304e316858c9a2405551b7f03da70d938301f7eb6f3c79b66"
+	descriptionMd5 hasValue "6f16bdd3c65ef069a0676cc82fd8195c"
+	depends hasValue "elpa-debian-el (>= 37), emacsen-common"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "elpa-debian-el"
+	comparison hasValue ">="
+	version hasValue "37"
+
+relationInstance depends(P0__elpa_dpkg_dev_el,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "emacsen-common"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__elpa_dpkg_dev_el,1,DepAtom__1)
+

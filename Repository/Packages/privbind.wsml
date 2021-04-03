@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology privbind
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__privbind memberOf Package
+	package hasValue "privbind"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/utils"
+	installedSize hasValue "50"
+	maintainer hasValue "Original-Shachar Shemesh <shachar@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.2-1.1build1"
+	fileName hasValue "pool/universe/p/privbind/privbind_1.2-1.1build1_amd64.deb"
+	size hasValue "14068"
+	md5sum hasValue "17cc140c4e5a4a2809a67adf076f7467"
+	sha1 hasValue "f174d774313d56c29c3da386fb16fe7dc201073c"
+	sha256 hasValue "14748216ed2c90c6d77fbe64d9d87013264a75c3fddf0b5728e03058ab7946d8"
+	descriptionMd5 hasValue "7cb1be1c68508ee5024cd6591870dee2"
+	homepage hasValue "http://privbind.sourceforge.net/"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__privbind,0,DepAtom__0)
+

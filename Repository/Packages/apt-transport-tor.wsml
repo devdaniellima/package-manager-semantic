@@ -1,0 +1,52 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology apt_transport_tor
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__apt_transport_tor memberOf Package
+	package hasValue "apt-transport-tor"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "26"
+	maintainer hasValue "Original-APT Development Team <deity@lists.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.4"
+	fileName hasValue "pool/universe/a/apt-transport-tor/apt-transport-tor_0.4_all.deb"
+	size hasValue "7008"
+	md5sum hasValue "bf841573aea9181d88f1506a42cde156"
+	sha1 hasValue "4cba83daf49419871fd34ab75dbab83a79f49fe7"
+	sha256 hasValue "d8b190c6c926824a85d407ec341916a32f299b87f48ce7f497c4ca6c0a712808"
+	descriptionMd5 hasValue "4d820afa6e1369d26ffa4a285e6a8503"
+	depends hasValue "apt (>= 1.3~rc1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "apt"
+	comparison hasValue ">="
+	version hasValue "1.3~rc1"
+
+relationInstance depends(P0__apt_transport_tor,0,DepAtom__0)
+

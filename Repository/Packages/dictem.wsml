@@ -1,0 +1,63 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology dictem
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__dictem memberOf Package
+	package hasValue "dictem"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/text"
+	installedSize hasValue "103"
+	maintainer hasValue "Original-Yauheni Kaliuta <y.kaliuta@gmail.com>"
+	architecture hasValue "all"
+	version hasValue "1.0.4-4fakesync1"
+	provides hasValue "dict-client"
+	conflicts hasValue "emacsen-common (<= 2.0.0)"
+	fileName hasValue "pool/universe/d/dictem/dictem_1.0.4-4fakesync1_all.deb"
+	size hasValue "26880"
+	md5sum hasValue "dd62e7fbcbe8dfd90107c026f5b0b4be"
+	sha1 hasValue "d677105d48bcfd6bc3bf6533d30da34d3e180d4f"
+	sha256 hasValue "156e40be09d648d7aee9ecec78465dd1a4a8c91a44c60abae3aff7f8add766ae"
+	description hasValue "cliente dict para emacs"
+	descriptionMd5 hasValue "2651fb5f7b53a77f6b1fb2293759f6b0"
+	homepage hasValue "http://www.mova.org/~cheusov/pub/dictem"
+	depends hasValue "dict (>> 1.9.14), emacsen-common (>= 2.0.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "dict"
+	comparison hasValue ">>"
+	version hasValue "1.9.14"
+
+relationInstance depends(P0__dictem,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "emacsen-common"
+	comparison hasValue ">="
+	version hasValue "2.0.0"
+
+relationInstance depends(P0__dictem,1,DepAtom__1)
+

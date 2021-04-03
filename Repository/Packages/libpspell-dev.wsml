@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libpspell_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libpspell_dev memberOf Package
+	package hasValue "libpspell-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libdevel"
+	installedSize hasValue "52"
+	maintainer hasValue "Original-Agustin Martin Domingo <agmartin@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.60.8-1build1"
+	replaces hasValue "aspell-bin (<< 0.50.3-3)"
+	fileName hasValue "pool/main/a/aspell/libpspell-dev_0.60.8-1build1_amd64.deb"
+	size hasValue "4664"
+	md5sum hasValue "ddc8af5ab652b541e095801fce416bcd"
+	sha1 hasValue "20aa5119a284c4ebccc9373a6d6834464b6cba1e"
+	sha256 hasValue "4ba97219f3610627a1c45d17fe8f1db048653b5aa569f5fcd0c65d115644f14b"
+	descriptionMd5 hasValue "9cc1424d13d0db47f71c3da300fe317b"
+	homepage hasValue "http://aspell.net/"
+	depends hasValue "libaspell15 (= 0.60.8-1build1), libaspell-dev"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libaspell15"
+	comparison hasValue "="
+	version hasValue "0.60.8-1build1"
+
+relationInstance depends(P0__libpspell_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libaspell-dev"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libpspell_dev,1,DepAtom__1)
+

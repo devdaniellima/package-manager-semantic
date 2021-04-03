@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libeolian1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libeolian1 memberOf Package
+	package hasValue "libeolian1"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "356"
+	maintainer hasValue "Original-Debian Pkg-e Team <pkg-e-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.23.3-8"
+	fileName hasValue "pool/universe/e/efl/libeolian1_1.23.3-8_amd64.deb"
+	size hasValue "88936"
+	md5sum hasValue "1a20704193a39697b4cd49b973140d90"
+	sha1 hasValue "5beddc29b1bf51d9913063689bd4099278b09d54"
+	sha256 hasValue "06d15e17c0ccaf90e4264dc40d49f611aa3e59716d0ed08071de2b24f7aba507"
+	descriptionMd5 hasValue "f2a238250c880d7de4e8379c6c9e7191"
+	homepage hasValue "https://www.enlightenment.org"
+	depends hasValue "libc6 (>= 2.14), libeina1a (>= 1.23.3-0~eo)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libeolian1,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libeina1a"
+	comparison hasValue ">="
+	version hasValue "1.23.3-0~eo"
+
+relationInstance depends(P0__libeolian1,1,DepAtom__1)
+

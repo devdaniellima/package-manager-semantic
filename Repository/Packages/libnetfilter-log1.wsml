@@ -1,0 +1,59 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libnetfilter_log1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libnetfilter_log1 memberOf Package
+	package hasValue "libnetfilter-log1"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "50"
+	maintainer hasValue "Original-Alexander Wirt <formorer@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.1-1.1build1"
+	fileName hasValue "pool/universe/libn/libnetfilter-log/libnetfilter-log1_1.0.1-1.1build1_amd64.deb"
+	size hasValue "9972"
+	md5sum hasValue "d3be0a75366802a97e72f4c73164b287"
+	sha1 hasValue "be8f2766b5bf4c1f49880fbd216752736a69fec1"
+	sha256 hasValue "90762230fbe889ffc1553545b8180ed4139b3c98cd02517cef8269b6d13ea759"
+	descriptionMd5 hasValue "464129ba0fa3fefdcb0be40edef6c09d"
+	depends hasValue "libc6 (>= 2.14), libnfnetlink0"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libnetfilter_log1,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libnfnetlink0"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libnetfilter_log1,1,DepAtom__1)
+

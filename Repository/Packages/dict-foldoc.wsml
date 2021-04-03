@@ -1,0 +1,69 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology dict_foldoc
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__dict_foldoc memberOf Package
+	package hasValue "dict-foldoc"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "text"
+	installedSize hasValue "2539"
+	maintainer hasValue "Original-Iustin Pop <iustin@debian.org>"
+	architecture hasValue "all"
+	version hasValue "20181230-1"
+	provides hasValue "dictd-dictionary"
+	fileName hasValue "pool/main/d/dict-foldoc/dict-foldoc_20181230-1_all.deb"
+	size hasValue "2398720"
+	md5sum hasValue "162cbb90897871b0537524b10b0327bc"
+	sha1 hasValue "8b07b1c1b5c55cd4b0eb0c98152223b29b4ea14d"
+	sha256 hasValue "7b70068a484af59fd64532df2be3f7d9673c0d74d24c54e0c1d599a022d490b2"
+	description hasValue "FOLDOC dictionary database"
+	descriptionMd5 hasValue "0101618028c7357f4f09a878b5f39054"
+	homepage hasValue "http://foldoc.org/"
+	depends hasValue "dictd | dict-server, base-files (>> 4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "dictd"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__dict_foldoc,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "dict-server"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__dict_foldoc,0,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "base-files"
+	comparison hasValue ">>"
+	version hasValue "4"
+
+relationInstance depends(P0__dict_foldoc,1,DepAtom__2)
+

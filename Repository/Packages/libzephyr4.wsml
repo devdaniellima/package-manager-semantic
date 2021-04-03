@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libzephyr4
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libzephyr4 memberOf Package
+	package hasValue "libzephyr4"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "82"
+	maintainer hasValue "Original-Karl Ramm <kcr@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.1.2-1build3"
+	conflicts hasValue "libzephyr4-krb, libzephyr4-krb45, libzephyr4-krb5"
+	fileName hasValue "pool/universe/z/zephyr/libzephyr4_3.1.2-1build3_amd64.deb"
+	size hasValue "26756"
+	md5sum hasValue "0eb880bd18b8c2ea77bb7360af2483fd"
+	sha1 hasValue "0e75348018e82a1504497ee8177bae2add47602b"
+	sha256 hasValue "f83a84992ea3022430e04412033cb049f6353331f72da6ffb540de48d92cd812"
+	descriptionMd5 hasValue "27bb0be9ade76da1a83e09f9867be0a8"
+	depends hasValue "libc6 (>= 2.15), libcom-err2 (>= 1.01)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__libzephyr4,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libcom-err2"
+	comparison hasValue ">="
+	version hasValue "1.01"
+
+relationInstance depends(P0__libzephyr4,1,DepAtom__1)
+

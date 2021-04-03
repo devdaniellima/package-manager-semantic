@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology freeradius_iodbc
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__freeradius_iodbc memberOf Package
+	package hasValue "freeradius-iodbc"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "54"
+	maintainer hasValue "Original-Debian FreeRADIUS Packaging Team <pkg-freeradius-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.0.20+dfsg-3build1"
+	fileName hasValue "pool/universe/f/freeradius/freeradius-iodbc_3.0.20+dfsg-3build1_amd64.deb"
+	size hasValue "8216"
+	md5sum hasValue "81fe0b3f3643762a3495df108ca5ca94"
+	sha1 hasValue "0f8c14581354c7c938dd02a621226ee13a4a4b98"
+	sha256 hasValue "f19c662497a531e54ba8f18e94f633e54f1a462f00592c910fce9ed77c3d07f2"
+	descriptionMd5 hasValue "6347edefac75f466ab02895aecb1a016"
+	homepage hasValue "http://www.freeradius.org/"
+	depends hasValue "freeradius (= 3.0.20+dfsg-3build1), libc6 (>= 2.4), libiodbc2 (>= 3.52.7)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "freeradius"
+	comparison hasValue "="
+	version hasValue "3.0.20+dfsg-3build1"
+
+relationInstance depends(P0__freeradius_iodbc,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__freeradius_iodbc,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libiodbc2"
+	comparison hasValue ">="
+	version hasValue "3.52.7"
+
+relationInstance depends(P0__freeradius_iodbc,2,DepAtom__2)
+

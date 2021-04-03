@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology aspell_lt
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__aspell_lt memberOf Package
+	package hasValue "aspell-lt"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/text"
+	installedSize hasValue "438"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.2.1-8ubuntu1"
+	provides hasValue "aspell-dictionary"
+	fileName hasValue "pool/universe/i/ispell-lt/aspell-lt_1.2.1-8ubuntu1_all.deb"
+	size hasValue "271312"
+	md5sum hasValue "1b0f91dcf54440c3c51efeceae350399"
+	sha1 hasValue "a1047d6b31933565429e73fe1d39a4c2aadefc03"
+	sha256 hasValue "b5db207ebdfa0d79f53f5557f91319af46b90d9309ec24f595bd963c59b32397"
+	description hasValue "dicionário lituano (LT) para o aspell"
+	descriptionMd5 hasValue "6c51f0dac54c00ecc9a5713716c74849"
+	depends hasValue "aspell (>= 0.60.3-2), dictionaries-common (>= 0.50)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "aspell"
+	comparison hasValue ">="
+	version hasValue "0.60.3-2"
+
+relationInstance depends(P0__aspell_lt,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "dictionaries-common"
+	comparison hasValue ">="
+	version hasValue "0.50"
+
+relationInstance depends(P0__aspell_lt,1,DepAtom__1)
+

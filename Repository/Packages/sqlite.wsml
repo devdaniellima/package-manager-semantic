@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology sqlite
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__sqlite memberOf Package
+	package hasValue "sqlite"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/misc"
+	installedSize hasValue "55"
+	maintainer hasValue "Original-Laszlo Boszormenyi (GCS) <gcs@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.8.17-15fakesync1build1"
+	fileName hasValue "pool/universe/s/sqlite/sqlite_2.8.17-15fakesync1build1_amd64.deb"
+	size hasValue "16316"
+	md5sum hasValue "8b036c22839b1797c6d9cbcc259d4f30"
+	sha1 hasValue "20328aaa5ef45278ed49d6c149dd031bda1b0b7f"
+	sha256 hasValue "4c22cc9c29e1e2a026c2057a4769bfe85a0f13a9c059ffc13e18ad42d335f525"
+	description hasValue "interface de linha de comando para o SQLite 2"
+	descriptionMd5 hasValue "a20b0b871118ab307b13141113cbe11f"
+	depends hasValue "libc6 (>= 2.14), libreadline8 (>= 6.0), libsqlite0 (>= 2.8.17)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__sqlite,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libreadline8"
+	comparison hasValue ">="
+	version hasValue "6.0"
+
+relationInstance depends(P0__sqlite,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libsqlite0"
+	comparison hasValue ">="
+	version hasValue "2.8.17"
+
+relationInstance depends(P0__sqlite,2,DepAtom__2)
+

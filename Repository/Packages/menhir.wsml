@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology menhir
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__menhir memberOf Package
+	package hasValue "menhir"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "3439"
+	maintainer hasValue "Original-Debian OCaml Maintainers <debian-ocaml-maint@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "20200123-2"
+	fileName hasValue "pool/universe/m/menhir/menhir_20200123-2_amd64.deb"
+	size hasValue "794324"
+	md5sum hasValue "7aa31b0b3f8933abc7f8307d6b73508d"
+	sha1 hasValue "594fdf0f87886199cb94dc4afa8a3b1e5a119745"
+	sha256 hasValue "2ef3a24bb8433065b6976d2a4eda175b689862079b4f8bdc06f00918f79c0897"
+	descriptionMd5 hasValue "eb72870474ecd3a5b03e7e1f8f3c8a41"
+	homepage hasValue "http://gallium.inria.fr/~fpottier/menhir/"
+	depends hasValue "libc6 (>= 2.29)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__menhir,0,DepAtom__0)
+

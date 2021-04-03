@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ulogd2_pgsql
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ulogd2_pgsql memberOf Package
+	package hasValue "ulogd2-pgsql"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "35"
+	maintainer hasValue "Original-Debian Netfilter Packaging Team <pkg-netfilter-team@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.0.7-1build1"
+	fileName hasValue "pool/universe/u/ulogd2/ulogd2-pgsql_2.0.7-1build1_amd64.deb"
+	size hasValue "8712"
+	md5sum hasValue "5a90c111afd36683a5000bc8351d963a"
+	sha1 hasValue "c795d0d18083f5fed43304e46e470f35c2b670a9"
+	sha256 hasValue "b2cfe0fab51402a9c85671e7018f8769ec6a9d6c3dfe5b3ba472007e465f593b"
+	descriptionMd5 hasValue "a26b895d5cb968e7d545ca64e3715be5"
+	homepage hasValue "https://www.netfilter.org/projects/ulogd/"
+	depends hasValue "ulogd2 (= 2.0.7-1build1), libc6 (>= 2.4), libpq5"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "ulogd2"
+	comparison hasValue "="
+	version hasValue "2.0.7-1build1"
+
+relationInstance depends(P0__ulogd2_pgsql,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__ulogd2_pgsql,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libpq5"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ulogd2_pgsql,2,DepAtom__2)
+

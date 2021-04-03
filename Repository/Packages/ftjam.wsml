@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ftjam
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ftjam memberOf Package
+	package hasValue "ftjam"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "386"
+	maintainer hasValue "Original-Yann Dirson <dirson@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.5.2-1.1build1"
+	conflicts hasValue "jam (<< 2.3.2-3)"
+	fileName hasValue "pool/universe/f/ftjam/ftjam_2.5.2-1.1build1_amd64.deb"
+	size hasValue "128592"
+	md5sum hasValue "eafc232fdfb0361e97b64a0d18e30534"
+	sha1 hasValue "301edcd219fc86718990e2462b248261e19407bb"
+	sha256 hasValue "a1facca1f1c45d08e5e6dd67d4cfcde21a27736ae42896145ade81df522d3bf5"
+	description hasValue "FreeType version of Jam, a replacement for make"
+	descriptionMd5 hasValue "42128d3ee04f1ec67e98b5d97ef7d69d"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__ftjam,0,DepAtom__0)
+

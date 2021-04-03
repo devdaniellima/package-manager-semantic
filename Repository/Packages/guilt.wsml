@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology guilt
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__guilt memberOf Package
+	package hasValue "guilt"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "146"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.36-2"
+	fileName hasValue "pool/universe/g/guilt/guilt_0.36-2_all.deb"
+	size hasValue "56972"
+	md5sum hasValue "d33bee05529467bcf9c24a5e8c84b572"
+	sha1 hasValue "ee7033b85a8ef21b3e0df38bf3a10e193a92f892"
+	sha256 hasValue "b2b9295f33ec805d191c941873a90febc9247c49351b640fbd5c59c3b76434ce"
+	descriptionMd5 hasValue "849c974e0891c5ff51c79d0e2569c04c"
+	homepage hasValue "http://repo.or.cz/w/guilt.git"
+	depends hasValue "git (>= 1:1.7)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "git"
+	comparison hasValue ">="
+	version hasValue "1:1.7"
+
+relationInstance depends(P0__guilt,0,DepAtom__0)
+

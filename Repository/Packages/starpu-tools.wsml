@@ -1,0 +1,69 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology starpu_tools
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__starpu_tools memberOf Package
+	package hasValue "starpu-tools"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/utils"
+	installedSize hasValue "244"
+	maintainer hasValue "Original-Samuel Thibault <sthibault@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.3.3+dfsg-2build1"
+	provides hasValue "starpu-any-tools"
+	conflicts hasValue "starpu-contrib-tools"
+	fileName hasValue "pool/universe/s/starpu/starpu-tools_1.3.3+dfsg-2build1_amd64.deb"
+	size hasValue "46472"
+	md5sum hasValue "85bb590103d19a2ab9e3d947c0f32cea"
+	sha1 hasValue "f7b9418fc6123dda4f35577f77d74fdc73a5aa64"
+	sha256 hasValue "a87851bc6208dd6be7717920c2a7fc1e34ace3aeea2f00c315d7b030739e8202"
+	descriptionMd5 hasValue "eb2ba87d4cd88833bc91b0cf6b977279"
+	homepage hasValue "http://starpu.gforge.inria.fr/"
+	depends hasValue "libc6 (>= 2.7), libstarpu-1.3-2 (>= 1.3.2+dfsg~) | libstarpu-any-1.3-2"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__starpu_tools,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libstarpu-1.3-2"
+	comparison hasValue ">="
+	version hasValue "1.3.2+dfsg~"
+
+relationInstance depends(P0__starpu_tools,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libstarpu-any-1.3-2"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__starpu_tools,1,DepAtom__2)
+

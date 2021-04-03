@@ -1,0 +1,69 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ncbi_tools_bin
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ncbi_tools_bin memberOf Package
+	package hasValue "ncbi-tools-bin"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/science"
+	installedSize hasValue "3777"
+	maintainer hasValue "Original-Debian Med Packaging Team <debian-med-packaging@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "6.1.20170106+dfsg1-8"
+	replaces hasValue "blast2 (<< 1:2.2.26.20160908)"
+	fileName hasValue "pool/universe/n/ncbi-tools6/ncbi-tools-bin_6.1.20170106+dfsg1-8_amd64.deb"
+	size hasValue "1901392"
+	md5sum hasValue "a97cca6ebb45232e66324673ea21e6fb"
+	sha1 hasValue "71e4372cd322b6e00cfb052a5ca486d400660edf"
+	sha256 hasValue "1ca53a0f7e91fad7b5411f59e9864897bf308aeaee64c15791c6f9cc3ba0ec91"
+	description hasValue "bibliotecas NCBI para aplicações de biologia (utilitários baseadas em texto)"
+	descriptionMd5 hasValue "6919ed1d6f34363a4bd110f69899ff95"
+	homepage hasValue "http://www.ncbi.nlm.nih.gov/IEB/ToolBox/"
+	depends hasValue "libncbi6 (<< 6.1.20170106+dfsg1.1), libncbi6 (>= 6.1.20170106+dfsg1), libc6 (>= 2.29)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libncbi6"
+	comparison hasValue "<<"
+	version hasValue "6.1.20170106+dfsg1.1"
+
+relationInstance depends(P0__ncbi_tools_bin,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libncbi6"
+	comparison hasValue ">="
+	version hasValue "6.1.20170106+dfsg1"
+
+relationInstance depends(P0__ncbi_tools_bin,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__ncbi_tools_bin,2,DepAtom__2)
+

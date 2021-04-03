@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology php_net_nntp
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__php_net_nntp memberOf Package
+	package hasValue "php-net-nntp"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/php"
+	installedSize hasValue "230"
+	maintainer hasValue "Original-Debian PHP PEAR Maintainers <pkg-php-pear@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.5.0-2"
+	fileName hasValue "pool/universe/p/php-net-nntp/php-net-nntp_1.5.0-2_all.deb"
+	size hasValue "53182"
+	md5sum hasValue "8cc37f349e58b534e0c3305cc87f53b2"
+	sha1 hasValue "9b5da1d4dcb8be8ac1cc88085bedd676c216e140"
+	sha256 hasValue "8f914cb161d2eb7eca6df3c6031481495115254fba622a9e9016f7a218b02388"
+	descriptionMd5 hasValue "0218daa6783344b9b43b546f6e4aff28"
+	homepage hasValue "http://pear.php.net/package/Net_NNTP/"
+	depends hasValue "php-common, php-pear (>= 1.4.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "php-common"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__php_net_nntp,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "php-pear"
+	comparison hasValue ">="
+	version hasValue "1.4.0"
+
+relationInstance depends(P0__php_net_nntp,1,DepAtom__1)
+

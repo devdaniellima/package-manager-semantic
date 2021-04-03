@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libmetis5
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libmetis5 memberOf Package
+	package hasValue "libmetis5"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libs"
+	installedSize hasValue "456"
+	maintainer hasValue "Original-Debian Science Maintainers <debian-science-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "5.1.0.dfsg-5"
+	fileName hasValue "pool/main/m/metis/libmetis5_5.1.0.dfsg-5_amd64.deb"
+	size hasValue "168742"
+	md5sum hasValue "ea3cbcc87696eeddcd0b5cb993038e82"
+	sha1 hasValue "f5f53ba23038c209e6b2c85c19750281ac04e4fa"
+	sha256 hasValue "f694c7ce485de75f52ebc50918d8160946eb412b4417c7612c2faea72dc3a55c"
+	descriptionMd5 hasValue "5ecba79562a1f64953b11cec5c00f5d1"
+	homepage hasValue "http://glaros.dtc.umn.edu/gkhome/metis/metis/overview"
+	depends hasValue "libc6 (>= 2.11)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.11"
+
+relationInstance depends(P0__libmetis5,0,DepAtom__0)
+

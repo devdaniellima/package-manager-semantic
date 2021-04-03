@@ -1,0 +1,73 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology debsig_verify
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__debsig_verify memberOf Package
+	package hasValue "debsig-verify"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "102"
+	maintainer hasValue "Original-Dpkg Developers <debian-dpkg@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.22"
+	fileName hasValue "pool/universe/d/debsig-verify/debsig-verify_0.22_amd64.deb"
+	size hasValue "32764"
+	md5sum hasValue "11ccdc110d458b47b625fd802d2fa387"
+	sha1 hasValue "a9f84e5e49421d52ce9364a4cbaf5ca6b31a9826"
+	sha256 hasValue "5a1c2f37b88540bdbd8f10eeff1fc8e875a073a9857fde9cf103dfb5176b00f4"
+	descriptionMd5 hasValue "17721b51f633c58de657ee56060e3c57"
+	depends hasValue "libc6 (>= 2.14), libexpat1 (>= 2.0.1), gpg | gnupg"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__debsig_verify,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libexpat1"
+	comparison hasValue ">="
+	version hasValue "2.0.1"
+
+relationInstance depends(P0__debsig_verify,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "gpg"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__debsig_verify,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "gnupg"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__debsig_verify,2,DepAtom__3)
+

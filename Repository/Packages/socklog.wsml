@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology socklog
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__socklog memberOf Package
+	package hasValue "socklog"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "235"
+	maintainer hasValue "Original-Gerrit Pape <pape@smarden.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.1.0-8.1build1"
+	fileName hasValue "pool/universe/s/socklog/socklog_2.1.0-8.1build1_amd64.deb"
+	size hasValue "47420"
+	md5sum hasValue "b54b10b9fdd319b48c25fce88da67ae6"
+	sha1 hasValue "f36fffd0b5c4780a9362b152e350b792a58b7d93"
+	sha256 hasValue "5c668f8381ae27dccde7297c6d1b2bb293e9bcf676806ddac21658d281c999b0"
+	descriptionMd5 hasValue "1ee3f77e7aa06dc7abfc00a30dbf5b36"
+	homepage hasValue "http://smarden.org/socklog"
+	depends hasValue "adduser, libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "adduser"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__socklog,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__socklog,1,DepAtom__1)
+

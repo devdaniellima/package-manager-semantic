@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libopendbx1_sqlite
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libopendbx1_sqlite memberOf Package
+	package hasValue "libopendbx1-sqlite"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "26"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.4.6-13build4"
+	provides hasValue "libopendbx1-backend"
+	fileName hasValue "pool/universe/libo/libopendbx/libopendbx1-sqlite_1.4.6-13build4_amd64.deb"
+	size hasValue "4648"
+	md5sum hasValue "b65bb446340d279c712e5112b16376e8"
+	sha1 hasValue "c3831c97e8ac53aebaf5dc5e9a0494c05d76c09d"
+	sha256 hasValue "f3a106928bc6596b1745f8eefcb4ec0b8d15807a0e8d7a98121ce90a6694fbf1"
+	descriptionMd5 hasValue "c4f652e841f9349b554ae02f0594151e"
+	homepage hasValue "http://www.linuxnetworks.de/doc/index.php/OpenDBX"
+	depends hasValue "libopendbx1 (= 1.4.6-13build4), libc6 (>= 2.14), libsqlite0 (>= 2.8.17)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libopendbx1"
+	comparison hasValue "="
+	version hasValue "1.4.6-13build4"
+
+relationInstance depends(P0__libopendbx1_sqlite,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libopendbx1_sqlite,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libsqlite0"
+	comparison hasValue ">="
+	version hasValue "2.8.17"
+
+relationInstance depends(P0__libopendbx1_sqlite,2,DepAtom__2)
+

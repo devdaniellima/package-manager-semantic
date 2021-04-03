@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gobuster
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gobuster memberOf Package
+	package hasValue "gobuster"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "4199"
+	maintainer hasValue "Original-Alexander Fischer <mirar@chaosmail.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.0.1-1"
+	fileName hasValue "pool/universe/g/gobuster/gobuster_2.0.1-1_amd64.deb"
+	size hasValue "1278504"
+	md5sum hasValue "10b37e671c0e97a49057a8dfd45cc3c7"
+	sha1 hasValue "f51e194e0893ee1b8ec8262138c1e7331993ee6c"
+	sha256 hasValue "9beb59f7c1e4f3d782662763418db20fa982c097d123ac3209476243823a2f98"
+	descriptionMd5 hasValue "2564d33b891fdb3351f1c43a09694a8f"
+	homepage hasValue "https://github.com/OJ/gobuster"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__gobuster,0,DepAtom__0)
+

@@ -1,0 +1,52 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology memstat
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__memstat memberOf Package
+	package hasValue "memstat"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "34"
+	maintainer hasValue "Original-Michael Meskes <meskes@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.1"
+	fileName hasValue "pool/universe/m/memstat/memstat_1.1_amd64.deb"
+	size hasValue "11512"
+	md5sum hasValue "19671d7a446594702f91159f9ad56c6a"
+	sha1 hasValue "aa9c3461da4432fee8ecf75967025dd3f1d292e4"
+	sha256 hasValue "af7392a7a781163104622821d705404a477b50e13d99cc0670087846b9f44e24"
+	descriptionMd5 hasValue "9d09d69a80d71802d857028417947648"
+	depends hasValue "libc6 (>= 2.7)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__memstat,0,DepAtom__0)
+

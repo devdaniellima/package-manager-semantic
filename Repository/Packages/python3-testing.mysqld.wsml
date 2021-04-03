@@ -1,0 +1,81 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python3_testingDotmysqld
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python3_testingDotmysqld memberOf Package
+	package hasValue "python3-testing.mysqld"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "40"
+	maintainer hasValue "Original-Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.4.0-4"
+	fileName hasValue "pool/universe/p/python-testing.mysqld/python3-testing.mysqld_1.4.0-4_all.deb"
+	size hasValue "7700"
+	md5sum hasValue "e80f2f0f31cab09dd355f91bd44af8f0"
+	sha1 hasValue "87cb272453e7622cdd1778f1f308f52649580769"
+	sha256 hasValue "65968b4e261cc3a19d0d876c96eb2b6f3f86d08f49a617b36c7a855e4b056ab7"
+	descriptionMd5 hasValue "4c6168472634922115c9d4f57e75cc6b"
+	homepage hasValue "https://github.com/tk0miya/testing.mysqld"
+	depends hasValue "default-mysql-server (>= 1.0.2) | virtual-mysql-server, python3-pymysql, python3-testing.common.database (>= 1.1.0), python3:any"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "default-mysql-server"
+	comparison hasValue ">="
+	version hasValue "1.0.2"
+
+relationInstance depends(P0__python3_testingDotmysqld,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "virtual-mysql-server"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__python3_testingDotmysqld,0,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "python3-pymysql"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__python3_testingDotmysqld,1,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "python3-testing.common.database"
+	comparison hasValue ">="
+	version hasValue "1.1.0"
+
+relationInstance depends(P0__python3_testingDotmysqld,2,DepAtom__3)
+
+instance DepAtom__4 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__python3_testingDotmysqld,3,DepAtom__4)
+

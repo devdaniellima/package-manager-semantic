@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology sic
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__sic memberOf Package
+	package hasValue "sic"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "62"
+	maintainer hasValue "Original-Jeroen Schot <schot@a-eskwadraat.nl>"
+	architecture hasValue "amd64"
+	version hasValue "1.1-5"
+	fileName hasValue "pool/universe/s/sic/sic_1.1-5_amd64.deb"
+	size hasValue "9110"
+	md5sum hasValue "848be66a0751cb9ca73e9d11ba06b8eb"
+	sha1 hasValue "aa1e7d4df88ad252921b7b792ac90edb18528ccb"
+	sha256 hasValue "a76f5fcd4c120d37ea5bee3e0904565e6b36ac95e9c4276cf235ccf0ba936f23"
+	descriptionMd5 hasValue "7995bd867e4ee66e576cb10611b00009"
+	homepage hasValue "http://tools.suckless.org/sic/"
+	depends hasValue "libc6 (>= 2.15)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__sic,0,DepAtom__0)
+

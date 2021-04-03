@@ -1,0 +1,75 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python3_zookeeper
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python3_zookeeper memberOf Package
+	package hasValue "python3-zookeeper"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "104"
+	maintainer hasValue "Original-Debian Java Maintainers <pkg-java-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.4.13-5build1"
+	fileName hasValue "pool/universe/z/zookeeper/python3-zookeeper_3.4.13-5build1_amd64.deb"
+	size hasValue "23388"
+	md5sum hasValue "f8306d6852174089d23afa8f0b05866c"
+	sha1 hasValue "f710e8ce567763ab3ef5da0f6ce79d483c270a2a"
+	sha256 hasValue "b92250490490c6690448b2228f086291a8150d41d4c70c9692ca7e9695395825"
+	description hasValue "Python bindings for zookeeper"
+	descriptionMd5 hasValue "feeb7d7052e9b061c9f307890c4924ef"
+	homepage hasValue "https://zookeeper.apache.org"
+	depends hasValue "libzookeeper-mt2 (= 3.4.13-5build1), python3 (<< 3.9), python3 (>= 3.8~), libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libzookeeper-mt2"
+	comparison hasValue "="
+	version hasValue "3.4.13-5build1"
+
+relationInstance depends(P0__python3_zookeeper,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3"
+	comparison hasValue "<<"
+	version hasValue "3.9"
+
+relationInstance depends(P0__python3_zookeeper,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "python3"
+	comparison hasValue ">="
+	version hasValue "3.8~"
+
+relationInstance depends(P0__python3_zookeeper,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__python3_zookeeper,3,DepAtom__3)
+

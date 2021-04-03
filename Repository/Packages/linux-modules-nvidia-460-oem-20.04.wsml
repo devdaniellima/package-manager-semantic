@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology linux_modules_nvidia_460_oem_20Dot04
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__linux_modules_nvidia_460_oem_20Dot04 memberOf Package
+	package hasValue "linux-modules-nvidia-460-oem-20.04"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "restricted/kernel"
+	installedSize hasValue "19"
+	maintainer hasValue "Canonical Kernel Team <kernel-team@lists.ubuntu.com>"
+	architecture hasValue "amd64"
+	version hasValue "5.6.0-1050.54+1"
+	provides hasValue "nvidia-dkms-460 (= 460.39-0ubuntu0.20.04.1), nvidia-prebuilt-kernel"
+	fileName hasValue "pool/restricted/l/linux-restricted-modules-oem-5.6/linux-modules-nvidia-460-oem-20.04_5.6.0-1050.54+1_amd64.deb"
+	size hasValue "5492"
+	md5sum hasValue "0f6beeda071db9c3c83b61649ba64408"
+	sha1 hasValue "28df1c0852897d408fef6c08b6194f741d66ae9d"
+	sha256 hasValue "8cdfa1238eb4494c3a430949b85845eea0922bff0ea8ffe1f9869ce802116c64"
+	sha512 hasValue "d0eb7d05c9b4447f6e58dee8cb540f118ba7842e1df0489b9c16604e66aeb6e7095db96ad133c8e27d9a0cd9fdb6e35f95af5d3f9e0a0c5afc9b5d2dbd603d8a"
+	descriptionMd5 hasValue "fa0cdff20f69fb7a34e573fb72f4f15c"
+	depends hasValue "linux-modules-nvidia-460-5.6.0-1050-oem (= 5.6.0-1050.54+1), nvidia-kernel-common-460 (<= 460.39-1), nvidia-kernel-common-460 (>= 460.39)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "linux-modules-nvidia-460-5.6.0-1050-oem"
+	comparison hasValue "="
+	version hasValue "5.6.0-1050.54+1"
+
+relationInstance depends(P0__linux_modules_nvidia_460_oem_20Dot04,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "nvidia-kernel-common-460"
+	comparison hasValue "<="
+	version hasValue "460.39-1"
+
+relationInstance depends(P0__linux_modules_nvidia_460_oem_20Dot04,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "nvidia-kernel-common-460"
+	comparison hasValue ">="
+	version hasValue "460.39"
+
+relationInstance depends(P0__linux_modules_nvidia_460_oem_20Dot04,2,DepAtom__2)
+

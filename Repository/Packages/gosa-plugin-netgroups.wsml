@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gosa_plugin_netgroups
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gosa_plugin_netgroups memberOf Package
+	package hasValue "gosa-plugin-netgroups"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/web"
+	installedSize hasValue "186"
+	maintainer hasValue "Original-Debian Edu Packaging Team <debian-edu-pkg-team@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.2-1"
+	replaces hasValue "debian-edu-config-gosa-netgroups"
+	fileName hasValue "pool/universe/g/gosa-plugin-netgroups/gosa-plugin-netgroups_0.2-1_all.deb"
+	size hasValue "27128"
+	md5sum hasValue "9bfe2c9cce029bd72ea2b4c50cb268cf"
+	sha1 hasValue "aa773d80be36306d922ac462525961baf5a09405"
+	sha256 hasValue "aae46c1b1fbfe9686386af0c2f13ca6f45ea80afd9a77dc7a25372a56e64e2e9"
+	descriptionMd5 hasValue "16b875a6742fc06f91a02dc551492669"
+	homepage hasValue "https://oss.gonicus.de/labs/gosa-contrib/browser/netgroups"
+	depends hasValue "gosa (>= 2.7)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "gosa"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__gosa_plugin_netgroups,0,DepAtom__0)
+

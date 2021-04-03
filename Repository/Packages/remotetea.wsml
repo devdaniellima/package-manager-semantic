@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology remotetea
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__remotetea memberOf Package
+	package hasValue "remotetea"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/java"
+	installedSize hasValue "3263"
+	maintainer hasValue "Original-Debian Java Maintainers <pkg-java-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.0.7-3"
+	fileName hasValue "pool/universe/r/remotetea/remotetea_1.0.7-3_all.deb"
+	size hasValue "308750"
+	md5sum hasValue "e85b84e1f2362c5d61fe6a2e046b912e"
+	sha1 hasValue "f0d33e2960e8ac67b5cff5582c0ea5ba7f14e3bc"
+	sha256 hasValue "a1de6faab9eea29df3ff1c3bf7fd3aedc048229263b2f604f1af464a75b2ed32"
+	descriptionMd5 hasValue "a1ec732b12b902fe798067fd387b4f47"
+	homepage hasValue "http://remotetea.sourceforge.net"
+	depends hasValue "default-jre | java7-runtime, jarwrapper (>= 0.5)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "default-jre"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__remotetea,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "java7-runtime"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__remotetea,0,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "jarwrapper"
+	comparison hasValue ">="
+	version hasValue "0.5"
+
+relationInstance depends(P0__remotetea,1,DepAtom__2)
+

@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology care
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__care memberOf Package
+	package hasValue "care"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "235"
+	maintainer hasValue "Original-Rémi Duraffort <ivoire@videolan.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.2.1-1build1"
+	replaces hasValue "proot (<< 5.1.0-2)"
+	fileName hasValue "pool/universe/c/care/care_2.2.1-1build1_amd64.deb"
+	size hasValue "88108"
+	md5sum hasValue "9857a29b0250f0c7230ca5311a671e93"
+	sha1 hasValue "e6012702396fb6f9fbc2573b730442af87f5d911"
+	sha256 hasValue "ad17438a6e5b67cade996998c7807b856ee921e5738b259ceb7524d0f1af154f"
+	descriptionMd5 hasValue "4eb2955d5ef5b31f60e47958eee9510b"
+	homepage hasValue "http://reproducible.io"
+	depends hasValue "libarchive13 (>= 3.1.2), libc6 (>= 2.15), libtalloc2 (>= 2.0.4~git20101213)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libarchive13"
+	comparison hasValue ">="
+	version hasValue "3.1.2"
+
+relationInstance depends(P0__care,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__care,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libtalloc2"
+	comparison hasValue ">="
+	version hasValue "2.0.4~git20101213"
+
+relationInstance depends(P0__care,2,DepAtom__2)
+

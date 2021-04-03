@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology mini_httpd
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__mini_httpd memberOf Package
+	package hasValue "mini-httpd"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/web"
+	installedSize hasValue "122"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.30-2"
+	provides hasValue "httpd, httpd-cgi"
+	fileName hasValue "pool/universe/m/mini-httpd/mini-httpd_1.30-2_amd64.deb"
+	size hasValue "40064"
+	md5sum hasValue "7b3099f06540221fe10a743eb651339c"
+	sha1 hasValue "45ac5ea1da58f59ac8c5ada6c10fe6600bf7b928"
+	sha256 hasValue "43eb31ad2c8cc73831b4a1e0f8b28a0247b2623ce66c1147b4c0dc8b18e2786e"
+	descriptionMd5 hasValue "cde209078834de0384dbd9b92617a9e0"
+	homepage hasValue "https://www.acme.com/software/mini_httpd"
+	depends hasValue "libc6 (>= 2.15), libssl1.1 (>= 1.1.0), lsb-base"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__mini_httpd,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libssl1.1"
+	comparison hasValue ">="
+	version hasValue "1.1.0"
+
+relationInstance depends(P0__mini_httpd,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "lsb-base"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__mini_httpd,2,DepAtom__2)
+

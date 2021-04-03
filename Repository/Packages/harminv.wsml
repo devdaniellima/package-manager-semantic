@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology harminv
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__harminv memberOf Package
+	package hasValue "harminv"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/science"
+	installedSize hasValue "40"
+	maintainer hasValue "Original-Thorsten Alteholz <debian@alteholz.de>"
+	architecture hasValue "amd64"
+	version hasValue "1.4.1-2build1"
+	fileName hasValue "pool/universe/h/harminv/harminv_1.4.1-2build1_amd64.deb"
+	size hasValue "12092"
+	md5sum hasValue "2aa592867233ade17e82adb12e6ad6a1"
+	sha1 hasValue "0406657fea0ecc4d376e468197955e7aed7115aa"
+	sha256 hasValue "c4cb19198b8f1d20b70c38f4524ea9ca415998f3892dd1a6cf0377c2f99c9dce"
+	descriptionMd5 hasValue "fd48a1976edca6557a44be013156ea97"
+	homepage hasValue "https://github.com/stevengj/harminv/"
+	depends hasValue "libc6 (>= 2.7), libharminv3 (>= 1.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__harminv,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libharminv3"
+	comparison hasValue ">="
+	version hasValue "1.4"
+
+relationInstance depends(P0__harminv,1,DepAtom__1)
+

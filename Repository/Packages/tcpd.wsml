@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology tcpd
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__tcpd memberOf Package
+	package hasValue "tcpd"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "118"
+	maintainer hasValue "Original-Marco d'Itri <md@linux.it>"
+	architecture hasValue "amd64"
+	version hasValue "7.6.q-30"
+	fileName hasValue "pool/universe/t/tcp-wrappers/tcpd_7.6.q-30_amd64.deb"
+	size hasValue "24368"
+	md5sum hasValue "a657745bb97870f387f69bbbeaa17f20"
+	sha1 hasValue "0f8455de29621712ad6392ca4accd00809635bba"
+	sha256 hasValue "b874df01ccc670ea5a08a86ed688b34075ba20dab7194422c19b2d4116d96c61"
+	description hasValue "utilitários TCP wrapper do Wietse Venema"
+	descriptionMd5 hasValue "d52fad3ffb22dc8056c1ddced83af179"
+	depends hasValue "libc6 (>= 2.14), libwrap0 (= 7.6.q-30)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__tcpd,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libwrap0"
+	comparison hasValue "="
+	version hasValue "7.6.q-30"
+
+relationInstance depends(P0__tcpd,1,DepAtom__1)
+

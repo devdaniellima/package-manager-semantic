@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libtss2_esys0
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libtss2_esys0 memberOf Package
+	package hasValue "libtss2-esys0"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libs"
+	installedSize hasValue "1181"
+	maintainer hasValue "Mathieu Trudel-Lapierre <cyphermox@ubuntu.com>"
+	architecture hasValue "amd64"
+	version hasValue "2.3.2-1"
+	fileName hasValue "pool/main/t/tpm2-tss/libtss2-esys0_2.3.2-1_amd64.deb"
+	size hasValue "225832"
+	md5sum hasValue "36452021f7bdedf0600e459a90402e4e"
+	sha1 hasValue "d42395f5e37c65d38ebba963d2064fe9b1b75e66"
+	sha256 hasValue "76e8d9a6c9160d0d75253e30ded6d4307cfee158c5ea63728b4f5715c5c5355b"
+	descriptionMd5 hasValue "41ba27bfd15e86032618cb0614b92e0c"
+	homepage hasValue "https://github.com/01org/TPM2.0-TSS"
+	depends hasValue "tpm-udev, libc6 (>= 2.14), libssl1.1 (>= 1.1.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "tpm-udev"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libtss2_esys0,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libtss2_esys0,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libssl1.1"
+	comparison hasValue ">="
+	version hasValue "1.1.1"
+
+relationInstance depends(P0__libtss2_esys0,2,DepAtom__2)
+

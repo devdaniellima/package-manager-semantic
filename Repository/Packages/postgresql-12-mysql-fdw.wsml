@@ -1,0 +1,74 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology postgresql_12_mysql_fdw
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__postgresql_12_mysql_fdw memberOf Package
+	package hasValue "postgresql-12-mysql-fdw"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/database"
+	installedSize hasValue "225"
+	maintainer hasValue "Original-Debian PostgreSQL Maintainers <team+postgresql@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.5.3-1"
+	fileName hasValue "pool/universe/p/postgresql-mysql-fdw/postgresql-12-mysql-fdw_2.5.3-1_amd64.deb"
+	size hasValue "97752"
+	md5sum hasValue "8b1ae522260ab159d3cc2481bf95473f"
+	sha1 hasValue "007ebdb7708f0f0312ec34009d5c386d432bdb48"
+	sha256 hasValue "a7e60d1ac6de38965bf79752885bb1072e29bb2ca595f662898d750ef11ef208"
+	descriptionMd5 hasValue "309359dda35ef8cf9461d918c68dc225"
+	homepage hasValue "https://github.com/EnterpriseDB/mysql_fdw"
+	depends hasValue "default-libmysqlclient-dev | libmysqlclient-dev, postgresql-12, libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "default-libmysqlclient-dev"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__postgresql_12_mysql_fdw,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libmysqlclient-dev"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__postgresql_12_mysql_fdw,0,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "postgresql-12"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__postgresql_12_mysql_fdw,1,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__postgresql_12_mysql_fdw,2,DepAtom__3)
+

@@ -1,0 +1,66 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology dh_vim_addon
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__dh_vim_addon memberOf Package
+	package hasValue "dh-vim-addon"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "25"
+	maintainer hasValue "Original-Debian Vim Maintainers <team+vim@tracker.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.2"
+	fileName hasValue "pool/universe/d/dh-vim-addon/dh-vim-addon_0.2_all.deb"
+	size hasValue "7008"
+	md5sum hasValue "1a096c832c027a714dc65edcdb49f6ad"
+	sha1 hasValue "94b5f059a93323084ba91da015d619ccac1ba42b"
+	sha256 hasValue "43cc665749f1201a841007d8afd48be385604fa37e9c3e73d438db383183863d"
+	descriptionMd5 hasValue "69b10f94311c80c003e613044881c646"
+	depends hasValue "debhelper (>= 10.2.5), vim-common, perl"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "debhelper"
+	comparison hasValue ">="
+	version hasValue "10.2.5"
+
+relationInstance depends(P0__dh_vim_addon,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "vim-common"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__dh_vim_addon,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "perl"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__dh_vim_addon,2,DepAtom__2)
+

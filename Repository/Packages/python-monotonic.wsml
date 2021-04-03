@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python_monotonic
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python_monotonic memberOf Package
+	package hasValue "python-monotonic"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "25"
+	maintainer hasValue "Original-PKG OpenStack <openstack-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.5-0ubuntu2"
+	fileName hasValue "pool/universe/p/python-monotonic/python-monotonic_1.5-0ubuntu2_all.deb"
+	size hasValue "5580"
+	md5sum hasValue "515335fd86ddb386393f8ddf3f9ca47b"
+	sha1 hasValue "158ff544d9d261449bb26776c23bf91502662e25"
+	sha256 hasValue "f2827aec2544d1ebfd7e75d273424b039caaa79795553e5932101363cd967046"
+	description hasValue "implementation of time.monotonic() - Python 2.x"
+	descriptionMd5 hasValue "db3cef8c1fc00dc924fb9689fe05a54a"
+	homepage hasValue "https://github.com/atdt/monotonic"
+	depends hasValue "python2:any (<< 2.8), python2:any (>= 2.7~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue "<<"
+	version hasValue "2.8"
+
+relationInstance depends(P0__python_monotonic,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue ">="
+	version hasValue "2.7~"
+
+relationInstance depends(P0__python_monotonic,1,DepAtom__1)
+

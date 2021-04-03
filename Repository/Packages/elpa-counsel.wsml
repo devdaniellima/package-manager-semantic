@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology elpa_counsel
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__elpa_counsel memberOf Package
+	package hasValue "elpa-counsel"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/lisp"
+	installedSize hasValue "351"
+	maintainer hasValue "Original-Debian Emacsen team <debian-emacsen@lists.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.12.0+dfsg-1"
+	fileName hasValue "pool/universe/e/emacs-ivy/elpa-counsel_0.12.0+dfsg-1_all.deb"
+	size hasValue "56660"
+	md5sum hasValue "63b6f6644981467a444271d7d1e88669"
+	sha1 hasValue "e9e778f8ed9dfd148dbc7247f035a5a77e48ac9a"
+	sha256 hasValue "eb34ad57a43bca8d99c3abfaa8440879707f835a53e2d1d37bb4c4070bf0056a"
+	descriptionMd5 hasValue "decbc42d52534209150b9b603c6b6d31"
+	homepage hasValue "https://github.com/abo-abo/swiper"
+	depends hasValue "elpa-swiper (>= 0.12.0), emacsen-common"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "elpa-swiper"
+	comparison hasValue ">="
+	version hasValue "0.12.0"
+
+relationInstance depends(P0__elpa_counsel,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "emacsen-common"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__elpa_counsel,1,DepAtom__1)
+

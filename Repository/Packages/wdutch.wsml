@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology wdutch
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__wdutch memberOf Package
+	package hasValue "wdutch"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "text"
+	installedSize hasValue "4166"
+	maintainer hasValue "Original-Thijs Kinkhorst <thijs@debian.org>"
+	architecture hasValue "all"
+	version hasValue "1:2.10-6"
+	provides hasValue "wordlist"
+	fileName hasValue "pool/main/d/dutch/wdutch_2.10-6_all.deb"
+	size hasValue "1137040"
+	md5sum hasValue "258ff3be6b59a24f41cdee439a33e77a"
+	sha1 hasValue "e0243891ae9fca351cd03786349b190afa6c555c"
+	sha256 hasValue "892df54024264d21a0ee81be8ee42eefd3dcf3cb00460d4ab2e145016696f896"
+	descriptionMd5 hasValue "558760862405deb7c73a30bc741e018f"
+	homepage hasValue "https://www.opentaal.org/"
+	depends hasValue "dictionaries-common, debconf (>= 0.5) | debconf-2.0"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "dictionaries-common"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__wdutch,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "debconf"
+	comparison hasValue ">="
+	version hasValue "0.5"
+
+relationInstance depends(P0__wdutch,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "debconf-2.0"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__wdutch,1,DepAtom__2)
+

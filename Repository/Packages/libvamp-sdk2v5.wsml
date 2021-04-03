@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libvamp_sdk2v5
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libvamp_sdk2v5 memberOf Package
+	package hasValue "libvamp-sdk2v5"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "125"
+	maintainer hasValue "Original-Debian Multimedia Maintainers <debian-multimedia@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.9.0-1build1"
+	fileName hasValue "pool/universe/v/vamp-plugin-sdk/libvamp-sdk2v5_2.9.0-1build1_amd64.deb"
+	size hasValue "40172"
+	md5sum hasValue "abb8cade28d09afbbac7d0ab7ba6eceb"
+	sha1 hasValue "8a30163f59af3159092410384a4f30fdfcf8a0e4"
+	sha256 hasValue "754df6a31a0564f276de787e790f193bb398e86aed3cfbe21a34d4d5497c8600"
+	descriptionMd5 hasValue "7579eaf17e8434ae640d1f93501ae31f"
+	homepage hasValue "http://www.vamp-plugins.org/"
+	depends hasValue "libc6 (>= 2.14), libstdc++6 (>= 5.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libvamp_sdk2v5,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "5.2"
+
+relationInstance depends(P0__libvamp_sdk2v5,1,DepAtom__1)
+

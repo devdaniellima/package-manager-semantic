@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ipheth_utils
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ipheth_utils memberOf Package
+	package hasValue "ipheth-utils"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/net"
+	installedSize hasValue "28"
+	maintainer hasValue "Original-Paul McEnery <pmcenery@gmail.com>"
+	architecture hasValue "amd64"
+	version hasValue "1.0+git20111206-0ubuntu5"
+	fileName hasValue "pool/universe/i/ipheth/ipheth-utils_1.0+git20111206-0ubuntu5_amd64.deb"
+	size hasValue "7716"
+	md5sum hasValue "e012e0fdfeaa12d3bcc0541da5af06dc"
+	sha1 hasValue "c4f82e6496f421f43bd124d7f6fd943de88a68cf"
+	sha256 hasValue "35c219c3d21ffaaded9dca19f2e7d9681ed58cada0362d3789ad81e5bd031f4e"
+	description hasValue "utilitários de suporte a driver de tethering USB para o iPhone"
+	descriptionMd5 hasValue "4c4f1234a01d89521ba262d9fb5a4cf9"
+	homepage hasValue "http://giagio.com/wiki/moin.cgi/iPhoneEthernetDriver"
+	depends hasValue "libc6 (>= 2.4), libimobiledevice6 (>= 0.9.7)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__ipheth_utils,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libimobiledevice6"
+	comparison hasValue ">="
+	version hasValue "0.9.7"
+
+relationInstance depends(P0__ipheth_utils,1,DepAtom__1)
+

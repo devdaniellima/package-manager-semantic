@@ -1,0 +1,84 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology console_setup_linux
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__console_setup_linux memberOf Package
+	package hasValue "console-setup-linux"
+	packageSource hasValue Source__S1
+	priority hasValue "important"
+	section hasValue "utils"
+	installedSize hasValue "1766"
+	maintainer hasValue "Original-Debian Install System Team <debian-boot@lists.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.194ubuntu3"
+	replaces hasValue "console-setup (<< 1.71), console-terminus"
+	provides hasValue "console-terminus"
+	conflicts hasValue "console-setup-freebsd"
+	fileName hasValue "pool/main/c/console-setup/console-setup-linux_1.194ubuntu3_all.deb"
+	size hasValue "1494020"
+	md5sum hasValue "93755ea12069a89faa37cb5237509a31"
+	sha1 hasValue "3836e6e646f8cd5e759221c88303a35835d935df"
+	sha256 hasValue "dd639fa78d4c444ba47e1d12f74b901f9bb0b3aaa6029304acbf4382e7627c23"
+	description hasValue "parte específica do Linux do console-setup"
+	descriptionMd5 hasValue "344215f6cd3c78235b14195ca3b44ec5"
+	depends hasValue "kbd (>= 0.99-12) | console-tools (>= 1:0.2.3-16), keyboard-configuration (= 1.194ubuntu3), init-system-helpers (>= 1.29~) | initscripts"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "kbd"
+	comparison hasValue ">="
+	version hasValue "0.99-12"
+
+relationInstance depends(P0__console_setup_linux,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "console-tools"
+	comparison hasValue ">="
+	version hasValue "1:0.2.3-16"
+
+relationInstance depends(P0__console_setup_linux,0,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "keyboard-configuration"
+	comparison hasValue "="
+	version hasValue "1.194ubuntu3"
+
+relationInstance depends(P0__console_setup_linux,1,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "init-system-helpers"
+	comparison hasValue ">="
+	version hasValue "1.29~"
+
+relationInstance depends(P0__console_setup_linux,2,DepAtom__3)
+
+instance DepAtom__4 memberOf DependencyAtom
+	package hasValue "initscripts"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__console_setup_linux,2,DepAtom__4)
+

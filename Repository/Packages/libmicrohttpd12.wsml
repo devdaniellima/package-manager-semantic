@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libmicrohttpd12
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libmicrohttpd12 memberOf Package
+	package hasValue "libmicrohttpd12"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "164"
+	maintainer hasValue "Original-Bertrand Marc <bmarc@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.9.66-1"
+	fileName hasValue "pool/universe/libm/libmicrohttpd/libmicrohttpd12_0.9.66-1_amd64.deb"
+	size hasValue "62464"
+	md5sum hasValue "d6112b25a486847b26f14f624fb2e3ae"
+	sha1 hasValue "9c83ccd74f15e4f091b689f9457c65907bbb71a4"
+	sha256 hasValue "5cff5ee00f07a72fdde6c457e26f51a9c70009fe280d8f90072d059ebbb66137"
+	descriptionMd5 hasValue "819e00491fd6d04994a45d91e1e50b90"
+	homepage hasValue "http://www.gnu.org/software/libmicrohttpd/"
+	depends hasValue "libc6 (>= 2.17), libgnutls30 (>= 3.6.8)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.17"
+
+relationInstance depends(P0__libmicrohttpd12,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgnutls30"
+	comparison hasValue ">="
+	version hasValue "3.6.8"
+
+relationInstance depends(P0__libmicrohttpd12,1,DepAtom__1)
+

@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology jfsutils
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__jfsutils memberOf Package
+	package hasValue "jfsutils"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "admin"
+	installedSize hasValue "1578"
+	maintainer hasValue "Original-Laszlo Boszormenyi (GCS) <gcs@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.1.15-4"
+	fileName hasValue "pool/main/j/jfsutils/jfsutils_1.1.15-4_amd64.deb"
+	size hasValue "194920"
+	md5sum hasValue "81ec87652cb21256ade183da3fbe76ae"
+	sha1 hasValue "2c6f186a8b41f27fa3ad5236f16b331fb7d69e46"
+	sha256 hasValue "c1b33169a9b2269a1a99b4b1b939db132478932d6b99bdc0fe1fd0f4f97f24d8"
+	description hasValue "utilitários para gerenciamento do sistema de arquivo JFS"
+	descriptionMd5 hasValue "000fe2ee7a32dfc069be2f44381d781f"
+	homepage hasValue "https://jfs.sourceforge.net/"
+	depends hasValue "libc6 (>= 2.14), libuuid1 (>= 2.16)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__jfsutils,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libuuid1"
+	comparison hasValue ">="
+	version hasValue "2.16"
+
+relationInstance depends(P0__jfsutils,1,DepAtom__1)
+

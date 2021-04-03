@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python3_pyisomd5sum
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python3_pyisomd5sum memberOf Package
+	package hasValue "python3-pyisomd5sum"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "37"
+	maintainer hasValue "Original-Ryan Finnie <ryan@finnie.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:1.2.3-4build1"
+	provides hasValue "python3.8-pyisomd5sum"
+	fileName hasValue "pool/universe/i/isomd5sum/python3-pyisomd5sum_1.2.3-4build1_amd64.deb"
+	size hasValue "11832"
+	md5sum hasValue "d2ff8ed0a9ebdb78ef4f554ea7e95c78"
+	sha1 hasValue "92a82bc67ccf9d256be70d75a69ac0ae65e15124"
+	sha256 hasValue "8d9b1ac6f5da30053293edf98218c9c028ef8189d4779901fba7683b743d1d2c"
+	descriptionMd5 hasValue "469551bfda5db4a582cde8faf83a2b86"
+	homepage hasValue "https://github.com/rhinstaller/isomd5sum"
+	depends hasValue "libc6 (>= 2.16), python3 (<< 3.9), python3 (>= 3.8~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.16"
+
+relationInstance depends(P0__python3_pyisomd5sum,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3"
+	comparison hasValue "<<"
+	version hasValue "3.9"
+
+relationInstance depends(P0__python3_pyisomd5sum,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "python3"
+	comparison hasValue ">="
+	version hasValue "3.8~"
+
+relationInstance depends(P0__python3_pyisomd5sum,2,DepAtom__2)
+

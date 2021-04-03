@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology tcl8Dot6_tdbc
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__tcl8Dot6_tdbc memberOf Package
+	package hasValue "tcl8.6-tdbc"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "110"
+	maintainer hasValue "Original-Massimo Manghi <mxmanghi@apache.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.1.1-1"
+	fileName hasValue "pool/universe/t/tdbc/tcl8.6-tdbc_1.1.1-1_amd64.deb"
+	size hasValue "36408"
+	md5sum hasValue "f66ec0eb5d0d854dff86e4c1ea89c5e8"
+	sha1 hasValue "e4d3ae53e8a788afa651257a6ae415fe98a89132"
+	sha256 hasValue "d383fa6ef438cb3e86ca06289a04d386d9a4353f22121892b5531890899d154b"
+	descriptionMd5 hasValue "9f31610747d92d51034e34d1dab41031"
+	homepage hasValue "http://tdbc.tcl.tk/"
+	depends hasValue "libc6 (>= 2.4), tcl8.6"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__tcl8Dot6_tdbc,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "tcl8.6"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__tcl8Dot6_tdbc,1,DepAtom__1)
+

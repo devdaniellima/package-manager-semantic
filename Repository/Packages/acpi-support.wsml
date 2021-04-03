@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology acpi_support
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__acpi_support memberOf Package
+	package hasValue "acpi-support"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "admin"
+	installedSize hasValue "61"
+	maintainer hasValue "Original-Bart Samwel <bart@samwel.tk>"
+	architecture hasValue "amd64"
+	version hasValue "0.143"
+	conflicts hasValue "uswsusp (<= 0.2)"
+	fileName hasValue "pool/main/a/acpi-support/acpi-support_0.143_amd64.deb"
+	size hasValue "9604"
+	md5sum hasValue "0d8dca8da43ce17e4d3c4bd082aa5d61"
+	sha1 hasValue "3a6588090c09bca90590fc835b195baeee96d880"
+	sha256 hasValue "818b72ec0ca8922042ce97cdcb4e6a6558f72f3c5c5114a007cf5826dfc2ad0b"
+	description hasValue "scripts para manuseio de vários eventos ACPI"
+	descriptionMd5 hasValue "3da3f1fdfeedd4b9182ff4fd508042a7"
+	depends hasValue "acpid (>= 1.0.4-1ubuntu4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "acpid"
+	comparison hasValue ">="
+	version hasValue "1.0.4-1ubuntu4"
+
+relationInstance depends(P0__acpi_support,0,DepAtom__0)
+

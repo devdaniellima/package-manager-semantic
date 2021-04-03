@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology r_cran_rcolorbrewer
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__r_cran_rcolorbrewer memberOf Package
+	package hasValue "r-cran-rcolorbrewer"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/math"
+	installedSize hasValue "87"
+	maintainer hasValue "Original-Dirk Eddelbuettel <edd@debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.1-2-2"
+	fileName hasValue "pool/universe/r/rcolorbrewer/r-cran-rcolorbrewer_1.1-2-2_all.deb"
+	size hasValue "54380"
+	md5sum hasValue "f43379312984d6dd5e74b6f4494d1e54"
+	sha1 hasValue "5519fe8f2c652134ea6acf55c5924e0cb220d986"
+	sha256 hasValue "035372294514a9248ed7ad9357571fa67b445ce76996c10cc8c62d6f01b57b7c"
+	descriptionMd5 hasValue "4b8ac5d9a6178fbc84f5ed1b8816f30d"
+	homepage hasValue "https://cran.r-project.org/package=RColorBrewer"
+	depends hasValue "r-base-core (>= 3.5.0-5), r-api-3.5"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "r-base-core"
+	comparison hasValue ">="
+	version hasValue "3.5.0-5"
+
+relationInstance depends(P0__r_cran_rcolorbrewer,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "r-api-3.5"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__r_cran_rcolorbrewer,1,DepAtom__1)
+

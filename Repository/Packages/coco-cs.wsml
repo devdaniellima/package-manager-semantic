@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology coco_cs
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__coco_cs memberOf Package
+	package hasValue "coco-cs"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "114"
+	maintainer hasValue "Original-Markus Loeberbauer <Loeberbauer@ssw.jku.at>"
+	architecture hasValue "all"
+	version hasValue "20110419-5.1"
+	fileName hasValue "pool/universe/c/coco-cs/coco-cs_20110419-5.1_all.deb"
+	size hasValue "33970"
+	md5sum hasValue "4cfe10f2a92eebd8a9071ff67996ff1d"
+	sha1 hasValue "8e4fd8609cfc989618ddd3c9d78fdf18ba646bfa"
+	sha256 hasValue "040fb04645db97da58293bde6188468d4c05e2fd89b8869746fc5662f6bbd47f"
+	description hasValue "Coco/R Compiler Generator (C-Sharp Version)"
+	descriptionMd5 hasValue "6ea15825c902eb6288a63b12b257493b"
+	homepage hasValue "http://www.ssw.uni-linz.ac.at/Research/Projects/Coco/"
+	depends hasValue "mono-runtime (>= 3.0~), libmono-corlib4.5-cil (>= 3.2.8)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "mono-runtime"
+	comparison hasValue ">="
+	version hasValue "3.0~"
+
+relationInstance depends(P0__coco_cs,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libmono-corlib4.5-cil"
+	comparison hasValue ">="
+	version hasValue "3.2.8"
+
+relationInstance depends(P0__coco_cs,1,DepAtom__1)
+

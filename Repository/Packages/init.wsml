@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology init
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__init memberOf Package
+	package hasValue "init"
+	packageSource hasValue Source__S1
+	priority hasValue "important"
+	section hasValue "metapackages"
+	installedSize hasValue "21"
+	maintainer hasValue "Original-Debian systemd Maintainers <pkg-systemd-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.57"
+	fileName hasValue "pool/main/i/init-system-helpers/init_1.57_amd64.deb"
+	size hasValue "6088"
+	md5sum hasValue "459fb4e8b020aee5306cfff0ffef3f53"
+	sha1 hasValue "a1c707f0479c05ccf22b1292a5f0ae243b1f2675"
+	sha256 hasValue "bc810e47293dab9bfd64b0db7fc714107994de12d4b3e6d621cea7a00223e067"
+	description hasValue "meta-pacote que garante que um sistema init está instalado"
+	descriptionMd5 hasValue "12a082503782e774ffe62fa80de49eb6"
+	depends hasValue "init-system-helpers (>= 1.25)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "init-system-helpers"
+	comparison hasValue ">="
+	version hasValue "1.25"
+
+relationInstance depends(P0__init,0,DepAtom__0)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ducktype
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ducktype memberOf Package
+	package hasValue "ducktype"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "17"
+	maintainer hasValue "Original-Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.0.2-1"
+	fileName hasValue "pool/universe/m/mallard-ducktype/ducktype_1.0.2-1_all.deb"
+	size hasValue "4072"
+	md5sum hasValue "0cc27f07a37101320c7b355c3b797a50"
+	sha1 hasValue "91d58a5f92799379ca07ab7270a0e78ec57aa4d3"
+	sha256 hasValue "441e911da048ec903fd2012b54379c40946e97d99c2faf182952803f9d878404"
+	descriptionMd5 hasValue "8b9f2d65f1aa504b8ec317bec47ab85f"
+	homepage hasValue "https://github.com/projectmallard/mallard-ducktype"
+	depends hasValue "python3-mallard.ducktype (= 1.0.2-1), python3:any"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3-mallard.ducktype"
+	comparison hasValue "="
+	version hasValue "1.0.2-1"
+
+relationInstance depends(P0__ducktype,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ducktype,1,DepAtom__1)
+

@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology bosh
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__bosh memberOf Package
+	package hasValue "bosh"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "66"
+	maintainer hasValue "Original-Salvatore Bonaccorso <carnil@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.6-10"
+	fileName hasValue "pool/universe/b/bosh/bosh_0.6-10_amd64.deb"
+	size hasValue "23620"
+	md5sum hasValue "6765b296d2c3386943fd3860494a7215"
+	sha1 hasValue "6be4b8b38d8c0dddfc975a568213e8cb4e8f3e90"
+	sha256 hasValue "4cb373dafdfad2541a6f47b8c5af17990e6e352b6cc4d19206c7b6f652db6b54"
+	description hasValue "navegue na saída de processos"
+	descriptionMd5 hasValue "cd976f65269fcf6d1cd0ab91ebc06460"
+	homepage hasValue "http://bosh.sourceforge.net/"
+	depends hasValue "libc6 (>= 2.15), libncurses6 (>= 6), libtinfo6 (>= 6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__bosh,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libncurses6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__bosh,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libtinfo6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__bosh,2,DepAtom__2)
+

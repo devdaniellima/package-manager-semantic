@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology buildstream
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__buildstream memberOf Package
+	package hasValue "buildstream"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/gnome"
+	installedSize hasValue "49"
+	maintainer hasValue "Original-Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.4.1-1"
+	fileName hasValue "pool/universe/b/buildstream/buildstream_1.4.1-1_all.deb"
+	size hasValue "19024"
+	md5sum hasValue "c638b18971278ff26a544f26de74ff01"
+	sha1 hasValue "8387c2631622b5453da7b4da671c8bb064870cea"
+	sha256 hasValue "5a04e942e37faa5ec1aff50c2cf840c25578e1d63aff09f79a5232311c48fde8"
+	descriptionMd5 hasValue "9809a3125ee95183b9a654d5766eefbf"
+	homepage hasValue "https://buildstream.build/"
+	depends hasValue "python3:any, python3-buildstream (= 1.4.1-1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__buildstream,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3-buildstream"
+	comparison hasValue "="
+	version hasValue "1.4.1-1"
+
+relationInstance depends(P0__buildstream,1,DepAtom__1)
+

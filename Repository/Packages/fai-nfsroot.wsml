@@ -1,0 +1,74 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology fai_nfsroot
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__fai_nfsroot memberOf Package
+	package hasValue "fai-nfsroot"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/admin"
+	installedSize hasValue "128"
+	maintainer hasValue "Original-Thomas Lange <lange@debian.org>"
+	architecture hasValue "all"
+	version hasValue "5.3.6ubuntu1"
+	fileName hasValue "pool/universe/f/fai/fai-nfsroot_5.3.6ubuntu1_all.deb"
+	size hasValue "9300"
+	md5sum hasValue "2cbacadc0dbb6d240b469201a8733bcf"
+	sha1 hasValue "d62312a3c6969578e10da1e60ae1f9d599d0c56a"
+	sha256 hasValue "4abde25c65a135acd19767d9b3eafd232b7e6679f23b4d5c193d540f221d9a13"
+	descriptionMd5 hasValue "b5d1e588ca6eb3b6fc05576a970d8a90"
+	homepage hasValue "http://fai-project.org"
+	depends hasValue "fai-client (>= 5.2), fai-setup-storage, pxelinux | syslinux-common"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "fai-client"
+	comparison hasValue ">="
+	version hasValue "5.2"
+
+relationInstance depends(P0__fai_nfsroot,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "fai-setup-storage"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__fai_nfsroot,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "pxelinux"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__fai_nfsroot,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "syslinux-common"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__fai_nfsroot,2,DepAtom__3)
+

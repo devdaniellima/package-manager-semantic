@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libspooles2Dot2
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libspooles2Dot2 memberOf Package
+	package hasValue "libspooles2.2"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/libs"
+	installedSize hasValue "1455"
+	maintainer hasValue "Original-Debian Science Maintainers <debian-science-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.2-14"
+	fileName hasValue "pool/universe/s/spooles/libspooles2.2_2.2-14_amd64.deb"
+	size hasValue "465536"
+	md5sum hasValue "00f36d39b436652ed62d0ea3f6384ae6"
+	sha1 hasValue "fd45df329aa0c21ba6b1d358a95ab663cf5b9245"
+	sha256 hasValue "34dd2bf283347402d49b7a9f3e07dc118385e62d8f63ce3fe245b612d2f3a917"
+	descriptionMd5 hasValue "d1ed9410d9ecb29a734fad3393746354"
+	homepage hasValue "http://www.netlib.org/linalg/spooles/"
+	depends hasValue "libc6 (>= 2.14), libopenmpi3"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libspooles2Dot2,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libopenmpi3"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libspooles2Dot2,1,DepAtom__1)
+

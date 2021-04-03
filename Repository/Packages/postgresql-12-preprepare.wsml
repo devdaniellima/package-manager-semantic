@@ -1,0 +1,59 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology postgresql_12_preprepare
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__postgresql_12_preprepare memberOf Package
+	package hasValue "postgresql-12-preprepare"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/database"
+	installedSize hasValue "56"
+	maintainer hasValue "Original-Debian PostgreSQL Maintainers <team+postgresql@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.9-3"
+	fileName hasValue "pool/universe/p/preprepare/postgresql-12-preprepare_0.9-3_amd64.deb"
+	size hasValue "17920"
+	md5sum hasValue "9c7c8fd1999ecbd68ee45f9c85f05997"
+	sha1 hasValue "c57ed1e40f697ecf83c441e91f180698f9a6af12"
+	sha256 hasValue "d808d7775e6ec7a19a79b26bf9d29cf58df064c1b5a8c62964b11ccf2b489f6f"
+	descriptionMd5 hasValue "152cba00a569fd32c2f3e8eddd9d6cdd"
+	depends hasValue "libc6 (>= 2.4), postgresql-12"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__postgresql_12_preprepare,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "postgresql-12"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__postgresql_12_preprepare,1,DepAtom__1)
+

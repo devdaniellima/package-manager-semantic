@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology rush
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__rush memberOf Package
+	package hasValue "rush"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/shells"
+	installedSize hasValue "561"
+	maintainer hasValue "Original-Mats Erik Andersson <mats.andersson@gisladisker.se>"
+	architecture hasValue "amd64"
+	version hasValue "1.8+dfsg-1.1"
+	fileName hasValue "pool/universe/r/rush/rush_1.8+dfsg-1.1_amd64.deb"
+	size hasValue "138012"
+	md5sum hasValue "649cf787558329fbf65361b4ba7fe26a"
+	sha1 hasValue "71079884d9274527737ca74c716a35e564ce2082"
+	sha256 hasValue "6b0cb6a9c21400a3c206dd820206c89dd6d58b61547dad1191b40ee7dcb68309"
+	descriptionMd5 hasValue "eccfa30aa745727208dd6349d2fca244"
+	homepage hasValue "http://puszcza.gnu.org.ua/software/rush/"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__rush,0,DepAtom__0)
+

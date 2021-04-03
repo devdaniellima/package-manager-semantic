@@ -1,0 +1,59 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libjconv_bin
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libjconv_bin memberOf Package
+	package hasValue "libjconv-bin"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "21"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.8-7"
+	fileName hasValue "pool/universe/libj/libjconv/libjconv-bin_2.8-7_amd64.deb"
+	size hasValue "4292"
+	md5sum hasValue "d392de72e67bcb2be9c49cc983444361"
+	sha1 hasValue "379178e743f6bfa80a254878ef9e41ee7da65f34"
+	sha256 hasValue "809eeb34ecaf0404783739cb605f5126f02fc9d323c7a31fe55110eaf9ffea2e"
+	descriptionMd5 hasValue "23bce1399ba0269c7cbc15049881b48f"
+	depends hasValue "libc6 (>= 2.4), libjconv2"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libjconv_bin,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libjconv2"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libjconv_bin,1,DepAtom__1)
+

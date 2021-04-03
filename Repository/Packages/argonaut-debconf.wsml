@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology argonaut_debconf
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__argonaut_debconf memberOf Package
+	package hasValue "argonaut-debconf"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "32"
+	maintainer hasValue "Original-FusionDirectory Packagers <team+fusiondirectory@tracker.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.3-2"
+	fileName hasValue "pool/universe/a/argonaut/argonaut-debconf_1.3-2_all.deb"
+	size hasValue "9168"
+	md5sum hasValue "b640c23bb8afc941f8f2d3b69373fca4"
+	sha1 hasValue "a781d42327de74dae010cbd4d48fdb8448504c77"
+	sha256 hasValue "968ea44dd40875aae4a02de9714f4bc6aa76e242edfadeb17099370f3f686f3b"
+	descriptionMd5 hasValue "285a022341246c84228756123822b4f7"
+	homepage hasValue "https://forge.fusiondirectory.org/projects/argonaut-agents"
+	depends hasValue "argonaut-common (= 1.3-2), debconf"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "argonaut-common"
+	comparison hasValue "="
+	version hasValue "1.3-2"
+
+relationInstance depends(P0__argonaut_debconf,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "debconf"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__argonaut_debconf,1,DepAtom__1)
+

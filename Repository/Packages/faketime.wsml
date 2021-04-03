@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology faketime
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__faketime memberOf Package
+	package hasValue "faketime"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/utils"
+	installedSize hasValue "36"
+	maintainer hasValue "Original-Daniel Kahn Gillmor <dkg@fifthhorseman.net>"
+	architecture hasValue "amd64"
+	version hasValue "0.9.7-3ubuntu1"
+	fileName hasValue "pool/universe/f/faketime/faketime_0.9.7-3ubuntu1_amd64.deb"
+	size hasValue "9940"
+	md5sum hasValue "49bb55455f01c6fa4b7554bbdd1672e9"
+	sha1 hasValue "823cbf83443711bc9c6550db9fcacd899e3fece0"
+	sha256 hasValue "df054efc095f233ff9ad371ed7ad1296c585496b5597d2955ac8f424cc56a8a0"
+	descriptionMd5 hasValue "583f56c26c345706c1147c5561a549d0"
+	homepage hasValue "https://github.com/wolfcw/libfaketime"
+	depends hasValue "libfaketime (= 0.9.7-3ubuntu1), libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libfaketime"
+	comparison hasValue "="
+	version hasValue "0.9.7-3ubuntu1"
+
+relationInstance depends(P0__faketime,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__faketime,1,DepAtom__1)
+

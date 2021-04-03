@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology postgresql_12_pgpool2
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__postgresql_12_pgpool2 memberOf Package
+	package hasValue "postgresql-12-pgpool2"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/database"
+	installedSize hasValue "263"
+	maintainer hasValue "Original-Debian PostgreSQL Maintainers <team+postgresql@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "4.1.1-1"
+	fileName hasValue "pool/universe/p/pgpool2/postgresql-12-pgpool2_4.1.1-1_amd64.deb"
+	size hasValue "37152"
+	md5sum hasValue "f550ee657a332e93bf7afefe8fe07564"
+	sha1 hasValue "ad8fbb34fc7975b1b74b789b7b3129cad91ce038"
+	sha256 hasValue "6e7800ced3198382f6b56e5cf617fc57567af17ea0adc3486d3d71ffb5f97a83"
+	descriptionMd5 hasValue "c7c0e7fd020a960711e9077a2b1a772d"
+	homepage hasValue "https://www.pgpool.net/mediawiki/index.php/Main_Page"
+	depends hasValue "libpgpool0 (= 4.1.1-1), postgresql-12, libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libpgpool0"
+	comparison hasValue "="
+	version hasValue "4.1.1-1"
+
+relationInstance depends(P0__postgresql_12_pgpool2,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "postgresql-12"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__postgresql_12_pgpool2,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__postgresql_12_pgpool2,2,DepAtom__2)
+

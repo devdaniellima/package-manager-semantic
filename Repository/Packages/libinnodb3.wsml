@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libinnodb3
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libinnodb3 memberOf Package
+	package hasValue "libinnodb3"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/libs"
+	installedSize hasValue "1152"
+	maintainer hasValue "Original-Monty Taylor <mordred@inaugust.com>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.6.6750-1"
+	fileName hasValue "pool/universe/libi/libinnodb/libinnodb3_1.0.6.6750-1_amd64.deb"
+	size hasValue "545664"
+	md5sum hasValue "34c8c34fa8e8d2b833e05414b8593c50"
+	sha1 hasValue "a40b004d1c077c1b08370a9823fa5fb949c99ec5"
+	sha256 hasValue "19aea56245180512b5abfd292d0c2cf466be881cd408ded0d0d253c0efe2bfc2"
+	description hasValue "biblioteca InnoDB embarcada"
+	descriptionMd5 hasValue "578b226d58e6462a497c8a4bfab3c0dd"
+	homepage hasValue "http://www.innodb.com/products/embedded-innodb"
+	depends hasValue "libc6 (>= 2.7), zlib1g (>= 1:1.2.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__libinnodb3,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "zlib1g"
+	comparison hasValue ">="
+	version hasValue "1:1.2.0"
+
+relationInstance depends(P0__libinnodb3,1,DepAtom__1)
+

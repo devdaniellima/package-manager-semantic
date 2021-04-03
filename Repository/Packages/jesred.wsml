@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology jesred
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__jesred memberOf Package
+	package hasValue "jesred"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/web"
+	installedSize hasValue "54"
+	maintainer hasValue "Original-Alexander Zangerl <az@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.2pl1-22build1"
+	fileName hasValue "pool/universe/j/jesred/jesred_1.2pl1-22build1_amd64.deb"
+	size hasValue "15496"
+	md5sum hasValue "d9c3a046cd1171de11ddefe37c2168c0"
+	sha1 hasValue "b68992a1b62af359996dcbda2b493def5540f408"
+	sha256 hasValue "c552735a6d96ad6c3523eb55bf2d9b5356bbc3f6bf8131573455c89a4cac233d"
+	descriptionMd5 hasValue "15666c8066371f389604a45fca49c072"
+	homepage hasValue "http://www.linofee.org/~elkner/webtools/jesred/"
+	depends hasValue "libc6 (>= 2.14), squid (>= 3.5.6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__jesred,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "squid"
+	comparison hasValue ">="
+	version hasValue "3.5.6"
+
+relationInstance depends(P0__jesred,1,DepAtom__1)
+

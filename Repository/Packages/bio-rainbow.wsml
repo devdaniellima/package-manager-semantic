@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology bio_rainbow
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__bio_rainbow memberOf Package
+	package hasValue "bio-rainbow"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/science"
+	installedSize hasValue "161"
+	maintainer hasValue "Original-Debian Med Packaging Team <debian-med-packaging@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.0.4+dfsg-1"
+	fileName hasValue "pool/universe/b/bio-rainbow/bio-rainbow_2.0.4+dfsg-1_amd64.deb"
+	size hasValue "51900"
+	md5sum hasValue "07696cafd23208113ef0fe46a9044a4f"
+	sha1 hasValue "0607e3deda1b9775d94f1b3e435f4bfaf819b628"
+	sha256 hasValue "8c67f890eb8fd4b8e3a83ff8703c4ac734577ffbddc9b4e7527330f45981d421"
+	descriptionMd5 hasValue "9923da0307e9697918f7aeba3ffbc7dd"
+	homepage hasValue "http://sourceforge.net/projects/bio-rainbow/"
+	depends hasValue "libc6 (>= 2.14), perl:any"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__bio_rainbow,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "perl:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__bio_rainbow,1,DepAtom__1)
+

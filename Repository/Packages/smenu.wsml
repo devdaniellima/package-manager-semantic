@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology smenu
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__smenu memberOf Package
+	package hasValue "smenu"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "196"
+	maintainer hasValue "Original-Matteo Cypriani <mcy@lm7.fr>"
+	architecture hasValue "amd64"
+	version hasValue "0.9.15-1"
+	fileName hasValue "pool/universe/s/smenu/smenu_0.9.15-1_amd64.deb"
+	size hasValue "80316"
+	md5sum hasValue "d371a94e22996cddac1be7ef98ea4367"
+	sha1 hasValue "045a8577562b03c0f11690ca7fd90e3df8ed3b8b"
+	sha256 hasValue "d1c887c80ec5f5bdc1d706e034ab8a0b8c0226f2d68c893d008001947c15faa9"
+	descriptionMd5 hasValue "c65ae825c8f8e6303d6c748fa4d629ab"
+	homepage hasValue "https://github.com/p-gen/smenu"
+	depends hasValue "libc6 (>= 2.14), libtinfo6 (>= 6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__smenu,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libtinfo6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__smenu,1,DepAtom__1)
+

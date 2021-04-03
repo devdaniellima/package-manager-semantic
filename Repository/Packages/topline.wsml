@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology topline
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__topline memberOf Package
+	package hasValue "topline"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "44"
+	maintainer hasValue "Original-Adam Borowski <kilobyte@angband.pl>"
+	architecture hasValue "amd64"
+	version hasValue "0.3-1"
+	fileName hasValue "pool/universe/t/topline/topline_0.3-1_amd64.deb"
+	size hasValue "11512"
+	md5sum hasValue "8f7521f84d0b9062eb5a8a99ddd3e68f"
+	sha1 hasValue "53b7d1d11259aef4949e023b9868cbbc15c84708"
+	sha256 hasValue "3e10760083f872bd534a64aa679e61317aa89d284586405d42c2041614cc6312"
+	descriptionMd5 hasValue "ec7765ef469b4bc3e09cfce23dede81a"
+	homepage hasValue "https://github.com/kilobyte/topline"
+	depends hasValue "libc6 (>= 2.9)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.9"
+
+relationInstance depends(P0__topline,0,DepAtom__0)
+

@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology barrage
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__barrage memberOf Package
+	package hasValue "barrage"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/games"
+	installedSize hasValue "1792"
+	maintainer hasValue "Original-Debian Games Team <pkg-games-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.4-3"
+	fileName hasValue "pool/universe/b/barrage/barrage_1.0.4-3_amd64.deb"
+	size hasValue "264584"
+	md5sum hasValue "6c5ba0fa0fb3e75d5b8da4c2b720526d"
+	sha1 hasValue "851d32809450655a2b3f31e07311cc8a786823af"
+	sha256 hasValue "b7ccff1e8ac3b24abbe2b9efafa75b66212fa1e2499ff4b732d3aa46827e70e9"
+	description hasValue "jogo de ação bastante destrutivo"
+	descriptionMd5 hasValue "95e9de208d218397b93fbd3bce886209"
+	homepage hasValue "http://lgames.sourceforge.net/index.php?project=Barrage"
+	depends hasValue "libc6 (>= 2.4), libsdl-mixer1.2, libsdl1.2debian (>= 1.2.11)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__barrage,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libsdl-mixer1.2"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__barrage,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libsdl1.2debian"
+	comparison hasValue ">="
+	version hasValue "1.2.11"
+
+relationInstance depends(P0__barrage,2,DepAtom__2)
+

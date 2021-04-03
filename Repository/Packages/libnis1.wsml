@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libnis1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libnis1 memberOf Package
+	package hasValue "libnis1"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "50"
+	maintainer hasValue "Original-Mark Brown <broonie@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.3-5.3"
+	fileName hasValue "pool/universe/y/yp-tools/libnis1_3.3-5.3_amd64.deb"
+	size hasValue "13348"
+	md5sum hasValue "60bc167d491b813b38884f9f441ae557"
+	sha1 hasValue "7edcfe0938a776f9c1e0c90bbcb141ec20209060"
+	sha256 hasValue "7a668582b93bc8729d49083eb94eb737a1b46821a621c827c49da811741d4804"
+	descriptionMd5 hasValue "6d530af2e088460c9eb006846b037e16"
+	homepage hasValue "http://www.linux-nis.org/"
+	depends hasValue "libc6 (>= 2.14), libtirpc3 (>= 1.0.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libnis1,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libtirpc3"
+	comparison hasValue ">="
+	version hasValue "1.0.2"
+
+relationInstance depends(P0__libnis1,1,DepAtom__1)
+

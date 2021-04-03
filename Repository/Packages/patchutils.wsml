@@ -1,0 +1,74 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology patchutils
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__patchutils memberOf Package
+	package hasValue "patchutils"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "text"
+	installedSize hasValue "223"
+	maintainer hasValue "Original-Laszlo Boszormenyi (GCS) <gcs@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.3.4-2"
+	fileName hasValue "pool/main/p/patchutils/patchutils_0.3.4-2_amd64.deb"
+	size hasValue "71086"
+	md5sum hasValue "17066a02bb627bffb86b029eadf49755"
+	sha1 hasValue "fcbf883747c90129b4603b55d062b007b615bdc8"
+	sha256 hasValue "e38413a80830a207338ba81ee985c0cf3ebdca01e8bd03436a2eaa8e1c411770"
+	descriptionMd5 hasValue "442c0d104c6f6b7262f5dcab972c3391"
+	homepage hasValue "http://cyberelk.net/tim/patchutils/index.html"
+	depends hasValue "libc6 (>= 2.14), perl:any, patch, debianutils (>= 1.16)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__patchutils,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "perl:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__patchutils,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "patch"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__patchutils,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "debianutils"
+	comparison hasValue ">="
+	version hasValue "1.16"
+
+relationInstance depends(P0__patchutils,3,DepAtom__3)
+

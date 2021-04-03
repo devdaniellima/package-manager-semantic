@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology r_base
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__r_base memberOf Package
+	package hasValue "r-base"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/math"
+	installedSize hasValue "61"
+	maintainer hasValue "Original-Dirk Eddelbuettel <edd@debian.org>"
+	architecture hasValue "all"
+	version hasValue "3.6.3-2"
+	fileName hasValue "pool/universe/r/r-base/r-base_3.6.3-2_all.deb"
+	size hasValue "9308"
+	md5sum hasValue "504b6dc344bfe8e7eb7188ca0debf0f6"
+	sha1 hasValue "3235f7d03a2ffe57fd90380e851a760fba8f3c8c"
+	sha256 hasValue "fc3630a3e884a0f8dd699f7d9a76ebbc21c9e1da75ab88398cdaa0e83a216ee2"
+	descriptionMd5 hasValue "5787ca79ed716232c4cc2087ed9b425b"
+	homepage hasValue "http://www.r-project.org/"
+	depends hasValue "r-base-core (>= 3.6.3-2), r-recommended (= 3.6.3-2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "r-base-core"
+	comparison hasValue ">="
+	version hasValue "3.6.3-2"
+
+relationInstance depends(P0__r_base,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "r-recommended"
+	comparison hasValue "="
+	version hasValue "3.6.3-2"
+
+relationInstance depends(P0__r_base,1,DepAtom__1)
+

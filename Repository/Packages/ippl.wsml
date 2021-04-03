@@ -1,0 +1,75 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ippl
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ippl memberOf Package
+	package hasValue "ippl"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/net"
+	installedSize hasValue "111"
+	maintainer hasValue "Original-Marc Haber <mh+debian-packages@zugschlus.de>"
+	architecture hasValue "amd64"
+	version hasValue "1.4.14-12.2build1"
+	fileName hasValue "pool/universe/i/ippl/ippl_1.4.14-12.2build1_amd64.deb"
+	size hasValue "38216"
+	md5sum hasValue "f91e91094902e54fd2e582203a07af7e"
+	sha1 hasValue "8c437e267bc0dc7c5eb353138bba24391a97b770"
+	sha256 hasValue "9f7dec6d31ca8b5ac658a276a0522ebb4a9df01123f4edf896b559fa190e5e63"
+	description hasValue "log de protocolos IP"
+	descriptionMd5 hasValue "d6d6d95dbf5c7f1aa0a7ac0abb43341c"
+	homepage hasValue "http://pltplp.net/ippl/"
+	depends hasValue "libc6 (>= 2.14), logrotate, adduser (>> 3.51), lsb-base (>= 3.0-6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__ippl,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "logrotate"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ippl,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "adduser"
+	comparison hasValue ">>"
+	version hasValue "3.51"
+
+relationInstance depends(P0__ippl,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "lsb-base"
+	comparison hasValue ">="
+	version hasValue "3.0-6"
+
+relationInstance depends(P0__ippl,3,DepAtom__3)
+

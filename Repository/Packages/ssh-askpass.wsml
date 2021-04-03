@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ssh_askpass
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ssh_askpass memberOf Package
+	package hasValue "ssh-askpass"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "96"
+	maintainer hasValue "Original-Philip Hands <phil@hands.com>"
+	architecture hasValue "amd64"
+	version hasValue "1:1.2.4.1-10"
+	fileName hasValue "pool/universe/s/ssh-askpass/ssh-askpass_1.2.4.1-10_amd64.deb"
+	size hasValue "26304"
+	md5sum hasValue "c31976b41647ba085740b501da295fcb"
+	sha1 hasValue "c734284352f7626b4e01becfb4b13aa549ea9022"
+	sha256 hasValue "36877e2b340b486999639eeecde573af3e8d1cd616c49da1add5e36145c06165"
+	description hasValue "pede a senha para o usuário para o ssh-add, no X"
+	descriptionMd5 hasValue "0f7d04698b8e69e5e3bf3b696cea64e5"
+	homepage hasValue "http://www.jmknoble.net/software/x11-ssh-askpass/"
+	depends hasValue "libc6 (>= 2.7), libx11-6, libxt6"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__ssh_askpass,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libx11-6"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ssh_askpass,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libxt6"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ssh_askpass,2,DepAtom__2)
+

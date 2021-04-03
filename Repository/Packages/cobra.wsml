@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology cobra
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__cobra memberOf Package
+	package hasValue "cobra"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "9272"
+	maintainer hasValue "Original-Debian Go Packaging Team <team+pkg-go@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.0.5-1"
+	fileName hasValue "pool/universe/g/golang-github-spf13-cobra/cobra_0.0.5-1_amd64.deb"
+	size hasValue "2873472"
+	md5sum hasValue "55c77fb6538e917e95c8886a0940aefd"
+	sha1 hasValue "1aa2b25ba64d138c2c114ad1f0359c9117f210f1"
+	sha256 hasValue "2c654637cb15e087ed75506a554808aa3bd24bcb2550ccb0348c87ce11537675"
+	descriptionMd5 hasValue "fbcf8ccfc0a3061ed7139da0143db05f"
+	homepage hasValue "https://github.com/spf13/cobra"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__cobra,0,DepAtom__0)
+

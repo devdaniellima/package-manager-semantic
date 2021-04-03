@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology prometheus_nginx_exporter
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__prometheus_nginx_exporter memberOf Package
+	package hasValue "prometheus-nginx-exporter"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "8626"
+	maintainer hasValue "Original-Debian Go Packaging Team <pkg-go-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.5.0+ds-2"
+	fileName hasValue "pool/universe/p/prometheus-nginx-exporter/prometheus-nginx-exporter_0.5.0+ds-2_amd64.deb"
+	size hasValue "2624584"
+	md5sum hasValue "a7169bedb9e23b749c6a98f3ae57374f"
+	sha1 hasValue "fec58c4fad236dfee5e29a62c779b733a4299f61"
+	sha256 hasValue "9a1ad2c0e87d2c4afe5b69aac403a1b51f20a2ddd3e66a57025dc4e9a65941a1"
+	descriptionMd5 hasValue "d92e6abf96eb04c2b1aff77e20c8fb4a"
+	homepage hasValue "https://github.com/nginxinc/nginx-prometheus-exporter"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__prometheus_nginx_exporter,0,DepAtom__0)
+

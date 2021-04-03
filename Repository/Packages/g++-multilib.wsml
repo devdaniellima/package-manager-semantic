@@ -1,0 +1,74 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gPlusPlus_multilib
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gPlusPlus_multilib memberOf Package
+	package hasValue "g++-multilib"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "devel"
+	installedSize hasValue "6"
+	maintainer hasValue "Original-Debian GCC Maintainers <debian-gcc@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "4:9.3.0-1ubuntu2"
+	fileName hasValue "pool/main/g/gcc-defaults/g++-multilib_9.3.0-1ubuntu2_amd64.deb"
+	size hasValue "1044"
+	md5sum hasValue "a415d1f1de427d0a14c63c7d97293b08"
+	sha1 hasValue "7b7db0206fb652720067c68b9aed6d9585a912d5"
+	sha256 hasValue "d7381e36b6486e85e1ef2a6ed0d7044e1d7a1771629e785b00dd09f07deb289b"
+	description hasValue "GNU C++ compiler (multilib files)"
+	descriptionMd5 hasValue "13fdd3cac1ee1ffe86b871f781067316"
+	depends hasValue "cpp (= 4:9.3.0-1ubuntu2), gcc-multilib (= 4:9.3.0-1ubuntu2), g++ (= 4:9.3.0-1ubuntu2), g++-9-multilib (>= 9.3.0-3~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "cpp"
+	comparison hasValue "="
+	version hasValue "4:9.3.0-1ubuntu2"
+
+relationInstance depends(P0__gPlusPlus_multilib,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "gcc-multilib"
+	comparison hasValue "="
+	version hasValue "4:9.3.0-1ubuntu2"
+
+relationInstance depends(P0__gPlusPlus_multilib,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "g++"
+	comparison hasValue "="
+	version hasValue "4:9.3.0-1ubuntu2"
+
+relationInstance depends(P0__gPlusPlus_multilib,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "g++-9-multilib"
+	comparison hasValue ">="
+	version hasValue "9.3.0-3~"
+
+relationInstance depends(P0__gPlusPlus_multilib,3,DepAtom__3)
+

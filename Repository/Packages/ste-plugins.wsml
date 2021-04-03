@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ste_plugins
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ste_plugins memberOf Package
+	package hasValue "ste-plugins"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/sound"
+	installedSize hasValue "31"
+	maintainer hasValue "Original-Debian Multimedia Maintainers <pkg-multimedia-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.0.2-6build1"
+	provides hasValue "ladspa-plugin"
+	fileName hasValue "pool/universe/s/ste-plugins/ste-plugins_0.0.2-6build1_amd64.deb"
+	size hasValue "6152"
+	md5sum hasValue "df1d16b71e1f9896e2efe68a0746fb68"
+	sha1 hasValue "99af6bb87adc7e1cac541bfe682a4c302fec2475"
+	sha256 hasValue "12b08a6a490e82581febc9ba88897de6dc585c0150c96119c3514456b3503f09"
+	descriptionMd5 hasValue "3bd9f88b2e4344d16fa848e7218e4bb3"
+	homepage hasValue "http://kokkinizita.linuxaudio.org/linuxaudio/index.html"
+	depends hasValue "libc6 (>= 2.27), libstdc++6 (>= 5)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.27"
+
+relationInstance depends(P0__ste_plugins,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "5"
+
+relationInstance depends(P0__ste_plugins,1,DepAtom__1)
+

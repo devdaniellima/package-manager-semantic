@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology librust_tokioPlusmio_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__librust_tokioPlusmio_dev memberOf Package
+	package hasValue "librust-tokio+mio-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/rust"
+	installedSize hasValue "6"
+	maintainer hasValue "Original-Debian Rust Maintainers <pkg-rust-maintainers@alioth-lists.debian.net>"
+	architecture hasValue "amd64"
+	version hasValue "0.1.14-2build1"
+	provides hasValue "librust-tokio-0+mio-dev (= 0.1.14-2build1), librust-tokio-0.1+mio-dev (= 0.1.14-2build1), librust-tokio-0.1.14+mio-dev (= 0.1.14-2build1)"
+	fileName hasValue "pool/universe/r/rust-tokio/librust-tokio+mio-dev_0.1.14-2build1_amd64.deb"
+	size hasValue "1100"
+	md5sum hasValue "5cdfd22ecb9ec84e955f9ad13d36a17f"
+	sha1 hasValue "753e3a7ebb172007b28eb12e136de5b549054a9f"
+	sha256 hasValue "5c3339b7b844fb1c49c37db9e69086b35862e8af8e9674a5bbec052d11c82c27"
+	descriptionMd5 hasValue "04668169a712ec13c18db10a04f5847a"
+	homepage hasValue "https://tokio.rs"
+	depends hasValue "librust-tokio-dev (= 0.1.14-2build1), librust-mio-0.6+default-dev (>= 0.6.14-~~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "librust-tokio-dev"
+	comparison hasValue "="
+	version hasValue "0.1.14-2build1"
+
+relationInstance depends(P0__librust_tokioPlusmio_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "librust-mio-0.6+default-dev"
+	comparison hasValue ">="
+	version hasValue "0.6.14-~~"
+
+relationInstance depends(P0__librust_tokioPlusmio_dev,1,DepAtom__1)
+

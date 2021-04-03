@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology dropbear
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__dropbear memberOf Package
+	package hasValue "dropbear"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "46"
+	maintainer hasValue "Original-Guilhem Moulin <guilhem@debian.org>"
+	architecture hasValue "all"
+	version hasValue "2019.78-2build1"
+	replaces hasValue "dropbear-run (<< 2019.78-1~)"
+	fileName hasValue "pool/universe/d/dropbear/dropbear_2019.78-2build1_all.deb"
+	size hasValue "8084"
+	md5sum hasValue "5ecb92c15e3c62aa37b5b5e6db61fe31"
+	sha1 hasValue "a0cb9b0ed2c3dcf620864b5cf29877aa28c0624f"
+	sha256 hasValue "1eb69ddeac0199bc1aadb52ce36bd9278163a5cfbbcfa10ec794ac7d25fc0eb9"
+	descriptionMd5 hasValue "8da3a46384d10ad523017c208ecce61a"
+	homepage hasValue "https://matt.ucc.asn.au/dropbear/dropbear.html"
+	depends hasValue "dropbear-bin (>= 2019.78-2build1), lsb-base (>= 3.0-6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "dropbear-bin"
+	comparison hasValue ">="
+	version hasValue "2019.78-2build1"
+
+relationInstance depends(P0__dropbear,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "lsb-base"
+	comparison hasValue ">="
+	version hasValue "3.0-6"
+
+relationInstance depends(P0__dropbear,1,DepAtom__1)
+

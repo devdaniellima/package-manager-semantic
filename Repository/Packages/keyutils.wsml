@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology keyutils
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__keyutils memberOf Package
+	package hasValue "keyutils"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "misc"
+	installedSize hasValue "151"
+	maintainer hasValue "Original-Christian Kastner <ckk@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.6-6ubuntu1"
+	fileName hasValue "pool/main/k/keyutils/keyutils_1.6-6ubuntu1_amd64.deb"
+	size hasValue "44960"
+	md5sum hasValue "4de113fd85ffd4860ff05a1c25a0c41c"
+	sha1 hasValue "c7ce562136c7850a4f9f64052b8abe3bec88f02d"
+	sha256 hasValue "ae5fd32e1ee1ff359b187e6b410c6ec6eac2c967bc24bd68bc07c7700b874ccc"
+	description hasValue "utilitários para gerenciamento de chaves no Linux"
+	descriptionMd5 hasValue "2d8745863e4f147ac2e1dded0b9fa058"
+	homepage hasValue "https://people.redhat.com/~dhowells/keyutils/"
+	depends hasValue "libc6 (>= 2.15), libkeyutils1 (>= 1.6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__keyutils,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libkeyutils1"
+	comparison hasValue ">="
+	version hasValue "1.6"
+
+relationInstance depends(P0__keyutils,1,DepAtom__1)
+

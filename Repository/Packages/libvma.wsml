@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libvma
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libvma memberOf Package
+	package hasValue "libvma"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "151"
+	maintainer hasValue "Original-Debian HPC Team <debian-hpc@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "8.8.1.really.8.7.7-1"
+	fileName hasValue "pool/universe/libv/libvma/libvma_8.8.1.really.8.7.7-1_amd64.deb"
+	size hasValue "45596"
+	md5sum hasValue "e23079ee9493a99e03f59c402b74a34a"
+	sha1 hasValue "75db2e22c1d474b0655bc573555b009ec8a70f83"
+	sha256 hasValue "afb7eb2ff23ba8495545d6b37d1320fe1ced34b7cdd58632020818b30a6f281c"
+	descriptionMd5 hasValue "51b9fea113f70da27756f3608ae4d0ca"
+	homepage hasValue "https://github.com/Mellanox/libvma"
+	depends hasValue "libc6 (>= 2.15), libvma8, libvma-dev"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__libvma,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libvma8"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libvma,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libvma-dev"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libvma,2,DepAtom__2)
+

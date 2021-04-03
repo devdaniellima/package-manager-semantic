@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libhomfly0
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libhomfly0 memberOf Package
+	package hasValue "libhomfly0"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "44"
+	maintainer hasValue "Original-Debian Science Maintainers <debian-science-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.02r5-1"
+	fileName hasValue "pool/universe/libh/libhomfly/libhomfly0_1.02r5-1_amd64.deb"
+	size hasValue "15040"
+	md5sum hasValue "25acd7565a917989028df299b0937ba5"
+	sha1 hasValue "e532ed890e7320177990fead25d17479d6dd4a66"
+	sha256 hasValue "d9df4155fab9129973b01413dc77e459338830a4e8374170002c59a4013ea06a"
+	descriptionMd5 hasValue "52ebb12988ab815ad0da75b8c7c5431a"
+	homepage hasValue "https://github.com/miguelmarco/libhomfly"
+	depends hasValue "libc6 (>= 2.7), libgc1c2 (>= 1:7.2d)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__libhomfly0,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgc1c2"
+	comparison hasValue ">="
+	version hasValue "1:7.2d"
+
+relationInstance depends(P0__libhomfly0,1,DepAtom__1)
+

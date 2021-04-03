@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python3_debconf
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python3_debconf memberOf Package
+	package hasValue "python3-debconf"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "python"
+	installedSize hasValue "18"
+	maintainer hasValue "Original-Debconf Developers <debconf-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.5.73"
+	replaces hasValue "debconf (<< 1.5.64)"
+	fileName hasValue "pool/main/d/debconf/python3-debconf_1.5.73_all.deb"
+	size hasValue "4060"
+	md5sum hasValue "dedef579d0698ebebd9c2a1e26017e8e"
+	sha1 hasValue "65be04cd5d7b96558cf3ad914ecbfb2a14011086"
+	sha256 hasValue "5fb9f520cc894c0ad711f02ab314444611111bfcfe25e467e85bc8ba436fdf6c"
+	description hasValue "interact with debconf from Python 3"
+	descriptionMd5 hasValue "6eb68ef192205a26cb3bc6cddf1fd404"
+	depends hasValue "debconf (= 1.5.73), python3:any"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "debconf"
+	comparison hasValue "="
+	version hasValue "1.5.73"
+
+relationInstance depends(P0__python3_debconf,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__python3_debconf,1,DepAtom__1)
+

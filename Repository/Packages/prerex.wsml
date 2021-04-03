@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology prerex
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__prerex memberOf Package
+	package hasValue "prerex"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/tex"
+	installedSize hasValue "75"
+	maintainer hasValue "Original-Ryan Kavanagh <rak@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "6.5.4-1"
+	fileName hasValue "pool/universe/p/prerex/prerex_6.5.4-1_amd64.deb"
+	size hasValue "27972"
+	md5sum hasValue "ab7410f9d809a09ec7a33c10554ffb74"
+	sha1 hasValue "1d5e2691ec03e2da14b97f85a9b0b6a2f2ea24f7"
+	sha256 hasValue "85535ecab2cf7314343307e6bacb21201040c84144fc1efa20e8cd124b99a0f1"
+	descriptionMd5 hasValue "02fa5da7e6857ce13b0b7c92db2d3f34"
+	homepage hasValue "http://www.ctan.org/tex-archive/graphics/prerex"
+	depends hasValue "libc6 (>= 2.7), libedit2 (>= 2.11-20080614), texlive-pictures (>> 2017.20171128-1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__prerex,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libedit2"
+	comparison hasValue ">="
+	version hasValue "2.11-20080614"
+
+relationInstance depends(P0__prerex,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "texlive-pictures"
+	comparison hasValue ">>"
+	version hasValue "2017.20171128-1"
+
+relationInstance depends(P0__prerex,2,DepAtom__2)
+

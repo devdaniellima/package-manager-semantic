@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libdconf1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libdconf1 memberOf Package
+	package hasValue "libdconf1"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libs"
+	installedSize hasValue "107"
+	maintainer hasValue "Original-Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.36.0-1"
+	fileName hasValue "pool/main/d/dconf/libdconf1_0.36.0-1_amd64.deb"
+	size hasValue "37384"
+	md5sum hasValue "9ae8844f9ec66afc1daa21574b2dbb7b"
+	sha1 hasValue "c98b26745f1bf54bbcc25e0f58a1e9efb8ddd1bb"
+	sha256 hasValue "01ddfbd75b567f74369cef4d4e839efd0dc7f35d3be3e2ae5e0cade0c0547e21"
+	description hasValue "simple configuration storage system - runtime library"
+	descriptionMd5 hasValue "468650903e334e192e00b3ec386e4f42"
+	homepage hasValue "https://wiki.gnome.org/Projects/dconf"
+	depends hasValue "libc6 (>= 2.14), libglib2.0-0 (>= 2.55.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libdconf1,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libglib2.0-0"
+	comparison hasValue ">="
+	version hasValue "2.55.2"
+
+relationInstance depends(P0__libdconf1,1,DepAtom__1)
+

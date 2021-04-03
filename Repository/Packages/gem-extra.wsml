@@ -1,0 +1,81 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gem_extra
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gem_extra memberOf Package
+	package hasValue "gem-extra"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/graphics"
+	installedSize hasValue "215"
+	maintainer hasValue "Original-Debian Multimedia Maintainers <debian-multimedia@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:0.94-1build2"
+	fileName hasValue "pool/universe/g/gem/gem-extra_0.94-1build2_amd64.deb"
+	size hasValue "56416"
+	md5sum hasValue "a077945ac493be6434c890303588f732"
+	sha1 hasValue "0b1f91f3aa785d18ee5ef51d35b9431fb5907cf8"
+	sha256 hasValue "f6b6ce3673900a4883b7b59ca0519e6db7dc99ea558bd84e3d67856f8e25c6d0"
+	descriptionMd5 hasValue "2631f815a487aef7b6c13ef2b35a036e"
+	homepage hasValue "https://gem.iem.at/"
+	depends hasValue "libc6 (>= 2.14), libgcc-s1 (>= 3.0), libstdc++6 (>= 5.2), gem (>= 1:0.94-1build2), gem (<< 1:0.94+1~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__gem_extra,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgcc-s1"
+	comparison hasValue ">="
+	version hasValue "3.0"
+
+relationInstance depends(P0__gem_extra,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "5.2"
+
+relationInstance depends(P0__gem_extra,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "gem"
+	comparison hasValue ">="
+	version hasValue "1:0.94-1build2"
+
+relationInstance depends(P0__gem_extra,3,DepAtom__3)
+
+instance DepAtom__4 memberOf DependencyAtom
+	package hasValue "gem"
+	comparison hasValue "<<"
+	version hasValue "1:0.94+1~"
+
+relationInstance depends(P0__gem_extra,4,DepAtom__4)
+

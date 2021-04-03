@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology pd_xbee
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__pd_xbee memberOf Package
+	package hasValue "pd-xbee"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/electronics"
+	installedSize hasValue "166"
+	maintainer hasValue "Original-Debian Multimedia Maintainers <debian-multimedia@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.1~svn17651-1"
+	fileName hasValue "pool/universe/p/pd-mrpeach/pd-xbee_0.1~svn17651-1_amd64.deb"
+	size hasValue "33436"
+	md5sum hasValue "472fd2a17fa6d01ed1e14e0dbaf1ccb9"
+	sha1 hasValue "b7e5b230faab833f595102d5f4a6561ccc904683"
+	sha256 hasValue "d9c15de5a6f80910894e3d509564957513e63f603fc48d62116e41f9a9919952"
+	descriptionMd5 hasValue "77586099e5d31cd47e80598dbd66408a"
+	homepage hasValue "https://download.puredata.info/mrpeach"
+	depends hasValue "libc6 (>= 2.7), puredata | pd"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__pd_xbee,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "puredata"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__pd_xbee,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "pd"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__pd_xbee,1,DepAtom__2)
+

@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology multitime
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__multitime memberOf Package
+	package hasValue "multitime"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "55"
+	maintainer hasValue "Original-Iustin Pop <iustin@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.4-1"
+	fileName hasValue "pool/universe/m/multitime/multitime_1.4-1_amd64.deb"
+	size hasValue "17252"
+	md5sum hasValue "aa33751257f5e287803cf2844fe50590"
+	sha1 hasValue "0a6f3120d312c42e15d69ce992bf953054269427"
+	sha256 hasValue "363d78a884ae9d2e29b8183d4698279864b50417453d78caccec110cce03b601"
+	descriptionMd5 hasValue "0c96a95f9f693f50f61e468e5b750fb5"
+	homepage hasValue "https://tratt.net/laurie/src/multitime/"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__multitime,0,DepAtom__0)
+

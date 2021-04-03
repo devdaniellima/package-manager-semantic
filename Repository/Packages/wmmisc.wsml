@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology wmmisc
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__wmmisc memberOf Package
+	package hasValue "wmmisc"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/x11"
+	installedSize hasValue "50"
+	maintainer hasValue "Original-Debian Window Maker Team <pkg-wmaker-devel@alioth-lists.debian.net>"
+	architecture hasValue "amd64"
+	version hasValue "1.2-1"
+	fileName hasValue "pool/universe/w/wmmisc/wmmisc_1.2-1_amd64.deb"
+	size hasValue "11852"
+	md5sum hasValue "a2abd49d78f870b98bc5433048343bcd"
+	sha1 hasValue "44a072be08dd3c817e1f9a16c80e2b2311fcd1e5"
+	sha256 hasValue "2ed9b9440a81d44ad11715a1d2ce8cfe4f7bf4ef4c9a851b3e59d118c070994a"
+	descriptionMd5 hasValue "169d1e2647355672ce5beacc24863e5c"
+	homepage hasValue "https://www.dockapps.net/wmmisc"
+	depends hasValue "libc6 (>= 2.7), libdockapp3 (>= 0.7.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__wmmisc,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libdockapp3"
+	comparison hasValue ">="
+	version hasValue "0.7.0"
+
+relationInstance depends(P0__wmmisc,1,DepAtom__1)
+

@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology lp_solve
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__lp_solve memberOf Package
+	package hasValue "lp-solve"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "math"
+	installedSize hasValue "669"
+	maintainer hasValue "Original-Juan Esteban Monsalve Tobon <esteban@v7w.com>"
+	architecture hasValue "amd64"
+	version hasValue "5.5.0.15-4build1"
+	fileName hasValue "pool/main/l/lp-solve/lp-solve_5.5.0.15-4build1_amd64.deb"
+	size hasValue "282884"
+	md5sum hasValue "912be990a0f426c6f0a9517b217f5b4e"
+	sha1 hasValue "22cf19ec437202ff7e203fe4503be148cb860766"
+	sha256 hasValue "e9535571045068fc86b052eb15d93bf78b21238037a8d9075634ddc173c5a069"
+	description hasValue "resolve problemas de programação linear (inteira mista)"
+	descriptionMd5 hasValue "0cf1973d14c9916f985920235dcabc27"
+	homepage hasValue "http://lpsolve.sourceforge.net"
+	depends hasValue "libc6 (>= 2.14), libcolamd2 (>= 4.5.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__lp_solve,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libcolamd2"
+	comparison hasValue ">="
+	version hasValue "4.5.2"
+
+relationInstance depends(P0__lp_solve,1,DepAtom__1)
+

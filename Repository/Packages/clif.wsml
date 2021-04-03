@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology clif
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__clif memberOf Package
+	package hasValue "clif"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/interpreters"
+	installedSize hasValue "1420"
+	maintainer hasValue "Original-Sam Hocevar <sho@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.93-9.1build2"
+	fileName hasValue "pool/universe/c/clif/clif_0.93-9.1build2_amd64.deb"
+	size hasValue "1180668"
+	md5sum hasValue "d11dc89bfde94e0756d6416214d9ef2f"
+	sha1 hasValue "15763918efe48a4d380e3de8b704ef49253c2a13"
+	sha256 hasValue "3aa52c2c9961495ca11f655c14719bb4b8f9daeb6a523dc6e9ce750f044c6ea7"
+	description hasValue "Interpretador da linguagem C"
+	descriptionMd5 hasValue "9a25d6e0da8cf54ff392b50fd5fa344a"
+	depends hasValue "libc6 (>= 2.29), libx11-6"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__clif,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libx11-6"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__clif,1,DepAtom__1)
+

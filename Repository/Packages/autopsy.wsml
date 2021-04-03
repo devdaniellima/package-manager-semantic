@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology autopsy
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__autopsy memberOf Package
+	package hasValue "autopsy"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "1021"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.24-3"
+	fileName hasValue "pool/universe/a/autopsy/autopsy_2.24-3_all.deb"
+	size hasValue "325750"
+	md5sum hasValue "a408c5596a74aa78546d4e2b1e60925a"
+	sha1 hasValue "629dc7a0f56be3e6a7ae91cc1e4bf44b8f0eeab0"
+	sha256 hasValue "fd1802a8f4c4c5540aeeca5d5b89d4b8c3a7874397a605bdd6d0aa176da22406"
+	description hasValue "interface gráfica para o SleuthKit"
+	descriptionMd5 hasValue "37d2fa98885c3d41edc06647219ede8a"
+	homepage hasValue "https://www.sleuthkit.org/autopsy/"
+	depends hasValue "sleuthkit (>= 3.0.0), perl, binutils"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "sleuthkit"
+	comparison hasValue ">="
+	version hasValue "3.0.0"
+
+relationInstance depends(P0__autopsy,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "perl"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__autopsy,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "binutils"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__autopsy,2,DepAtom__2)
+

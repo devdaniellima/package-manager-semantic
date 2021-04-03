@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gtans
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gtans memberOf Package
+	package hasValue "gtans"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/games"
+	installedSize hasValue "576"
+	maintainer hasValue "Original-Bart Martens <bartm@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.99.0-2build1"
+	fileName hasValue "pool/universe/g/gtans/gtans_1.99.0-2build1_amd64.deb"
+	size hasValue "157120"
+	md5sum hasValue "2df5f89e37867e94650ed38edb46e621"
+	sha1 hasValue "b406f7e08ca18905ca645f83876435c42c1d6ae7"
+	sha256 hasValue "ee08db0aa38e890b667120fa8da7350e3a83fcc5da985ce384984e5a552f8792"
+	description hasValue "jogo Tangram (enigma) usando GTK+"
+	descriptionMd5 hasValue "70e732ecd7a25af50d78546cd213afb3"
+	homepage hasValue "http://gtans.sourceforge.net/"
+	depends hasValue "libc6 (>= 2.7), libglib2.0-0 (>= 2.35.9), libgtk2.0-0 (>= 2.14.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__gtans,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libglib2.0-0"
+	comparison hasValue ">="
+	version hasValue "2.35.9"
+
+relationInstance depends(P0__gtans,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libgtk2.0-0"
+	comparison hasValue ">="
+	version hasValue "2.14.0"
+
+relationInstance depends(P0__gtans,2,DepAtom__2)
+

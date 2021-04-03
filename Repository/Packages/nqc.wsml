@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology nqc
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__nqc memberOf Package
+	package hasValue "nqc"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/devel"
+	installedSize hasValue "394"
+	maintainer hasValue "Original-Debian LEGO Team <debian-lego-team@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.1.r6-7build1"
+	fileName hasValue "pool/universe/n/nqc/nqc_3.1.r6-7build1_amd64.deb"
+	size hasValue "128084"
+	md5sum hasValue "832122e9165f3a2ac3cc993a737addd0"
+	sha1 hasValue "1cc29c6cdbc3141d37ac4c5f6af491ff7716bfe2"
+	sha256 hasValue "2ac4c3f4e832ca8cdc86970648a634e02ff725d88e89820edc60fe373e1e48df"
+	descriptionMd5 hasValue "c31c1a4fe857f7fa5c5786116a4b7c0d"
+	homepage hasValue "http://bricxcc.sourceforge.net/nqc/"
+	depends hasValue "libc6 (>= 2.15), libgcc-s1 (>= 3.0), libstdc++6 (>= 5.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__nqc,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgcc-s1"
+	comparison hasValue ">="
+	version hasValue "3.0"
+
+relationInstance depends(P0__nqc,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "5.2"
+
+relationInstance depends(P0__nqc,2,DepAtom__2)
+

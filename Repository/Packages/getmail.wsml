@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology getmail
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__getmail memberOf Package
+	package hasValue "getmail"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/mail"
+	installedSize hasValue "641"
+	maintainer hasValue "Original-Osamu Aoki <osamu@debian.org>"
+	architecture hasValue "all"
+	version hasValue "5.13-1build1"
+	replaces hasValue "getmail4"
+	provides hasValue "getmail4"
+	fileName hasValue "pool/universe/g/getmail/getmail_5.13-1build1_all.deb"
+	size hasValue "157652"
+	md5sum hasValue "7b5d933a7f3b64c1bc318d4b8643f000"
+	sha1 hasValue "f754fceca7875cd05162d3940eedd01936bdb7b5"
+	sha256 hasValue "129b3e941dbb36b3015e8387e977e997b958dd6c46cff69e508e04844f71f0cf"
+	descriptionMd5 hasValue "b2f05486f9ac795b073488022d1ce77d"
+	homepage hasValue "http://pyropus.ca/software/getmail/"
+	depends hasValue "python2:any (<< 2.8), python2:any (>= 2.7~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue "<<"
+	version hasValue "2.8"
+
+relationInstance depends(P0__getmail,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue ">="
+	version hasValue "2.7~"
+
+relationInstance depends(P0__getmail,1,DepAtom__1)
+

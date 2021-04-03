@@ -1,0 +1,52 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology dtaus
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__dtaus memberOf Package
+	package hasValue "dtaus"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/misc"
+	installedSize hasValue "70"
+	maintainer hasValue "Original-Martin Schulze <joey@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.9-1.1"
+	fileName hasValue "pool/universe/d/dtaus/dtaus_0.9-1.1_amd64.deb"
+	size hasValue "30048"
+	md5sum hasValue "593d05613fb44aedf28768943ad60f59"
+	sha1 hasValue "1718e1ef9ce26c527c28d741cd0f7b60151b830e"
+	sha256 hasValue "7e3ef6d87d0fb486aa1f2874fab501bfcca954602897e166f04e5e3d04ec66c4"
+	descriptionMd5 hasValue "d7b43a6feac22917426cb7b11eb7fe2a"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__dtaus,0,DepAtom__0)
+

@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology scalpel
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__scalpel memberOf Package
+	package hasValue "scalpel"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "85"
+	maintainer hasValue "Original-Debian Security Tools <team+pkg-security@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.60-8"
+	fileName hasValue "pool/universe/s/scalpel/scalpel_1.60-8_amd64.deb"
+	size hasValue "30304"
+	md5sum hasValue "da381d92f95b31d829dc35b9c9b7d7c7"
+	sha1 hasValue "b04517008e75725450e869ec36808ea2a8613cf4"
+	sha256 hasValue "3336292a68bb4d130f81d2bba85a5adbca0d675c3399779fb5fb20a353729adb"
+	descriptionMd5 hasValue "51bb2b32038a263d238ea4c37dd5a7d3"
+	homepage hasValue "http://www.digitalforensicssolutions.com/Scalpel"
+	depends hasValue "libc6 (>= 2.28)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.28"
+
+relationInstance depends(P0__scalpel,0,DepAtom__0)
+

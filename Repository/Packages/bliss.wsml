@@ -1,0 +1,81 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology bliss
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__bliss memberOf Package
+	package hasValue "bliss"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/math"
+	installedSize hasValue "33"
+	maintainer hasValue "Original-Debian Science Maintainers <debian-science-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.73-4build1"
+	fileName hasValue "pool/universe/b/bliss/bliss_0.73-4build1_amd64.deb"
+	size hasValue "7544"
+	md5sum hasValue "e32798a7da88342284e059e683e7000e"
+	sha1 hasValue "cd74112dd6437e9f13a49d45d637de4bad29398a"
+	sha256 hasValue "a4a982cc75797975d91a79b4a95d8866630c7359d7b940eb5b0a50ad2bbcd3cd"
+	descriptionMd5 hasValue "e2c5c3b3c6ed23686f5e1e60befaa420"
+	homepage hasValue "http://www.tcs.hut.fi/Software/bliss/"
+	depends hasValue "libbliss2 (= 0.73-4build1), libc6 (>= 2.7), libgcc-s1 (>= 3.0), libgmp10, libstdc++6 (>= 4.1.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libbliss2"
+	comparison hasValue "="
+	version hasValue "0.73-4build1"
+
+relationInstance depends(P0__bliss,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__bliss,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libgcc-s1"
+	comparison hasValue ">="
+	version hasValue "3.0"
+
+relationInstance depends(P0__bliss,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "libgmp10"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__bliss,3,DepAtom__3)
+
+instance DepAtom__4 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "4.1.1"
+
+relationInstance depends(P0__bliss,4,DepAtom__4)
+

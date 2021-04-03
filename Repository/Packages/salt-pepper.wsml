@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology salt_pepper
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__salt_pepper memberOf Package
+	package hasValue "salt-pepper"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "58"
+	maintainer hasValue "Original-Debian Salt Team <pkg-salt-team@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.5.5-1"
+	fileName hasValue "pool/universe/s/salt-pepper/salt-pepper_0.5.5-1_all.deb"
+	size hasValue "12928"
+	md5sum hasValue "c5e075cb96df4e61cb91ccf01b521a97"
+	sha1 hasValue "c13ca2b0d58fbed3f0287e7c814bd2f7a7fb0f1e"
+	sha256 hasValue "fc7a7f019ff89ffcf74200cf884336a0718ffd1f8a2f1baa03a9e14a61cb46a2"
+	descriptionMd5 hasValue "5226df4e2778313d1b54611860101dc1"
+	homepage hasValue "https://github.com/saltstack/pepper"
+	depends hasValue "python3:any (>= 3.3.2-2~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ">="
+	version hasValue "3.3.2-2~"
+
+relationInstance depends(P0__salt_pepper,0,DepAtom__0)
+

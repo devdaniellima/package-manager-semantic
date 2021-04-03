@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python3_potr
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python3_potr memberOf Package
+	package hasValue "python3-potr"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "101"
+	maintainer hasValue "Original-Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.0.2-2"
+	replaces hasValue "python-potr"
+	fileName hasValue "pool/universe/p/python-potr/python3-potr_1.0.2-2_all.deb"
+	size hasValue "19464"
+	md5sum hasValue "4fe3977e2faf2e492287eb4f87c907a0"
+	sha1 hasValue "8fd5b9c164c0d753a5f2ee38968b66c42e25f3de"
+	sha256 hasValue "85a34636bccfd4c307bfe11975ee4551b83e6f44f3aebe16c3a8b3f5e543536b"
+	description hasValue "Pure Python implementation of the OTR protocol (Python 3)"
+	descriptionMd5 hasValue "a5915e470302a6b5eb894d417c552e5e"
+	homepage hasValue "https://github.com/python-otr/pure-python-otr"
+	depends hasValue "python3-crypto (>= 2.1), python3:any"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3-crypto"
+	comparison hasValue ">="
+	version hasValue "2.1"
+
+relationInstance depends(P0__python3_potr,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__python3_potr,1,DepAtom__1)
+

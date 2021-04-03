@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology unclutter
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__unclutter memberOf Package
+	package hasValue "unclutter"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/x11"
+	installedSize hasValue "46"
+	maintainer hasValue "Original-Axel Beckert <abe@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "8-25"
+	fileName hasValue "pool/universe/u/unclutter/unclutter_8-25_amd64.deb"
+	size hasValue "13400"
+	md5sum hasValue "1a4b7444ee11f96c3ac1b4538a231597"
+	sha1 hasValue "b6f6759f5c289771661162eb1dc9f9111d31d831"
+	sha256 hasValue "899d8776a83db6e73f0d88d4aa6fd45adb6289af9cae6c3871bb002f5b2ff4d6"
+	descriptionMd5 hasValue "36c3c874461f81c17f342795f48a80bb"
+	homepage hasValue "https://web.archive.org/web/20151129214845/http://ftp.x.org/contrib/utilities/"
+	depends hasValue "libc6 (>= 2.4), libx11-6"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__unclutter,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libx11-6"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__unclutter,1,DepAtom__1)
+

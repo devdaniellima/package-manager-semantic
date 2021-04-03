@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology firmware_b43_installer
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__firmware_b43_installer memberOf Package
+	package hasValue "firmware-b43-installer"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "multiverse/kernel"
+	installedSize hasValue "30"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1:019-4"
+	replaces hasValue "firmware-b43-lpphy-installer (<= 1:015-14)"
+	fileName hasValue "pool/multiverse/b/b43-fwcutter/firmware-b43-installer_019-4_all.deb"
+	size hasValue "4764"
+	md5sum hasValue "17732444238919e945319194a40370f0"
+	sha1 hasValue "411e594e01c1e58a638917d4b7cea47c6ac3da92"
+	sha256 hasValue "b7dbd9e9933c2ff2ab2f86756d8996342bc32cc1136095fce0fac570169367cb"
+	descriptionMd5 hasValue "69be8c515d4213f3cacafffeda87ed7a"
+	homepage hasValue "http://wireless.kernel.org/en/users/Drivers/b43"
+	depends hasValue "b43-fwcutter (>= 1:019-4), bzip2, wget"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "b43-fwcutter"
+	comparison hasValue ">="
+	version hasValue "1:019-4"
+
+relationInstance depends(P0__firmware_b43_installer,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "bzip2"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__firmware_b43_installer,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "wget"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__firmware_b43_installer,2,DepAtom__2)
+

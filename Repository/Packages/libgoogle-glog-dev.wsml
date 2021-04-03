@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libgoogle_glog_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libgoogle_glog_dev memberOf Package
+	package hasValue "libgoogle-glog-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "365"
+	maintainer hasValue "Original-Laszlo Boszormenyi (GCS) <gcs@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.4.0-1build1"
+	fileName hasValue "pool/universe/g/google-glog/libgoogle-glog-dev_0.4.0-1build1_amd64.deb"
+	size hasValue "76360"
+	md5sum hasValue "063ab32aa781264701c9a5e53cd11c1e"
+	sha1 hasValue "0b0b234bb606e51a165df0e6d493ce188368316b"
+	sha256 hasValue "555f0ba838f0d420cd78349112f24f46da893c207dfc49f76368fe1bfb12c7f1"
+	descriptionMd5 hasValue "b551db4318894659d49fe968ad2eb1f8"
+	homepage hasValue "https://github.com/google/glog"
+	depends hasValue "libgoogle-glog0v5 (= 0.4.0-1build1), libgflags-dev"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libgoogle-glog0v5"
+	comparison hasValue "="
+	version hasValue "0.4.0-1build1"
+
+relationInstance depends(P0__libgoogle_glog_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgflags-dev"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libgoogle_glog_dev,1,DepAtom__1)
+

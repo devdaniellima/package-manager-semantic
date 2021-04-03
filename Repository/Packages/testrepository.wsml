@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology testrepository
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__testrepository memberOf Package
+	package hasValue "testrepository"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "34"
+	maintainer hasValue "Original-Python Applications Packaging Team <python-apps-team@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.0.20-5"
+	fileName hasValue "pool/universe/t/testrepository/testrepository_0.0.20-5_all.deb"
+	size hasValue "12152"
+	md5sum hasValue "5b6c1ac18a6a04022b03c963096e91cb"
+	sha1 hasValue "cf4c101469a6957ab83ea4f15c0120f774ae0a7d"
+	sha256 hasValue "350ac8675db66ff26ed7aa96a0d07289b258137237c8f77e85deb21da07f00d9"
+	descriptionMd5 hasValue "9945645b40be8ca23014728597260ee1"
+	homepage hasValue "https://pypi.python.org/pypi/testrepository"
+	depends hasValue "python3-testrepository (>= 0.0.20-5)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3-testrepository"
+	comparison hasValue ">="
+	version hasValue "0.0.20-5"
+
+relationInstance depends(P0__testrepository,0,DepAtom__0)
+

@@ -1,0 +1,74 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology webext_eas4tbsync
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__webext_eas4tbsync memberOf Package
+	package hasValue "webext-eas4tbsync"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/mail"
+	installedSize hasValue "908"
+	maintainer hasValue "Original-Debian Mozilla Extension Maintainers <pkg-mozext-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.12-1"
+	fileName hasValue "pool/universe/e/eas4tbsync/webext-eas4tbsync_1.12-1_all.deb"
+	size hasValue "286936"
+	md5sum hasValue "8617e9513a0df0e2eea92f54953a34ff"
+	sha1 hasValue "97102ba890388aafdf2ef0d1c65b6965c70c4b91"
+	sha256 hasValue "cb9e1114e92147074b3b430ffa5701fc143be9e6faa8d19625610cc726a85ae7"
+	descriptionMd5 hasValue "263ed47042444eef50e55a6977f2f634"
+	homepage hasValue "https://github.com/jobisoft/EAS-4-TbSync"
+	depends hasValue "thunderbird (>= 1:68.2), lightning (>= 1:68.2) | xul-ext-lightning, webext-tbsync (>= 2.8)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "thunderbird"
+	comparison hasValue ">="
+	version hasValue "1:68.2"
+
+relationInstance depends(P0__webext_eas4tbsync,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "lightning"
+	comparison hasValue ">="
+	version hasValue "1:68.2"
+
+relationInstance depends(P0__webext_eas4tbsync,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "xul-ext-lightning"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__webext_eas4tbsync,1,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "webext-tbsync"
+	comparison hasValue ">="
+	version hasValue "2.8"
+
+relationInstance depends(P0__webext_eas4tbsync,2,DepAtom__3)
+

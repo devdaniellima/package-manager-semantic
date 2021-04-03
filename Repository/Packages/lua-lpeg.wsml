@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology lua_lpeg
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__lua_lpeg memberOf Package
+	package hasValue "lua-lpeg"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/interpreters"
+	installedSize hasValue "193"
+	maintainer hasValue "Original-Enrico Tassi <gareuselesinge@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.2-1"
+	provides hasValue "lua5.1-lpeg, lua5.2-lpeg, lua5.3-lpeg"
+	fileName hasValue "pool/universe/l/lua-lpeg/lua-lpeg_1.0.2-1_amd64.deb"
+	size hasValue "31412"
+	md5sum hasValue "e1a5bc1c02a7b542230168434cacc78c"
+	sha1 hasValue "0db444abd112231ceb18a72f223ea4a231f79679"
+	sha256 hasValue "8425c419bda326107877fc3f7f4b50a59e5b7fee136c8e2fad4980b2ca7cdcda"
+	descriptionMd5 hasValue "7b03d1547704cdb88762b282cc5bdeea"
+	homepage hasValue "http://www.inf.puc-rio.br/~roberto/lpeg.html"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__lua_lpeg,0,DepAtom__0)
+

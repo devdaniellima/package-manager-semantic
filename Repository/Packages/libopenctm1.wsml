@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libopenctm1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libopenctm1 memberOf Package
+	package hasValue "libopenctm1"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/libs"
+	installedSize hasValue "125"
+	maintainer hasValue "Original-Debian Science Maintainers <debian-science-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.3+dfsg1-2.1build1"
+	fileName hasValue "pool/universe/o/openctm/libopenctm1_1.0.3+dfsg1-2.1build1_amd64.deb"
+	size hasValue "46788"
+	md5sum hasValue "b823a7afc13230dd8cac9590a86a6176"
+	sha1 hasValue "fd026c44a9b4a94559eda3115900fdb84b65b666"
+	sha256 hasValue "01c74d1eb444ef28bf6d9eaf1a05202f0fdd1ae2078a17a1e2d2239bd96bd633"
+	descriptionMd5 hasValue "e7bbed0d3c2e8ddeb50193116d996b27"
+	homepage hasValue "http://openctm.sourceforge.net/"
+	depends hasValue "libc6 (>= 2.27)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.27"
+
+relationInstance depends(P0__libopenctm1,0,DepAtom__0)
+

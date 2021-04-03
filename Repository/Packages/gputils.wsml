@@ -1,0 +1,63 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gputils
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gputils memberOf Package
+	package hasValue "gputils"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/electronics"
+	installedSize hasValue "7985"
+	maintainer hasValue "Original-Taisuke Yamada <tai@rakugaki.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.4.0-0.1build1"
+	replaces hasValue "gpasm"
+	provides hasValue "gpasm"
+	conflicts hasValue "gpal, gpasm"
+	fileName hasValue "pool/universe/g/gputils/gputils_1.4.0-0.1build1_amd64.deb"
+	size hasValue "675396"
+	md5sum hasValue "c945865ff331101abcecc2c2457a4571"
+	sha1 hasValue "7fb5ddf3723fa4fc7b980a3f9a528869d8ce3dc8"
+	sha256 hasValue "1fd87e286f71b1c118d21a0bca6cb9629b8e28265c137e7b5b7b911688c34efb"
+	descriptionMd5 hasValue "23d25c246adc8f0254d4e9881db7845d"
+	homepage hasValue "http://gputils.sourceforge.net"
+	depends hasValue "libc6 (>= 2.14), gputils-common (= 1.4.0-0.1build1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__gputils,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "gputils-common"
+	comparison hasValue "="
+	version hasValue "1.4.0-0.1build1"
+
+relationInstance depends(P0__gputils,1,DepAtom__1)
+

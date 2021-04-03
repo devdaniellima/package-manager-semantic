@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libustr_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libustr_dev memberOf Package
+	package hasValue "libustr-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "603"
+	maintainer hasValue "Original-Vaclav Ovsik <vaclav.ovsik@i.cz>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.4-6"
+	fileName hasValue "pool/universe/u/ustr/libustr-dev_1.0.4-6_amd64.deb"
+	size hasValue "109064"
+	md5sum hasValue "6654a1f05ff51441da2b2a2c7e7c0c66"
+	sha1 hasValue "5c6e18e819ad5f46eaad0d3a74750531c012dfc8"
+	sha256 hasValue "92ffc068fd75ee6e0adc140a75c26a89b08dbb4e9639935b097fdd586e0f5328"
+	description hasValue "Micro string library: development stuff"
+	descriptionMd5 hasValue "4df0874f272979ba9d1c6816eb08b393"
+	homepage hasValue "http://www.and.org/ustr/"
+	depends hasValue "libustr-1.0-1 (= 1.0.4-6), libc6-dev"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libustr-1.0-1"
+	comparison hasValue "="
+	version hasValue "1.0.4-6"
+
+relationInstance depends(P0__libustr_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6-dev"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libustr_dev,1,DepAtom__1)
+

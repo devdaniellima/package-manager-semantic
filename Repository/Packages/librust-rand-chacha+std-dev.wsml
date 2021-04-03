@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology librust_rand_chachaPlusstd_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__librust_rand_chachaPlusstd_dev memberOf Package
+	package hasValue "librust-rand-chacha+std-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/rust"
+	installedSize hasValue "6"
+	maintainer hasValue "Original-Debian Rust Maintainers <pkg-rust-maintainers@alioth-lists.debian.net>"
+	architecture hasValue "amd64"
+	version hasValue "0.2.1-1"
+	provides hasValue "librust-rand-chacha-0+std-dev (= 0.2.1-1), librust-rand-chacha-0.2+std-dev (= 0.2.1-1), librust-rand-chacha-0.2.1+std-dev (= 0.2.1-1)"
+	fileName hasValue "pool/universe/r/rust-rand-chacha/librust-rand-chacha+std-dev_0.2.1-1_amd64.deb"
+	size hasValue "1100"
+	md5sum hasValue "3e675d46c179f621e9f837178b797513"
+	sha1 hasValue "6f2f621019e7b9fb7cb298838f1870ce1e3c93c6"
+	sha256 hasValue "bfbdf029413e643ee203ca15ade77c886125828335f2dbb6ed41f6f2e98a5206"
+	descriptionMd5 hasValue "1738bde4ccb6909de49c2be5756f8c15"
+	homepage hasValue "https://crates.io/crates/rand_chacha"
+	depends hasValue "librust-rand-chacha-dev (= 0.2.1-1), librust-c2-chacha-0.2+std-dev (>= 0.2.2-~~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "librust-rand-chacha-dev"
+	comparison hasValue "="
+	version hasValue "0.2.1-1"
+
+relationInstance depends(P0__librust_rand_chachaPlusstd_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "librust-c2-chacha-0.2+std-dev"
+	comparison hasValue ">="
+	version hasValue "0.2.2-~~"
+
+relationInstance depends(P0__librust_rand_chachaPlusstd_dev,1,DepAtom__1)
+

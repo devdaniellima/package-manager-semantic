@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libfsntfs_utils
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libfsntfs_utils memberOf Package
+	package hasValue "libfsntfs-utils"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/otherosfs"
+	installedSize hasValue "140"
+	maintainer hasValue "Original-Debian Security Tools <team+pkg-security@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "20190104-1.1"
+	fileName hasValue "pool/universe/libf/libfsntfs/libfsntfs-utils_20190104-1.1_amd64.deb"
+	size hasValue "37700"
+	md5sum hasValue "ad581a85737ab9acdf2e6fbd9fe37396"
+	sha1 hasValue "0565fd5506b26d880f3f76487d3078cea0c6444d"
+	sha256 hasValue "a835f62c66725b94236455192be3d406db53fc152d073985b86c76a2b875ccfe"
+	descriptionMd5 hasValue "9e256fa429919857b62ab413b2edfc77"
+	homepage hasValue "https://github.com/libyal/libfsntfs"
+	depends hasValue "libbfio1 (>= 20120425), libc6 (>= 2.14), libfsntfs1 (>= 20160418)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libbfio1"
+	comparison hasValue ">="
+	version hasValue "20120425"
+
+relationInstance depends(P0__libfsntfs_utils,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libfsntfs_utils,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libfsntfs1"
+	comparison hasValue ">="
+	version hasValue "20160418"
+
+relationInstance depends(P0__libfsntfs_utils,2,DepAtom__2)
+

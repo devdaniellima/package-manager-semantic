@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology flextra
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__flextra memberOf Package
+	package hasValue "flextra"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/science"
+	installedSize hasValue "739"
+	maintainer hasValue "Original-Alastair McKinstry <mckinstry@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "5.0-13build1"
+	fileName hasValue "pool/universe/f/flextra/flextra_5.0-13build1_amd64.deb"
+	size hasValue "104884"
+	md5sum hasValue "aa61edf0f822705bc0ebbd934d3a9ade"
+	sha1 hasValue "536d2ad1082fa8afdda126fe81436cae2d4337af"
+	sha256 hasValue "97f14c20b30d5e362af588868e41b41bd207dfcd76e4b4fe747fe0a841ac64b7"
+	descriptionMd5 hasValue "fdc21aea010dfec7c9a3ece8df134996"
+	homepage hasValue "https://flexpart.eu/"
+	depends hasValue "libc6 (>= 2.29), libeccodes0 (>= 2.16.0), libgfortran5 (>= 8)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__flextra,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libeccodes0"
+	comparison hasValue ">="
+	version hasValue "2.16.0"
+
+relationInstance depends(P0__flextra,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libgfortran5"
+	comparison hasValue ">="
+	version hasValue "8"
+
+relationInstance depends(P0__flextra,2,DepAtom__2)
+

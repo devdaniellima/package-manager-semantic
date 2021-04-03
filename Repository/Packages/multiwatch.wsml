@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology multiwatch
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__multiwatch memberOf Package
+	package hasValue "multiwatch"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/web"
+	installedSize hasValue "28"
+	maintainer hasValue "Original-Jérémy Lal <kapouer@melix.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.0-rc1+really1.0.0-1build1"
+	fileName hasValue "pool/universe/m/multiwatch/multiwatch_1.0.0-rc1+really1.0.0-1build1_amd64.deb"
+	size hasValue "8000"
+	md5sum hasValue "300213953c7c3c601536f739bd89dbbf"
+	sha1 hasValue "bb5d87b58bf9b17791e5650bb15f0f29d5de8ee6"
+	sha256 hasValue "926a255cd9fda2d0fb4f635ed5e85b98d7ac94c354cb28a6c998684403bf7a21"
+	descriptionMd5 hasValue "cc73e24c0b426ed973ad1c26c1f9a2c6"
+	homepage hasValue "http://redmine.lighttpd.net/projects/multiwatch"
+	depends hasValue "libc6 (>= 2.4), libev4 (>= 1:4.04), libglib2.0-0 (>= 2.16.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__multiwatch,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libev4"
+	comparison hasValue ">="
+	version hasValue "1:4.04"
+
+relationInstance depends(P0__multiwatch,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libglib2.0-0"
+	comparison hasValue ">="
+	version hasValue "2.16.0"
+
+relationInstance depends(P0__multiwatch,2,DepAtom__2)
+

@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libtextwrap_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libtextwrap_dev memberOf Package
+	package hasValue "libtextwrap-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libdevel"
+	installedSize hasValue "52"
+	maintainer hasValue "Original-Anibal Monsalve Salazar <anibal@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.1-14.2"
+	replaces hasValue "libtextwrap1 (<< 0.1-2)"
+	fileName hasValue "pool/main/libt/libtextwrap/libtextwrap-dev_0.1-14.2_amd64.deb"
+	size hasValue "13332"
+	md5sum hasValue "ef3b66ac9573dc816720e3650b3b8d11"
+	sha1 hasValue "892e1a652069f0bd0bf720a0681c9fdc603111c0"
+	sha256 hasValue "7f22c181358a554065f9c976b3031adeb7ea068d14f8d4d35b0dd84536234b95"
+	description hasValue "text-wrapping library with i18n - development files"
+	descriptionMd5 hasValue "c51099bbc17a2a3b0334e07f4cd5e364"
+	homepage hasValue "http://libtextwrap.sourceforge.net/"
+	depends hasValue "libc6 (>= 2.4), libtextwrap1 (= 0.1-14.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libtextwrap_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libtextwrap1"
+	comparison hasValue "="
+	version hasValue "0.1-14.2"
+
+relationInstance depends(P0__libtextwrap_dev,1,DepAtom__1)
+

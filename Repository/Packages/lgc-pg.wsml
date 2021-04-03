@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology lgc_pg
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__lgc_pg memberOf Package
+	package hasValue "lgc-pg"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/games"
+	installedSize hasValue "1051"
+	maintainer hasValue "Original-Debian Games Team <pkg-games-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.4.3-1"
+	fileName hasValue "pool/universe/l/lgeneral/lgc-pg_1.4.3-1_amd64.deb"
+	size hasValue "348964"
+	md5sum hasValue "6b0dd9debfe96fa579a51843a17a8aea"
+	sha1 hasValue "35af402cc30e84de4b831babbc645ba9de57558b"
+	sha256 hasValue "8ca2def30c7413a1332a79be4c7bc67fcc08273afc6e6ba51ea1cd8de2cf3250"
+	description hasValue "conversor LGeneral para dados do jogo Panzer General"
+	descriptionMd5 hasValue "2a89246b627451616fc3d4d7401e476e"
+	homepage hasValue "http://lgames.sourceforge.net"
+	depends hasValue "libc6 (>= 2.14), libsdl1.2debian (>= 1.2.11)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__lgc_pg,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libsdl1.2debian"
+	comparison hasValue ">="
+	version hasValue "1.2.11"
+
+relationInstance depends(P0__lgc_pg,1,DepAtom__1)
+

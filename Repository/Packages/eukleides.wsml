@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology eukleides
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__eukleides memberOf Package
+	package hasValue "eukleides"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/math"
+	installedSize hasValue "647"
+	maintainer hasValue "Original-Robert Lemmen <robertle@semistable.com>"
+	architecture hasValue "amd64"
+	version hasValue "1.5.4-4.1build1"
+	fileName hasValue "pool/universe/e/eukleides/eukleides_1.5.4-4.1build1_amd64.deb"
+	size hasValue "131084"
+	md5sum hasValue "0214e93e1524938c15f7d66b4678bda0"
+	sha1 hasValue "70d2ffee00d275113cfd215127def55e1cb1a092"
+	sha256 hasValue "fd18756225cd35e6e78ee2d22243e1d49720b0ad55b967911b362cb4a049b620"
+	descriptionMd5 hasValue "16100022edf37c47a582bcd188b228a3"
+	homepage hasValue "http://www.eukleides.org/"
+	depends hasValue "libc6 (>= 2.14), libreadline8 (>= 6.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__eukleides,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libreadline8"
+	comparison hasValue ">="
+	version hasValue "6.0"
+
+relationInstance depends(P0__eukleides,1,DepAtom__1)
+

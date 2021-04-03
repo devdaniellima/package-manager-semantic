@@ -1,0 +1,63 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology myspell_fr_gut
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__myspell_fr_gut memberOf Package
+	package hasValue "myspell-fr-gut"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/text"
+	installedSize hasValue "1229"
+	maintainer hasValue "Original-Lionel Elie Mamane <lmamane@debian.org>"
+	architecture hasValue "all"
+	version hasValue "1:1.0-32"
+	replaces hasValue "myspell-fr-fr, openoffice.org-spellcheck-fr-fr"
+	provides hasValue "myspell-dictionary, myspell-dictionary-fr, myspell-fr-fr, openoffice.org-spellcheck-fr-fr"
+	conflicts hasValue "myspell-fr, myspell-fr-fr, openoffice.org (<= 1.0.3-2), openoffice.org-spellcheck-fr-fr"
+	fileName hasValue "pool/universe/i/ifrench-gut/myspell-fr-gut_1.0-32_all.deb"
+	size hasValue "260120"
+	md5sum hasValue "ff1a6d4e9195db486cbb0bacdfb2453a"
+	sha1 hasValue "e6bc04e977ce6252107e5062a7138614065070b3"
+	sha256 hasValue "9d77786fbc0955edbde0ce2e731b5e7bac0384eb12ec5e777e765d79d7ad7de5"
+	description hasValue "French dictionary for myspell (GUTenberg version)"
+	descriptionMd5 hasValue "35c58d9f930c04198a25e774670f18c5"
+	depends hasValue "dictionaries-common (>= 0.10) | openoffice.org-updatedicts"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "dictionaries-common"
+	comparison hasValue ">="
+	version hasValue "0.10"
+
+relationInstance depends(P0__myspell_fr_gut,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "openoffice.org-updatedicts"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__myspell_fr_gut,0,DepAtom__1)
+

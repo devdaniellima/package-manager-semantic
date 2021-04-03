@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology r_cran_ellipse
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__r_cran_ellipse memberOf Package
+	package hasValue "r-cran-ellipse"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/gnu-r"
+	installedSize hasValue "99"
+	maintainer hasValue "Original-Debian R Packages Maintainers <r-pkg-team@alioth-lists.debian.net>"
+	architecture hasValue "all"
+	version hasValue "0.4.1-2"
+	fileName hasValue "pool/universe/r/r-cran-ellipse/r-cran-ellipse_0.4.1-2_all.deb"
+	size hasValue "70912"
+	md5sum hasValue "35445384a3a937af875ae8042698304f"
+	sha1 hasValue "b7793460a31ceaff8625b44a03d9fd81771ef382"
+	sha256 hasValue "d5eff4c439e7775eadd43842bb62b080b752d91d9fd3c3805f9a000c7d8b6dbf"
+	descriptionMd5 hasValue "9c80163746d733d73c419b44b0a5e49a"
+	homepage hasValue "https://cran.r-project.org/package=ellipse"
+	depends hasValue "r-base-core (>= 3.5.0-3), r-api-3.5"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "r-base-core"
+	comparison hasValue ">="
+	version hasValue "3.5.0-3"
+
+relationInstance depends(P0__r_cran_ellipse,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "r-api-3.5"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__r_cran_ellipse,1,DepAtom__1)
+

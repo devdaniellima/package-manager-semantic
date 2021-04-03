@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology imx_usb_loader
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__imx_usb_loader memberOf Package
+	package hasValue "imx-usb-loader"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/electronics"
+	installedSize hasValue "139"
+	maintainer hasValue "Original-Ying-Chun Liu (PaulLiu) <paulliu@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0~git20200103.f009770d-1"
+	fileName hasValue "pool/universe/i/imx-usb-loader/imx-usb-loader_0~git20200103.f009770d-1_amd64.deb"
+	size hasValue "34584"
+	md5sum hasValue "64f0ad6766dffa11b57429349abf55d2"
+	sha1 hasValue "3e75672c39558ee4fe788d900f8eed5ea36196ee"
+	sha256 hasValue "7d94af6e8c2e9326910c0d88c9bb3060a6a1be2d442a580517ca1ba9b74fc101"
+	descriptionMd5 hasValue "66b128f5c76116a7f1a4fe01cc1861a4"
+	homepage hasValue "https://github.com/boundarydevices/imx_usb_loader"
+	depends hasValue "libc6 (>= 2.14), libusb-1.0-0 (>= 2:1.0.16)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__imx_usb_loader,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libusb-1.0-0"
+	comparison hasValue ">="
+	version hasValue "2:1.0.16"
+
+relationInstance depends(P0__imx_usb_loader,1,DepAtom__1)
+

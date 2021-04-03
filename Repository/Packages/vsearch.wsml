@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology vsearch
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__vsearch memberOf Package
+	package hasValue "vsearch"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/science"
+	installedSize hasValue "555"
+	maintainer hasValue "Original-Debian Med Packaging Team <debian-med-packaging@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.14.1-3build1"
+	fileName hasValue "pool/universe/v/vsearch/vsearch_2.14.1-3build1_amd64.deb"
+	size hasValue "336696"
+	md5sum hasValue "c27742dfd7a3bb739cc4f80804574d14"
+	sha1 hasValue "4c5df1032b5527b68b820b5e2d2091e0e92db3de"
+	sha256 hasValue "25ee1afdcebbf4a95858089ced42e3c4bec88d5252e02cb3c6caa8b4f7b04723"
+	descriptionMd5 hasValue "3d5b978a4fdae86c2694b5e3775ea5a8"
+	homepage hasValue "https://github.com/torognes/vsearch/"
+	depends hasValue "libc6 (>= 2.29), libgcc-s1 (>= 3.3.1), libstdc++6 (>= 5.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__vsearch,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgcc-s1"
+	comparison hasValue ">="
+	version hasValue "3.3.1"
+
+relationInstance depends(P0__vsearch,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "5.2"
+
+relationInstance depends(P0__vsearch,2,DepAtom__2)
+

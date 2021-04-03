@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libgraphblas3
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libgraphblas3 memberOf Package
+	package hasValue "libgraphblas3"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libs"
+	installedSize hasValue "50801"
+	maintainer hasValue "Original-Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:5.7.1+dfsg-2"
+	fileName hasValue "pool/main/s/suitesparse/libgraphblas3_5.7.1+dfsg-2_amd64.deb"
+	size hasValue "3770096"
+	md5sum hasValue "65afb1a05ce43b5e349153588060cb2c"
+	sha1 hasValue "b34dd8419c36d5a6dc1cf3335d80198381fadf0f"
+	sha256 hasValue "86524951e1e1e1e284a66e1fe4564477970cd6aac0633a11ad885792e493fa1b"
+	descriptionMd5 hasValue "698599f805b6664cdaf32de495abd9b4"
+	homepage hasValue "http://www.suitesparse.com"
+	depends hasValue "libc6 (>= 2.29), libgomp1 (>= 6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__libgraphblas3,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgomp1"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__libgraphblas3,1,DepAtom__1)
+

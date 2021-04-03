@@ -1,0 +1,69 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology mono_addins_utils
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__mono_addins_utils memberOf Package
+	package hasValue "mono-addins-utils"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/cli-mono"
+	installedSize hasValue "29"
+	maintainer hasValue "Original-Debian CLI Libraries Team <pkg-cli-libs-team@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.0+git20130406.adcd75b-4"
+	replaces hasValue "libmono-addins0.2-cil (<< 0.4-6)"
+	conflicts hasValue "libmono-addins0.2-cil (<< 0.4-6)"
+	fileName hasValue "pool/universe/m/mono-addins/mono-addins-utils_1.0+git20130406.adcd75b-4_all.deb"
+	size hasValue "6084"
+	md5sum hasValue "904e17918ceef257be3a16b8b19ceb51"
+	sha1 hasValue "bd379a55a2ac805f7885629c59a257566a317503"
+	sha256 hasValue "0d6b95ca2544fa8f1c2082027fba58f09dbaa1e20ff0ee815a03ee296ee260bb"
+	descriptionMd5 hasValue "5968ad4996d70b07f5a6e3a27071106e"
+	homepage hasValue "http://www.mono-project.com/Mono.Addins"
+	depends hasValue "mono-runtime (>= 3.0~), libmono-addins0.2-cil (>= 1.0), libmono-corlib4.5-cil (>= 4.2.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "mono-runtime"
+	comparison hasValue ">="
+	version hasValue "3.0~"
+
+relationInstance depends(P0__mono_addins_utils,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libmono-addins0.2-cil"
+	comparison hasValue ">="
+	version hasValue "1.0"
+
+relationInstance depends(P0__mono_addins_utils,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libmono-corlib4.5-cil"
+	comparison hasValue ">="
+	version hasValue "4.2.0"
+
+relationInstance depends(P0__mono_addins_utils,2,DepAtom__2)
+

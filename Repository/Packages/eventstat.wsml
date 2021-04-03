@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology eventstat
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__eventstat memberOf Package
+	package hasValue "eventstat"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "57"
+	maintainer hasValue "Colin King <colin.king@canonical.com>"
+	architecture hasValue "amd64"
+	version hasValue "0.04.09-1"
+	fileName hasValue "pool/universe/e/eventstat/eventstat_0.04.09-1_amd64.deb"
+	size hasValue "18724"
+	md5sum hasValue "63b72ab38634cbab4f023e1c9eee32a3"
+	sha1 hasValue "e29798d01ee0181c42949ae93401c368afd9a4e8"
+	sha256 hasValue "6869f6aafa293c8e2f04b48ff8ceadb23f91920e7dddb41333e0754544294f6e"
+	descriptionMd5 hasValue "e3e493cc1f6c0de6ad89d16f94a4c539"
+	homepage hasValue "http://kernel.ubuntu.com/~cking/eventstat"
+	depends hasValue "libc6 (>= 2.15), libncurses6 (>= 6), libtinfo6 (>= 6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__eventstat,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libncurses6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__eventstat,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libtinfo6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__eventstat,2,DepAtom__2)
+

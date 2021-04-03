@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology bacula_client
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__bacula_client memberOf Package
+	package hasValue "bacula-client"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "102"
+	maintainer hasValue "Original-Debian Bacula Team <pkg-bacula-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "9.4.2-2ubuntu5"
+	fileName hasValue "pool/universe/b/bacula/bacula-client_9.4.2-2ubuntu5_all.deb"
+	size hasValue "21940"
+	md5sum hasValue "ee3436f63548e3da5ae5110f7ce5ff56"
+	sha1 hasValue "ed23146cf53f9439071c0a3bd8dfa7442b92eb2e"
+	sha256 hasValue "efc25c787748af51b7705f68a7ae7ca7eb9b077124425dcf5442147e1db07d3b"
+	description hasValue "network backup service - client metapackage"
+	descriptionMd5 hasValue "c7615bb83ae944dfb220e188d71eb440"
+	homepage hasValue "http://www.bacula.org/"
+	depends hasValue "bacula-console (>= 9.4.2-2ubuntu5), bacula-fd (>= 9.4.2-2ubuntu5)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "bacula-console"
+	comparison hasValue ">="
+	version hasValue "9.4.2-2ubuntu5"
+
+relationInstance depends(P0__bacula_client,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "bacula-fd"
+	comparison hasValue ">="
+	version hasValue "9.4.2-2ubuntu5"
+
+relationInstance depends(P0__bacula_client,1,DepAtom__1)
+

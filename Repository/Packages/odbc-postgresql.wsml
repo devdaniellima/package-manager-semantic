@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology odbc_postgresql
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__odbc_postgresql memberOf Package
+	package hasValue "odbc-postgresql"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "1317"
+	maintainer hasValue "Original-Debian PostgreSQL Maintainers <team+postgresql@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:12.01.0000-1"
+	fileName hasValue "pool/universe/p/psqlodbc/odbc-postgresql_12.01.0000-1_amd64.deb"
+	size hasValue "383236"
+	md5sum hasValue "86798161180072c4d65435f1d0188f3a"
+	sha1 hasValue "c254c6918493717c2d5bf93ababa696533299694"
+	sha256 hasValue "e331ab7c8cb7a3402ad731ca9e15b17bf83072ce87269c82b1436ec8b9ac7590"
+	descriptionMd5 hasValue "ca9991df6514508e654fa440ff1560cd"
+	homepage hasValue "https://odbc.postgresql.org/"
+	depends hasValue "libc6 (>= 2.16), libpq5 (>= 9.2~beta3), odbcinst1debian2 (>= 2.3.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.16"
+
+relationInstance depends(P0__odbc_postgresql,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libpq5"
+	comparison hasValue ">="
+	version hasValue "9.2~beta3"
+
+relationInstance depends(P0__odbc_postgresql,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "odbcinst1debian2"
+	comparison hasValue ">="
+	version hasValue "2.3.1"
+
+relationInstance depends(P0__odbc_postgresql,2,DepAtom__2)
+

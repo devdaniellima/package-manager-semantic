@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libblas64_3
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libblas64_3 memberOf Package
+	package hasValue "libblas64-3"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libs"
+	installedSize hasValue "366"
+	maintainer hasValue "Original-Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.9.0-1build1"
+	provides hasValue "libblas64.so.3"
+	fileName hasValue "pool/main/l/lapack/libblas64-3_3.9.0-1build1_amd64.deb"
+	size hasValue "113212"
+	md5sum hasValue "25f148a94e3032abc8e89dc2d7704d30"
+	sha1 hasValue "4f7ce489469f61eaa81b5d2216e74185f44da812"
+	sha256 hasValue "535af90f94f0e425264e9efd1c8e466e502833931d10fb56c84bc1f26db93caf"
+	description hasValue "Basic Linear Algebra Reference implementations, shared library (64bit-index)"
+	descriptionMd5 hasValue "0ae582e09752414227477f5da990bc89"
+	homepage hasValue "http://www.netlib.org/lapack/"
+	depends hasValue "libc6 (>= 2.4), libgfortran5 (>= 8)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libblas64_3,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgfortran5"
+	comparison hasValue ">="
+	version hasValue "8"
+
+relationInstance depends(P0__libblas64_3,1,DepAtom__1)
+

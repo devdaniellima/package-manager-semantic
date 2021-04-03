@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology faac
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__faac memberOf Package
+	package hasValue "faac"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "multiverse/sound"
+	installedSize hasValue "77"
+	maintainer hasValue "Original-Debian Multimedia Maintainers <debian-multimedia@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.30-1"
+	fileName hasValue "pool/multiverse/f/faac/faac_1.30-1_amd64.deb"
+	size hasValue "21800"
+	md5sum hasValue "7b84fb926e0b805a71b9698072f84da6"
+	sha1 hasValue "14639400716adc0750ae4a1e86bcf04c21f633ec"
+	sha256 hasValue "3b011097b07e9e3de2b08bcd2babf28a82d8948f6b09549ef15196bfff73ec1a"
+	descriptionMd5 hasValue "8b18a84082bc792889453fdbbbdc8391"
+	homepage hasValue "https://github.com/knik0/faac"
+	depends hasValue "libc6 (>= 2.14), libfaac0 (>= 1.28)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__faac,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libfaac0"
+	comparison hasValue ">="
+	version hasValue "1.28"
+
+relationInstance depends(P0__faac,1,DepAtom__1)
+

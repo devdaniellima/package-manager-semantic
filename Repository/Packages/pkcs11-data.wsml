@@ -1,0 +1,59 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology pkcs11_data
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__pkcs11_data memberOf Package
+	package hasValue "pkcs11-data"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/utils"
+	installedSize hasValue "38"
+	maintainer hasValue "Original-Max Vozeler <xam@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.7.4-2build1"
+	fileName hasValue "pool/universe/p/pkcs11-data/pkcs11-data_0.7.4-2build1_amd64.deb"
+	size hasValue "11264"
+	md5sum hasValue "756f39681e9a60f1ae9992e76a6501ff"
+	sha1 hasValue "17be5fa6586a222ddb882e09ee285aaf8cb47fa4"
+	sha256 hasValue "e5d875558c4a26403098ab2642ec41236694aea38510b2ddc9c65d961551f8c9"
+	descriptionMd5 hasValue "e568f8d003051360b0320bd0a411b694"
+	depends hasValue "libc6 (>= 2.7), libpkcs11-helper1 (>= 1.05)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__pkcs11_data,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libpkcs11-helper1"
+	comparison hasValue ">="
+	version hasValue "1.05"
+
+relationInstance depends(P0__pkcs11_data,1,DepAtom__1)
+

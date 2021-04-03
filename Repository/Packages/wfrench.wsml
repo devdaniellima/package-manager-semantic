@@ -1,0 +1,76 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology wfrench
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__wfrench memberOf Package
+	package hasValue "wfrench"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "text"
+	installedSize hasValue "3964"
+	maintainer hasValue "Original-guillaume pernot <gpernot@praksys.org>"
+	architecture hasValue "all"
+	version hasValue "1.2.5-1"
+	provides hasValue "wordlist"
+	fileName hasValue "pool/main/w/wfrench/wfrench_1.2.5-1_all.deb"
+	size hasValue "671240"
+	md5sum hasValue "eefcedf770f8da4921cd672acfd9af1c"
+	sha1 hasValue "32b64b5f446ed5b38faa0d8b40d4b6957acd811e"
+	sha256 hasValue "409abd64d0606280efbf3c03bae969b5f548a405e313326446033e4d0ff86811"
+	description hasValue "Palavras francesas de dicionário para o /usr/share/dict ."
+	descriptionMd5 hasValue "aebf2b3e65e401c4e074a05027cd8678"
+	homepage hasValue "https://salsa.debian.org/gpernot-guest/wfrench"
+	depends hasValue "dictionaries-common (>= 1.0), debconf (>= 0.5) | debconf-2.0, debconf"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "dictionaries-common"
+	comparison hasValue ">="
+	version hasValue "1.0"
+
+relationInstance depends(P0__wfrench,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "debconf"
+	comparison hasValue ">="
+	version hasValue "0.5"
+
+relationInstance depends(P0__wfrench,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "debconf-2.0"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__wfrench,1,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "debconf"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__wfrench,2,DepAtom__3)
+

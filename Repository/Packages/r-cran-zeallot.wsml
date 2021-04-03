@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology r_cran_zeallot
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__r_cran_zeallot memberOf Package
+	package hasValue "r-cran-zeallot"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/gnu-r"
+	installedSize hasValue "166"
+	maintainer hasValue "Original-Debian R Packages Maintainers <r-pkg-team@alioth-lists.debian.net>"
+	architecture hasValue "all"
+	version hasValue "0.1.0-2"
+	fileName hasValue "pool/universe/r/r-cran-zeallot/r-cran-zeallot_0.1.0-2_all.deb"
+	size hasValue "59984"
+	md5sum hasValue "b44f407386c31653612d49418bc9e79e"
+	sha1 hasValue "1f9d7db54ed1ea5d69e0c8706ef7499e0d23f67a"
+	sha256 hasValue "183bdad82fe3961dadde72fc8029097202ade30575163a2904f666a25c9b32e0"
+	descriptionMd5 hasValue "a7cd4f0d88b9b13a965dbe7c73147807"
+	homepage hasValue "https://cran.r-project.org/package=zeallot"
+	depends hasValue "r-base-core (>= 3.6.1-4), r-api-3.5"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "r-base-core"
+	comparison hasValue ">="
+	version hasValue "3.6.1-4"
+
+relationInstance depends(P0__r_cran_zeallot,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "r-api-3.5"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__r_cran_zeallot,1,DepAtom__1)
+

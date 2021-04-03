@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology netsend
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__netsend memberOf Package
+	package hasValue "netsend"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "141"
+	maintainer hasValue "Original-Martin Peylo <debian@izac.de>"
+	architecture hasValue "amd64"
+	version hasValue "0.0~svnr250-1.3"
+	fileName hasValue "pool/universe/n/netsend/netsend_0.0~svnr250-1.3_amd64.deb"
+	size hasValue "32316"
+	md5sum hasValue "74b720d56d9a57003517bcbcfde8c9e4"
+	sha1 hasValue "c2cc970f45734aad65127ff0b7177ba93916febb"
+	sha256 hasValue "6ca0dbaa67caa5e5d372253bdc4df45928202fe232542faded27e7a4e82967f1"
+	descriptionMd5 hasValue "afe4262c8e010a7509db1926aff54989"
+	homepage hasValue "http://netsend.berlios.de/"
+	depends hasValue "libc6 (>= 2.29)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__netsend,0,DepAtom__0)
+

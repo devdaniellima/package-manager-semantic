@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology debian_timeline
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__debian_timeline memberOf Package
+	package hasValue "debian-timeline"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/web"
+	installedSize hasValue "204"
+	maintainer hasValue "Original-Debian publicity team <debian-publicity@lists.debian.org>"
+	architecture hasValue "all"
+	version hasValue "44"
+	fileName hasValue "pool/universe/d/debian-timeline/debian-timeline_44_all.deb"
+	size hasValue "25296"
+	md5sum hasValue "0f5de80f37b2079306852d358f1585e6"
+	sha1 hasValue "ce268c46893b62475a1ff043240a7ff540c8d5b9"
+	sha256 hasValue "a9f6dd31b1c880c775293af13a821a78c83bda3d0f77bd5b8a1a7a3ff30c2dde"
+	description hasValue "linha do tempo para web do Projeto Debian"
+	descriptionMd5 hasValue "7df56738f52130442d2c9ab828b60c58"
+	homepage hasValue "https://timeline.debian.net/"
+	depends hasValue "libjs-simile-timeline, libjs-jquery"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libjs-simile-timeline"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__debian_timeline,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libjs-jquery"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__debian_timeline,1,DepAtom__1)
+

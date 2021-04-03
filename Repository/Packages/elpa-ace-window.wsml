@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology elpa_ace_window
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__elpa_ace_window memberOf Package
+	package hasValue "elpa-ace-window"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/lisp"
+	installedSize hasValue "48"
+	maintainer hasValue "Original-Debian Emacs addons team <pkg-emacsen-addons@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.9.0-5"
+	fileName hasValue "pool/universe/a/ace-window/elpa-ace-window_0.9.0-5_all.deb"
+	size hasValue "10984"
+	md5sum hasValue "1584c78a115bf038472aad9afb5c0e97"
+	sha1 hasValue "932435737f272c33452277e8cb41ad2b30f8cf12"
+	sha256 hasValue "1ed77245503fa3274aa89c6ef2dd8fd286ee3d1054ff0cc72a35f74cdd0d5af1"
+	descriptionMd5 hasValue "081febda9c0ee3366e7ddacebb7e30aa"
+	homepage hasValue "https://github.com/abo-abo/ace-window"
+	depends hasValue "elpa-avy (>= 0.2.0), emacsen-common"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "elpa-avy"
+	comparison hasValue ">="
+	version hasValue "0.2.0"
+
+relationInstance depends(P0__elpa_ace_window,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "emacsen-common"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__elpa_ace_window,1,DepAtom__1)
+

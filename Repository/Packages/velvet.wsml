@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology velvet
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__velvet memberOf Package
+	package hasValue "velvet"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/science"
+	installedSize hasValue "1265"
+	maintainer hasValue "Original-Debian Med Packaging Team <debian-med-packaging@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.2.10+dfsg1-7"
+	fileName hasValue "pool/universe/v/velvet/velvet_1.2.10+dfsg1-7_amd64.deb"
+	size hasValue "671448"
+	md5sum hasValue "0dbd051175caeb413de53ab4d197fe7d"
+	sha1 hasValue "fa8fc227704cea67a50fd8cd1cfc530262731585"
+	sha256 hasValue "4eb947a39f660aad7fa675b4b119ca542633a62f67d923c2b6307c531c32eafd"
+	descriptionMd5 hasValue "a5956a7ea4ec700abd1d8ef9244b6fe8"
+	homepage hasValue "https://www.ebi.ac.uk/~zerbino/velvet/"
+	depends hasValue "libc6 (>= 2.29), libgomp1 (>= 4.9), zlib1g (>= 1:1.2.0.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__velvet,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgomp1"
+	comparison hasValue ">="
+	version hasValue "4.9"
+
+relationInstance depends(P0__velvet,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "zlib1g"
+	comparison hasValue ">="
+	version hasValue "1:1.2.0.2"
+
+relationInstance depends(P0__velvet,2,DepAtom__2)
+

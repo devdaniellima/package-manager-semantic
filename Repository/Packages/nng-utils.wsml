@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology nng_utils
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__nng_utils memberOf Package
+	package hasValue "nng-utils"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "433"
+	maintainer hasValue "Original-Laszlo Boszormenyi (GCS) <gcs@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.2.6-1"
+	fileName hasValue "pool/universe/n/nng/nng-utils_1.2.6-1_amd64.deb"
+	size hasValue "136556"
+	md5sum hasValue "cc2531c79347da53b25888d2ea4b1b01"
+	sha1 hasValue "1754f2f5dd80974981f8113cb886bad2113599a9"
+	sha256 hasValue "46faa615fcb11718a45c3b90ad585702eed610acdaeb91dcc77ec6f96f8556c1"
+	descriptionMd5 hasValue "389a9c0a61a307cbd40b43ffa0f88b46"
+	homepage hasValue "https://nng.nanomsg.org/"
+	depends hasValue "libc6 (>= 2.25)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.25"
+
+relationInstance depends(P0__nng_utils,0,DepAtom__0)
+

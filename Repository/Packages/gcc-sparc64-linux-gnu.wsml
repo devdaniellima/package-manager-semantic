@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gcc_sparc64_linux_gnu
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gcc_sparc64_linux_gnu memberOf Package
+	package hasValue "gcc-sparc64-linux-gnu"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "25"
+	maintainer hasValue "Original-Debian GCC Maintainers <debian-gcc@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "4:9.3.0-1ubuntu2"
+	fileName hasValue "pool/universe/g/gcc-defaults-ports/gcc-sparc64-linux-gnu_9.3.0-1ubuntu2_amd64.deb"
+	size hasValue "1420"
+	md5sum hasValue "ea27c2423907d85173942366ff806fb0"
+	sha1 hasValue "c7e38a9e0fee3c69241b95a8f2132220b804ae0b"
+	sha256 hasValue "bc6a23a7377500cdb54602ed9c86a9377e02208bc08d43ab51691cbac4dd02c9"
+	description hasValue "GNU C compiler for the sparc64 architecture"
+	descriptionMd5 hasValue "8a8521de32d5effc17c6a89a9ab1b005"
+	depends hasValue "cpp-sparc64-linux-gnu (= 4:9.3.0-1ubuntu2), gcc-9-sparc64-linux-gnu (>= 9.3.0-3~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "cpp-sparc64-linux-gnu"
+	comparison hasValue "="
+	version hasValue "4:9.3.0-1ubuntu2"
+
+relationInstance depends(P0__gcc_sparc64_linux_gnu,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "gcc-9-sparc64-linux-gnu"
+	comparison hasValue ">="
+	version hasValue "9.3.0-3~"
+
+relationInstance depends(P0__gcc_sparc64_linux_gnu,1,DepAtom__1)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology emdebian_archive_keyring
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__emdebian_archive_keyring memberOf Package
+	package hasValue "emdebian-archive-keyring"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/utils"
+	installedSize hasValue "16"
+	maintainer hasValue "Original-Wookey <wookey@debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.2"
+	fileName hasValue "pool/universe/e/emdebian-archive-keyring/emdebian-archive-keyring_2.2_all.deb"
+	size hasValue "4810"
+	md5sum hasValue "439a16747b49e8eb1d823917ff6051fa"
+	sha1 hasValue "95a7c3ebcff25ba81ee4f2bdf91d7e2cfe0c166f"
+	sha256 hasValue "fa4fd1bcabc973ac948bb7cccc77ee24a7ee3389b5d0c83408bed1afd3621522"
+	descriptionMd5 hasValue "e0e4b793510000122dd93f02558bb9cb"
+	homepage hasValue "http://www.emdebian.org/crush/keys.html"
+	depends hasValue "apt, gnupg"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "apt"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__emdebian_archive_keyring,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "gnupg"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__emdebian_archive_keyring,1,DepAtom__1)
+

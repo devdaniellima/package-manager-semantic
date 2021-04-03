@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gnokii_smsd_mysql
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gnokii_smsd_mysql memberOf Package
+	package hasValue "gnokii-smsd-mysql"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/comm"
+	installedSize hasValue "101"
+	maintainer hasValue "Original-Leo Costela <costela@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.6.31+dfsg-2ubuntu10"
+	fileName hasValue "pool/universe/g/gnokii/gnokii-smsd-mysql_0.6.31+dfsg-2ubuntu10_amd64.deb"
+	size hasValue "7488"
+	md5sum hasValue "20c03c01d4b264c008b9bc349b0c446a"
+	sha1 hasValue "81ebc78374d58ca9b73ee2a638c7054543155d93"
+	sha256 hasValue "b0db9bd2cbc211e930d0759ea26c1f51e6aec522829aeab17f569c87333133d9"
+	description hasValue "SMSD plugin for MySQL storage backend"
+	descriptionMd5 hasValue "5f88f96ca50b2da31f0631ea14776e23"
+	homepage hasValue "http://gnokii.org"
+	depends hasValue "libc6 (>= 2.4), libmysqlclient21 (>= 8.0.11), gnokii-smsd (= 0.6.31+dfsg-2ubuntu10)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__gnokii_smsd_mysql,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libmysqlclient21"
+	comparison hasValue ">="
+	version hasValue "8.0.11"
+
+relationInstance depends(P0__gnokii_smsd_mysql,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "gnokii-smsd"
+	comparison hasValue "="
+	version hasValue "0.6.31+dfsg-2ubuntu10"
+
+relationInstance depends(P0__gnokii_smsd_mysql,2,DepAtom__2)
+

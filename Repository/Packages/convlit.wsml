@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology convlit
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__convlit memberOf Package
+	package hasValue "convlit"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/utils"
+	installedSize hasValue "152"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.8-2"
+	fileName hasValue "pool/universe/c/convlit/convlit_1.8-2_amd64.deb"
+	size hasValue "51056"
+	md5sum hasValue "1b565d02645e9c3f0aeeffc91a72bde9"
+	sha1 hasValue "3b9b4e48c1c3aafe2faa2ce297f2476bff3bc0ab"
+	sha256 hasValue "b6b00e07fa61820f732e9e734f1ab0c35e33c2a9ff9eb0d9d90a1671cd5f6ec6"
+	description hasValue "converte arquivos Microsoft Reader .LIT para HTML"
+	descriptionMd5 hasValue "fae1ebf3b0ed76581dd866b4dc7b881b"
+	homepage hasValue "https://www.kyzer.me.uk/pack/convlit/"
+	depends hasValue "libc6 (>= 2.14), libtommath1 (>= 1.1.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__convlit,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libtommath1"
+	comparison hasValue ">="
+	version hasValue "1.1.0"
+
+relationInstance depends(P0__convlit,1,DepAtom__1)
+

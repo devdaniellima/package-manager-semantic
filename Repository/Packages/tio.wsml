@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology tio
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__tio memberOf Package
+	package hasValue "tio"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/comm"
+	installedSize hasValue "54"
+	maintainer hasValue "Original-Jakob Haufe <sur5r@sur5r.net>"
+	architecture hasValue "amd64"
+	version hasValue "1.32-1"
+	fileName hasValue "pool/universe/t/tio/tio_1.32-1_amd64.deb"
+	size hasValue "14708"
+	md5sum hasValue "6314f120e511a86013fe930969a5abeb"
+	sha1 hasValue "02a0dec27a8354a6c2bdabce4995dcdd58ae68f0"
+	sha256 hasValue "b7ba688cf5610e64a701c3827af66e0b7d29f6aef19103f3b36bed667185ab95"
+	descriptionMd5 hasValue "02a873baf326602af05c0e25e65f9478"
+	homepage hasValue "http://tio.github.io/"
+	depends hasValue "libc6 (>= 2.15)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__tio,0,DepAtom__0)
+

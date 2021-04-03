@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology r_cran_segmented
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__r_cran_segmented memberOf Package
+	package hasValue "r-cran-segmented"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/gnu-r"
+	installedSize hasValue "525"
+	maintainer hasValue "Original-Debian R Packages Maintainers <r-pkg-team@alioth-lists.debian.net>"
+	architecture hasValue "all"
+	version hasValue "1.1-0-1"
+	fileName hasValue "pool/universe/r/r-cran-segmented/r-cran-segmented_1.1-0-1_all.deb"
+	size hasValue "480088"
+	md5sum hasValue "c4ed078047ff6c2c3eadd7e02e180903"
+	sha1 hasValue "c8d2bf919a72a30cdb0d16bccb290164e5914b5c"
+	sha256 hasValue "f622005b0f7943f90a2306462a52d320bd20209f54e7db38c85249304683ed59"
+	descriptionMd5 hasValue "47d113fc43b1a9675feb64b8f23f91e5"
+	homepage hasValue "https://cran.r-project.org/package=segmented"
+	depends hasValue "r-base-core (>= 3.6.2-2), r-api-3.5"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "r-base-core"
+	comparison hasValue ">="
+	version hasValue "3.6.2-2"
+
+relationInstance depends(P0__r_cran_segmented,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "r-api-3.5"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__r_cran_segmented,1,DepAtom__1)
+

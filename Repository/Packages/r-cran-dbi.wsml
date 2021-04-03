@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology r_cran_dbi
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__r_cran_dbi memberOf Package
+	package hasValue "r-cran-dbi"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/math"
+	installedSize hasValue "1066"
+	maintainer hasValue "Original-Dirk Eddelbuettel <edd@debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.1.0-2"
+	fileName hasValue "pool/universe/d/dbi/r-cran-dbi_1.1.0-2_all.deb"
+	size hasValue "550612"
+	md5sum hasValue "a934f8953f48433968e8fd3507119256"
+	sha1 hasValue "ff93d7e0c9b228d1c0cef51cbc5976cddc62c9a5"
+	sha256 hasValue "e1dab4b89af12ca0716a6f25b277f6b8e648e1dbc1ba0147b9b50ca583807817"
+	descriptionMd5 hasValue "dc00e91ab4b239de079502722ee124b8"
+	homepage hasValue "https://cran.r-project.org/package=DBI"
+	depends hasValue "r-base-core (>= 3.6.2-2), r-api-3.5"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "r-base-core"
+	comparison hasValue ">="
+	version hasValue "3.6.2-2"
+
+relationInstance depends(P0__r_cran_dbi,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "r-api-3.5"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__r_cran_dbi,1,DepAtom__1)
+

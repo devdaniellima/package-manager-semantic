@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology lua_curses
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__lua_curses memberOf Package
+	package hasValue "lua-curses"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "245"
+	maintainer hasValue "Original-Sophie Brun <sophie@freexian.com>"
+	architecture hasValue "amd64"
+	version hasValue "1:9.0.0-2build1"
+	provides hasValue "lua5.1-curses, lua5.2-curses, lua5.3-curses"
+	fileName hasValue "pool/universe/l/lua-curses/lua-curses_9.0.0-2build1_amd64.deb"
+	size hasValue "38104"
+	md5sum hasValue "50af0b2dc9b716e6fd1c352300920936"
+	sha1 hasValue "252eedc8ce5281b42fd01811dc0cde25df9d27e3"
+	sha256 hasValue "e436a444ab19131eed07656f0537d170165f22bdc83c94dc898b5a151085246c"
+	descriptionMd5 hasValue "88a0117af6c8f0547c21c03b6478ae9c"
+	homepage hasValue "https://github.com/lcurses/lcurses"
+	depends hasValue "libc6 (>= 2.14), libncursesw6 (>= 6), libtinfo6 (>= 6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__lua_curses,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libncursesw6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__lua_curses,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libtinfo6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__lua_curses,2,DepAtom__2)
+

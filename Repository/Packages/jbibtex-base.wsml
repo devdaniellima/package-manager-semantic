@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology jbibtex_base
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__jbibtex_base memberOf Package
+	package hasValue "jbibtex-base"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/tex"
+	installedSize hasValue "333"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1:2.5-3"
+	fileName hasValue "pool/universe/p/ptex-base/jbibtex-base_2.5-3_all.deb"
+	size hasValue "87810"
+	md5sum hasValue "2908c9fa8c8dd264e7f37851ca0a752f"
+	sha1 hasValue "1982b818417ed6317282d753ba78ba8a79c9899a"
+	sha256 hasValue "f0bf1285239fb6d869f74e40d260d1dffb17ff7a71ef52e530fbe7e8b029e028"
+	description hasValue "Faz uma bibliografia para p(La)TeX ASCII / j(La)TeX NTT."
+	descriptionMd5 hasValue "6c6a61b50529b4e40a627054df0adaa0"
+	depends hasValue "texlive-base, texlive-base-bin, tex-common (>= 6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "texlive-base"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__jbibtex_base,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "texlive-base-bin"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__jbibtex_base,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "tex-common"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__jbibtex_base,2,DepAtom__2)
+

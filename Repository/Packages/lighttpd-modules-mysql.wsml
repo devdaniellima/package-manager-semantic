@@ -1,0 +1,69 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology lighttpd_modules_mysql
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__lighttpd_modules_mysql memberOf Package
+	package hasValue "lighttpd-modules-mysql"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/httpd"
+	installedSize hasValue "60"
+	maintainer hasValue "Original-Debian lighttpd maintainers <team+lighttpd@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.4.55-1ubuntu1"
+	replaces hasValue "lighttpd (<< 1.4.52-2+exp1), lighttpd-mod-authn-mysql (<< 1.4.52-2+exp1), lighttpd-mod-mysql-vhost (<< 1.4.52-2+exp1)"
+	provides hasValue "lighttpd-mod-authn-mysql, lighttpd-mod-mysql-vhost, lighttpd-mod-vhostdb-mysql"
+	fileName hasValue "pool/universe/l/lighttpd/lighttpd-modules-mysql_1.4.55-1ubuntu1_amd64.deb"
+	size hasValue "10784"
+	md5sum hasValue "ad66a17902b636b8c61d8c8599729d0d"
+	sha1 hasValue "c538e882e415d5f1b94c98c603bcb8aa1df59918"
+	sha256 hasValue "5084c1a5940940f811c6269aa1c25ac5b1505afcc172c9ce9f328347bd740db4"
+	descriptionMd5 hasValue "7002a860fedabd68610e3a67ce44443e"
+	homepage hasValue "https://www.lighttpd.net/"
+	depends hasValue "lighttpd (= 1.4.55-1ubuntu1), libc6 (>= 2.4), libmysqlclient21 (>= 8.0.11)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "lighttpd"
+	comparison hasValue "="
+	version hasValue "1.4.55-1ubuntu1"
+
+relationInstance depends(P0__lighttpd_modules_mysql,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__lighttpd_modules_mysql,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libmysqlclient21"
+	comparison hasValue ">="
+	version hasValue "8.0.11"
+
+relationInstance depends(P0__lighttpd_modules_mysql,2,DepAtom__2)
+

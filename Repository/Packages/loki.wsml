@@ -1,0 +1,52 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology loki
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__loki memberOf Package
+	package hasValue "loki"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/science"
+	installedSize hasValue "903"
+	maintainer hasValue "Original-Debian Med Packaging Team <debian-med-packaging@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.4.7.4-10"
+	fileName hasValue "pool/universe/l/loki/loki_2.4.7.4-10_amd64.deb"
+	size hasValue "357328"
+	md5sum hasValue "ec2a492a698b8d70a33efb8a2c1acbd7"
+	sha1 hasValue "0da81b1615e69b4b1cc7287f5ba1bb5d7ff520a6"
+	sha256 hasValue "c1fd80ce967780bd3a5005c62cfe5d31567fa73655b40e0c5ca01ae76451c2b7"
+	descriptionMd5 hasValue "bf9b5e908e674606bad9899b907430d7"
+	depends hasValue "libc6 (>= 2.29)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__loki,0,DepAtom__0)
+

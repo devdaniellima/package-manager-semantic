@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology r_cran_praise
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__r_cran_praise memberOf Package
+	package hasValue "r-cran-praise"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/gnu-r"
+	installedSize hasValue "63"
+	maintainer hasValue "Original-Debian R Packages Maintainers <r-pkg-team@alioth-lists.debian.net>"
+	architecture hasValue "all"
+	version hasValue "1.0.0-3"
+	fileName hasValue "pool/universe/r/r-cran-praise/r-cran-praise_1.0.0-3_all.deb"
+	size hasValue "19772"
+	md5sum hasValue "83d82cbe77d891622fbc9566ba9add25"
+	sha1 hasValue "8c31eaa964a046a5dcf9086e6a8bda8ccaac33ac"
+	sha256 hasValue "5247b8f30e939d811b57293b0b08bff13f55227f662070e7289edf71c0889496"
+	descriptionMd5 hasValue "217c17574646d95f8a22e41082d14afc"
+	homepage hasValue "https://cran.r-project.org/package=praise"
+	depends hasValue "r-base-core (>= 3.5.0-5), r-api-3.5"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "r-base-core"
+	comparison hasValue ">="
+	version hasValue "3.5.0-5"
+
+relationInstance depends(P0__r_cran_praise,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "r-api-3.5"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__r_cran_praise,1,DepAtom__1)
+

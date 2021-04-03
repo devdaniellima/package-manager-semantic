@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology tachyon_bin_nox
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__tachyon_bin_nox memberOf Package
+	package hasValue "tachyon-bin-nox"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/math"
+	installedSize hasValue "110"
+	maintainer hasValue "Original-Debian Science Maintainers <debian-science-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.99~b6+dsx-9"
+	provides hasValue "tachyon-bin"
+	fileName hasValue "pool/universe/t/tachyon/tachyon-bin-nox_0.99~b6+dsx-9_amd64.deb"
+	size hasValue "35996"
+	md5sum hasValue "b875a366e4a371234b8c5a6d805d6b00"
+	sha1 hasValue "a7f407e322c2bd9573ab4a8f9a695c79d5d2ea75"
+	sha256 hasValue "2a373fe6b40a1761fac8da50c0bdedc221569724acff9f19d43eeb83a37736f4"
+	descriptionMd5 hasValue "03dab2bfabf9e58410f0166400605a79"
+	homepage hasValue "http://jedi.ks.uiuc.edu/~johns/raytracer/"
+	depends hasValue "libtachyon-mt-0 (= 0.99~b6+dsx-9) | libtachyon, libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libtachyon-mt-0"
+	comparison hasValue "="
+	version hasValue "0.99~b6+dsx-9"
+
+relationInstance depends(P0__tachyon_bin_nox,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libtachyon"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__tachyon_bin_nox,0,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__tachyon_bin_nox,1,DepAtom__2)
+

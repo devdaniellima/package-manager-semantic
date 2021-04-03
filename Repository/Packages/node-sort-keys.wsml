@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology node_sort_keys
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__node_sort_keys memberOf Package
+	package hasValue "node-sort-keys"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/javascript"
+	installedSize hasValue "16"
+	maintainer hasValue "Original-Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.0.0-2"
+	fileName hasValue "pool/universe/n/node-sort-keys/node-sort-keys_2.0.0-2_all.deb"
+	size hasValue "3760"
+	md5sum hasValue "8ed31d23de9ce95b163224255d300dde"
+	sha1 hasValue "016e86a47f2eacfc19333ad1ba26180f57a392b5"
+	sha256 hasValue "555f4cb6b39c0c5c74da5527d30e1b08914d137b39d48943b9976e0f21c607d3"
+	descriptionMd5 hasValue "278751e9072a1e2372f429f7ef95669f"
+	homepage hasValue "https://github.com/sindresorhus/sort-keys#readme"
+	depends hasValue "nodejs, node-is-plain-obj (>= 1.0.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "nodejs"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__node_sort_keys,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "node-is-plain-obj"
+	comparison hasValue ">="
+	version hasValue "1.0.0"
+
+relationInstance depends(P0__node_sort_keys,1,DepAtom__1)
+

@@ -1,0 +1,69 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology siege
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__siege memberOf Package
+	package hasValue "siege"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "web"
+	installedSize hasValue "271"
+	maintainer hasValue "Original-Josue Abarca <jmaslibre@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "4.0.4-1build1"
+	replaces hasValue "siege-ssl"
+	conflicts hasValue "siege-ssl"
+	fileName hasValue "pool/main/s/siege/siege_4.0.4-1build1_amd64.deb"
+	size hasValue "98348"
+	md5sum hasValue "e914fad67741344c31c0e6efdfc0cf85"
+	sha1 hasValue "4f57f6a650c085f6c5fee60582dffcc280daf877"
+	sha256 hasValue "03bea86dd86b4ff14e9d1a75a9ee23e702a5101e255214b09a8b800021ecbff4"
+	descriptionMd5 hasValue "1effcb97a2aa1b9b4c5c8a40d7e3d65a"
+	homepage hasValue "http://www.joedog.org/JoeDog/Siege"
+	depends hasValue "libc6 (>= 2.15), libssl1.1 (>= 1.1.0), zlib1g (>= 1:1.1.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__siege,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libssl1.1"
+	comparison hasValue ">="
+	version hasValue "1.1.0"
+
+relationInstance depends(P0__siege,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "zlib1g"
+	comparison hasValue ">="
+	version hasValue "1:1.1.4"
+
+relationInstance depends(P0__siege,2,DepAtom__2)
+

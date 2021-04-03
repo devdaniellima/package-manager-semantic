@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology php_pcov
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__php_pcov memberOf Package
+	package hasValue "php-pcov"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/php"
+	installedSize hasValue "67"
+	maintainer hasValue "Original-Debian PHP PECL Maintainers <team+php-pecl@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.6-2build1"
+	provides hasValue "php7.4-pcov"
+	fileName hasValue "pool/universe/p/php-pcov/php-pcov_1.0.6-2build1_amd64.deb"
+	size hasValue "17828"
+	md5sum hasValue "02ec9269bf423491a79da2f87ecfa8fc"
+	sha1 hasValue "2fd12d6378b5e56475dd55cba52e4e3e68978451"
+	sha256 hasValue "44170d72ccb028fcdd60406611b123c1bab7a28b95574971e713f852c985ee69"
+	descriptionMd5 hasValue "ad805c48fd061e54adbf6ee0eca66419"
+	homepage hasValue "http://pecl.php.net/package/pcov"
+	depends hasValue "phpapi-20190902, libc6 (>= 2.25)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "phpapi-20190902"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__php_pcov,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.25"
+
+relationInstance depends(P0__php_pcov,1,DepAtom__1)
+

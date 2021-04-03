@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libodbc1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libodbc1 memberOf Package
+	package hasValue "libodbc1"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "libs"
+	installedSize hasValue "609"
+	maintainer hasValue "Original-Steve Langasek <vorlon@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.3.6-0.1build1"
+	replaces hasValue "unixodbc (<< 2.2.14p2-3)"
+	fileName hasValue "pool/main/u/unixodbc/libodbc1_2.3.6-0.1build1_amd64.deb"
+	size hasValue "189492"
+	md5sum hasValue "48e9a012567caae448a30a4c93a61d71"
+	sha1 hasValue "02ffa4bb8ac1d094baf150f8034f61d51b6a8cc1"
+	sha256 hasValue "59ac60f7462e019ec19e615133fd8393853747bda3c1620e922a1d1ba49a4bf8"
+	description hasValue "biblioteca ODBC para Linux"
+	descriptionMd5 hasValue "6dfec09e9b2b93be03da7503d10a1a4d"
+	homepage hasValue "http://www.unixodbc.org/"
+	depends hasValue "libc6 (>= 2.14), libltdl7 (>= 2.4.6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libodbc1,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libltdl7"
+	comparison hasValue ">="
+	version hasValue "2.4.6"
+
+relationInstance depends(P0__libodbc1,1,DepAtom__1)
+

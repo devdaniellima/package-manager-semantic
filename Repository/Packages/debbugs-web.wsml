@@ -1,0 +1,76 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology debbugs_web
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__debbugs_web memberOf Package
+	package hasValue "debbugs-web"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/misc"
+	installedSize hasValue "229"
+	maintainer hasValue "Original-Debbugs developers <debian-debbugs@lists.debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.6.0ubuntu1"
+	replaces hasValue "debbugs (<< 2.4.2)"
+	fileName hasValue "pool/universe/d/debbugs/debbugs-web_2.6.0ubuntu1_all.deb"
+	size hasValue "44068"
+	md5sum hasValue "2446540f1a557c309f505142292a43ad"
+	sha1 hasValue "2b94c90868ade3fe346971f9be4347030b1e87ec"
+	sha256 hasValue "f775215c7f06392ad253c05a84044a5cfc10f074659f9f4b4ca2e11436c5f5eb"
+	description hasValue "web scripts for the active Debian BTS"
+	descriptionMd5 hasValue "d8b5fc50cac8441948e1a103bc9b11e6"
+	homepage hasValue "https://salsa.debian.org/debbugs-team"
+	depends hasValue "perl:any, libdebbugs-perl, apache2 | httpd"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "perl:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__debbugs_web,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libdebbugs-perl"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__debbugs_web,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "apache2"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__debbugs_web,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "httpd"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__debbugs_web,2,DepAtom__3)
+

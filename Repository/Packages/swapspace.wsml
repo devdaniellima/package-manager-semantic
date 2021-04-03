@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology swapspace
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__swapspace memberOf Package
+	package hasValue "swapspace"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "88"
+	maintainer hasValue "Original-Jacob Adams <tookmund@gmail.com>"
+	architecture hasValue "amd64"
+	version hasValue "1.14-1"
+	fileName hasValue "pool/universe/s/swapspace/swapspace_1.14-1_amd64.deb"
+	size hasValue "23728"
+	md5sum hasValue "30adaf24b3e5f2f40873d6108182411c"
+	sha1 hasValue "d4ffbd0eaf488262ac723fb69a1a2777b3c3f2e3"
+	sha256 hasValue "349c08d15e8c43e6f889dd412f67231bcc1ad4a113d00b89e6a11f09f4f7ea91"
+	descriptionMd5 hasValue "87f8da87fae6d83376ed403d47d59f17"
+	homepage hasValue "https://github.com/Tookmund/Swapspace"
+	depends hasValue "libc6 (>= 2.7)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__swapspace,0,DepAtom__0)
+

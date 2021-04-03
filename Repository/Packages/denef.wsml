@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology denef
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__denef memberOf Package
+	package hasValue "denef"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/graphics"
+	installedSize hasValue "86"
+	maintainer hasValue "Original-Hubert Figuiere <hub@figuiere.net>"
+	architecture hasValue "amd64"
+	version hasValue "0.3-0ubuntu7"
+	fileName hasValue "pool/universe/d/denef/denef_0.3-0ubuntu7_amd64.deb"
+	size hasValue "27600"
+	md5sum hasValue "f89482151026ff1605276cc183f5c44b"
+	sha1 hasValue "40ac2427dc2731959ee64b4f52c103a148af7f65"
+	sha256 hasValue "2b916e1482a9d196ed1a50e315039bb6c1ce26abb783994235ad0cefbac169ef"
+	descriptionMd5 hasValue "6c1eee2d629b664c9ef9791d683f6f4a"
+	homepage hasValue "http://www.cheeseplant.org/~daniel/pages/denef.html"
+	depends hasValue "libc6 (>= 2.29), libgcc-s1 (>= 3.0), libstdc++6 (>= 5.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__denef,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libgcc-s1"
+	comparison hasValue ">="
+	version hasValue "3.0"
+
+relationInstance depends(P0__denef,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "5.2"
+
+relationInstance depends(P0__denef,2,DepAtom__2)
+

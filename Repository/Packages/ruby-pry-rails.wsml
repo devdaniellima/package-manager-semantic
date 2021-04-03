@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ruby_pry_rails
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ruby_pry_rails memberOf Package
+	package hasValue "ruby-pry-rails"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/ruby"
+	installedSize hasValue "73"
+	maintainer hasValue "Original-Debian Ruby Extras Maintainers <pkg-ruby-extras-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.3.9-2"
+	fileName hasValue "pool/universe/r/ruby-pry-rails/ruby-pry-rails_0.3.9-2_all.deb"
+	size hasValue "9412"
+	md5sum hasValue "42f2f73c43ceb51338f548bee24086c7"
+	sha1 hasValue "2ebf7a7d7904921a859a016a55c2264fb0eaa76e"
+	sha256 hasValue "5158bfa07911c6360092f8dddae796196dd4e51d2a821aaa53d9715e30109257"
+	descriptionMd5 hasValue "1e6b207c0e08f48024b4cf9c1526b848"
+	homepage hasValue "https://github.com/rweng/pry-rails"
+	depends hasValue "ruby-railties, pry (>= 0.10.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "ruby-railties"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__ruby_pry_rails,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "pry"
+	comparison hasValue ">="
+	version hasValue "0.10.4"
+
+relationInstance depends(P0__ruby_pry_rails,1,DepAtom__1)
+

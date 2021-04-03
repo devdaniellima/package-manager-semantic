@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology numdiff
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__numdiff memberOf Package
+	package hasValue "numdiff"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/science"
+	installedSize hasValue "917"
+	maintainer hasValue "Original-Paolo Greppi <paolo.greppi@libpf.com>"
+	architecture hasValue "amd64"
+	version hasValue "5.9.0-1"
+	fileName hasValue "pool/universe/n/numdiff/numdiff_5.9.0-1_amd64.deb"
+	size hasValue "591964"
+	md5sum hasValue "5ecd9cc5d5a328dec3652b9c39e04365"
+	sha1 hasValue "f072f8c298f6285389f639839aa7004e00cbcef5"
+	sha256 hasValue "c8f2bf1b8b7d54059ffcee748629a1b414527be86d67581cbbb0c1a9082f0715"
+	descriptionMd5 hasValue "d9c5cf165ee564bb30ecf8042b26e2a7"
+	homepage hasValue "http://nongnu.org/numdiff/"
+	depends hasValue "libc6 (>= 2.17), dpkg (>= 1.15.4) | install-info"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.17"
+
+relationInstance depends(P0__numdiff,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "dpkg"
+	comparison hasValue ">="
+	version hasValue "1.15.4"
+
+relationInstance depends(P0__numdiff,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "install-info"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__numdiff,1,DepAtom__2)
+

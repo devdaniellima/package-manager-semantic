@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology r_cran_remotes
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__r_cran_remotes memberOf Package
+	package hasValue "r-cran-remotes"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/gnu-r"
+	installedSize hasValue "643"
+	maintainer hasValue "Original-Debian R Packages Maintainers <r-pkg-team@alioth-lists.debian.net>"
+	architecture hasValue "all"
+	version hasValue "2.1.1-1"
+	fileName hasValue "pool/universe/r/r-cran-remotes/r-cran-remotes_2.1.1-1_all.deb"
+	size hasValue "373612"
+	md5sum hasValue "38d554cad0c2efb42a00187f30fdceac"
+	sha1 hasValue "5b29024c2f3c062a968e898024068f90788dc481"
+	sha256 hasValue "47f0f50820eef8ea794e8f1353a59ae3debd504cc5c1d4350e7bdc20af1ba9ad"
+	descriptionMd5 hasValue "4c8110c4b0e599d12b2c42bef7e54f0c"
+	homepage hasValue "https://cran.r-project.org/package=remotes"
+	depends hasValue "r-base-core (>= 3.6.2-2build1), r-api-3.5"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "r-base-core"
+	comparison hasValue ">="
+	version hasValue "3.6.2-2build1"
+
+relationInstance depends(P0__r_cran_remotes,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "r-api-3.5"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__r_cran_remotes,1,DepAtom__1)
+

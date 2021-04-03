@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ocaml_qtest
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ocaml_qtest memberOf Package
+	package hasValue "ocaml-qtest"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/ocaml"
+	installedSize hasValue "987"
+	maintainer hasValue "Original-Debian OCaml Maintainers <debian-ocaml-maint@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.10.1-2"
+	fileName hasValue "pool/universe/o/ocaml-qtest/ocaml-qtest_2.10.1-2_amd64.deb"
+	size hasValue "257496"
+	md5sum hasValue "1b0ccdceebe2fab694e003f01d853246"
+	sha1 hasValue "86e2a1c57f2a17ee1f396df8f296d8e0d63bc948"
+	sha256 hasValue "d56a17b3aa8af6c38db6ee5db82c812b3358d6e27c53c73f89729642350d3aff"
+	descriptionMd5 hasValue "35c7c3131bb713325bc9948bcc50712a"
+	homepage hasValue "https://github.com/vincent-hugot/qtest"
+	depends hasValue "libc6 (>= 2.29)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__ocaml_qtest,0,DepAtom__0)
+

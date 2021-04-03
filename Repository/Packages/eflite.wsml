@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology eflite
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__eflite memberOf Package
+	package hasValue "eflite"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/sound"
+	installedSize hasValue "67"
+	maintainer hasValue "Original-Debian Accessibility Team <pkg-a11y-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.4.1-10"
+	fileName hasValue "pool/universe/e/eflite/eflite_0.4.1-10_amd64.deb"
+	size hasValue "18264"
+	md5sum hasValue "e4f398fb507b73a6da53532900da1157"
+	sha1 hasValue "d3c2b64d0fed33c25b46e21c60b66ec06e28a8d3"
+	sha256 hasValue "5c132b794fc7c8741d14f46a6c06f7c0e085e812502b08740edf862c9a2eabce"
+	description hasValue "servidor de voz emacspeak baseado no Festival-Lite"
+	descriptionMd5 hasValue "e845a2eb6f119fe11f3e3b4633fdbac3"
+	homepage hasValue "http://eflite.sourceforge.net/"
+	depends hasValue "libc6 (>= 2.29), libflite1 (>= 1.4-release-9~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.29"
+
+relationInstance depends(P0__eflite,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libflite1"
+	comparison hasValue ">="
+	version hasValue "1.4-release-9~"
+
+relationInstance depends(P0__eflite,1,DepAtom__1)
+

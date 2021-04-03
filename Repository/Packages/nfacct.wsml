@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology nfacct
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__nfacct memberOf Package
+	package hasValue "nfacct"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "35"
+	maintainer hasValue "Original-Debian Netfilter Packaging Team <pkg-netfilter-team@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.2-2"
+	fileName hasValue "pool/universe/n/nfacct/nfacct_1.0.2-2_amd64.deb"
+	size hasValue "9648"
+	md5sum hasValue "da2c9e9e0a6ed6c801a85fc62b0832ad"
+	sha1 hasValue "355b26848d53443f7bdba287d36469888c69379d"
+	sha256 hasValue "37d525d6781394240cb6d6c00de906d1357d2d550ae43ead35d741edc47750da"
+	description hasValue "ferramenta de objetos de contabilidade do netfilter"
+	descriptionMd5 hasValue "2e8fa079f18fa788fcfae43ba123bcee"
+	homepage hasValue "https://netfilter.org/projects/nfacct/"
+	depends hasValue "libc6 (>= 2.7), libmnl0 (>= 1.0.3-4~), libnetfilter-acct1"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__nfacct,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libmnl0"
+	comparison hasValue ">="
+	version hasValue "1.0.3-4~"
+
+relationInstance depends(P0__nfacct,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libnetfilter-acct1"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__nfacct,2,DepAtom__2)
+

@@ -1,0 +1,75 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology check
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__check memberOf Package
+	package hasValue "check"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "407"
+	maintainer hasValue "Original-Robert Lemmen <robertle@semistable.com>"
+	architecture hasValue "amd64"
+	version hasValue "0.10.0-3build2"
+	fileName hasValue "pool/universe/c/check/check_0.10.0-3build2_amd64.deb"
+	size hasValue "165528"
+	md5sum hasValue "250828c68d53aa3c13e0a7cc7ca5530b"
+	sha1 hasValue "6eed9dfb3f754b5c2b0046f501ae802106b0c50c"
+	sha256 hasValue "4d5fc83d6d0cf8fd7b838b3a539495f13a90493032646adeb363b71ad6138737"
+	description hasValue "infra-estrutura de teste de unidade para C"
+	descriptionMd5 hasValue "a51fdfa929f98fb924854b88bd42548c"
+	homepage hasValue "http://check.sourceforge.net/"
+	depends hasValue "dpkg (>= 1.15.4) | install-info, mawk, libsubunit-dev"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "dpkg"
+	comparison hasValue ">="
+	version hasValue "1.15.4"
+
+relationInstance depends(P0__check,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "install-info"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__check,0,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "mawk"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__check,1,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "libsubunit-dev"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__check,2,DepAtom__3)
+

@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology node_psl
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__node_psl memberOf Package
+	package hasValue "node-psl"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/javascript"
+	installedSize hasValue "150"
+	maintainer hasValue "Original-Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.7.0+ds-1"
+	fileName hasValue "pool/universe/p/psl.js/node-psl_1.7.0+ds-1_all.deb"
+	size hasValue "36748"
+	md5sum hasValue "72d953ad78174edd147e608577e7b21f"
+	sha1 hasValue "11425a87ce5ae301d5264da795e4b58fea04020b"
+	sha256 hasValue "9d046beec7df64ea66a70897ede18bdc714e338af198a68ded4e5304afc06cd8"
+	descriptionMd5 hasValue "ab7e724de880f8afc98d2572b3cddd22"
+	homepage hasValue "https://github.com/lupomontero/psl#readme"
+	depends hasValue "libjs-psl, node-punycode, nodejs (>= 6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libjs-psl"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__node_psl,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "node-punycode"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__node_psl,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "nodejs"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__node_psl,2,DepAtom__2)
+

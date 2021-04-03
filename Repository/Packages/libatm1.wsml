@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libatm1
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libatm1 memberOf Package
+	package hasValue "libatm1"
+	packageSource hasValue Source__S1
+	priority hasValue "important"
+	section hasValue "libs"
+	installedSize hasValue "109"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:2.5.1-4"
+	fileName hasValue "pool/main/l/linux-atm/libatm1_2.5.1-4_amd64.deb"
+	size hasValue "21808"
+	md5sum hasValue "9b5489021ee26f881b4d75c2cdc6b96b"
+	sha1 hasValue "f883954b8ba8c6fe6940f4ba4d5f6306cd01b376"
+	sha256 hasValue "667a0d6baa83371f6544d9d358312c268367bde1cc6dbaaa6e655ed993c0ff74"
+	description hasValue "biblioteca compartilhada para ATM (Asynchronous Transfer Mode)"
+	descriptionMd5 hasValue "f31a6a0202925696ffa68472e483852e"
+	homepage hasValue "http://linux-atm.sourceforge.net/"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libatm1,0,DepAtom__0)
+

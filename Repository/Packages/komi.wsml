@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology komi
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__komi memberOf Package
+	package hasValue "komi"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/games"
+	installedSize hasValue "1700"
+	maintainer hasValue "Original-Brandon Barnes <winterknight@nerdshack.com>"
+	architecture hasValue "amd64"
+	version hasValue "1.04-5build1"
+	fileName hasValue "pool/universe/k/komi/komi_1.04-5build1_amd64.deb"
+	size hasValue "873260"
+	md5sum hasValue "027555a17ed09cc0148adaa7af2b5857"
+	sha1 hasValue "907cfa5eaa55315165c81598853328770f64bb21"
+	sha256 hasValue "ffa65f952f1d1681a86f910dc32bc5cd3062f1346361d335c066001cceffdafc"
+	descriptionMd5 hasValue "4231b289009acb1295fdb0072ef6ccb3"
+	homepage hasValue "http://komi.sf.net"
+	depends hasValue "libc6 (>= 2.4), libsdl-mixer1.2, libsdl1.2debian (>= 1.2.11)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__komi,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libsdl-mixer1.2"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__komi,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libsdl1.2debian"
+	comparison hasValue ">="
+	version hasValue "1.2.11"
+
+relationInstance depends(P0__komi,2,DepAtom__2)
+

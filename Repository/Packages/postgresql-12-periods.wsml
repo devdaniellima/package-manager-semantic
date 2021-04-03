@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology postgresql_12_periods
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__postgresql_12_periods memberOf Package
+	package hasValue "postgresql-12-periods"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/database"
+	installedSize hasValue "364"
+	maintainer hasValue "Original-Debian PostgreSQL Maintainers <team+postgresql@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.1-1"
+	fileName hasValue "pool/universe/p/postgresql-periods/postgresql-12-periods_1.1-1_amd64.deb"
+	size hasValue "45172"
+	md5sum hasValue "f5630d611ce53ad29c178612c8531691"
+	sha1 hasValue "8dd31b2d5991d56d748f77aea906c5ba5c6b4fd9"
+	sha256 hasValue "af7f4034b9c7a378ba60117847f3b7c904bd3ef4ce8f55c020c92844c61aeebb"
+	descriptionMd5 hasValue "e63c84484b236c5241205542b9c562d3"
+	homepage hasValue "https://github.com/xocolatl/periods"
+	depends hasValue "postgresql-12, libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "postgresql-12"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__postgresql_12_periods,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__postgresql_12_periods,1,DepAtom__1)
+

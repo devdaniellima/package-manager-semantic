@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology kpatch
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__kpatch memberOf Package
+	package hasValue "kpatch"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/kernel"
+	installedSize hasValue "41"
+	maintainer hasValue "Original-Chris J Arges <chris.j.arges@canonical.com>"
+	architecture hasValue "amd64"
+	version hasValue "0.8.0-0ubuntu2"
+	replaces hasValue "kpatch-dkms"
+	fileName hasValue "pool/universe/k/kpatch/kpatch_0.8.0-0ubuntu2_amd64.deb"
+	size hasValue "17304"
+	md5sum hasValue "9f1708dd3a91e30fa5f1ca43d29dca4f"
+	sha1 hasValue "5f8a84be1cf2fda9f9c1f0bbc7688274795e1972"
+	sha256 hasValue "ac74ea6664d55a76360f5111c0e3441945192fcb67ea0b4e48bd4bedb1be15b3"
+	descriptionMd5 hasValue "b40bb7cc8d2040c3fd10f40569b93874"
+	homepage hasValue "http://github.com/dynup/kpatch"
+	depends hasValue "linux-headers-amd64 | linux-headers-generic"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "linux-headers-amd64"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__kpatch,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "linux-headers-generic"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__kpatch,0,DepAtom__1)
+

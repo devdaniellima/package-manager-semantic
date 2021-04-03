@@ -1,0 +1,75 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology exiv2
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__exiv2 memberOf Package
+	package hasValue "exiv2"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/graphics"
+	installedSize hasValue "306"
+	maintainer hasValue "Original-Debian KDE Extras Team <pkg-kde-extras@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.27.2-8ubuntu2"
+	fileName hasValue "pool/universe/e/exiv2/exiv2_0.27.2-8ubuntu2_amd64.deb"
+	size hasValue "96584"
+	md5sum hasValue "4bff6200d56beb64fcf3a3cd2496f6be"
+	sha1 hasValue "1c3ebb2e2e3c14f22f286d9f59b259a497ee6423"
+	sha256 hasValue "ac9e7ee09bda7ff4fd786a7fdb3f0e963d6051060d69d8acd82d493dce0109c5"
+	description hasValue "EXIF/IPTC/XMP metadata manipulation tool"
+	descriptionMd5 hasValue "aeba4b7189f937a626d0f2ef05b13cbb"
+	homepage hasValue "https://www.exiv2.org/"
+	depends hasValue "libexiv2-27 (= 0.27.2-8ubuntu2), libc6 (>= 2.14), libgcc-s1 (>= 3.0), libstdc++6 (>= 5.2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libexiv2-27"
+	comparison hasValue "="
+	version hasValue "0.27.2-8ubuntu2"
+
+relationInstance depends(P0__exiv2,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__exiv2,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libgcc-s1"
+	comparison hasValue ">="
+	version hasValue "3.0"
+
+relationInstance depends(P0__exiv2,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "5.2"
+
+relationInstance depends(P0__exiv2,3,DepAtom__3)
+

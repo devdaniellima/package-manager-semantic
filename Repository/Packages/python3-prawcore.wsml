@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python3_prawcore
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python3_prawcore memberOf Package
+	package hasValue "python3-prawcore"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "59"
+	maintainer hasValue "Original-Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.0.1-1"
+	fileName hasValue "pool/universe/p/prawcore/python3-prawcore_1.0.1-1_all.deb"
+	size hasValue "12512"
+	md5sum hasValue "4a498547af9898e2478e1f9bdce30ed3"
+	sha1 hasValue "e42e79a8fe622933360113db551a6efda6cce696"
+	sha256 hasValue "1b666ac2005d0a096adefb96d06a0c228e7b28e16ac52dd8906b5a0e5e666794"
+	descriptionMd5 hasValue "628165a5eb05a2a1c05f9815ad447ccf"
+	homepage hasValue "https://pypi.python.org/pypi/prawcore"
+	depends hasValue "python3-requests (<< 3.0), python3:any (>= 3.6~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3-requests"
+	comparison hasValue "<<"
+	version hasValue "3.0"
+
+relationInstance depends(P0__python3_prawcore,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ">="
+	version hasValue "3.6~"
+
+relationInstance depends(P0__python3_prawcore,1,DepAtom__1)
+

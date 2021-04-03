@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libaprutil1_dbd_odbc
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libaprutil1_dbd_odbc memberOf Package
+	package hasValue "libaprutil1-dbd-odbc"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "63"
+	maintainer hasValue "Original-Debian Apache Maintainers <debian-apache@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.6.1-4ubuntu2"
+	fileName hasValue "pool/universe/a/apr-util/libaprutil1-dbd-odbc_1.6.1-4ubuntu2_amd64.deb"
+	size hasValue "16360"
+	md5sum hasValue "b240d1ecf4806368fd3bc4286fe573db"
+	sha1 hasValue "1e8491b7d2b02efa659357f5843582e8093244d1"
+	sha256 hasValue "3f8d33077fceda01bab33aba4ea9e49e8ef5d4df34f49376e79e6ef8c9ed5ee7"
+	descriptionMd5 hasValue "085602535c579227169d691cc9bd9db1"
+	homepage hasValue "http://apr.apache.org/"
+	depends hasValue "libaprutil1 (= 1.6.1-4ubuntu2), libc6 (>= 2.14), libodbc1 (>= 2.3.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libaprutil1"
+	comparison hasValue "="
+	version hasValue "1.6.1-4ubuntu2"
+
+relationInstance depends(P0__libaprutil1_dbd_odbc,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libaprutil1_dbd_odbc,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libodbc1"
+	comparison hasValue ">="
+	version hasValue "2.3.1"
+
+relationInstance depends(P0__libaprutil1_dbd_odbc,2,DepAtom__2)
+

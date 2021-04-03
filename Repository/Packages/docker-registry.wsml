@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology docker_registry
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__docker_registry memberOf Package
+	package hasValue "docker-registry"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/utils"
+	installedSize hasValue "18124"
+	maintainer hasValue "Original-Debian Go Packaging Team <team+pkg-go@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.7.1+ds2-7"
+	fileName hasValue "pool/universe/d/docker-registry/docker-registry_2.7.1+ds2-7_amd64.deb"
+	size hasValue "4801528"
+	md5sum hasValue "d0b6ae47864f715a1d1145801d6ad50b"
+	sha1 hasValue "b3e62d46bae28e0d3b694acef0597f8f78d3e64d"
+	sha256 hasValue "a2b01f621e5cee305d6953b0e60fe79086f9080f5bcc90852cd041e176eadedc"
+	descriptionMd5 hasValue "dec26d26103381d10d2cb2fbed09ab63"
+	homepage hasValue "https://github.com/docker/distribution"
+	depends hasValue "adduser, libc6 (>= 2.4), lsb-base"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "adduser"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__docker_registry,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__docker_registry,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "lsb-base"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__docker_registry,2,DepAtom__2)
+

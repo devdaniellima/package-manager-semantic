@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology hwinfo
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__hwinfo memberOf Package
+	package hasValue "hwinfo"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "89"
+	maintainer hasValue "Original-Sebastien Badia <sbadia@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "21.68-1"
+	fileName hasValue "pool/universe/h/hwinfo/hwinfo_21.68-1_amd64.deb"
+	size hasValue "18044"
+	md5sum hasValue "6e50d85f30122454f05a254ec274d321"
+	sha1 hasValue "23e560046011f8cadb64309f0524270e591279ba"
+	sha256 hasValue "5b234f3365a018d0985061428255575f1a2657cba23d227090cf6a16afe57b03"
+	description hasValue "Sistema de identificação de hardware"
+	descriptionMd5 hasValue "970442d853c387b8e2c5e7373c497270"
+	homepage hasValue "https://github.com/openSUSE/hwinfo"
+	depends hasValue "libc6 (>= 2.7), libhd21 (>= 21.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__hwinfo,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libhd21"
+	comparison hasValue ">="
+	version hasValue "21.0"
+
+relationInstance depends(P0__hwinfo,1,DepAtom__1)
+

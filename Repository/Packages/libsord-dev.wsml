@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libsord_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libsord_dev memberOf Package
+	package hasValue "libsord-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "55"
+	maintainer hasValue "Original-Debian Multimedia Maintainers <debian-multimedia@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.16.4-1"
+	fileName hasValue "pool/universe/s/sord/libsord-dev_0.16.4-1_amd64.deb"
+	size hasValue "9808"
+	md5sum hasValue "27db76a97829541cc26e1cb54fdc740d"
+	sha1 hasValue "8f747c0c556cc35aa21ea41529beb5e78ef4055a"
+	sha256 hasValue "375939b18931f14bcde8ecc146093b2099883569959c656c9cd0014f74dd6e7d"
+	descriptionMd5 hasValue "47256121e704a2789bb89b1b7f2cfc7a"
+	homepage hasValue "http://drobilla.net/software/sord/"
+	depends hasValue "libserd-dev (>= 0.30), libsord-0-0 (= 0.16.4-1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libserd-dev"
+	comparison hasValue ">="
+	version hasValue "0.30"
+
+relationInstance depends(P0__libsord_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libsord-0-0"
+	comparison hasValue "="
+	version hasValue "0.16.4-1"
+
+relationInstance depends(P0__libsord_dev,1,DepAtom__1)
+

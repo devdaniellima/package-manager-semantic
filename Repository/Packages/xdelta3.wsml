@@ -1,0 +1,59 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology xdelta3
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__xdelta3 memberOf Package
+	package hasValue "xdelta3"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "165"
+	maintainer hasValue "Original-A Mennucc1 <mennucc1@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.0.11-dfsg-1ubuntu1"
+	fileName hasValue "pool/universe/x/xdelta3/xdelta3_3.0.11-dfsg-1ubuntu1_amd64.deb"
+	size hasValue "68918"
+	md5sum hasValue "e0000b4923a066ec606807069062ab46"
+	sha1 hasValue "fd8b7e32c1c761ce1a382b419891f4d8f92894ae"
+	sha256 hasValue "9fa8d5199c7b81c3151c2130d6e14117722a005828f6e4cfc5022b61047dd540"
+	descriptionMd5 hasValue "ee691dc32e90c3bd989ad440d2196fcc"
+	depends hasValue "libc6 (>= 2.14), liblzma5 (>= 5.1.1alpha+20120614)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__xdelta3,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "liblzma5"
+	comparison hasValue ">="
+	version hasValue "5.1.1alpha+20120614"
+
+relationInstance depends(P0__xdelta3,1,DepAtom__1)
+

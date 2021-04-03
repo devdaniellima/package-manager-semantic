@@ -1,0 +1,75 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python3_soundfile
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python3_soundfile memberOf Package
+	package hasValue "python3-soundfile"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/sound"
+	installedSize hasValue "100"
+	maintainer hasValue "Original-Debian Multimedia Maintainers <debian-multimedia@lists.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.10.3+post1-1"
+	fileName hasValue "pool/universe/p/pysoundfile/python3-soundfile_0.10.3+post1-1_all.deb"
+	size hasValue "25476"
+	md5sum hasValue "1203b56c7fe15b587cfe47687b5b0491"
+	sha1 hasValue "15ecd194f79e308054d6844f6f84a03cd3751eb9"
+	sha256 hasValue "c55a784bfc79e2d5397019acb0041808f12adb03b7fc55ec4184737762b8bc19"
+	description hasValue "Python 3 audio module based on libsndfile"
+	descriptionMd5 hasValue "f71df65ea4cd9dd7afcae367eaf3ee7a"
+	homepage hasValue "https://github.com/bastibe/PySoundFile"
+	depends hasValue "python3-cffi-backend-api-min (<= 9729), python3-cffi-backend-api-max (>= 9729), python3:any, libsndfile1"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3-cffi-backend-api-min"
+	comparison hasValue "<="
+	version hasValue "9729"
+
+relationInstance depends(P0__python3_soundfile,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3-cffi-backend-api-max"
+	comparison hasValue ">="
+	version hasValue "9729"
+
+relationInstance depends(P0__python3_soundfile,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__python3_soundfile,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "libsndfile1"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__python3_soundfile,3,DepAtom__3)
+

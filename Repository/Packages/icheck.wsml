@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology icheck
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__icheck memberOf Package
+	package hasValue "icheck"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "470"
+	maintainer hasValue "Original-Erinn Clark <erinn@double-helix.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.9.7-6.3build5"
+	fileName hasValue "pool/universe/i/icheck/icheck_0.9.7-6.3build5_amd64.deb"
+	size hasValue "65864"
+	md5sum hasValue "148a81aa3860b53c82549ec9d6d36c9d"
+	sha1 hasValue "b728a3b3e41d0582b90a9cd19b19807883cede43"
+	sha256 hasValue "e8a15247d2272b41584deb24274678d7cacb78977b945b4a9902de416800e36e"
+	description hasValue "verificador ABI/API de interface C"
+	descriptionMd5 hasValue "2d1b0028b8b82b44d54a65a87e7fe39e"
+	depends hasValue "libc6 (>= 2.4), perl (>= 5.30.0-7), perlapi-5.30.0"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__icheck,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "perl"
+	comparison hasValue ">="
+	version hasValue "5.30.0-7"
+
+relationInstance depends(P0__icheck,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "perlapi-5.30.0"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__icheck,2,DepAtom__2)
+

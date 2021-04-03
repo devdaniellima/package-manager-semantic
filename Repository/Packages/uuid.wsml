@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology uuid
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__uuid memberOf Package
+	package hasValue "uuid"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "35"
+	maintainer hasValue "Original-Marco Nenciarini <mnencia@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.6.2-1.5build7"
+	conflicts hasValue "libossp-uuid11"
+	fileName hasValue "pool/universe/o/ossp-uuid/uuid_1.6.2-1.5build7_amd64.deb"
+	size hasValue "10964"
+	md5sum hasValue "32ed06aa8e8923395b965cc2fc1877d1"
+	sha1 hasValue "34a07dbb0ba04f93f0bee34f19d6f286663696f1"
+	sha256 hasValue "e021ee96effb729afa4e7839918e502b63358202b72d8dd153cd706247e45995"
+	descriptionMd5 hasValue "85e48fcdb4490302812e9eda53cc614f"
+	homepage hasValue "http://www.ossp.org/pkg/lib/uuid/"
+	depends hasValue "libc6 (>= 2.4), libossp-uuid16"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__uuid,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libossp-uuid16"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__uuid,1,DepAtom__1)
+

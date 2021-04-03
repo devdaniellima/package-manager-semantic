@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gis_workstation
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gis_workstation memberOf Package
+	package hasValue "gis-workstation"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/misc"
+	installedSize hasValue "23"
+	maintainer hasValue "Original-Debian GIS Project <pkg-grass-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.0.19"
+	fileName hasValue "pool/universe/d/debian-gis/gis-workstation_0.0.19_all.deb"
+	size hasValue "4048"
+	md5sum hasValue "1855e2d06682453ba2b7e483fc8f5009"
+	sha1 hasValue "4106277b30a4f676b4b5eea3cb5b4fa4d4c092b3"
+	sha256 hasValue "60525c42747d881c1f22fdef618579c396c2b7fb738008128d938febe117ab32"
+	descriptionMd5 hasValue "6aa5cb6bc9affe7eb7475349bcae42f9"
+	homepage hasValue "https://debian-gis-team.pages.debian.net/"
+	depends hasValue "gis-tasks (= 0.0.19)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "gis-tasks"
+	comparison hasValue "="
+	version hasValue "0.0.19"
+
+relationInstance depends(P0__gis_workstation,0,DepAtom__0)
+

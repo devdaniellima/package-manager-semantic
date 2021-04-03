@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology nudoku
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__nudoku memberOf Package
+	package hasValue "nudoku"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/games"
+	installedSize hasValue "34"
+	maintainer hasValue "Original-Michael Vetter <jubalh@iodoru.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.0-1"
+	fileName hasValue "pool/universe/n/nudoku/nudoku_1.0.0-1_amd64.deb"
+	size hasValue "10396"
+	md5sum hasValue "2eeef231f8b2e30a144631e914e62aa4"
+	sha1 hasValue "c38e8f8e4014fea7254e8d162a4cdd205ef31529"
+	sha256 hasValue "b0433454da6ae25ce32d3139b0d63df2137de7f89b04ca903550f5ac08be5104"
+	descriptionMd5 hasValue "fc2e5867e3a0dc944d74b16c0be9d3b0"
+	homepage hasValue "https://github.com/jubalh/nudoku"
+	depends hasValue "libc6 (>= 2.4), libncurses6 (>= 6), libtinfo6 (>= 6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__nudoku,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libncurses6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__nudoku,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libtinfo6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__nudoku,2,DepAtom__2)
+

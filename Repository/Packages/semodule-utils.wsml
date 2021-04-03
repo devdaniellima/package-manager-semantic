@@ -1,0 +1,62 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology semodule_utils
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__semodule_utils memberOf Package
+	package hasValue "semodule-utils"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "104"
+	maintainer hasValue "Original-Debian SELinux maintainers <selinux-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.0-1"
+	replaces hasValue "policycoreutils-dev (<< 2.7~), policycoreutils-python-utils (<< 2.7~)"
+	fileName hasValue "pool/universe/s/semodule-utils/semodule-utils_3.0-1_amd64.deb"
+	size hasValue "19772"
+	md5sum hasValue "7d195d591360844bdd941ccf8b601e94"
+	sha1 hasValue "66b174144e87bb5149ec83f6edd7ba332c846b14"
+	sha256 hasValue "3adea30ea59edb639bd2dff0773fab3c1455f923dbb9510b7098b0a988a9eb1d"
+	description hasValue "SELinux core policy utilities (modules utilities)"
+	descriptionMd5 hasValue "13e71e2e1a7e23908c56e2c10d0a767b"
+	homepage hasValue "http://userspace.selinuxproject.org/"
+	depends hasValue "libc6 (>= 2.4), libsepol1 (>= 3.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__semodule_utils,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libsepol1"
+	comparison hasValue ">="
+	version hasValue "3.0"
+
+relationInstance depends(P0__semodule_utils,1,DepAtom__1)
+

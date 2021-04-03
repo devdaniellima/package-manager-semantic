@@ -1,0 +1,69 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology enchant
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__enchant memberOf Package
+	package hasValue "enchant"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/text"
+	installedSize hasValue "62"
+	maintainer hasValue "Original-Prach Pongpanich <prach@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.6.0-11.3build1"
+	replaces hasValue "libenchant1c2a (<< 1.6.0-4)"
+	fileName hasValue "pool/universe/e/enchant/enchant_1.6.0-11.3build1_amd64.deb"
+	size hasValue "12356"
+	md5sum hasValue "3c75ed082ae8528543108e71ce9639b3"
+	sha1 hasValue "f65029fb47e8a21d98c7cf86d64f56f7973942ba"
+	sha256 hasValue "c580298bc42f574892c45029888df8518aa74f6e134f2b8d1c5450b195ead46c"
+	description hasValue "envoltório para vários motores de verificação ortográfica (programas binários)"
+	descriptionMd5 hasValue "468849838461717319f3b939b17d0750"
+	homepage hasValue "https://abiword.github.io/enchant/"
+	depends hasValue "libc6 (>= 2.4), libenchant1c2a (>= 1.6.0), libglib2.0-0 (>= 2.12.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__enchant,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libenchant1c2a"
+	comparison hasValue ">="
+	version hasValue "1.6.0"
+
+relationInstance depends(P0__enchant,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libglib2.0-0"
+	comparison hasValue ">="
+	version hasValue "2.12.0"
+
+relationInstance depends(P0__enchant,2,DepAtom__2)
+

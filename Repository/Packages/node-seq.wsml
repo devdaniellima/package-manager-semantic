@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology node_seq
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__node_seq memberOf Package
+	package hasValue "node-seq"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/javascript"
+	installedSize hasValue "40"
+	maintainer hasValue "Original-Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.3.5-2"
+	fileName hasValue "pool/universe/n/node-seq/node-seq_0.3.5-2_all.deb"
+	size hasValue "10506"
+	md5sum hasValue "6c400462987c0f987cc3819aea71f105"
+	sha1 hasValue "22ac9c98a0e9d1790992e3cf2c2eac93ea837ead"
+	sha256 hasValue "faf62f2013307ade7d49fa56892286ad4d55ebb9f0410a4100e9e2d5b2106f9e"
+	descriptionMd5 hasValue "b5d034edb796fe417d542efc666bf74c"
+	homepage hasValue "https://github.com/substack/node-seq"
+	depends hasValue "nodejs, node-hashish (>= 0.0.2), node-chainsaw (>= 0.0.7)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "nodejs"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__node_seq,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "node-hashish"
+	comparison hasValue ">="
+	version hasValue "0.0.2"
+
+relationInstance depends(P0__node_seq,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "node-chainsaw"
+	comparison hasValue ">="
+	version hasValue "0.0.7"
+
+relationInstance depends(P0__node_seq,2,DepAtom__2)
+

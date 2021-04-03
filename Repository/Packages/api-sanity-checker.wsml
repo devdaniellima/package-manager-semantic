@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology api_sanity_checker
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__api_sanity_checker memberOf Package
+	package hasValue "api-sanity-checker"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "660"
+	maintainer hasValue "Original-Mathieu Malaterre <malat@debian.org>"
+	architecture hasValue "all"
+	version hasValue "1.98.7-2"
+	fileName hasValue "pool/universe/a/api-sanity-checker/api-sanity-checker_1.98.7-2_all.deb"
+	size hasValue "97418"
+	md5sum hasValue "380c2ddf3805723d235a2435ad02e300"
+	sha1 hasValue "14dc9b990b43da23f03e80c1dada944a17d1369b"
+	sha256 hasValue "57af0f2325f9e67d048d01d731f3aedfecfb81bd378d2cd00dc9c93178c9838b"
+	descriptionMd5 hasValue "0311b8cd7c1a26bce0b65ed7ee60c532"
+	homepage hasValue "https://github.com/lvc/api-sanity-checker"
+	depends hasValue "abi-compliance-checker (>= 1.99), perl:any"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "abi-compliance-checker"
+	comparison hasValue ">="
+	version hasValue "1.99"
+
+relationInstance depends(P0__api_sanity_checker,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "perl:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__api_sanity_checker,1,DepAtom__1)
+

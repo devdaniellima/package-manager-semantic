@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology poster
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__poster memberOf Package
+	package hasValue "poster"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/text"
+	installedSize hasValue "48"
+	maintainer hasValue "Original-Peter S Galbraith <psg@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:20050907-1.1"
+	fileName hasValue "pool/universe/p/poster/poster_20050907-1.1_amd64.deb"
+	size hasValue "20620"
+	md5sum hasValue "f04c26843b04cc7b19c70afd4f488815"
+	sha1 hasValue "a131dee63c8e3a9e12eb45f42324dbe3bb0def6a"
+	sha256 hasValue "a73dc311b24a2b7259184af65ed9dc86406654e966b56f85701d0b56ac0c7332"
+	description hasValue "Cria grandes posters a partir de páginas PostScript"
+	descriptionMd5 hasValue "bb6c43dd15477a6a27270bd367b78ef9"
+	depends hasValue "libc6 (>= 2.7), libpaper1"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__poster,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libpaper1"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__poster,1,DepAtom__1)
+

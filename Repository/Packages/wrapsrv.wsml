@@ -1,0 +1,52 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology wrapsrv
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__wrapsrv memberOf Package
+	package hasValue "wrapsrv"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "27"
+	maintainer hasValue "Original-Robert S. Edmonds <edmonds@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.0-1build1"
+	fileName hasValue "pool/universe/w/wrapsrv/wrapsrv_1.0.0-1build1_amd64.deb"
+	size hasValue "7296"
+	md5sum hasValue "11c90d4a521544bc21d12448651d2caf"
+	sha1 hasValue "310afd8b44261a23c13280ffb12a2671bd5ec66c"
+	sha256 hasValue "37206b7f93bf3337acff7f10da920a9681ee93c3351443591e82d20a85de4c56"
+	descriptionMd5 hasValue "bd7365d5d1e02b75390f71ef849b03bb"
+	depends hasValue "libc6 (>= 2.9)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.9"
+
+relationInstance depends(P0__wrapsrv,0,DepAtom__0)
+

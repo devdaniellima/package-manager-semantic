@@ -1,0 +1,76 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology nethack_console
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__nethack_console memberOf Package
+	package hasValue "nethack-console"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/games"
+	installedSize hasValue "2594"
+	maintainer hasValue "Original-Debian Games Team <pkg-games-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.6.1-1"
+	provides hasValue "nethack"
+	fileName hasValue "pool/universe/n/nethack/nethack-console_3.6.1-1_amd64.deb"
+	size hasValue "1134008"
+	md5sum hasValue "ac0cc655d73963c40bbcd5bbb9eb421f"
+	sha1 hasValue "64542353b29190f9e6445e491d30fd26c43a37ab"
+	sha256 hasValue "e158baf62ad79ae26e6876fa154c73b0a2d540812f9df93b44b30b4c3ec905e8"
+	description hasValue "dungeon crawl game - text-based interface"
+	descriptionMd5 hasValue "df5cf62730a92249353df522f1f2b429"
+	homepage hasValue "https://www.nethack.org"
+	depends hasValue "nethack-common (= 3.6.1-1), libc6 (>= 2.14), libncurses6 (>= 6), libtinfo6 (>= 6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "nethack-common"
+	comparison hasValue "="
+	version hasValue "3.6.1-1"
+
+relationInstance depends(P0__nethack_console,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__nethack_console,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libncurses6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__nethack_console,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "libtinfo6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__nethack_console,3,DepAtom__3)
+

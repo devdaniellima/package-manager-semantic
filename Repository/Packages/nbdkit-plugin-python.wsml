@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology nbdkit_plugin_python
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__nbdkit_plugin_python memberOf Package
+	package hasValue "nbdkit-plugin-python"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "47"
+	maintainer hasValue "Original-Hilko Bengen <bengen@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.16.2-1ubuntu3"
+	conflicts hasValue "nbdkit (<< 1.1.5-2~)"
+	fileName hasValue "pool/universe/n/nbdkit/nbdkit-plugin-python_1.16.2-1ubuntu3_amd64.deb"
+	size hasValue "14464"
+	md5sum hasValue "8b8025b2de1d34af3fde8d4704de4843"
+	sha1 hasValue "9a1175185117a6c9f576a19eab2b812c772c2e97"
+	sha256 hasValue "a4426393c385c50d2893cec8ecd6598dd35cf9fd197a48dd7fd4e9a3a7e36317"
+	descriptionMd5 hasValue "a4818c0d469df34a31deb518bc0b4af9"
+	homepage hasValue "https://github.com/libguestfs/nbdkit"
+	depends hasValue "libc6 (>= 2.14), libpython3.8 (>= 3.8.2), nbdkit"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__nbdkit_plugin_python,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libpython3.8"
+	comparison hasValue ">="
+	version hasValue "3.8.2"
+
+relationInstance depends(P0__nbdkit_plugin_python,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "nbdkit"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__nbdkit_plugin_python,2,DepAtom__2)
+

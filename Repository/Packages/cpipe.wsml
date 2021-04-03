@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology cpipe
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__cpipe memberOf Package
+	package hasValue "cpipe"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "42"
+	maintainer hasValue "Original-Eduard Bloch <blade@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.0.1-2"
+	fileName hasValue "pool/universe/c/cpipe/cpipe_3.0.1-2_amd64.deb"
+	size hasValue "13024"
+	md5sum hasValue "9fc32f00ef2f6c79780eab14f4b99667"
+	sha1 hasValue "34388c0f3154365c9eec1034a57e4e7ab84b4144"
+	sha256 hasValue "a83ca87349073a7b1d03eac0649070d3f3c92f8cc83c52fb997276b4f1ba837b"
+	description hasValue "data pipe forwarding utility for performance monitoring"
+	descriptionMd5 hasValue "be9d68e8008c114fa2dde18bfb77e5ce"
+	depends hasValue "libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__cpipe,0,DepAtom__0)
+

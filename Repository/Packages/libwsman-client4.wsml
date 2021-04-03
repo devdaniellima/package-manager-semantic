@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libwsman_client4
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libwsman_client4 memberOf Package
+	package hasValue "libwsman-client4"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/admin"
+	installedSize hasValue "71"
+	maintainer hasValue "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	architecture hasValue "amd64"
+	version hasValue "2.6.5-0ubuntu5"
+	replaces hasValue "libopenwsman1 (<< 2.4.3-0ubuntu4), libwsman-client2"
+	fileName hasValue "pool/universe/o/openwsman/libwsman-client4_2.6.5-0ubuntu5_amd64.deb"
+	size hasValue "16364"
+	md5sum hasValue "1d7ee01686016c6bd29f4aee581b71b3"
+	sha1 hasValue "0b29ecbab9fbbe187ef2b33a19f9dcc683d23cda"
+	sha256 hasValue "d0ba045f5d3df8c30720489d5a250c6e5c74260b0a7844199e1451ad53fa4220"
+	descriptionMd5 hasValue "fc8db5cb8f3cd03ad3a7776a5e50f2ef"
+	homepage hasValue "http://openwsman.github.io/"
+	depends hasValue "libc6 (>= 2.4), libwsman-curl-client-transport1"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__libwsman_client4,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libwsman-curl-client-transport1"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libwsman_client4,1,DepAtom__1)
+

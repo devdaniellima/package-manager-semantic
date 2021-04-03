@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology unaccent
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__unaccent memberOf Package
+	package hasValue "unaccent"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "26"
+	maintainer hasValue "Original-Debian QA Group <packages@qa.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.8.0-8"
+	fileName hasValue "pool/universe/u/unac/unaccent_1.8.0-8_amd64.deb"
+	size hasValue "6008"
+	md5sum hasValue "5c84d76ad649e577f59ab294243c16e8"
+	sha1 hasValue "5377dfc42693aa26d54b506d388073af8c9441fa"
+	sha256 hasValue "e7720c76e74102d5df5fac45c96fa3822ee4e4bd6306c152d8fe923d365a7a17"
+	description hasValue "Substitui letras acentuadas pelos equivalentes sem acentos"
+	descriptionMd5 hasValue "624852d7c0f69b5e555a5d6eaa0fd7ae"
+	depends hasValue "libc6 (>= 2.14), libunac1"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__unaccent,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libunac1"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__unaccent,1,DepAtom__1)
+

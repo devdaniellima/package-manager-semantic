@@ -1,0 +1,69 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology syslog_ng_mod_getent
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__syslog_ng_mod_getent memberOf Package
+	package hasValue "syslog-ng-mod-getent"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/admin"
+	installedSize hasValue "66"
+	maintainer hasValue "Original-syslog-ng maintainers <syslog-ng-maintainers@alioth-lists.debian.net>"
+	architecture hasValue "amd64"
+	version hasValue "3.25.1-3"
+	conflicts hasValue "syslog-ng-mod-basicfuncs-plus (<< 0.6.0)"
+	fileName hasValue "pool/universe/s/syslog-ng/syslog-ng-mod-getent_3.25.1-3_amd64.deb"
+	size hasValue "9040"
+	md5sum hasValue "b770afbedc044da5338353c80da5a391"
+	sha1 hasValue "0b0ca88a59814d62298975a30a6c02275306d08c"
+	sha256 hasValue "df0b69dad9cff9a36b02bb4143cc6dfe750cd32c1d0948efdfa3005773211739"
+	description hasValue "Enhanced system logging daemon (getent plugin)"
+	descriptionMd5 hasValue "a96e0939fa2be3416c7cd3ce9ad72ee6"
+	homepage hasValue "https://www.syslog-ng.com/"
+	depends hasValue "libc6 (>= 2.4), syslog-ng-core (>= 3.25.1-3), syslog-ng-core (<< 3.25.1-3.1~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__syslog_ng_mod_getent,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "syslog-ng-core"
+	comparison hasValue ">="
+	version hasValue "3.25.1-3"
+
+relationInstance depends(P0__syslog_ng_mod_getent,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "syslog-ng-core"
+	comparison hasValue "<<"
+	version hasValue "3.25.1-3.1~"
+
+relationInstance depends(P0__syslog_ng_mod_getent,2,DepAtom__2)
+

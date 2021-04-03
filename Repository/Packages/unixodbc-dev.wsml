@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology unixodbc_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__unixodbc_dev memberOf Package
+	package hasValue "unixodbc-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "devel"
+	installedSize hasValue "1768"
+	maintainer hasValue "Original-Steve Langasek <vorlon@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.3.6-0.1build1"
+	conflicts hasValue "libiodbc2-dev"
+	fileName hasValue "pool/main/u/unixodbc/unixodbc-dev_2.3.6-0.1build1_amd64.deb"
+	size hasValue "224712"
+	md5sum hasValue "c7c07f6d8003518cd65ecd1cfa400f6d"
+	sha1 hasValue "99c996426324c571aa79a602b75f94563e3fc764"
+	sha256 hasValue "0ea2b414ef117ebe95d0abc2bb7c5966391da00405a2c41f189c7af2972ee5bf"
+	descriptionMd5 hasValue "810ff6350f7d3725bcea408feaf73610"
+	homepage hasValue "http://www.unixodbc.org/"
+	depends hasValue "libodbc1 (= 2.3.6-0.1build1), odbcinst1debian2 (= 2.3.6-0.1build1), libltdl-dev"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libodbc1"
+	comparison hasValue "="
+	version hasValue "2.3.6-0.1build1"
+
+relationInstance depends(P0__unixodbc_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "odbcinst1debian2"
+	comparison hasValue "="
+	version hasValue "2.3.6-0.1build1"
+
+relationInstance depends(P0__unixodbc_dev,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libltdl-dev"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__unixodbc_dev,2,DepAtom__2)
+

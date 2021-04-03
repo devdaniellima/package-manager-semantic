@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology cm_super_x11
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__cm_super_x11 memberOf Package
+	package hasValue "cm-super-x11"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/tex"
+	installedSize hasValue "5158"
+	maintainer hasValue "Original-Debian TeX maintainers <debian-tex-maint@lists.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.3.4-15"
+	fileName hasValue "pool/universe/c/cm-super/cm-super-x11_0.3.4-15_all.deb"
+	size hasValue "269628"
+	md5sum hasValue "0fc4e0a3db401e148fcd8892b56292ab"
+	sha1 hasValue "f15eb08381030b8c3a7cfb776c9075e2abf7eac8"
+	sha256 hasValue "d7b08dd1ce212d92122fdea14483c4591f6ca158774b8419e4d4fe61fef2bf81"
+	description hasValue "disponibiliza as fontes cm-super para o X11"
+	descriptionMd5 hasValue "6c4222f30b1b90b442c3fcd2da993794"
+	homepage hasValue "https://ctan.org/tex-archive/fonts/ps-type1/cm-super"
+	depends hasValue "cm-super-minimal (= 0.3.4-15), xfonts-utils"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "cm-super-minimal"
+	comparison hasValue "="
+	version hasValue "0.3.4-15"
+
+relationInstance depends(P0__cm_super_x11,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "xfonts-utils"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__cm_super_x11,1,DepAtom__1)
+

@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology lunar
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__lunar memberOf Package
+	package hasValue "lunar"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/utils"
+	installedSize hasValue "55"
+	maintainer hasValue "Original-Debian Chinese Team <chinese-developers@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.2-6build1"
+	fileName hasValue "pool/universe/l/lunar/lunar_2.2-6build1_amd64.deb"
+	size hasValue "17524"
+	md5sum hasValue "66962746b3a86af7bc331784f6b19aef"
+	sha1 hasValue "21821aa2fc621a33e73c1fc47b653793969cc926"
+	sha256 hasValue "4a6ce42d99030b2a26da5bc3d9c1d35a146e7c28022ab495aeda9dd08bd13046"
+	descriptionMd5 hasValue "c7f194fb672c106978cfcb11a14dff50"
+	homepage hasValue "http://web.archive.org/web/20051027042122/http://umunhum.stanford.edu/~lee/chicomp/chicomp.html"
+	depends hasValue "libc6 (>= 2.7)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.7"
+
+relationInstance depends(P0__lunar,0,DepAtom__0)
+

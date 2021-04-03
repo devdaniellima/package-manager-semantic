@@ -1,0 +1,78 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python_debian
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python_debian memberOf Package
+	package hasValue "python-debian"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "318"
+	maintainer hasValue "Original-Debian python-debian Maintainers <pkg-python-debian-maint@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.1.36ubuntu1"
+	replaces hasValue "python-deb822"
+	provides hasValue "python-deb822"
+	conflicts hasValue "python-deb822"
+	fileName hasValue "pool/universe/p/python-debian/python-debian_0.1.36ubuntu1_all.deb"
+	size hasValue "64892"
+	md5sum hasValue "7b1d75afe3638889ef12842a00d13639"
+	sha1 hasValue "659b39e664ec35bc72d54e397b0bd8535d81b766"
+	sha256 hasValue "ba5b68551fa8fb410fcf4a9bfae348c62f3d03c05fa317534842384fb16c8639"
+	description hasValue "Módulos Python para trabalhar com formato de dados relacionados ao Debian"
+	descriptionMd5 hasValue "5be73b50401686d419b7e34949840340"
+	homepage hasValue "https://salsa.debian.org/python-debian-team/python-debian"
+	depends hasValue "python-chardet, python-six (>> 1.4~), python2:any (<< 2.8), python2:any (>= 2.7~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python-chardet"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__python_debian,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python-six"
+	comparison hasValue ">>"
+	version hasValue "1.4~"
+
+relationInstance depends(P0__python_debian,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue "<<"
+	version hasValue "2.8"
+
+relationInstance depends(P0__python_debian,2,DepAtom__2)
+
+instance DepAtom__3 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue ">="
+	version hasValue "2.7~"
+
+relationInstance depends(P0__python_debian,3,DepAtom__3)
+

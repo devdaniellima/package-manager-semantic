@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology evtest
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__evtest memberOf Package
+	package hasValue "evtest"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/utils"
+	installedSize hasValue "73"
+	maintainer hasValue "Original-Stephen Kitt <skitt@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:1.34-1"
+	fileName hasValue "pool/universe/e/evtest/evtest_1.34-1_amd64.deb"
+	size hasValue "16012"
+	md5sum hasValue "efda9e6bb37535282fd90914eff8868d"
+	sha1 hasValue "35ace5bdfb527ac2a9188fb368cbcd0e5308cbad"
+	sha256 hasValue "005aa5adf4f19c4647d2bf37fce77bd80dde4c5e46b9dc6d4897121067a3ad4d"
+	description hasValue "Utilitário para monitorar eventos de dispositivos de entrada do Linux"
+	descriptionMd5 hasValue "87a9309a7fd6f8eaf06bf318e3ec4b43"
+	homepage hasValue "https://cgit.freedesktop.org/evtest/"
+	depends hasValue "libc6 (>= 2.15)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__evtest,0,DepAtom__0)
+

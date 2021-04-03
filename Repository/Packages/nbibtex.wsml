@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology nbibtex
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__nbibtex memberOf Package
+	package hasValue "nbibtex"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/tex"
+	installedSize hasValue "219"
+	maintainer hasValue "Original-Barak A. Pearlmutter <bap@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.9.18-13"
+	fileName hasValue "pool/universe/n/nbibtex/nbibtex_0.9.18-13_amd64.deb"
+	size hasValue "50332"
+	md5sum hasValue "d41eaa2bc0da7a4463bb93f4d609813c"
+	sha1 hasValue "78c7926131f1f58be258b2555fe842dc2254c180"
+	sha256 hasValue "d2da711b0b3dd8183d3b4d53b03b6bf88d20e32194fcde1a439f8c87f0075e74"
+	descriptionMd5 hasValue "f7c0216a1b9b5d4ea3e847d20ec2bd95"
+	homepage hasValue "https://www.cs.tufts.edu/~nr/nbibtex/"
+	depends hasValue "libc6 (>= 2.4), liblua5.1-0"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__nbibtex,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "liblua5.1-0"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__nbibtex,1,DepAtom__1)
+

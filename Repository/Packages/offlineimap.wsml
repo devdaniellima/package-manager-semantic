@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology offlineimap
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__offlineimap memberOf Package
+	package hasValue "offlineimap"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/mail"
+	installedSize hasValue "590"
+	maintainer hasValue "Original-Ilias Tsitsimpis <iliastsi@debian.org>"
+	architecture hasValue "all"
+	version hasValue "7.2.3+dfsg1-1ubuntu1"
+	fileName hasValue "pool/universe/o/offlineimap/offlineimap_7.2.3+dfsg1-1ubuntu1_all.deb"
+	size hasValue "123772"
+	md5sum hasValue "43dc02434502c6376ba06970087b2921"
+	sha1 hasValue "92faf092126772c29d37df005758aecd3b48b624"
+	sha256 hasValue "af45ec417ccbfb82070a3dff8b5e36c8cda5a5cfa66adc5e29ebb6fc791ff4f6"
+	descriptionMd5 hasValue "eabce055511e2ef73277b8e17d848d55"
+	homepage hasValue "https://www.offlineimap.org/"
+	depends hasValue "python-imaplib2 (>= 2.57), python-six, python2:any"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python-imaplib2"
+	comparison hasValue ">="
+	version hasValue "2.57"
+
+relationInstance depends(P0__offlineimap,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python-six"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__offlineimap,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "python2:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__offlineimap,2,DepAtom__2)
+

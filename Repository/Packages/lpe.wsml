@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology lpe
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__lpe memberOf Package
+	package hasValue "lpe"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/editors"
+	installedSize hasValue "304"
+	maintainer hasValue "Original-Adam Majer <adamm@zombino.com>"
+	architecture hasValue "amd64"
+	version hasValue "1.2.8-2build1"
+	provides hasValue "editor"
+	fileName hasValue "pool/universe/l/lpe/lpe_1.2.8-2build1_amd64.deb"
+	size hasValue "90760"
+	md5sum hasValue "949004d0bc0118f8e56d3e87e747a006"
+	sha1 hasValue "39e5dfb6165567ec1cf08076c2fd089689241432"
+	sha256 hasValue "df753cc4b5375dc0271b42e52ef6e8a90b9894b348863fbc46d73e7a5fed1ddb"
+	descriptionMd5 hasValue "8f994a83d900489a32bc3b02db151de4"
+	homepage hasValue "https://github.com/AdamMajer/lpe"
+	depends hasValue "libc6 (>= 2.14), libslang2 (>= 2.2.4), libtinfo6 (>= 6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__lpe,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libslang2"
+	comparison hasValue ">="
+	version hasValue "2.2.4"
+
+relationInstance depends(P0__lpe,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libtinfo6"
+	comparison hasValue ">="
+	version hasValue "6"
+
+relationInstance depends(P0__lpe,2,DepAtom__2)
+

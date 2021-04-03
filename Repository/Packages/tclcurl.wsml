@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology tclcurl
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__tclcurl memberOf Package
+	package hasValue "tclcurl"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/interpreters"
+	installedSize hasValue "224"
+	maintainer hasValue "Original-Sven Hoexter <hoexter@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "7.22.0+hg20160822-2"
+	fileName hasValue "pool/universe/t/tclcurl/tclcurl_7.22.0+hg20160822-2_amd64.deb"
+	size hasValue "76020"
+	md5sum hasValue "20bef37556320ce6d9a905db587106af"
+	sha1 hasValue "b529f3355b0520e434f8e6f34404fe34962499f7"
+	sha256 hasValue "e3a5d884c56478826344eea97d7f12e5c921aa91b13619981f0cf51af8628635"
+	description hasValue "Tcl bindings to libcurl"
+	descriptionMd5 hasValue "14561541206fa213a6c0490f9da8a0c8"
+	depends hasValue "libc6 (>= 2.14), libcurl3-gnutls (>= 7.18.0), tcl (>= 8.6.0-2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__tclcurl,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libcurl3-gnutls"
+	comparison hasValue ">="
+	version hasValue "7.18.0"
+
+relationInstance depends(P0__tclcurl,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "tcl"
+	comparison hasValue ">="
+	version hasValue "8.6.0-2"
+
+relationInstance depends(P0__tclcurl,2,DepAtom__2)
+

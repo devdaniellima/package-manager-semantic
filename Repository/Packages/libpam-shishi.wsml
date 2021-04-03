@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libpam_shishi
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libpam_shishi memberOf Package
+	package hasValue "libpam-shishi"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/net"
+	installedSize hasValue "154"
+	maintainer hasValue "Original-Debian Shishi Team <help-shishi@gnu.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.0.2-7"
+	fileName hasValue "pool/universe/s/shishi/libpam-shishi_1.0.2-7_amd64.deb"
+	size hasValue "6124"
+	md5sum hasValue "a57ca6e393b67fd78380c28ff5b867a7"
+	sha1 hasValue "8ad52d4ea5f323d6a3e9ae459270f1af53bd96f6"
+	sha256 hasValue "9317c120ac655f7997dc1276bed478fdfc1ac3f579d95063859b2af8756ca812"
+	descriptionMd5 hasValue "79fe735f0d428949cb8ad6159aecf321"
+	homepage hasValue "https://www.gnu.org/software/shishi/"
+	depends hasValue "libc6 (>= 2.8), libshishi0 (>= 0.0.30)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.8"
+
+relationInstance depends(P0__libpam_shishi,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libshishi0"
+	comparison hasValue ">="
+	version hasValue "0.0.30"
+
+relationInstance depends(P0__libpam_shishi,1,DepAtom__1)
+

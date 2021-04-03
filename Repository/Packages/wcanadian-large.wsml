@@ -1,0 +1,69 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology wcanadian_large
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__wcanadian_large memberOf Package
+	package hasValue "wcanadian-large"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/text"
+	installedSize hasValue "1643"
+	maintainer hasValue "Original-Don Armstrong <don@debian.org>"
+	architecture hasValue "all"
+	version hasValue "2018.04.16-1"
+	provides hasValue "wordlist"
+	fileName hasValue "pool/universe/s/scowl/wcanadian-large_2018.04.16-1_all.deb"
+	size hasValue "364748"
+	md5sum hasValue "e6e6e8820bc9088c5aceeecab8d6f9cd"
+	sha1 hasValue "0616ed778901c78a5526dac021294821095bbc1d"
+	sha256 hasValue "bc096b1a47ace2efe973fed033905065250f7c469b9829c25adaffee13ec6c32"
+	description hasValue "dicionário inglês canadense de palavras para o /usr/share/dict"
+	descriptionMd5 hasValue "b77ae35c331c70394593e78cb46ea3c7"
+	homepage hasValue "http://wordlist.sourceforge.net/"
+	depends hasValue "dictionaries-common (>= 0.20), debconf (>= 0.5) | debconf-2.0"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "dictionaries-common"
+	comparison hasValue ">="
+	version hasValue "0.20"
+
+relationInstance depends(P0__wcanadian_large,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "debconf"
+	comparison hasValue ">="
+	version hasValue "0.5"
+
+relationInstance depends(P0__wcanadian_large,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "debconf-2.0"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__wcanadian_large,1,DepAtom__2)
+

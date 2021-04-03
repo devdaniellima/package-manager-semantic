@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libvmdk_utils
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libvmdk_utils memberOf Package
+	package hasValue "libvmdk-utils"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/otherosfs"
+	installedSize hasValue "131"
+	maintainer hasValue "Original-Debian Security Tools <team+pkg-security@tracker.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "20181227-1.1"
+	fileName hasValue "pool/universe/libv/libvmdk/libvmdk-utils_20181227-1.1_amd64.deb"
+	size hasValue "33252"
+	md5sum hasValue "f714575d0a2aaea4d295926540e298bd"
+	sha1 hasValue "4ef331e0959f15618aac0ad866eda0429526782e"
+	sha256 hasValue "85bcc9407fa4c70707436da02e46e2dbd9773b03667817742ec27af050bf1a3c"
+	descriptionMd5 hasValue "24361189efc5082ad89832a3d10f4727"
+	homepage hasValue "https://github.com/libyal/libvmdk"
+	depends hasValue "libc6 (>= 2.17), libfuse2 (>= 2.6), libvmdk1 (>= 20150516)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.17"
+
+relationInstance depends(P0__libvmdk_utils,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libfuse2"
+	comparison hasValue ">="
+	version hasValue "2.6"
+
+relationInstance depends(P0__libvmdk_utils,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libvmdk1"
+	comparison hasValue ">="
+	version hasValue "20150516"
+
+relationInstance depends(P0__libvmdk_utils,2,DepAtom__2)
+

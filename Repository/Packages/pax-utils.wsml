@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology pax_utils
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__pax_utils memberOf Package
+	package hasValue "pax-utils"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "290"
+	maintainer hasValue "Original-Tomasz Buchert <tomasz@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.2.5-1ubuntu1"
+	fileName hasValue "pool/universe/p/pax-utils/pax-utils_1.2.5-1ubuntu1_amd64.deb"
+	size hasValue "81844"
+	md5sum hasValue "485266e1e369a83020a1688000f15ea7"
+	sha1 hasValue "cc10a5ed633b9efabef6ed7b63bed2636b1af1ce"
+	sha256 hasValue "393bf3f350b808b25e4eea7e6c251ac0558fe81e7644e0a6d02013f9c7dd1bfc"
+	descriptionMd5 hasValue "d71b978a17d13187f2f09bb9f71446a7"
+	homepage hasValue "https://wiki.gentoo.org/wiki/Hardened/PaX_Utilities"
+	depends hasValue "binutils, libc6 (>= 2.27), libcap2 (>= 1:2.10)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "binutils"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__pax_utils,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.27"
+
+relationInstance depends(P0__pax_utils,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libcap2"
+	comparison hasValue ">="
+	version hasValue "1:2.10"
+
+relationInstance depends(P0__pax_utils,2,DepAtom__2)
+

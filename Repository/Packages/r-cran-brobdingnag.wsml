@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology r_cran_brobdingnag
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__r_cran_brobdingnag memberOf Package
+	package hasValue "r-cran-brobdingnag"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/gnu-r"
+	installedSize hasValue "562"
+	maintainer hasValue "Original-Debian R Packages Maintainers <r-pkg-team@alioth-lists.debian.net>"
+	architecture hasValue "all"
+	version hasValue "1.2-6-1"
+	fileName hasValue "pool/universe/r/r-cran-brobdingnag/r-cran-brobdingnag_1.2-6-1_all.deb"
+	size hasValue "410856"
+	md5sum hasValue "f17d9a9b198339c939748da6b604e34e"
+	sha1 hasValue "b7745d08f17605dd9bdd76bfa7230e1d7d2bd714"
+	sha256 hasValue "390b07830a6cedf551f008001d519c8ae62dfdbc160c2f341979caa290871137"
+	descriptionMd5 hasValue "aa3945b00803952fbb10799d248cc347"
+	homepage hasValue "https://cran.r-project.org/package=Brobdingnag"
+	depends hasValue "r-base-core (>= 3.5.1-1build1), r-api-3.5"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "r-base-core"
+	comparison hasValue ">="
+	version hasValue "3.5.1-1build1"
+
+relationInstance depends(P0__r_cran_brobdingnag,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "r-api-3.5"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__r_cran_brobdingnag,1,DepAtom__1)
+

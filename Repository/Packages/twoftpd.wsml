@@ -1,0 +1,66 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology twoftpd
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__twoftpd memberOf Package
+	package hasValue "twoftpd"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "272"
+	maintainer hasValue "Original-Gerrit Pape <pape@smarden.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.42-1.2"
+	fileName hasValue "pool/universe/t/twoftpd/twoftpd_1.42-1.2_amd64.deb"
+	size hasValue "46144"
+	md5sum hasValue "eb4262d26b94e372768fcb49c60f313c"
+	sha1 hasValue "27dd6acb57d81dcb3c73d611f3cee16803626bd7"
+	sha256 hasValue "e411f9bc1469d435e7ee41c8adb0d589fccedaa6e4f4358a1dfab71b13bc4ece"
+	descriptionMd5 hasValue "40e2575444bc677dd3a1e68a33a36a2d"
+	depends hasValue "libbg2 (>= 2.03), libc6 (>= 2.14), libcvm1"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libbg2"
+	comparison hasValue ">="
+	version hasValue "2.03"
+
+relationInstance depends(P0__twoftpd,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__twoftpd,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libcvm1"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__twoftpd,2,DepAtom__2)
+

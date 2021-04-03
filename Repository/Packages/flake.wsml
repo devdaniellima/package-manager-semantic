@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology flake
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__flake memberOf Package
+	package hasValue "flake"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/sound"
+	installedSize hasValue "108"
+	maintainer hasValue "Original-Debian Multimedia Maintainers <debian-multimedia@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.11-4"
+	fileName hasValue "pool/universe/f/flake/flake_0.11-4_amd64.deb"
+	size hasValue "39604"
+	md5sum hasValue "932c439331e506bb9ad4d398d9429a69"
+	sha1 hasValue "546a5df9488fe40790c48f57b14c627cca15ac5f"
+	sha256 hasValue "350f8ee4f504cf48aa0009bf0164caced35e1580a8ca9a4fdc64b3fd62a73b78"
+	descriptionMd5 hasValue "d0382fe74ce0e438d3a545b04154877b"
+	homepage hasValue "http://flake-enc.sourceforge.net/"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__flake,0,DepAtom__0)
+

@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology testinfra
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__testinfra memberOf Package
+	package hasValue "testinfra"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "196"
+	maintainer hasValue "Original-Freexian Packaging Team <team+freexian@tracker.debian.org>"
+	architecture hasValue "all"
+	version hasValue "3.2.0-1"
+	fileName hasValue "pool/universe/t/testinfra/testinfra_3.2.0-1_all.deb"
+	size hasValue "32264"
+	md5sum hasValue "e887694f7415b4504361acc4174881ed"
+	sha1 hasValue "4a6b00588d12fb4346b89c4cb97951e19881cde6"
+	sha256 hasValue "f9adae0a4fa70afc14d943c25ea150e8b2a97f3e171b2fd309ce17099a102ae4"
+	descriptionMd5 hasValue "661eac2dde9d619aa1f92906da05597c"
+	homepage hasValue "https://github.com/philpep/testinfra"
+	depends hasValue "python3-pytest, python3-six (>= 1.4), python3:any"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3-pytest"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__testinfra,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "python3-six"
+	comparison hasValue ">="
+	version hasValue "1.4"
+
+relationInstance depends(P0__testinfra,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__testinfra,2,DepAtom__2)
+

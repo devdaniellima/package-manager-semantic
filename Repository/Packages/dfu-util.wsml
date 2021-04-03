@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology dfu_util
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__dfu_util memberOf Package
+	package hasValue "dfu-util"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/electronics"
+	installedSize hasValue "115"
+	maintainer hasValue "Original-Uwe Hermann <uwe@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.9-1"
+	fileName hasValue "pool/universe/d/dfu-util/dfu-util_0.9-1_amd64.deb"
+	size hasValue "33134"
+	md5sum hasValue "f36f2f50c75cdd84a13a03ebdbe62f3b"
+	sha1 hasValue "5f49c37e9461d4f2747127599b4fe30689b22cbe"
+	sha256 hasValue "6cce8d7f350aa5fa8c506456340ad9d92b4eec46d722c5d4b51d5511cc927a63"
+	descriptionMd5 hasValue "a743310e082b47ed7a4003799b5431f9"
+	homepage hasValue "http://dfu-util.sourceforge.net"
+	depends hasValue "libc6 (>= 2.14), libusb-1.0-0 (>= 2:1.0.16)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__dfu_util,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libusb-1.0-0"
+	comparison hasValue ">="
+	version hasValue "2:1.0.16"
+
+relationInstance depends(P0__dfu_util,1,DepAtom__1)
+

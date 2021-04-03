@@ -1,0 +1,52 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology pkg_config_alpha_linux_gnu
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__pkg_config_alpha_linux_gnu memberOf Package
+	package hasValue "pkg-config-alpha-linux-gnu"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "27"
+	maintainer hasValue "Original-Debian GCC Maintainers <debian-gcc@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "4:9.3.0-1ubuntu2"
+	fileName hasValue "pool/universe/g/gcc-defaults-ports/pkg-config-alpha-linux-gnu_9.3.0-1ubuntu2_amd64.deb"
+	size hasValue "3336"
+	md5sum hasValue "ba9dc78d35b25c5aa2a76da7ae17ac85"
+	sha1 hasValue "98cbeef0b3b5dfb0069015652f80a2c2245e3a41"
+	sha256 hasValue "b6f2d64caac4f5d2c7fd600bcbd7e5943088e70ac1f9ea157fc193b897cfdc7c"
+	descriptionMd5 hasValue "bff6e495981c7438c0961602c6ecfc06"
+	depends hasValue "pkg-config (>= 0.25-1.1ubuntu2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "pkg-config"
+	comparison hasValue ">="
+	version hasValue "0.25-1.1ubuntu2"
+
+relationInstance depends(P0__pkg_config_alpha_linux_gnu,0,DepAtom__0)
+

@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology android_libcrypto_utils
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__android_libcrypto_utils memberOf Package
+	package hasValue "android-libcrypto-utils"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libs"
+	installedSize hasValue "41"
+	maintainer hasValue "Original-Android Tools Maintainers <android-tools-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1:8.1.0+r23-5ubuntu2"
+	fileName hasValue "pool/universe/a/android-platform-system-core/android-libcrypto-utils_8.1.0+r23-5ubuntu2_amd64.deb"
+	size hasValue "8324"
+	md5sum hasValue "413454ac07ab0f895b76e51a627e9d93"
+	sha1 hasValue "a2d34feacffa32ab3ff35fc70cf2d635e48d0ff1"
+	sha256 hasValue "578ab0e1207947e4ad044524d8120af001ce2702e18fa75a3dd0355e79d43a80"
+	descriptionMd5 hasValue "5a6e589e739273886b41a9578ecdd792"
+	homepage hasValue "https://android.googlesource.com/platform/system/core"
+	depends hasValue "android-libboringssl, libc6 (>= 2.4)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "android-libboringssl"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__android_libcrypto_utils,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__android_libcrypto_utils,1,DepAtom__1)
+

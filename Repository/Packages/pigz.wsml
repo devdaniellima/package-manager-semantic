@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology pigz
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__pigz memberOf Package
+	package hasValue "pigz"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/utils"
+	installedSize hasValue "253"
+	maintainer hasValue "Original-Eduard Bloch <blade@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.4-1"
+	fileName hasValue "pool/universe/p/pigz/pigz_2.4-1_amd64.deb"
+	size hasValue "57448"
+	md5sum hasValue "fba6d47291a4bf29fa0b6c5a1986bc43"
+	sha1 hasValue "a2bbfc0d858222e8b7bbea83574b29a7247c3f17"
+	sha256 hasValue "b47ce1682f12b0af5780eeb3718b104cea6d71c78aa4918e36d277a63aad926f"
+	descriptionMd5 hasValue "fd286a4db2d19ea76a5ee0f4ee8ce912"
+	homepage hasValue "http://zlib.net/pigz/"
+	depends hasValue "libc6 (>= 2.14), zlib1g (>= 1:1.2.6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__pigz,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "zlib1g"
+	comparison hasValue ">="
+	version hasValue "1:1.2.6"
+
+relationInstance depends(P0__pigz,1,DepAtom__1)
+

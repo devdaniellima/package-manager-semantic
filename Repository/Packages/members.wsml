@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology members
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__members memberOf Package
+	package hasValue "members"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/admin"
+	installedSize hasValue "34"
+	maintainer hasValue "Original-Lars Bahner <bahner@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "20080128.1+nmu1build1"
+	conflicts hasValue "suidmanager (<< 0.50)"
+	fileName hasValue "pool/universe/m/members/members_20080128.1+nmu1build1_amd64.deb"
+	size hasValue "9320"
+	md5sum hasValue "bcff88558c10c0a07a43fb0348d65b8e"
+	sha1 hasValue "42f91145782e24af1c6128c03a7c10c1f40e8b6b"
+	sha256 hasValue "43cd079a531c4a43af06dcaeb2ecf6e188f7f163a8ae7679e729bc57b16c78d5"
+	descriptionMd5 hasValue "4f72df52c4a8c69707fb92158a7d8536"
+	depends hasValue "libc6 (>= 2.4), libstdc++6 (>= 4.4.0)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.4"
+
+relationInstance depends(P0__members,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libstdc++6"
+	comparison hasValue ">="
+	version hasValue "4.4.0"
+
+relationInstance depends(P0__members,1,DepAtom__1)
+

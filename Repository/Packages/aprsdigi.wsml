@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology aprsdigi
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__aprsdigi memberOf Package
+	package hasValue "aprsdigi"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/hamradio"
+	installedSize hasValue "161"
+	maintainer hasValue "Original-Debian Hamradio Maintainers <debian-hams@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "3.10.0-2build1"
+	fileName hasValue "pool/universe/a/aprsdigi/aprsdigi_3.10.0-2build1_amd64.deb"
+	size hasValue "57152"
+	md5sum hasValue "a48636829213ab353a3a21eeeeb49fb1"
+	sha1 hasValue "09088addbc179d19d6b45a58836f5273f75c1050"
+	sha256 hasValue "9db3c4df873ad511f20cd81fcbb28e2589f3b57811363f1cbe11334ce982201f"
+	description hasValue "\"digipeater\" (repetidor) para APRS"
+	descriptionMd5 hasValue "5c06048dea3c507a26cdd2155363e6f4"
+	homepage hasValue "https://github.com/n2ygk/aprsdigi/"
+	depends hasValue "libax25 (>= 0.0.12-rc4), libc6 (>= 2.15)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libax25"
+	comparison hasValue ">="
+	version hasValue "0.0.12-rc4"
+
+relationInstance depends(P0__aprsdigi,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__aprsdigi,1,DepAtom__1)
+

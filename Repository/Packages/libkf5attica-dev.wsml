@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libkf5attica_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libkf5attica_dev memberOf Package
+	package hasValue "libkf5attica-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "214"
+	maintainer hasValue "Original-Debian/Kubuntu Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "5.68.0-0ubuntu1"
+	fileName hasValue "pool/universe/a/attica-kf5/libkf5attica-dev_5.68.0-0ubuntu1_amd64.deb"
+	size hasValue "25724"
+	md5sum hasValue "b97680203e12d5c70e2c908fc76a409f"
+	sha1 hasValue "c4de34fad0680ed8de4d6b03f32183a5e692f45b"
+	sha256 hasValue "4d33f88ddadecd724aa4b4ea87a4aa0387d13bab37da97f12fea661c39cbd333"
+	descriptionMd5 hasValue "0f258532f7eee15e2fb363e6b7f3ba41"
+	homepage hasValue "https://projects.kde.org/projects/frameworks/attica"
+	depends hasValue "libkf5attica5 (= 5.68.0-0ubuntu1), qtbase5-dev (>= 5.8.0~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libkf5attica5"
+	comparison hasValue "="
+	version hasValue "5.68.0-0ubuntu1"
+
+relationInstance depends(P0__libkf5attica_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "qtbase5-dev"
+	comparison hasValue ">="
+	version hasValue "5.8.0~"
+
+relationInstance depends(P0__libkf5attica_dev,1,DepAtom__1)
+

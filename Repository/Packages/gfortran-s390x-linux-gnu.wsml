@@ -1,0 +1,66 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gfortran_s390x_linux_gnu
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gfortran_s390x_linux_gnu memberOf Package
+	package hasValue "gfortran-s390x-linux-gnu"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/devel"
+	installedSize hasValue "11"
+	maintainer hasValue "Original-Debian GCC Maintainers <debian-gcc@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "4:9.3.0-1ubuntu2"
+	fileName hasValue "pool/universe/g/gcc-defaults/gfortran-s390x-linux-gnu_9.3.0-1ubuntu2_amd64.deb"
+	size hasValue "1188"
+	md5sum hasValue "349a80a84c50dd8b99f2b45a643ab530"
+	sha1 hasValue "955fb7b5bad550ebc1247c69ad1e14ff9234f795"
+	sha256 hasValue "195b02b32fa1269499387533322980f7ca77c1582ef941e2c4f286da2679fe59"
+	descriptionMd5 hasValue "7ee8d0923f5e1041f75f8903b3531b7f"
+	depends hasValue "cpp-s390x-linux-gnu (= 4:9.3.0-1ubuntu2), gcc-s390x-linux-gnu (= 4:9.3.0-1ubuntu2), gfortran-9-s390x-linux-gnu (>= 9.3.0-3~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "cpp-s390x-linux-gnu"
+	comparison hasValue "="
+	version hasValue "4:9.3.0-1ubuntu2"
+
+relationInstance depends(P0__gfortran_s390x_linux_gnu,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "gcc-s390x-linux-gnu"
+	comparison hasValue "="
+	version hasValue "4:9.3.0-1ubuntu2"
+
+relationInstance depends(P0__gfortran_s390x_linux_gnu,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "gfortran-9-s390x-linux-gnu"
+	comparison hasValue ">="
+	version hasValue "9.3.0-3~"
+
+relationInstance depends(P0__gfortran_s390x_linux_gnu,2,DepAtom__2)
+

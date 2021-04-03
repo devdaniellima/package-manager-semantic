@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libswe_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libswe_dev memberOf Package
+	package hasValue "libswe-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "862"
+	maintainer hasValue "Original-Paul Elliott <pelliott@blackpatchpanel.com>"
+	architecture hasValue "amd64"
+	version hasValue "1.80.00.0002-1ubuntu2"
+	fileName hasValue "pool/universe/libs/libswe/libswe-dev_1.80.00.0002-1ubuntu2_amd64.deb"
+	size hasValue "277980"
+	md5sum hasValue "e27eed746554982f30ab30b6cfb9920c"
+	sha1 hasValue "4a5962e8da50a2935dd71859031f446c83e8c728"
+	sha256 hasValue "057b5bfe8db96f3f57607800ca5d4c8f485c56a9944b87e01f9254d489b8d2f5"
+	descriptionMd5 hasValue "a017eadfd3ee237eac18f673cbb94409"
+	homepage hasValue "http://swissephauto.blackpatchpanel.com/"
+	depends hasValue "libswe0 (= 1.80.00.0002-1ubuntu2), libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libswe0"
+	comparison hasValue "="
+	version hasValue "1.80.00.0002-1ubuntu2"
+
+relationInstance depends(P0__libswe_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__libswe_dev,1,DepAtom__1)
+

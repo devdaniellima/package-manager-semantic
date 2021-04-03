@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology node_registry_url
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__node_registry_url memberOf Package
+	package hasValue "node-registry-url"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/javascript"
+	installedSize hasValue "16"
+	maintainer hasValue "Original-Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "3.1.0-1"
+	fileName hasValue "pool/universe/n/node-registry-url/node-registry-url_3.1.0-1_all.deb"
+	size hasValue "3292"
+	md5sum hasValue "166a1f9246083b16d57542dd3e089555"
+	sha1 hasValue "4526163416f3ab661ba2b110d7070d335cc9ce7d"
+	sha256 hasValue "b8ad19c118e4215995375dd0095949219411eaf031aabe77dfe024a54e34d2bd"
+	descriptionMd5 hasValue "a0c5f789c19bffce90981593ca70b15c"
+	homepage hasValue "https://github.com/sindresorhus/registry-url"
+	depends hasValue "nodejs, node-rc (>= 1.0.1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "nodejs"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__node_registry_url,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "node-rc"
+	comparison hasValue ">="
+	version hasValue "1.0.1"
+
+relationInstance depends(P0__node_registry_url,1,DepAtom__1)
+

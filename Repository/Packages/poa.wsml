@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology poa
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__poa memberOf Package
+	package hasValue "poa"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/science"
+	installedSize hasValue "140"
+	maintainer hasValue "Original-Debian Med Packaging Team <debian-med-packaging@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2.0+20060928-7"
+	fileName hasValue "pool/universe/p/poa/poa_2.0+20060928-7_amd64.deb"
+	size hasValue "53056"
+	md5sum hasValue "48fc7406d5d3d096d2b62b5021cbedec"
+	sha1 hasValue "6c49bf78b8f96cbbef04d7f6a273cd8acc981e13"
+	sha256 hasValue "c7d725aa2cd9a888b39788975c7659362c0216b4d9d5663e22b4db16b3350135"
+	description hasValue "Partial Order Alignment para alinhamento múltiplo de seqüência"
+	descriptionMd5 hasValue "17e3dd80c345289f88c18880fe3f3822"
+	homepage hasValue "http://poamsa.sourceforge.net/"
+	depends hasValue "libc6 (>= 2.14)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__poa,0,DepAtom__0)
+

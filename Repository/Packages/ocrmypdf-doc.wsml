@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology ocrmypdf_doc
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__ocrmypdf_doc memberOf Package
+	package hasValue "ocrmypdf-doc"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/doc"
+	installedSize hasValue "774"
+	maintainer hasValue "Original-Sean Whitton <spwhitton@spwhitton.name>"
+	architecture hasValue "all"
+	version hasValue "9.6.0+dfsg-1"
+	fileName hasValue "pool/universe/o/ocrmypdf/ocrmypdf-doc_9.6.0+dfsg-1_all.deb"
+	size hasValue "133948"
+	md5sum hasValue "5ea16f967dac31c2a73635324778793f"
+	sha1 hasValue "154c422fde029cc516af560832a693c8534cf5c1"
+	sha256 hasValue "17ab5f3a3ec93b3ade649b17f89954d5526c2d0831b266ca2a41e368dcb088a5"
+	descriptionMd5 hasValue "12c145a1bdad6136f096d97798164403"
+	homepage hasValue "https://github.com/jbarlow83/OCRmyPDF"
+	depends hasValue "libjs-sphinxdoc (>= 1.0), sphinx-rtd-theme-common (>= 0.4.3+dfsg)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libjs-sphinxdoc"
+	comparison hasValue ">="
+	version hasValue "1.0"
+
+relationInstance depends(P0__ocrmypdf_doc,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "sphinx-rtd-theme-common"
+	comparison hasValue ">="
+	version hasValue "0.4.3+dfsg"
+
+relationInstance depends(P0__ocrmypdf_doc,1,DepAtom__1)
+

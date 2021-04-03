@@ -1,0 +1,53 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology tcl
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__tcl memberOf Package
+	package hasValue "tcl"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/interpreters"
+	installedSize hasValue "22"
+	maintainer hasValue "Original-Debian Tcl/Tk Packagers <pkg-tcltk-devel@lists.alioth.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "8.6.9+1"
+	provides hasValue "tclsh"
+	fileName hasValue "pool/universe/t/tcltk-defaults/tcl_8.6.9+1_amd64.deb"
+	size hasValue "5112"
+	md5sum hasValue "906bd3f9dd8621e448b3fbc59932c291"
+	sha1 hasValue "2b8da97745cf71754f5749c80bdccaca9c686a0b"
+	sha256 hasValue "8f36c70592d6a8533d3a1bc16e392ebc7451031aaee3e8f2c2764945fe55ebf1"
+	descriptionMd5 hasValue "dc49b54190858f10215816ea3b0a62d5"
+	depends hasValue "tcl8.6 (>= 8.6.9+dfsg-2)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "tcl8.6"
+	comparison hasValue ">="
+	version hasValue "8.6.9+dfsg-2"
+
+relationInstance depends(P0__tcl,0,DepAtom__0)
+

@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology gnunet_fuse
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__gnunet_fuse memberOf Package
+	package hasValue "gnunet-fuse"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "40"
+	maintainer hasValue "Original-Bertrand Marc <bmarc@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.10.0-2"
+	fileName hasValue "pool/universe/g/gnunet-fuse/gnunet-fuse_0.10.0-2_amd64.deb"
+	size hasValue "12788"
+	md5sum hasValue "84eb6f62e912b013806a1642f7fe41ee"
+	sha1 hasValue "8376c039555e8f238acfb729a7e60a425a197db7"
+	sha256 hasValue "9263b55e0b5f14d603501a4bff97e32b19b94d42d35cd3f6dfc5adb2239f200f"
+	descriptionMd5 hasValue "a4fa148c381a5c334a995cd1906fd7cc"
+	homepage hasValue "http://gnunet.org/"
+	depends hasValue "gnunet, libc6 (>= 2.14), libfuse2 (>= 2.6)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "gnunet"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__gnunet_fuse,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__gnunet_fuse,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libfuse2"
+	comparison hasValue ">="
+	version hasValue "2.6"
+
+relationInstance depends(P0__gnunet_fuse,2,DepAtom__2)
+

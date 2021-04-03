@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology yaws_yapp
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__yaws_yapp memberOf Package
+	package hasValue "yaws-yapp"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/web"
+	installedSize hasValue "71"
+	maintainer hasValue "Original-Debian Erlang Packagers <pkg-erlang-devel@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "2.0.7+dfsg-1"
+	fileName hasValue "pool/universe/y/yaws/yaws-yapp_2.0.7+dfsg-1_all.deb"
+	size hasValue "13740"
+	md5sum hasValue "af477494105337ef91e213cfa3e25922"
+	sha1 hasValue "3ebd630b19af32a6aac602d8c2587451e47ee76c"
+	sha256 hasValue "bed22a60c39e7090110003816ed88e40f4cba2ef6653186dd96f03a6de4ebb09"
+	descriptionMd5 hasValue "230e4021d21744a3f52910040a8d5a08"
+	homepage hasValue "http://yaws.hyber.org/"
+	depends hasValue "yaws (>= 2.0.7+dfsg-1), erlang-yapp (>= 2.0.7+dfsg-1)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "yaws"
+	comparison hasValue ">="
+	version hasValue "2.0.7+dfsg-1"
+
+relationInstance depends(P0__yaws_yapp,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "erlang-yapp"
+	comparison hasValue ">="
+	version hasValue "2.0.7+dfsg-1"
+
+relationInstance depends(P0__yaws_yapp,1,DepAtom__1)
+

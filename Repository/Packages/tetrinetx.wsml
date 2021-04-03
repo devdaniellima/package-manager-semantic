@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology tetrinetx
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__tetrinetx memberOf Package
+	package hasValue "tetrinetx"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/games"
+	installedSize hasValue "186"
+	maintainer hasValue "Original-Julien Danjou <acid@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "1.13.16-14build1"
+	fileName hasValue "pool/universe/t/tetrinetx/tetrinetx_1.13.16-14build1_amd64.deb"
+	size hasValue "57056"
+	md5sum hasValue "3f4534d1a00e3a6f39ffaeffd7ec23b1"
+	sha1 hasValue "85e31c52583f7997f03b5179d960255875177d14"
+	sha256 hasValue "1d5cc3ecb433c8607e8ad556ef711abe1d5af68fdd321d641fc860677812bfdc"
+	description hasValue "servidor do jogo Tetrinet"
+	descriptionMd5 hasValue "731609c616ee10857e8cd56db572cbde"
+	homepage hasValue "http://tetrinetx.sourceforge.net/"
+	depends hasValue "libadns1 (>= 1.5.0~), libc6 (>= 2.15)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libadns1"
+	comparison hasValue ">="
+	version hasValue "1.5.0~"
+
+relationInstance depends(P0__tetrinetx,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.15"
+
+relationInstance depends(P0__tetrinetx,1,DepAtom__1)
+

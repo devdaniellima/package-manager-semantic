@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology thinkfan
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__thinkfan memberOf Package
+	package hasValue "thinkfan"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/misc"
+	installedSize hasValue "100"
+	maintainer hasValue "Original-Evgeni Golov <evgeni@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.9.3-2"
+	fileName hasValue "pool/universe/t/thinkfan/thinkfan_0.9.3-2_amd64.deb"
+	size hasValue "35902"
+	md5sum hasValue "de2962429a414ff5a6912cc4e992e23c"
+	sha1 hasValue "2593e67d1accd370deb1f043d0da4c2ec50f53b1"
+	sha256 hasValue "7c6bc1578605301eb8b27114818b4c76ca8e1cbfc416b1d5893a58764d0077c6"
+	description hasValue "programa simples e leve para controle do ventilador"
+	descriptionMd5 hasValue "e4c293350a0c048fab6b3138fdcb20cc"
+	homepage hasValue "https://github.com/vmatare/thinkfan"
+	depends hasValue "libatasmart4 (>= 0.13), libc6 (>= 2.14), init-system-helpers (>= 1.18~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libatasmart4"
+	comparison hasValue ">="
+	version hasValue "0.13"
+
+relationInstance depends(P0__thinkfan,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__thinkfan,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "init-system-helpers"
+	comparison hasValue ">="
+	version hasValue "1.18~"
+
+relationInstance depends(P0__thinkfan,2,DepAtom__2)
+

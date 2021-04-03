@@ -1,0 +1,67 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology libemos_dev
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__libemos_dev memberOf Package
+	package hasValue "libemos-dev"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/libdevel"
+	installedSize hasValue "9525"
+	maintainer hasValue "Original-Alastair McKinstry <mckinstry@debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "2:4.5.9-3build1"
+	fileName hasValue "pool/universe/e/emoslib/libemos-dev_4.5.9-3build1_amd64.deb"
+	size hasValue "1223468"
+	md5sum hasValue "df44936deeb1aab603e12e19e47618f5"
+	sha1 hasValue "5be57fc1c885afb1aaf93c30addd0f8ce0497efb"
+	sha256 hasValue "c722b56c3a59c6af253c6cda016d73d817444eff6e0b26521cc3154b5bf28d25"
+	descriptionMd5 hasValue "8bb8fed2ceb63c0afa95a4a8a82bbe8c"
+	homepage hasValue "https://software.ecmwf.int/wiki/display/EMOS/Emoslib"
+	depends hasValue "libemos0d (= 2:4.5.9-3build1), libeccodes-tools | libemos-bin:any"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libemos0d"
+	comparison hasValue "="
+	version hasValue "2:4.5.9-3build1"
+
+relationInstance depends(P0__libemos_dev,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "libeccodes-tools"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libemos_dev,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "libemos-bin:any"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__libemos_dev,1,DepAtom__2)
+

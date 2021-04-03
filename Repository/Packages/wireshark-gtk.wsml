@@ -1,0 +1,54 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology wireshark_gtk
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__wireshark_gtk memberOf Package
+	package hasValue "wireshark-gtk"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/net"
+	installedSize hasValue "56"
+	maintainer hasValue "Balint Reczey <rbalint@ubuntu.com>"
+	architecture hasValue "amd64"
+	version hasValue "3.2.3-1"
+	fileName hasValue "pool/universe/w/wireshark/wireshark-gtk_3.2.3-1_amd64.deb"
+	size hasValue "4960"
+	md5sum hasValue "8d2d1a62080a51124be96c36fe9c152a"
+	sha1 hasValue "a40b4564952dd80426d2f9be53c38b59a950529d"
+	sha256 hasValue "96f7ccafbab4839c822139fe93d15020ac8a2a5f8b0280d9a05c7cb45f6542da"
+	description hasValue "pacote fictício (\"dummy\") de transição"
+	descriptionMd5 hasValue "1f317b04f78374dba7d1e14def0b7f80"
+	homepage hasValue "https://www.wireshark.org/"
+	depends hasValue "wireshark-qt (>= 3.0.0~)"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "wireshark-qt"
+	comparison hasValue ">="
+	version hasValue "3.0.0~"
+
+relationInstance depends(P0__wireshark_gtk,0,DepAtom__0)
+

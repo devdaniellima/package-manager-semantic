@@ -1,0 +1,60 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology python3_nmap
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__python3_nmap memberOf Package
+	package hasValue "python3-nmap"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/python"
+	installedSize hasValue "98"
+	maintainer hasValue "Original-Federico Ceratto <federico@debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.6.1-1.1"
+	fileName hasValue "pool/universe/p/python-nmap/python3-nmap_0.6.1-1.1_all.deb"
+	size hasValue "20104"
+	md5sum hasValue "bc5a4fdacd73d5e4a9eae901a27ad518"
+	sha1 hasValue "d509b9ec1f1e790931db81696e8e4af9cfb1ece5"
+	sha256 hasValue "1b2c718ac930e453159e0bce16faa78b009ef63bf629e8a4d7f0c430d7750f96"
+	descriptionMd5 hasValue "099d70767a4fecff68dd0297b8262488"
+	homepage hasValue "http://xael.org/norman/python/python-nmap/"
+	depends hasValue "python3:any (>= 3.0~), nmap"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "python3:any"
+	comparison hasValue ">="
+	version hasValue "3.0~"
+
+relationInstance depends(P0__python3_nmap,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "nmap"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__python3_nmap,1,DepAtom__1)
+

@@ -1,0 +1,61 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology pkg_perl_autopkgtest
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__pkg_perl_autopkgtest memberOf Package
+	package hasValue "pkg-perl-autopkgtest"
+	packageSource hasValue Source__S1
+	priority hasValue "extra"
+	section hasValue "universe/devel"
+	installedSize hasValue "58"
+	maintainer hasValue "Original-Debian Perl Group <pkg-perl-maintainers@lists.alioth.debian.org>"
+	architecture hasValue "all"
+	version hasValue "0.59"
+	provides hasValue "pkg-perl-autopkgtest-heavy"
+	fileName hasValue "pool/universe/p/pkg-perl-tools/pkg-perl-autopkgtest_0.59_all.deb"
+	size hasValue "11868"
+	md5sum hasValue "8eb9c59e879905bc883ca786a10984e2"
+	sha1 hasValue "a573d8bba321cfb790b14142315b8b9808bc10cd"
+	sha256 hasValue "8c3e6a0b1563e1796e0bfa243dfb89155c59e5ae998b71ec3cf95e0396dc0b10"
+	descriptionMd5 hasValue "5a5028d53af2894620684c2a2d710a12"
+	homepage hasValue "https://wiki.debian.org/Teams/DebianPerlGroup"
+	depends hasValue "autodep8 (>= 0.19~), perl"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "autodep8"
+	comparison hasValue ">="
+	version hasValue "0.19~"
+
+relationInstance depends(P0__pkg_perl_autopkgtest,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "perl"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__pkg_perl_autopkgtest,1,DepAtom__1)
+

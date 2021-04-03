@@ -1,0 +1,68 @@
+// Variant
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-rule"
+
+// Namespace
+namespace {
+	_"br.com.devdaniellima/RepositoryOntology/Packages"
+}
+
+// Definition
+ontology pd_iemnet
+	nfp
+		dc#title hasValue "Repository Packages"
+		dc#contributor hasValue "Daniel Lima"
+		dc#format hasValue "text/plain"
+		dc#language hasValue "en-US" 
+	endnfp
+
+importsOntology {
+	_"../Repository.wsml"
+}
+
+// Sources instances
+
+instance Source__S1 memberOf Source
+	uri hasValue "http://br.archive.ubuntu.com/ubuntu"
+
+// Packages instances
+
+instance P0__pd_iemnet memberOf Package
+	package hasValue "pd-iemnet"
+	packageSource hasValue Source__S1
+	priority hasValue "optional"
+	section hasValue "universe/sound"
+	installedSize hasValue "209"
+	maintainer hasValue "Original-Debian Multimedia Maintainers <debian-multimedia@lists.debian.org>"
+	architecture hasValue "amd64"
+	version hasValue "0.2.2-1"
+	provides hasValue "pd-net"
+	fileName hasValue "pool/universe/p/pd-iemnet/pd-iemnet_0.2.2-1_amd64.deb"
+	size hasValue "36428"
+	md5sum hasValue "28ba5758af6c89661e5224bdabaa59ca"
+	sha1 hasValue "c9287ed88c50b5b9e30c898b06b76e09b8641d84"
+	sha256 hasValue "8b07e03330afc33d5cd6dc7e71088bc1af0d45db37de5bdc2a98805ab51c2996"
+	descriptionMd5 hasValue "df615cf9dab0e1ce6e3ac6adf5744bf3"
+	homepage hasValue "https://download.puredata.info/iemnet"
+	depends hasValue "libc6 (>= 2.14), puredata-core | pd"
+
+instance DepAtom__0 memberOf DependencyAtom
+	package hasValue "libc6"
+	comparison hasValue ">="
+	version hasValue "2.14"
+
+relationInstance depends(P0__pd_iemnet,0,DepAtom__0)
+
+instance DepAtom__1 memberOf DependencyAtom
+	package hasValue "puredata-core"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__pd_iemnet,1,DepAtom__1)
+
+instance DepAtom__2 memberOf DependencyAtom
+	package hasValue "pd"
+	comparison hasValue ""
+	version hasValue ""
+
+relationInstance depends(P0__pd_iemnet,1,DepAtom__2)
+
