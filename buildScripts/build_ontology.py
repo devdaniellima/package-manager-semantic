@@ -88,6 +88,10 @@ countVersion = 0
 countDependency = 0
 for package in database.packages:
   countPackage += 1
+
+  #if (countPackage == 10):
+  #  exit()
+
   fileName = package.name
   filePath = '../Repository/Packages/'+fileName+'.wsml'
 
@@ -117,8 +121,15 @@ for package in database.packages:
     fileOntology.write('\tendnfp\n\n')
 
     fileOntology.write('importsOntology {\n')
-    fileOntology.write('\t_"../Repository.wsml"\n')
-    fileOntology.write('}\n\n')
+    fileOntology.write('\t_"../Repository.wsml"')
+    if package.depends != '':
+      for conjunction in package.depends.split(','):
+        for disjunction in conjunction.split('|'):
+          fileOntology.write(',\n')
+          importName = disjunction.strip().split(' ')[0]
+          fileOntology.write('\t_"' + importName + '.wsml"')
+
+    fileOntology.write('\n}\n\n')
 
     if package.source is not None:
       fileOntology.write('// Sources instances\n\n')
