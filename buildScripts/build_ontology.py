@@ -1,5 +1,6 @@
 import subprocess, os, re
 import package_utils as Utils
+import time
 
 database = Utils.Database()
 packagesName = []
@@ -96,6 +97,7 @@ for package in database.packages:
   filePath = '../Repository/Packages/'+fileName+'.wsml'
 
   if not os.path.exists(filePath):
+    print('Package ' + str(countPackage))
     countVersion = 0
     countDependency = 0
     ontologyName = package.name.replace('-','_').replace('+','Plus').replace('.','Dot')
@@ -211,6 +213,7 @@ for package in database.packages:
     order = 0
     for dependString in dependsArrString:
       disjunctionArrString = dependString.split('|')
+      orderOfDisjunction = 0
       for disjunction in disjunctionArrString:
         dependencyArr = disjunction.strip().split(' ')
         depPackage = dependencyArr[0]
@@ -225,17 +228,20 @@ for package in database.packages:
           if depVersion[-1] == ")":
             depVersion = depVersion[:-1]
 
-        dependenceInstance = "DepAtom__" + str(countDependency)
+        now = int(time.time()*100)
+        dependenceInstance = "DepAtom__" + str(countDependency) + "__" + str(now)
         fileOntology.write("instance " + dependenceInstance + " memberOf DependencyAtom\n")
         fileOntology.write('\tpackage hasValue "' + depPackage + '"\n')
         fileOntology.write('\tcomparison hasValue "' + depComparison + '"\n')
         fileOntology.write('\tversion hasValue "' + depVersion + '"\n')
         fileOntology.write('\n')
 
-        fileOntology.write("relationInstance depends("+ instanceName + "," + str(order) + "," + dependenceInstance + ")\n")
+        fileOntology.write("relationInstance depends("+ instanceName + "," + str(order) + "," + str(orderOfDisjunction) + "," + dependenceInstance + ")\n")
         fileOntology.write('\n')
       
         countDependency += 1
+        
+        orderOfDisjunction += 1
 
       order += 1
   

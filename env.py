@@ -1,1 +1,1 @@
-MIDSI_PATH = '/Users/daniellimaoliveira/Documents/ufs/midsi'
+MIDSI_PATH = '/Users/danieldev/Documents/midsi'
