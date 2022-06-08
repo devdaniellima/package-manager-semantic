@@ -34,7 +34,7 @@ if len(args) == 0:
   print('* depends [package] --all')
   exit()
 
-pwd = '/Users/danieldev/Documents/package-manager-semantic'
+pwd = os.getcwd()
 
 def dependencyOf(package, level, header, allDependencys):
   
